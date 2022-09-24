@@ -22,6 +22,15 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
         var attackConfig = scene.anims.get(this.attackAnim);
 
+        var text = scene.add.text(mob.body.x, mob.body.y + 20, this.attack);
+            this.scene.time.addEvent({
+                delay: 300,
+                callback: () => {
+                    text.destroy();
+                },
+                loop: false
+            });
+
         console.log(this.aspd);
         console.log(attackConfig.frameRate);
 

@@ -23,15 +23,17 @@ export default class gameScene extends Phaser.Scene{
         };
         //this.m_music.play(musicConfig);
         this.m_mobs = this.physics.add.group();
-        this.m_mobs.add(new Mob(this));
+        this.addMob();
+        //this.m_mobs.add(new Mob(this));
 
         this.m_player = new girl(this);
         this.cameras.main.startFollow(this.m_player);
 
         this.physics.add.overlap(this.m_player, this.m_mobs, (player, mob) => {
-            player.attackMob(this,mob);
+            player.attackMob(this, mob);
+            
         }, null, this);
-        this.addMob();
+        
         this.logMob();
     }
 
@@ -41,7 +43,8 @@ export default class gameScene extends Phaser.Scene{
             callback: () => {
                 this.m_mobs.add(new Mob(this));
             },
-            loop: true
+            loop: true,
+            startAt: 0
         })
     }
 

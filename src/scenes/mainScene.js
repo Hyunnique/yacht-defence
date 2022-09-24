@@ -8,10 +8,7 @@ export default class MainScene extends Phaser.Scene{
 
     create() {
 
-        this.add.text(Config.width / 2, Config.height / 2, "Press W", {
-            fontSize: `20px`,
-            color: 0xFFFFFF
-        });
+        var text = this.add.text(Config.width / 2, Config.height / 2, "Press W");
         this.input.keyboard.on("keydown-W", () => this.scene.start("gameScene"));
     }
 

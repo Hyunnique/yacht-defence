@@ -8,8 +8,8 @@ export default class girl extends playerUnit{
         super(scene, 0, 0, "testwait");
         this.scale = 1;
         this.alpha = 1;
-        this.attack = 150;
-        this.aspd = 2.5;
+        this.attack = 50;
+        this.aspd = 0.5;
         this.attackAnim = "test_atk";
         this.play("test_wait");
 
