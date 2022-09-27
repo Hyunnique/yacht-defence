@@ -1,5 +1,7 @@
 import girl from '../objects/units/test.js';
 import Mob from '../objects/mobs/Mob.js';
+import shooter from '../objects/units/test2.js';
+import Projectile from '../objects/projectiles/projectile.js';
 const Phaser = require('phaser');
 const Config = require("../Config");
 
@@ -10,7 +12,16 @@ export default class gameScene extends Phaser.Scene{
 
     create(){
         this.sound.pauseOnBlur = false;
+        this.globalnum = 1;
+        this.spawnpoint = {
+            x: -500,
+            y: -30
+        }
 
+        this.endpoint = {
+            x: 500,
+            y: -30
+        }
         this.m_music = this.sound.add("music");
         const musicConfig = {
             mute: false,
@@ -26,13 +37,14 @@ export default class gameScene extends Phaser.Scene{
         this.addMob();
         //this.m_mobs.add(new Mob(this));
 
-        this.m_player = new girl(this);
+        this.m_projectiles = this.physics.add.group();
+
+        this.m_player = new shooter(this);
         this.cameras.main.startFollow(this.m_player);
 
-        this.physics.add.overlap(this.m_player, this.m_mobs, (player, mob) => {
-            player.attackMob(this, mob);
-            
-        }, null, this);
+        this.physics.add.overlap(this.m_player, this.m_mobs, (player, mob) => player.addMobtoTarget(this, mob), null, this);
+
+        this.physics.add.overlap(this.m_projectiles, this.m_mobs, (projectile, mob) => mob.bullseye(this,projectile), null, this);
         
         this.logMob();
     }
@@ -41,7 +53,7 @@ export default class gameScene extends Phaser.Scene{
         this.time.addEvent({
             delay: 1000,
             callback: () => {
-                this.m_mobs.add(new Mob(this));
+                this.m_mobs.add(new Mob(this,this.globalnum++,this.spawnpoint,this.endpoint));
             },
             loop: true,
             startAt: 0

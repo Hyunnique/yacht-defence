@@ -6,7 +6,7 @@ import PreLoadScene from "./scenes/preloadScene";
 const Config = {
     width: 1024,
     height: 768,
-    backgroundColor: 0x000000,
+    backgroundColor: 0xFFFFFF,
     scene: [PreLoadScene,MainScene,gameScene],
     pixelArt: true,
     type: Phaser.AUTO,
@@ -14,7 +14,7 @@ const Config = {
         default: "arcade",
         arcade: {
             fps: 165,
-            debug: process.env.debug === "true"
+            debug: true
         }
     }
 };

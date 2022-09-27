@@ -1,4 +1,5 @@
-const Config = require("../../Config")
+import Projectile from '../projectiles/projectile.js';
+const Config = require("../../Config");
 const Phaser = require("phaser");
 
 export default class Player extends Phaser.Physics.Arcade.Sprite {
@@ -10,45 +11,65 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.alpha = 1;
         this.attackReady = true;
         this.attackAnim = "";
+        this.projectileName = "";
+        this.target = [];
+        this.range = 1;
+        this.attackConfig = "";
+        this.projectileAnimName = "";
+        this.kills = 0;
+        this.attackType = 0;
+
         scene.add.existing(this);
-        scene.physics.add.existing(this);
-    }
+        scene.physics.add.existing(this,true);
 
-    attackMob(scene,mob)
-    {
-        if (this.attackReady === false)
-            return;
-        console.log(this.attackAnim);
-
-        var attackConfig = scene.anims.get(this.attackAnim);
-
-        var text = scene.add.text(mob.body.x, mob.body.y + 20, this.attack);
-            this.scene.time.addEvent({
-                delay: 300,
-                callback: () => {
-                    text.destroy();
-                },
-                loop: false
-            });
-
-        console.log(this.aspd);
-        console.log(attackConfig.frameRate);
-
-        this.play(attackConfig, false);
-        scene.add.bitmapText(Config.width / 2, 150, "pixelFont", this.attack, 20).setOrigin(0.5);
-        mob.Health -= this.attack;
-        if (mob.Health <= 0)
-        {
-            mob.death();    
-        }
-        this.attackReady = false;
-
-        this.scene.time.addEvent({
+        scene.time.addEvent({
             delay: 1000 / this.aspd,
             callback: () => {
                 this.attackReady = true;
+                this.checkMob();
+                this.attackMob(scene);
             },
-            loop: false
+            loop: true
         });
+    }
+
+    checkMob() {
+        this.target.forEach(e => { 
+            if (Phaser.Math.Distance.Between(this.body.x, this.body.y, e.body.x, e.body.y) > this.range) 
+            {
+                this.target.splice(this.target.findIndex(t => t.mobNum === e.mobNum), 1);
+            }
+        });
+    }
+
+    addMobtoTarget(scene,mob)
+    {
+        if(this.target.findIndex(t => t.mobNum === mob.mobNum) === -1)
+            this.target.push(mob);
+        this.attackMob(scene);
+    }
+
+    attackMob(scene)
+    {
+        if (this.attackReady === false || this.target.length === 0)
+            return;
+        this.attackReady = false;
+        this.play(this.attackConfig, true);
+
+        if (this.attackType === 0) {
+            this.target.forEach(e => {
+                e.Health -= this.attack;
+                e.showDamage(scene,this.attack);
+                if (e.Health <= 0) {
+                    this.kills++;
+                    this.target.splice(this.target.findIndex(t => t.mobNum === e.mobNum), 1);
+                    e.death();
+                }
+            })
+        }
+        else if (this.attackType === 1) {
+            this.target.sort((a, b) => a.Health - b.Health);
+            var bullet = new Projectile(scene,this, this.target.at(0));
+        }        
     }
 }

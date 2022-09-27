@@ -5,6 +5,7 @@ import bgm from "../assets/sounds/WaveofEmptiness.mp3";
 import fontPng from "../assets/font/font.png";
 import fontXml from '../assets/font/font.xml';
 import batImg from '../assets/spritesheets/bat.png';
+import bulletImg from '../assets/spritesheets/bullet.png';
 
 export default class PreLoadScene extends Phaser.Scene {
     constructor() {
@@ -24,6 +25,11 @@ export default class PreLoadScene extends Phaser.Scene {
             frameWidth: 16,
             frameHeight: 16,
         });
+
+        this.load.spritesheet("bullet", bulletImg, {
+            frameWidth: 361,
+            frameHeight: 50
+        })
         
         this.load.audio("music", bgm);
         this.load.bitmapFont("pixelFont", fontPng, fontXml);
@@ -46,6 +52,13 @@ export default class PreLoadScene extends Phaser.Scene {
             frameRate: 8,
             repeat: -1
         });
+
+        this.anims.create({
+            key: "bullet_anim",
+            frames: this.anims.generateFrameNumbers("bullet"),
+            frameRate: 15,
+            repeat: -1
+        })
 
         this.anims.create({
             key: "bat_anim",
