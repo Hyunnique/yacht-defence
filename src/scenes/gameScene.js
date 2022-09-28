@@ -42,7 +42,10 @@ export default class gameScene extends Phaser.Scene{
         this.m_player = new girl(this);
         this.cameras.main.startFollow(this.m_player);
 
-        this.physics.add.overlap(this.m_player, this.m_mobs, (player, mob) => player.addMobtoTarget(this, mob), null, this);
+        this.physics.add.overlap(this.m_player, this.m_mobs, (player, mob) => {
+            player.addMobtoTarget(this, mob);
+            player.attackMob(this);
+        }, null, this);
 
         this.physics.add.overlap(this.m_projectiles, this.m_mobs, (projectile, mob) => mob.bullseye(this,projectile), null, this);
         

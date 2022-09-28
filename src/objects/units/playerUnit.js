@@ -82,7 +82,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             callback: () => {
                 //console.log(this.attackConfig);
                 this.attackReady = true;
-                this.attackMob(scene);
+                //this.attackMob(scene);
             },
             loop: true
         });
