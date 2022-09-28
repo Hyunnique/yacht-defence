@@ -73,9 +73,4 @@ export default class gameScene extends Phaser.Scene{
             loop: true
         })
     }
-
-    mobPos(id)
-    {
-        return this.m_mobs.getChildren().find(e => e.mobNum === id);
-    }
 }
