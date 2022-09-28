@@ -8,12 +8,12 @@ export default class Projectile extends Phaser.Physics.Arcade.Sprite {
         scene.m_projectiles.add(this);
         this.shooter = shooter;
         this.attack = shooter.attack;
-        this.speed = 980;
+        this.speed = 98;
         this.scale = 0.4;
         this.alpha = 1;
         var bulletConfig = scene.textures.get(shooter.projectileName);
         
-        this.setBodySize(64, 64);
+        this.setBodySize(28,28);
         
         scene.add.existing(this);
         scene.physics.add.existing(this, true);
@@ -21,16 +21,12 @@ export default class Projectile extends Phaser.Physics.Arcade.Sprite {
 
         this.play(shooter.projectileAnimName);
 
-        scene.time.addEvent({
-            delay: 100,
-            callback: () => {
-                //console.log(target);
-                try {
-                    this.setAngle(shooter, target);
-                    scene.physics.moveToObject(this, target, this.speed);
-                } catch (error) {
-                    this.destroy();
-                }
+        scene.events.on("update", (time, delta) => {
+            try {
+                this.setAngle(this, target);
+                scene.physics.moveToObject(this, scene.mobPos(target.mobNum), this.speed);
+            } catch (error) {
+                this.destroy();
             }
         });
         
