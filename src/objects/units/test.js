@@ -9,11 +9,9 @@ export default class girl extends playerUnit{
         this.scale = 1;
         this.alpha = 1;
         this.attack = 100;
-        this.aspd = 0.5;
-        this.range = 30;
-        this.attackType = 1;
-        this.projectileName = "bullet";
-        this.projectileAnimName = "bullet_anim";
+        this.aspd = 1.5;
+        this.range = 300;
+        this.attackType = 0;
         this.attackAnim = "test_atk";
         this.attackConfig = scene.anims.get(this.attackAnim);
 
@@ -22,15 +20,13 @@ export default class girl extends playerUnit{
 
         
         var attackConfig = scene.anims.get(this.attackAnim);
-        
         attackConfig.frameRate *= this.aspd;
-        attackConfig.msPerFrame = 1000 / attackConfig.frames.length;
 
         scene.physics.world.enableBody(this);
 
         this.setBodySize(this.range, this.range);
-        this.setCircle(100);
-        this.setOffset(-60, -60);
+        this.setCircle(300);
+        this.setOffset(-300, -300);
 
         this.activateAttack(scene);
     }

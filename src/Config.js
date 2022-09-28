@@ -6,7 +6,7 @@ import PreLoadScene from "./scenes/preloadScene";
 const Config = {
     width: 1024,
     height: 768,
-    backgroundColor: 0xFFFFFF,
+    backgroundColor: 0x000000,
     scene: [PreLoadScene,MainScene,gameScene],
     pixelArt: true,
     type: Phaser.AUTO,

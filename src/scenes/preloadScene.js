@@ -49,7 +49,7 @@ export default class PreLoadScene extends Phaser.Scene {
         this.anims.create({
             key: "test_atk",
             frames: this.anims.generateFrameNames("testatk",{end: 6}),
-            frameRate: 8,
+            frameRate: 7,
             repeat: -1
         });
 

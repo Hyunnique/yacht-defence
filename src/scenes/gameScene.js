@@ -15,12 +15,12 @@ export default class gameScene extends Phaser.Scene{
         this.globalnum = 1;
         this.spawnpoint = {
             x: -500,
-            y: -30
+            y: -40
         }
 
         this.endpoint = {
             x: 500,
-            y: -30
+            y: -40
         }
         this.m_music = this.sound.add("music");
         const musicConfig = {
@@ -39,14 +39,14 @@ export default class gameScene extends Phaser.Scene{
 
         this.m_projectiles = this.physics.add.group();
 
-        this.m_player = new shooter(this);
+        this.m_player = new girl(this);
         this.cameras.main.startFollow(this.m_player);
 
         this.physics.add.overlap(this.m_player, this.m_mobs, (player, mob) => player.addMobtoTarget(this, mob), null, this);
 
         this.physics.add.overlap(this.m_projectiles, this.m_mobs, (projectile, mob) => mob.bullseye(this,projectile), null, this);
         
-        this.logMob();
+        //this.logMob();
     }
 
     addMob() {

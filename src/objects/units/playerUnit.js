@@ -9,7 +9,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.aspd = 2.5;
         this.scale = 0.4;
         this.alpha = 1;
-        this.attackReady = true;
+        this.attackReady = false;
         this.attackAnim = "";
         this.projectileName = "";
         this.target = [];
@@ -29,6 +29,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.target.forEach(e => { 
             if (Phaser.Math.Distance.Between(this.body.x, this.body.y, e.body.x, e.body.y) > this.range) 
             {
+                var x = this.target.findIndex(t => t.mobNum === e.mobNum);
+                this.target.at(x).body.debugBodyColor = 0xFF0000;
                 this.target.splice(this.target.findIndex(t => t.mobNum === e.mobNum), 1);
             }
         });
@@ -36,9 +38,10 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
     addMobtoTarget(scene,mob)
     {
-        if(this.target.findIndex(t => t.mobNum === mob.mobNum) === -1)
+        if (this.target.findIndex(t => t.mobNum === mob.mobNum) === -1) {
             this.target.push(mob);
-        this.attackMob(scene);
+            mob.body.debugBodyColor = 0xFFFFFF;
+        }
     }
 
     attackMob(scene)
@@ -68,11 +71,17 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     activateAttack(scene)
     {
         scene.time.addEvent({
+            delay: 10,
+            callback: () => {
+                this.checkMob();
+            },
+            loop: true
+        });
+        scene.time.addEvent({
             delay: 1000 / this.aspd,
             callback: () => {
-                console.log(this.attackConfig);
+                //console.log(this.attackConfig);
                 this.attackReady = true;
-                this.checkMob();
                 this.attackMob(scene);
             },
             loop: true
