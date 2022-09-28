@@ -22,15 +22,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         scene.add.existing(this);
         scene.physics.add.existing(this,true);
 
-        scene.time.addEvent({
-            delay: 1000 / this.aspd,
-            callback: () => {
-                this.attackReady = true;
-                this.checkMob();
-                this.attackMob(scene);
-            },
-            loop: true
-        });
+        
     }
 
     checkMob() {
@@ -71,5 +63,19 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             this.target.sort((a, b) => a.Health - b.Health);
             var bullet = new Projectile(scene,this, this.target.at(0));
         }        
+    }
+
+    activateAttack(scene)
+    {
+        scene.time.addEvent({
+            delay: 1000 / this.aspd,
+            callback: () => {
+                console.log(this.attackConfig);
+                this.attackReady = true;
+                this.checkMob();
+                this.attackMob(scene);
+            },
+            loop: true
+        });
     }
 }

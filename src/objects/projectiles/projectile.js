@@ -13,7 +13,7 @@ export default class Projectile extends Phaser.Physics.Arcade.Sprite {
         this.alpha = 1;
         var bulletConfig = scene.textures.get(shooter.projectileName);
         this.setAngle(shooter,target);
-        //this.setBodySize(bulletConfig.frameWidth, bulletConfig.frameHeight);
+        this.setBodySize(64, 64);
         
         scene.add.existing(this);
         scene.physics.add.existing(this, true);
@@ -35,7 +35,7 @@ export default class Projectile extends Phaser.Physics.Arcade.Sprite {
             target.x,
             target.y
         );
-        this.rotation = angleToMob + Math.PI / 2;
+        this.rotation = angleToMob;
         this.body.rotation = this.rotation;
         this.body.setAngularVelocity(0);
     }
