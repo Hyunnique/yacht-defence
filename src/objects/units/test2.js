@@ -11,6 +11,8 @@ export default class shooter extends playerUnit{
         this.attack = 100;
         this.aspd = 2.5;
         this.range = 30;
+        this.offset = -260;
+        this.idleAnim = "test_wait";
         this.attackType = 1;
         this.attackAnim = "test_atk";
         this.projectileName = "bullet";
@@ -18,7 +20,7 @@ export default class shooter extends playerUnit{
         this.attackConfig = scene.anims.get(this.attackAnim);
 
 
-        this.play("test_wait");
+        this.play(this.idleAnim);
 
         
         var attackConfig = scene.anims.get(this.attackAnim);
@@ -28,8 +30,10 @@ export default class shooter extends playerUnit{
 
         this.setBodySize(this.range, this.range);
         this.setCircle(300);
-        this.setOffset(-260, -260);
+        this.setOffset(this.offset, this.offset);
 
         this.activateAttack(scene);
+
+        
     }
 }

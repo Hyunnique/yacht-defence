@@ -9,7 +9,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.aspd = 2.5;
         this.scale = 0.4;
         this.alpha = 1;
+        this.offset = 0;
         this.attackReady = false;
+        this.idleAnim = "";
         this.attackAnim = "";
         this.projectileName = "";
         this.target = [];
@@ -18,13 +20,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.projectileAnimName = "";
         this.kills = 0;
         this.attackType = 0;
-
+        this.setInteractive({ draggable: true });
         scene.add.existing(this);
-        scene.physics.add.existing(this,true);
-        
-        this.inputEnabled = true;
-        this.input.enableDrag();
-        
+        scene.physics.add.existing(this,true);        
     }
 
     checkMob() {
@@ -36,6 +34,10 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
                 this.target.splice(this.target.findIndex(t => t.mobNum === e.mobNum), 1);
             }
         });
+        if (this.target.length === 0)
+        {
+            this.play(this.idleAnim);
+        }
     }
 
     addMobtoTarget(scene,mob)
@@ -47,8 +49,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
     attackMob(scene)
-    {
-        if (this.attackReady === false || this.target.length === 0)
+    {   
+        
+        if (this.attackReady === false)
             return;
         this.attackReady = false;
         this.play(this.attackConfig, true);
@@ -78,7 +81,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     activateAttack(scene)
     {
         scene.time.addEvent({
-            delay: 10,
+            delay: 1000,
             callback: () => {
                 this.checkMob();
             },
@@ -87,9 +90,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         scene.time.addEvent({
             delay: 1000 / this.aspd,
             callback: () => {
-                //console.log(this.attackConfig);
                 this.attackReady = true;
-                //this.attackMob(scene);
             },
             loop: true
         });

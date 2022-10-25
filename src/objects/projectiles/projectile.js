@@ -21,7 +21,6 @@ export default class Projectile extends Phaser.Physics.Arcade.Sprite {
         this.play(shooter.projectileAnimName);
 
         scene.events.on("update", () => {
-            console.log(target);
             if (target.scene === undefined)
                 this.destroy();
             else {

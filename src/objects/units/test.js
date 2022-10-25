@@ -12,11 +12,13 @@ export default class girl extends playerUnit{
         this.aspd = 1.5;
         this.range = 300;
         this.attackType = 0;
+        this.offset = -75;
+        this.idleAnim = "test_wait2";
         this.attackAnim = "test_atk";
         this.attackConfig = scene.anims.get(this.attackAnim);
 
 
-        this.play("test_wait2");
+        this.play(this.idleAnim);
 
         
         var attackConfig = scene.anims.get(this.attackAnim);
@@ -26,7 +28,7 @@ export default class girl extends playerUnit{
 
         this.setBodySize(this.range, this.range);
         this.setCircle(300);
-        this.setOffset(-75,-75);
+        this.setOffset(this.offset, this.offset);
 
         this.activateAttack(scene);
     }

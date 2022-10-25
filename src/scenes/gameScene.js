@@ -14,13 +14,13 @@ export default class gameScene extends Phaser.Scene{
         this.sound.pauseOnBlur = false;
         this.globalnum = 1;
         this.spawnpoint = {
-            x: -500,
-            y: -200
+            x: 250,
+            y: 20
         }
 
         this.endpoint = {
             x: 500,
-            y: -200
+            y: 200
         }
         this.m_music = this.sound.add("music");
         const musicConfig = {
@@ -40,7 +40,7 @@ export default class gameScene extends Phaser.Scene{
         this.m_projectiles = this.physics.add.group();
 
         this.m_player = new shooter(this);
-        this.cameras.main.startFollow(this.m_player);
+        //this.cameras.main.startFollow(this.m_player);
 
         this.physics.add.overlap(this.m_player, this.m_mobs, (player, mob) => {
             player.addMobtoTarget(this, mob);
@@ -49,17 +49,20 @@ export default class gameScene extends Phaser.Scene{
 
         this.physics.add.overlap(this.m_projectiles, this.m_mobs, (projectile, mob) => mob.bullseye(this,projectile), null, this);
         
-        this.logMob();
+        this.input.setDraggable(this.m_player);
 
-        // const map = this.make.tilemap({key: "map"});
-        // const mapTileSet = map.addTilesetImage("tile_1", "tiles");
-        // const propTileSet = map.addTilesetImage("prop_1", "prop1");
-        // const layerMap = map.createLayer("Map", mapTileSet, -800, -450);
-        // const layerPlants = map.createLayer("plants", propTileSet, -800, -450);
-        // const layerProps = map.createLayer("Props", propTileSet, -800, -450);
-        // const layerTreesBack = map.createLayer("Trees_back", propTileSet, -800, -450);
-        // const layerTreesFront = map.createLayer("Trees_front", propTileSet, -800, -450);
+        this.input.on('drag', (pointer,gameObject) => {
+            gameObject.x = pointer.x;
+            gameObject.y = pointer.y;
+        })
 
+        this.input.on('dragend', (pointer, gameObject) => {
+            gameObject.body.setOffset(0,0);
+            gameObject.body.x = gameObject.x + gameObject.offset;
+            gameObject.body.y = gameObject.y + gameObject.offset;
+            
+            console.log(gameObject.body);
+        })
     }
 
 
@@ -71,17 +74,6 @@ export default class gameScene extends Phaser.Scene{
             },
             loop: true,
             startAt: 0
-        })
-    }
-
-    logMob() {
-        this.time.addEvent({
-            delay: 5000,
-            callback: () => {
-                console.log(this.m_player);
-                console.log(this.m_mobs);
-            },
-            loop: true
         })
     }
 }
