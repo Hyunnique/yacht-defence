@@ -64,8 +64,13 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         }
         else if (this.attackType === 1) {
             this.target.sort((a, b) => a.Health - b.Health);
-            var bullet = new Projectile(scene,this, this.target.at(0));
+            this.shootProjectile(scene);
         }        
+    }
+
+    shootProjectile(scene)
+    {
+        return new Projectile(scene, this, this.target.at(0));
     }
 
     activateAttack(scene)

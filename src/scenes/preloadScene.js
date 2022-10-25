@@ -1,11 +1,15 @@
 import Phaser from "phaser";
 import testAtk  from "../assets/spritesheets/test/GG_cha_02_atk1.png";
 import testWait from "../assets/spritesheets/test/idle.png";
+import testWait2 from "../assets/spritesheets/test/idle2.png";
 import bgm from "../assets/sounds/WaveofEmptiness.mp3";
 import fontPng from "../assets/font/font.png";
 import fontXml from '../assets/font/font.xml';
 import batImg from '../assets/spritesheets/bat.png';
 import bulletImg from '../assets/spritesheets/bullet.png';
+import tile from '../assets/map/tile_set1.png';
+import prop1 from '../assets/map/Outside_B.png';
+import map from '../assets/map/map.json';
 
 export default class PreLoadScene extends Phaser.Scene {
     constructor() {
@@ -17,6 +21,11 @@ export default class PreLoadScene extends Phaser.Scene {
             frameWidth: 150,
             frameHeight: 150,
         });
+
+        this.load.spritesheet("testwait2", testWait2, {
+            frameWidth: 1080,
+            frameHeight: 1080
+        })
         this.load.spritesheet("testatk", testAtk, {
             frameWidth: 204,
             frameHeight: 150,
@@ -33,6 +42,10 @@ export default class PreLoadScene extends Phaser.Scene {
         
         this.load.audio("music", bgm);
         this.load.bitmapFont("pixelFont", fontPng, fontXml);
+
+        this.load.image("tiles", tile);
+        this.load.image("prop1", prop1);
+        this.load.tilemapTiledJSON("map", map);
     }
 
     create() {
@@ -43,6 +56,13 @@ export default class PreLoadScene extends Phaser.Scene {
             key: "test_wait",
             frames: this.anims.generateFrameNumbers("testwait"),
             frameRate: 8,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: "test_wait2",
+            frames: this.anims.generateFrameNumbers("testwait2"),
+            frameRate: 16,
             repeat: -1
         });
 

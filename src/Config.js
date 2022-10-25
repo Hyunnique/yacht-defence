@@ -4,9 +4,9 @@ import PreLoadScene from "./scenes/preloadScene";
 
 
 const Config = {
-    width: 1024,
-    height: 768,
-    backgroundColor: 0x000000,
+    width: 1600,
+    height: 900,
+    backgroundColor: 0xFFFFFF,
     scene: [PreLoadScene,MainScene,gameScene],
     pixelArt: true,
     type: Phaser.AUTO,

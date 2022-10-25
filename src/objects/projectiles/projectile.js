@@ -8,10 +8,9 @@ export default class Projectile extends Phaser.Physics.Arcade.Sprite {
         scene.m_projectiles.add(this);
         this.shooter = shooter;
         this.attack = shooter.attack;
-        this.speed = 2000;
+        this.speed = 250;
         this.scale = 0.4;
         this.alpha = 1;
-        var bulletConfig = scene.textures.get(shooter.projectileName);
         
         this.setBodySize(28,28);
         
@@ -46,7 +45,6 @@ export default class Projectile extends Phaser.Physics.Arcade.Sprite {
             target.y
         );
         this.rotation = angleToMob;
-        this.body.rotation = this.rotation;
         this.body.setAngularVelocity(0);
     }
 }

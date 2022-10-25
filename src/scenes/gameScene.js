@@ -49,8 +49,19 @@ export default class gameScene extends Phaser.Scene{
 
         this.physics.add.overlap(this.m_projectiles, this.m_mobs, (projectile, mob) => mob.bullseye(this,projectile), null, this);
         
-        //this.logMob();
+        this.logMob();
+
+        // const map = this.make.tilemap({key: "map"});
+        // const mapTileSet = map.addTilesetImage("tile_1", "tiles");
+        // const propTileSet = map.addTilesetImage("prop_1", "prop1");
+        // const layerMap = map.createLayer("Map", mapTileSet, -800, -450);
+        // const layerPlants = map.createLayer("plants", propTileSet, -800, -450);
+        // const layerProps = map.createLayer("Props", propTileSet, -800, -450);
+        // const layerTreesBack = map.createLayer("Trees_back", propTileSet, -800, -450);
+        // const layerTreesFront = map.createLayer("Trees_front", propTileSet, -800, -450);
+
     }
+
 
     addMob() {
         this.time.addEvent({
