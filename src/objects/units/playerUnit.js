@@ -21,7 +21,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
         scene.add.existing(this);
         scene.physics.add.existing(this,true);
-
+        
+        this.inputEnabled = true;
+        this.input.enableDrag();
         
     }
 
