@@ -10,8 +10,8 @@ export default class shooter extends playerUnit{
         this.alpha = 1;
         this.attack = 100;
         this.aspd = 2.5;
-        this.range = 30;
-        this.offset = -260;
+        this.range = 300;
+        this.offset = -300;
         this.idleAnim = "test_wait";
         this.attackType = 1;
         this.attackAnim = "test_atk";
@@ -19,9 +19,7 @@ export default class shooter extends playerUnit{
         this.projectileAnimName = "bullet_anim";
         this.attackConfig = scene.anims.get(this.attackAnim);
 
-
         this.play(this.idleAnim);
-
         
         var attackConfig = scene.anims.get(this.attackAnim);
         attackConfig.frameRate *= this.aspd;
@@ -29,11 +27,9 @@ export default class shooter extends playerUnit{
         scene.physics.world.enableBody(this);
 
         this.setBodySize(this.range, this.range);
-        this.setCircle(300);
+        this.setCircle(this.range);
         this.setOffset(this.offset, this.offset);
 
-        this.activateAttack(scene);
-
-        
+        this.activateAttack(scene);    
     }
 }
