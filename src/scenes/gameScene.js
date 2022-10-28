@@ -178,6 +178,11 @@ export default class gameScene extends Phaser.Scene{
 
         this.input.setDraggable(this.m_player);
 
+        this.input.on('dragstart', (pointer) => {
+            var tile = this.getTileAtPointer(pointer, info);
+            if (tile.index == "2898") tile.index = "2897";
+        });
+
         this.input.on('drag', (pointer,gameObject) => {
             gameObject.x = pointer.worldX;
             gameObject.y = pointer.worldY;
@@ -259,14 +264,14 @@ export default class gameScene extends Phaser.Scene{
 
     placeUnitOnTile(layer,tile, Unit)
     {
-        Unit.x = tile.pixelX + 24;
-        Unit.y = tile.pixelY + 24;
-        Unit.body.setOffset(0, 0);
-        console.log(tile);
-        Unit.body.x = Unit.x + Unit.offset;
-        Unit.body.y = Unit.y + Unit.offset;
-        console.log(Unit.body);
-        layer.fill(2898, tile.pixelX, tile.pixelY);
+        if (tile.index == "2897") {
+            tile.index = "2898";
+            Unit.x = tile.pixelX + 24;
+            Unit.y = tile.pixelY + 24;
+            Unit.body.setOffset(0, 0);
+            Unit.body.x = Unit.x + Unit.offset;
+            Unit.body.y = Unit.y + Unit.offset;
+        }
     }
 
     mobPos(id)
