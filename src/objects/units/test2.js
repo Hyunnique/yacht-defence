@@ -24,7 +24,8 @@ export default class shooter extends playerUnit{
         var attackConfig = scene.anims.get(this.attackAnim);
         attackConfig.frameRate *= this.aspd;
 
-        scene.physics.world.enableBody(this);
+        scene.add.existing(this);
+        scene.physics.add.existing(this);
 
         this.setBodySize(this.range, this.range);
         this.setCircle(this.range);

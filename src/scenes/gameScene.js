@@ -178,8 +178,13 @@ export default class gameScene extends Phaser.Scene{
 
         this.input.setDraggable(this.m_player);
 
+        var prePosX;
+        var prePosY;
+
         this.input.on('dragstart', (pointer) => {
             var tile = this.getTileAtPointer(pointer, info);
+            prePosX = pointer.worldX;
+            prePosY = pointer.worldY;
             if (tile.index == "2898") tile.index = "2897";
         });
 
@@ -190,7 +195,7 @@ export default class gameScene extends Phaser.Scene{
 
         this.input.on('dragend', (pointer, gameObject) => {
             var tile = this.getTileAtPointer(pointer, info);
-            this.placeUnitOnTile(info,tile, gameObject);
+            this.placeUnitOnTile(tile, gameObject, prePosX, prePosY);
         })
 
         this.physics.add.overlap(this.m_player, this.m_mobs, (player, mob) => {
@@ -262,15 +267,15 @@ export default class gameScene extends Phaser.Scene{
         
     }
 
-    placeUnitOnTile(layer,tile, Unit)
-    {
+    placeUnitOnTile(tile, Unit, prePosX, prePosY) {
         if (tile.index == "2897") {
             tile.index = "2898";
             Unit.x = tile.pixelX + 24;
             Unit.y = tile.pixelY + 24;
-            Unit.body.setOffset(0, 0);
-            Unit.body.x = Unit.x + Unit.offset;
-            Unit.body.y = Unit.y + Unit.offset;
+        }
+        else if (tile.index == "2898") {
+            Unit.x = prePosX;
+            Unit.y = prePosY;
         }
     }
 

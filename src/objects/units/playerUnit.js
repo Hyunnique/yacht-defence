@@ -20,9 +20,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.projectileAnimName = "";
         this.kills = 0;
         this.attackType = 0;
-        this.setInteractive({ draggable: true });
-        scene.add.existing(this);
-        scene.physics.add.existing(this,true);        
+        this.setInteractive({ draggable: true });       
     }
 
     checkMob() {
