@@ -4,8 +4,8 @@ import PreLoadScene from "./scenes/preloadScene";
 
 
 const Config = {
-    width: 1600,
-    height: 900,
+    width: 1920,
+    height: 960,
     backgroundColor: 0xFFFFFF,
     scene: [PreLoadScene,MainScene,gameScene],
     pixelArt: true,

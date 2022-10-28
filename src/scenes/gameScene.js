@@ -38,6 +38,14 @@ export default class gameScene extends Phaser.Scene{
     debugGraphics;
     animatedTiles = [];
 
+    /*
+        타이머관련 변수 선언
+            phaseTimer: 현재 동작중인 타이머 저장
+            timerText: 타이머 표기용 변수
+    */
+    phaseTimer;
+    timerText;
+
     create(){
         const map = this.make.tilemap({key: "map_forest"});
 
@@ -56,11 +64,24 @@ export default class gameScene extends Phaser.Scene{
         const tree2_back = map.createLayer("Tree2_B", outside_B, 0, 0);
         const tree1_front = map.createLayer("Tree1_F", outside_B, 0, 0);
         const tree2_front = map.createLayer("Tree2_F", outside_B, 0, 0);
-        const info = map.createLayer("info", possible, 0, 0); 
-        info.alpha = 0;
+        var info = map.createLayer("info", possible, 0, 0); 
+        info.alpha = 1;
         // info layer 기준 tileset index가
         // 배치 가능 2897
         // 배치 불가능 2898
+
+        
+        this.timerText = this.add.text(32, 32, "");
+        var placePhaseTimer = new Phaser.Time.TimerEvent({
+            delay: 30000
+        });
+        var battlePhaseTimer = new Phaser.Time.TimerEvent({
+            delay: 60000
+        });
+        var dicePhaseTimer = new Phaser.Time.TimerEvent({
+            delay: 30000
+        });
+        this.phaseTimer = this.time.addEvent(dicePhaseTimer);
 
         const tileData = outside_ground.tileData;
         // console.log(tileData);
@@ -123,7 +144,7 @@ export default class gameScene extends Phaser.Scene{
                 }
             }
             // this.camera.centerOn(pointer.worldX, pointer.worldY);
-            // this.camera.pan(pointer.worldX, pointer.worldY, 2000, "Power2");
+            this.camera.pan(pointer.worldX, pointer.worldY, 2000, "Power2");
         });
 
         this.sound.pauseOnBlur = false;
@@ -150,12 +171,22 @@ export default class gameScene extends Phaser.Scene{
         //this.m_music.play(musicConfig);
         this.m_mobs = this.physics.add.group();
         this.addMob();
-        //this.m_mobs.add(new Mob(this));
 
         this.m_projectiles = this.physics.add.group();
 
         this.m_player = new shooter(this);
-        // this.cameras.main.startFollow(this.m_player);
+
+        this.input.setDraggable(this.m_player);
+
+        this.input.on('drag', (pointer,gameObject) => {
+            gameObject.x = pointer.worldX;
+            gameObject.y = pointer.worldY;
+        })
+
+        this.input.on('dragend', (pointer, gameObject) => {
+            var tile = this.getTileAtPointer(pointer, info);
+            this.placeUnitOnTile(info,tile, gameObject);
+        })
 
         this.physics.add.overlap(this.m_player, this.m_mobs, (player, mob) => {
             player.addMobtoTarget(this, mob);
@@ -194,7 +225,10 @@ export default class gameScene extends Phaser.Scene{
         else if (x < 50) this.cameras.main.scrollX -= 12;
         else if (y > 850) this.cameras.main.scrollY += 12;
         else if (y < 50) this.cameras.main.scrollY -= 12;
+
+        this.timerText.setText('남은 시간 : ' + this.phaseTimer.getRemainingSeconds().toString().substr(0,2));
     }
+
 
     addMob() {
         this.time.addEvent({
@@ -216,6 +250,23 @@ export default class gameScene extends Phaser.Scene{
             },
             loop: true
         })
+    }
+
+    startPhaseCycle()
+    {
+        
+    }
+
+    placeUnitOnTile(layer,tile, Unit)
+    {
+        Unit.x = tile.pixelX + 24;
+        Unit.y = tile.pixelY + 24;
+        Unit.body.setOffset(0, 0);
+        console.log(tile);
+        Unit.body.x = Unit.x + Unit.offset;
+        Unit.body.y = Unit.y + Unit.offset;
+        console.log(Unit.body);
+        layer.fill(2898, tile.pixelX, tile.pixelY);
     }
 
     mobPos(id)
