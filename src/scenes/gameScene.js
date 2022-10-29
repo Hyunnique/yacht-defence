@@ -65,7 +65,7 @@ export default class gameScene extends Phaser.Scene{
         const tree1_front = map.createLayer("Tree1_F", outside_B, 0, 0);
         const tree2_front = map.createLayer("Tree2_F", outside_B, 0, 0);
         var info = map.createLayer("info", possible, 0, 0); 
-        info.alpha = 1;
+        // info.alpha = 1;
         // info layer 기준 tileset index가
         // 배치 가능 2897
         // 배치 불가능 2898
@@ -182,6 +182,7 @@ export default class gameScene extends Phaser.Scene{
         var prePosY;
 
         this.input.on('dragstart', (pointer) => {
+            info.alpha = 1;
             var tile = this.getTileAtPointer(pointer, info);
             prePosX = pointer.worldX;
             prePosY = pointer.worldY;
@@ -194,6 +195,7 @@ export default class gameScene extends Phaser.Scene{
         })
 
         this.input.on('dragend', (pointer, gameObject) => {
+            info.alpha = 0;
             var tile = this.getTileAtPointer(pointer, info);
             this.placeUnitOnTile(tile, gameObject, prePosX, prePosY);
         })
