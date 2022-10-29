@@ -45,6 +45,7 @@ export default class gameScene extends Phaser.Scene{
     */
     phaseTimer;
     timerText;
+    PhaseText = "";
 
     create(){
         const map = this.make.tilemap({key: "map_forest"});
@@ -65,23 +66,24 @@ export default class gameScene extends Phaser.Scene{
         const tree1_front = map.createLayer("Tree1_F", outside_B, 0, 0);
         const tree2_front = map.createLayer("Tree2_F", outside_B, 0, 0);
         var info = map.createLayer("info", possible, 0, 0); 
-        // info.alpha = 1;
+        info.alpha = 0;
         // info layer 기준 tileset index가
         // 배치 가능 2897
         // 배치 불가능 2898
 
         
         this.timerText = this.add.text(32, 32, "");
-        var placePhaseTimer = new Phaser.Time.TimerEvent({
-            delay: 30000
-        });
-        var battlePhaseTimer = new Phaser.Time.TimerEvent({
-            delay: 60000
-        });
-        var dicePhaseTimer = new Phaser.Time.TimerEvent({
-            delay: 30000
-        });
-        this.phaseTimer = this.time.addEvent(dicePhaseTimer);
+        // var placePhaseTimer = new Phaser.Time.TimerEvent({
+        //     delay: 30000
+        // });
+        // var battlePhaseTimer = new Phaser.Time.TimerEvent({
+        //     delay: 60000
+        // });
+        // var dicePhaseTimer = new Phaser.Time.TimerEvent({
+        //     delay: 30000
+        // });
+        // this.phaseTimer = this.time.addEvent(dicePhaseTimer);
+        this.toDicePhase();
 
         const tileData = outside_ground.tileData;
         // console.log(tileData);
@@ -123,12 +125,12 @@ export default class gameScene extends Phaser.Scene{
             console.log(`(${t.x}, ${t.y}) on ${t.layer.name}`, t);
         });
         
-        this.input.on('pointermove', (pointer) => {
-            let t = this.getTileAtPointer(pointer, info);
-            if (!t) return;
-            help.setText(t.index).setPosition(t.pixelX, t.pixelY);
-            this.drawDebug(t);
-        });
+        // this.input.on('pointermove', (pointer) => {
+        //     let t = this.getTileAtPointer(pointer, info);
+        //     if (!t) return;
+        //     help.setText(t.index).setPosition(t.pixelX, t.pixelY);
+        //     this.drawDebug(t);
+        // });
         this.input.on("wheel",  (pointer, gameObjects, deltaX, deltaY, deltaZ) => {
 
             if (deltaY > 0) {
@@ -194,7 +196,7 @@ export default class gameScene extends Phaser.Scene{
             gameObject.y = pointer.worldY;
         })
 
-        this.input.on('dragend', (pointer, gameObject) => {
+        this.input.on('dragend', (pointer, gameObject) => { 
             info.alpha = 0;
             var tile = this.getTileAtPointer(pointer, info);
             this.placeUnitOnTile(tile, gameObject, prePosX, prePosY);
@@ -238,7 +240,7 @@ export default class gameScene extends Phaser.Scene{
         else if (y > 850) this.cameras.main.scrollY += 12;
         else if (y < 50) this.cameras.main.scrollY -= 12;
 
-        this.timerText.setText('남은 시간 : ' + this.phaseTimer.getRemainingSeconds().toString().substr(0,2));
+        this.timerText.setText(this.PhaseText + ' : ' + this.phaseTimer.getRemainingSeconds().toString().substr(0,2));
     }
 
 
@@ -312,4 +314,18 @@ export default class gameScene extends Phaser.Scene{
     debugLine(x, y, dx, dy) {
         this.debugGraphics.lineBetween(x, y, x + dx, y + dy);
     }
+
+    toDicePhase() {
+        this.PhaseText = "Dice Phase";
+        this.phaseTimer = this.time.delayedCall(30000, this.toPlacePhase, [], this);
+    }
+    toPlacePhase() {
+        this.PhaseText = "Place Phase";
+        this.phaseTimer = this.time.delayedCall(30000, this.toBattlePhase, [], this);
+    }
+    toBattlePhase() {
+        this.PhaseText = "Battle Phase";
+        this.phaseTimer = this.time.delayedCall(60000, this.toDicePhase, [], this);
+    }
+    // DicePhase -> PlacePhase -> BattlePhase 순서가 반복되는 구조로 호출
 }
