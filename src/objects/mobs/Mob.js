@@ -1,37 +1,44 @@
 const Phaser = require("phaser");
+import { pathA, pathB, pathBoss } from "../points/mobPath";
 
 export default class Mob extends Phaser.Physics.Arcade.Sprite {
 
-    constructor(scene,num,spawn,end) {
-        super(scene, spawn.x, spawn.y, "bat");
+    constructor(scene,num) {
+        super(scene, 50, 50, "bat");
         scene.add.existing(this);
         scene.physics.add.existing(this);
 
+        this.isBoss = false;
         this.Health = 300;
         this.scale = 2;
-        this.m_speed = 150;
+        this.m_speed = 40;
         this.mobNum = num;
-
+        this.movePhase = 0;
+        this.moveType = "B";
         this.play("bat_anim");
-        this.m_events = [];
-        this.m_events.push(
-            this.scene.time.addEvent({
-                delay: 100,
-                callback: () => { 
-                    scene.physics.moveTo(this, end.x, end.y, this.m_speed);           
-                },
-                loop: true
-            })
-        )
+        console.log(this);
 
-        scene.events.on("update", (time, delta) => {
-            this.update(time, delta);
+        this.path = this.isBoss ? pathBoss : (this.moveType == "A" ? pathA : pathB);
+        
+        this.pathFollower = scene.plugins.get('rexPathFollower').add(this, {
+            path: this.path,
+            rotateToPath: false,
+            spacedPoints: false
+        });
+
+        this.tween = scene.tweens.add({
+            targets: this.pathFollower,
+            t: 1,
+            ease: 'Linear',
+            duration: this.m_speed * 1000,
+            repeat: 0,
+            yoyo: false
         });
     }
 
-    death()
+    death(scene)
     {
-        this.scene.time.removeEvent(this.m_events);
+        this.tween.remove();
         this.destroy();
     }
 
@@ -59,7 +66,20 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         projectile.destroy();
         if (this.Health <= 0) {
             projectile.shooter.target.splice(projectile.shooter.target.findIndex(t => t.mobNum === this.mobNum), 1);
-            this.death();
+            this.death(scene);
+        }
+    }
+
+    checkPhase() {
+        if (!this.isBoss) {
+            if (this.x ==  this.points.firstPointA.x && this.y ==  this.points.firstPointA.y)
+                this.movePhase = this.moveType == "A" ? 1 : 2;
+            else if (this.x ==  this.points.firstPointB.x && this.y ==  this.points.firstPointB.y)
+                this.movePhase = this.moveType == "A" ? 2 : 1;
+            else if ((this.x ==  this.points.secondPointA.x && this.y ==  this.points.secondPointA.y) || (this.x ==  this.points.secondPointB.x && this.y ==  this.points.secondPointB.y))
+                this.movePhase = 3;
+            else if (this.x ==  this.points.secondJunction.x && this.y ==  this.points.secondJunction.y)
+                this.movePhase = 4;
         }
     }
 }

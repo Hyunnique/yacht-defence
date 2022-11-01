@@ -1,6 +1,7 @@
 import gameScene from "./scenes/gameScene";
 import MainScene from "./scenes/mainScene";
 import PreLoadScene from "./scenes/preloadScene";
+import PathFollowerPlugin from 'phaser3-rex-plugins/plugins/pathfollower-plugin.js';
 
 
 const Config = {
@@ -16,6 +17,13 @@ const Config = {
             fps: 165,
             debug: true
         }
+    },
+    plugins: {
+        global: [{
+            key: 'rexPathFollower',
+            plugin: PathFollowerPlugin,
+            start: true
+        }]
     }
 };
 

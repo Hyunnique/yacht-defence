@@ -45,6 +45,7 @@ export default class gameScene extends Phaser.Scene{
     */
     phaseTimer;
     timerText;
+    pointerText;
     PhaseText = "";
 
     create(){
@@ -73,21 +74,11 @@ export default class gameScene extends Phaser.Scene{
 
         
         this.timerText = this.add.text(32, 32, "");
-        // var placePhaseTimer = new Phaser.Time.TimerEvent({
-        //     delay: 30000
-        // });
-        // var battlePhaseTimer = new Phaser.Time.TimerEvent({
-        //     delay: 60000
-        // });
-        // var dicePhaseTimer = new Phaser.Time.TimerEvent({
-        //     delay: 30000
-        // });
-        // this.phaseTimer = this.time.addEvent(dicePhaseTimer);
+        this.pointerText = this.add.text(32, 64, "");
         this.toDicePhase();
 
         const tileData = outside_ground.tileData;
-        // console.log(tileData);
-        // for (let tileid in tileData) console.log(tileid);
+
         for (let tileid in tileData) {
             let layer = map.layers[0];
             layer.data.forEach(tileRow => {
@@ -104,8 +95,7 @@ export default class gameScene extends Phaser.Scene{
                 });
             });
         }
-        // console.log(this.animatedTiles);
-
+        
         let help = this.add.text(0, 0, '', { font: '48px monospace' }); 
         let cursors = this.input.keyboard.createCursorKeys();
 
@@ -125,12 +115,14 @@ export default class gameScene extends Phaser.Scene{
             console.log(`(${t.x}, ${t.y}) on ${t.layer.name}`, t);
         });
         
-        // this.input.on('pointermove', (pointer) => {
-        //     let t = this.getTileAtPointer(pointer, info);
-        //     if (!t) return;
-        //     help.setText(t.index).setPosition(t.pixelX, t.pixelY);
-        //     this.drawDebug(t);
-        // });
+        this.input.on('pointermove', (pointer) => {
+            let t = this.getTileAtPointer(pointer, info);
+            if (!t) return;
+            help.setText(t.index).setPosition(t.pixelX, t.pixelY);
+            this.pointerText.setText("x: " + t.x+ " y: " + t.y);
+            this.drawDebug(t);
+        });
+
         this.input.on("wheel",  (pointer, gameObjects, deltaX, deltaY, deltaZ) => {
 
             if (deltaY > 0) {
@@ -150,16 +142,9 @@ export default class gameScene extends Phaser.Scene{
         });
 
         this.sound.pauseOnBlur = false;
+        
         this.globalnum = 1;
-        this.spawnpoint = {
-            x: 0,
-            y: 600
-        }
 
-        this.endpoint = {
-            x: 800,
-            y: 600
-        }
         this.m_music = this.sound.add("music");
         const musicConfig = {
             mute: false,
@@ -240,7 +225,7 @@ export default class gameScene extends Phaser.Scene{
         else if (y > 850) this.cameras.main.scrollY += 12;
         else if (y < 50) this.cameras.main.scrollY -= 12;
 
-        this.timerText.setText(this.PhaseText + ' : ' + this.phaseTimer.getRemainingSeconds().toString().substr(0,2));
+        this.timerText.setText(this.PhaseText + ' : ' + this.phaseTimer.getRemainingSeconds().toString().substr(0, 2));
     }
 
 
@@ -248,7 +233,7 @@ export default class gameScene extends Phaser.Scene{
         this.time.addEvent({
             delay: 1500,
             callback: () => {
-                this.m_mobs.add(new Mob(this,this.globalnum++,this.spawnpoint,this.endpoint));
+                this.m_mobs.add(new Mob(this,this.globalnum++));
             },  
             loop: true,
             startAt: 0
@@ -264,11 +249,6 @@ export default class gameScene extends Phaser.Scene{
             },
             loop: true
         })
-    }
-
-    startPhaseCycle()
-    {
-        
     }
 
     placeUnitOnTile(tile, Unit, prePosX, prePosY) {
