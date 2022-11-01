@@ -138,7 +138,7 @@ export default class gameScene extends Phaser.Scene{
                 }
             }
             // this.camera.centerOn(pointer.worldX, pointer.worldY);
-            this.camera.pan(pointer.worldX, pointer.worldY, 2000, "Power2");
+            // this.camera.pan(pointer.worldX, pointer.worldY, 2000, "Power2");
         });
 
         this.sound.pauseOnBlur = false;
@@ -204,7 +204,7 @@ export default class gameScene extends Phaser.Scene{
         let x = this.input.mousePointer.x;
         let y = this.input.mousePointer.y;
 
-        if (x > 1550 && y > 850) {
+        if (x > this.cameras.main.width - 50 && y > this.cameras.main.height - 50) {
             this.cameras.main.scrollX += 12;
             this.cameras.main.scrollY += 12;
         }
@@ -212,17 +212,17 @@ export default class gameScene extends Phaser.Scene{
             this.cameras.main.scrollX -= 12;
             this.cameras.main.scrollY -= 12;
         }
-        else if (x > 1550 && y < 50) {
+        else if (x > this.cameras.main.width- 50 && y < 50) {
             this.cameras.main.scrollX += 12;
             this.cameras.main.scrollY -= 12;
         }
-        else if (x < 50 && y > 850) {
+        else if (x < 50 && y > this.cameras.main.height - 50) {
             this.cameras.main.scrollX -= 12;
             this.cameras.main.scrollY += 12;
         }
-        else if (x > 1550) this.cameras.main.scrollX += 12;
+        else if (x > this.cameras.main.width - 50) this.cameras.main.scrollX += 12;
         else if (x < 50) this.cameras.main.scrollX -= 12;
-        else if (y > 850) this.cameras.main.scrollY += 12;
+        else if (y > this.cameras.main.height - 50) this.cameras.main.scrollY += 12;
         else if (y < 50) this.cameras.main.scrollY -= 12;
 
         this.timerText.setText(this.PhaseText + ' : ' + this.phaseTimer.getRemainingSeconds().toString().substr(0, 2));
