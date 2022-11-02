@@ -4,19 +4,18 @@ import { pathA, pathB, pathBoss } from "../points/mobPath";
 export default class Mob extends Phaser.Physics.Arcade.Sprite {
 
     constructor(scene,num) {
-        super(scene, 50, 50, "bat");
+        super(scene, -500, -500, "bat");
         scene.add.existing(this);
         scene.physics.add.existing(this);
 
         this.isBoss = false;
         this.Health = 300;
         this.scale = 2;
-        this.m_speed = 40;
+        this.m_speed = 6;
         this.mobNum = num;
         this.movePhase = 0;
         this.moveType = "B";
         this.play("bat_anim");
-        console.log(this);
 
         this.path = this.isBoss ? pathBoss : (this.moveType == "A" ? pathA : pathB);
         

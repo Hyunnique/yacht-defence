@@ -28,7 +28,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             if (Phaser.Math.Distance.Between(this.body.x, this.body.y, e.body.x, e.body.y) > this.range) 
             {
                 var x = this.target.findIndex(t => t.mobNum === e.mobNum);
-                this.target.at(x).body.debugBodyColor = 0xFF0000;
                 this.target.splice(this.target.findIndex(t => t.mobNum === e.mobNum), 1);
             }
         });
@@ -42,7 +41,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     {
         if (this.target.findIndex(t => t.mobNum === mob.mobNum) === -1) {
             this.target.push(mob);
-            mob.body.debugBodyColor = 0xFFFFFF;
         }
     }
 
@@ -66,14 +64,13 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             })
         }
         else if (this.attackType === 1) {
-            this.target.sort((a, b) => a.Health - b.Health);
             this.shootProjectile(scene);
         }        
     }
 
     shootProjectile(scene)
     {
-        return new Projectile(scene, this, this.target.at(0));
+        return new Projectile(scene, this, this.target);
     }
 
     activateAttack(scene)
