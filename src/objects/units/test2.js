@@ -9,7 +9,7 @@ export default class shooter extends playerUnit{
         this.scale = 1;
         this.alpha = 1;
         this.attack = 100;
-        this.aspd = 2.5;
+        this.aspd = 3.5;
         this.range = 300;
         this.offset = -300;
         this.idleAnim = "test_wait";
@@ -25,12 +25,6 @@ export default class shooter extends playerUnit{
         attackConfig.frameRate *= this.aspd;
 
         scene.add.existing(this);
-        scene.physics.add.existing(this);
-
-        this.setBodySize(this.range, this.range);
-        this.setCircle(this.range);
-        this.setOffset(this.offset, this.offset);
-
         this.activateAttack(scene);    
     }
 }

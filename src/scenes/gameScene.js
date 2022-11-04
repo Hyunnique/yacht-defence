@@ -187,14 +187,13 @@ export default class gameScene extends Phaser.Scene{
             this.placeUnitOnTile(tile, gameObject, prePosX, prePosY);
         })
 
-        this.physics.add.overlap(this.m_player, this.m_mobs, (player, mob) => {
-            player.addMobtoTarget(this, mob);
-            player.attackMob(this);
-        }, null, this);
+        // this.physics.add.overlap(this.m_player, this.m_mobs, (player, mob) => {
+        //     player.addMobtoTarget(this, mob);
+        //     player.attackMob(this);
+        // }, null, this);
 
-        this.physics.add.overlap(this.m_projectiles, this.m_mobs, (projectile, mob) => mob.bullseye(this,projectile), null, this);
+        this.physics.add.overlap(this.m_projectiles, this.m_mobs, (projectile, mob) => mob.bullseye(projectile), null, this);
         this.cameras.main.setBounds(0, 0, 2400, 1440);
-        //this.logMob();
     }
 
     update(time, delta) {

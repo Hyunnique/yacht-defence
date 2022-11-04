@@ -3,50 +3,59 @@ const Phaser = require("phaser");
 
 export default class Projectile extends Phaser.Physics.Arcade.Sprite {
 
-    constructor(scene, shooter, target) {
+    constructor(scene, shooter) {
         super(scene, shooter.x, shooter.y, shooter.projectileName);
-        scene.m_projectiles.add(this);
+        this.scene.m_projectiles.add(this);
         this.shooter = shooter;
         this.attack = shooter.attack;
         this.speed = 250;
         this.scale = 0.4;
         this.alpha = 1;
         this.targetidx = 0;
-        this.setBodySize(28,28);
-        
-        scene.add.existing(this);
-        scene.physics.add.existing(this, true);
-        scene.physics.world.enableBody(this);
+        this.setBodySize(28, 28);
+        this.target = [];
+        this.isTarget = false;
+        this.needSearch = false;
+        this.attackCount = 3;
+
+        this.scene.add.existing(this);
+        this.scene.physics.add.existing(this, true);
+        this.scene.physics.world.enableBody(this);
 
         this.play(shooter.projectileAnimName);
 
-        scene.events.on("update", () => {
-            try {
-                this.flytoMob(scene,target[this.targetidx]);
-            } catch (error) {
-                this.findNextTarget(target, this.targetidx);    
-            }
-        });
-        
+        this.scene.events.on("update", this.update, this);
+        this.scene.events.on("mobDeath", this.deleteTarget, this);
     }
 
-    findNextTarget(target,targetidx)
-    {
-        if (target.length == 0)
-        {
+    update() {
+        this.target = this.shooter.target;
+        this.flytoMob(this.scene, this.target[this.targetidx]);   
+    }
+
+    deleteTarget(mobNum) {
+        this.target.splice(this.target.findIndex(e => e.mobNum == mobNum), 1);
+        if (this.target.length == 0)
             this.destroy();
-            return;
-        }
-        while (target.length >= targetidx && target[targetidx].scene === undefined) {
-            targetidx++;
-        }
-        
-        return target[targetidx];
     }
 
-    flytoMob(scene,target) {
-        this.setAngle(this, target);
-        scene.physics.moveToObject(this, target, this.speed);
+    findNextTarget()
+    {
+        if (this.needSearch) {
+            this.targetidx++;
+            this.needSearch = false;
+        }
+        else
+            this.destroy();
+    }
+
+    flytoMob() {
+        try {
+            this.setAngle(this, this.target[this.targetidx]);
+            this.scene.physics.moveToObject(this, this.target[this.targetidx], this.speed);
+        } catch (e){
+            this.destroy();
+        }        
     }
 
     setAngle(shooter,target) {
@@ -57,6 +66,6 @@ export default class Projectile extends Phaser.Physics.Arcade.Sprite {
             target.y
         );
         this.rotation = angleToMob;
-        this.body.setAngularVelocity(10);
+        this.body.setAngularVelocity(0);
     }
 }
