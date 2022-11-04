@@ -50,16 +50,22 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
                 color: '#F00'
             });
             
-            scene.physics.world.enable(text);
-            text.body.setAccelerationY(-100);
-            
-            this.scene.time.addEvent({
-                delay: 1000,
-                callback: () => {
-                    text.destroy();
+            this.scene.tweens.add({
+                targets: text,
+                y: -1,
+                yoyo: false,
+                duration: 2000,
+                ease: Phaser.Math.Easing.Sine.Out,
+                repeat: 1,
+                onUpdate: () => {
+                    if (this.tween.elapsed > 30)
+                        this.tween.remove();
                 },
-                loop: false
             });
+
+            console.log(this.scene.tweens);
+
+            //Tween을 delay후에 제거하고싶은데 안된다..
         }
     }
     
