@@ -48,7 +48,9 @@ export default class gameScene extends Phaser.Scene{
     pointerText;
     PhaseText = "";
 
-    create(){
+    create() {
+        
+// 맵
         const map = this.make.tilemap({key: "map_forest"});
 
         const outside_ground = map.addTilesetImage("outside_ground", "outside_ground");
@@ -72,11 +74,6 @@ export default class gameScene extends Phaser.Scene{
         // 배치 가능 2897
         // 배치 불가능 2898
 
-        
-        this.timerText = this.add.text(32, 32, "");
-        this.pointerText = this.add.text(32, 64, "");
-        this.toDicePhase();
-
         const tileData = outside_ground.tileData;
 
         for (let tileid in tileData) {
@@ -99,6 +96,9 @@ export default class gameScene extends Phaser.Scene{
         let help = this.add.text(0, 0, '', { font: '48px monospace' }); 
         let cursors = this.input.keyboard.createCursorKeys();
 
+
+
+//카메라
         this.controls = new Phaser.Cameras.Controls.FixedKeyControl({
             camera: this.cameras.main,
             left: cursors.left,
@@ -141,10 +141,20 @@ export default class gameScene extends Phaser.Scene{
             // this.camera.pan(pointer.worldX, pointer.worldY, 2000, "Power2");
         });
 
+
+
+// 타이머
+        this.timerText = this.add.text(32, 32, "");
+        this.pointerText = this.add.text(32, 64, "");
+        this.toDicePhase();
+
         this.sound.pauseOnBlur = false;
         
         this.globalnum = 1;
 
+
+
+//BGM
         this.m_music = this.sound.add("music");
         const musicConfig = {
             mute: false,
@@ -156,6 +166,9 @@ export default class gameScene extends Phaser.Scene{
             delay: 0
         };
         //this.m_music.play(musicConfig);
+
+
+//몹/유저유닛/투사체 관련
         this.m_mobs = this.physics.add.group();
         this.addMob();
 
@@ -186,11 +199,6 @@ export default class gameScene extends Phaser.Scene{
             var tile = this.getTileAtPointer(pointer, info);
             this.placeUnitOnTile(tile, gameObject, prePosX, prePosY);
         })
-
-        // this.physics.add.overlap(this.m_player, this.m_mobs, (player, mob) => {
-        //     player.addMobtoTarget(this, mob);
-        //     player.attackMob(this);
-        // }, null, this);
 
         this.physics.add.overlap(this.m_projectiles, this.m_mobs, (projectile, mob) => mob.bullseye(projectile), null, this);
         this.cameras.main.setBounds(0, 0, 2400, 1440);
@@ -236,17 +244,6 @@ export default class gameScene extends Phaser.Scene{
             },  
             loop: true,
             startAt: 0
-        })
-    }
-
-    logMob() {
-        this.time.addEvent({
-            delay: 5000,
-            callback: () => {
-                console.log(this.m_player);
-                console.log(this.m_mobs);
-            },
-            loop: true
         })
     }
 
