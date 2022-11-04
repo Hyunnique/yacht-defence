@@ -49,23 +49,25 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
                 fontSize: '50px',
                 color: '#F00'
             });
+            var dmgPath = new Phaser.Curves.Path(this.body.x, this.body.y - 20 - (50 * i)).lineTo(this.body.x, this.body.y - 120 - (50 * i));
+            var dmgTextFollower = this.scene.plugins.get('rexPathFollower').add(text, {
+                path: dmgPath,
+                rotateToPath: false,
+                spacedPoints: false
+            })
             
-            this.scene.tweens.add({
-                targets: text,
-                y: -1,
+            text.tween = text.scene.tweens.add({
+                targets: dmgTextFollower,
+                t: 1,
                 yoyo: false,
                 duration: 2000,
                 ease: Phaser.Math.Easing.Sine.Out,
                 repeat: 1,
-                onUpdate: () => {
-                    if (this.tween.elapsed > 30)
-                        this.tween.remove();
-                },
+                onComplete: () => {
+                    text.tween.remove();
+                    text.destroy();
+                }
             });
-
-            console.log(this.scene.tweens);
-
-            //Tween을 delay후에 제거하고싶은데 안된다..
         }
     }
     

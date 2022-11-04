@@ -2,6 +2,7 @@ import girl from '../objects/units/test.js';
 import Mob from '../objects/mobs/Mob.js';
 import shooter from '../objects/units/test2.js';
 import Projectile from '../objects/projectiles/projectile.js';
+import Playertest from '../objects/units/playerUnitTemp.js';
 const Phaser = require('phaser');
 const Config = require("../Config");
 
@@ -173,8 +174,9 @@ export default class gameScene extends Phaser.Scene{
         this.addMob();
 
         this.m_projectiles = this.physics.add.group();
-
-        this.m_player = new shooter(this);
+        this.unitDB = this.cache.json.get("unitDB");
+        console.log(this.unitDB);
+        this.m_player = new Playertest(this,0,0,this.unitDB.test);
 
         this.input.setDraggable(this.m_player);
 
