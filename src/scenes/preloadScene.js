@@ -3,6 +3,8 @@ import testAtk  from "../assets/spritesheets/test/test_atk.png";
 import testAtk2  from "../assets/spritesheets/test/GG_cha_02_atk2.png";
 import testWait from "../assets/spritesheets/test/test_idle.png";
 import bgm from "../assets/sounds/WaveofEmptiness.mp3";
+import batDeath from "../assets/sounds/death.mp3";
+import bulletShoot from "../assets/sounds/shoot.mp3";
 import fontPng from "../assets/font/font.png";
 import fontXml from '../assets/font/font.xml';
 import batImg from '../assets/spritesheets/bat.png';
@@ -22,6 +24,8 @@ import outside_stair from '../assets/map/tileset/outside/outside_stair.png';
 import outside_B from '../assets/map/tileset/props/Outside_B.png';
 import possible from '../assets/map/tileset/possible/possible.png';
 import unitSpecsheet from '../assets/specsheets/unitSpecsheet.json';
+import test3idle from '../assets/spritesheets/units/test3idle.png';
+import test3atk from '../assets/spritesheets/units/test3atk.png';
 
 export default class PreLoadScene extends Phaser.Scene {
     constructor() {
@@ -29,6 +33,15 @@ export default class PreLoadScene extends Phaser.Scene {
     }
 
     preload() {
+
+        this.load.spritesheet("test3wait", test3idle, {
+            frameWidth: 96,
+            frameHeight: 64
+        });
+        this.load.spritesheet("test3atk", test3atk, {
+            frameWidth: 194,
+            frameHeight: 128
+        });
         this.load.spritesheet("testwait", testWait, {
             frameWidth: 64,
             frameHeight: 64,
@@ -52,6 +65,8 @@ export default class PreLoadScene extends Phaser.Scene {
         })
         
         this.load.audio("music", bgm);
+        this.load.audio("death", batDeath);
+        this.load.audio("shoot", bulletShoot);
         this.load.bitmapFont("pixelFont", fontPng, fontXml);
 
         this.load.image("outside_ground", outside_ground);
@@ -78,7 +93,21 @@ export default class PreLoadScene extends Phaser.Scene {
 
     create() {
         this.add.text(20, 20, "Loading Game...");
-            
+        
+        this.anims.create({
+            key: "test3wait",
+            frames: this.anims.generateFrameNumbers("test3wait", {end:14}),
+            frameRate: 15,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: "test3atk",
+            frames: this.anims.generateFrameNumbers("test3atk", {end:12}),
+            frameRate: 13,
+            repeat: -1
+        });
+
         this.anims.create({
             key: "test_wait",
             frames: this.anims.generateFrameNumbers("testwait", {end:14}),

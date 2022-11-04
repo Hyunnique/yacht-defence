@@ -18,6 +18,7 @@ export default class Playertest extends Phaser.Physics.Arcade.Sprite {
         this.scale = 1;
         this.alpha = 1;
         this.offset = 0;        
+        this.shootSound = this.scene.sound.add("shoot");
         
         this.target = [];
         
@@ -49,16 +50,23 @@ export default class Playertest extends Phaser.Physics.Arcade.Sprite {
 
         if (this.attackType === 0) {
             this.target.forEach(e => {
-                e.Health -= this.attack;
-                e.showDamage(this.scene,this.attack);
+                console.log(e);
+                e.gameObject.Health -= this.attack;
+                e.gameObject.showDamage(this.scene,this.attack,1);
                 if (e.Health <= 0) {
                     this.kills++;
-                    e.death();
+                    e.gameObject.death();
                     this.checkMob();
                 }
             })
         }
         else if (this.attackType === 1) {
+            this.shootSound.play({
+            mute: false,
+            volume: 0.7,
+            rate: 1,
+            loop: false
+            });
             this.shootProjectile();
         }        
     }
