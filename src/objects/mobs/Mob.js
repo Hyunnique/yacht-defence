@@ -15,6 +15,9 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         this.mobNum = num;
         this.movePhase = 0;
         this.moveType = "B";
+
+        this.deathSound = this.scene.sound.add("death");
+
         this.play("bat_anim");
 
         this.path = this.isBoss ? pathBoss : (this.moveType == "A" ? pathA : pathB);
@@ -37,38 +40,45 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
 
     death()
     {   
+        this.deathSound.play({
+            mute: false,
+            volume: 0.7,
+            rate: 1,
+            loop: false
+        });
         this.scene.events.emit("mobDeath", this.mobNum);
         this.tween.remove();
         this.destroy();
     }
 
     showDamage(scene, attack, attackCount) {
-        for (var i = 0; i < attackCount; i++) {
-            var text = scene.add.text(this.body.x, this.body.y - 20 - (50*i), attack, {
-                fontFamily: 'consolas',
-                fontSize: '50px',
-                color: '#F00'
-            });
-            var dmgPath = new Phaser.Curves.Path(this.body.x, this.body.y - 20 - (50 * i)).lineTo(this.body.x, this.body.y - 120 - (50 * i));
-            var dmgTextFollower = this.scene.plugins.get('rexPathFollower').add(text, {
-                path: dmgPath,
-                rotateToPath: false,
-                spacedPoints: false
-            })
+        // for (var i = 0; i < attackCount; i++) {
+        //     var text = scene.add.text(this.body.x, this.body.y - 20 - (50*i), attack, {
+        //         fontFamily: 'consolas',
+        //         fontSize: '50px',
+        //         color: '#F00'
+        //     });
+        //     var dmgPath = new Phaser.Curves.Path(this.body.x, this.body.y - 20 - (50 * i)).lineTo(this.body.x, this.body.y - 120 - (50 * i));
+        //     var dmgTextFollower = this.scene.plugins.get('rexPathFollower').add(text, {
+        //         path: dmgPath,
+        //         rotateToPath: false,
+        //         spacedPoints: false
+        //     });
             
-            text.tween = text.scene.tweens.add({
-                targets: dmgTextFollower,
-                t: 1,
-                yoyo: false,
-                duration: 2000,
-                ease: Phaser.Math.Easing.Sine.Out,
-                repeat: 1,
-                onComplete: () => {
-                    text.tween.remove();
-                    text.destroy();
-                }
-            });
-        }
+        //     text.tween = text.scene.tweens.add({
+        //         targets: dmgTextFollower,
+        //         t: 1,
+        //         yoyo: false,
+        //         duration: 2000,
+        //         ease: Phaser.Math.Easing.Sine.Out,
+        //         repeat: 1,
+        //         onComplete: () => {
+        //             text.tween.remove();
+        //             text.destroy();
+        //         }
+        //     });
+        // }
+        //do noting!
     }
     
     bullseye(projectile) {

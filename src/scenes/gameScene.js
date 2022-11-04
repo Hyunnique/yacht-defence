@@ -32,18 +32,7 @@ class AnimatedTile {
 }
 
 // 임시 버튼 (x좌표, y좌표, 버튼 안에 들어갈 내용, 들어갈 Scene, 버튼 누를시 사용할 콜백함수)
-class Button {
-    constructor(x, y, label, scene, callback) {
-        const button = scene.add.text(x, y, label)
-            .setOrigin(0.5)
-            .setPadding(10)
-            .setStyle({ backgroundColor: '#000' })
-            .setInteractive({ useHandCursor: true })
-            .on('pointerdown', () => callback())
-            .on('pointerover', () => button.setStyle({ fill: '#f39c12' }))
-            .on('pointerout', () => button.setStyle({ fill: '#FFF' }));
-    }
-}   
+
 
 export default class gameScene extends Phaser.Scene{
     constructor() {
@@ -83,7 +72,7 @@ export default class gameScene extends Phaser.Scene{
         const tree2_back = map.createLayer("Tree2_B", outside_B, 0, 0);
         const tree1_front = map.createLayer("Tree1_F", outside_B, 0, 0);
         const tree2_front = map.createLayer("Tree2_F", outside_B, 0, 0);
-        var info = map.createLayer("info", possible, 0, 0); 
+        const info = map.createLayer("info", possible, 0, 0); 
         info.alpha = 0;
         // info layer 기준 tileset index가
         // 배치 가능 2897
@@ -192,9 +181,9 @@ export default class gameScene extends Phaser.Scene{
         this.m_projectiles = this.physics.add.group();
         this.unitDB = this.cache.json.get("unitDB");
         console.log(this.unitDB);
-        this.m_player = new Playertest(this,0,0,this.unitDB.test);
+        this.m_player = [];
 
-        this.input.setDraggable(this.m_player);
+        this.m_player.push(new Playertest(this, 0, 0, this.unitDB.test));
 
         var prePosX;
         var prePosY;
@@ -223,7 +212,14 @@ export default class gameScene extends Phaser.Scene{
 
 
 //임시 선언 부분
-        const btn = new Button(60, 128, "test", this);
+        const button = this.add.text(60, 128, "test")
+            .setOrigin(0.5)
+            .setPadding(10)
+            .setStyle({ backgroundColor: '#000' })
+            .setInteractive({ useHandCursor: true })
+            .on('pointerdown', () => this.initialPlace(info))
+            .on('pointerover', () => button.setStyle({ fill: '#f39c12' }))
+            .on('pointerout', () => button.setStyle({ fill: '#FFF' }));
     }
 
     update(time, delta) {
@@ -257,12 +253,26 @@ export default class gameScene extends Phaser.Scene{
         this.timerText.setText(this.PhaseText + ' : ' + this.phaseTimer.getRemainingSeconds().toString().substr(0, 2));
     }
 
+    initialPlace(info,unitdata)
+    {
+        this.input.setDraggable(this.m_player,false);
+        info.alpha = (info.alpha == 1 ? 0 : 1);
+        this.input.on('pointerdown', (pointer) => {
+            let t = this.getTileAtPointer(pointer, info);
+            if (!t || t.index == "2898") return;
+            this.m_player.push(new Playertest(this, t.pixelX + 24, t.pixelY + 24, this.unitDB.test));
+            t.index = "2898";
+
+        });
+        this.input.setDraggable(this.m_player,true);
+    }
 
     addMob() {
         this.time.addEvent({
             delay: 1500,
             callback: () => {
-                this.m_mobs.add(new Mob(this,this.globalnum++));
+                this.m_mobs.add(new Mob(this, this.globalnum++));
+                console.log(this.m_mobs);
             },  
             loop: true,
             startAt: 0
@@ -319,10 +329,12 @@ export default class gameScene extends Phaser.Scene{
     }
     toPlacePhase() {
         this.PhaseText = "Place Phase";
+        this.input.setDraggable(this.m_player,true);
         this.phaseTimer = this.time.delayedCall(30000, this.toBattlePhase, [], this);
     }
     toBattlePhase() {
         this.PhaseText = "Battle Phase";
+        this.input.setDraggable(this.m_player, false);
         this.phaseTimer = this.time.delayedCall(60000, this.toDicePhase, [], this);
     }
     // DicePhase -> PlacePhase -> BattlePhase 순서가 반복되는 구조로 호출
