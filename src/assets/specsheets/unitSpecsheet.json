@@ -1,0 +1,24 @@
+{
+    "test" :{
+        "attack": 100,
+        "aspd" : 3.5,
+        "range": 300,
+        "attackType": 1,
+        "idleSprite": "testwait",
+        "idleAnim": "test_wait",
+        "attackAnim": "test_atk",
+        "projectileName": "bullet",
+        "projectileAnimName":"bullet_anim"
+    },
+    "test2" :{
+        "attack": 100,
+        "aspd" : 3.5,
+        "range": 300,
+        "attackType": 1,
+        "idleSprite": "testwait",
+        "idleAnim": "test_wait",
+        "attackAnim": "test_atk",
+        "projectileName": "bullet",
+        "projectileAnimName":"bullet_anim"
+    }
+}

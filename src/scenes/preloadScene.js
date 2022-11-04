@@ -21,6 +21,7 @@ import outside_wall from '../assets/map/tileset/outside/outside_wall.png';
 import outside_stair from '../assets/map/tileset/outside/outside_stair.png';
 import outside_B from '../assets/map/tileset/props/Outside_B.png';
 import possible from '../assets/map/tileset/possible/possible.png';
+import unitSpecsheet from '../assets/specsheets/unitSpecsheet.json';
 
 export default class PreLoadScene extends Phaser.Scene {
     constructor() {
@@ -71,12 +72,13 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.image("dice4", dice4);
         this.load.image("dice5", dice5);
         this.load.image("dice6", dice6);
+
+        this.load.json("unitDB", unitSpecsheet);
     }
 
     create() {
         this.add.text(20, 20, "Loading Game...");
-        this.scene.start("mainScene");
-
+            
         this.anims.create({
             key: "test_wait",
             frames: this.anims.generateFrameNumbers("testwait", {end:14}),
@@ -104,20 +106,22 @@ export default class PreLoadScene extends Phaser.Scene {
             frames: this.anims.generateFrameNumbers("bullet"),
             frameRate: 15,
             repeat: -1
-        })
+        });
 
         this.anims.create({
             key: "bat_anim",
             frames: this.anims.generateFrameNumbers("bat"),
             frameRate: 12,
             repeat: -1
-        })
+        });
 
         this.anims.create({
             key: "dice_roll",
             frames: this.anims.generateFrameNames("diceroll"),
             frameRate: 72,
             repeat: -1
-        })
+        });
+
+        this.scene.start("mainScene");
     }
 }
