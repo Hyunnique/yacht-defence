@@ -4,14 +4,14 @@ import { pathA, pathB, pathBoss } from "../points/mobPath";
 export default class Mob extends Phaser.Physics.Arcade.Sprite {
 
     constructor(scene,num) {
-        super(scene, -500, -500, "bat");
+        super(scene, -5000, -5000, "bat");
         scene.add.existing(this);
         scene.physics.add.existing(this);
-
+        this.isTarget = true;
         this.isBoss = false;
         this.Health = 300;
         this.scale = 2;
-        this.m_speed = 6;
+        this.m_speed = 60;
         this.mobNum = num;
         this.movePhase = 0;
         this.moveType = "B";
@@ -35,38 +35,42 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         });
     }
 
-    death(scene)
-    {
+    death()
+    {   
+        this.scene.events.emit("mobDeath", this.mobNum);
         this.tween.remove();
         this.destroy();
     }
 
-    showDamage(scene,attack) {
-        var text = scene.add.text(this.body.x, this.body.y - 20, attack, {
-            fontFamily: 'consolas',
-            fontSize: '50px',
-            color: '#F00'
-        });
-        scene.physics.world.enable(text);
-        text.body.setAccelerationY(-100);
+    showDamage(scene, attack, attackCount) {
+        for (var i = 0; i < attackCount; i++) {
+            var text = scene.add.text(this.body.x, this.body.y - 20 - (50*i), attack, {
+                fontFamily: 'consolas',
+                fontSize: '50px',
+                color: '#F00'
+            });
             
-        this.scene.time.addEvent({
-            delay: 1000,
-            callback: () => {
-                text.destroy();
-            },
-            loop: false
-        });
+            scene.physics.world.enable(text);
+            text.body.setAccelerationY(-100);
+            
+            this.scene.time.addEvent({
+                delay: 1000,
+                callback: () => {
+                    text.destroy();
+                },
+                loop: false
+            });
+        }
     }
     
-    bullseye(scene, projectile) {
-        this.Health -= projectile.attack;
-        this.showDamage(scene, projectile.attack);
-        projectile.destroy();
+    bullseye(projectile) {
+        this.Health -= (projectile.attack * projectile.attackCount);
+        this.showDamage(this.scene, projectile.attack,projectile.attackCount);
         if (this.Health <= 0) {
-            projectile.shooter.target.splice(projectile.shooter.target.findIndex(t => t.mobNum === this.mobNum), 1);
-            this.death(scene);
+            this.death();
         }
+        console.log(projectile);
+        projectile.destroy();
     }
 
     checkPhase() {
