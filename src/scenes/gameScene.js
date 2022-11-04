@@ -31,6 +31,20 @@ class AnimatedTile {
     }
 }
 
+// 임시 버튼 (x좌표, y좌표, 버튼 안에 들어갈 내용, 들어갈 Scene, 버튼 누를시 사용할 콜백함수)
+class Button {
+    constructor(x, y, label, scene, callback) {
+        const button = scene.add.text(x, y, label)
+            .setOrigin(0.5)
+            .setPadding(10)
+            .setStyle({ backgroundColor: '#000' })
+            .setInteractive({ useHandCursor: true })
+            .on('pointerdown', () => callback())
+            .on('pointerover', () => button.setStyle({ fill: '#f39c12' }))
+            .on('pointerout', () => button.setStyle({ fill: '#FFF' }));
+    }
+}   
+
 export default class gameScene extends Phaser.Scene{
     constructor() {
         super("gameScene");
@@ -123,6 +137,8 @@ export default class gameScene extends Phaser.Scene{
             this.pointerText.setText("x: " + t.x+ " y: " + t.y);
             this.drawDebug(t);
         });
+        // => 마우스가 위치한 선택된 레이어의 타일의 인덱스가 몇인지를 알림
+        // 지금 경우는 배치 가능 / 불가능만 알기 위한 info 레이어를 선택
 
         this.input.on("wheel",  (pointer, gameObjects, deltaX, deltaY, deltaZ) => {
 
@@ -204,6 +220,10 @@ export default class gameScene extends Phaser.Scene{
 
         this.physics.add.overlap(this.m_projectiles, this.m_mobs, (projectile, mob) => mob.bullseye(projectile), null, this);
         this.cameras.main.setBounds(0, 0, 2400, 1440);
+
+
+//임시 선언 부분
+        const btn = new Button(60, 128, "test", this);
     }
 
     update(time, delta) {
