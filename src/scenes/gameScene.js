@@ -31,8 +31,6 @@ class AnimatedTile {
     }
 }
 
-// 임시 버튼 (x좌표, y좌표, 버튼 안에 들어갈 내용, 들어갈 Scene, 버튼 누를시 사용할 콜백함수)
-
 
 export default class gameScene extends Phaser.Scene{
     constructor() {
@@ -53,7 +51,6 @@ export default class gameScene extends Phaser.Scene{
     PhaseText = "";
 
     create() {
-        
 // 맵
         const map = this.make.tilemap({key: "map_forest"});
 
@@ -180,7 +177,7 @@ export default class gameScene extends Phaser.Scene{
         console.log(this.unitDB);
         this.m_player = [];
 
-        this.m_player.push(new Playertest(this, 0, 0, this.unitDB.test));
+        this.m_player.push(new Playertest(this, 0, 0, this.unitDB.unit0));
 
         var prePosX;
         var prePosY;
@@ -257,7 +254,7 @@ export default class gameScene extends Phaser.Scene{
         this.input.on('pointerdown', (pointer) => {
             let t = this.getTileAtPointer(pointer, info);
             if (!t || t.index == "2898") return;
-            this.m_player.push(new Playertest(this, t.pixelX + 24, t.pixelY + 24, this.unitDB.test));
+            this.m_player.push(new Playertest(this, t.pixelX + 24, t.pixelY + 24, this.unitDB.unit1));
             t.index = "2898";
 
         });
