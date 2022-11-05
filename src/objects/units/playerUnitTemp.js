@@ -52,7 +52,6 @@ export default class Playertest extends Phaser.Physics.Arcade.Sprite {
             this.target.forEach(e => {
                 console.log(e);
                 e.gameObject.Health -= this.attack;
-                e.gameObject.showDamage(this.scene,this.attack,1);
                 if (e.Health <= 0) {
                     this.kills++;
                     e.gameObject.death();

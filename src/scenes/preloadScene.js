@@ -24,6 +24,7 @@ import outside_stair from '../assets/map/tileset/outside/outside_stair.png';
 import outside_B from '../assets/map/tileset/props/Outside_B.png';
 import possible from '../assets/map/tileset/possible/possible.png';
 import unitSpecsheet from '../assets/specsheets/unitSpecsheet.json';
+import mobSpecsheet from '../assets/specsheets/mobSpecsheet.json';
 import test3idle from '../assets/spritesheets/units/test3idle.png';
 import test3atk from '../assets/spritesheets/units/test3atk.png';
 
@@ -89,6 +90,7 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.image("dice6", dice6);
 
         this.load.json("unitDB", unitSpecsheet);
+        this.load.json("mobDB", mobSpecsheet);
     }
 
     create() {

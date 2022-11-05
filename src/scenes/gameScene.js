@@ -152,16 +152,12 @@ export default class gameScene extends Phaser.Scene{
 // 타이머
         this.timerText = this.add.text(32, 32, "");
         this.pointerText = this.add.text(32, 64, "");
-        this.toDicePhase();
-
-        this.sound.pauseOnBlur = false;
-        
-        this.globalnum = 1;
-
+        this.waitForReady();
 
 
 //BGM
         this.m_music = this.sound.add("music");
+        this.sound.pauseOnBlur = false;
         const musicConfig = {
             mute: false,
             volume: 0.7,
@@ -176,6 +172,7 @@ export default class gameScene extends Phaser.Scene{
 
 //몹/유저유닛/투사체 관련
         this.m_mobs = this.physics.add.group();
+        this.globalnum = 1;
         this.addMob();
 
         this.m_projectiles = this.physics.add.group();
@@ -207,7 +204,7 @@ export default class gameScene extends Phaser.Scene{
             this.placeUnitOnTile(tile, gameObject, prePosX, prePosY);
         })
 
-        this.physics.add.overlap(this.m_projectiles, this.m_mobs, (projectile, mob) => mob.bullseye(projectile), null, this);
+        this.physics.add.overlap(this.m_projectiles, this.m_mobs, (projectile, mob) => mob.hit(projectile), null, this);
         this.cameras.main.setBounds(0, 0, 2400, 1440);
 
 
@@ -323,8 +320,15 @@ export default class gameScene extends Phaser.Scene{
         this.debugGraphics.lineBetween(x, y, x + dx, y + dy);
     }
 
+    waitForReady()
+    {
+        this.PhaseText = "Waiting for all players ready..."
+        this.phaseTimer = this.time.delayedCall(10000, this.toDicePhase, [], this);
+    }
+
     toDicePhase() {
         this.PhaseText = "Dice Phase";
+        this.input.setDraggable(this.m_player, false);
         this.phaseTimer = this.time.delayedCall(30000, this.toPlacePhase, [], this);
     }
     toPlacePhase() {
