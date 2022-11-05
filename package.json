@@ -1,7 +1,7 @@
 {
-  "name": "meow-hands-on",
+  "name": "yache-dice-defence",
   "version": "1.0.0",
-  "description": "Vampire Survivors clone coding",
+  "description": "Web Yacht Dice Defence",
   "main": "src/index.js",
   "scripts": {
     "build": "webpack --config webpack/prod.js",

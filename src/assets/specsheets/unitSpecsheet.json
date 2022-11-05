@@ -1,35 +1,642 @@
 {
-    "test" :{
+    "unit0": {
         "attack": 100,
-        "aspd" : 0.8,
+        "aspd": 0.8,
         "range": 300,
-        "attackType": 1,
-        "idleSprite": "testwait",
-        "idleAnim": "test_wait",
-        "attackAnim": "test_atk",
-        "projectileName": "bullet",
-        "projectileAnimName":"bullet_anim"
-    },
-    "test2" :{
-        "attack": 100,
-        "aspd" : 0.8,
-        "range": 300,
-        "attackType": 1,
-        "idleSprite": "testwait",
-        "idleAnim": "test_wait",
-        "attackAnim": "test_atk",
-        "projectileName": "bullet",
-        "projectileAnimName":"bullet_anim"
-    },
-    "test3" :{
-        "attack": 100,
-        "aspd" : 1.0,
-        "range": 150,
-        "attackType": 0,
-        "idleSprite": "test3wait",
-        "idleAnim": "test3wait",
-        "attackAnim": "test3atk",
+        "idleSprite": "unit0idle",
+        "idleAnim": "unit0idle",
+        "attackAnim": "unit0atk",
         "projectileName": "",
-        "projectileAnimName":""
+        "projectileAnimName": ""
+    },
+    "unit1": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit1idle",
+        "idleAnim": "unit1idle",
+        "attackAnim": "unit1atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit2": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit2idle",
+        "idleAnim": "unit2idle",
+        "attackAnim": "unit2atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit3": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit3idle",
+        "idleAnim": "unit3idle",
+        "attackAnim": "unit3atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit4": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit4idle",
+        "idleAnim": "unit4idle",
+        "attackAnim": "unit4atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit5": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit5idle",
+        "idleAnim": "unit5idle",
+        "attackAnim": "unit5atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit6": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit6idle",
+        "idleAnim": "unit6idle",
+        "attackAnim": "unit6atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit7": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit7idle",
+        "idleAnim": "unit7idle",
+        "attackAnim": "unit7atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit8": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit8idle",
+        "idleAnim": "unit8idle",
+        "attackAnim": "unit8atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit9": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit9idle",
+        "idleAnim": "unit9idle",
+        "attackAnim": "unit9atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit10": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit10idle",
+        "idleAnim": "unit10idle",
+        "attackAnim": "unit10atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit11": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit11idle",
+        "idleAnim": "unit11idle",
+        "attackAnim": "unit11atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit12": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit12idle",
+        "idleAnim": "unit12idle",
+        "attackAnim": "unit12atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit13": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit13idle",
+        "idleAnim": "unit13idle",
+        "attackAnim": "unit13atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit14": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit14idle",
+        "idleAnim": "unit14idle",
+        "attackAnim": "unit14atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit15": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit15idle",
+        "idleAnim": "unit15idle",
+        "attackAnim": "unit15atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit16": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit16idle",
+        "idleAnim": "unit16idle",
+        "attackAnim": "unit16atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit17": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit17idle",
+        "idleAnim": "unit17idle",
+        "attackAnim": "unit17atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit18": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit18idle",
+        "idleAnim": "unit18idle",
+        "attackAnim": "unit18atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit19": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit19idle",
+        "idleAnim": "unit19idle",
+        "attackAnim": "unit19atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit20": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit20idle",
+        "idleAnim": "unit20idle",
+        "attackAnim": "unit20atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit21": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit21idle",
+        "idleAnim": "unit21idle",
+        "attackAnim": "unit21atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit22": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit22idle",
+        "idleAnim": "unit22idle",
+        "attackAnim": "unit22atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit23": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit23idle",
+        "idleAnim": "unit23idle",
+        "attackAnim": "unit23atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit24": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit24idle",
+        "idleAnim": "unit24idle",
+        "attackAnim": "unit24atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit25": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit25idle",
+        "idleAnim": "unit25idle",
+        "attackAnim": "unit25atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit26": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit26idle",
+        "idleAnim": "unit26idle",
+        "attackAnim": "unit26atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit27": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit27idle",
+        "idleAnim": "unit27idle",
+        "attackAnim": "unit27atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit28": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit28idle",
+        "idleAnim": "unit28idle",
+        "attackAnim": "unit28atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit29": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit29idle",
+        "idleAnim": "unit29idle",
+        "attackAnim": "unit29atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit30": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit30idle",
+        "idleAnim": "unit30idle",
+        "attackAnim": "unit30atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit31": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit31idle",
+        "idleAnim": "unit31idle",
+        "attackAnim": "unit31atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit32": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit32idle",
+        "idleAnim": "unit32idle",
+        "attackAnim": "unit32atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit33": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit33idle",
+        "idleAnim": "unit33idle",
+        "attackAnim": "unit33atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit34": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit34idle",
+        "idleAnim": "unit34idle",
+        "attackAnim": "unit34atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit35": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit35idle",
+        "idleAnim": "unit35idle",
+        "attackAnim": "unit35atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit36": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit36idle",
+        "idleAnim": "unit36idle",
+        "attackAnim": "unit36atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit37": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit37idle",
+        "idleAnim": "unit37idle",
+        "attackAnim": "unit37atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit38": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit38idle",
+        "idleAnim": "unit38idle",
+        "attackAnim": "unit38atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit39": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit39idle",
+        "idleAnim": "unit39idle",
+        "attackAnim": "unit39atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit40": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit40idle",
+        "idleAnim": "unit40idle",
+        "attackAnim": "unit40atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit41": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit41idle",
+        "idleAnim": "unit41idle",
+        "attackAnim": "unit41atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit42": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit42idle",
+        "idleAnim": "unit42idle",
+        "attackAnim": "unit42atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit43": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit43idle",
+        "idleAnim": "unit43idle",
+        "attackAnim": "unit43atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit44": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit44idle",
+        "idleAnim": "unit44idle",
+        "attackAnim": "unit44atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit45": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit45idle",
+        "idleAnim": "unit45idle",
+        "attackAnim": "unit45atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit46": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit46idle",
+        "idleAnim": "unit46idle",
+        "attackAnim": "unit46atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit47": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit47idle",
+        "idleAnim": "unit47idle",
+        "attackAnim": "unit47atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit48": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit48idle",
+        "idleAnim": "unit48idle",
+        "attackAnim": "unit48atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit49": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit49idle",
+        "idleAnim": "unit49idle",
+        "attackAnim": "unit49atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit50": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit50idle",
+        "idleAnim": "unit50idle",
+        "attackAnim": "unit50atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit51": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit51idle",
+        "idleAnim": "unit51idle",
+        "attackAnim": "unit51atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit52": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit52idle",
+        "idleAnim": "unit52idle",
+        "attackAnim": "unit52atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit53": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit53idle",
+        "idleAnim": "unit53idle",
+        "attackAnim": "unit53atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit54": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit54idle",
+        "idleAnim": "unit54idle",
+        "attackAnim": "unit54atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit55": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit55idle",
+        "idleAnim": "unit55idle",
+        "attackAnim": "unit55atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit56": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit56idle",
+        "idleAnim": "unit56idle",
+        "attackAnim": "unit56atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit57": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit57idle",
+        "idleAnim": "unit57idle",
+        "attackAnim": "unit57atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit58": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit58idle",
+        "idleAnim": "unit58idle",
+        "attackAnim": "unit58atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit59": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit59idle",
+        "idleAnim": "unit59idle",
+        "attackAnim": "unit59atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit60": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit60idle",
+        "idleAnim": "unit60idle",
+        "attackAnim": "unit60atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit61": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit61idle",
+        "idleAnim": "unit61idle",
+        "attackAnim": "unit61atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit62": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit62idle",
+        "idleAnim": "unit62idle",
+        "attackAnim": "unit62atk",
+        "projectileName": "",
+        "projectileAnimName": ""
+    },
+    "unit63": {
+        "attack": 100,
+        "aspd": 0.8,
+        "range": 300,
+        "idleSprite": "unit63idle",
+        "idleAnim": "unit63idle",
+        "attackAnim": "unit63atk",
+        "projectileName": "",
+        "projectileAnimName": ""
     }
 }
