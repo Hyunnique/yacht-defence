@@ -3,21 +3,20 @@ import { pathA, pathB, pathC, pathD, pathBoss } from "../points/mobPath";
 
 export default class Mob extends Phaser.Physics.Arcade.Sprite {
 
-    constructor(scene,num) {
-        super(scene, -5000, -5000, "bat");
+    constructor(scene, mobData,num) {
+        super(scene, -5000, -5000, mobData.mobAnim);
         scene.add.existing(this);
         scene.physics.add.existing(this);
         this.isTarget = true;
-        this.Health = 300;
-        this.scale = 2;
-        this.m_speed = 60;
+        this.Health = mobData.Health;
+        this.scale = mobData.scale;
+        this.m_speed = mobData.m_speed;
         this.mobNum = num;
-        this.movePhase = 0;
-        this.moveType = "D";
+        this.moveType = mobData.moveType;
 
-        this.deathSound = this.scene.sound.add("death");
+        this.deathSound = this.scene.sound.add(mobData.deathSound);
 
-        this.play("bat_anim");
+        this.play(mobData.mobAnim);
 
         switch (this.moveType) {
             case "A":
@@ -69,11 +68,8 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
     }
     
     hit(projectile) {
-        this.Health -= (projectile.attack * projectile.attackCount);
-        if (this.Health <= 0) {
-            this.death();
-        }
-        console.log(projectile);
+        this.Health -= projectile.attack;
+        if (this.Health <= 0) this.death();
         projectile.destroy();
     }
 }
