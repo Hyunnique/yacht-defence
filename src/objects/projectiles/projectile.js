@@ -16,7 +16,6 @@ export default class Projectile extends Phaser.Physics.Arcade.Sprite {
         this.target = [];
         this.isTarget = false;
         this.needSearch = false;
-        this.attackCount = 3;
 
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this, true);

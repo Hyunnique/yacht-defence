@@ -2,27 +2,35 @@ import Projectile from '../projectiles/projectile.js';
 const Config = require("../../Config");
 const Phaser = require("phaser");
 
-export default class Player extends Phaser.Physics.Arcade.Sprite {
-    constructor(scene, x, y, name) {
-        super(scene, x, y, name);
-        this.attack = 0;
-        this.aspd = 2.5;
-        this.scale = 0.4;
+export default class Playertest extends Phaser.Physics.Arcade.Sprite {
+    constructor(scene,x,y, db) {
+        super(scene, x, y, db.idleSprite);
+
+        this.attack = db.attack;
+        this.aspd = db.aspd;
+        this.range = db.range;
+        this.attackType = db.attackType;
+        this.idleAnim = db.idleAnim;
+        this.attackAnim = db.attackAnim;
+        this.projectileName = db.projectileName;
+        this.projectileAnimName = db.projectileAnimName
+
+        this.scale = 1;
         this.alpha = 1;
-        this.offset = 0;
-        this.attackReady = false;
-        this.idleAnim = "";
-        this.attackAnim = "";
-        this.projectileName = "";
+        this.offset = 0;        
+        this.shootSound = this.scene.sound.add("shoot");
+        
         this.target = [];
-        this.range = 1;
-        this.attackConfig = "";
-        this.projectileAnimName = "";
+        
+        this.attackConfig = this.scene.anims.get(this.attackAnim);
+        this.attackConfig.frameRate *= this.aspd;
+
         this.kills = 0;
-        this.attackType = 0;
         this.isTarget = false;
+
         this.setInteractive({ draggable: true });
-        //this.activateAttack(); db-베이스로 변형시에 바꿔주세요.
+        this.scene.add.existing(this);
+        this.activateAttack();
     }
 
     checkMob() {
@@ -40,18 +48,24 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
         this.play(this.attackConfig, true);
 
-        if (this.attackType === 0) {
+        if (this.attackType == 0) {
             this.target.forEach(e => {
-                e.Health -= this.attack;
-                e.showDamage(this.scene,this.attack);
-                if (e.Health <= 0) {
+                console.log(e);
+                e.gameObject.Health -= this.attack;
+                if (e.gameObject.Health <= 0) {
                     this.kills++;
-                    e.death();
+                    e.gameObject.death();
                     this.checkMob();
                 }
             })
         }
-        else if (this.attackType === 1) {
+        else if (this.attackType == 1) {
+            this.shootSound.play({
+            mute: false,
+            volume: 0.7,
+            rate: 1,
+            loop: false
+            });
             this.shootProjectile();
         }        
     }

@@ -2,7 +2,7 @@ import girl from '../objects/units/test.js';
 import Mob from '../objects/mobs/Mob.js';
 import shooter from '../objects/units/test2.js';
 import Projectile from '../objects/projectiles/projectile.js';
-import Playertest from '../objects/units/playerUnitTemp.js';
+import Playertest from '../objects/units/playerUnit.js';
 const Phaser = require('phaser');
 const Config = require("../Config");
 
@@ -30,6 +30,22 @@ class AnimatedTile {
         this.tile.index = this.tileAnimationData[animationFrameIndex].tileid + this.firstgid
     }
 }
+/*
+무작위 구현
+(mob)
+1.dictionary형이므로 key만 뽑아 배열로 만듬
+2.key배열의 length 미만에서 무작위 값을 뽑음
+3.key 배열의 무작위 값을 조회해 dictionary에서 조회!!
+
+(unit)
+1.티어별로 번호를 저장한 배열 생성
+2.배열 내에서 무작위 번호 선택
+3.dictionary에서 조회
+
+(item)
+1.WIP.
+*/
+
 
 
 export default class gameScene extends Phaser.Scene{
@@ -170,11 +186,13 @@ export default class gameScene extends Phaser.Scene{
 //몹/유저유닛/투사체 관련
         this.m_mobs = this.physics.add.group();
         this.globalnum = 1;
+        this.placeMode = false;
         this.addMob();
 
         this.m_projectiles = this.physics.add.group();
         this.unitDB = this.cache.json.get("unitDB");
-        console.log(this.unitDB);
+        this.mobDB = this.cache.json.get("mobDB");
+        console.log(this.unitDB["unit0"]);
         this.m_player = [];
 
         this.m_player.push(new Playertest(this, 0, 0, this.unitDB.unit0));
@@ -204,14 +222,28 @@ export default class gameScene extends Phaser.Scene{
         this.physics.add.overlap(this.m_projectiles, this.m_mobs, (projectile, mob) => mob.hit(projectile), null, this);
         this.cameras.main.setBounds(0, 0, 2400, 1440);
 
-
+        this.events.on("tryPlaceUnit", (array) => {
+            var pointer = array.at(0);
+            var info = array.at(1);
+            var unitData = array.at(2);
+            let t = this.getTileAtPointer(pointer, info);
+            if (!t || t.index == "2898") return;
+            this.m_player.push(new Playertest(this, t.pixelX + 24, t.pixelY + 24, unitData));
+            t.index = "2898";
+            //this.placeMode = false;
+            this.input.setDraggable(this.m_player,true);
+        }, this);
+        /**
+         * 다시 드래그가 가능하게 바꿔줘야하는데 왜인지 듣질 않는다.
+         * 
+         */
 //임시 선언 부분
         const button = this.add.text(60, 128, "test")
             .setOrigin(0.5)
             .setPadding(10)
             .setStyle({ backgroundColor: '#000' })
             .setInteractive({ useHandCursor: true })
-            .on('pointerdown', () => this.initialPlace(info))
+            .on('pointerdown', () => { this.initialPlace(info); this.placeMode = (this.placeMode ? false : true); })
             .on('pointerover', () => button.setStyle({ fill: '#f39c12' }))
             .on('pointerout', () => button.setStyle({ fill: '#FFF' }));
     }
@@ -247,26 +279,22 @@ export default class gameScene extends Phaser.Scene{
         this.timerText.setText(this.PhaseText + ' : ' + this.phaseTimer.getRemainingSeconds().toString().substr(0, 2));
     }
 
-    initialPlace(info,unitdata)
+    initialPlace(info,unitData)
     {
-        this.input.setDraggable(this.m_player,false);
         info.alpha = (info.alpha == 1 ? 0 : 1);
         this.input.on('pointerdown', (pointer) => {
-            let t = this.getTileAtPointer(pointer, info);
-            if (!t || t.index == "2898") return;
-            this.m_player.push(new Playertest(this, t.pixelX + 24, t.pixelY + 24, this.unitDB.unit1));
-            t.index = "2898";
-
-        });
-        this.input.setDraggable(this.m_player,true);
+            if (this.placeMode) {
+                this.input.setDraggable(this.m_player,false);
+                this.events.emit('tryPlaceUnit', [pointer, info, this.unitDB.unit1]);
+            }
+        }, this);
     }
 
     addMob() {
         this.time.addEvent({
             delay: 1500,
             callback: () => {
-                this.m_mobs.add(new Mob(this, this.globalnum++));
-                console.log(this.m_mobs);
+                this.m_mobs.add(new Mob(this, this.mobDB.BatSmallA, this.globalnum++));
             },  
             loop: true,
             startAt: 0

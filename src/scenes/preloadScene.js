@@ -17,6 +17,8 @@ import mobSpecsheet from '../assets/specsheets/mobSpecsheet.json';
 
 import unit0atk from '../assets/spritesheets/units/unit0_atk.png';
 
+import BatSmallA from '../assets/spritesheets/mobs/BatSmallA.png';
+
 export default class PreLoadScene extends Phaser.Scene {
     constructor() {
         super("bootGame");
@@ -45,7 +47,7 @@ export default class PreLoadScene extends Phaser.Scene {
             this.load.spritesheet("unit" + i + "atk", require("../assets/spritesheets/units/unit" + i + "_atk.png"), { frameWidth: 128, frameHeight: 128 });
         }
         
-        this.load.spritesheet("unit0atk", unit0atk, { frameWidth: 128, frameHeight: 128 });
+        this.load.spritesheet("BatSmallA", BatSmallA, { frameWidth: 16, frameHeight: 16 });
 
         this.load.audio("music", bgm);
         this.load.audio("death", batDeath);
@@ -100,9 +102,9 @@ export default class PreLoadScene extends Phaser.Scene {
         });
         this.anims.create({
             key: "unit9atk",
-            frames: this.anims.generateFrameNumbers("unit9atk", { start: 0, end: 23 }),
+            frames: this.anims.generateFrameNumbers("unit9atk", { start: 0, end: 18 }),
             repeat: -1,
-            frameRate: 24
+            frameRate: 19
         });
         this.anims.create({
             key: "unit21atk",
@@ -112,9 +114,9 @@ export default class PreLoadScene extends Phaser.Scene {
         });
         this.anims.create({
             key: "unit22atk",
-            frames: this.anims.generateFrameNumbers("unit22atk", { start: 0, end: 23 }),
+            frames: this.anims.generateFrameNumbers("unit22atk", { start: 0, end: 18 }),
             repeat: -1,
-            frameRate: 24
+            frameRate: 19
         });
         this.anims.create({
             key: "unit39atk",
@@ -141,6 +143,12 @@ export default class PreLoadScene extends Phaser.Scene {
             frameRate: 25
         });
         
+        this.anims.create({
+            key: "BatSmallA",
+            frames: this.anims.generateFrameNumbers("BatSmallA", { start: 0, end: 5 }),
+            repeat: -1,
+            frameRate: 6
+        });
 
         this.scene.start("mainScene");
     }
