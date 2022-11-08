@@ -20,6 +20,10 @@ module.exports = {
                 test: /\.(gif|png|jpe?g|svg|xml|mp3|ogg)$/i,
                 type: 'asset/resource',
             },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
+            }
         ],
     },
     plugins: [
