@@ -11,8 +11,8 @@ const Config = {
     type: Phaser.AUTO,
     scale: {
         mode: Phaser.Scale.FIT,
-        parent: "ui-container",
         autoCenter: Phaser.Scale.CENTER_BOTH,
+        parent: "ui-container",
         width: 1920,
         height: 960
     },

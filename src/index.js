@@ -1,4 +1,8 @@
 import Config from "./Config";
-const game = new Phaser.Game(Config);
+import Game from "./Game";
+import css from "./Game.css";
 
-export default game;
+Game.Initialize(Config);
+console.log(Game);
+
+export default Game;

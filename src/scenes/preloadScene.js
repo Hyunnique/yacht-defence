@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-
+import Game from "../Game";
 import bgm from "../assets/sounds/WaveofEmptiness.mp3";
 import batDeath from "../assets/sounds/death.mp3";
 import bulletShoot from "../assets/sounds/shoot.mp3";
@@ -150,6 +150,6 @@ export default class PreLoadScene extends Phaser.Scene {
             frameRate: 6
         });
 
-        this.scene.start("mainScene");
+        Game.showScene("mainScene");
     }
 }
