@@ -52,6 +52,13 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
             repeat: 0,
             yoyo: false
         });
+
+        this.scene.events.on("update", this.update, this);
+    }
+    update()
+    {
+        if (this.Health <= 0)
+            this.death();
     }
 
     death()
@@ -62,14 +69,26 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
             rate: 1,
             loop: false
         });
+        this.scene.events.off("update", this.update, this);
         this.scene.events.emit("mobDeath", this.mobNum);
         this.tween.remove();
         this.destroy();
     }
     
     hit(projectile) {
-        this.Health -= projectile.attack;
-        if (this.Health <= 0) this.death();
-        projectile.hit();
+        if (projectile.shooter.projectileType == 1) {
+            if (projectile.alreadyPenetrated.findIndex(e => e == this.mobNum) == -1) {
+                projectile.alreadyPenetrated.push(this.mobNum);
+                this.Health -= projectile.attack;
+                projectile.hit();
+            }
+        }
+        else if(projectile.shooter.projectileType == 2) {
+            //projectile.explode();
+        }
+        else {
+            this.Health -= projectile.attack;
+            projectile.hit();
+        }
     }
 }
