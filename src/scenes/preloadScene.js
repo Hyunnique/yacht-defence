@@ -150,6 +150,6 @@ export default class PreLoadScene extends Phaser.Scene {
             frameRate: 6
         });
 
-        this.scene.start("mainScene");
+        this.scene.start("gameScene");
     }
 }

@@ -1,4 +1,5 @@
-import Projectile from '../projectiles/projectile.js';
+import Homing from '../projectiles/homing.js';
+import Penetrate from '../projectiles/penetrate.js';
 const Config = require("../../Config");
 const Phaser = require("phaser");
 
@@ -13,29 +14,50 @@ export default class Playertest extends Phaser.Physics.Arcade.Sprite {
         this.idleAnim = db.idleAnim;
         this.attackAnim = db.attackAnim;
         this.projectileName = db.projectileName;
-        this.projectileAnimName = db.projectileAnimName
+        this.projectileAnimName = db.projectileAnimName;
+        this.projectileType = db.projectileType;
+
+        this.isTarget = false;
+        this.isUnit = true;
+
+        this.buffAtk = 1;
+        this.buffAspd = 0;
 
         this.scale = 1;
-        this.alpha = 1;
-        this.offset = 0;        
+        this.alpha = 1;      
         this.shootSound = this.scene.sound.add("shoot");
         
         this.target = [];
         
-        this.attackConfig = this.scene.anims.get(this.attackAnim);
-        this.attackConfig.frameRate *= this.aspd;
+        this.setMotionSpeed();
 
         this.kills = 0;
         this.isTarget = false;
 
         this.setInteractive({ draggable: true });
+        this.scene.physics.add.existing(this);
+        this.setBodySize(64, 64, true);
         this.scene.add.existing(this);
+        
         this.activateAttack();
     }
 
     checkMob() {
         this.target = this.scene.physics.overlapCirc(this.x, this.y, this.range).filter(item => item.gameObject.isTarget == true);
         return this.target;
+    }
+
+    updateBuff()
+    {
+        this.attack *= this.buffAtk;
+        this.aspd += this.buffAspd;
+        this.setMotionSpeed();
+    }
+
+    setMotionSpeed()
+    {
+        this.attackConfig = this.scene.anims.get(this.attackAnim);
+        this.attackConfig.frameRate *= this.aspd;
     }
 
     attackMob()
@@ -71,8 +93,11 @@ export default class Playertest extends Phaser.Physics.Arcade.Sprite {
     }
 
     shootProjectile()
-    {
-        return new Projectile(this.scene, this);
+    {   
+        if (this.projectileType == 0)
+            return new Homing(this.scene, this);
+        else if (this.projectileType == 1)
+            return new Penetrate(this.scene, this);
     }
 
     activateAttack()

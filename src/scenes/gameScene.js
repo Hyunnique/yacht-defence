@@ -1,7 +1,5 @@
-import girl from '../objects/units/test.js';
 import Mob from '../objects/mobs/Mob.js';
-import shooter from '../objects/units/test2.js';
-import Projectile from '../objects/projectiles/projectile.js';
+import Projectile from '../objects/projectiles/homing.js';
 import Playertest from '../objects/units/playerUnit.js';
 const Phaser = require('phaser');
 const Config = require("../Config");
@@ -126,19 +124,19 @@ export default class gameScene extends Phaser.Scene{
         });
         this.debugGraphics = this.add.graphics();
 
-        this.input.on('pointerdown', (pointer) => {
-            let t = this.getTileAtPointer(pointer, info);
-            if (!t) return;
-            console.log(`(${t.x}, ${t.y}) on ${t.layer.name}`, t);
-        });
+        // this.input.on('pointerdown', (pointer) => {
+        //     let t = this.getTileAtPointer(pointer, info);
+        //     if (!t) return;
+        //     console.log(`(${t.x}, ${t.y}) on ${t.layer.name}`, t);
+        // });
         
-        this.input.on('pointermove', (pointer) => {
-            let t = this.getTileAtPointer(pointer, info);
-            if (!t) return;
-            help.setText(t.index).setPosition(t.pixelX, t.pixelY);
-            this.pointerText.setText("x: " + t.x+ " y: " + t.y);
-            this.drawDebug(t);
-        });
+        // this.input.on('pointermove', (pointer) => {
+        //     let t = this.getTileAtPointer(pointer, info);
+        //     if (!t) return;
+        //     help.setText(t.index).setPosition(t.pixelX, t.pixelY);
+        //     this.pointerText.setText("x: " + t.x+ " y: " + t.y);
+        //     this.drawDebug(t);
+        // });
         // => 마우스가 위치한 선택된 레이어의 타일의 인덱스가 몇인지를 알림
         // 지금 경우는 배치 가능 / 불가능만 알기 위한 info 레이어를 선택
 

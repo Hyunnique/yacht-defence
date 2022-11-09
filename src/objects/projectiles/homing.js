@@ -1,7 +1,6 @@
-const Config = require("../../Config");
 const Phaser = require("phaser");
 
-export default class Projectile extends Phaser.Physics.Arcade.Sprite {
+export default class Homing extends Phaser.Physics.Arcade.Sprite {
 
     constructor(scene, shooter) {
         super(scene, shooter.x, shooter.y, shooter.projectileName);
@@ -13,6 +12,7 @@ export default class Projectile extends Phaser.Physics.Arcade.Sprite {
         this.alpha = 1;
         this.targetidx = 0;
         this.setBodySize(28, 28);
+
         this.target = [];
         this.isTarget = false;
         this.needSearch = false;
@@ -66,5 +66,10 @@ export default class Projectile extends Phaser.Physics.Arcade.Sprite {
         );
         this.rotation = angleToMob;
         this.body.setAngularVelocity(0);
+    }
+
+    hit()
+    {
+        this.destroy();
     }
 }
