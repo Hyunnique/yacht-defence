@@ -9,13 +9,14 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         scene.physics.add.existing(this);
         this.isTarget = true;
         this.Health = mobData.Health;
+        this.MaxHealth = mobData.Health;
         this.scale = mobData.scale;
         this.m_speed = mobData.m_speed;
         this.mobNum = num;
         this.moveType = mobData.moveType;
 
         this.deathSound = this.scene.sound.add(mobData.deathSound);
-
+        this.healthBar = this.scene.add.image(this.x-48, this.y - 24, "healthBar").setOrigin(0,0.5);
         this.play(mobData.mobAnim);
 
         switch (this.moveType) {
@@ -56,7 +57,15 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         this.scene.events.on("update", this.update, this);
     }
     update()
-    {
+    {   
+        this.healthBar.setPosition(this.getCenter().x-48, this.getCenter().y - 24);
+        const width = this.healthBar.displayWidth * (this.Health / this.MaxHealth);
+        this.scene.tweens.add({
+            targets: this.healthBar,
+            displayWidth: width,
+            ease: Phaser.Math.Easing.Sine.Out
+        });
+
         if (this.Health <= 0)
             this.death();
     }
@@ -72,6 +81,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         this.scene.events.off("update", this.update, this);
         this.scene.events.emit("mobDeath", this.mobNum);
         this.tween.remove();
+        this.healthBar.destroy();
         this.destroy();
     }
     
@@ -84,7 +94,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
             }
         }
         else if(projectile.shooter.projectileType == 2) {
-            //projectile.explode();
+            projectile.explode();
         }
         else {
             this.Health -= projectile.attack;

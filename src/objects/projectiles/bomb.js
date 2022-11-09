@@ -13,7 +13,7 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
         this.targetidx = 0;
         this.setBodySize(28, 28);
 
-        this.target = this.shooter.target[0].gameObject.getCenter();
+        this.target = new Phaser.Math.Vector2(this.shooter.target[0].gameObject.getCenter());
         this.isTarget = false;
 
         this.scene.add.existing(this);
@@ -29,7 +29,9 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
 
     update()
     {
-        if (this.x == this.target.x && this.y == this.target.y)
+        console.log(this.target.x);
+        var distance = Phaser.Math.Distance.Between(this.x, this.y, this.target.x, this.target.y);
+        if (distance < 4)
         {
             this.explode();
         }
@@ -43,6 +45,7 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
                 if (element.gameObject.Health <= 0)
                     this.shooter.kills++;
             });
+        this.scene.events.off("update", this.update, this);
         this.destroy();
     }
 
