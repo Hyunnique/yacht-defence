@@ -70,6 +70,6 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
     hit(projectile) {
         this.Health -= projectile.attack;
         if (this.Health <= 0) this.death();
-        projectile.destroy();
+        projectile.hit();
     }
 }
