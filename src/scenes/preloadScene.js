@@ -15,6 +15,7 @@ import possible from '../assets/map/tileset/possible/possible.png';
 import unitSpecsheet from '../assets/specsheets/unitSpecsheet.json';
 import mobSpecsheet from '../assets/specsheets/mobSpecsheet.json';
 
+import healthBar from '../assets/images/healthBar.png';
 import Bullet from '../assets/projectiles/bullet.png';
 import BatSmallA from '../assets/spritesheets/mobs/BatSmallA.png';
 
@@ -60,6 +61,8 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.image("outside_B", outside_B);
         this.load.image("possible", possible);
         this.load.tilemapTiledJSON("map_forest", map_forest);
+
+        this.load.image("healthBar", healthBar);
         
         this.load.json("unitDB", unitSpecsheet);
         this.load.json("mobDB", mobSpecsheet);
