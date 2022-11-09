@@ -1,9 +1,10 @@
 import Homing from '../projectiles/homing.js';
 import Penetrate from '../projectiles/penetrate.js';
+import Bomb from '../projectiles/bomb.js'
 const Config = require("../../Config");
 const Phaser = require("phaser");
 
-export default class Playertest extends Phaser.Physics.Arcade.Sprite {
+export default class Unit extends Phaser.Physics.Arcade.Sprite {
     constructor(scene,x,y, db) {
         super(scene, x, y, db.idleSprite);
 
@@ -13,10 +14,10 @@ export default class Playertest extends Phaser.Physics.Arcade.Sprite {
         this.attackType = db.attackType;
         this.idleAnim = db.idleAnim;
         this.attackAnim = db.attackAnim;
-        this.projectileName = db.projectileName;
-        this.projectileAnimName = db.projectileAnimName;
-        this.projectileType = db.projectileType;
-
+        this.projectileName = "bullet";
+        this.projectileAnimName = "bullet";
+        this.projectileType = 1;
+        
         this.isTarget = false;
         this.isUnit = true;
 
@@ -40,6 +41,7 @@ export default class Playertest extends Phaser.Physics.Arcade.Sprite {
         this.scene.add.existing(this);
         
         this.activateAttack();
+        console.log(this);
     }
 
     checkMob() {
@@ -72,7 +74,6 @@ export default class Playertest extends Phaser.Physics.Arcade.Sprite {
 
         if (this.attackType == 0) {
             this.target.forEach(e => {
-                console.log(e);
                 e.gameObject.Health -= this.attack;
                 if (e.gameObject.Health <= 0) {
                     this.kills++;
@@ -98,6 +99,8 @@ export default class Playertest extends Phaser.Physics.Arcade.Sprite {
             return new Homing(this.scene, this);
         else if (this.projectileType == 1)
             return new Penetrate(this.scene, this);
+        else if (this.projectileType == 2)
+            return new Bomb(this.scene, this);
     }
 
     activateAttack()

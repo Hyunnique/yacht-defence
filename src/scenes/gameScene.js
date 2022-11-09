@@ -1,6 +1,5 @@
 import Mob from '../objects/mobs/Mob.js';
-import Projectile from '../objects/projectiles/homing.js';
-import Playertest from '../objects/units/playerUnit.js';
+import Unit from '../objects/units/playerUnit.js';
 const Phaser = require('phaser');
 const Config = require("../Config");
 
@@ -190,10 +189,9 @@ export default class gameScene extends Phaser.Scene{
         this.m_projectiles = this.physics.add.group();
         this.unitDB = this.cache.json.get("unitDB");
         this.mobDB = this.cache.json.get("mobDB");
-        console.log(this.unitDB["unit0"]);
         this.m_player = [];
 
-        this.m_player.push(new Playertest(this, 0, 0, this.unitDB.unit0));
+        this.m_player.push(new Unit(this, 0, 0, this.unitDB.unit3));
 
         var prePosX;
         var prePosY;
@@ -293,6 +291,7 @@ export default class gameScene extends Phaser.Scene{
             delay: 1500,
             callback: () => {
                 this.m_mobs.add(new Mob(this, this.mobDB.BatSmallA, this.globalnum++));
+                console.log(this.m_mobs);
             },  
             loop: true,
             startAt: 0

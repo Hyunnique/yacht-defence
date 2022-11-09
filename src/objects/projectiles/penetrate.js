@@ -13,23 +13,29 @@ export default class Penetrate extends Phaser.Physics.Arcade.Sprite {
         this.targetidx = 0;
         this.setBodySize(28, 28);
 
-        this.target = [];
-        this.isTarget = false;
+        this.alreadyPenetrated = [];
 
-        this.scene.add.existing(this);
-        this.scene.physics.add.existing(this, true);
-        this.scene.physics.world.enableBody(this);
+        
+        this.target = shooter.target;
+        this.isTarget = false;
 
         this.play(shooter.projectileAnimName);
 
-        this.flyto = Phaser.Math.RotateTo(new Phaser.Math.Vector2, shooter.x, shooter.y, this.rotation, this.shooter.range);
-        this.scene.physics.moveTo(this, flyto.x, flyto.y, this.speed);
+        this.scene.add.existing(this);
+        this.scene.physics.add.existing(this);      
+
+        this.flyto = new Phaser.Math.Vector2();
+
+        this.setAngle(this, this.target[0].gameObject.getCenter());
+
+        Phaser.Math.RotateTo(this.flyto, this.x, this.y, this.rotation, this.shooter.range);
+        this.scene.physics.moveTo(this, this.flyto.x, this.flyto.y, this.speed);
         this.scene.events.on("update", this.update, this);
     }
 
     update()
     {
-        if (Phaser.Math.Distance(this.x, this.y, this.shooter.x, this.shooter.y) >= this.shooter.range)
+        if (Phaser.Math.Distance.Between(this.x, this.y, this.shooter.x, this.shooter.y) >= this.shooter.range)
             this.destroy();
     }
 
@@ -45,6 +51,6 @@ export default class Penetrate extends Phaser.Physics.Arcade.Sprite {
 
     hit()
     {
-        this.attack *= 0.8;
+        this.attack *= 0.9;
     }
 }
