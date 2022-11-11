@@ -196,11 +196,12 @@ export default class gameScene extends Phaser.Scene{
         var prePosX;
         var prePosY;
 
-        this.input.on('dragstart', (pointer) => {
+        this.input.on('dragstart', (pointer,gameObject) => {
             info.alpha = 1;
             var tile = this.getTileAtPointer(pointer, info);
             prePosX = pointer.worldX;
             prePosY = pointer.worldY;
+            gameObject.removeBuff();
             if (tile.index == "2898") tile.index = "2897";
         });
 
@@ -225,6 +226,7 @@ export default class gameScene extends Phaser.Scene{
             let t = this.getTileAtPointer(pointer, info);
             if (!t || t.index == "2898") return;
             this.m_player.push(new Playertest(this, t.pixelX + 24, t.pixelY + 24, unitData));
+            this.m_player[this.m_player.length].giveBuff();
             t.index = "2898";
             //this.placeMode = false;
             this.input.setDraggable(this.m_player,true);
@@ -303,6 +305,7 @@ export default class gameScene extends Phaser.Scene{
             tile.index = "2898";
             Unit.x = tile.pixelX + 24;
             Unit.y = tile.pixelY + 24;
+            Unit.giveBuff();
         }
         else if (tile.index == "2898") {
             Unit.x = prePosX;

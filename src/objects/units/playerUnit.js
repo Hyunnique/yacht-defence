@@ -8,21 +8,25 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
     constructor(scene,x,y, db) {
         super(scene, x, y, db.idleSprite);
 
+        this.originAttack = db.attack;
+        this.originAspd = db.aspd;
         this.attack = db.attack;
         this.aspd = db.aspd;
         this.range = db.range;
         this.attackType = db.attackType;
         this.idleAnim = db.idleAnim;
         this.attackAnim = db.attackAnim;
+        this.buffAtk = 0;
+        this.buffAspd = 0;
         this.projectileName = "bullet";
         this.projectileAnimName = "bullet";
         this.projectileType = 1;
         
         this.isTarget = false;
-        this.isUnit = true;
+        this.isBuffTarget = true;
 
-        this.buffAtk = 1;
-        this.buffAspd = 0;
+        this.buffedAtk = 1;
+        this.buffedAspd = 0;
 
         this.scale = 1;
         this.alpha = 1;      
@@ -49,10 +53,34 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         return this.target;
     }
 
+    giveBuff()
+    {
+        if(this.buffAspd != 0 || this.buffAtk != 0)
+        var buffTargets = this.scene.physics.overlapCirc(this.x, this.y, this.range).filter(item => item.gameObject.isBuffTarget == true);
+        buffTargets.forEach((e) => {
+            e.gameObject.buffedAspd += this.buffAspd;
+            e.gameObject.buffedAtk += this.buffAtk;
+            e.gameObject.updateBuff();
+        })
+
+    }
+
+    removeBuff()
+    {
+        if(this.buffAspd != 0 || this.buffAtk != 0)
+        var buffTargets = this.scene.physics.overlapCirc(this.x, this.y, this.range).filter(item => item.gameObject.isBuffTarget == true);
+        buffTargets.forEach((e) => {
+            e.gameObject.buffedAspd -= this.buffAspd;
+            e.gameObject.buffedAtk -= this.buffAtk;
+            e.gameObject.updateBuff();
+        })
+    }
+
+
     updateBuff()
     {
-        this.attack *= this.buffAtk;
-        this.aspd += this.buffAspd;
+        this.attack = (this.buffedAtk + 1) * this.originAttack;
+        this.aspd = this.buffedAspd + this.originAspd;
         this.setMotionSpeed();
     }
 
