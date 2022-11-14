@@ -1,0 +1,40 @@
+@font-face {
+    font-family: "Silver";
+    src: url("../src/assets/font/Silver.ttf") format("truetype"),
+         url("../src/assets/font/Silver.woff") format("woff");
+}
+
+body
+{
+    font-family: "Silver";
+    font-weight: 400;
+
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    overflow: hidden;
+}
+
+#ui-container
+{
+    width: 100vw;
+    height: 50vw;
+}
+
+.ui-sheets {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+
+    /*pointer-events: none;*/
+}
+
+.ui-sheet {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}

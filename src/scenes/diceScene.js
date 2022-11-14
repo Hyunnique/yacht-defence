@@ -17,7 +17,7 @@ class Button {
 
 export default class diceScene extends Phaser.Scene{
     constructor() {
-        super("gameScene");
+        super("diceScene");
     }
 
     handDice = [-1, -1, -1, -1, -1];    // 현재 굴릴 주사위 (-1은 굴리지 않은 상황)
@@ -135,8 +135,9 @@ export default class diceScene extends Phaser.Scene{
         this.drawed = false;
     }
 
+    rollDice() {
+        var num = this.handDice.length;
     // 손 안의 주사위 개수만큼 다시 굴림
-    rollDice(num) {
         if (this.throwLeft > 0) {
             this.throwLeft--;
             this.handDice.length = 0;

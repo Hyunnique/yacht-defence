@@ -8,8 +8,12 @@
     "start": "webpack-dev-server --config webpack/base.js --open"
   },
   "dependencies": {
+    "css-loader": "^6.7.1",
+    "html-loader": "^4.2.0",
     "phaser": "^3.55.2",
-    "phaser3-rex-plugins": "^1.1.75"
+    "phaser3-rex-plugins": "^1.1.75",
+    "style-loader": "^3.3.1",
+    "url-loader": "^4.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.18.2",
@@ -17,7 +21,6 @@
     "babel-loader": "^8.2.5",
     "clean-webpack-plugin": "^4.0.0",
     "dotenv-webpack": "^7.1.0",
-    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "raw-loader": "^4.0.2",
     "terser-webpack-plugin": "^5.3.1",
