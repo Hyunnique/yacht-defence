@@ -1,15 +1,25 @@
 
 .ui-gameScene-topFloating {
     position: absolute;
-    top: 5%;
-    left: 5%;
-    width: 10%;
-    height: 5%;
+    top: 2%;
+    left: 2%;
+    width: 13%;
+    height: 9%;
 
-    border: 1px solid black;
-    border-radius: 0.4%;
+    padding: 1%;
+    
+    font-size: 1.2rem;
+    background-color: rgba(202, 238, 199, 0.8);
+    border: 2px solid black;
+}
 
-    background-color: rgba(100, 100, 100, 0.8);
+.ui-gameScene-topFloating-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .ui-gameScene-bottomFloating {
@@ -35,6 +45,7 @@
     border: 1px solid black;
     border-radius: 3px;
 
+    font-size: 1rem;
     background-color: rgba(100, 100, 100, 0.8);
 }
 
@@ -67,8 +78,6 @@
     display: inline-block;
     width: 30%;
     text-align: center;
-
-    font-size: 16pt;
 }
 
 .ui-gameScene-bottomFloating .ui-hpArea-playerhp {
@@ -77,14 +86,16 @@
     height: 30%;
     line-height: 100%;
     text-align: center;
-
-    margin-top: 4px;
     
     border-radius: 2px;
     border: 2px solid black;
 }
 
 .ui-gameScene-bottomFloating .ui-goldArea {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     bottom: 100%;
     left: -2px;
