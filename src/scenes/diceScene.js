@@ -21,7 +21,7 @@ class Button {
 
 export default class diceScene extends Phaser.Scene{
     constructor() {
-        super("gameScene");
+        super("diceScene");
     }
 
     handDice = [-1, -1, -1, -1, -1];

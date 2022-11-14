@@ -1,12 +1,13 @@
 import gameScene from "./scenes/gameScene";
 import MainScene from "./scenes/mainScene";
 import PreLoadScene from "./scenes/preloadScene";
+import diceScene from "./scenes/diceScene";
 import PathFollowerPlugin from 'phaser3-rex-plugins/plugins/pathfollower-plugin.js';
 
 
 const Config = {
     backgroundColor: 0xFFFFFF,
-    scene: [PreLoadScene,MainScene,gameScene],
+    scene: [PreLoadScene,MainScene,gameScene,diceScene],
     pixelArt: true,
     type: Phaser.AUTO,
     scale: {

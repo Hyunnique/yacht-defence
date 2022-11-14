@@ -1,8 +1,8 @@
 import Config from "./Config";
 import Game from "./Game";
-import css from "./Game.css";
+
+import DefaultCss from "../views/default.css";
+import GameSceneCss from "../views/gameScene.css";
 
 Game.Initialize(Config);
-console.log(Game);
-
 export default Game;

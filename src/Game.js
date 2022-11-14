@@ -8,6 +8,8 @@ var Game = {
 
         this.resizeHandler(null);
         window.onresize = this.resizeHandler;
+
+        console.log(this.GameObject);
     },
 
     resizeHandler(e) { // 2:1의 비율을 유지하면서 보여줄 수 있는 최대의 크기로 게임 출력
@@ -32,7 +34,8 @@ var Game = {
             sheets[i].style.display = "none";
         }
 
-        document.getElementsByClassName("ui-" + sceneName)[0].style.display = "block";
+        document.getElementsByClassName("ui-" + sceneName + "-default")[0].style.display = "block";
+        document.getElementsByClassName("ui-" + sceneName + "-default")[0]
     },
 };
 
