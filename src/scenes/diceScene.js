@@ -32,7 +32,7 @@ export default class diceScene extends Phaser.Scene{
     largeStraight = 0
     fullHouse = 0;                      // 특수 족보 유무
     
-
+    rollable = true;                    // 지금 굴릴 수 있는 상황인지 여부
     
 
     create(){
@@ -43,6 +43,36 @@ export default class diceScene extends Phaser.Scene{
     update() {
     }
 
+    drawRolling() {
+        this.rollable = false;
+        document.getElementsByClassName("ui-keepArea")[0].innerHTML = "";
+        for (let i = 0; i < this.savedDice.length; i++) {
+            document.getElementsByClassName("ui-keepArea")[0].innerHTML += 
+            "<div class='dice_" + this.savedDice[i] + "'>";
+        }
+
+        document.getElementsByClassName("ui-diceArea")[0].innerHTML = "";
+        for (let i = 0; i < this.handDice.length; i++) {
+            document.getElementsByClassName("ui-diceArea")[0].innerHTML += 
+            "<div class='dice_animated_" + this.handDice[i] + "'>";
+        }
+    }
+
+    drawResult() {
+        document.getElementsByClassName("ui-keepArea")[0].innerHTML = "";
+        for (let i = 0; i < this.savedDice.length; i++) {
+            document.getElementsByClassName("ui-keepArea")[0].innerHTML += 
+            "<div class='dice_" + this.savedDice[i] + "'>";
+        }
+
+        document.getElementsByClassName("ui-diceArea")[0].innerHTML = "";
+        for (let i = 0; i < this.handDice.length; i++) {
+            document.getElementsByClassName("ui-diceArea")[0].innerHTML += 
+            "<div class='dice_" + this.handDice[i] + "'>";
+        }
+        this.rollable = true;
+    }
+    
     timeCheck() {
         if (this.leftTime > 0) {
             this.leftTime--;
@@ -86,12 +116,14 @@ export default class diceScene extends Phaser.Scene{
         this.smallStraight = 0                   
         this.largeStraight = 0
         this.fullHouse = 0;  
+        
+        this.rollable = true;
     }
 
     rollDice() {
         var num = this.handDice.length;
     // 손 안의 주사위 개수만큼 다시 굴림
-        if (this.throwLeft > 0) {
+        if (this.throwLeft > 0 && this.rollable) {
             this.throwLeft--;
             this.handDice.length = 0;
             for (let i = 0; i < num; i++) {
@@ -99,29 +131,37 @@ export default class diceScene extends Phaser.Scene{
                 this.handDice.push(Math.floor(r));
             }
             this.checkDice();
+            
+            this.drawRolling();
+            this.time.delayedCall(1000, this.drawResult, [], this);
+            
         }
     }
 
     // 선택한 주사위를 굴릴 주사위에서 제외
     moveToSaveDice(idx) {
         if (idx >= this.handDice.length) return;
-
         let temp = this.handDice[idx];
         let tempArr = this.handDice;
         tempArr.splice(idx, 1);
         this.handDice = [...tempArr];
         this.savedDice = [...this.savedDice, temp];
+
+        this.drawRolling();
+        this.time.delayedCall(1000, this.drawResult, [], this);
     }
 
     // 선택한 주사위를 굴릴 주사위로 포함
     returnHandDice(idx) {
         if (idx >= this.savedDice.length) return;
-
         let temp = this.savedDice[idx];
         let tempArr = this.savedDice;
         tempArr.splice(idx, 1);
         this.savedDice = [...tempArr];
         this.handDice = [...this.handDice, temp];
+
+        this.drawRolling();
+        this.time.delayedCall(1000, this.drawResult, [], this);
     }
 
     // 현재 나온 주사위로 족보 및 촏이스 계산
