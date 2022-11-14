@@ -1,3 +1,5 @@
+import Game from '..';
+
 const Phaser = require('phaser');
 const Config = require("../Config");
 
@@ -34,7 +36,9 @@ export default class diceScene extends Phaser.Scene{
     
 
     create(){
+        this.leftTime = 3;
         this.time.delayedCall(1000, this.timeCheck, [], this);
+        this.initThrow();
     }                                                                
 
     update() {
@@ -43,11 +47,15 @@ export default class diceScene extends Phaser.Scene{
     timeCheck() {
         if (this.leftTime > 0) {
             this.leftTime--;
+            document.getElementsByClassName("ui-timelimit-value")[0].innerText = this.leftTime;
             this.time.delayedCall(1000, this.timeCheck, [], this);
         }
         else {
             // 그냥 지금 나온 티어로 확정시키기
             this.closeScene();
+            Game.clearUI();
+            Game.showUI("gameScene-topFloating");
+            Game.showUI("gameScene-bottomFloating");
         }
     }
 

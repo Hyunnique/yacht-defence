@@ -27,7 +27,8 @@ var Game = {
         switch (sceneName) {
             case "diceScene":
                 this.clearUI();
-                this.showUI("gameScene-default");
+                this.showUI("gameScene-topFloating");
+                this.showUI("gameScene-bottomFloating");
                 this.showUI("diceScene-default");
 
                 document.getElementsByClassName("ui-diceRerollButton")[0].onclick = (e) => {
@@ -35,7 +36,20 @@ var Game = {
                     document.getElementsByClassName("ui-rollcount-value")[0].innerText = this.GameObject.scene.getScene("diceScene").throwLeft;
                 }
 
-                this.GameObject.scene.getScene("diceScene").initThrow();
+                document.getElementsByClassName("ui-diceConfirmButton")[0].onclick = (e) => {
+                    // 임시로 확정 버튼 누르면 diceScene 탈출
+                    
+                    this.GameObject.scene.getScene("diceScene").scene.stop().resume("gameScene");
+                    this.clearUI();
+                    this.showUI("gameScene-default");
+
+                }
+                break;
+            case "gameScene":
+                this.GameObject.scene.start(sceneName);
+                this.clearUI();
+                this.showUI("gameScene-topFloating");
+                this.showUI("gameScene-bottomFloating");
                 break;
             default:
                 this.GameObject.scene.start(sceneName);

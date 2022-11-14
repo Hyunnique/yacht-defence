@@ -361,20 +361,20 @@ export default class gameScene extends Phaser.Scene{
         this.input.setDraggable(this.m_player, false);
         this.roundNum++;
         this.globalnum = 1;
-        this.phaseTimer = this.time.delayedCall(30000, this.toPlacePhase, [], this);
+        this.phaseTimer = this.time.delayedCall(1000, this.toPlacePhase, [], this);
         this.scene.pause().launch('diceScene');
         Game.showScene("diceScene");
     }
     toPlacePhase() {
         this.PhaseText = "Place Phase";
         this.input.setDraggable(this.m_player,true);
-        this.phaseTimer = this.time.delayedCall(30000, this.toBattlePhase, [], this);
+        this.phaseTimer = this.time.delayedCall(3000, this.toBattlePhase, [], this);
     }
     toBattlePhase() {
         this.PhaseText = "Battle Phase";
         this.input.setDraggable(this.m_player, false);
         this.startRound();
-        this.phaseTimer = this.time.delayedCall(60000, this.toDicePhase, [], this);
+        this.phaseTimer = this.time.delayedCall(6000, this.toDicePhase, [], this);
     }
     // DicePhase -> PlacePhase -> BattlePhase 순서가 반복되는 구조로 호출
 

@@ -1,13 +1,5 @@
-.ui-gameScene-default {
-    z-index: -1;
-}
 
-canvas {
-    position:absolute;
-    z-index: -2;
-}
-
-.ui-gameScene-default .ui-topFloating {
+.ui-gameScene-topFloating {
     position: absolute;
     top: 5%;
     left: 5%;
@@ -20,7 +12,7 @@ canvas {
     background-color: rgba(100, 100, 100, 0.8);
 }
 
-.ui-gameScene-default .ui-bottomFloating {
+.ui-gameScene-bottomFloating {
     position: absolute;
     bottom: 5%;
     left: 15%;
@@ -33,7 +25,7 @@ canvas {
     background-color: rgba(200, 200, 200, 0.8);
 }
 
-.ui-gameScene-default .ui-hpArea {
+.ui-gameScene-bottomFloating .ui-hpArea {
     position: absolute;
     top: 5%;
     left: 1%;
@@ -46,7 +38,7 @@ canvas {
     background-color: rgba(100, 100, 100, 0.8);
 }
 
-.ui-gameScene-default .ui-hpArea-row {
+.ui-gameScene-bottomFloating .ui-hpArea-row {
     position: absolute;
     left: 5%;
     width: 90%;
@@ -55,15 +47,15 @@ canvas {
     text-align: center;
 }
 
-.ui-gameScene-default .ui-hpArea-row1 {
+.ui-gameScene-bottomFloating .ui-hpArea-row1 {
     top: 10%;
 }
 
-.ui-gameScene-default .ui-hpArea-row2 {
+.ui-gameScene-bottomFloating .ui-hpArea-row2 {
     bottom: 10%;
 }
 
-.ui-gameScene-default .ui-hpArea-player {
+.ui-gameScene-bottomFloating .ui-hpArea-player {
     display: inline-flex;
     align-items: center;
 
@@ -71,7 +63,7 @@ canvas {
     height: 100%;
 }
 
-.ui-gameScene-default .ui-hpArea-playerText {
+.ui-gameScene-bottomFloating .ui-hpArea-playerText {
     display: inline-block;
     width: 30%;
     text-align: center;
@@ -79,7 +71,7 @@ canvas {
     font-size: 16pt;
 }
 
-.ui-gameScene-default .ui-hpArea-playerhp {
+.ui-gameScene-bottomFloating .ui-hpArea-playerhp {
     display: inline-block;
     width: 60%;
     height: 30%;
@@ -92,7 +84,7 @@ canvas {
     border: 2px solid black;
 }
 
-.ui-gameScene-default .ui-goldArea {
+.ui-gameScene-bottomFloating .ui-goldArea {
     position: absolute;
     bottom: 100%;
     left: -2px;
