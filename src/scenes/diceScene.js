@@ -1,20 +1,6 @@
 const Phaser = require('phaser');
 const Config = require("../Config");
 
-class Button {
-    constructor(x, y, label, scene, callback) {
-        const button = scene.add.text(x, y, label)
-            .setOrigin(0.5)
-            .setPadding(10)
-            .setStyle({ backgroundColor: '#000' })
-            .setInteractive({ useHandCursor: true })
-            .on('pointerdown', () => callback())
-            .on('pointerover', () => button.setStyle({ fill: '#f39c12' }))
-            .on('pointerout', () => button.setStyle({ fill: '#FFF' }));
-    }
-}   
-
-
 export default class diceScene extends Phaser.Scene{
     constructor() {
         super("diceScene");
@@ -23,6 +9,7 @@ export default class diceScene extends Phaser.Scene{
     handDice = [-1, -1, -1, -1, -1];    // 현재 굴릴 주사위 (-1은 굴리지 않은 상황)
     savedDice = [];                     // 굴리지 않을 주사위
     dices = [];                         // 주사위 전체
+    leftTime = 30;                      // 남은 시간
 
     one = 0;
     two = 0;
@@ -52,78 +39,27 @@ export default class diceScene extends Phaser.Scene{
     // 임시로 기능 표현을 위해 사용한 변수들 
 
     create(){
-        const roll = new Button(1200, 675, 'Roll', this, () => this.rollDice(this.handDice.length));
-        const init = new Button(1200, 640, "init", this, () => this.initThrow());
-
-        this.imageGroup = this.add.group();
-        this.input.on('gameobjectup', (pointer, gameObject) => gameObject.emit('clicked', gameObject), this);
-
-        this.bestScore = this.add.text(100, 100, "Best : - ", {
-            font: "14px Arial",
-            fill: "#000",
-            align: "center"
-        })
-        this.choiceText = this.add.text(100, 140, "Choice : 0", {
-            font: "14px Arial",
-            fill: "#000",
-            align: "center"
-        })
-        this.leftText = this.add.text(100, 180, String(this.throwLeft) + " left", {
-            font: "14px Arial",
-            fill: "#000",
-            align: "center"
-        });
-        // this.testText = this.add.text(0, 100, "-", {
-        //     font: "14px Arial",
-        //     fill: "#ffffff",
-        //     align: "center"
-        // })
-        
-        // this.add.sprite(1200, 300, "diceroll").play("dice_roll");
+        this.time.delayedCall(1000, this.timeCheck, [], this);
     }                                                                
 
     update() {
-        if (!this.drawed) {
-            this.imageGroup.clear(true);
+    }
 
-            this.leftText.setText(String(this.throwLeft) + " left")
-            // this.testText.setText(this.dices)
-            // this.testText.setText(this.one)
-
-            if (this.quintuple) this.bestScore.setText("Best : Yacht");
-            else if (this.quadruple) this.bestScore.setText("Best : 4 kind of");
-            else if (this.largeStraight) this.bestScore.setText("Best : Large straight");
-            else if (this.fullHouse) this.bestScore.setText("Best : Full House");
-            else if (this.smallStraight) this.bestScore.setText("Best : Small straight");
-            else this.bestScore.setText("Best : - ");
-
-            this.choiceText.setText("Choice : " + String(this.choice));
-
-            let xPos = 150;
-            for (let i = 0; i < this.handDice.length; i++) {
-                if (this.handDice[i] != -1) {
-                    let temp = this.add.image(xPos, 360, "dice" + String(this.handDice[i]))
-                    temp.setInteractive();
-                    temp.on('clicked', () => this.moveToSaveDice(i), this);
-                    this.imageGroup.add(temp);
-                }
-                xPos += 100;
-            }
-
-            xPos = 150;
-            for (let i = 0; i < this.savedDice.length; i++) {
-                if (this.savedDice[i] != -1) {
-                    let temp = this.add.image(xPos, 540, "dice" + String(this.savedDice[i]));
-                    temp.setInteractive();
-                    temp.on('clicked', () => this.returnHandDice(i), this);
-                    this.imageGroup.add(temp);
-                }
-                xPos += 100;
-            }
-            this.drawed = true;
+    timeCheck() {
+        if (this.leftTime > 0) {
+            this.leftTime--;
+            this.time.delayedCall(1000, this.timeCheck, [], this);
+        }
+        else {
+            // 그냥 지금 나온 티어로 확정시키기
+            this.closeScene();
         }
     }
 
+    // diceScene 종료
+    closeScene() {
+        this.scene.stop().resume('gameScene');
+    }
     // 처음으로 초기화
     initThrow() {
         this.throwLeft = 3;
