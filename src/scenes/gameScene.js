@@ -355,6 +355,7 @@ export default class gameScene extends Phaser.Scene{
         this.PhaseText = "Dice Phase";
         this.input.setDraggable(this.m_player, false);
         this.phaseTimer = this.time.delayedCall(30000, this.toPlacePhase, [], this);
+        this.scene.pause().launch('diceScene');
     }
     toPlacePhase() {
         this.PhaseText = "Place Phase";
