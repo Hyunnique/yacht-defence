@@ -1,3 +1,22 @@
+.ui-dice {
+    width: 10%;
+    aspect-ratio: 1 / 1;
+    background-size: cover;
+}
+
+.ui-dice-animated-1 { background-image: url('../src/assets/images/dice_animated_1.gif'); }
+.ui-dice-animated-2 { background-image: url('../src/assets/images/dice_animated_2.gif'); }
+.ui-dice-animated-3 { background-image: url('../src/assets/images/dice_animated_3.gif'); }
+.ui-dice-animated-4 { background-image: url('../src/assets/images/dice_animated_4.gif'); }
+.ui-dice-animated-5 { background-image: url('../src/assets/images/dice_animated_5.gif'); }
+
+.ui-dice-1 { background-image: url('../src/assets/images/dice_1.png'); }
+.ui-dice-2 { background-image: url('../src/assets/images/dice_2.png'); }
+.ui-dice-3 { background-image: url('../src/assets/images/dice_3.png'); }
+.ui-dice-4 { background-image: url('../src/assets/images/dice_4.png'); }
+.ui-dice-5 { background-image: url('../src/assets/images/dice_5.png'); }
+.ui-dice-6 { background-image: url('../src/assets/images/dice_6.png'); }
+
 .ui-diceScene-default {
     position: absolute;
     width: 60%;
@@ -119,4 +138,54 @@
 
 .ui-diceScene-default .ui-diceButtons:hover {
     background-color: gray;
+}
+
+.ui-diceScene-result {
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    top: 10%;
+    left: 20%;
+
+    background-color: rgba(220, 220, 220, 0.8);
+    border: 5px solid black;
+}
+
+.ui-diceScene-result .ui-titleArea {
+    width: 100%;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    display: flex;
+    flex-direction: row;
+    height: 10%;
+    align-content: center;
+    align-items: center;
+}
+
+.ui-diceScene-result .ui-titleText {
+    color: #FF6868;
+    font-size: 24pt;
+}
+
+.ui-diceScene-result .ui-choiceMessage-value {
+    font-size: 24pt;
+    padding: 1%;
+    border: 1px solid black;
+    margin-left: 3%;
+}
+
+.ui-diceScene-result .ui-resultTable {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    width: 80%;
+    height: 60%;
+
+    font-size: 24pt;
+}
+
+.ui-diceScene-result th, .ui-diceScene-result td {
+    width: 20%;
+    text-align: center;
 }

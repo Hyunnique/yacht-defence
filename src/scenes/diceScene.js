@@ -48,13 +48,13 @@ export default class diceScene extends Phaser.Scene{
         document.getElementsByClassName("ui-keepArea")[0].innerHTML = "";
         for (let i = 0; i < this.savedDice.length; i++) {
             document.getElementsByClassName("ui-keepArea")[0].innerHTML += 
-            "<div class='dice_" + this.savedDice[i] + "'>";
+            "<div class='ui-dice ui-dice-" + this.savedDice[i] + "'>";
         }
 
         document.getElementsByClassName("ui-diceArea")[0].innerHTML = "";
         for (let i = 0; i < this.handDice.length; i++) {
             document.getElementsByClassName("ui-diceArea")[0].innerHTML += 
-            "<div class='dice_animated_" + this.handDice[i] + "'>";
+            "<div class='ui-dice ui-dice-animated-" + (i + 1) + "'>";
         }
     }
 
@@ -62,14 +62,24 @@ export default class diceScene extends Phaser.Scene{
         document.getElementsByClassName("ui-keepArea")[0].innerHTML = "";
         for (let i = 0; i < this.savedDice.length; i++) {
             document.getElementsByClassName("ui-keepArea")[0].innerHTML += 
-            "<div class='dice_" + this.savedDice[i] + "'>";
+            "<div class='ui-dice ui-dice-" + this.savedDice[i] + "' pos='keep' idx='" + i + "'>";
         }
 
         document.getElementsByClassName("ui-diceArea")[0].innerHTML = "";
         for (let i = 0; i < this.handDice.length; i++) {
             document.getElementsByClassName("ui-diceArea")[0].innerHTML += 
-            "<div class='dice_" + this.handDice[i] + "'>";
+            "<div class='ui-dice ui-dice-" + this.handDice[i] + "' pos='hand' idx='" + i + "'>";
         }
+
+        for (let i = 0; i < 5; i++) {
+            document.getElementsByClassName("ui-dice")[i].onclick = 
+            (e) => {
+                let s_el = document.getElementsByClassName("ui-dice")[i];
+                if (s_el.attributes.pos.value.startsWith("keep")) this.returnHandDice(parseInt(s_el.attributes.idx.value));
+                else this.moveToSaveDice(parseInt(s_el.attributes.idx.value));
+            };
+        }
+
         this.rollable = true;
     }
     
@@ -98,7 +108,7 @@ export default class diceScene extends Phaser.Scene{
         this.savedDice = [];                     
         this.dices = [];                         
         this.throwLeft = 3;                      
-        this.leftTime = 3;                       
+        this.leftTime = 600;                       
         this.currentTier = -1;
     
         this.one = 0;
@@ -118,6 +128,8 @@ export default class diceScene extends Phaser.Scene{
         this.fullHouse = 0;  
         
         this.rollable = true;
+
+        this.rollDice();
     }
 
     rollDice() {
@@ -135,6 +147,7 @@ export default class diceScene extends Phaser.Scene{
             this.drawRolling();
             this.time.delayedCall(1000, this.drawResult, [], this);
             
+            document.getElementsByClassName("ui-rollcount-value")[0].innerText = this.throwLeft;
         }
     }
 
@@ -147,8 +160,7 @@ export default class diceScene extends Phaser.Scene{
         this.handDice = [...tempArr];
         this.savedDice = [...this.savedDice, temp];
 
-        this.drawRolling();
-        this.time.delayedCall(1000, this.drawResult, [], this);
+        this.drawResult();
     }
 
     // 선택한 주사위를 굴릴 주사위로 포함
@@ -160,8 +172,7 @@ export default class diceScene extends Phaser.Scene{
         this.savedDice = [...tempArr];
         this.handDice = [...this.handDice, temp];
 
-        this.drawRolling();
-        this.time.delayedCall(1000, this.drawResult, [], this);
+        this.drawResult();
     }
 
     // 현재 나온 주사위로 족보 및 촏이스 계산

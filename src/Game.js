@@ -33,16 +33,18 @@ var Game = {
 
                 document.getElementsByClassName("ui-diceRerollButton")[0].onclick = (e) => {
                     this.GameObject.scene.getScene("diceScene").rollDice();
-                    document.getElementsByClassName("ui-rollcount-value")[0].innerText = this.GameObject.scene.getScene("diceScene").throwLeft;
                 }
 
                 document.getElementsByClassName("ui-diceConfirmButton")[0].onclick = (e) => {
                     // 임시로 확정 버튼 누르면 diceScene 탈출
                     
-                    this.GameObject.scene.getScene("diceScene").scene.stop().resume("gameScene");
-                    this.clearUI();
-                    this.showUI("gameScene-default");
+                    this.hideUI("diceScene-default");
+                    this.showUI("diceScene-result");
 
+                    setTimeout(() => {
+                        this.hideUI("diceScene-result");
+                        this.GameObject.scene.getScene("diceScene").scene.stop().resume("gameScene");
+                    }, 5000);
                 }
                 break;
             case "gameScene":
@@ -67,6 +69,10 @@ var Game = {
 
     showUI(uiName) {
         document.getElementsByClassName("ui-" + uiName)[0].style.display = "block";
+    },
+
+    hideUI(uiName) {
+        document.getElementsByClassName("ui-" + uiName)[0].style.display = "none";
     },
 };
 

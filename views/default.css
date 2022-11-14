@@ -16,6 +16,11 @@ body
     align-items: center;
     background-color: #000;
     overflow: hidden;
+
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 #ui-container
