@@ -1,10 +1,10 @@
-import girl from '../objects/units/test.js';
 import Mob from '../objects/mobs/Mob.js';
 import shooter from '../objects/units/test2.js';
 import Projectile from '../objects/projectiles/projectile.js';
 import Playertest from '../objects/units/playerUnit.js';
 
 import Game from "../Game.js";
+import Unit from '../objects/units/playerUnit.js';
 const Phaser = require('phaser');
 const Config = require("../Config");
 
@@ -128,19 +128,19 @@ export default class gameScene extends Phaser.Scene{
         });
         this.debugGraphics = this.add.graphics();
 
-        this.input.on('pointerdown', (pointer) => {
-            let t = this.getTileAtPointer(pointer, info);
-            if (!t) return;
-            console.log(`(${t.x}, ${t.y}) on ${t.layer.name}`, t);
-        });
+        // this.input.on('pointerdown', (pointer) => {
+        //     let t = this.getTileAtPointer(pointer, info);
+        //     if (!t) return;
+        //     console.log(`(${t.x}, ${t.y}) on ${t.layer.name}`, t);
+        // });
         
-        this.input.on('pointermove', (pointer) => {
-            let t = this.getTileAtPointer(pointer, info);
-            if (!t) return;
-            help.setText(t.index).setPosition(t.pixelX, t.pixelY);
-            this.pointerText.setText("x: " + t.x+ " y: " + t.y);
-            this.drawDebug(t);
-        });
+        // this.input.on('pointermove', (pointer) => {
+        //     let t = this.getTileAtPointer(pointer, info);
+        //     if (!t) return;
+        //     help.setText(t.index).setPosition(t.pixelX, t.pixelY);
+        //     this.pointerText.setText("x: " + t.x+ " y: " + t.y);
+        //     this.drawDebug(t);
+        // });
         // => 마우스가 위치한 선택된 레이어의 타일의 인덱스가 몇인지를 알림
         // 지금 경우는 배치 가능 / 불가능만 알기 위한 info 레이어를 선택
 
@@ -187,26 +187,28 @@ export default class gameScene extends Phaser.Scene{
 
 //몹/유저유닛/투사체 관련
         this.m_mobs = this.physics.add.group();
+        this.roundNum = 1;
         this.globalnum = 1;
+        this.playerHealth = 100;
         this.placeMode = false;
-        this.addMob();
 
         this.m_projectiles = this.physics.add.group();
         this.unitDB = this.cache.json.get("unitDB");
         this.mobDB = this.cache.json.get("mobDB");
-        console.log(this.unitDB["unit0"]);
+        this.roundDB = this.cache.json.get("roundDB")["round"];
         this.m_player = [];
 
-        this.m_player.push(new Playertest(this, 0, 0, this.unitDB.unit0));
+        this.m_player.push(new Unit(this, 0, 0, this.unitDB.unit3));
 
         var prePosX;
         var prePosY;
 
-        this.input.on('dragstart', (pointer) => {
+        this.input.on('dragstart', (pointer,gameObject) => {
             info.alpha = 1;
             var tile = this.getTileAtPointer(pointer, info);
             prePosX = pointer.worldX;
             prePosY = pointer.worldY;
+            //gameObject.removeBuff();
             if (tile.index == "2898") tile.index = "2897";
         });
 
@@ -231,6 +233,7 @@ export default class gameScene extends Phaser.Scene{
             let t = this.getTileAtPointer(pointer, info);
             if (!t || t.index == "2898") return;
             this.m_player.push(new Playertest(this, t.pixelX + 24, t.pixelY + 24, unitData));
+            //this.m_player[this.m_player.length].giveBuff();
             t.index = "2898";
             //this.placeMode = false;
             this.input.setDraggable(this.m_player,true);
@@ -292,13 +295,14 @@ export default class gameScene extends Phaser.Scene{
         }, this);
     }
 
-    addMob() {
+    startRound() {
         this.time.addEvent({
             delay: 1500,
             callback: () => {
-                this.m_mobs.add(new Mob(this, this.mobDB.BatSmallA, this.globalnum++));
+                this.m_mobs.add(new Mob(this, this.mobDB[this.roundDB[this.roundNum]["mobName"]], this.globalnum++,this.roundDB[this.roundNum]["mobRoute"]));
+                console.log(this.m_mobs);
             },  
-            loop: true,
+            repeat: this.roundDB[this.roundNum]["mobCount"],
             startAt: 0
         })
     }
@@ -308,6 +312,7 @@ export default class gameScene extends Phaser.Scene{
             tile.index = "2898";
             Unit.x = tile.pixelX + 24;
             Unit.y = tile.pixelY + 24;
+            //Unit.giveBuff();
         }
         else if (tile.index == "2898") {
             Unit.x = prePosX;
@@ -356,6 +361,8 @@ export default class gameScene extends Phaser.Scene{
     toDicePhase() {
         this.PhaseText = "Dice Phase";
         this.input.setDraggable(this.m_player, false);
+        this.roundNum++;
+        this.globalnum = 1;
         this.phaseTimer = this.time.delayedCall(30000, this.toPlacePhase, [], this);
         this.scene.pause().launch('diceScene');
         Game.showScene("diceScene");
@@ -368,7 +375,9 @@ export default class gameScene extends Phaser.Scene{
     toBattlePhase() {
         this.PhaseText = "Battle Phase";
         this.input.setDraggable(this.m_player, false);
+        this.startRound();
         this.phaseTimer = this.time.delayedCall(60000, this.toDicePhase, [], this);
     }
     // DicePhase -> PlacePhase -> BattlePhase 순서가 반복되는 구조로 호출
+
 }

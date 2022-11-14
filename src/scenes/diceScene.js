@@ -1,7 +1,3 @@
-import girl from '../objects/units/test.js';
-import Mob from '../objects/mobs/Mob.js';
-import shooter from '../objects/units/test2.js';
-import Projectile from '../objects/projectiles/projectile.js';
 const Phaser = require('phaser');
 const Config = require("../Config");
 
@@ -24,9 +20,9 @@ export default class diceScene extends Phaser.Scene{
         super("diceScene");
     }
 
-    handDice = [-1, -1, -1, -1, -1];
-    savedDice = [];
-    dices = [];
+    handDice = [-1, -1, -1, -1, -1];    // 현재 굴릴 주사위 (-1은 굴리지 않은 상황)
+    savedDice = [];                     // 굴리지 않을 주사위
+    dices = [];                         // 주사위 전체
 
     one = 0;
     two = 0;
@@ -34,23 +30,26 @@ export default class diceScene extends Phaser.Scene{
     four = 0;
     five = 0;
     six = 0;
+    // 각 눈의 수
     
-    choice = 0;
-    double = 0;
-    triple = 0;
-    quadruple = 0
-    quintuple = 0
-    smallStraight = 0
+    choice = 0;                         // 초이스 값
+    double = 0;                         // 같은 눈 2개
+    triple = 0;                         // 같은 눈 3개
+    quadruple = 0                       // 같은 눈 4개
+    quintuple = 0                       // 같은 눈 5개
+    smallStraight = 0                   
     largeStraight = 0
-    fullHouse = 0;
+    fullHouse = 0;                      // 특수 족보 유무
+    
 
-    throwLeft = 3;
-    drawed = false;
+    throwLeft = 3;                      // 남은 던질 기회
+    drawed = false;                     // update 함수에서 주사위 그림 렌더링 했는지 확인할 변수 (나중에 방식에 따라 지워버려도 됌)
 
     leftText;
     choiceText;
     bestScore;
     testText;
+    // 임시로 기능 표현을 위해 사용한 변수들 
 
     create(){
         const roll = new Button(1200, 675, 'Roll', this, () => this.rollDice(this.handDice.length));
@@ -81,7 +80,7 @@ export default class diceScene extends Phaser.Scene{
         // })
         
         // this.add.sprite(1200, 300, "diceroll").play("dice_roll");
-    }
+    }                                                                
 
     update() {
         if (!this.drawed) {
@@ -125,6 +124,7 @@ export default class diceScene extends Phaser.Scene{
         }
     }
 
+    // 처음으로 초기화
     initThrow() {
         this.throwLeft = 3;
         this.handDice = [-1, -1, -1, -1, -1];
@@ -137,6 +137,7 @@ export default class diceScene extends Phaser.Scene{
 
     rollDice() {
         var num = this.handDice.length;
+    // 손 안의 주사위 개수만큼 다시 굴림
         if (this.throwLeft > 0) {
             this.throwLeft--;
             this.handDice.length = 0;
@@ -150,6 +151,7 @@ export default class diceScene extends Phaser.Scene{
         }
     }
 
+    // 선택한 주사위를 굴릴 주사위에서 제외
     moveToSaveDice(idx) {
         if (idx >= this.handDice.length) return;
 
@@ -160,6 +162,8 @@ export default class diceScene extends Phaser.Scene{
         this.savedDice = [...this.savedDice, temp];
         this.drawed = false;
     }
+
+    // 선택한 주사위를 굴릴 주사위로 포함
     returnHandDice(idx) {
         if (idx >= this.savedDice.length) return;
 
@@ -171,6 +175,7 @@ export default class diceScene extends Phaser.Scene{
         this.drawed = false;
     }
 
+    // 현재 나온 주사위로 족보 및 촏이스 계산
     checkDice() {
         this.one = 0;
         this.two = 0;

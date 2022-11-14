@@ -14,9 +14,10 @@ import possible from '../assets/map/tileset/possible/possible.png';
 
 import unitSpecsheet from '../assets/specsheets/unitSpecsheet.json';
 import mobSpecsheet from '../assets/specsheets/mobSpecsheet.json';
+import roundSheet from '../assets/specsheets/roundSheet.json';
 
-import unit0atk from '../assets/spritesheets/units/unit0_atk.png';
-
+import healthBar from '../assets/images/healthBar.png';
+import Bullet from '../assets/projectiles/bullet.png';
 import BatSmallA from '../assets/spritesheets/mobs/BatSmallA.png';
 
 export default class PreLoadScene extends Phaser.Scene {
@@ -37,7 +38,6 @@ export default class PreLoadScene extends Phaser.Scene {
             progressBar.fillRect(310, 780, 1300 * value, 30);
         });
         this.load.on("complete", () => {
-            console.log("done!");
             progressBar.destroy();
             progressBox.destroy();
         });
@@ -47,6 +47,8 @@ export default class PreLoadScene extends Phaser.Scene {
             this.load.spritesheet("unit" + i + "atk", require("../assets/spritesheets/units/unit" + i + "_atk.png"), { frameWidth: 128, frameHeight: 128 });
         }
         
+        this.load.spritesheet("bullet", Bullet, { frameWidth: 361, frameHeight: 50 });
+
         this.load.spritesheet("BatSmallA", BatSmallA, { frameWidth: 16, frameHeight: 16 });
 
         this.load.audio("music", bgm);
@@ -60,10 +62,12 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.image("outside_B", outside_B);
         this.load.image("possible", possible);
         this.load.tilemapTiledJSON("map_forest", map_forest);
+
+        this.load.image("healthBar", healthBar);
         
         this.load.json("unitDB", unitSpecsheet);
         this.load.json("mobDB", mobSpecsheet);
-        
+        this.load.json("roundDB", roundSheet);
     }
 
     create() {
@@ -148,6 +152,13 @@ export default class PreLoadScene extends Phaser.Scene {
             frames: this.anims.generateFrameNumbers("BatSmallA", { start: 0, end: 5 }),
             repeat: -1,
             frameRate: 6
+        });
+
+        this.anims.create({
+            key: "bullet",
+            frames: this.anims.generateFrameNumbers("bullet", { start: 0, end: 14 }),
+            repeat: -1,
+            frameRate: 15
         });
 
         Game.showScene("gameScene");
