@@ -36,9 +36,8 @@ export default class diceScene extends Phaser.Scene{
     
 
     create(){
-        this.leftTime = 3;
-        this.time.delayedCall(1000, this.timeCheck, [], this);
         this.initThrow();
+        this.time.delayedCall(1000, this.timeCheck, [], this);
     }                                                                
 
     update() {
@@ -65,13 +64,28 @@ export default class diceScene extends Phaser.Scene{
     }
     // 처음으로 초기화
     initThrow() {
-        this.throwLeft = 3;
-        this.handDice = [-1, -1, -1, -1, -1];
-        this.savedDice = [];
-        this.dices = [];
-        this.checkDice();
-
-        this.drawed = false;
+        this.handDice = [-1, -1, -1, -1, -1];    
+        this.savedDice = [];                     
+        this.dices = [];                         
+        this.throwLeft = 3;                      
+        this.leftTime = 3;                       
+        this.currentTier = -1;
+    
+        this.one = 0;
+        this.two = 0;
+        this.three = 0;
+        this.four = 0;
+        this.five = 0;
+        this.six = 0;
+        
+        this.choice = 0;                        
+        this.double = 0;                         
+        this.triple = 0;                         
+        this.quadruple = 0                       
+        this.quintuple = 0                       
+        this.smallStraight = 0                   
+        this.largeStraight = 0
+        this.fullHouse = 0;  
     }
 
     rollDice() {
@@ -85,8 +99,6 @@ export default class diceScene extends Phaser.Scene{
                 this.handDice.push(Math.floor(r));
             }
             this.checkDice();
-
-            this.drawed = false;
         }
     }
 
@@ -99,7 +111,6 @@ export default class diceScene extends Phaser.Scene{
         tempArr.splice(idx, 1);
         this.handDice = [...tempArr];
         this.savedDice = [...this.savedDice, temp];
-        this.drawed = false;
     }
 
     // 선택한 주사위를 굴릴 주사위로 포함
@@ -111,7 +122,6 @@ export default class diceScene extends Phaser.Scene{
         tempArr.splice(idx, 1);
         this.savedDice = [...tempArr];
         this.handDice = [...this.handDice, temp];
-        this.drawed = false;
     }
 
     // 현재 나온 주사위로 족보 및 촏이스 계산
