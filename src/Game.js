@@ -21,6 +21,9 @@ var Game = {
             document.getElementById("ui-container").style.width = "200vh";
             document.getElementById("ui-container").style.height = "100vh";
         }
+
+        // 실제 게임 스크린 Width의 1%로 rem 지정해줌
+        document.getElementsByTagName("html")[0].style.fontSize = (document.getElementById("ui-container").offsetWidth / 100) + "px";
     },
 
     showScene(sceneName) {
