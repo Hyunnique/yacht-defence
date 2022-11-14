@@ -29,12 +29,9 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
 
     update()
     {
-        console.log(this.target.x);
-        var distance = Phaser.Math.Distance.Between(this.x, this.y, this.target.x, this.target.y);
-        if (distance < 4)
-        {
+        if (Phaser.Math.Distance.Between(this.x, this.y, this.target.x, this.target.y) < 4)
             this.explode();
-        }
+        
     }
 
     explode()

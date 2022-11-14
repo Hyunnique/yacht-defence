@@ -14,6 +14,7 @@ import possible from '../assets/map/tileset/possible/possible.png';
 
 import unitSpecsheet from '../assets/specsheets/unitSpecsheet.json';
 import mobSpecsheet from '../assets/specsheets/mobSpecsheet.json';
+import roundSheet from '../assets/specsheets/roundSheet.json';
 
 import healthBar from '../assets/images/healthBar.png';
 import Bullet from '../assets/projectiles/bullet.png';
@@ -66,7 +67,7 @@ export default class PreLoadScene extends Phaser.Scene {
         
         this.load.json("unitDB", unitSpecsheet);
         this.load.json("mobDB", mobSpecsheet);
-        
+        this.load.json("roundDB", roundSheet);
     }
 
     create() {

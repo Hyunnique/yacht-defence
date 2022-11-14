@@ -3,7 +3,7 @@ import { pathA, pathB, pathC, pathD, pathBoss } from "../points/mobPath";
 
 export default class Mob extends Phaser.Physics.Arcade.Sprite {
 
-    constructor(scene, mobData,num) {
+    constructor(scene, mobData,num,mobRoute) {
         super(scene, -5000, -5000, mobData.mobAnim);
         scene.add.existing(this);
         scene.physics.add.existing(this);
@@ -13,7 +13,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         this.scale = mobData.scale;
         this.m_speed = mobData.m_speed;
         this.mobNum = num;
-        this.moveType = mobData.moveType;
+        this.moveType = mobRoute;
 
         this.deathSound = this.scene.sound.add(mobData.deathSound);
         this.healthBar = this.scene.add.image(this.x-48, this.y - 24, "healthBar").setOrigin(0,0.5);
@@ -68,6 +68,11 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
 
         if (this.Health <= 0)
             this.death();
+        
+        if (Phaser.Math.Distance.Between(this.x, this.y, 2400, 720) < 4) {
+            this.scene.playerHealth--;
+            this.death();
+        }
     }
 
     death()
