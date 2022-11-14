@@ -135,7 +135,8 @@ export default class diceScene extends Phaser.Scene{
         this.drawed = false;
     }
 
-    rollDice(num) {
+    rollDice() {
+        var num = this.handDice.length;
         if (this.throwLeft > 0) {
             this.throwLeft--;
             this.handDice.length = 0;

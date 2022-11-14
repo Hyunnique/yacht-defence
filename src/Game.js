@@ -24,18 +24,39 @@ var Game = {
     },
 
     showScene(sceneName) {
-        this.GameObject.scene.start(sceneName);
-        this.setDefaultUI(sceneName);
+        switch (sceneName) {
+            case "diceScene":
+                this.clearUI();
+                this.showUI("gameScene-default");
+                this.showUI("diceScene-default");
+
+                document.getElementsByClassName("ui-diceRerollButton")[0].onclick = (e) => {
+                    this.GameObject.scene.getScene("diceScene").rollDice();
+                    document.getElementsByClassName("ui-rollcount-value")[0].innerText = this.GameObject.scene.getScene("diceScene").throwLeft;
+                }
+
+                this.GameObject.scene.getScene("diceScene").initThrow();
+                break;
+            default:
+                this.GameObject.scene.start(sceneName);
+                this.setDefaultUI(sceneName);
+                break;
+        }
     },
 
     setDefaultUI(sceneName) {
+        document.getElementsByClassName("ui-" + sceneName + "-default")[0].style.display = "block";
+    },
+
+    clearUI() {
         let sheets = document.getElementsByClassName("ui-sheet");
         for (let i=0; i<sheets.length; i++) {
             sheets[i].style.display = "none";
         }
+    },
 
-        document.getElementsByClassName("ui-" + sceneName + "-default")[0].style.display = "block";
-        document.getElementsByClassName("ui-" + sceneName + "-default")[0]
+    showUI(uiName) {
+        document.getElementsByClassName("ui-" + uiName)[0].style.display = "block";
     },
 };
 
