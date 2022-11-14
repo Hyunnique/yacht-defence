@@ -52,7 +52,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.target = this.scene.physics.overlapCirc(this.x, this.y, this.range).filter(item => item.gameObject.isTarget == true);
         return this.target;
     }
-
+    
+    //매 턴 시작시 전부 지우고 다시 전부 부여!!
     giveBuff()
     {
         if(this.buffAspd != 0 || this.buffAtk != 0)
