@@ -9,7 +9,9 @@ export default class diceScene extends Phaser.Scene{
     handDice = [-1, -1, -1, -1, -1];    // 현재 굴릴 주사위 (-1은 굴리지 않은 상황)
     savedDice = [];                     // 굴리지 않을 주사위
     dices = [];                         // 주사위 전체
-    leftTime = 30;                      // 남은 시간
+    throwLeft = 3;                      // 남은 던질 기회
+    leftTime = 3;                       // 남은 시간
+    currentTier = -1;                   // 현재 나온 주사위로 계산된 최대 티어
 
     one = 0;
     two = 0;
@@ -29,14 +31,7 @@ export default class diceScene extends Phaser.Scene{
     fullHouse = 0;                      // 특수 족보 유무
     
 
-    throwLeft = 3;                      // 남은 던질 기회
-    drawed = false;                     // update 함수에서 주사위 그림 렌더링 했는지 확인할 변수 (나중에 방식에 따라 지워버려도 됌)
-
-    leftText;
-    choiceText;
-    bestScore;
-    testText;
-    // 임시로 기능 표현을 위해 사용한 변수들 
+    
 
     create(){
         this.time.delayedCall(1000, this.timeCheck, [], this);
@@ -152,6 +147,13 @@ export default class diceScene extends Phaser.Scene{
         this.smallStraight = ((this.three >= 1 && this.four >= 1) && ((this.one >=1 && this.two >=1) || (this.two>=1 && this.five >= 1) || (this.five>=1 && this.six>=1)));
         this.largeStraight = ((this.two == 1 && this.three == 1 && this.four == 1) && ((this.one == 1 && this.five == 1) || (this.five == 1 && this.six == 1)));
         this.fullHouse = this.double && this.triple;
+
+        if (this.quintuple) this.currentTier = 1;
+        else if (this.quadruple) this.currentTier = 3;
+        else if (this.largeStraight) this.currentTier = 2;
+        else if (this.fullHouse) this.currentTier = 2;
+        else if (this.smallStraight) this.currentTier = 3;
+        else this.currentTier = 4;
     }
     
 }
