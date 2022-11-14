@@ -39,13 +39,9 @@ var Game = {
                 break;
             default:
                 this.GameObject.scene.start(sceneName);
-                this.setDefaultUI(sceneName);
+                this.showUI(sceneName + "-default");
                 break;
         }
-    },
-
-    setDefaultUI(sceneName) {
-        document.getElementsByClassName("ui-" + sceneName + "-default")[0].style.display = "block";
     },
 
     clearUI() {

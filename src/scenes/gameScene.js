@@ -1,6 +1,4 @@
 import Mob from '../objects/mobs/Mob.js';
-import shooter from '../objects/units/test2.js';
-import Projectile from '../objects/projectiles/projectile.js';
 import Playertest from '../objects/units/playerUnit.js';
 
 import Game from "../Game.js";
