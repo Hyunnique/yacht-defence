@@ -20,6 +20,14 @@ module.exports = {
                 test: /\.(gif|png|jpe?g|svg|xml|mp3|ogg)$/i,
                 type: 'asset/resource',
             },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                type: 'asset/resource',
+            },
         ],
     },
     plugins: [
@@ -31,7 +39,7 @@ module.exports = {
             WEBGL_RENDERER: JSON.stringify(true),
         }),
         new HtmlWebpackPlugin({
-            template: "./index.html",
+            template: "./index.ejs",
         }),
         new Dotenv(),
     ],

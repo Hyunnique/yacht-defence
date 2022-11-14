@@ -1,4 +1,9 @@
 import Mob from '../objects/mobs/Mob.js';
+import shooter from '../objects/units/test2.js';
+import Projectile from '../objects/projectiles/projectile.js';
+import Playertest from '../objects/units/playerUnit.js';
+
+import Game from "../Game.js";
 import Unit from '../objects/units/playerUnit.js';
 const Phaser = require('phaser');
 const Config = require("../Config");
@@ -350,7 +355,7 @@ export default class gameScene extends Phaser.Scene{
     waitForReady()
     {
         this.PhaseText = "Waiting for all players ready..."
-        this.phaseTimer = this.time.delayedCall(10000, this.toDicePhase, [], this);
+        this.phaseTimer = this.time.delayedCall(1000, this.toDicePhase, [], this);
     }
 
     toDicePhase() {
@@ -359,6 +364,8 @@ export default class gameScene extends Phaser.Scene{
         this.roundNum++;
         this.globalnum = 1;
         this.phaseTimer = this.time.delayedCall(30000, this.toPlacePhase, [], this);
+        this.scene.pause().launch('diceScene');
+        Game.showScene("diceScene");
     }
     toPlacePhase() {
         this.PhaseText = "Place Phase";
