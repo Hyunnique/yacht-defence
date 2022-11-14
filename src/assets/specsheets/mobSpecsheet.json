@@ -2,7 +2,7 @@
     "BatSmallA": {
         "Health": 300,
         "scale": 3,
-        "m_speed": 60,
+        "m_speed": 5,
         "moveType": "D",
         "deathSound": "death",
         "mobAnim": "BatSmallA"

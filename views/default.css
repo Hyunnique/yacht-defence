@@ -1,11 +1,21 @@
+@font-face {
+    font-family: "Silver";
+    src: url("../src/assets/font/Silver.ttf") format("truetype"),
+         url("../src/assets/font/Silver.woff") format("woff");
+}
+
 body
 {
+    font-family: "Silver";
+    font-weight: 400;
+
     margin: 0;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #000;
+    overflow: hidden;
 }
 
 #ui-container

@@ -1,3 +1,12 @@
+.ui-gameScene-default {
+    z-index: -1;
+}
+
+canvas {
+    position:absolute;
+    z-index: -2;
+}
+
 .ui-gameScene-default .ui-topFloating {
     position: absolute;
     top: 5%;
