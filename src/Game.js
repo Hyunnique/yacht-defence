@@ -38,6 +38,14 @@ var Game = {
                     this.GameObject.scene.getScene("diceScene").rollDice();
                 }
 
+                Array.from(document.getElementsByClassName("ui-unitReward-unit")).forEach((e) => {
+                    e.onclick = (g) => {
+                        this.GameObject.scene.getScene("gameScene").receiveUnit(parseInt(e.attributes.idx.value));
+                        this.hideUI("common-unitReward");
+                        this.GameObject.scene.getScene("diceScene").scene.stop().resume("gameScene");
+                    };
+                });
+
                 document.getElementsByClassName("ui-diceConfirmButton")[0].onclick = (e) => {
                     // 임시로 확정 버튼 누르면 바로 다음 단계 진행
                     
@@ -47,7 +55,6 @@ var Game = {
                     setTimeout(() => {
                         this.hideUI("diceScene-result");
                         this.showUI("common-unitReward");
-                        //this.GameObject.scene.getScene("diceScene").scene.stop().resume("gameScene");
                     }, 3000);
                 }
                 break;

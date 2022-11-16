@@ -47,7 +47,13 @@
     border: 1px solid black;
 
     text-align: center;
+    cursor: pointer;
 }
+
+.ui-common-unitReward .ui-unitReward-unit:hover {
+    background-color: rgba(160, 160, 160, 0.8);
+}
+
 .ui-common-unitReward .ui-unitReward-unitDisplayImage {
     position: absolute;
     top: 10%;
@@ -85,6 +91,14 @@
     font-size: 1rem;
 }
 
+.ui-common-unitReward .ui-unitReward-unitSpec {
+    position: absolute;
+    top: 75%;
+    width: 100%;
+    font-size: 0.8rem;
+    display: flex;
+    flex-direction: column;
+}
 .ui-common-unitReward .ui-unitReward-unitSkill {
     position: absolute;
     bottom: 5%;

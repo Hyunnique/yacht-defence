@@ -43,6 +43,20 @@
     color: red;
 }
 
+.ui-diceScene-default .ui-keepArea-flag {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    width: 15%;
+    height: 15%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+    font-size: 1.4rem;
+}
+
 .ui-diceScene-default .ui-keepArea {
     position: absolute;
     top: 20%;
@@ -54,6 +68,34 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+}
+
+.ui-diceScene-default .ui-bestHand {
+    position: absolute;
+    top: 40%;
+    left: 30%;
+    width: 40%;
+    height: 10%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.1rem;
+}
+
+.ui-diceScene-default .ui-diceArea-flag {
+    position: absolute;
+    top: 40%;
+    left: 10%;
+    width: 15%;
+    height: 35%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+    font-size: 1.4rem;
 }
 
 .ui-diceScene-default .ui-diceArea {
