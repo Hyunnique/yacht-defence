@@ -39,15 +39,16 @@ var Game = {
                 }
 
                 document.getElementsByClassName("ui-diceConfirmButton")[0].onclick = (e) => {
-                    // 임시로 확정 버튼 누르면 diceScene 탈출
+                    // 임시로 확정 버튼 누르면 바로 다음 단계 진행
                     
                     this.hideUI("diceScene-default");
                     this.showUI("diceScene-result");
 
                     setTimeout(() => {
                         this.hideUI("diceScene-result");
-                        this.GameObject.scene.getScene("diceScene").scene.stop().resume("gameScene");
-                    }, 5000);
+                        this.showUI("common-unitReward");
+                        //this.GameObject.scene.getScene("diceScene").scene.stop().resume("gameScene");
+                    }, 3000);
                 }
                 break;
             case "gameScene":
