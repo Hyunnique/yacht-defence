@@ -80,6 +80,7 @@ export default class diceScene extends Phaser.Scene{
             };
         }
 
+        this.checkDice();
         this.rollable = true;
     }
     
@@ -142,7 +143,6 @@ export default class diceScene extends Phaser.Scene{
                 let r = Math.random() * 6 + 1;
                 this.handDice.push(Math.floor(r));
             }
-            this.checkDice();
             
             this.drawRolling();
             this.time.delayedCall(1000, this.drawResult, [], this);
@@ -217,12 +217,32 @@ export default class diceScene extends Phaser.Scene{
         this.largeStraight = ((this.two == 1 && this.three == 1 && this.four == 1) && ((this.one == 1 && this.five == 1) || (this.five == 1 && this.six == 1)));
         this.fullHouse = this.double && this.triple;
 
-        if (this.quintuple) this.currentTier = 1;
-        else if (this.quadruple) this.currentTier = 3;
-        else if (this.largeStraight) this.currentTier = 2;
-        else if (this.fullHouse) this.currentTier = 2;
-        else if (this.smallStraight) this.currentTier = 3;
-        else this.currentTier = 4;
+        if (this.quintuple) {
+            this.currentTier = 1;
+            document.getElementsByClassName("ui-bestHand-value")[0].innerText = "Yacht!";
+        }
+        else if (this.quadruple) {
+            this.currentTier = 3;
+            document.getElementsByClassName("ui-bestHand-value")[0].innerText = "Four Of A Kind";
+        }
+        else if (this.largeStraight) {
+            this.currentTier = 2;
+            document.getElementsByClassName("ui-bestHand-value")[0].innerText = "L. Straight";
+        }
+        else if (this.fullHouse) {
+            this.currentTier = 2;
+            document.getElementsByClassName("ui-bestHand-value")[0].innerText = "Full House";
+        }
+        else if (this.smallStraight) {
+            this.currentTier = 3;
+            document.getElementsByClassName("ui-bestHand-value")[0].innerText = "S. Straight";
+        }
+        else {
+            this.currentTier = 4;
+            document.getElementsByClassName("ui-bestHand-value")[0].innerText = "-";
+        }
+
+        document.getElementsByClassName("ui-currentChoice-value")[0].innerText = this.choice;
     }
     
 }

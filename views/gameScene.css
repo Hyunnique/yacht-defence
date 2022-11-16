@@ -117,14 +117,14 @@
 }
 
 .ui-gameScene-bottomFloating .ui-goldicon {
-    height: 50%;
+    height: 70%;
 }
 
 .ui-gameScene-bottomFloating .ui-gold {
     min-width: 50%;
     text-align: center;
 
-    font-size: 1.3rem;
+    font-size: 1.5rem;
 }
 
 .ui-gameScene-bottomFloating .ui-unitArea {
@@ -154,4 +154,34 @@
 
 .ui-gameScene-bottomFloating .ui-unitArea-unitTierText {
     font-size: 1.3rem;
+}
+
+.ui-gameScene-bottomFloating .ui-itemArea {
+    position: absolute;
+    top: 5%;
+    left: 68%;
+    width: 26%;
+    height: 90%;
+}
+
+.ui-gameScene-bottomFloating .ui-itemArea-text {
+    position: absolute;
+    top: 5%;
+    left: 0;
+    font-size: 1.1rem;
+    color: red;
+}
+
+.ui-gameScene-bottomFloating .ui-itemArea-itemList {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 70%;
+    border: 1px solid black;
+    background-color: rgba(255, 255, 255, 0.4);
 }

@@ -378,4 +378,10 @@ export default class gameScene extends Phaser.Scene{
     }
     // DicePhase -> PlacePhase -> BattlePhase 순서가 반복되는 구조로 호출
 
+    // function receiveUnit(unitID)
+    // DicePhase를 마친 뒤 유닛을 선택하면 호출함
+    // Unit ID를 파라미터로 가짐
+    receiveUnit(unitID) {
+        ;
+    }
 }
