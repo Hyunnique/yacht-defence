@@ -2,22 +2,20 @@ import Config from "./Config";
 import Game from "./Game";
 
 import DefaultCss from "../views/default.css";
+import CommonCss from "../views/common.css";
 import DiceSceneCss from "../views/diceScene.css";
 import GameSceneCss from "../views/gameScene.css";
 import SilverFont_ttf from "./assets/font/Silver.ttf";
 import SilverFont_woff from "./assets/font/Silver.woff";
 
-import Dice1 from "./assets/images/dice_1.png";
-import Dice2 from "./assets/images/dice_2.png";
-import Dice3 from "./assets/images/dice_3.png";
-import Dice4 from "./assets/images/dice_4.png";
-import Dice5 from "./assets/images/dice_5.png";
+function importAll(r) {
+    let arr = {};
+    r.keys().map((item, index) => { arr[item.replace('./', '')] = r(item); });
+    return arr;
+}
 
-import DiceAnimation1 from "./assets/images/dice_animated_1.gif";
-import DiceAnimation2 from "./assets/images/dice_animated_2.gif";
-import DiceAnimation3 from "./assets/images/dice_animated_3.gif";
-import DiceAnimation4 from "./assets/images/dice_animated_4.gif";
-import DiceAnimation5 from "./assets/images/dice_animated_5.gif";
-
+const images = importAll(require.context("./assets/images", false, /\.(png|jpe?g|svg|gif)$/));
+const unitGIF = importAll(require.context("./assets/images/units", false, /\.gif$/));
+const unitSpriteSheets = importAll(require.context("./assets/spritesheets/units", false, /\.png$/));
 Game.Initialize(Config);
 export default Game;
