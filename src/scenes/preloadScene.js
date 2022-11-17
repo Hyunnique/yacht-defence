@@ -107,7 +107,7 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.spritesheet("shot", require("../assets/spritesheets/effect/shot_sprite.png"), {frameWidth: 361, frameHeight: 50});
         this.load.spritesheet("thunder", require("../assets/spritesheets/effect/thunder_sprite.png"), {frameWidth: 340, frameHeight: 340});
         this.load.spritesheet("tornado1", require("../assets/spritesheets/effect/tornado_1_sprite.png"), {frameWidth: 800, frameHeight: 800});
-        this.load.spritesheet("tornado2", require("../assets/spritesheets/effect/tornado_2_sprite.png"), {frameWidth: 800, frameHeight: 800});
+        this.load.spritesheet("tornado2", require("../assets/spritesheets/effect/tornado_2.png"), {frameWidth: 800, frameHeight: 800});
         this.load.spritesheet("tornadoOrg", require("../assets/spritesheets/effect/tornado_org_sprite.png"), {frameWidth: 800, frameHeight: 800});
         this.load.image("weaponProjectile1", require("../assets/spritesheets/effect/weapon_projectile_1.png"));
         this.load.image("weaponProjectile2", require("../assets/spritesheets/effect/weapon_projectile_2.png"));
