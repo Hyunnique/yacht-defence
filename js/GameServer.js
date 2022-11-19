@@ -115,7 +115,7 @@ module.exports = {
                 this.onDiceTimeEnd(roomId);
             });
         } else {
-            this.onPlacePhaseBegin();
+            this.onPlacePhaseBegin(roomId);
         }
     },
 
@@ -169,15 +169,19 @@ module.exports = {
     onPlacePhaseBegin(roomId) {
         this.emitAll(roomId, 'placePhase-begin', true);
         
-        this.createTimer(roomId, "placePhaseEnd", 30000, () => {
+        this.createTimer(roomId, "placePhaseEnd", 5000, () => {
             this.emitAll(roomId, 'placePhase-end', true);
-
-            this.createTimer(roomId, "battlePhaseEnd", 10000, () => {
-                this.emitAll(roomId, 'battlePhase-end', true);
-                this.Rooms[roomId].round++;
-
-                this.onRoundBegin(roomId);
-            });
+            this.onBattlePhaseBegin(roomId);
         });
     },
+
+    onBattlePhaseBegin(roomId) {
+        this.emitAll(roomId, 'battlePhase-begin', true);
+
+        this.createTimer(roomId, "battlePhaseEnd", 10000, () => {
+            this.emitAll(roomId, 'battlePhase-end', true);
+            this.Rooms[roomId].round++;
+            this.onRoundBegin(roomId);
+        });
+    }
 };
