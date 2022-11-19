@@ -12,6 +12,8 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         this.MaxHealth = mobData.Health;
         this.scale = mobData.scale;
         this.m_speed = mobData.m_speed;
+        this.deathAnimName = ""//나중에 DB에서 불러와 주세요
+        this.defence = 20; //나중에 DB에서 불러와 주세요
         this.mobNum = num;
         this.moveType = mobRoute;
 
@@ -94,7 +96,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         if (projectile.shooter.projectileType == 1) {
             if (projectile.alreadyPenetrated.findIndex(e => e == this.mobNum) == -1) {
                 projectile.alreadyPenetrated.push(this.mobNum);
-                this.Health -= projectile.attack;
+                this.Health -= projectile.shooter.calcDamage(this.defence);
                 projectile.hit();
             }
         }
@@ -102,7 +104,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
             projectile.explode();
         }
         else {
-            this.Health -= projectile.attack;
+            this.Health -= projectile.shooter.calcDamage(this.defence);
             projectile.hit();
         }
     }

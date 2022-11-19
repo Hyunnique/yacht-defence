@@ -6,7 +6,6 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
         super(scene, shooter.x, shooter.y, shooter.projectileName);
         this.scene.m_projectiles.add(this);
         this.shooter = shooter;
-        this.attack = shooter.attack;
         this.speed = 250;
         this.scale = 0.4;
         this.alpha = 1;
@@ -38,7 +37,7 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
     {
         var targets = this.scene.physics.overlapCirc(this.x, this.y, 80).filter(item => item.gameObject.isTarget == true);
             targets.forEach(element => {
-                element.gameObject.Health -= this.attack;
+                element.gameObject.Health -= projectile.shooter.calcDamage(element.gameObject.defence);
                 if (element.gameObject.Health <= 0)
                     this.shooter.kills++;
             });

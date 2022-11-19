@@ -18,7 +18,6 @@ import roundSheet from '../assets/specsheets/roundSheet.json';
 
 import healthBar from '../assets/images/healthBar.png';
 import Bullet from '../assets/projectiles/bullet.png';
-import BatSmallA from '../assets/spritesheets/mobs/BatSmallA.png';
 
 export default class PreLoadScene extends Phaser.Scene {
     constructor() {
@@ -131,7 +130,7 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.spritesheet("stoneGolemDie", require("../assets/spritesheets/boss/stone_golem_die_sprite.png"), {frameWidth: 340, frameHeight: 340});
 
         // 몹 로딩
-        this.load.spritesheet("BatSmallA", BatSmallA, { frameWidth: 16, frameHeight: 16 });
+        this.load.spritesheet("BatSmallA", require("../assets/spritesheets/mobs/BatSmallA.png"), { frameWidth: 16, frameHeight: 16 });
 
         // 사운드 관련 로딩
         this.load.audio("music", bgm);
