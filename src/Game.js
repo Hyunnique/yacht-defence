@@ -36,6 +36,8 @@ var Game = {
         });
 
         this.Socket.on("dicePhase-begin", (msg) => {
+            document.getElementsByClassName("ui-choiceMessage-value")[0].innerText = msg.roundChoice;
+            document.getElementsByClassName("ui-choiceMessage-value")[1].innerText = msg.roundChoice;
             this.showUI("diceScene-default");
         });
     },
