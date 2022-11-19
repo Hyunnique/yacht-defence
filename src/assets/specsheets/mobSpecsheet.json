@@ -144,9 +144,9 @@
         "mobAnim": "slimeKingWalk"
     },
     "BossMagician": {
-        "Health": 300,
-        "scale": 3,
-        "m_speed": 5,
+        "Health": 1,
+        "scale": 0.4,
+        "m_speed": 50,
         "defence": 40,
         "deathAnimName": "magicianDie",
         "deathSound": "death",
