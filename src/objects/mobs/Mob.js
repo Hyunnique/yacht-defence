@@ -12,7 +12,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         this.MaxHealth = mobData.Health;
         this.scale = mobData.scale;
         this.m_speed = mobData.m_speed;
-        this.deathAnimName = ""//나중에 DB에서 불러와 주세요
+        this.deathAnimName = mobData.deathAnimName;//나중에 DB에서 불러와 주세요
         this.defence = 20; //나중에 DB에서 불러와 주세요
         this.mobNum = num;
         this.moveType = mobRoute;
@@ -87,26 +87,16 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         });
         this.scene.events.off("update", this.update, this);
         this.scene.events.emit("mobDeath", this.mobNum);
-        
-        this.tween.remove();
-        if (this.deathAnimName == "maigcianDie") {
-            this.tween = scene.add.tween({
-                targets: this,
-                alpha: { from: 1, to: 0 },
-                ease: Phaser.Math.Easing.Linear,
-                duration: (28/40)*1000,
-                repeat: 1,
-                yoyo: false,
-            });
-        };
-        this.anims.play(this.deathAnimName);
         this.body.enable = false;
-        
-        this.scene.time.delayedCall(600, () => {
-            this.tween.remove();
-            this.healthBar.destroy();
-            this.destroy();
-        }, [], this.scene);
+
+        this.healthBar.destroy();
+        this.tween.remove();
+        this.play(this.deathAnimName);
+
+        var animConfig = this.scene.anims.get(this.deathAnimName);
+        var animtime = animConfig.frames.length * animConfig.msPerFrame;
+        console.log(animtime);
+        this.scene.time.delayedCall(animtime, () => { this.destroy() }, [], this.scene);
     }
     
     hit(projectile) {

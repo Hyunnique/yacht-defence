@@ -4,7 +4,7 @@
         "scale": 3,
         "m_speed": 5,
         "defence": 15,
-        "deathAnimName": "",
+        "deathAnimName": "boom3",
         "deathSound": "death",
         "mobAnim": "BatSmallA"
     },
@@ -13,7 +13,7 @@
         "scale": 3,
         "m_speed": 5,
         "defence": 15,
-        "deathAnimName": "",
+        "deathAnimName": "boom3",
         "deathSound": "death",
         "mobAnim": "WormA"
     },
@@ -22,7 +22,7 @@
         "scale": 3,
         "m_speed": 5,
         "defence": 15,
-        "deathAnimName": "",
+        "deathAnimName": "boom3",
         "deathSound": "death",
         "mobAnim": "BrainD"
     },
@@ -31,7 +31,7 @@
         "scale": 3,
         "m_speed": 5,
         "defence": 15,
-        "deathAnimName": "",
+        "deathAnimName": "boom3",
         "deathSound": "death",
         "mobAnim": "CloudA"
     },
@@ -40,7 +40,7 @@
         "scale": 3,
         "m_speed": 5,
         "defence": 15,
-        "deathAnimName": "",
+        "deathAnimName": "boom3",
         "deathSound": "death",
         "mobAnim": "DyeD"
     },
@@ -49,7 +49,7 @@
         "scale": 3,
         "m_speed": 5,
         "defence": 15,
-        "deathAnimName": "",
+        "deathAnimName": "boom3",
         "deathSound": "death",
         "mobAnim": "EyeBallA"
     },
@@ -58,7 +58,7 @@
         "scale": 3,
         "m_speed": 5,
         "defence": 15,
-        "deathAnimName": "",
+        "deathAnimName": "boom3",
         "deathSound": "death",
         "mobAnim": "GhastB"
     },
@@ -67,7 +67,7 @@
         "scale": 3,
         "m_speed": 5,
         "defence": 15,
-        "deathAnimName": "",
+        "deathAnimName": "boom3",
         "deathSound": "death",
         "mobAnim": "HeadA"
     },
@@ -76,7 +76,7 @@
         "scale": 3,
         "m_speed": 5,
         "defence": 15,
-        "deathAnimName": "",
+        "deathAnimName": "boom3",
         "deathSound": "death",
         "mobAnim": "MummyC"
     },
@@ -85,7 +85,7 @@
         "scale": 3,
         "m_speed": 5,
         "defence": 15,
-        "deathAnimName": "",
+        "deathAnimName": "boom3",
         "deathSound": "death",
         "mobAnim": "PuddleA"
     },
@@ -94,7 +94,7 @@
         "scale": 3,
         "m_speed": 5,
         "defence": 15,
-        "deathAnimName": "",
+        "deathAnimName": "boom3",
         "deathSound": "death",
         "mobAnim": "ScorpionC"
     },
@@ -103,7 +103,7 @@
         "scale": 3,
         "m_speed": 5,
         "defence": 15,
-        "deathAnimName": "",
+        "deathAnimName": "boom3",
         "deathSound": "death",
         "mobAnim": "SkullD"
     },
@@ -112,7 +112,7 @@
         "scale": 3,
         "m_speed": 5,
         "defence": 15,
-        "deathAnimName": "",
+        "deathAnimName": "boom3",
         "deathSound": "death",
         "mobAnim": "SlimeSmallA"
     },
@@ -121,7 +121,7 @@
         "scale": 3,
         "m_speed": 5,
         "defence": 15,
-        "deathAnimName": "",
+        "deathAnimName": "boom3",
         "deathSound": "death",
         "mobAnim": "TentacleC"
     },
