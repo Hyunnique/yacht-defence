@@ -20,7 +20,8 @@ module.exports = {
             maxPlayers: 1, // Configurable for development or singleplayer
             counter: {
                 ready: 0,
-                handConfirm: 0
+                handConfirm: 0,
+                handReceived: 0
             },
             timer: {
 
@@ -54,12 +55,13 @@ module.exports = {
             if (this.Rooms[currentRoomId].sockets.length == this.Rooms[currentRoomId].maxPlayers) {
                 this.emitAll(currentRoomId, 'matchmaking-done', this.currentRoomId);
                 this.createRoom(); // 다음 매칭을 위해 미리 방을 생성해둠
-                this.onGameReady(socket, currentRoomId);
             } else {
                 this.emitAll(currentRoomId, 'matchmaking-wait', this.Rooms[currentRoomId].sockets.length);
             }
 
+            this.onGameReady(socket, currentRoomId);
             this.onDiceConfirm(socket, currentRoomId);
+            this.onDiceResult(socket, currentRoomId);
 
             socket.on('disconnect', () => {
                 this.Rooms[currentRoomId].sockets.splice(currentRoomIndex, 1);
@@ -80,6 +82,14 @@ module.exports = {
                         hp: 1000,
                         maxhp: 1000,
                         gold: 0,
+                        currentHand: "",
+                        currentHandTier: 3,
+                        currentChoice: -1
+                    });
+
+                    this.Rooms[roomId].sockets[i].emit('game-defaultData', {
+                        playerCount: this.Rooms[roomId].maxPlayers,
+                        playerIndex: i
                     });
                 }
 
@@ -90,15 +100,22 @@ module.exports = {
 
     onRoundBegin(roomId) {
         if (this.Rooms[roomId].round % 2 == 1) {
+            // 홀수 라운드면 Dice Phase 먼저 진행
+            this.Rooms[roomId].counter.handConfirm = 0;
+            this.Rooms[roomId].counter.handReceived = 0;
+
             this.Rooms[roomId].roundChoice = Math.floor(Math.random() * 25) + 5;
 
             this.emitAll(roomId, 'dicePhase-begin', {
-                roundChoice: this.Rooms[roomId].roundChoice
+                roundChoice: this.Rooms[roomId].roundChoice,
+                timeLimit: 30,
             });
 
-            this.createTimer(roomId, "dicePhaseEnd", 30, () => {
+            this.createTimer(roomId, "dicePhaseEnd", 30000, () => {
                 this.onDiceTimeEnd(roomId);
             });
+        } else {
+            this.onPlacePhaseBegin();
         }
     },
 
@@ -107,7 +124,9 @@ module.exports = {
             this.Rooms[roomId].counter.handConfirm++;
 
             if (this.Rooms[roomId].counter.handConfirm >= this.Rooms[roomId].maxPlayers) {
-                this.emitAll(roomId, 'dicePhase-showResult', "temp");
+                clearTimeout(this.Rooms[roomId].timer["dicePhaseEnd"]);
+                delete this.Rooms[roomId].timer["dicePhaseEnd"];
+                this.onDiceTimeEnd(roomId);
             }
             else {
                 this.emitAll(roomId, 'dicePhase-confirmWait', this.Rooms[roomId].counter.handConfirm + " / " + this.Rooms[roomId].maxPlayers);
@@ -116,6 +135,49 @@ module.exports = {
     },
 
     onDiceTimeEnd(roomId) {
+        this.emitAll(roomId, 'dicePhase-forceConfirm', true);
+    },
 
+    onDiceResult(socket, roomId) {
+        socket.on('dicePhase-handInfo', (msg) => {
+            this.Rooms[roomId].players[msg.index].currentHand = msg.hand;
+            this.Rooms[roomId].players[msg.index].currentChoice = msg.choice;
+            this.Rooms[roomId].players[msg.index].currentHandTier = msg.handTier;
+
+            this.Rooms[roomId].counter.handReceived++;
+
+
+            if (this.Rooms[roomId].counter.handReceived >= this.Rooms[roomId].maxPlayers) {
+
+                let resultArray = [];
+                for (let player of this.Rooms[roomId].players) {
+                    resultArray.push({ name: player.name, hand: player.currentHand, choice: player.currentChoice, handTier: player.currentHandTier, choiceDiff: player.currentChoice - this.Rooms[roomId].roundChoice });
+                }
+
+                resultArray.sort((a, b) => {
+                    return Math.abs(a.choiceDiff) - Math.abs(b.choiceDiff);
+                });
+
+                this.emitAll(roomId, 'dicePhase-result', resultArray);
+                this.createTimer(roomId, "dicePhaseResultWait", 5000, () => {
+                    this.onPlacePhaseBegin(roomId);
+                });
+            }
+        });
+    },
+
+    onPlacePhaseBegin(roomId) {
+        this.emitAll(roomId, 'placePhase-begin', true);
+        
+        this.createTimer(roomId, "placePhaseEnd", 30000, () => {
+            this.emitAll(roomId, 'placePhase-end', true);
+
+            this.createTimer(roomId, "battlePhaseEnd", 10000, () => {
+                this.emitAll(roomId, 'battlePhase-end', true);
+                this.Rooms[roomId].round++;
+
+                this.onRoundBegin(roomId);
+            });
+        });
     },
 };

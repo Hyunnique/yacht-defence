@@ -14,6 +14,7 @@ export default class diceScene extends Phaser.Scene{
     throwLeft = 3;                      // 남은 던질 기회
     leftTime = 3;                       // 남은 시간
     currentTier = -1;                   // 현재 나온 주사위로 계산된 최대 티어
+    bestHand = "";                      // 현재 최고 족보
 
     one = 0;
     two = 0;
@@ -90,13 +91,6 @@ export default class diceScene extends Phaser.Scene{
             document.getElementsByClassName("ui-timelimit-value")[0].innerText = this.leftTime;
             this.time.delayedCall(1000, this.timeCheck, [], this);
         }
-        else {
-            // 그냥 지금 나온 티어로 확정시키기
-            this.closeScene();
-            Game.clearUI();
-            Game.showUI("gameScene-topFloating");
-            Game.showUI("gameScene-bottomFloating");
-        }
     }
 
     // diceScene 종료
@@ -109,7 +103,6 @@ export default class diceScene extends Phaser.Scene{
         this.savedDice = [];                     
         this.dices = [];                         
         this.throwLeft = 3;                      
-        this.leftTime = 600;                       
         this.currentTier = -1;
     
         this.one = 0;
@@ -219,30 +212,46 @@ export default class diceScene extends Phaser.Scene{
 
         if (this.quintuple) {
             this.currentTier = 1;
-            document.getElementsByClassName("ui-bestHand-value")[0].innerText = "Yacht!";
+            this.bestHand = "Yacht!";
         }
         else if (this.quadruple) {
             this.currentTier = 3;
-            document.getElementsByClassName("ui-bestHand-value")[0].innerText = "4 of A Kind";
+            this.bestHand = "4 of A Kind";
         }
         else if (this.largeStraight) {
             this.currentTier = 2;
-            document.getElementsByClassName("ui-bestHand-value")[0].innerText = "L. Straight";
+            this.bestHand = "L. Straight";
         }
         else if (this.fullHouse) {
             this.currentTier = 2;
-            document.getElementsByClassName("ui-bestHand-value")[0].innerText = "Full House";
+            this.bestHand = "Full House";
         }
         else if (this.smallStraight) {
             this.currentTier = 3;
-            document.getElementsByClassName("ui-bestHand-value")[0].innerText = "S. Straight";
+            this.bestHand = "S. Straight";
         }
         else {
             this.currentTier = 4;
-            document.getElementsByClassName("ui-bestHand-value")[0].innerText = "-";
+            this.bestHand = "-";
         }
 
+        document.getElementsByClassName("ui-bestHand-value")[0].innerText = this.bestHand;
         document.getElementsByClassName("ui-currentChoice-value")[0].innerText = this.choice;
+
+        switch (this.currentTier) {
+            case 1:
+                document.getElementsByClassName("ui-bestHand-value")[0].style.color = "#ff1b1b";
+                break;
+            case 2:
+                document.getElementsByClassName("ui-bestHand-value")[0].style.color = "#ffd700";
+                break;
+            case 3:
+                document.getElementsByClassName("ui-bestHand-value")[0].style.color = "#d5d5d5";
+                break;
+            default:
+                document.getElementsByClassName("ui-bestHand-value")[0].style.color = "#954c4c";
+                break;
+        };
     }
     
 }

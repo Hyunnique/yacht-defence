@@ -85,3 +85,7 @@ body
     -moz-animation: fadein 1s;
     -o-animation: fadein 1s;
 }
+
+.text-outline {
+    text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+}
