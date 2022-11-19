@@ -1,7 +1,16 @@
+function importAll(r) {
+    let arr = {};
+    r.keys().map((item, index) => { arr[item.replace('./', '')] = r(item); });
+    return arr;
+}
+
+const unitGIF = importAll(require.context("./assets/images/units", false, /\.gif$/));
+import unitSpecSheets from "./assets/specsheets/unitSpecsheet.json";
 
 // 전역변수로 유지해서 Scene에서도 접근할 수 있게 함
 var Game = {
     GameObject: null,
+    Socket: null,
     
     Initialize(config) {
         this.GameObject = new Phaser.Game(config);
@@ -9,7 +18,7 @@ var Game = {
         this.resizeHandler(null);
         window.onresize = this.resizeHandler;
 
-        console.log(this.GameObject);
+        this.Socket = io.connect("http://localhost:8080");
     },
 
     resizeHandler(e) { // 2:1의 비율을 유지하면서 보여줄 수 있는 최대의 크기로 게임 출력
@@ -55,6 +64,30 @@ var Game = {
                     setTimeout(() => {
                         this.hideUI("diceScene-result");
                         this.showUI("common-unitReward");
+
+                        let unitCount = Object.keys(unitSpecSheets).length;
+                        let unitArray = [];
+
+                        for (let i = 0; i < 3; i++) {
+                            while (true) {
+                                let _r = Math.floor(Math.random() * unitCount);
+                                if (!unitArray.includes(_r)) {
+                                    unitArray.push(_r);
+                                    break;
+                                }
+                            }
+                        }
+
+                        for (let i = 0; i < 3; i++) {
+                            document.getElementsByClassName("ui-unitReward-unitDisplayImage")[i].style.backgroundImage = "url('" + unitGIF["unit_" + unitArray[i] + ".gif"] + "')";
+                            document.getElementsByClassName("ui-unitReward-unitTitle")[i].innerText = unitSpecSheets["unit" + unitArray[i]].idleSprite;
+                            document.getElementsByClassName("ui-unitReward-unitType")[i].innerText = "?";
+                            document.getElementsByClassName("ui-unitReward-unitSpec-atk")[i].innerText = "ATK : " + unitSpecSheets["unit" + unitArray[i]].attack;
+                            document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : " + unitSpecSheets["unit" + unitArray[i]].aspd;
+                            document.getElementsByClassName("ui-unitReward-unitSpec-range")[i].innerText = "RANGE : " + unitSpecSheets["unit" + unitArray[i]].range;
+                            document.getElementsByClassName("ui-unitReward-unitSkill")[i].innerText = "Skills : -";
+
+                        }
                     }, 3000);
                 }
                 break;
