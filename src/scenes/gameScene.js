@@ -335,8 +335,10 @@ export default class gameScene extends Phaser.Scene{
 
     waitForReady()
     {
+        /*
         this.PhaseText = "Waiting for all players ready..."
         this.phaseTimer = this.time.delayedCall(1000, this.toDicePhase, [], this);
+        */
     }
 
     toDicePhase() {
@@ -345,9 +347,7 @@ export default class gameScene extends Phaser.Scene{
         this.input.setDraggable(this.m_player, false);
         this.roundNum++;
         this.globalnum = 1;
-        this.phaseTimer = this.time.delayedCall(1000, this.toPlacePhase, [], this);
         this.scene.pause().launch('diceScene');
-        Game.showScene("diceScene");
     }
     toPlacePhase() {
         this.PhaseText = "Place Phase";
@@ -365,14 +365,14 @@ export default class gameScene extends Phaser.Scene{
             }
         }
         console.log(this.itemList);
-        this.phaseTimer = this.time.delayedCall(20000, this.toBattlePhase, [], this);
+        //this.phaseTimer = this.time.delayedCall(20000, this.toBattlePhase, [], this);
     }
     toBattlePhase() {
         this.m_player.forEach(element => element.giveBuff());
         this.PhaseText = "Battle Phase";
         this.input.setDraggable(this.m_player, false);
         this.startRound();
-        this.phaseTimer = this.time.delayedCall(6000, this.toDicePhase, [], this);
+        //this.phaseTimer = this.time.delayedCall(6000, this.toDicePhase, [], this);
     }
     // DicePhase -> PlacePhase -> BattlePhase 순서가 반복되는 구조로 호출
 

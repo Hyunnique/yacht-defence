@@ -14,6 +14,8 @@ var Game = {
     GameObject: null,
     GameConfig: null,
     Socket: null,
+    PlayerCount: 4,
+    PlayerIndex: -1,
     shopOpen: false,
     
     Initialize(config) {
@@ -36,11 +38,155 @@ var Game = {
             this.GameObject = new Phaser.Game(this.GameConfig);
         });
 
+        this.Socket.on("game-defaultData", (msg) => {
+            this.PlayerCount = msg.playerCount;
+            this.PlayerIndex = msg.playerIndex;
+        });
+
         this.Socket.on("dicePhase-begin", (msg) => {
+            this.showScene("diceScene");
+            this.GameObject.scene.getScene("diceScene").leftTime = msg.timeLimit;
             document.getElementsByClassName("ui-choiceMessage-value")[0].innerText = msg.roundChoice;
             document.getElementsByClassName("ui-choiceMessage-value")[1].innerText = msg.roundChoice;
             this.showUI("diceScene-default");
         });
+
+        this.Socket.on("dicePhase-forceConfirm", (msg) => {
+            this.Socket.emit('dicePhase-handInfo', {
+                index: this.PlayerIndex,
+                hand: this.GameObject.scene.getScene("diceScene").bestHand,
+                handTier: this.GameObject.scene.getScene("diceScene").currentTier,
+                choice: this.GameObject.scene.getScene("diceScene").choice
+            });
+        });
+
+        this.Socket.on("dicePhase-result", (msg) => {
+            for (let i = 0; i < 4; i++) {
+                document.getElementsByClassName("ui-resultTable")[0].getElementsByTagName("tr")[i+1].style.display = "none";
+            }
+
+            for (let i = 0; i < this.PlayerCount; i++) {
+                document.getElementsByClassName("ui-resultTable")[0].getElementsByTagName("tr")[i+1]
+                .getElementsByTagName("td")[1].innerText = msg[i].name;
+                document.getElementsByClassName("ui-resultTable")[0].getElementsByTagName("tr")[i+1]
+                .getElementsByTagName("td")[2].innerText = msg[i].choice + "(" + (msg[i].choiceDiff > 0 ? "+" : "") + msg[i].choiceDiff + ")";
+                document.getElementsByClassName("ui-resultTable")[0].getElementsByTagName("tr")[i+1]
+                .getElementsByTagName("td")[3].innerText = msg[i].hand;
+
+                switch (msg[i].handTier) {
+                    case 1:
+                        document.getElementsByClassName("ui-resultTable")[0].getElementsByTagName("tr")[i+1]
+                        .getElementsByTagName("td")[3].style.color = "#ff1b1b";
+                        break;
+                    case 2:
+                        document.getElementsByClassName("ui-resultTable")[0].getElementsByTagName("tr")[i+1]
+                        .getElementsByTagName("td")[3].style.color = "#ffd700";
+                        break;
+                    case 3:
+                        document.getElementsByClassName("ui-resultTable")[0].getElementsByTagName("tr")[i+1]
+                        .getElementsByTagName("td")[3].style.color = "#d5d5d5";
+                        break;
+                    default:
+                        document.getElementsByClassName("ui-resultTable")[0].getElementsByTagName("tr")[i+1]
+                        .getElementsByTagName("td")[3].style.color = "#954c4c";
+                        break;
+                };
+
+                document.getElementsByClassName("ui-resultTable")[0].getElementsByTagName("tr")[i+1].style.display = "table-row";
+            }
+
+            this.hideUI("diceScene-default");
+            this.showUI("diceScene-result");
+
+            setTimeout(() => {
+                this.hideUI("diceScene-result");
+                this.showUI("common-unitReward");
+
+                let currentTier = this.GameObject.scene.getScene("diceScene").currentTier;
+                let tier = {
+                    "tier1": [2, 22, 26, 27],
+                    "tier2": [24, 33, 34, 35, 38, 41, 43, 45, 50, 51, 55, 56],
+                    "tier3": [3, 9, 10, 11, 13, 19, 23, 25, 31, 32, 40, 47, 52, 53, 57, 59, 60, 62, 63],
+                    "tier4": [0, 1, 4, 5, 6, 7, 8, 14, 15, 16, 17, 18, 20, 21, 28, 29, 30, 36, 37, 39, 42, 44, 46 ,48, 49, 54, 58, 61]
+                }
+                let unitCount = tier["tier" + currentTier].length;
+                let unitArray = [];
+
+                for (let i = 0; i < 3; i++) {
+                    switch (currentTier) {
+                        case 1:
+                            document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.color = "#ff1b1b";
+                            break;
+                        case 2:
+                            document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.color = "#ffd700";
+                            break;
+                        case 3:
+                            document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.color = "#d5d5d5";
+                            break;
+                        default:
+                            document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.color = "#954c4c";
+                            break;
+                    }
+                }
+                for (let i = 0; i < 3; i++) {
+                    while (true) {
+                        let _r = Math.floor(Math.random() * unitCount);
+                        let unitNo = tier["tier" + currentTier][_r];
+                        if (!unitArray.includes(unitNo)) {
+                            unitArray.push(unitNo);
+                            break;
+                        }
+                    }
+                }
+
+                for (let i = 0; i < 3; i++) {
+                    let unitType = ""
+                    switch (unitSpecSheets["unit" + unitArray[i]].unitType) {
+                        case 0:
+                            unitType = "공격형";
+                            break;
+                        case 1:
+                            unitType = "밸런스형";
+                            break;
+                        case 2: 
+                            unitType = "속도형";
+                            break;
+                        case 3:
+                            unitType = "지원형";
+                            break;
+                    }
+
+                    document.getElementsByClassName("ui-unitReward-unitDisplayImage")[i].style.backgroundImage = "url('" + unitGIF["unit_" + unitArray[i] + ".gif"] + "')";
+                    document.getElementsByClassName("ui-unitReward-unitTitle")[i].innerText = unitSpecSheets["unit" + unitArray[i]].name;
+                    if (unitSpecSheets["unit" + unitArray[i]].name.length >= 13) 
+                        document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.fontSize = (1.2 - 0.1*(unitSpecSheets["unit" + unitArray[i]].name.length - 12)) + "rem" 
+                    document.getElementsByClassName("ui-unitReward-unitType")[i].innerText = unitType;
+                    document.getElementsByClassName("ui-unitReward-unitSpec-atk")[i].innerText = "ATK : " + unitSpecSheets["unit" + unitArray[i]].attack;
+                    document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : " + unitSpecSheets["unit" + unitArray[i]].aspd;
+                    document.getElementsByClassName("ui-unitReward-unitSpec-range")[i].innerText = "RANGE : " + unitSpecSheets["unit" + unitArray[i]].range;
+                    document.getElementsByClassName("ui-unitReward-unitSkill")[i].innerText = "";
+
+                    document.getElementsByClassName("ui-unitReward-unit")[i].attributes.idx.value = unitArray[i];
+                    document.getElementsByClassName("ui-unitReward-unit")[i].attributes.tier.value = currentTier;
+                }
+            }, 5000);
+        });
+
+        this.Socket.on('placePhase-begin', (msg) => {
+            this.GameObject.scene.getScene("diceScene").scene.stop().resume("gameScene");
+        });
+
+        this.Socket.on('placePhase-end', (msg) => {
+            this.GameObject.scene.getScene("gameScene").toBattlePhase();
+        });
+
+        this.Socket.on('battlePhase-end', (msg) => {
+            // ?
+        });
+    },
+
+    onPreloadDone() {
+        this.Socket.emit("game-ready", true);
     },
 
     resizeHandler(e) { // 2:1의 비율을 유지하면서 보여줄 수 있는 최대의 크기로 게임 출력
@@ -60,7 +206,7 @@ var Game = {
     showScene(sceneName) {
         switch (sceneName) {
             case "diceScene":
-                this.Socket.emit("game-ready", true);
+                this.GameObject.scene.getScene("gameScene").toDicePhase();
                 this.clearUI();
                 this.shopOpen = false;
                 this.showUI("gameScene-topFloating");
@@ -76,7 +222,7 @@ var Game = {
                     e.onclick = (g) => {
                         this.GameObject.scene.getScene("gameScene").receiveUnit(parseInt(e.attributes.idx.value), parseInt(e.attributes.tier.value));
                         this.hideUI("common-unitReward");
-                        this.GameObject.scene.getScene("diceScene").scene.stop().resume("gameScene");
+
                         document.getElementsByClassName("ui-goldArea")[0].onclick = (e) => {
                             if (!this.shopOpen) {
                                 this.openShop();
@@ -90,68 +236,9 @@ var Game = {
                     };
                 });
 
+                // DicePhase - 주사위 확정 버튼 누르면
                 document.getElementsByClassName("ui-diceConfirmButton")[0].onclick = (e) => {
-                    // 임시로 확정 버튼 누르면 바로 다음 단계 진행
-                    
-                    this.hideUI("diceScene-default");
-                    this.showUI("diceScene-result");
-
-                    setTimeout(() => {
-                        this.hideUI("diceScene-result");
-                        this.showUI("common-unitReward");
-
-                        let currentTier = this.GameObject.scene.getScene("diceScene").currentTier;
-                        let tier = {
-                            "tier1": [2, 22, 26, 27],
-                            "tier2": [24, 33, 34, 35, 38, 41, 43, 45, 50, 51, 55, 56],
-                            "tier3": [3, 9, 10, 11, 13, 19, 23, 25, 31, 32, 40, 47, 52, 53, 57, 59, 60, 62, 63],
-                            "tier4": [0, 1, 4, 5, 6, 7, 8, 14, 15, 16, 17, 18, 20, 21, 28, 29, 30, 36, 37, 39, 42, 44, 46 ,48, 49, 54, 58, 61]
-                        }
-                        let unitCount = tier["tier" + currentTier].length;
-                        let unitArray = [];
-
-                        for (let i = 0; i < 3; i++) {
-                            while (true) {
-                                let _r = Math.floor(Math.random() * unitCount);
-                                let unitNo = tier["tier" + currentTier][_r];
-                                if (!unitArray.includes(unitNo)) {
-                                    unitArray.push(unitNo);
-                                    break;
-                                }
-                            }
-                        }
-
-                        for (let i = 0; i < 3; i++) {
-                            let unitType = ""
-                            switch (unitSpecSheets["unit" + unitArray[i]].unitType) {
-                                case 0:
-                                    unitType = "공격형";
-                                    break;
-                                case 1:
-                                    unitType = "밸런스형";
-                                    break;
-                                case 2: 
-                                    unitType = "속도형";
-                                    break;
-                                case 3:
-                                    unitType = "지원형";
-                                    break;
-                            }   
-                            console.log(unitSpecSheets["unit" + unitArray[i]].name.length);
-                            document.getElementsByClassName("ui-unitReward-unitDisplayImage")[i].style.backgroundImage = "url('" + unitGIF["unit_" + unitArray[i] + ".gif"] + "')";
-                            document.getElementsByClassName("ui-unitReward-unitTitle")[i].innerText = unitSpecSheets["unit" + unitArray[i]].name;
-                            if (unitSpecSheets["unit" + unitArray[i]].name.length >= 13) 
-                                document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.fontSize = (1.2 - 0.1*(unitSpecSheets["unit" + unitArray[i]].name.length - 12)) + "rem" 
-                            document.getElementsByClassName("ui-unitReward-unitType")[i].innerText = unitType;
-                            document.getElementsByClassName("ui-unitReward-unitSpec-atk")[i].innerText = "ATK : " + unitSpecSheets["unit" + unitArray[i]].attack;
-                            document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : " + unitSpecSheets["unit" + unitArray[i]].aspd;
-                            document.getElementsByClassName("ui-unitReward-unitSpec-range")[i].innerText = "RANGE : " + unitSpecSheets["unit" + unitArray[i]].range;
-                            document.getElementsByClassName("ui-unitReward-unitSkill")[i].innerText = "";
-
-                            document.getElementsByClassName("ui-unitReward-unit")[i].attributes.idx.value = unitArray[i];
-                            document.getElementsByClassName("ui-unitReward-unit")[i].attributes.tier.value = currentTier;
-                        }
-                    }, 3000);
+                    this.Socket.emit('dicePhase-handConfirm', true);
                 }
                 break;
             case "gameScene":
