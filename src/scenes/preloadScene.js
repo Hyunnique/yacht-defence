@@ -1,6 +1,5 @@
 import Phaser from "phaser";
 import Game from "../Game";
-import bgm from "../assets/sounds/WaveofEmptiness.mp3";
 import batDeath from "../assets/sounds/death.mp3";
 import bulletShoot from "../assets/sounds/shoot.mp3";
 
@@ -133,7 +132,7 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.spritesheet("BatSmallA", require("../assets/spritesheets/mobs/BatSmallA.png"), { frameWidth: 16, frameHeight: 16 });
 
         // 사운드 관련 로딩
-        this.load.audio("music", bgm);
+        //this.load.audio("music", bgm);
         this.load.audio("death", batDeath);
         this.load.audio("shoot", bulletShoot);
 
