@@ -1,5 +1,7 @@
 {
     "unit0": {
+        "name": "고블린",
+        "unitType": 1,
         "attack": 100,
         "aspd": 0.8,
         "range": 240,
@@ -10,9 +12,14 @@
         "attackAnim": "unit0atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit1": {
+        "name": "성문 경비병",
+        "unitType": 0,
         "attack": 100,
         "aspd": 0.8,
         "range": 240,
@@ -23,9 +30,14 @@
         "attackAnim": "unit1atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit2": {
+        "name": "성기사 단장 발키리",
+        "unitType": 3,
         "attack": 100,
         "aspd": 0.8,
         "range": 576,
@@ -36,9 +48,14 @@
         "attackAnim": "unit2atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit3": {
+        "name": "다크엘프 궁수",
+        "unitType": 2,
         "attack": 100,
         "aspd": 0.8,
         "range": 576,
@@ -52,6 +69,8 @@
         "projectileType": 0
     },
     "unit4": {
+        "name": "견습 검사",
+        "unitType": 1,
         "attack": 100,
         "aspd": 0.8,
         "range": 168,
@@ -62,9 +81,14 @@
         "attackAnim": "unit4atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit5": {
+        "name": "고블린 도적",
+        "unitType": 2,
         "attack": 100,
         "aspd": 0.8,
         "range": 168,
@@ -75,9 +99,14 @@
         "attackAnim": "unit5atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit6": {
+        "name": "산적",
+        "unitType": 0,
         "attack": 100,
         "aspd": 0.8,
         "range": 168,
@@ -88,9 +117,14 @@
         "attackAnim": "unit6atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit7": {
+        "name": "고블린 주술사",
+        "unitType": 1,
         "attack": 100,
         "aspd": 0.8,
         "range": 384,
@@ -101,9 +135,14 @@
         "attackAnim": "unit7atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit8": {
+        "name": "스켈레톤 사냥꾼",
+        "unitType": 2,
         "attack": 100,
         "aspd": 0.8,
         "range": 576,
@@ -114,9 +153,14 @@
         "attackAnim": "unit8atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit9": {
+        "name": "불의 마도사",
+        "unitType": 1,
         "attack": 100,
         "aspd": 0.8,
         "range": 384,
@@ -127,9 +171,14 @@
         "attackAnim": "unit9atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 2
     },
     "unit10": {
+        "name": "암살 닌자",
+        "unitType": 2,
         "attack": 100,
         "aspd": 0.8,
         "range": 480,
@@ -140,9 +189,14 @@
         "attackAnim": "unit10atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit11": {
+        "name": "숲 관찰대원",
+        "unitType": 0,
         "attack": 100,
         "aspd": 0.8,
         "range": 576,
@@ -153,9 +207,14 @@
         "attackAnim": "unit11atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit12": {
+        "name": "용기병 전투원",
+        "unitType": 1,
         "attack": 100,
         "aspd": 0.8,
         "range": 168,
@@ -166,9 +225,14 @@
         "attackAnim": "unit12atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit13": {
+        "name": "얼음 마도사",
+        "unitType": 1,
         "attack": 100,
         "aspd": 0.8,
         "range": 384,
@@ -179,9 +243,14 @@
         "attackAnim": "unit13atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 2
     },
     "unit14": {
+        "name": "마도 수련생",
+        "unitType": 1,
         "attack": 100,
         "aspd": 0.8,
         "range": 384,
@@ -192,9 +261,14 @@
         "attackAnim": "unit14atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit15": {
+        "name": "왕궁 수호병",
+        "unitType": 0,
         "attack": 100,
         "aspd": 0.8,
         "range": 168,
@@ -205,9 +279,14 @@
         "attackAnim": "unit15atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit16": {
+        "name": "바이킹",
+        "unitType": 0,
         "attack": 100,
         "aspd": 0.8,
         "range": 168,
@@ -218,9 +297,14 @@
         "attackAnim": "unit16atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit17": {
+        "name": "스켈레톤 검사",
+        "unitType": 0,
         "attack": 100,
         "aspd": 0.8,
         "range": 168,
@@ -231,9 +315,14 @@
         "attackAnim": "unit17atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit18": {
+        "name": "스켈레톤 주술사",
+        "unitType": 0,
         "attack": 100,
         "aspd": 0.8,
         "range": 384,
@@ -244,9 +333,14 @@
         "attackAnim": "unit18atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit19": {
+        "name": "용기병 전사",
+        "unitType": 1,
         "attack": 100,
         "aspd": 0.8,
         "range": 240,
@@ -257,9 +351,14 @@
         "attackAnim": "unit19atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 1
     },
     "unit20": {
+        "name": "화염족 견습 주술사",
+        "unitType": 1,
         "attack": 100,
         "aspd": 0.8,
         "range": 384,
@@ -270,9 +369,14 @@
         "attackAnim": "unit20atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit21": {
+        "name": "숲 사냥꾼",
+        "unitType": 2,
         "attack": 100,
         "aspd": 0.8,
         "range": 576,
@@ -283,9 +387,14 @@
         "attackAnim": "unit21atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit22": {
+        "name": "휘몰아치는 화염의 에단",
+        "unitType": 1,
         "attack": 100,
         "aspd": 0.8,
         "range": 384,
@@ -296,9 +405,14 @@
         "attackAnim": "unit22atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 2
     },
     "unit23": {
+        "name": "암살대 대원",
+        "unitType": 2,
         "attack": 100,
         "aspd": 0.8,
         "range": 480,
@@ -309,9 +423,14 @@
         "attackAnim": "unit23atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit24": {
+        "name": "힘의 부족 대족장 후씽크",
+        "unitType": 0,
         "attack": 100,
         "aspd": 0.8,
         "range": 576,
@@ -322,9 +441,14 @@
         "attackAnim": "unit24atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 1
     },
     "unit25": {
+        "name": "견습 성기사단원",
+        "unitType": 3,
         "attack": 100,
         "aspd": 0.8,
         "range": 384,
@@ -335,9 +459,14 @@
         "attackAnim": "unit25atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit26": {
+        "name": "되살아난 마검사 펠소닌",
+        "unitType": 1,
         "attack": 100,
         "aspd": 0.8,
         "range": 384,
@@ -348,9 +477,14 @@
         "attackAnim": "unit26atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 2
     },
     "unit27": {
+        "name": "버서커 카이토닐",
+        "unitType": 2,
         "attack": 100,
         "aspd": 0.8,
         "range": 168,
@@ -361,9 +495,14 @@
         "attackAnim": "unit27atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit28": {
+        "name": "춘식",
+        "unitType": 0,
         "attack": 100,
         "aspd": 0.8,
         "range": 240,
@@ -374,9 +513,14 @@
         "attackAnim": "unit28atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit29": {
+        "name": "강도",
+        "unitType": 2,
         "attack": 100,
         "aspd": 0.8,
         "range": 168,
@@ -387,22 +531,32 @@
         "attackAnim": "unit29atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit30": {
+        "name": "창술사",
+        "unitType": 1,
         "attack": 100,
         "aspd": 0.8,
         "range": 240,
         "penetration": 0.1,
-        "attackType": 0,
+        "attackType": 1,
         "idleSprite": "unit30idle",
         "idleAnim": "unit30idle",
         "attackAnim": "unit30atk",
         "projectileName": "",
         "projectileAnimName": "",
-        "projectileType": 0
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
+        "projectileType": 2
     },
     "unit31": {
+        "name": "폭탄병",
+        "unitType": 1,
         "attack": 100,
         "aspd": 0.8,
         "range": 480,
@@ -413,9 +567,14 @@
         "attackAnim": "unit31atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 2
     },
     "unit32": {
+        "name": "스켈레톤 용기사",
+        "unitType": 1,
         "attack": 100,
         "aspd": 0.8,
         "range": 168,
@@ -426,9 +585,14 @@
         "attackAnim": "unit32atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit33": {
+        "name": "기공사 달인 테스",
+        "unitType": 3,
         "attack": 100,
         "aspd": 0.8,
         "range": 384,
@@ -439,9 +603,14 @@
         "attackAnim": "unit33atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit34": {
+        "name": "아류 기공사 소크라",
+        "unitType": 0,
         "attack": 100,
         "aspd": 0.8,
         "range": 384,
@@ -452,9 +621,14 @@
         "attackAnim": "unit34atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit35": {
+        "name": "타이사마",
+        "unitType": 0,
         "attack": 100,
         "aspd": 0.5,
         "range": 168,
@@ -465,9 +639,14 @@
         "attackAnim": "unit35atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit36": {
+        "name": "창기병",
+        "unitType": 0,
         "attack": 100,
         "aspd": 0.8,
         "range": 240,
@@ -478,9 +657,14 @@
         "attackAnim": "unit36atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit37": {
+        "name": "견습 격투가",
+        "unitType": 2,
         "attack": 100,
         "aspd": 0.8,
         "range": 168,
@@ -491,9 +675,14 @@
         "attackAnim": "unit37atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit38": {
+        "name": "화염족 대마도사 이프리트",
+        "unitType": 1,
         "attack": 100,
         "aspd": 0.8,
         "range": 384,
@@ -504,9 +693,14 @@
         "attackAnim": "unit38atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 2
     },
     "unit39": {
+        "name": "스켈레톤 궁수",
+        "unitType": 2,
         "attack": 100,
         "aspd": 0.8,
         "range": 576,
@@ -517,9 +711,14 @@
         "attackAnim": "unit39atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit40": {
+        "name": "암흑 마도사",
+        "unitType": 0,
         "attack": 100,
         "aspd": 0.8,
         "range": 384,
@@ -530,9 +729,14 @@
         "attackAnim": "unit40atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit41": {
+        "name": "다크엘프 전투대장 히스",
+        "unitType": 2,
         "attack": 100,
         "aspd": 0.8,
         "range": 168,
@@ -543,9 +747,14 @@
         "attackAnim": "unit41atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit42": {
+        "name": "기사 분대장",
+        "unitType": 1,
         "attack": 100,
         "aspd": 0.8,
         "range": 168,
@@ -556,9 +765,14 @@
         "attackAnim": "unit42atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit43": {
+        "name": "숲 관찰대장 세트",
+        "unitType": 2,
         "attack": 100,
         "aspd": 0.8,
         "range": 576,
@@ -569,9 +783,14 @@
         "attackAnim": "unit43atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit44": {
+        "name": "유적 감시병",
+        "unitType": 0,
         "attack": 100,
         "aspd": 0.8,
         "range": 240,
@@ -582,9 +801,14 @@
         "attackAnim": "unit44atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit45": {
+        "name": "고위 빙결 마도사 아케리스",
+        "unitType": 1,
         "attack": 100,
         "aspd": 0.8,
         "range": 384,
@@ -595,9 +819,14 @@
         "attackAnim": "unit45atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 1
     },
     "unit46": {
+        "name": "고블린 사냥꾼",
+        "unitType": 2,
         "attack": 100,
         "aspd": 0.8,
         "range": 576,
@@ -608,9 +837,14 @@
         "attackAnim": "unit46atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit47": {
+        "name": "고블린 약탈대장",
+        "unitType": 2,
         "attack": 100,
         "aspd": 0.8,
         "range": 168,
@@ -621,9 +855,14 @@
         "attackAnim": "unit47atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit48": {
+        "name": "스켈레톤 저격병",
+        "unitType": 0,
         "attack": 100,
         "aspd": 0.8,
         "range": 576,
@@ -634,9 +873,14 @@
         "attackAnim": "unit48atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit49": {
+        "name": "농부",
+        "unitType": 1,
         "attack": 100,
         "aspd": 0.8,
         "range": 240,
@@ -647,9 +891,14 @@
         "attackAnim": "unit49atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit50": {
+        "name": "암살대장 애퍼스",
+        "unitType": 2,
         "attack": 100,
         "aspd": 0.8,
         "range": 480,
@@ -660,9 +909,14 @@
         "attackAnim": "unit50atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit51": {
+        "name": "미치광이 타이탄",
+        "unitType": 0,
         "attack": 100,
         "aspd": 0.8,
         "range": 168,
@@ -673,9 +927,14 @@
         "attackAnim": "unit51atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit52": {
+        "name": "힘의 부족 도끼 전투원",
+        "unitType": 0,
         "attack": 100,
         "aspd": 0.8,
         "range": 168,
@@ -686,9 +945,14 @@
         "attackAnim": "unit52atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit53": {
+        "name": "힘의 부족 창 전투원",
+        "unitType": 0,
         "attack": 100,
         "aspd": 0.8,
         "range": 480,
@@ -699,9 +963,14 @@
         "attackAnim": "unit53atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit54": {
+        "name": "기사 분대원",
+        "unitType": 1,
         "attack": 100,
         "aspd": 0.8,
         "range": 168,
@@ -712,9 +981,14 @@
         "attackAnim": "unit54atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit55": {
+        "name": "수호 마도사 아이더",
+        "unitType": 3,
         "attack": 100,
         "aspd": 0.8,
         "range": 384,
@@ -725,9 +999,14 @@
         "attackAnim": "unit55atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit56": {
+        "name": "부활한 금단의 마도사 페네스",
+        "unitType": 3,
         "attack": 100,
         "aspd": 0.8,
         "range": 384,
@@ -738,9 +1017,14 @@
         "attackAnim": "unit56atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit57": {
+        "name": "스켈레톤 마도사",
+        "unitType": 3,
         "attack": 100,
         "aspd": 0.8,
         "range": 384,
@@ -751,9 +1035,14 @@
         "attackAnim": "unit57atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit58": {
+        "name": "선두 방어병",
+        "unitType": 0,
         "attack": 100,
         "aspd": 0.8,
         "range": 240,
@@ -764,9 +1053,14 @@
         "attackAnim": "unit58atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit59": {
+        "name": "숲의 마도사",
+        "unitType": 3,
         "attack": 100,
         "aspd": 0.8,
         "range": 384,
@@ -777,9 +1071,14 @@
         "attackAnim": "unit59atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit60": {
+        "name": "화염족 마도사",
+        "unitType": 0,
         "attack": 100,
         "aspd": 0.8,
         "range": 384,
@@ -790,9 +1089,14 @@
         "attackAnim": "unit60atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit61": {
+        "name": "선두 공격병",
+        "unitType": 0,
         "attack": 100,
         "aspd": 0.8,
         "range": 168,
@@ -803,9 +1107,14 @@
         "attackAnim": "unit61atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit62": {
+        "name": "타락한 무술가",
+        "unitType": 2,
         "attack": 100,
         "aspd": 0.8,
         "range": 168,
@@ -816,9 +1125,14 @@
         "attackAnim": "unit62atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit63": {
+        "name": "용기사 수호병",
+        "unitType": 0,
         "attack": 100,
         "aspd": 0.8,
         "range": 168,
@@ -829,6 +1143,9 @@
         "attackAnim": "unit63atk",
         "projectileName": "",
         "projectileAnimName": "",
+        "projectileSoundName": "",
+        "effectName": "",
+        "atkSoundName": "",
         "projectileType": 0
     }
 }
