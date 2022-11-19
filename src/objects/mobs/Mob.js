@@ -87,9 +87,26 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         });
         this.scene.events.off("update", this.update, this);
         this.scene.events.emit("mobDeath", this.mobNum);
+        
         this.tween.remove();
-        this.healthBar.destroy();
-        this.destroy();
+        if (this.deathAnimName == "maigcianDie") {
+            this.tween = scene.add.tween({
+                targets: this,
+                alpha: { from: 1, to: 0 },
+                ease: Phaser.Math.Easing.Linear,
+                duration: (28/40)*1000,
+                repeat: 1,
+                yoyo: false,
+            });
+        };
+        this.anims.play(this.deathAnimName);
+        this.body.enable = false;
+        
+        this.scene.time.delayedCall(600, () => {
+            this.tween.remove();
+            this.healthBar.destroy();
+            this.destroy();
+        }, [], this.scene);
     }
     
     hit(projectile) {

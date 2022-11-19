@@ -142,6 +142,7 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.spritesheet("SkullD", require("../assets/spritesheets/mobs/SkullD.png"), { frameWidth: 16, frameHeight: 16 });
         this.load.spritesheet("SlimeSmallA", require("../assets/spritesheets/mobs/SlimeSmallA.png"), { frameWidth: 16, frameHeight: 16 });
         this.load.spritesheet("TentacleC", require("../assets/spritesheets/mobs/TentacleC.png"), { frameWidth: 16, frameHeight: 16 });
+        this.load.spritesheet("GhastB", require("../assets/spritesheets/mobs/GhastB.png"), { frameWidth: 16, frameHeight: 16 });
 
         // 사운드 관련 로딩
         //this.load.audio("music", bgm);
@@ -276,9 +277,10 @@ export default class PreLoadScene extends Phaser.Scene {
         this.anims.create({
             key: "magicianDie",
             frames: this.anims.generateFrameNumbers("magicianDie", { start: 0, end: 26 }),
-            repeat: -1,
+            repeat: 1,
             frameRate: 40
         }); // => magician은 사망 모션 진행과 동시에 투명도를 0%까지 서서히 조절시켜야함
+
         this.anims.create({
             key: "slimeKingWalk",
             frames: this.anims.generateFrameNumbers("slimeKingWalk", { start: 0, end: 73 }),
@@ -392,9 +394,9 @@ export default class PreLoadScene extends Phaser.Scene {
 
         this.anims.create({
             key: "TentacleC",
-            frames: this.anims.generateFrameNumbers("TentacleC", { start: 0, end: 6 }),
+            frames: this.anims.generateFrameNumbers("TentacleC", { start: 0, end: 5 }),
             repeat: -1,
-            frameRate: 7
+            frameRate: 6
         });
         // 이펙트 애니메이션 생성
         this.anims.create({
@@ -440,8 +442,15 @@ export default class PreLoadScene extends Phaser.Scene {
             frameRate: 40
         });
         this.anims.create({
-            key: "attack7",
-            frames: this.anims.generateFrameNumbers("attack7", { start: 0 }),
+            key: "attack7_1",
+            frames: this.anims.generateFrameNumbers("attack7_1", { start: 0 }),
+            repeat: -1,
+            frameRate: 40
+        });
+        
+        this.anims.create({
+            key: "attack7_2",
+            frames: this.anims.generateFrameNumbers("attack7_1", { start: 0 }),
             repeat: -1,
             frameRate: 40
         });

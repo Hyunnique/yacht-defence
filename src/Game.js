@@ -5,6 +5,7 @@ function importAll(r) {
 }
 
 const unitGIF = importAll(require.context("./assets/images/units", false, /\.gif$/));
+const icons = importAll(require.context("./assets/images/icons", false, /\.png$/));
 import unitSpecSheets from "./assets/specsheets/unitSpecsheet.json";
 import itemSpecSheets from "./assets/specsheets/shopItemSheet.json";
 
@@ -206,6 +207,7 @@ var Game = {
             case "diceScene":
                 this.GameObject.scene.getScene("gameScene").toDicePhase();
                 this.clearUI();
+                this.shopOpen = false;
                 this.showUI("gameScene-topFloating");
                 this.showUI("gameScene-bottomFloating");
 
@@ -272,7 +274,7 @@ var Game = {
 
         for (let i = 0; i < 3; i++) {
             let itemType = itemSpecSheets["item" + itemArray[i]].itemType;
-            document.getElementsByClassName("ui-shop-itemDisplayImage")[i].style.backgroundImage = "";
+            document.getElementsByClassName("ui-shop-itemDisplayImage")[i].style.backgroundImage = "url('" + icons["icon" + itemSpecSheets["item" + itemArray[i]].icon + ".png"] + "')";
             document.getElementsByClassName("ui-shop-itemTitle")[i].innerText = itemSpecSheets["item" + itemArray[i]].name;
 
             let buffAtk = itemSpecSheets["item" + itemArray[i]].buffAtk;
@@ -285,22 +287,20 @@ var Game = {
                     document.getElementsByClassName("ui-shop-itemSpec-atk")[i].innerText = "ATK : " + (buffAtk == 0 ? "-" : buffAtk + "%");
                     document.getElementsByClassName("ui-shop-itemSpec-aspd")[i].innerText = "SPD : " + (buffAspd == 0 ? "-" : buffAspd + "%");
                     document.getElementsByClassName("ui-shop-itemSpec-range")[i].innerText = "PEN : " + (buffPenetration == 0 ? "-" : buffPenetration + "%");
-                    document.getElementsByClassName("ui-shop-itemSkill")[i].innerText = "";
                     break;
                 case 1:
                     document.getElementsByClassName("ui-shop-itemType")[i].innerText = "특수 몬스터";
                     document.getElementsByClassName("ui-shop-itemSpec-atk")[i].innerText = "";
                     document.getElementsByClassName("ui-shop-itemSpec-aspd")[i].innerText = "보스 몬스터를 상대에게 소환";
                     document.getElementsByClassName("ui-shop-itemSpec-range")[i].innerText = "";
-                    document.getElementsByClassName("ui-shop-itemSkill")[i].innerText = "";
                     break;
                 case 2:
                     document.getElementsByClassName("ui-shop-itemType")[i].innerText = "일반 몬스터";
                     document.getElementsByClassName("ui-shop-itemSpec-atk")[i].innerText = "";
                     document.getElementsByClassName("ui-shop-itemSpec-aspd")[i].innerText = "몬스터를 상대에게 소환";
                     document.getElementsByClassName("ui-shop-itemSpec-range")[i].innerText = "";
-                    document.getElementsByClassName("ui-shop-itemSkill")[i].innerText = "";
             }
+            document.getElementsByClassName("ui-shop-itemSkill")[i].innerText = "PRICE : " + itemSpecSheets["item" + itemArray[i]].price;
             document.getElementsByClassName("ui-shop-item")[i].attributes.idx.value = itemArray[i];
         }
     },
@@ -310,4 +310,4 @@ var Game = {
     }
 };
 
-export default Game;
+export default Game;    
