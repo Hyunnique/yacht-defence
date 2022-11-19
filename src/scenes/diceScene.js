@@ -223,7 +223,7 @@ export default class diceScene extends Phaser.Scene{
         }
         else if (this.quadruple) {
             this.currentTier = 3;
-            document.getElementsByClassName("ui-bestHand-value")[0].innerText = "Four Of A Kind";
+            document.getElementsByClassName("ui-bestHand-value")[0].innerText = "4 of A Kind";
         }
         else if (this.largeStraight) {
             this.currentTier = 2;
