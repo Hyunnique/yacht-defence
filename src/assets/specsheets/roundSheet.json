@@ -1,7 +1,7 @@
 {
     "round0": [
         {
-            "mobName": "WormA",
+            "mobName": "BossMagician",
             "mobCount": 10,
             "hpFactor": 1,
             "mobRoute": "A"
