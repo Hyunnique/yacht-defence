@@ -167,6 +167,7 @@ var Game = {
                     document.getElementsByClassName("ui-unitReward-unitSkill")[i].innerText = "";
 
                     document.getElementsByClassName("ui-unitReward-unit")[i].attributes.idx.value = unitArray[i];
+                    document.getElementsByClassName("ui-unitReward-unit")[i].attributes.tier.value = currentTier;
                 }
             }, 5000);
         });
@@ -220,7 +221,7 @@ var Game = {
 
                 Array.from(document.getElementsByClassName("ui-unitReward-unit")).forEach((e) => {
                     e.onclick = (g) => {
-                        this.GameObject.scene.getScene("gameScene").receiveUnit(parseInt(e.attributes.idx.value));
+                        this.GameObject.scene.getScene("gameScene").receiveUnit(parseInt(e.attributes.idx.value), parseInt(e.attributes.tier.value));
                         this.hideUI("common-unitReward");
 
                         document.getElementsByClassName("ui-goldArea")[0].onclick = (e) => {
