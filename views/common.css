@@ -193,6 +193,10 @@
     display: flex;
     flex-direction: column;
 }
+.ui-common-shop .ui-shop-itemSpec .ui-shop-itemSpec-gold {
+    position: absolute;
+    height: 4%;
+}
 .ui-common-shop .ui-shop-itemSkill {
     position: absolute;
     bottom: 5%;
