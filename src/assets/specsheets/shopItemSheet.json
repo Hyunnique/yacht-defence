@@ -48,8 +48,8 @@
         "itemType": 0,
         "name": "반복 훈련",
         "buffAtk": 0,
-        "buffAspd": 1,
-        "buffPenetration": 0,
+        "buffAspd": 15,
+        "buffPenetration": 3,
         "additionalMob": "",
         "mobCount": 0
     },
@@ -172,7 +172,7 @@
     },
     "item19": {
         "itemType": 2,
-        "name": "",
+        "name": "아무튼 소환",
         "buffAtk": 0,
         "buffAspd": 0,
         "buffPenetration": 0,
