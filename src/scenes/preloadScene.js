@@ -131,6 +131,18 @@ export default class PreLoadScene extends Phaser.Scene {
         // 몹 로딩
         this.load.spritesheet("BatSmallA", require("../assets/spritesheets/mobs/BatSmallA.png"), { frameWidth: 16, frameHeight: 16 });
         this.load.spritesheet("WormA", require("../assets/spritesheets/mobs/WormA.png"), { frameWidth: 16, frameHeight: 16 });
+        this.load.spritesheet("BrainD", require("../assets/spritesheets/mobs/BrainD.png"), { frameWidth: 16, frameHeight: 16 });
+        this.load.spritesheet("CloudA", require("../assets/spritesheets/mobs/CloudA.png"), { frameWidth: 16, frameHeight: 16 });
+        this.load.spritesheet("EyeBallA", require("../assets/spritesheets/mobs/EyeBallA.png"), { frameWidth: 16, frameHeight: 16 });
+        this.load.spritesheet("DyeD", require("../assets/spritesheets/mobs/DyeD.png"), { frameWidth: 16, frameHeight: 16 });
+        this.load.spritesheet("HeadA", require("../assets/spritesheets/mobs/HeadA.png"), { frameWidth: 16, frameHeight: 16 });
+        this.load.spritesheet("MummyC", require("../assets/spritesheets/mobs/MummyC.png"), { frameWidth: 16, frameHeight: 16 });
+        this.load.spritesheet("PuddleA", require("../assets/spritesheets/mobs/PuddleA.png"), { frameWidth: 16, frameHeight: 16 });
+        this.load.spritesheet("ScorpionC", require("../assets/spritesheets/mobs/ScorpionC.png"), { frameWidth: 16, frameHeight: 16 });
+        this.load.spritesheet("SkullD", require("../assets/spritesheets/mobs/SkullD.png"), { frameWidth: 16, frameHeight: 16 });
+        this.load.spritesheet("SlimeSmallA", require("../assets/spritesheets/mobs/SlimeSmallA.png"), { frameWidth: 16, frameHeight: 16 });
+        this.load.spritesheet("TentacleC", require("../assets/spritesheets/mobs/TentacleC.png"), { frameWidth: 16, frameHeight: 16 });
+
         // 사운드 관련 로딩
         //this.load.audio("music", bgm);
         this.load.audio("death", batDeath);
@@ -281,13 +293,13 @@ export default class PreLoadScene extends Phaser.Scene {
         });
         this.anims.create({
             key: "stoneGolemWalk",
-            frames: this.anims.generateFrameNumbers("stoneGolemWalk", { start: 0, end: 46 }),
+            frames: this.anims.generateFrameNumbers("stoneGolemWalk", { start: 0, end: 53 }),
             repeat: -1,
             frameRate: 40
         });
         this.anims.create({
             key: "stoneGolemDie",
-            frames: this.anims.generateFrameNumbers("stoneGolemDie", { start: 0, end: 53 }),
+            frames: this.anims.generateFrameNumbers("stoneGolemDie", { start: 0, end: 46 }),
             repeat: -1,
             frameRate: 40
         });
@@ -308,7 +320,82 @@ export default class PreLoadScene extends Phaser.Scene {
             frameRate: 7
         });
 
+        this.anims.create({
+            key: "BrainD",
+            frames: this.anims.generateFrameNumbers("BrainD", { start: 0, end: 11 }),
+            repeat: -1,
+            frameRate: 12
+        });
 
+        this.anims.create({
+            key: "CloudA",
+            frames: this.anims.generateFrameNumbers("CloudA", { start: 0, end: 8 }),
+            repeat: -1,
+            frameRate: 9
+        });
+
+        this.anims.create({
+            key: "DyeD",
+            frames: this.anims.generateFrameNumbers("DyeD", { start: 0, end: 11 }),
+            repeat: -1,
+            frameRate: 12
+        });
+
+        this.anims.create({
+            key: "EyeBallA",
+            frames: this.anims.generateFrameNumbers("EyeBallA", { start: 0, end: 6 }),
+            repeat: -1,
+            frameRate: 7
+        });
+
+        this.anims.create({
+            key: "GhastB",
+            frames: this.anims.generateFrameNumbers("GhastB", { start: 0, end: 7 }),
+            repeat: -1,
+            frameRate: 8
+        });
+
+        this.anims.create({
+            key: "HeadA",
+            frames: this.anims.generateFrameNumbers("HeadA", { start: 0, end: 8 }),
+            repeat: -1,
+            frameRate: 9
+        });
+
+        this.anims.create({
+            key: "MummyC",
+            frames: this.anims.generateFrameNumbers("MummyC", { start: 0, end: 9 }),
+            repeat: -1,
+            frameRate: 10
+        });
+
+        this.anims.create({
+            key: "PuddleA",
+            frames: this.anims.generateFrameNumbers("PuddleA", { start: 7, end: 14 }),
+            repeat: -1,
+            frameRate: 8
+        });
+
+        this.anims.create({
+            key: "ScorpionC",
+            frames: this.anims.generateFrameNumbers("ScorpionC", { start: 0, end: 4 }),
+            repeat: -1,
+            frameRate: 5
+        });
+
+        this.anims.create({
+            key: "SlimeSmallA",
+            frames: this.anims.generateFrameNumbers("SlimeSmallA", { start: 0, end: 9 }),
+            repeat: -1,
+            frameRate: 10
+        });
+
+        this.anims.create({
+            key: "TentacleC",
+            frames: this.anims.generateFrameNumbers("TentacleC", { start: 0, end: 6 }),
+            repeat: -1,
+            frameRate: 7
+        });
         // 이펙트 애니메이션 생성
         this.anims.create({
             key: "attack1",
