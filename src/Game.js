@@ -10,15 +10,32 @@ import unitSpecSheets from "./assets/specsheets/unitSpecsheet.json";
 // 전역변수로 유지해서 Scene에서도 접근할 수 있게 함
 var Game = {
     GameObject: null,
+    GameConfig: null,
     Socket: null,
     
     Initialize(config) {
-        this.GameObject = new Phaser.Game(config);
+        this.GameConfig = config;
 
         this.resizeHandler(null);
         window.onresize = this.resizeHandler;
 
         this.Socket = io.connect("http://localhost:8080");
+        this.serverEventHandler();
+    },
+
+    serverEventHandler() {
+        this.Socket.on("matchmaking-wait", (msg) => {
+            console.log("Waiting for players : " + msg);
+        });
+
+        this.Socket.on("matchmaking-done", (msg) => {
+            console.log("matchmaking done!");
+            this.GameObject = new Phaser.Game(this.GameConfig);
+        });
+
+        this.Socket.on("dicePhase-begin", (msg) => {
+            this.showUI("diceScene-default");
+        });
     },
 
     resizeHandler(e) { // 2:1의 비율을 유지하면서 보여줄 수 있는 최대의 크기로 게임 출력
@@ -38,12 +55,13 @@ var Game = {
     showScene(sceneName) {
         switch (sceneName) {
             case "diceScene":
+                this.Socket.emit("game-ready", true);
                 this.clearUI();
                 this.showUI("gameScene-topFloating");
                 this.showUI("gameScene-bottomFloating");
-                this.showUI("diceScene-default");
 
                 document.getElementsByClassName("ui-diceRerollButton")[0].onclick = (e) => {
+                    this.Socket.emit("dicePhase-start", "true");
                     this.GameObject.scene.getScene("diceScene").rollDice();
                 }
 

@@ -12,25 +12,13 @@ app.use(require('./routes').routes());
 app.use(require('koa-static')(path.join(__dirname, '/dist')));
 
 app.use(async (ctx) => {
-    ctx.status = 404;
-    ctx.redirect('/');
-    return;
+	ctx.status = 404;
+	ctx.redirect('/');
+	return;
 });
 
 const server = require('http').createServer(app.callback());
 const io = require('socket.io')(server);
 
-const clientFile = fs.readFileSync("./node_modules/socket.io/client-dist/socket.io.min.js");
-const clientMap = fs.readFileSync("./node_modules/socket.io/client-dist/socket.io.min.js.map");
-
-server.sendFile = (filename, req, res) => {
-  res.end(filename.endsWith(".map") ? clientMap : clientFile);
-};
-
+require('./js/GameServer').init(io);
 server.listen(8080);
-
-server.on('connection', (socket) => {
-  console.log("connected");
-});
-
-server.on('hello', (e) => { console.log("asdf"); });
