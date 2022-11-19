@@ -181,7 +181,7 @@ export default class gameScene extends Phaser.Scene{
 
 //몹/유저유닛/투사체 관련
         this.m_mobs = this.physics.add.group();
-        this.roundNum = 1;
+        this.roundNum = -1;
         this.globalnum = 1;
         this.playerHealth = 100;
 
@@ -266,7 +266,7 @@ export default class gameScene extends Phaser.Scene{
     }
 
     startRound() {
-        console.log(this.roundDB);
+        console.log(this.roundNum);
         this.roundDB["round" + this.roundNum].forEach(element => {
             this.time.addEvent({
                 delay: 1500,
