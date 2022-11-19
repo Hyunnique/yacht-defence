@@ -25,13 +25,17 @@ module.exports = {
             timer: {
 
             },
+            players: [],
             round: 1,
             roundChoice: -1,
         };
     },
 
-    createTimer(name, duration, callback) {
-        
+    createTimer(roomId, name, duration, callback) {
+        this.Rooms[roomId].timer[name] = setTimeout(() => {
+            callback();
+            delete this.Rooms[roomId].timer[name];
+        }, duration);
     },
 
     emitAll(roomId, eventName, eventMessage) {
@@ -68,11 +72,34 @@ module.exports = {
             this.Rooms[roomId].counter.ready++;
 
             if (this.Rooms[roomId].counter.ready >= this.Rooms[roomId].maxPlayers) {
-                this.emitAll(roomId, 'dicePhase-begin', true);
 
-                this.Rooms[roomId].timer
+                for (let i = 0; i < this.Rooms[roomId].maxPlayers; i++) {
+                    this.Rooms[roomId].players.push({ // Initialize Player Object
+                        name: "temp",
+                        playerIndex: i,
+                        hp: 1000,
+                        maxhp: 1000,
+                        gold: 0,
+                    });
+                }
+
+                this.onRoundBegin(roomId);
             }
         });
+    },
+
+    onRoundBegin(roomId) {
+        if (this.Rooms[roomId].round % 2 == 1) {
+            this.Rooms[roomId].roundChoice = Math.floor(Math.random() * 25) + 5;
+
+            this.emitAll(roomId, 'dicePhase-begin', {
+                roundChoice: this.Rooms[roomId].roundChoice
+            });
+
+            this.createTimer(roomId, "dicePhaseEnd", 30, () => {
+                this.onDiceTimeEnd(roomId);
+            });
+        }
     },
 
     onDiceConfirm(socket, roomId) {
@@ -86,5 +113,9 @@ module.exports = {
                 this.emitAll(roomId, 'dicePhase-confirmWait', this.Rooms[roomId].counter.handConfirm + " / " + this.Rooms[roomId].maxPlayers);
             }
         });
+    },
+
+    onDiceTimeEnd(roomId) {
+
     },
 };
