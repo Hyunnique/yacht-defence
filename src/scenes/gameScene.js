@@ -62,8 +62,6 @@ export default class gameScene extends Phaser.Scene{
             timerText: 타이머 표기용 변수
     */
     phaseTimer;
-    timerText;
-    pointerText;
     PhaseText = "";
 
     create() {
@@ -85,8 +83,8 @@ export default class gameScene extends Phaser.Scene{
         const tree2_back = map.createLayer("Tree2_B", outside_B, 0, 0);
         const tree1_front = map.createLayer("Tree1_F", outside_B, 0, 0);
         const tree2_front = map.createLayer("Tree2_F", outside_B, 0, 0);
-        const info = map.createLayer("info", possible, 0, 0); 
-        info.alpha = 0;
+        this.info = map.createLayer("info", possible, 0, 0); 
+        this.info.alpha = 0;
         // info layer 기준 tileset index가
         // 배치 가능 2897
         // 배치 불가능 2898
@@ -162,10 +160,7 @@ export default class gameScene extends Phaser.Scene{
 
 
 
-// 타이머
-        this.timerText = this.add.text(32, 32, "");
-        this.pointerText = this.add.text(32, 64, "");
-        this.waitForReady();
+
 
 
 //BGM
@@ -188,7 +183,6 @@ export default class gameScene extends Phaser.Scene{
         this.roundNum = 1;
         this.globalnum = 1;
         this.playerHealth = 100;
-        this.placeMode = false;
 
         this.m_projectiles = this.physics.add.group();
         this.unitDB = this.cache.json.get("unitDB");
@@ -196,17 +190,14 @@ export default class gameScene extends Phaser.Scene{
         this.roundDB = this.cache.json.get("roundDB")["round"];
         this.m_player = [];
 
-        this.m_player.push(new Unit(this, 0, 0, this.unitDB.unit3));
-
         var prePosX;
         var prePosY;
 
         this.input.on('dragstart', (pointer,gameObject) => {
-            info.alpha = 1;
-            var tile = this.getTileAtPointer(pointer, info);
+            this.info.alpha = 1;
+            var tile = this.getTileAtPointer(pointer, this.info);
             prePosX = pointer.worldX;
             prePosY = pointer.worldY;
-            //gameObject.removeBuff();
             if (tile.index == "2898") tile.index = "2897";
         });
 
@@ -216,39 +207,16 @@ export default class gameScene extends Phaser.Scene{
         })
 
         this.input.on('dragend', (pointer, gameObject) => { 
-            info.alpha = 0;
-            var tile = this.getTileAtPointer(pointer, info);
+            this.info.alpha = 0;
+            var tile = this.getTileAtPointer(pointer, this.info);
             this.placeUnitOnTile(tile, gameObject, prePosX, prePosY);
         })
 
         this.physics.add.overlap(this.m_projectiles, this.m_mobs, (projectile, mob) => mob.hit(projectile), null, this);
         this.cameras.main.setBounds(0, 0, 2400, 1440);
 
-        this.events.on("tryPlaceUnit", (array) => {
-            var pointer = array.at(0);
-            var info = array.at(1);
-            var unitData = array.at(2);
-            let t = this.getTileAtPointer(pointer, info);
-            if (!t || t.index == "2898") return;
-            this.m_player.push(new Playertest(this, t.pixelX + 24, t.pixelY + 24, unitData));
-            //this.m_player[this.m_player.length].giveBuff();
-            t.index = "2898";
-            //this.placeMode = false;
-            this.input.setDraggable(this.m_player,true);
-        }, this);
-        /**
-         * 다시 드래그가 가능하게 바꿔줘야하는데 왜인지 듣질 않는다.
-         * 
-         */
-//임시 선언 부분
-        const button = this.add.text(60, 128, "test")
-            .setOrigin(0.5)
-            .setPadding(10)
-            .setStyle({ backgroundColor: '#000' })
-            .setInteractive({ useHandCursor: true })
-            .on('pointerdown', () => { this.initialPlace(info); this.placeMode = (this.placeMode ? false : true); })
-            .on('pointerover', () => button.setStyle({ fill: '#f39c12' }))
-            .on('pointerout', () => button.setStyle({ fill: '#FFF' }));
+        // 타이머
+        this.waitForReady();
     }
 
     update(time, delta) {
@@ -278,31 +246,35 @@ export default class gameScene extends Phaser.Scene{
         else if (x < 50) this.cameras.main.scrollX -= 12;
         else if (y > this.cameras.main.height - 50) this.cameras.main.scrollY += 12;
         else if (y < 50) this.cameras.main.scrollY -= 12;
-
-        this.timerText.setText(this.PhaseText + ' : ' + this.phaseTimer.getRemainingSeconds().toString().substr(0, 2));
     }
 
-    initialPlace(info,unitData)
+    initialPlace(unitData)
     {
-        info.alpha = (info.alpha == 1 ? 0 : 1);
-        this.input.on('pointerdown', (pointer) => {
-            if (this.placeMode) {
-                this.input.setDraggable(this.m_player,false);
-                this.events.emit('tryPlaceUnit', [pointer, info, this.unitDB.unit1]);
+        this.info.alpha = 1;
+        this.input.once('pointerdown', (pointer) => {
+            while (true) {
+                let t = this.getTileAtPointer(pointer, this.info);
+                if (!t || t.index == "2898") continue;
+                this.m_player.push(new Playertest(this, t.pixelX + 24, t.pixelY + 24, unitData));
+                t.index = "2898";
+                break;
             }
-        }, this);
+            this.info.alpha = 0;
+            this.input.setDraggable(this.m_player, true);
+        },this);
     }
 
     startRound() {
-        this.time.addEvent({
-            delay: 1500,
-            callback: () => {
-                this.m_mobs.add(new Mob(this, this.mobDB[this.roundDB[this.roundNum]["mobName"]], this.globalnum++,this.roundDB[this.roundNum]["mobRoute"]));
-                console.log(this.m_mobs);
-            },  
-            repeat: this.roundDB[this.roundNum]["mobCount"],
-            startAt: 0
-        })
+        this.roundDB[this.roundNum].forEach(element => {
+            this.time.addEvent({
+                delay: 1500,
+                callback: () => {
+                    this.m_mobs.add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum++, element["mobRoute"]));
+                },
+                repeat: element["mobCount"],
+                startAt: 0
+            });
+        });
     }
 
     placeUnitOnTile(tile, Unit, prePosX, prePosY) {
@@ -310,7 +282,6 @@ export default class gameScene extends Phaser.Scene{
             tile.index = "2898";
             Unit.x = tile.pixelX + 24;
             Unit.y = tile.pixelY + 24;
-            //Unit.giveBuff();
         }
         else if (tile.index == "2898") {
             Unit.x = prePosX;
@@ -357,6 +328,7 @@ export default class gameScene extends Phaser.Scene{
     }
 
     toDicePhase() {
+        this.m_player.forEach(element => element.removeBuff());
         this.PhaseText = "Dice Phase";
         this.input.setDraggable(this.m_player, false);
         this.roundNum++;
@@ -367,10 +339,10 @@ export default class gameScene extends Phaser.Scene{
     }
     toPlacePhase() {
         this.PhaseText = "Place Phase";
-        this.input.setDraggable(this.m_player,true);
         this.phaseTimer = this.time.delayedCall(3000, this.toBattlePhase, [], this);
     }
     toBattlePhase() {
+        this.m_player.forEach(element => element.giveBuff());
         this.PhaseText = "Battle Phase";
         this.input.setDraggable(this.m_player, false);
         this.startRound();
@@ -382,6 +354,6 @@ export default class gameScene extends Phaser.Scene{
     // DicePhase를 마친 뒤 유닛을 선택하면 호출함
     // Unit ID를 파라미터로 가짐
     receiveUnit(unitID) {
-        ;
+        this.initialPlace(this.unitDB["unit" + unitID]);
     }
 }

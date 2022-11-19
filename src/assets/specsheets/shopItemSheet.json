@@ -1,0 +1,182 @@
+{
+    "item0": {
+        "itemType": 0,
+        "name": "공격 훈련",
+        "buffAtk": 30,
+        "buffAspd": 0,
+        "buffPenetration": 0,
+        "additionalMob": "",
+        "mobCount": 0
+    },
+    "item1": {
+        "itemType": 0,
+        "name": "속도 훈련",
+        "buffAtk": 0,
+        "buffAspd": 30,
+        "buffPenetration": 0,
+        "additionalMob": "",
+        "mobCount": 0
+    },
+    "item2": {
+        "itemType": 0,
+        "name": "집중력 훈련",
+        "buffAtk": 0,
+        "buffAspd": 0,
+        "buffPenetration": 6,
+        "additionalMob": "",
+        "mobCount": 0
+    },
+    "item3": {
+        "itemType": 0,
+        "name": "실전 훈련",
+        "buffAtk": 15,
+        "buffAspd": 15,
+        "buffPenetration": 0,
+        "additionalMob": "",
+        "mobCount": 0
+    },
+    "item4": {
+        "itemType": 0,
+        "name": "강화 훈련",
+        "buffAtk": 15,
+        "buffAspd": 0,
+        "buffPenetration": 3,
+        "additionalMob": "",
+        "mobCount": 0
+    },
+    "item5": {
+        "itemType": 0,
+        "name": "반복 훈련",
+        "buffAtk": 0,
+        "buffAspd": 1,
+        "buffPenetration": 0,
+        "additionalMob": "",
+        "mobCount": 0
+    },
+    "item6": {
+        "itemType": 0,
+        "name": "종합 훈련",
+        "buffAtk": 10,
+        "buffAspd": 10,
+        "buffPenetration": 2,
+        "additionalMob": "",
+        "mobCount": 0
+    },
+    "item7": {
+        "itemType": 0,
+        "name": "속공 전법",
+        "buffAtk": -15,
+        "buffAspd": 45,
+        "buffPenetration": 0,
+        "additionalMob": "",
+        "mobCount": 0
+    },
+    "item8": {
+        "itemType": 0,
+        "name": "신중한 공격",
+        "buffAtk": -15,
+        "buffAspd": 0,
+        "buffPenetration": 9,
+        "additionalMob": "",
+        "mobCount": 0
+    },
+    "item9": {
+        "itemType": 0,
+        "name": "강공 전법",
+        "buffAtk": 45,
+        "buffAspd": -15,
+        "buffPenetration": 0,
+        "additionalMob": "",
+        "mobCount": 0
+    },
+    "item10": {
+        "itemType": 0,
+        "name": "정확한 조준",
+        "buffAtk": 0,
+        "buffAspd": -15,
+        "buffPenetration": 9,
+        "additionalMob": "",
+        "mobCount": 0
+    },
+    "item11": {
+        "itemType": 0,
+        "name": "파괴력 위주 공격",
+        "buffAtk": 45,
+        "buffAspd": 1,
+        "buffPenetration": -3,
+        "additionalMob": "",
+        "mobCount": 0
+    },
+    "item12": {
+        "itemType": 0,
+        "name": "무차별 공격",
+        "buffAtk": 0,
+        "buffAspd": 45,
+        "buffPenetration": -3,
+        "additionalMob": "",
+        "mobCount": 0
+    },
+    "item13": {
+        "itemType": 1,
+        "name": "흉포한 곰 소환",
+        "buffAtk": 0,
+        "buffAspd": 0,
+        "buffPenetration": 0,
+        "additionalMob": "bear",
+        "mobCount": 1
+    },
+    "item14": {
+        "itemType": 1,
+        "name": "거인 소환",
+        "buffAtk": 0,
+        "buffAspd": 0,
+        "buffPenetration": 0,
+        "additionalMob": "giant",
+        "mobCount": 1
+    },
+    "item15": {
+        "itemType": 1,
+        "name": "고대 마도사 소환",
+        "buffAtk": 0,
+        "buffAspd": 0,
+        "buffPenetration": 0,
+        "additionalMob": "magician",
+        "mobCount": 1
+    },
+    "item16": {
+        "itemType": 1,
+        "name": "슬라임 킹 소환",
+        "buffAtk": 0,
+        "buffAspd": 0,
+        "buffPenetration": 0,
+        "additionalMob": "slimeKing",
+        "mobCount": 1
+    },
+    "item17": {
+        "itemType": 1,
+        "name": "스톤 골렘 소환",
+        "buffAtk": 0,
+        "buffAspd": 0,
+        "buffPenetration": 0,
+        "additionalMob": "stoneGolem",
+        "mobCount": 1
+    },
+    "item18": {
+        "itemType": 2,
+        "name": "박쥐 웨이브 소환",
+        "buffAtk": 0,
+        "buffAspd": 0,
+        "buffPenetration": 0,
+        "additionalMob": "batsmallA",
+        "mobCount": 15
+    },
+    "item19": {
+        "itemType": 2,
+        "name": "",
+        "buffAtk": 0,
+        "buffAspd": 0,
+        "buffPenetration": 0,
+        "additionalMob": "",
+        "mobCount": 0
+    }
+}
