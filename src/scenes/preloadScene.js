@@ -130,7 +130,7 @@ export default class PreLoadScene extends Phaser.Scene {
 
         // 몹 로딩
         this.load.spritesheet("BatSmallA", require("../assets/spritesheets/mobs/BatSmallA.png"), { frameWidth: 16, frameHeight: 16 });
-
+        this.load.spritesheet("WormA", require("../assets/spritesheets/mobs/WormA.png"), { frameWidth: 16, frameHeight: 16 });
         // 사운드 관련 로딩
         //this.load.audio("music", bgm);
         this.load.audio("death", batDeath);
@@ -299,6 +299,13 @@ export default class PreLoadScene extends Phaser.Scene {
             frames: this.anims.generateFrameNumbers("BatSmallA", { start: 0, end: 5 }),
             repeat: -1,
             frameRate: 6
+        });
+
+        this.anims.create({
+            key: "WormA",
+            frames: this.anims.generateFrameNumbers("WormA", { start: 0, end: 6 }),
+            repeat: -1,
+            frameRate: 7
         });
 
 
@@ -659,6 +666,8 @@ export default class PreLoadScene extends Phaser.Scene {
             repeat: -1,
             frameRate: 15
         });
+
+
 
         Game.showScene("gameScene");
     }

@@ -6,12 +6,14 @@ function importAll(r) {
 
 const unitGIF = importAll(require.context("./assets/images/units", false, /\.gif$/));
 import unitSpecSheets from "./assets/specsheets/unitSpecsheet.json";
+import itemSpecSheets from "./assets/specsheets/shopItemSheet.json";
 
 // 전역변수로 유지해서 Scene에서도 접근할 수 있게 함
 var Game = {
     GameObject: null,
     GameConfig: null,
     Socket: null,
+    shopOpen: false,
     
     Initialize(config) {
         this.GameConfig = config;
@@ -60,6 +62,7 @@ var Game = {
                 this.showUI("gameScene-topFloating");
                 this.showUI("gameScene-bottomFloating");
 
+                document.getElementsByClassName("ui-goldArea")[0].onclick = (e) => {};
                 document.getElementsByClassName("ui-diceRerollButton")[0].onclick = (e) => {
                     this.Socket.emit("dicePhase-start", "true");
                     this.GameObject.scene.getScene("diceScene").rollDice();
@@ -70,6 +73,16 @@ var Game = {
                         this.GameObject.scene.getScene("gameScene").receiveUnit(parseInt(e.attributes.idx.value));
                         this.hideUI("common-unitReward");
                         this.GameObject.scene.getScene("diceScene").scene.stop().resume("gameScene");
+                        document.getElementsByClassName("ui-goldArea")[0].onclick = (e) => {
+                            if (this.shopOpen) {
+                                this.closeShop();
+                                this.shopOpen = false;
+                            }
+                            else {
+                                this.openShop();
+                                this.shopOpen = true;
+                            }
+                        }
                     };
                 });
 
@@ -83,27 +96,53 @@ var Game = {
                         this.hideUI("diceScene-result");
                         this.showUI("common-unitReward");
 
-                        let unitCount = Object.keys(unitSpecSheets).length;
+                        let currentTier = this.GameObject.scene.getScene("diceScene").currentTier;
+                        let tier = {
+                            "tier1": [2, 22, 26, 27],
+                            "tier2": [24, 33, 34, 35, 38, 41, 43, 45, 50, 51, 55, 56],
+                            "tier3": [3, 9, 10, 11, 13, 19, 23, 25, 31, 32, 40, 47, 52, 53, 57, 59, 60, 62, 63],
+                            "tier4": [0, 1, 4, 5, 6, 7, 8, 14, 15, 16, 17, 18, 20, 21, 28, 29, 30, 36, 37, 39, 42, 44, 46 ,48, 49, 54, 58, 61]
+                        }
+                        let unitCount = tier["tier" + currentTier].length;
                         let unitArray = [];
 
                         for (let i = 0; i < 3; i++) {
                             while (true) {
                                 let _r = Math.floor(Math.random() * unitCount);
-                                if (!unitArray.includes(_r)) {
-                                    unitArray.push(_r);
+                                let unitNo = tier["tier" + currentTier][_r];
+                                if (!unitArray.includes(unitNo)) {
+                                    unitArray.push(unitNo);
                                     break;
                                 }
                             }
                         }
 
                         for (let i = 0; i < 3; i++) {
+                            let unitType = ""
+                            switch (unitSpecSheets["unit" + unitArray[i]].unitType) {
+                                case 0:
+                                    unitType = "공격형";
+                                    break;
+                                case 1:
+                                    unitType = "밸런스형";
+                                    break;
+                                case 2: 
+                                    unitType = "속도형";
+                                    break;
+                                case 3:
+                                    unitType = "지원형";
+                                    break;
+                            }   
+                            console.log(unitSpecSheets["unit" + unitArray[i]].name.length);
                             document.getElementsByClassName("ui-unitReward-unitDisplayImage")[i].style.backgroundImage = "url('" + unitGIF["unit_" + unitArray[i] + ".gif"] + "')";
-                            document.getElementsByClassName("ui-unitReward-unitTitle")[i].innerText = unitSpecSheets["unit" + unitArray[i]].idleSprite;
-                            document.getElementsByClassName("ui-unitReward-unitType")[i].innerText = "?";
+                            document.getElementsByClassName("ui-unitReward-unitTitle")[i].innerText = unitSpecSheets["unit" + unitArray[i]].name;
+                            if (unitSpecSheets["unit" + unitArray[i]].name.length >= 13) 
+                                document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.fontSize = (1.2 - 0.1*(unitSpecSheets["unit" + unitArray[i]].name.length - 12)) + "rem" 
+                            document.getElementsByClassName("ui-unitReward-unitType")[i].innerText = unitType;
                             document.getElementsByClassName("ui-unitReward-unitSpec-atk")[i].innerText = "ATK : " + unitSpecSheets["unit" + unitArray[i]].attack;
                             document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : " + unitSpecSheets["unit" + unitArray[i]].aspd;
                             document.getElementsByClassName("ui-unitReward-unitSpec-range")[i].innerText = "RANGE : " + unitSpecSheets["unit" + unitArray[i]].range;
-                            document.getElementsByClassName("ui-unitReward-unitSkill")[i].innerText = "Skills : -";
+                            document.getElementsByClassName("ui-unitReward-unitSkill")[i].innerText = "";
 
                             document.getElementsByClassName("ui-unitReward-unit")[i].attributes.idx.value = unitArray[i];
                         }
@@ -137,6 +176,49 @@ var Game = {
     hideUI(uiName) {
         document.getElementsByClassName("ui-" + uiName)[0].style.display = "none";
     },
+
+    openShop() {
+        this.showUI("common-shop");
+        let itemArray = this.GameObject.scene.getScene("gameScene").itemList;
+
+        for (let i = 0; i < 3; i++) {
+            let itemType = itemSpecSheets["item" + itemArray[i]].itemType;
+            document.getElementsByClassName("ui-shop-itemDisplayImage")[i].style.backgroundImage = "";
+            document.getElementsByClassName("ui-shop-itemTitle")[i].innerText = itemSpecSheets["item" + itemArray[i]].name;
+
+            let buffAtk = itemSpecSheets["item" + itemArray[i]].buffAtk;
+            let buffAspd = itemSpecSheets["item" + itemArray[i]].buffAspd;
+            let buffPenetration = itemSpecSheets["item" + itemArray[i]].buffPenetration;
+
+            switch (itemType) {
+                case 0:
+                    document.getElementsByClassName("ui-shop-itemType")[i].innerText = "유닛 강화";
+                    document.getElementsByClassName("ui-shop-itemSpec-atk")[i].innerText = "ATK : " + (buffAtk == 0 ? "-" : buffAtk + "%");
+                    document.getElementsByClassName("ui-shop-itemSpec-aspd")[i].innerText = "SPD : " + (buffAspd == 0 ? "-" : buffAspd + "%");
+                    document.getElementsByClassName("ui-shop-itemSpec-range")[i].innerText = "PEN : " + (buffPenetration == 0 ? "-" : buffPenetration + "%");
+                    document.getElementsByClassName("ui-shop-itemSkill")[i].innerText = "";
+                    break;
+                case 1:
+                    document.getElementsByClassName("ui-shop-itemType")[i].innerText = "특수 몬스터";
+                    document.getElementsByClassName("ui-shop-itemSpec-atk")[i].innerText = "";
+                    document.getElementsByClassName("ui-shop-itemSpec-aspd")[i].innerText = "보스 몬스터를 상대에게 소환";
+                    document.getElementsByClassName("ui-shop-itemSpec-range")[i].innerText = "";
+                    document.getElementsByClassName("ui-shop-itemSkill")[i].innerText = "";
+                    break;
+                case 2:
+                    document.getElementsByClassName("ui-shop-itemType")[i].innerText = "일반 몬스터";
+                    document.getElementsByClassName("ui-shop-itemSpec-atk")[i].innerText = "";
+                    document.getElementsByClassName("ui-shop-itemSpec-aspd")[i].innerText = "몬스터를 상대에게 소환";
+                    document.getElementsByClassName("ui-shop-itemSpec-range")[i].innerText = "";
+                    document.getElementsByClassName("ui-shop-itemSkill")[i].innerText = "";
+            }
+            document.getElementsByClassName("ui-shop-item")[i].attributes.idx.value = itemArray[i];
+        }
+    },
+
+    closeShop() {
+        this.hideUI("common-shop");
+    }
 };
 
 export default Game;
