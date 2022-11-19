@@ -87,6 +87,7 @@ var Game = {
                             document.getElementsByClassName("ui-unitReward-unitSpec-range")[i].innerText = "RANGE : " + unitSpecSheets["unit" + unitArray[i]].range;
                             document.getElementsByClassName("ui-unitReward-unitSkill")[i].innerText = "Skills : -";
 
+                            document.getElementsByClassName("ui-unitReward-unit")[i].attributes.idx.value = unitArray[i];
                         }
                     }, 3000);
                 }
