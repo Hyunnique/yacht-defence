@@ -6,7 +6,9 @@
         "buffAspd": 0,
         "buffPenetration": 0,
         "additionalMob": "",
-        "mobCount": 0
+        "mobCount": 0,
+        "price": 0,
+        "tier": 3
     },
     "item1": {
         "itemType": 0,
@@ -15,7 +17,9 @@
         "buffAspd": 30,
         "buffPenetration": 0,
         "additionalMob": "",
-        "mobCount": 0
+        "mobCount": 0,
+        "price": 0,
+        "tier": 3
     },
     "item2": {
         "itemType": 0,
@@ -24,7 +28,9 @@
         "buffAspd": 0,
         "buffPenetration": 6,
         "additionalMob": "",
-        "mobCount": 0
+        "mobCount": 0,
+        "price": 0,
+        "tier": 3
     },
     "item3": {
         "itemType": 0,
@@ -33,7 +39,9 @@
         "buffAspd": 15,
         "buffPenetration": 0,
         "additionalMob": "",
-        "mobCount": 0
+        "mobCount": 0,
+        "price": 0,
+        "tier": 3
     },
     "item4": {
         "itemType": 0,
@@ -42,7 +50,9 @@
         "buffAspd": 0,
         "buffPenetration": 3,
         "additionalMob": "",
-        "mobCount": 0
+        "mobCount": 0,
+        "price": 0,
+        "tier": 3
     },
     "item5": {
         "itemType": 0,
@@ -51,7 +61,9 @@
         "buffAspd": 15,
         "buffPenetration": 3,
         "additionalMob": "",
-        "mobCount": 0
+        "mobCount": 0,
+        "price": 0,
+        "tier": 3
     },
     "item6": {
         "itemType": 0,
@@ -60,7 +72,9 @@
         "buffAspd": 10,
         "buffPenetration": 2,
         "additionalMob": "",
-        "mobCount": 0
+        "mobCount": 0,
+        "price": 0,
+        "tier": 3
     },
     "item7": {
         "itemType": 0,
@@ -69,7 +83,9 @@
         "buffAspd": 45,
         "buffPenetration": 0,
         "additionalMob": "",
-        "mobCount": 0
+        "mobCount": 0,
+        "price": 0,
+        "tier": 3
     },
     "item8": {
         "itemType": 0,
@@ -78,7 +94,9 @@
         "buffAspd": 0,
         "buffPenetration": 9,
         "additionalMob": "",
-        "mobCount": 0
+        "mobCount": 0,
+        "price": 0,
+        "tier": 3
     },
     "item9": {
         "itemType": 0,
@@ -87,7 +105,9 @@
         "buffAspd": -15,
         "buffPenetration": 0,
         "additionalMob": "",
-        "mobCount": 0
+        "mobCount": 0,
+        "price": 0,
+        "tier": 3
     },
     "item10": {
         "itemType": 0,
@@ -96,7 +116,9 @@
         "buffAspd": -15,
         "buffPenetration": 9,
         "additionalMob": "",
-        "mobCount": 0
+        "mobCount": 0,
+        "price": 0,
+        "tier": 3
     },
     "item11": {
         "itemType": 0,
@@ -105,7 +127,9 @@
         "buffAspd": 1,
         "buffPenetration": -3,
         "additionalMob": "",
-        "mobCount": 0
+        "mobCount": 0,
+        "price": 0,
+        "tier": 3
     },
     "item12": {
         "itemType": 0,
@@ -114,7 +138,9 @@
         "buffAspd": 45,
         "buffPenetration": -3,
         "additionalMob": "",
-        "mobCount": 0
+        "mobCount": 0,
+        "price": 0,
+        "tier": 3
     },
     "item13": {
         "itemType": 1,
@@ -123,7 +149,9 @@
         "buffAspd": 0,
         "buffPenetration": 0,
         "additionalMob": "bear",
-        "mobCount": 1
+        "mobCount": 1,
+        "price": 0,
+        "tier": 3
     },
     "item14": {
         "itemType": 1,
@@ -132,7 +160,9 @@
         "buffAspd": 0,
         "buffPenetration": 0,
         "additionalMob": "giant",
-        "mobCount": 1
+        "mobCount": 1,
+        "price": 0,
+        "tier": 3
     },
     "item15": {
         "itemType": 1,
@@ -141,7 +171,9 @@
         "buffAspd": 0,
         "buffPenetration": 0,
         "additionalMob": "magician",
-        "mobCount": 1
+        "mobCount": 1,
+        "price": 0,
+        "tier": 3
     },
     "item16": {
         "itemType": 1,
@@ -150,7 +182,9 @@
         "buffAspd": 0,
         "buffPenetration": 0,
         "additionalMob": "slimeKing",
-        "mobCount": 1
+        "mobCount": 1,
+        "price": 0,
+        "tier": 3
     },
     "item17": {
         "itemType": 1,
@@ -159,7 +193,9 @@
         "buffAspd": 0,
         "buffPenetration": 0,
         "additionalMob": "stoneGolem",
-        "mobCount": 1
+        "mobCount": 1,
+        "price": 0,
+        "tier": 3
     },
     "item18": {
         "itemType": 2,
@@ -168,7 +204,9 @@
         "buffAspd": 0,
         "buffPenetration": 0,
         "additionalMob": "batsmallA",
-        "mobCount": 15
+        "mobCount": 15,
+        "price": 0,
+        "tier": 3
     },
     "item19": {
         "itemType": 2,
@@ -177,6 +215,8 @@
         "buffAspd": 0,
         "buffPenetration": 0,
         "additionalMob": "",
-        "mobCount": 0
+        "mobCount": 0,
+        "price": 0,
+        "tier": 3
     }
 }
