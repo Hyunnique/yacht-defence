@@ -10,17 +10,23 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
 
         this.originAttack = db.attack;
         this.originAspd = db.aspd;
+        this.originPenetration = db.penetration;
         this.attack = db.attack;
         this.aspd = db.aspd;
+        this.penetration = db.penetration;
         this.range = db.range;
         this.attackType = db.attackType;
         this.idleAnim = db.idleAnim;
         this.attackAnim = db.attackAnim;
+
+
         this.buffAtk = 0;
         this.buffAspd = 0;
+        this.buffedPenetration = 0;
         this.projectileName = "bullet";
         this.projectileAnimName = "bullet";
         this.projectileType = 1;
+        
         
         this.isTarget = false;
         this.isBuffTarget = true;
@@ -68,13 +74,14 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
 
     removeBuff()
     {
-        if(this.buffAspd != 0 || this.buffAtk != 0)
-        var buffTargets = this.scene.physics.overlapCirc(this.x, this.y, this.range).filter(item => item.gameObject.isBuffTarget == true);
-        buffTargets.forEach((e) => {
-            e.gameObject.buffedAspd -= this.buffAspd;
-            e.gameObject.buffedAtk -= this.buffAtk;
-            e.gameObject.updateBuff();
-        })
+        if (this.buffAspd != 0 || this.buffAtk != 0) {
+            var buffTargets = this.scene.physics.overlapCirc(this.x, this.y, this.range).filter(item => item.gameObject.isBuffTarget == true);
+            buffTargets.forEach((e) => {
+                e.gameObject.buffedAspd -= this.buffAspd;
+                e.gameObject.buffedAtk -= this.buffAtk;
+                e.gameObject.updateBuff();
+            });
+        }
     }
 
 
@@ -82,6 +89,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
     {
         this.attack = (this.buffedAtk + 1) * this.originAttack;
         this.aspd = this.buffedAspd + this.originAspd;
+        this.penetration = this.originPenetration + this.buffedPenetration;
         this.setMotionSpeed();
     }
 
@@ -142,5 +150,11 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
             },
             loop: true
         });
+    }
+
+    calcDamage(mobDefence)
+    {
+        var defencePenValue = 1 - mobDefence * (1 - this.penetration);
+        return defencePenValue <= 0 ? 1 : this.atk * defencePenValue;
     }
 }
