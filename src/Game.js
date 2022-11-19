@@ -56,14 +56,14 @@ var Game = {
                         this.hideUI("common-unitReward");
                         this.GameObject.scene.getScene("diceScene").scene.stop().resume("gameScene");
                         document.getElementsByClassName("ui-goldArea")[0].onclick = (e) => {
-                            if (this.shopOpen) {
-                                this.closeShop();
-                                this.shopOpen = false;
-                            }
-                            else {
+                            if (!this.shopOpen) {
                                 this.openShop();
                                 this.shopOpen = true;
                             }
+                        }
+                        document.getElementsByClassName("ui-shop-close")[0].onclick = (e) => {
+                            this.closeShop();
+                            this.shopOpen = false;
                         }
                     };
                 });
