@@ -62,8 +62,11 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
     //매 턴 시작시 전부 지우고 다시 전부 부여!!
     giveBuff()
     {
+        var buffTargets = [];
         if(this.buffAspd != 0 || this.buffAtk != 0)
-        var buffTargets = this.scene.physics.overlapCirc(this.x, this.y, this.range).filter(item => item.gameObject.isBuffTarget == true);
+            buffTargets = this.scene.physics.overlapCirc(this.x, this.y, this.range).filter(item => item.gameObject.isBuffTarget == true);
+        if (buffTargets.length == 0)
+            return;
         buffTargets.forEach((e) => {
             e.gameObject.buffedAspd += this.buffAspd;
             e.gameObject.buffedAtk += this.buffAtk;
@@ -74,8 +77,11 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
 
     removeBuff()
     {
+        var buffTargets = [];
         if (this.buffAspd != 0 || this.buffAtk != 0) {
-            var buffTargets = this.scene.physics.overlapCirc(this.x, this.y, this.range).filter(item => item.gameObject.isBuffTarget == true);
+            buffTargets = this.scene.physics.overlapCirc(this.x, this.y, this.range).filter(item => item.gameObject.isBuffTarget == true);
+            if (buffTargets.length == 0)
+                return;
             buffTargets.forEach((e) => {
                 e.gameObject.buffedAspd -= this.buffAspd;
                 e.gameObject.buffedAtk -= this.buffAtk;
