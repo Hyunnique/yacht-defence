@@ -340,7 +340,7 @@ export default class gameScene extends Phaser.Scene{
     }
     toPlacePhase() {
         this.PhaseText = "Place Phase";
-        this.phaseTimer = this.time.delayedCall(3000, this.toBattlePhase, [], this);
+        this.phaseTimer = this.time.delayedCall(30000, this.toBattlePhase, [], this);
     }
     toBattlePhase() {
         this.m_player.forEach(element => element.giveBuff());
