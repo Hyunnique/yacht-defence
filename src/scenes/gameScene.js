@@ -4,6 +4,7 @@ import Playertest from '../objects/units/playerUnit.js';
 import Game from "../Game.js";
 import Unit from '../objects/units/playerUnit.js';
 import Item from "../assets/specsheets/shopItemSheet.json"
+import { GameObjects } from 'phaser';
 const Phaser = require('phaser');
 const Config = require("../Config");
 
@@ -56,6 +57,13 @@ export default class gameScene extends Phaser.Scene{
     controls;
     debugGraphics;
     animatedTiles = [];
+
+    tierCnt = [0, 0, 0, 0];
+    tierBonus = [0, 0, 0, 0];
+
+    buffAtk = 0;
+    buffAspd = 0;
+    buffPenetration = 0;
 
     /*
         타이머관련 변수 선언
@@ -371,7 +379,40 @@ export default class gameScene extends Phaser.Scene{
     // function receiveUnit(unitID)
     // DicePhase를 마친 뒤 유닛을 선택하면 호출함
     // Unit ID를 파라미터로 가짐
-    receiveUnit(unitID) {
+    receiveUnit(unitID, tier) {
         this.initialPlace(this.unitDB["unit" + unitID]);
+        this.tierCnt[tier - 1]++;
+        let buffvalue1 = 0;
+        let buffvalue2 = 0;
+
+        switch (tier) {
+            case 1:
+                buffvalue1 = 20;
+                buffvalue2 = 2.5;
+                break;
+            case 2:
+                buffvalue1 = 15;
+                buffvalue2 = 5;
+                break;
+            case 3:
+                buffvalue1 = 10;
+                buffvalue2 = 7.5;
+                break;
+            case 4:
+                buffvalue1 = 15
+                break;
+        }
+
+        this.tierBonus[tier - 1] += buffvalue1;
+        this.tierBonus[3] += buffvalue2;
+
+        for (let i = 0; i < 4; i++) {
+            document.getElementsByClassName("ui-unitArea-unitTierCount")[i].innerHTML = "";
+            document.getElementsByClassName("ui-unitArea-unitTierCount")[i].innerHTML += this.tierCnt[i] + " <span class='ui-unitArea-unitTierBonus'>(+" + this.tierBonus[i] + "%)</span>";
+        }
+
+        console.log(this.tierBonus);
+        console.log(this.tierCnt);
     }
 }
+
