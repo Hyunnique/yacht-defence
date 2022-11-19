@@ -3,6 +3,7 @@ import Playertest from '../objects/units/playerUnit.js';
 
 import Game from "../Game.js";
 import Unit from '../objects/units/playerUnit.js';
+import Item from "../assets/specsheets/shopItemSheet.json"
 const Phaser = require('phaser');
 const Config = require("../Config");
 
@@ -340,7 +341,21 @@ export default class gameScene extends Phaser.Scene{
     }
     toPlacePhase() {
         this.PhaseText = "Place Phase";
-        this.phaseTimer = this.time.delayedCall(30000, this.toBattlePhase, [], this);
+        
+        this.itemList = [];
+        let itemCount = Object.keys(Item).length;
+        console.log("TEST: " + itemCount);
+        for (let i = 0; i < 3; i++) { 
+            while (true) {
+                let _r = Math.floor(Math.random() * itemCount);
+                if (!this.itemList.includes(_r)) {
+                    this.itemList.push(_r);
+                    break;
+                }
+            }
+        }
+        console.log(this.itemList);
+        this.phaseTimer = this.time.delayedCall(20000, this.toBattlePhase, [], this);
     }
     toBattlePhase() {
         this.m_player.forEach(element => element.giveBuff());
