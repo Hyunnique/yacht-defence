@@ -281,13 +281,13 @@ export default class PreLoadScene extends Phaser.Scene {
         });
         this.anims.create({
             key: "stoneGolemWalk",
-            frames: this.anims.generateFrameNumbers("stoneGolemWalk", { start: 0, end: 46 }),
+            frames: this.anims.generateFrameNumbers("stoneGolemWalk", { start: 0, end: 53 }),
             repeat: -1,
             frameRate: 40
         });
         this.anims.create({
             key: "stoneGolemDie",
-            frames: this.anims.generateFrameNumbers("stoneGolemDie", { start: 0, end: 53 }),
+            frames: this.anims.generateFrameNumbers("stoneGolemDie", { start: 0, end: 46 }),
             repeat: -1,
             frameRate: 40
         });
