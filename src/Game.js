@@ -173,6 +173,7 @@ var Game = {
 
         this.Socket.on('placePhase-begin', (msg) => {
             this.GameObject.scene.getScene("diceScene").scene.stop().resume("gameScene");
+            this.GameObject.scene.getScene("gameScene").toPlacePhase();
         });
 
         this.Socket.on('placePhase-end', (msg) => {
