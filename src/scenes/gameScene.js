@@ -187,7 +187,7 @@ export default class gameScene extends Phaser.Scene{
         this.m_projectiles = this.physics.add.group();
         this.unitDB = this.cache.json.get("unitDB");
         this.mobDB = this.cache.json.get("mobDB");
-        this.roundDB = this.cache.json.get("roundDB")["round"];
+        this.roundDB = this.cache.json.get("roundDB");
         this.m_player = [];
 
         var prePosX;
@@ -265,7 +265,8 @@ export default class gameScene extends Phaser.Scene{
     }
 
     startRound() {
-        this.roundDB[this.roundNum].forEach(element => {
+        console.log(this.roundDB);
+        this.roundDB["round" + this.roundNum].forEach(element => {
             this.time.addEvent({
                 delay: 1500,
                 callback: () => {
