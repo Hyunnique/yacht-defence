@@ -5,7 +5,7 @@ function importAll(r) {
 }
 
 const unitGIF = importAll(require.context("./assets/images/units", false, /\.gif$/));
-const icons = importAll(require.context("./assets/images/icon", false, /\.png$/));
+const icons = importAll(require.context("./assets/images/icons", false, /\.png$/));
 import unitSpecSheets from "./assets/specsheets/unitSpecsheet.json";
 import itemSpecSheets from "./assets/specsheets/shopItemSheet.json";
 
@@ -62,6 +62,7 @@ var Game = {
             case "diceScene":
                 this.Socket.emit("game-ready", true);
                 this.clearUI();
+                this.shopOpen = false;
                 this.showUI("gameScene-topFloating");
                 this.showUI("gameScene-bottomFloating");
 
@@ -186,7 +187,7 @@ var Game = {
 
         for (let i = 0; i < 3; i++) {
             let itemType = itemSpecSheets["item" + itemArray[i]].itemType;
-            document.getElementsByClassName("ui-shop-itemDisplayImage")[i].style.backgroundImage = "url('" + icons["sword.png"] + "')";
+            document.getElementsByClassName("ui-shop-itemDisplayImage")[i].style.backgroundImage = "url('" + icons["icon" + itemSpecSheets["item" + itemArray[i]].icon + ".png"] + "')";
             document.getElementsByClassName("ui-shop-itemTitle")[i].innerText = itemSpecSheets["item" + itemArray[i]].name;
 
             let buffAtk = itemSpecSheets["item" + itemArray[i]].buffAtk;

@@ -8,7 +8,8 @@
         "additionalMob": "",
         "mobCount": 0,
         "price": 0,
-        "tier": 3
+        "tier": 3,
+        "icon": 1
     },
     "item1": {
         "itemType": 0,
@@ -19,7 +20,8 @@
         "additionalMob": "",
         "mobCount": 0,
         "price": 0,
-        "tier": 3
+        "tier": 3,
+        "icon": 17
     },
     "item2": {
         "itemType": 0,
@@ -30,7 +32,8 @@
         "additionalMob": "",
         "mobCount": 0,
         "price": 0,
-        "tier": 3
+        "tier": 3,
+        "icon": 18
     },
     "item3": {
         "itemType": 0,
@@ -41,7 +44,8 @@
         "additionalMob": "",
         "mobCount": 0,
         "price": 0,
-        "tier": 3
+        "tier": 3,
+        "icon": 7
     },
     "item4": {
         "itemType": 0,
@@ -52,7 +56,8 @@
         "additionalMob": "",
         "mobCount": 0,
         "price": 0,
-        "tier": 3
+        "tier": 3,
+        "icon": 5
     },
     "item5": {
         "itemType": 0,
@@ -63,7 +68,8 @@
         "additionalMob": "",
         "mobCount": 0,
         "price": 0,
-        "tier": 3
+        "tier": 3,
+        "icon": 4
     },
     "item6": {
         "itemType": 0,
@@ -74,7 +80,8 @@
         "additionalMob": "",
         "mobCount": 0,
         "price": 0,
-        "tier": 3
+        "tier": 3,
+        "icon": 0
     },
     "item7": {
         "itemType": 0,
@@ -85,7 +92,8 @@
         "additionalMob": "",
         "mobCount": 0,
         "price": 0,
-        "tier": 3
+        "tier": 3,
+        "icon": 13
     },
     "item8": {
         "itemType": 0,
@@ -96,7 +104,8 @@
         "additionalMob": "",
         "mobCount": 0,
         "price": 0,
-        "tier": 3
+        "tier": 3,
+        "icon": 8
     },
     "item9": {
         "itemType": 0,
@@ -107,7 +116,8 @@
         "additionalMob": "",
         "mobCount": 0,
         "price": 0,
-        "tier": 3
+        "tier": 3,
+        "icon": 16
     },
     "item10": {
         "itemType": 0,
@@ -118,7 +128,8 @@
         "additionalMob": "",
         "mobCount": 0,
         "price": 0,
-        "tier": 3
+        "tier": 3,
+        "icon": 2
     },
     "item11": {
         "itemType": 0,
@@ -129,7 +140,8 @@
         "additionalMob": "",
         "mobCount": 0,
         "price": 0,
-        "tier": 3
+        "tier": 3,
+        "icon": 11
     },
     "item12": {
         "itemType": 0,
@@ -140,7 +152,8 @@
         "additionalMob": "",
         "mobCount": 0,
         "price": 0,
-        "tier": 3
+        "tier": 3,
+        "icon": 14
     },
     "item13": {
         "itemType": 1,
@@ -151,7 +164,8 @@
         "additionalMob": "bear",
         "mobCount": 1,
         "price": 0,
-        "tier": 3
+        "tier": 3,
+        "icon": 15
     },
     "item14": {
         "itemType": 1,
@@ -162,7 +176,8 @@
         "additionalMob": "giant",
         "mobCount": 1,
         "price": 0,
-        "tier": 3
+        "tier": 3,
+        "icon": 15
     },
     "item15": {
         "itemType": 1,
@@ -173,7 +188,8 @@
         "additionalMob": "magician",
         "mobCount": 1,
         "price": 0,
-        "tier": 3
+        "tier": 3,
+        "icon": 15
     },
     "item16": {
         "itemType": 1,
@@ -184,7 +200,8 @@
         "additionalMob": "slimeKing",
         "mobCount": 1,
         "price": 0,
-        "tier": 3
+        "tier": 3,
+        "icon": 15
     },
     "item17": {
         "itemType": 1,
@@ -195,7 +212,8 @@
         "additionalMob": "stoneGolem",
         "mobCount": 1,
         "price": 0,
-        "tier": 3
+        "tier": 3,
+        "icon": 15
     },
     "item18": {
         "itemType": 2,
@@ -206,7 +224,8 @@
         "additionalMob": "batsmallA",
         "mobCount": 15,
         "price": 0,
-        "tier": 3
+        "tier": 3,
+        "icon": 15
     },
     "item19": {
         "itemType": 2,
@@ -217,6 +236,7 @@
         "additionalMob": "",
         "mobCount": 0,
         "price": 0,
-        "tier": 3
+        "tier": 3,
+        "icon": 15
     }
 }
