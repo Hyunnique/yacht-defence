@@ -15,7 +15,7 @@ function importAll(r) {
 }
 
 const images = importAll(require.context("./assets/images", false, /\.(png|jpe?g|svg|gif)$/));
-const unitGIF = importAll(require.context("./assets/images/units", false, /\.gif$/));
 const unitSpriteSheets = importAll(require.context("./assets/spritesheets/units", false, /\.png$/));
+
 Game.Initialize(Config);
 export default Game;
