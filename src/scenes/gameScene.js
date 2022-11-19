@@ -164,17 +164,17 @@ export default class gameScene extends Phaser.Scene{
 
 
 //BGM
-        this.m_music = this.sound.add("music");
-        this.sound.pauseOnBlur = false;
-        const musicConfig = {
-            mute: false,
-            volume: 0.7,
-            rate: 1,
-            detune: 0,
-            seek: 0,
-            loop: true,
-            delay: 0
-        };
+        // this.m_music = this.sound.add("music");
+        // this.sound.pauseOnBlur = false;
+        // const musicConfig = {
+        //     mute: false,
+        //     volume: 0.7,
+        //     rate: 1,
+        //     detune: 0,
+        //     seek: 0,
+        //     loop: true,
+        //     delay: 0
+        // };
         //this.m_music.play(musicConfig);
 
 
