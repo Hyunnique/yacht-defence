@@ -754,8 +754,7 @@ export default class PreLoadScene extends Phaser.Scene {
             frameRate: 15
         });
 
-
-
+        Game.onPreloadDone();
         Game.showScene("gameScene");
     }
 }
