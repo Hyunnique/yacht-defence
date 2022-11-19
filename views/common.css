@@ -115,6 +115,15 @@
     text-align: center;
 }
 
+.ui-common-shop .ui-shop-close {
+    height: 4.5%;
+    position: absolute;
+    top: 1.5%;
+    left: 97%;
+
+    cursor: pointer;
+}
+
 .ui-common-shop .ui-shop-itemList {
     list-style: none;
     margin: 0;

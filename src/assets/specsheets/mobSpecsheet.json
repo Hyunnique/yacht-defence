@@ -16,5 +16,158 @@
         "deathAnimName": "",
         "deathSound": "death",
         "mobAnim": "WormA"
+    },
+    "BrainD": {
+        "Health": 300,
+        "scale": 3,
+        "m_speed": 5,
+        "defence": 15,
+        "deathAnimName": "",
+        "deathSound": "death",
+        "mobAnim": "BrainD"
+    },
+    "CloudA": {
+        "Health": 300,
+        "scale": 3,
+        "m_speed": 5,
+        "defence": 15,
+        "deathAnimName": "",
+        "deathSound": "death",
+        "mobAnim": "CloudA"
+    },
+    "DyeD": {
+        "Health": 300,
+        "scale": 3,
+        "m_speed": 5,
+        "defence": 15,
+        "deathAnimName": "",
+        "deathSound": "death",
+        "mobAnim": "DyeD"
+    },
+    "EyeBallA": {
+        "Health": 300,
+        "scale": 3,
+        "m_speed": 5,
+        "defence": 15,
+        "deathAnimName": "",
+        "deathSound": "death",
+        "mobAnim": "EyeBallA"
+    },
+    "GhastB": {
+        "Health": 300,
+        "scale": 3,
+        "m_speed": 5,
+        "defence": 15,
+        "deathAnimName": "",
+        "deathSound": "death",
+        "mobAnim": "GhastB"
+    },
+    "HeadA": {
+        "Health": 300,
+        "scale": 3,
+        "m_speed": 5,
+        "defence": 15,
+        "deathAnimName": "",
+        "deathSound": "death",
+        "mobAnim": "HeadA"
+    },
+    "MummyC": {
+        "Health": 300,
+        "scale": 3,
+        "m_speed": 5,
+        "defence": 15,
+        "deathAnimName": "",
+        "deathSound": "death",
+        "mobAnim": "MummyC"
+    },
+    "PuddleA": {
+        "Health": 300,
+        "scale": 3,
+        "m_speed": 5,
+        "defence": 15,
+        "deathAnimName": "",
+        "deathSound": "death",
+        "mobAnim": "PuddleA"
+    },
+    "ScorpionC": {
+        "Health": 300,
+        "scale": 3,
+        "m_speed": 5,
+        "defence": 15,
+        "deathAnimName": "",
+        "deathSound": "death",
+        "mobAnim": "ScorpionC"
+    },
+    "SkullD": {
+        "Health": 300,
+        "scale": 3,
+        "m_speed": 5,
+        "defence": 15,
+        "deathAnimName": "",
+        "deathSound": "death",
+        "mobAnim": "SkullD"
+    },
+    "SlimeSmallA": {
+        "Health": 300,
+        "scale": 3,
+        "m_speed": 5,
+        "defence": 15,
+        "deathAnimName": "",
+        "deathSound": "death",
+        "mobAnim": "SlimeSmallA"
+    },
+    "TentacleC": {
+        "Health": 300,
+        "scale": 3,
+        "m_speed": 5,
+        "defence": 15,
+        "deathAnimName": "",
+        "deathSound": "death",
+        "mobAnim": "TentacleC"
+    },
+    "BossBear": {
+        "Health": 300,
+        "scale": 3,
+        "m_speed": 5,
+        "defence": 40,
+        "deathAnimName": "bearDie",
+        "deathSound": "death",
+        "mobAnim": "bearWalk"
+    },
+    "BossSlimeKing": {
+        "Health": 300,
+        "scale": 3,
+        "m_speed": 5,
+        "defence": 40,
+        "deathAnimName": "slimeKingDie",
+        "deathSound": "death",
+        "mobAnim": "slimeKingWalk"
+    },
+    "BossMagician": {
+        "Health": 300,
+        "scale": 3,
+        "m_speed": 5,
+        "defence": 40,
+        "deathAnimName": "magicianDie",
+        "deathSound": "death",
+        "mobAnim": "magicianWalk"
+    },
+    "BossGiant": {
+        "Health": 300,
+        "scale": 3,
+        "m_speed": 5,
+        "defence": 40,
+        "deathAnimName": "giantDie",
+        "deathSound": "death",
+        "mobAnim": "giantWalk"
+    },
+    "BossGolem": {
+        "Health": 300,
+        "scale": 3,
+        "m_speed": 5,
+        "defence": 40,
+        "deathAnimName": "stoneGolemDie",
+        "deathSound": "death",
+        "mobAnim": "stoneGolemWalk"
     }
 }
