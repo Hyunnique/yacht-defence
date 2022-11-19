@@ -216,6 +216,8 @@ export default class gameScene extends Phaser.Scene{
         this.physics.add.overlap(this.m_projectiles, this.m_mobs, (projectile, mob) => mob.hit(projectile), null, this);
         this.cameras.main.setBounds(0, 0, 2400, 1440);
 
+        console.log(this.anims.get("magicianDie"));
+
         // 타이머
         this.waitForReady();
     }
