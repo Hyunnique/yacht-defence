@@ -172,10 +172,13 @@ export default class gameScene extends Phaser.Scene{
 
 //몹/유저유닛/투사체 관련
         this.m_mobs = this.physics.add.group();
-        this.roundNum = -1;
+        this.roundNum = 0;
         this.globalnum = 1;
+        this.lastMobnum = 0;
+        this.unitIndex = 0;
         this.playerHealth = 100;
         this.placemode = false;
+        this.dragging = false;
         this.m_projectiles = this.physics.add.group();
         this.unitDB = this.cache.json.get("unitDB");
         this.mobDB = this.cache.json.get("mobDB");
@@ -185,13 +188,8 @@ export default class gameScene extends Phaser.Scene{
         this.prePosX = 0;
         this.prePosY = 0;
 
-        
-
         this.physics.add.overlap(this.m_projectiles, this.m_mobs, (projectile, mob) => mob.hit(projectile), null, this);
         this.cameras.main.setBounds(0, 0, 2400, 1440);
-
-        console.log(this.anims.get("magicianDie"));
-
     }
 
     update(time, delta) {
@@ -226,7 +224,7 @@ export default class gameScene extends Phaser.Scene{
     initialPlace(unitData)
     {
         this.info.alpha = 1;
-        let newUnit = new Unit(this, -500, -500, unitData);
+        let newUnit = new Unit(this, -500, -500, unitData,this.unitIndex++);
         newUnit.rangeView.alpha = 1;
         this.input.on('pointermove', (pointer) => {
             if (this.placemode) {
@@ -251,58 +249,41 @@ export default class gameScene extends Phaser.Scene{
                     t.index = "2898";
                     this.info.alpha = 0;
                     newUnit.rangeView.alpha = 0;
-                    
+                    t.placedUnit = newUnit;
                     this.placemode = false;
                     this.input.off("pointermove");
                     this.input.off("pointerdown");
                     newUnit.setX(t.getCenterX());
                     newUnit.setY(t.getCenterY());
-                    this.time.delayedCall(100, this.dragController, [true], this);                    
-                    this.input.setDraggable(this.m_player, true);
+                    this.placeModeController(true);
                 }
             }
         },this);
     }
 
-    dragController(bool)
+    placeModeController(bool)
     {
         if (bool)
         {
-            this.input.on('dragstart', (pointer, gameObject) => {
-                this.info.alpha = 1;
-                var tile = this.getTileAtPointer(pointer, this.info);
-                this.prePosX = pointer.worldX;
-                this.prePosY = pointer.worldY;
-                this.selectedUnit = gameObject;
-                if (tile.index == "2898") tile.index = "2897";
-            });
-
-            this.input.on('drag', (pointer, gameObject) => {
-                gameObject.x = pointer.worldX;
-                gameObject.y = pointer.worldY;
-            })
-
-            this.input.on('dragend', (pointer, gameObject) => {
-                this.info.alpha = 0;
-                var tile = this.getTileAtPointer(pointer, this.info);
-                this.placeUnitOnTile(tile, gameObject, this.prePosX, this.prePosY);
-            })
-            
+            this.input.on("pointerdown", (pointer) => {
+                let t = this.getTileAtPointer(pointer, this.info);
+                this.m_player.splice(this.m_player.findIndex(e => e.index == t.placedUnit.index), 1);
+                t.index = "2897";
+                var unitID = parseInt(t.placedUnit.idleAnim.substring(4, t.placedUnit.idleAnim.length - 4));
+                t.placedUnit.remove();
+                this.placemode = true;
+                this.placeModeController(false);
+                this.initialPlace(this.unitDB["unit"+unitID]);
+            });  
         }
         else {
-            // 드래그 중에 끝난 경우..
-            var tile = this.getTileAtPointer(this.input.mousePointer, this.info);
-            this.placeUnitOnTile(tile, this.selectedUnit, this.prePosX, this.prePosY);
-            this.info.alpha = 0;
-            this.input.off('dragstart');
-            this.input.off('drag');
-            this.input.off('dragend');
+            this.input.off("pointerdown");
         }
     }
 
     startRound() {
-        console.log(this.roundNum);
-        this.roundDB["round" + this.roundNum].forEach(element => {
+        this.lastMobnum = this.globalnum -1;
+        this.roundDB["round" + this.roundNum].forEach((element) => {
             this.time.addEvent({
                 delay: 1500,
                 callback: () => {
@@ -311,6 +292,7 @@ export default class gameScene extends Phaser.Scene{
                 repeat: element["mobCount"],
                 startAt: 0
             });
+            this.lastMobnum += element["mobCount"];
         });
     }
 
@@ -371,7 +353,6 @@ export default class gameScene extends Phaser.Scene{
         
         this.itemList = [];
         let itemCount = Object.keys(Item).length;
-        console.log("TEST: " + itemCount);
         for (let i = 0; i < 3; i++) { 
             while (true) {
                 let _r = Math.floor(Math.random() * itemCount);
@@ -381,13 +362,12 @@ export default class gameScene extends Phaser.Scene{
                 }
             }
         }
-        console.log(this.itemList);
         //this.phaseTimer = this.time.delayedCall(20000, this.toBattlePhase, [], this);
     }
     toBattlePhase() {
+        this.placeModeController(false);
         this.m_player.forEach(element => element.giveBuff());
         this.PhaseText = "Battle Phase";
-        this.dragController(false);
         this.startRound();
         //this.phaseTimer = this.time.delayedCall(6000, this.toDicePhase, [], this);
     }
@@ -429,8 +409,6 @@ export default class gameScene extends Phaser.Scene{
             document.getElementsByClassName("ui-unitArea-unitTierCount")[i].innerHTML += this.tierCnt[i] + " <span class='ui-unitArea-unitTierBonus'>(+" + this.tierBonus[i] + "%)</span>";
         }
 
-        console.log(this.tierBonus);
-        console.log(this.tierCnt);
     }
 }
 

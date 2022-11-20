@@ -1,18 +1,16 @@
 {
-    "round0": [
-        {
-            "mobName": "BossMagician",
-            "mobCount": 10,
-            "hpFactor": 1,
-            "mobRoute": "A"
-        }
-    ],
     "round1": [
         {
             "mobName": "BatSmallA",
             "mobCount": 10,
             "hpFactor": 1,
             "mobRoute": "A"
+        },
+        {
+            "mobName": "WormA",
+            "mobCount": 10,
+            "hpFactor": 1,
+            "mobRoute": "B"
         }
     ],
     "round2": [
@@ -20,7 +18,7 @@
             "mobName": "BatSmallA",
             "mobCount": 10,
             "hpFactor": 1,
-            "mobRoute": "A"
+            "mobRoute": ""
         }
     ],
     "round3": [
@@ -392,6 +390,14 @@
         }
     ],
     "round49": [
+        {
+            "mobName": "BatSmallA",
+            "mobCount": 10,
+            "hpFactor": 1,
+            "mobRoute": "A"
+        }
+    ],
+    "round50": [
         {
             "mobName": "BatSmallA",
             "mobCount": 10,
