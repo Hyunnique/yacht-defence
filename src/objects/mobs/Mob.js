@@ -95,7 +95,6 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
 
         var animConfig = this.scene.anims.get(this.deathAnimName);
         var animtime = animConfig.frames.length * animConfig.msPerFrame;
-        console.log(animtime);
         this.scene.time.delayedCall(animtime, () => { this.destroy() }, [], this.scene);
     }
     
