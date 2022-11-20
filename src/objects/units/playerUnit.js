@@ -135,7 +135,6 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
                 e.gameObject.Health -= this.attack;
                 if (e.gameObject.Health <= 0) {
                     this.kills++;
-                    e.gameObject.death();
                     this.checkMob();
                 }
             })

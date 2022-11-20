@@ -66,20 +66,18 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         const width = this.healthBar.displayWidth * (this.Health / this.MaxHealth);
         this.scene.tweens.add({
             targets: this.healthBar,
-            displayWidth: width,
-            ease: Phaser.Math.Easing.Sine.Out
+            displayWidth: width
         });
 
-        if (this.Health <= 0 && !this.deathCalled)
-        {
+        if (this.Health <= 0 && !this.deathCalled) {
             console.log(this.mobNum + "called Death!");
             this.death();
         }
-        
         else if (Phaser.Math.Distance.Between(this.x, this.y, 2400, 720) < 1 && !this.deathCalled) {
-                Game.hitPlayerBase(1);
-                this.deathCalled = true;
-                this.death();
+            console.log(this.mobNum + "called Death!");
+            Game.hitPlayerBase(1);
+            this.deathCalled = true;
+            this.death();
         }
     }
 
@@ -103,7 +101,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
 
         var animConfig = this.scene.anims.get(this.deathAnimName);
         var animtime = animConfig.frames.length * animConfig.msPerFrame;
-        console.log(animtime);
+        console.log(this.mobNum+"Dead!");
         this.scene.time.delayedCall(animtime, () => { this.destroy() }, [], this.scene);
     }
     
