@@ -1,7 +1,7 @@
 import Homing from '../projectiles/homing.js';
 import Penetrate from '../projectiles/penetrate.js';
-import Bomb from '../projectiles/bomb.js';
-import unitEffect from './unitEffect.js';
+import Bomb from '../projectiles/bomb.js'
+import UnitEffect from './unitEffect.js';
 const Config = require("../../Config");
 const Phaser = require("phaser");
 
@@ -20,6 +20,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.attackType = db.attackType;
         this.idleAnim = db.idleAnim;
         this.attackAnim = db.attackAnim;
+        this.effectName = db.effectName;
         this.index = index;
 
         this.rangeView = this.scene.add.circle(this.x, this.y, this.range,0xFF0000);
@@ -31,7 +32,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.projectileAnimName = db.projectileAnimName;
         this.projectileType = db.projectileType;
         
-        // this.effect = new unitEffect(scene, x, y, db.effectName);
+        
         this.isTarget = false;
         this.isBuffTarget = true;
 
@@ -41,6 +42,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.scale = 1;
         this.alpha = 1;      
         this.shootSound = this.scene.sound.add("shoot");
+        this.effect = new UnitEffect(scene, this);
         
         this.target = [];
         this.attackEvent;
@@ -61,6 +63,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
     update() {
         this.rangeView.setX(this.x);
         this.rangeView.setY(this.y);
+        this.effect.x = this.x;
+        this.effect.y = this.y;
     }
 
     checkMob() {
@@ -105,7 +109,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.attack = (this.buffedAtk + 1) * this.originAttack;
         this.aspd = this.buffedAspd + this.originAspd;
         this.penetration = this.originPenetration + this.buffedPenetration;
-        this.setMotionSpeed();
+        // this.setMotionSpeed();
     }
 
     setMotionSpeed()
@@ -123,7 +127,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         }
 
         this.play(this.attackAnim, true);
-        // this.effect.playEffect();
+        this.effect.playEffect();
+
 
         if (this.attackType == 0) {
             this.target.forEach(e => {
