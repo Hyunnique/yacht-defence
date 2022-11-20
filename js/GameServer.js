@@ -104,24 +104,20 @@ module.exports = {
             round: this.Rooms[roomId].round,
         });
 
-        if (this.Rooms[roomId].round % 2 == 1) {
-            // 홀수 라운드면 Dice Phase 먼저 진행
-            this.Rooms[roomId].counter.handConfirm = 0;
-            this.Rooms[roomId].counter.handReceived = 0;
+        // 홀수 라운드면 Dice Phase 먼저 진행
+        this.Rooms[roomId].counter.handConfirm = 0;
+        this.Rooms[roomId].counter.handReceived = 0;
 
-            this.Rooms[roomId].roundChoice = Math.floor(Math.random() * 25) + 5;
+        this.Rooms[roomId].roundChoice = Math.floor(Math.random() * 25) + 5;
 
-            this.emitAll(roomId, 'dicePhase-begin', {
-                roundChoice: this.Rooms[roomId].roundChoice,
-                timeLimit: 30,
-            });
+        this.emitAll(roomId, 'dicePhase-begin', {
+            roundChoice: this.Rooms[roomId].roundChoice,
+            timeLimit: 30,
+        });
 
-            this.createTimer(roomId, "dicePhaseEnd", 30000, () => {
-                this.onDiceTimeEnd(roomId);
-            });
-        } else {
-            this.onPlacePhaseBegin(roomId);
-        }
+        this.createTimer(roomId, "dicePhaseEnd", 30000, () => {
+            this.onDiceTimeEnd(roomId);
+        });
     },
 
     onDiceConfirm(socket, roomId) {

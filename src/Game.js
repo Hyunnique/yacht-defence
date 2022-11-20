@@ -219,6 +219,9 @@ var Game = {
         });
 
         this.Socket.on('battlePhase-begin', (msg) => {
+
+            this.hideUI("common-unitReward");
+            this.hideUI("common-shop");
             document.getElementsByClassName("ui-phase-value")[0].innerText = "Defense";
             document.getElementsByClassName("ui-phaseTimelimit-value")[0].innerText = this.currentTimeLimit;
             this.currentTimeLimit = msg.timeLimit;
