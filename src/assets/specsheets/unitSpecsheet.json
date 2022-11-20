@@ -935,7 +935,7 @@
         "projectileType": 0
     },
     "unit52": {
-        "name": "힘의 부족 도끼 전투원",
+        "name": "힘의 부족 도끼마스터 데럴드",
         "unitType": 0,
         "attack": 100,
         "aspd": 0.8,
@@ -953,7 +953,7 @@
         "projectileType": 0
     },
     "unit53": {
-        "name": "힘의 부족 창 전투원",
+        "name": "힘의 부족 창의 달인 데마린",
         "unitType": 0,
         "attack": 100,
         "aspd": 0.8,

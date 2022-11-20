@@ -176,9 +176,9 @@ export default class PreLoadScene extends Phaser.Scene {
         {   
             this.anims.create({
                 key: "unit" + i + "idle",
-                frames: this.anims.generateFrameNumbers("unit" + i + "idle", { start: 0, end: 14 }),
+                frames: this.anims.generateFrameNumbers("unit" + i + "idle", { start: 0, end: 11 }),
                 repeat: -1,
-                frameRate: 30
+                frameRate: 40
             });
             if (irregulars.findIndex(e => e == i) != -1)
                 continue;
