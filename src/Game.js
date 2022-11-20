@@ -42,6 +42,9 @@ var Game = {
             this.TimelimitTimer = setInterval(() => {
                 if (this.currentTimeLimit > 0) this.currentTimeLimit--;
                 document.getElementsByClassName("ui-phaseTimelimit-value")[0].innerText = this.currentTimeLimit;
+
+                if (this.currentTimeLimit <= 5) document.getElementsByClassName("ui-phaseTimelimit-value")[0].style.color = "red";
+                else document.getElementsByClassName("ui-phaseTimelimit-value")[0].style.color = "black";
             }, 1000);
         });
 
@@ -68,7 +71,7 @@ var Game = {
         });
 
         this.Socket.on("dicePhase-confirmWait", (msg) => {
-            document.getElementsByClassName("ui-timelimit-value")[0].innerText = msg;
+            document.getElementsByClassName("ui-diceConfirmText")[0].innerText = msg;
         });
 
         this.Socket.on("dicePhase-forceConfirm", (msg) => {
