@@ -60,6 +60,7 @@ export default class gameScene extends Phaser.Scene{
 
     tierCnt = [0, 0, 0, 0];
     tierBonus = [0, 0, 0, 0];
+    gold = 0;
 
     buffAtk = 0;
     buffAspd = 0;

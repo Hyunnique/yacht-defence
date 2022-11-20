@@ -37,7 +37,7 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
     {
         var targets = this.scene.physics.overlapCirc(this.x, this.y, 80).filter(item => item.gameObject.isTarget == true);
             targets.forEach(element => {
-                element.gameObject.Health -= projectile.shooter.calcDamage(element.gameObject.defence);
+                element.gameObject.Health -= this.shooter.calcDamage(element.gameObject.defence);
                 if (element.gameObject.Health <= 0)
                     this.shooter.kills++;
             });

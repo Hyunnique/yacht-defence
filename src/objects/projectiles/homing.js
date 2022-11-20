@@ -6,7 +6,7 @@ export default class Homing extends Phaser.Physics.Arcade.Sprite {
         super(scene, shooter.x, shooter.y, shooter.projectileName);
         this.scene.m_projectiles.add(this);
         this.shooter = shooter;
-        this.speed = 250;
+        this.speed = 750;
         this.scale = 0.4;
         this.alpha = 1;
         this.targetidx = 0;
