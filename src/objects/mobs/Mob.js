@@ -1,5 +1,6 @@
 const Phaser = require("phaser");
 import { pathA, pathB, pathC, pathD, pathBoss } from "../points/mobPath";
+import Game from "../../Game.js";
 
 export default class Mob extends Phaser.Physics.Arcade.Sprite {
 
@@ -72,7 +73,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
             this.death();
         
         if (Phaser.Math.Distance.Between(this.x, this.y, 2400, 720) < 4) {
-            this.scene.playerHealth--;
+            Game.hitPlayerBase(1);
             this.death();
         }
     }
