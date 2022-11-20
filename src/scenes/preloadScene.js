@@ -152,6 +152,11 @@ export default class PreLoadScene extends Phaser.Scene {
         //this.load.audio("music", bgm);
         this.load.audio("death", batDeath);
         this.load.audio("shoot", bulletShoot);
+        this.load.audio("rollDice", require("../assets/sounds/roll_dice.wav"));
+        this.load.audio("tier1", require("../assets/sounds/tier1.wav"));
+        this.load.audio("tier2", require("../assets/sounds/tier2.wav"));
+        this.load.audio("tier3", require("../assets/sounds/tier3.wav"));
+        this.load.audio("tier4", require("../assets/sounds/tier4.wav"));
 
         // 맵 로딩
         this.load.image("outside_ground", outside_ground);
@@ -828,5 +833,8 @@ export default class PreLoadScene extends Phaser.Scene {
 
         Game.onPreloadDone();
         Game.showScene("gameScene");
+    }
+
+    update() {
     }
 }
