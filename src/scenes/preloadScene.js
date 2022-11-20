@@ -241,7 +241,11 @@ export default class PreLoadScene extends Phaser.Scene {
             repeat: 0,
             frameRate: 40
         });
-        
+        // 공격 프레임 속도 40 (프레임당 0.025초) 기준
+        // 13프레임의 경우 0.325초 (1초에 3.07회)
+        // 19프레임의 경우 0.475초 (1초에 2.10회)
+        // 25프레임의 경우 0.625초 (1초에 1.6회)
+        // 각각 저 횟수 이상으로 공격할 수 없음
 
         // 보스 몹 애니메이션 생성
         this.anims.create({
