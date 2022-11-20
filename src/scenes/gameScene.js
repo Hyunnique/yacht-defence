@@ -359,8 +359,6 @@ export default class gameScene extends Phaser.Scene{
     }
     toPlacePhase() {
         this.PhaseText = "Place Phase";
-        if(this.roundNum % 2 == 0)
-            this.placeModeController(true);
         this.itemList = [];
         let itemCount = Object.keys(Item).length;
         for (let i = 0; i < 3; i++) { 
