@@ -82,7 +82,7 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.spritesheet("buff3", require("../assets/spritesheets/effect/buff3_sprite.png"), {frameWidth: 450, frameHeight: 450});
         this.load.spritesheet("electricBall", require("../assets/spritesheets/effect/electric_ball_sprite.png"), {frameWidth: 750, frameHeight: 750});
         this.load.spritesheet("fireFromBottom", require("../assets/spritesheets/effect/fire_from_bottom_sprite.png"), {frameWidth: 128, frameHeight: 128});
-        this.load.spritesheet("fireShot1", require("../assets/spritesheets/effect/fire_shot_1_sprite.png"), {frameWidth: 240, frameHeight: 320});
+        this.load.spritesheet("fireShot1", require("../assets/spritesheets/effect/fire_shot_1_sprite.png"), {frameWidth: 120, frameHeight: 160});
         this.load.spritesheet("fireShot2", require("../assets/spritesheets/effect/fire_shot_2_sprite.png"), {frameWidth: 500, frameHeight: 400});
         this.load.spritesheet("fireShot3_1", require("../assets/spritesheets/effect/fire_shot_3_1_sprite.png"), {frameWidth: 340, frameHeight: 240});
         this.load.spritesheet("fireShot3_2", require("../assets/spritesheets/effect/fire_shot_3_2_sprite.png"), {frameWidth: 340, frameHeight: 240});
@@ -96,9 +96,12 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.spritesheet("pierce", require("../assets/spritesheets/effect/pierce_sprite.png"), {frameWidth: 435, frameHeight: 435});
         this.load.spritesheet("purpleFire", require("../assets/spritesheets/effect/purple_fire_sprite.png"), {frameWidth: 400, frameHeight: 400});
         this.load.spritesheet("purpleFire90", require("../assets/spritesheets/effect/purple_fire_90_sprite.png"), {frameWidth: 400, frameHeight: 400});
-        this.load.spritesheet("purpleShot1", require("../assets/spritesheets/effect/purple_shot_1_sprite.png"), {frameWidth: 340, frameHeight: 340});
+        this.load.spritesheet("purpleShot1", require("../assets/spritesheets/effect/purple_shot_1_sprite.png"), {frameWidth: 170, frameHeight: 170});
         this.load.spritesheet("purpleShot2", require("../assets/spritesheets/effect/purple_shot_2_sprite.png"), {frameWidth: 420, frameHeight: 420});
         this.load.spritesheet("purpleShot3", require("../assets/spritesheets/effect/purple_shot_3.png"), {frameWidth: 400, frameHeight: 240});
+        this.load.spritesheet("blueShot1", require("../assets/spritesheets/effect/blue_shot_1_sprite.png"), {frameWidth: 170, frameHeight: 170});
+        this.load.spritesheet("greenShot1", require("../assets/spritesheets/effect/green_shot_1_sprite.png"), {frameWidth: 170, frameHeight: 170});
+        this.load.spritesheet("redShot1", require("../assets/spritesheets/effect/red_shot_1_sprite.png"), {frameWidth: 170, frameHeight: 170});
         this.load.spritesheet("redFire", require("../assets/spritesheets/effect/red_fire_sprite.png"), {frameWidth: 500, frameHeight: 500});
         this.load.spritesheet("redFire90", require("../assets/spritesheets/effect/red_fire_90_sprite.png"), {frameWidth: 501, frameHeight: 501});
         this.load.spritesheet("redFire2", require("../assets/spritesheets/effect/red_fire2_sprite.png"), {frameWidth: 540, frameHeight: 540});
@@ -109,7 +112,7 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.spritesheet("tornado2", require("../assets/spritesheets/effect/tornado_2.png"), {frameWidth: 800, frameHeight: 800});
         this.load.spritesheet("tornadoOrg", require("../assets/spritesheets/effect/tornado_org_sprite.png"), {frameWidth: 800, frameHeight: 800});
         this.load.spritesheet("weaponProjectile1", require("../assets/spritesheets/effect/weapon_projectile_1.png"), {frameWidth: 6, frameHeight: 15});
-        this.load.spritesheet("weaponProjectile2", require("../assets/spritesheets/effect/weapon_projectile_2.png"), {frameWidth: 32, frameHeight: 32});
+        this.load.spritesheet("weaponProjectile2", require("../assets/spritesheets/effect/weapon_projectile_2.png"), {frameWidth: 194, frameHeight: 194});
         this.load.spritesheet("weaponProjectile3", require("../assets/spritesheets/effect/weapon_projectile_3.png"), {frameWidth: 32, frameHeight: 32});
         this.load.spritesheet("weaponProjectile4", require("../assets/spritesheets/effect/weapon_projectile_4.png"), {frameWidth: 16, frameHeight: 16});
         this.load.spritesheet("weaponProjectile5", require("../assets/spritesheets/effect/weapon_projectile_5.png"), {frameWidth: 32, frameHeight: 32});
@@ -713,6 +716,18 @@ export default class PreLoadScene extends Phaser.Scene {
             frameRate: 40
         });
         this.anims.create({
+            key: "blueShot1",
+            frames: this.anims.generateFrameNumbers("blueShot1", { start: 0 }),
+            repeat: 0,
+            frameRate: 40
+        });
+        this.anims.create({
+            key: "redShot1",
+            frames: this.anims.generateFrameNumbers("redShot1", { start: 0 }),
+            repeat: 0,
+            frameRate: 40
+        });
+        this.anims.create({
             key: "redFire",
             frames: this.anims.generateFrameNumbers("redFire", { start: 0 }),
             repeat: -1,
@@ -774,31 +789,31 @@ export default class PreLoadScene extends Phaser.Scene {
         });
         this.anims.create({
             key: "weaponProjectile2",
-            frames: this.anims.generateFrameNumbers("weaponProjectile1", { start: 0 }),
+            frames: this.anims.generateFrameNumbers("weaponProjectile2", { start: 0 }),
             repeat: -1,
             frameRate: 40
         });
         this.anims.create({
             key: "weaponProjectile3",
-            frames: this.anims.generateFrameNumbers("weaponProjectile1", { start: 0 }),
+            frames: this.anims.generateFrameNumbers("weaponProjectile3", { start: 0 }),
             repeat: -1,
             frameRate: 40
         });
         this.anims.create({
             key: "weaponProjectile4",
-            frames: this.anims.generateFrameNumbers("weaponProjectile1", { start: 0 }),
+            frames: this.anims.generateFrameNumbers("weaponProjectile4", { start: 0 }),
             repeat: -1,
             frameRate: 40
         });
         this.anims.create({
             key: "weaponProjectile5",
-            frames: this.anims.generateFrameNumbers("weaponProjectile1", { start: 0 }),
+            frames: this.anims.generateFrameNumbers("weaponProjectile5", { start: 0 }),
             repeat: -1,
             frameRate: 40
         });
         this.anims.create({
             key: "weaponProjectile6",
-            frames: this.anims.generateFrameNumbers("weaponProjectile1", { start: 0 }),
+            frames: this.anims.generateFrameNumbers("weaponProjectile6", { start: 0 }),
             repeat: -1,
             frameRate: 40
         });
