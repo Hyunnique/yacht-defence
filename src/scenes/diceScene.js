@@ -214,7 +214,7 @@ export default class diceScene extends Phaser.Scene{
             this.bestHand = "Yacht!";
         }
         else if (this.quadruple) {
-            this.currentTier = 3;
+            this.currentTier = 2;
             this.bestHand = "4 of A Kind";
         }
         else if (this.largeStraight) {
@@ -222,7 +222,7 @@ export default class diceScene extends Phaser.Scene{
             this.bestHand = "L. Straight";
         }
         else if (this.fullHouse) {
-            this.currentTier = 2;
+            this.currentTier = 3;
             this.bestHand = "Full House";
         }
         else if (this.smallStraight) {

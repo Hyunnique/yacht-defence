@@ -15,16 +15,16 @@
     ],
     "round2": [
         {
-            "mobName": "BatSmallA",
-            "mobCount": 10,
+            "mobName": "BrainD",
+            "mobCount": 15,
             "hpFactor": 1,
             "mobRoute": "A"
         }
     ],
     "round3": [
         {
-            "mobName": "BatSmallA",
-            "mobCount": 10,
+            "mobName": "BrainD",
+            "mobCount": 20,
             "hpFactor": 1,
             "mobRoute": "A"
         }
