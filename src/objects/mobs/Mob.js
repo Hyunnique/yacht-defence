@@ -17,6 +17,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         this.defence = 20; //나중에 DB에서 불러와 주세요
         this.mobNum = num;
         this.moveType = mobRoute;
+        this.deathCalled = false;
 
         this.deathSound = this.scene.sound.add(mobData.deathSound);
         this.healthBar = this.scene.add.image(this.x-48, this.y - 24, "healthBar").setOrigin(0,0.5);
@@ -69,17 +70,21 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
             ease: Phaser.Math.Easing.Sine.Out
         });
 
-        if (this.Health <= 0)
+        if (this.Health <= 0 && !this.deathCalled)
+        {
+            console.log(this.mobNum + "called Death!");
             this.death();
+        }
         
-        if (Phaser.Math.Distance.Between(this.x, this.y, 2400, 720) < 4) {
-            Game.hitPlayerBase(1);
-            this.death();
+        else if (Phaser.Math.Distance.Between(this.x, this.y, 2400, 720) < 1 && !this.deathCalled) {
+                Game.hitPlayerBase(1);
+                this.deathCalled = true;
+                this.death();
         }
     }
 
     death()
-    {   
+    {
         this.deathSound.play({
             mute: false,
             volume: 0.7,
@@ -89,6 +94,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         this.scene.events.off("update", this.update, this);
         this.scene.events.emit("mobDeath", this.mobNum);
         this.scene.mobCounter--;
+        console.log(this.scene.mobCounter);
         this.body.enable = false;
 
         this.healthBar.destroy();
@@ -97,6 +103,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
 
         var animConfig = this.scene.anims.get(this.deathAnimName);
         var animtime = animConfig.frames.length * animConfig.msPerFrame;
+        console.log(animtime);
         this.scene.time.delayedCall(animtime, () => { this.destroy() }, [], this.scene);
     }
     

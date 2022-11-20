@@ -18,7 +18,7 @@
             "mobName": "BatSmallA",
             "mobCount": 10,
             "hpFactor": 1,
-            "mobRoute": ""
+            "mobRoute": "A"
         }
     ],
     "round3": [
