@@ -172,10 +172,10 @@ module.exports = {
 
     onPlacePhaseBegin(roomId) {
         this.emitAll(roomId, 'placePhase-begin', {
-            timeLimit: 50,
+            timeLimit: 10,
         });
         
-        this.createTimer(roomId, "placePhaseEnd", 5000, () => {
+        this.createTimer(roomId, "placePhaseEnd", 10000, () => {
             this.emitAll(roomId, 'placePhase-end', true);
             this.onBattlePhaseBegin(roomId);
         });
@@ -186,7 +186,7 @@ module.exports = {
             timeLimit: 30,
         });
 
-        this.createTimer(roomId, "battlePhaseEnd", 10000, () => {
+        this.createTimer(roomId, "battlePhaseEnd", 30000, () => {
             this.emitAll(roomId, 'battlePhase-end', true);
             this.Rooms[roomId].round++;
             this.onRoundBegin(roomId);
