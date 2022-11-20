@@ -1,11 +1,12 @@
 import Homing from '../projectiles/homing.js';
 import Penetrate from '../projectiles/penetrate.js';
-import Bomb from '../projectiles/bomb.js'
+import Bomb from '../projectiles/bomb.js';
+import unitEffect from '../../objects/units/unitEffect.js';
 const Config = require("../../Config");
 const Phaser = require("phaser");
 
 export default class Unit extends Phaser.Physics.Arcade.Sprite {
-    constructor(scene,x,y, db) {
+    constructor(scene, x, y, db) {
         super(scene, x, y, db.idleSprite);
 
         this.setOrigin(0.5, 0.5);
@@ -25,11 +26,11 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.buffAtk = 0;
         this.buffAspd = 0;
         this.buffedPenetration = 0;
-        this.projectileName = "bullet";
-        this.projectileAnimName = "bullet";
-        this.projectileType = 1;
+        this.projectileName = db.projectileName;
+        this.projectileAnimName = db.projectileAnimName;
+        this.projectileType = db.projectileType;
         
-        
+        this.effect = new unitEffect(scene, x, y, db.effectName);
         this.isTarget = false;
         this.isBuffTarget = true;
 
@@ -42,7 +43,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         
         this.target = [];
         
-        this.setMotionSpeed();
+        // this.setMotionSpeed();
 
         this.kills = 0;
         this.isTarget = false;
@@ -120,7 +121,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
             return;
         }
 
-        this.play(this.attackConfig, true);
+        this.play(this.attackAnim, true);
+        this.effect.playEffect();
 
         if (this.attackType == 0) {
             this.target.forEach(e => {

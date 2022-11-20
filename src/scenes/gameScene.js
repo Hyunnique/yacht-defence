@@ -371,7 +371,6 @@ export default class gameScene extends Phaser.Scene{
         
         this.itemList = [];
         let itemCount = Object.keys(Item).length;
-        console.log("TEST: " + itemCount);
         for (let i = 0; i < 3; i++) { 
             while (true) {
                 let _r = Math.floor(Math.random() * itemCount);
@@ -381,7 +380,7 @@ export default class gameScene extends Phaser.Scene{
                 }
             }
         }
-        console.log(this.itemList);
+        
         //this.phaseTimer = this.time.delayedCall(20000, this.toBattlePhase, [], this);
     }
     toBattlePhase() {
