@@ -178,7 +178,7 @@ module.exports = {
     onBattlePhaseBegin(roomId) {
         this.emitAll(roomId, 'battlePhase-begin', true);
 
-        this.createTimer(roomId, "battlePhaseEnd", 10000, () => {
+        this.createTimer(roomId, "battlePhaseEnd", 10000000, () => {
             this.emitAll(roomId, 'battlePhase-end', true);
             this.Rooms[roomId].round++;
             this.onRoundBegin(roomId);
