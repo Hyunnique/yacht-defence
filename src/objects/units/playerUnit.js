@@ -6,7 +6,7 @@ const Config = require("../../Config");
 const Phaser = require("phaser");
 
 export default class Unit extends Phaser.Physics.Arcade.Sprite {
-    constructor(scene, x, y, db) {
+    constructor(scene, x, y, db, index) {
         super(scene, x, y, db.idleSprite);
 
         this.setOrigin(0.5, 0.5);
@@ -20,6 +20,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.attackType = db.attackType;
         this.idleAnim = db.idleAnim;
         this.attackAnim = db.attackAnim;
+        this.index = index;
 
         this.rangeView = this.scene.add.circle(this.x, this.y, this.range,0xFF0000);
         this.rangeView.setAlpha(0);
@@ -42,7 +43,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.shootSound = this.scene.sound.add("shoot");
         
         this.target = [];
-        
+        this.attackEvent;
         // this.setMotionSpeed();
 
         this.kills = 0;
@@ -157,7 +158,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
 
     activateAttack()
     {
-        this.scene.time.addEvent({
+        this.attackEvent = this.scene.time.addEvent({
             delay: 1000 / this.aspd,
             callback: () => {
                 this.checkMob();
@@ -165,6 +166,17 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
             },
             loop: true
         });
+    }
+
+    deactivateAttack()
+    {
+        this.scene.time.removeEvent(this.attackEvent);
+    }
+
+    remove()
+    {
+        this.deactivateAttack();
+        this.destroy();
     }
 
     calcDamage(mobDefence)
