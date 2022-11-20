@@ -180,7 +180,7 @@ export default class PreLoadScene extends Phaser.Scene {
                 repeat: -1,
                 frameRate: 30
             });
-            if (irregulars.findIndex(e => e == i) != 0)
+            if (irregulars.findIndex(e => e == i) != -1)
                 continue;
             this.anims.create({
                 key: "unit" + i + "atk",
