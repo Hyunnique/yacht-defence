@@ -398,5 +398,13 @@
             "hpFactor": 1,
             "mobRoute": "A"
         }
+    ],
+    "round50": [
+        {
+            "mobName": "BatSmallA",
+            "mobCount": 10,
+            "hpFactor": 1,
+            "mobRoute": "A"
+        }
     ]
 }
