@@ -69,7 +69,7 @@
         "mobCount": 0,
         "price": 0,
         "tier": 3,
-        "icon": 4
+        "icon": 6
     },
     "item6": {
         "itemType": 0,
@@ -238,5 +238,29 @@
         "price": 0,
         "tier": 3,
         "icon": 15
+    },
+    "item20": {
+        "itemType": 6,
+        "name": "마지막 찬스",
+        "buffAtk": 0,
+        "buffAspd": 0,
+        "buffPenetration": 0,
+        "additionalMob": "",
+        "mobCount": 0,
+        "price": 0,
+        "tier": 3,
+        "icon": 4
+    },
+    "item21": {
+        "itemType": 6,
+        "name": "기지 정비",
+        "buffAtk": 0,
+        "buffAspd": 0,
+        "buffPenetration": 0,
+        "additionalMob": "",
+        "mobCount": 0,
+        "price": 0,
+        "tier": 3,
+        "icon": 9
     }
 }
