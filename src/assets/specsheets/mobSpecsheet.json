@@ -2,7 +2,7 @@
     "BatSmallA": {
         "Health": 300,
         "scale": 3,
-        "m_speed": 5,
+        "m_speed": 50,
         "defence": 15,
         "deathAnimName": "boom3",
         "deathSound": "death",

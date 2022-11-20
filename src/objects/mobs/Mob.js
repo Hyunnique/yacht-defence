@@ -88,6 +88,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         });
         this.scene.events.off("update", this.update, this);
         this.scene.events.emit("mobDeath", this.mobNum);
+        this.scene.mobCounter--;
         this.body.enable = false;
 
         this.healthBar.destroy();
@@ -96,7 +97,6 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
 
         var animConfig = this.scene.anims.get(this.deathAnimName);
         var animtime = animConfig.frames.length * animConfig.msPerFrame;
-        console.log(animtime);
         this.scene.time.delayedCall(animtime, () => { this.destroy() }, [], this.scene);
     }
     

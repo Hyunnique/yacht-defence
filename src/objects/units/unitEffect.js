@@ -2,12 +2,17 @@ const Config = require("../../Config");
 const Phaser = require("phaser");
 
 export default class UnitEffect extends Phaser.Physics.Arcade.Sprite {
-    constructor(scene, x, y, effectName) {
-        super(scene, x, y, effectName);
-        this.effectName = effectName
+    constructor(scene, attacker) {
+        super(scene, attacker.x, attacker.y, attacker.effectName);
+        this.attacker = attacker;
+        scene.add.existing(this);
+        this.alpha = 0;
     }
 
-    playEffect() {
-        this.play(this.effectName, true);
+    playEffect()
+    {
+        console.log(this);
+        this.alpha = 1;
+        this.play(this.attacker.effectName);
     }
 }

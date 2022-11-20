@@ -176,11 +176,11 @@ export default class PreLoadScene extends Phaser.Scene {
         {   
             this.anims.create({
                 key: "unit" + i + "idle",
-                frames: this.anims.generateFrameNumbers("unit" + i + "idle", { start: 0, end: 11 }),
+                frames: this.anims.generateFrameNumbers("unit" + i + "idle", { start: 0, end: 14 }),
                 repeat: -1,
                 frameRate: 30
             });
-            if (irregulars.findIndex(e => e == i) != 0)
+            if (irregulars.findIndex(e => e == i) != -1)
                 continue;
             this.anims.create({
                 key: "unit" + i + "atk",
@@ -317,91 +317,91 @@ export default class PreLoadScene extends Phaser.Scene {
         this.anims.create({
             key: "BatSmallA",
             frames: this.anims.generateFrameNumbers("BatSmallA", { start: 0, end: 5 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 6
         });
 
         this.anims.create({
             key: "WormA",
             frames: this.anims.generateFrameNumbers("WormA", { start: 0, end: 6 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 7
         });
 
         this.anims.create({
             key: "BrainD",
             frames: this.anims.generateFrameNumbers("BrainD", { start: 0, end: 11 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 12
         });
 
         this.anims.create({
             key: "CloudA",
             frames: this.anims.generateFrameNumbers("CloudA", { start: 0, end: 8 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 9
         });
 
         this.anims.create({
             key: "DyeD",
             frames: this.anims.generateFrameNumbers("DyeD", { start: 0, end: 11 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 12
         });
 
         this.anims.create({
             key: "EyeBallA",
             frames: this.anims.generateFrameNumbers("EyeBallA", { start: 0, end: 6 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 7
         });
 
         this.anims.create({
             key: "GhastB",
             frames: this.anims.generateFrameNumbers("GhastB", { start: 0, end: 7 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 8
         });
 
         this.anims.create({
             key: "HeadA",
             frames: this.anims.generateFrameNumbers("HeadA", { start: 0, end: 8 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 9
         });
 
         this.anims.create({
             key: "MummyC",
             frames: this.anims.generateFrameNumbers("MummyC", { start: 0, end: 9 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 10
         });
 
         this.anims.create({
             key: "PuddleA",
             frames: this.anims.generateFrameNumbers("PuddleA", { start: 7, end: 14 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 8
         });
 
         this.anims.create({
             key: "ScorpionC",
             frames: this.anims.generateFrameNumbers("ScorpionC", { start: 0, end: 4 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 5
         });
 
         this.anims.create({
             key: "SlimeSmallA",
             frames: this.anims.generateFrameNumbers("SlimeSmallA", { start: 0, end: 9 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 10
         });
 
         this.anims.create({
             key: "TentacleC",
             frames: this.anims.generateFrameNumbers("TentacleC", { start: 0, end: 5 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 6
         });
         // 이펙트 애니메이션 생성
@@ -547,13 +547,13 @@ export default class PreLoadScene extends Phaser.Scene {
         this.anims.create({
             key: "bigFireBall",
             frames: this.anims.generateFrameNumbers("bigFireBall", { start: 0 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 40
         });
         this.anims.create({
             key: "bigFireBall90",
             frames: this.anims.generateFrameNumbers("bigFireBall90", { start: 0 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 40
         });
         this.anims.create({
@@ -601,7 +601,7 @@ export default class PreLoadScene extends Phaser.Scene {
         this.anims.create({
             key: "electricBall",
             frames: this.anims.generateFrameNumbers("electricBall", { start: 0 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 40
         });
         this.anims.create({
@@ -625,13 +625,13 @@ export default class PreLoadScene extends Phaser.Scene {
         this.anims.create({
             key: "fireShot3_1",
             frames: this.anims.generateFrameNumbers("fireShot3_1", { start: 0 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 40
         });
         this.anims.create({
             key: "fireShot3_2",
             frames: this.anims.generateFrameNumbers("fireShot3_2", { start: 0 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 40
         });
         this.anims.create({
@@ -643,7 +643,7 @@ export default class PreLoadScene extends Phaser.Scene {
         this.anims.create({
             key: "greenBirdShot2",
             frames: this.anims.generateFrameNumbers("greenBirdShot2", { start: 0 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 40
         });
         this.anims.create({
@@ -685,13 +685,13 @@ export default class PreLoadScene extends Phaser.Scene {
         this.anims.create({
             key: "purpleFire",
             frames: this.anims.generateFrameNumbers("purpleFire", { start: 0 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 40
         });
         this.anims.create({
             key: "purpleFire90",
             frames: this.anims.generateFrameNumbers("purpleFire90", { start: 0 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 40
         });
         this.anims.create({
@@ -709,37 +709,37 @@ export default class PreLoadScene extends Phaser.Scene {
         this.anims.create({
             key: "purpleShot3",
             frames: this.anims.generateFrameNumbers("purpleShot3", { start: 0 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 40
         });
         this.anims.create({
             key: "redFire",
             frames: this.anims.generateFrameNumbers("redFire", { start: 0 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 40
         });
         this.anims.create({
             key: "redFire90",
             frames: this.anims.generateFrameNumbers("redFire90", { start: 0 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 40
         });
         this.anims.create({
             key: "redFire2",
             frames: this.anims.generateFrameNumbers("redFire2", { start: 0 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 40
         });
         this.anims.create({
             key: "redFire2_90",
             frames: this.anims.generateFrameNumbers("redFire2_90", { start: 0 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 40
         });
         this.anims.create({
             key: "shot",
             frames: this.anims.generateFrameNumbers("shot", { start: 0 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 40
         });
         this.anims.create({
@@ -769,37 +769,37 @@ export default class PreLoadScene extends Phaser.Scene {
         this.anims.create({
             key: "weaponProjectile1",
             frames: this.anims.generateFrameNumbers("weaponProjectile1", { start: 0 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 40
         });
         this.anims.create({
             key: "weaponProjectile2",
             frames: this.anims.generateFrameNumbers("weaponProjectile1", { start: 0 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 40
         });
         this.anims.create({
             key: "weaponProjectile3",
             frames: this.anims.generateFrameNumbers("weaponProjectile1", { start: 0 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 40
         });
         this.anims.create({
             key: "weaponProjectile4",
             frames: this.anims.generateFrameNumbers("weaponProjectile1", { start: 0 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 40
         });
         this.anims.create({
             key: "weaponProjectile5",
             frames: this.anims.generateFrameNumbers("weaponProjectile1", { start: 0 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 40
         });
         this.anims.create({
             key: "weaponProjectile6",
             frames: this.anims.generateFrameNumbers("weaponProjectile1", { start: 0 }),
-            repeat: 0,
+            repeat: -1,
             frameRate: 40
         });
 
