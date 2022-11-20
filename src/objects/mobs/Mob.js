@@ -14,7 +14,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         this.scale = mobData.scale;
         this.m_speed = mobData.m_speed;
         this.deathAnimName = mobData.deathAnimName;//나중에 DB에서 불러와 주세요
-        this.defence = 20; //나중에 DB에서 불러와 주세요
+        this.defence = mobData.defence;
         this.mobNum = num;
         this.moveType = mobRoute;
         this.deathCalled = false;
@@ -70,11 +70,9 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         });
 
         if (this.Health <= 0 && !this.deathCalled) {
-            console.log(this.mobNum + "called Death!");
             this.death();
         }
         else if (Phaser.Math.Distance.Between(this.x, this.y, 2400, 720) < 1 && !this.deathCalled) {
-            console.log(this.mobNum + "called Death!");
             Game.hitPlayerBase(1);
             this.deathCalled = true;
             this.death();
@@ -92,7 +90,6 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         this.scene.events.off("update", this.update, this);
         this.scene.events.emit("mobDeath", this.mobNum);
         this.scene.mobCounter--;
-        console.log(this.scene.mobCounter);
         this.body.enable = false;
 
         this.healthBar.destroy();
@@ -101,7 +98,6 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
 
         var animConfig = this.scene.anims.get(this.deathAnimName);
         var animtime = animConfig.frames.length * animConfig.msPerFrame;
-        console.log(this.mobNum+"Dead!");
         this.scene.time.delayedCall(animtime, () => { this.destroy() }, [], this.scene);
     }
     

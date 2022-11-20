@@ -185,7 +185,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
 
     calcDamage(mobDefence)
     {
-        var defencePenValue = 1 - mobDefence * (1 - this.penetration);
-        return defencePenValue <= 0 ? 1 : this.atk * defencePenValue;
+        var defencePenValue = 1 - (mobDefence / 100) * (1 - this.penetration);
+        return defencePenValue <= 0 ? 1 : this.attack * defencePenValue;
     }
 }
