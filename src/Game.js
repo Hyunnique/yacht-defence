@@ -206,6 +206,17 @@ var Game = {
         });
 
         this.Socket.on('placePhase-begin', (msg) => {
+            document.getElementsByClassName("ui-goldArea")[0].onclick = (e) => {
+                if (!this.shopOpen) {
+                    this.openShop();
+                    this.shopOpen = true;
+                }
+            }
+            document.getElementsByClassName("ui-shop-close")[0].onclick = (e) => {
+                this.closeShop();
+                this.shopOpen = false;
+            }
+
             this.GameObject.scene.getScene("diceScene").scene.stop().resume("gameScene");
             this.GameObject.scene.getScene("gameScene").toPlacePhase();
 
@@ -219,7 +230,7 @@ var Game = {
         });
 
         this.Socket.on('battlePhase-begin', (msg) => {
-
+            document.getElementsByClassName("ui-goldArea")[0].onclick = (e) => {};
             this.hideUI("common-unitReward");
             this.hideUI("common-shop");
             document.getElementsByClassName("ui-phase-value")[0].innerText = "Defense";
@@ -259,7 +270,7 @@ var Game = {
                 this.showUI("gameScene-topFloating");
                 this.showUI("gameScene-bottomFloating");
 
-                document.getElementsByClassName("ui-goldArea")[0].onclick = (e) => {};
+                
                 document.getElementsByClassName("ui-diceRerollButton")[0].onclick = (e) => {
                     this.Socket.emit("dicePhase-start", "true");
                     this.GameObject.scene.getScene("diceScene").rollDice();
@@ -269,17 +280,6 @@ var Game = {
                     e.onclick = (g) => {
                         this.GameObject.scene.getScene("gameScene").receiveUnit(parseInt(e.attributes.idx.value), parseInt(e.attributes.tier.value));
                         this.hideUI("common-unitReward");
-
-                        document.getElementsByClassName("ui-goldArea")[0].onclick = (e) => {
-                            if (!this.shopOpen) {
-                                this.openShop();
-                                this.shopOpen = true;
-                            }
-                        }
-                        document.getElementsByClassName("ui-shop-close")[0].onclick = (e) => {
-                            this.closeShop();
-                            this.shopOpen = false;
-                        }
                     };
                 });
 
