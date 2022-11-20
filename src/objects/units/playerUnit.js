@@ -1,11 +1,12 @@
 import Homing from '../projectiles/homing.js';
 import Penetrate from '../projectiles/penetrate.js';
-import Bomb from '../projectiles/bomb.js'
+import Bomb from '../projectiles/bomb.js';
+import unitEffect from '../../objects/units/unitEffect.js';
 const Config = require("../../Config");
 const Phaser = require("phaser");
 
 export default class Unit extends Phaser.Physics.Arcade.Sprite {
-    constructor(scene,x,y, db) {
+    constructor(scene, x, y, db, index) {
         super(scene, x, y, db.idleSprite);
 
         this.setOrigin(0.5, 0.5);
@@ -19,17 +20,18 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.attackType = db.attackType;
         this.idleAnim = db.idleAnim;
         this.attackAnim = db.attackAnim;
+        this.index = index;
 
         this.rangeView = this.scene.add.circle(this.x, this.y, this.range,0xFF0000);
         this.rangeView.setAlpha(0);
         this.buffAtk = 0;
         this.buffAspd = 0;
         this.buffedPenetration = 0;
-        this.projectileName = "bullet";
-        this.projectileAnimName = "bullet";
-        this.projectileType = 1;
+        this.projectileName = db.projectileName;
+        this.projectileAnimName = db.projectileAnimName;
+        this.projectileType = db.projectileType;
         
-        
+        this.effect = new unitEffect(scene, x, y, db.effectName);
         this.isTarget = false;
         this.isBuffTarget = true;
 
@@ -41,8 +43,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.shootSound = this.scene.sound.add("shoot");
         
         this.target = [];
-        
-        this.setMotionSpeed();
+        this.attackEvent;
+        // this.setMotionSpeed();
 
         this.kills = 0;
         this.isTarget = false;
@@ -120,7 +122,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
             return;
         }
 
-        this.play(this.attackConfig, true);
+        this.play(this.attackAnim, true);
+        this.effect.playEffect();
 
         if (this.attackType == 0) {
             this.target.forEach(e => {
@@ -155,7 +158,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
 
     activateAttack()
     {
-        this.scene.time.addEvent({
+        this.attackEvent = this.scene.time.addEvent({
             delay: 1000 / this.aspd,
             callback: () => {
                 this.checkMob();
@@ -163,6 +166,17 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
             },
             loop: true
         });
+    }
+
+    deactivateAttack()
+    {
+        this.scene.time.removeEvent(this.attackEvent);
+    }
+
+    remove()
+    {
+        this.deactivateAttack();
+        this.destroy();
     }
 
     calcDamage(mobDefence)
