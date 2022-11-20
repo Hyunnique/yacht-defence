@@ -176,70 +176,70 @@ export default class PreLoadScene extends Phaser.Scene {
                 key: "unit" + i + "idle",
                 frames: this.anims.generateFrameNumbers("unit" + i + "idle", { start: 0, end: 11 }),
                 repeat: -1,
-                frameRate: 40
+                frameRate: 30
             });
             if (irregulars.findIndex(e => e == i) != -1)
                 continue;
             this.anims.create({
                 key: "unit" + i + "atk",
                 frames: this.anims.generateFrameNumbers("unit" + i + "atk", { start: 0, end: 12 }),
-                repeat: -1,
-                frameRate: 13                
+                repeat: 0,
+                frameRate: 40
             });    
         }
         this.anims.create({
             key: "unit3atk",
             frames: this.anims.generateFrameNumbers("unit3atk", { start: 0, end: 24 }),
-            repeat: -1,
-            frameRate: 25
+            repeat: 0,
+            frameRate: 40
         });
         this.anims.create({
             key: "unit8atk",
             frames: this.anims.generateFrameNumbers("unit8atk", { start: 0, end: 24 }),
-            repeat: -1,
-            frameRate: 25
+            repeat: 0,
+            frameRate: 40
         });
         this.anims.create({
             key: "unit9atk",
             frames: this.anims.generateFrameNumbers("unit9atk", { start: 0, end: 18 }),
-            repeat: -1,
-            frameRate: 19
+            repeat: 0,
+            frameRate: 40
         });
         this.anims.create({
             key: "unit21atk",
             frames: this.anims.generateFrameNumbers("unit21atk", { start: 0, end: 24 }),
-            repeat: -1,
-            frameRate: 25
+            repeat: 0,
+            frameRate: 40
         });
         this.anims.create({
             key: "unit22atk",
             frames: this.anims.generateFrameNumbers("unit22atk", { start: 0, end: 18 }),
-            repeat: -1,
-            frameRate: 19
+            repeat: 0,
+            frameRate: 40
         });
         this.anims.create({
             key: "unit39atk",
             frames: this.anims.generateFrameNumbers("unit39atk", { start: 0, end: 24 }),
-            repeat: -1,
-            frameRate: 25
+            repeat: 0,
+            frameRate: 40
         });
         this.anims.create({
             key: "unit43atk",
             frames: this.anims.generateFrameNumbers("unit43atk", { start: 0, end: 24 }),
-            repeat: -1,
-            frameRate: 25
+            repeat: 0,
+            frameRate: 40
         });
         this.anims.create({
             key: "unit46atk",
             frames: this.anims.generateFrameNumbers("unit46atk", { start: 0, end: 24 }),
-            repeat: -1,
-            frameRate: 25
+            repeat: 0,
+            frameRate: 40
         });
         this.anims.create({
             key: "unit48atk",
             frames: this.anims.generateFrameNumbers("unit48atk", { start: 0, end: 24 }),
-            repeat: -1,
-            frameRate: 25
+            repeat: 0,
+            frameRate: 40
         });
         
 
