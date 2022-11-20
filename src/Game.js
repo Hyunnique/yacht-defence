@@ -16,6 +16,7 @@ var Game = {
     Socket: null,
     PlayerCount: 4,
     PlayerIndex: -1,
+    PlayerData: null,
     TimelimitTimer: null,
     currentTimeLimit: 30,
     shopOpen: false,
@@ -56,6 +57,15 @@ var Game = {
         this.Socket.on("round-begin", (msg) => {
             this.GameObject.scene.getScene("gameScene").roundNum = msg.round;
             document.getElementsByClassName("ui-round-value")[0].innerText = (msg.round < 10 ? "0" + msg.round : msg.round);
+        });
+
+        this.Socket.on("sync-playerData", (msg) => {
+            this.PlayerData = msg;
+
+            for (let i = 0; i < this.PlayerCount; i++) {
+                document.getElementsByClassName("ui-hpArea-playerhp-bar")[i].style.width = Math.floor(msg[this.PlayerIndex].hp / msg[this.PlayerIndex].maxhp * 100) + "%";
+            }
+            document.getElementsByClassName("ui-gold")[0].innerText = msg[this.PlayerIndex].gold;
         });
 
         this.Socket.on("dicePhase-begin", (msg) => {
@@ -342,7 +352,14 @@ var Game = {
 
     closeShop() {
         this.hideUI("common-shop");
-    }
+    },
+
+    hitPlayerBase(damage) {
+        this.Socket.emit("playerInfo-baseDamage", {
+            index: this.PlayerIndex,
+            damage,
+        });
+    },
 };
 
 export default Game;    
