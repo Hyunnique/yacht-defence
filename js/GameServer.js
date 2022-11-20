@@ -62,6 +62,7 @@ module.exports = {
             this.onGameReady(socket, currentRoomId);
             this.onDiceConfirm(socket, currentRoomId);
             this.onDiceResult(socket, currentRoomId);
+            this.onBattlePhaseDone(socket, currentRoomId);
             this.onPlayerBaseDamage(socket, currentRoomId);
 
             socket.on('disconnect', () => {
@@ -189,14 +190,22 @@ module.exports = {
     },
 
     onBattlePhaseBegin(roomId) {
+        this.Rooms[roomId].counter.battlePhaseDone = 0;
+
         this.emitAll(roomId, 'battlePhase-begin', {
             timeLimit: 30,
         });
+    },
 
-        this.createTimer(roomId, "battlePhaseEnd", 30000, () => {
-            this.emitAll(roomId, 'battlePhase-end', true);
-            this.Rooms[roomId].round++;
-            this.onRoundBegin(roomId);
+    onBattlePhaseDone(socket, roomId) {
+        socket.on('battlePhase-done', (msg) => {
+            this.Rooms[roomId].counter.battlePhaseDone++;
+
+            if (this.Rooms[roomId].counter.battlePhaseDone >= this.Rooms[roomId].maxPlayers) {
+                this.emitAll(roomId, 'battlePhase-end', true);
+                this.Rooms[roomId].round++;
+                this.onRoundBegin(roomId);
+            }
         });
     },
 
