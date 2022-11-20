@@ -172,13 +172,14 @@ export default class gameScene extends Phaser.Scene{
 
 //몹/유저유닛/투사체 관련
         this.m_mobs = this.physics.add.group();
+        this.mobArray = [];
         this.roundNum = 0;
         this.globalnum = 1;
-        this.lastMobnum = 0;
+        this.mobCounter = 0;
         this.unitIndex = 0;
         this.playerHealth = 100;
         this.placemode = false;
-        this.dragging = false;
+        this.checkLast = false;
         this.m_projectiles = this.physics.add.group();
         this.unitDB = this.cache.json.get("unitDB");
         this.mobDB = this.cache.json.get("mobDB");
@@ -218,7 +219,13 @@ export default class gameScene extends Phaser.Scene{
         else if (x > this.cameras.main.width - 50) this.cameras.main.scrollX += 12;
         else if (x < 50) this.cameras.main.scrollX -= 12;
         else if (y > this.cameras.main.height - 50) this.cameras.main.scrollY += 12;
-        else if (y < 50) this.cameras.main.scrollY -= 12;
+        else if (y < 50) this.cameras.main.scrollY -= 12;       
+
+        if (this.checkLast && this.mobCounter == 0)
+        {
+            console.log("Last Mob Dead!");
+            this.checkLast = false;
+        }
     }
 
     initialPlace(unitData)
@@ -282,18 +289,19 @@ export default class gameScene extends Phaser.Scene{
     }
 
     startRound() {
-        this.lastMobnum = this.globalnum -1;
         this.roundDB["round" + this.roundNum].forEach((element) => {
             this.time.addEvent({
                 delay: 1500,
                 callback: () => {
-                    this.m_mobs.add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum++, element["mobRoute"]));
+                    this.m_mobs.add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum, element["mobRoute"]));
+                    this.globalnum++;
                 },
-                repeat: element["mobCount"],
+                repeat: element["mobCount"]-1,
                 startAt: 0
             });
-            this.lastMobnum += element["mobCount"];
+            this.mobCounter += element["mobCount"];
         });
+        this.checkLast = true;
     }
 
     placeUnitOnTile(tile, Unit, prePosX, prePosY) {
@@ -350,7 +358,8 @@ export default class gameScene extends Phaser.Scene{
     }
     toPlacePhase() {
         this.PhaseText = "Place Phase";
-        
+        if(this.roundNum % 2 == 0)
+            this.placeModeController(true);
         this.itemList = [];
         let itemCount = Object.keys(Item).length;
         for (let i = 0; i < 3; i++) { 
