@@ -18,7 +18,7 @@ export default class Penetrate extends Phaser.Physics.Arcade.Sprite {
         this.target = shooter.target;
         this.isTarget = false;
 
-        this.play(shooter.projectileAnimName);
+        this.play(shooter.projectileName);
 
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);      
