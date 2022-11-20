@@ -8,6 +8,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
     constructor(scene,x,y, db) {
         super(scene, x, y, db.idleSprite);
 
+        this.setOrigin(0.5, 0.5);
         this.originAttack = db.attack;
         this.originAspd = db.aspd;
         this.originPenetration = db.penetration;
@@ -19,7 +20,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.idleAnim = db.idleAnim;
         this.attackAnim = db.attackAnim;
 
-
+        this.rangeView = this.scene.add.circle(this.x, this.y, this.range,0xFF0000);
+        this.rangeView.setAlpha(0);
         this.buffAtk = 0;
         this.buffAspd = 0;
         this.buffedPenetration = 0;
@@ -51,7 +53,12 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.scene.add.existing(this);
         
         this.activateAttack();
-        console.log(this);
+        this.scene.events.on("update", this.update, this);
+    }
+
+    update() {
+        this.rangeView.setX(this.x);
+        this.rangeView.setY(this.y);
     }
 
     checkMob() {
