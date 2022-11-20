@@ -98,6 +98,7 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.spritesheet("purpleFire90", require("../assets/spritesheets/effect/purple_fire_90_sprite.png"), {frameWidth: 400, frameHeight: 400});
         this.load.spritesheet("purpleShot1", require("../assets/spritesheets/effect/purple_shot_1_sprite.png"), {frameWidth: 340, frameHeight: 340});
         this.load.spritesheet("purpleShot2", require("../assets/spritesheets/effect/purple_shot_2_sprite.png"), {frameWidth: 420, frameHeight: 420});
+        this.load.spritesheet("purpleShot3", require("../assets/spritesheets/effect/purple_shot_3.png"), {frameWidth: 400, frameHeight: 240});
         this.load.spritesheet("redFire", require("../assets/spritesheets/effect/red_fire_sprite.png"), {frameWidth: 500, frameHeight: 500});
         this.load.spritesheet("redFire90", require("../assets/spritesheets/effect/red_fire_90_sprite.png"), {frameWidth: 501, frameHeight: 501});
         this.load.spritesheet("redFire2", require("../assets/spritesheets/effect/red_fire2_sprite.png"), {frameWidth: 540, frameHeight: 540});
@@ -107,12 +108,12 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.spritesheet("tornado1", require("../assets/spritesheets/effect/tornado_1_sprite.png"), {frameWidth: 800, frameHeight: 800});
         this.load.spritesheet("tornado2", require("../assets/spritesheets/effect/tornado_2.png"), {frameWidth: 800, frameHeight: 800});
         this.load.spritesheet("tornadoOrg", require("../assets/spritesheets/effect/tornado_org_sprite.png"), {frameWidth: 800, frameHeight: 800});
-        this.load.image("weaponProjectile1", require("../assets/spritesheets/effect/weapon_projectile_1.png"));
-        this.load.image("weaponProjectile2", require("../assets/spritesheets/effect/weapon_projectile_2.png"));
-        this.load.image("weaponProjectile3", require("../assets/spritesheets/effect/weapon_projectile_3.png"));
-        this.load.image("weaponProjectile4", require("../assets/spritesheets/effect/weapon_projectile_4.png"));
-        this.load.image("weaponProjectile5", require("../assets/spritesheets/effect/weapon_projectile_5.png"));
-        this.load.image("weaponProjectile6", require("../assets/spritesheets/effect/weapon_projectile_6.png"));
+        this.load.spritesheet("weaponProjectile1", require("../assets/spritesheets/effect/weapon_projectile_1.png"), {frameWidth: 6, frameHeight: 15});
+        this.load.spritesheet("weaponProjectile2", require("../assets/spritesheets/effect/weapon_projectile_2.png"), {frameWidth: 32, frameHeight: 32});
+        this.load.spritesheet("weaponProjectile3", require("../assets/spritesheets/effect/weapon_projectile_3.png"), {frameWidth: 32, frameHeight: 32});
+        this.load.spritesheet("weaponProjectile4", require("../assets/spritesheets/effect/weapon_projectile_4.png"), {frameWidth: 16, frameHeight: 16});
+        this.load.spritesheet("weaponProjectile5", require("../assets/spritesheets/effect/weapon_projectile_5.png"), {frameWidth: 32, frameHeight: 32});
+        this.load.spritesheet("weaponProjectile6", require("../assets/spritesheets/effect/weapon_projectile_6.png"), {frameWidth: 32, frameHeight: 32});
         
         this.load.spritesheet("bullet", Bullet, { frameWidth: 361, frameHeight: 50 });
 
@@ -160,6 +161,7 @@ export default class PreLoadScene extends Phaser.Scene {
 
         this.load.image("healthBar", healthBar);
         
+        // 게임 내 데이터 로드
         this.load.json("unitDB", unitSpecsheet);
         this.load.json("mobDB", mobSpecsheet);
         this.load.json("roundDB", roundSheet);
@@ -174,11 +176,11 @@ export default class PreLoadScene extends Phaser.Scene {
         {   
             this.anims.create({
                 key: "unit" + i + "idle",
-                frames: this.anims.generateFrameNumbers("unit" + i + "idle", { start: 0, end: 11 }),
+                frames: this.anims.generateFrameNumbers("unit" + i + "idle", { start: 0, end: 14 }),
                 repeat: -1,
                 frameRate: 30
             });
-            if (irregulars.findIndex(e => e == i) != -1)
+            if (irregulars.findIndex(e => e == i) != 0)
                 continue;
             this.anims.create({
                 key: "unit" + i + "atk",
@@ -406,140 +408,140 @@ export default class PreLoadScene extends Phaser.Scene {
         this.anims.create({
             key: "attack1",
             frames: this.anims.generateFrameNumbers("attack1", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "attack2",
             frames: this.anims.generateFrameNumbers("attack2", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "attack3",
             frames: this.anims.generateFrameNumbers("attack3", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "attack4",
             frames: this.anims.generateFrameNumbers("attack4", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "attack5_1",
             frames: this.anims.generateFrameNumbers("attack5_1", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "attack5_2",
             frames: this.anims.generateFrameNumbers("attack5_2", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "attack6",
             frames: this.anims.generateFrameNumbers("attack6", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "attack7_1",
             frames: this.anims.generateFrameNumbers("attack7_1", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         
         this.anims.create({
             key: "attack7_2",
             frames: this.anims.generateFrameNumbers("attack7_1", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "attack8",
             frames: this.anims.generateFrameNumbers("attack8", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "attack9",
             frames: this.anims.generateFrameNumbers("attack9", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "attack10",
             frames: this.anims.generateFrameNumbers("attack10", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "attack11",
             frames: this.anims.generateFrameNumbers("attack11", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "attack12",
             frames: this.anims.generateFrameNumbers("attack12", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "attack13",
             frames: this.anims.generateFrameNumbers("attack13", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "attack14",
             frames: this.anims.generateFrameNumbers("attack14", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "attack16",
             frames: this.anims.generateFrameNumbers("attack16", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "attack17",
             frames: this.anims.generateFrameNumbers("attack17", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "attack18",
             frames: this.anims.generateFrameNumbers("attack18", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "attack19_1",
             frames: this.anims.generateFrameNumbers("attack19_1", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "attack19_2",
             frames: this.anims.generateFrameNumbers("attack19_2", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "attack19_3",
             frames: this.anims.generateFrameNumbers("attack19_3", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "attack20",
             frames: this.anims.generateFrameNumbers("attack20", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
@@ -557,43 +559,43 @@ export default class PreLoadScene extends Phaser.Scene {
         this.anims.create({
             key: "boom",
             frames: this.anims.generateFrameNumbers("boom", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "boom2",
             frames: this.anims.generateFrameNumbers("boom2", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "boom3",
             frames: this.anims.generateFrameNumbers("boom3", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "boom5",
             frames: this.anims.generateFrameNumbers("boom5", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "buff1",
             frames: this.anims.generateFrameNumbers("buff1", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "buff2",
             frames: this.anims.generateFrameNumbers("buff2", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "buff3",
             frames: this.anims.generateFrameNumbers("buff3", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
@@ -605,19 +607,19 @@ export default class PreLoadScene extends Phaser.Scene {
         this.anims.create({
             key: "fireFromBottom",
             frames: this.anims.generateFrameNumbers("fireFromBottom", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "fireShot1",
             frames: this.anims.generateFrameNumbers("fireShot1", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "fireShot2",
             frames: this.anims.generateFrameNumbers("fireShot2", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
@@ -635,7 +637,7 @@ export default class PreLoadScene extends Phaser.Scene {
         this.anims.create({
             key: "greenBirdShot1",
             frames: this.anims.generateFrameNumbers("greenBirdShot1", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
@@ -647,37 +649,37 @@ export default class PreLoadScene extends Phaser.Scene {
         this.anims.create({
             key: "hitted",
             frames: this.anims.generateFrameNumbers("hitted", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "hitted2",
             frames: this.anims.generateFrameNumbers("hitted2", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "hitted3",
             frames: this.anims.generateFrameNumbers("hitted3", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "orbPurple",
             frames: this.anims.generateFrameNumbers("orbPurple", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "orbRed",
             frames: this.anims.generateFrameNumbers("orbRed", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "pierce",
             frames: this.anims.generateFrameNumbers("pierce", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
@@ -695,12 +697,18 @@ export default class PreLoadScene extends Phaser.Scene {
         this.anims.create({
             key: "purpleShot1",
             frames: this.anims.generateFrameNumbers("purpleShot1", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "purpleShot2",
             frames: this.anims.generateFrameNumbers("purpleShot2", { start: 0 }),
+            repeat: 0,
+            frameRate: 40
+        });
+        this.anims.create({
+            key: "purpleShot3",
+            frames: this.anims.generateFrameNumbers("purpleShot3", { start: 0 }),
             repeat: -1,
             frameRate: 40
         });
@@ -737,24 +745,60 @@ export default class PreLoadScene extends Phaser.Scene {
         this.anims.create({
             key: "thunder",
             frames: this.anims.generateFrameNumbers("thunder", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "tornado1",
             frames: this.anims.generateFrameNumbers("tornado1", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "tornado2",
             frames: this.anims.generateFrameNumbers("tornado2", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "tornadoOrg",
             frames: this.anims.generateFrameNumbers("tornadoOrg", { start: 0 }),
+            repeat: 0,
+            frameRate: 40
+        });
+        this.anims.create({
+            key: "weaponProjectile1",
+            frames: this.anims.generateFrameNumbers("weaponProjectile1", { start: 0 }),
+            repeat: -1,
+            frameRate: 40
+        });
+        this.anims.create({
+            key: "weaponProjectile2",
+            frames: this.anims.generateFrameNumbers("weaponProjectile1", { start: 0 }),
+            repeat: -1,
+            frameRate: 40
+        });
+        this.anims.create({
+            key: "weaponProjectile3",
+            frames: this.anims.generateFrameNumbers("weaponProjectile1", { start: 0 }),
+            repeat: -1,
+            frameRate: 40
+        });
+        this.anims.create({
+            key: "weaponProjectile4",
+            frames: this.anims.generateFrameNumbers("weaponProjectile1", { start: 0 }),
+            repeat: -1,
+            frameRate: 40
+        });
+        this.anims.create({
+            key: "weaponProjectile5",
+            frames: this.anims.generateFrameNumbers("weaponProjectile1", { start: 0 }),
+            repeat: -1,
+            frameRate: 40
+        });
+        this.anims.create({
+            key: "weaponProjectile6",
+            frames: this.anims.generateFrameNumbers("weaponProjectile1", { start: 0 }),
             repeat: -1,
             frameRate: 40
         });
@@ -763,7 +807,7 @@ export default class PreLoadScene extends Phaser.Scene {
         this.anims.create({
             key: "bullet",
             frames: this.anims.generateFrameNumbers("bullet", { start: 0 }),
-            repeat: -1,
+            repeat: 0,
             frameRate: 15
         });
 

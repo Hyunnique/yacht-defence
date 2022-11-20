@@ -16,6 +16,8 @@ var Game = {
     Socket: null,
     PlayerCount: 4,
     PlayerIndex: -1,
+    TimelimitTimer: null,
+    currentTimeLimit: 30,
     shopOpen: false,
     
     Initialize(config) {
@@ -36,6 +38,14 @@ var Game = {
         this.Socket.on("matchmaking-done", (msg) => {
             console.log("matchmaking done!");
             this.GameObject = new Phaser.Game(this.GameConfig);
+
+            this.TimelimitTimer = setInterval(() => {
+                if (this.currentTimeLimit > 0) this.currentTimeLimit--;
+                document.getElementsByClassName("ui-phaseTimelimit-value")[0].innerText = this.currentTimeLimit;
+
+                if (this.currentTimeLimit <= 5) document.getElementsByClassName("ui-phaseTimelimit-value")[0].style.color = "red";
+                else document.getElementsByClassName("ui-phaseTimelimit-value")[0].style.color = "black";
+            }, 1000);
         });
 
         this.Socket.on("game-defaultData", (msg) => {
@@ -43,12 +53,25 @@ var Game = {
             this.PlayerIndex = msg.playerIndex;
         });
 
+        this.Socket.on("round-begin", (msg) => {
+            this.GameObject.scene.getScene("gameScene").roundNum = msg.round;
+            document.getElementsByClassName("ui-round-value")[0].innerText = (msg.round < 10 ? "0" + msg.round : msg.round);
+        });
+
         this.Socket.on("dicePhase-begin", (msg) => {
             this.showScene("diceScene");
-            this.GameObject.scene.getScene("diceScene").leftTime = msg.timeLimit;
+
+            document.getElementsByClassName("ui-phase-value")[0].innerText = "Dice";
+            document.getElementsByClassName("ui-phaseTimelimit-value")[0].innerText = this.currentTimeLimit;
+            this.currentTimeLimit = msg.timeLimit;
+
             document.getElementsByClassName("ui-choiceMessage-value")[0].innerText = msg.roundChoice;
             document.getElementsByClassName("ui-choiceMessage-value")[1].innerText = msg.roundChoice;
             this.showUI("diceScene-default");
+        });
+
+        this.Socket.on("dicePhase-confirmWait", (msg) => {
+            document.getElementsByClassName("ui-diceConfirmText")[0].innerText = msg;
         });
 
         this.Socket.on("dicePhase-forceConfirm", (msg) => {
@@ -175,10 +198,20 @@ var Game = {
         this.Socket.on('placePhase-begin', (msg) => {
             this.GameObject.scene.getScene("diceScene").scene.stop().resume("gameScene");
             this.GameObject.scene.getScene("gameScene").toPlacePhase();
+
+            document.getElementsByClassName("ui-phase-value")[0].innerText = "Place";
+            document.getElementsByClassName("ui-phaseTimelimit-value")[0].innerText = this.currentTimeLimit;
+            this.currentTimeLimit = msg.timeLimit;
         });
 
         this.Socket.on('placePhase-end', (msg) => {
             this.GameObject.scene.getScene("gameScene").toBattlePhase();
+        });
+
+        this.Socket.on('battlePhase-begin', (msg) => {
+            document.getElementsByClassName("ui-phase-value")[0].innerText = "Defense";
+            document.getElementsByClassName("ui-phaseTimelimit-value")[0].innerText = this.currentTimeLimit;
+            this.currentTimeLimit = msg.timeLimit;
         });
 
         this.Socket.on('battlePhase-end', (msg) => {
@@ -192,12 +225,12 @@ var Game = {
 
     resizeHandler(e) { // 2:1의 비율을 유지하면서 보여줄 수 있는 최대의 크기로 게임 출력
         if (window.innerWidth <= window.innerHeight * 2) {
-            document.getElementById("ui-container").style.width = "100vw";
-            document.getElementById("ui-container").style.height = "50vw";
+            document.getElementById("ui-container").style.width = "90vw";
+            document.getElementById("ui-container").style.height = "45vw";
         }
         else {
-            document.getElementById("ui-container").style.width = "200vh";
-            document.getElementById("ui-container").style.height = "100vh";
+            document.getElementById("ui-container").style.width = "180vh";
+            document.getElementById("ui-container").style.height = "90vh";
         }
 
         // 실제 게임 스크린 Width의 1%로 rem 지정해줌

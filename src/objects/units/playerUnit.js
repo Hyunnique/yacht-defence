@@ -5,7 +5,7 @@ const Config = require("../../Config");
 const Phaser = require("phaser");
 
 export default class Unit extends Phaser.Physics.Arcade.Sprite {
-    constructor(scene,x,y, db,index) {
+    constructor(scene, x, y, db, index) {
         super(scene, x, y, db.idleSprite);
 
         this.setOrigin(0.5, 0.5);
@@ -26,9 +26,9 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.buffAtk = 0;
         this.buffAspd = 0;
         this.buffedPenetration = 0;
-        this.projectileName = "bullet";
-        this.projectileAnimName = "bullet";
-        this.projectileType = 1;
+        this.projectileName = db.projectileName;
+        this.projectileAnimName = db.projectileAnimName;
+        this.projectileType = db.projectileType;
         
         
         this.isTarget = false;
@@ -43,7 +43,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         
         this.target = [];
         this.attackEvent;
-        this.setMotionSpeed();
+        //this.setMotionSpeed();
 
         this.kills = 0;
         this.isTarget = false;
@@ -104,7 +104,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.attack = (this.buffedAtk + 1) * this.originAttack;
         this.aspd = this.buffedAspd + this.originAspd;
         this.penetration = this.originPenetration + this.buffedPenetration;
-        this.setMotionSpeed();
+        // this.setMotionSpeed();
     }
 
     setMotionSpeed()
@@ -121,7 +121,9 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
             return;
         }
 
-        this.play(this.attackConfig, true);
+        this.play(this.attackAnim, true);
+        // this.effect.playEffect();
+
 
         if (this.attackType == 0) {
             this.target.forEach(e => {

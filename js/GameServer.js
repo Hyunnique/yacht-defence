@@ -99,6 +99,10 @@ module.exports = {
     },
 
     onRoundBegin(roomId) {
+        this.emitAll(roomId, 'round-begin', {
+            round: this.Rooms[roomId].round,
+        });
+
         if (this.Rooms[roomId].round % 2 == 1) {
             // 홀수 라운드면 Dice Phase 먼저 진행
             this.Rooms[roomId].counter.handConfirm = 0;
@@ -167,18 +171,22 @@ module.exports = {
     },
 
     onPlacePhaseBegin(roomId) {
-        this.emitAll(roomId, 'placePhase-begin', true);
+        this.emitAll(roomId, 'placePhase-begin', {
+            timeLimit: 10,
+        });
         
-        this.createTimer(roomId, "placePhaseEnd", 5000, () => {
+        this.createTimer(roomId, "placePhaseEnd", 10000, () => {
             this.emitAll(roomId, 'placePhase-end', true);
             this.onBattlePhaseBegin(roomId);
         });
     },
 
     onBattlePhaseBegin(roomId) {
-        this.emitAll(roomId, 'battlePhase-begin', true);
+        this.emitAll(roomId, 'battlePhase-begin', {
+            timeLimit: 30,
+        });
 
-        this.createTimer(roomId, "battlePhaseEnd", 10000000, () => {
+        this.createTimer(roomId, "battlePhaseEnd", 30000, () => {
             this.emitAll(roomId, 'battlePhase-end', true);
             this.Rooms[roomId].round++;
             this.onRoundBegin(roomId);
