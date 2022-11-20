@@ -225,6 +225,7 @@ export default class gameScene extends Phaser.Scene{
         {
             console.log("Last Mob Dead!");
             this.checkLast = false;
+            this.mobCounter = 0;
         }
     }
 
