@@ -44,7 +44,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         
         this.target = [];
         this.attackEvent;
-        this.setMotionSpeed();
+        //this.setMotionSpeed();
 
         this.kills = 0;
         this.isTarget = false;
@@ -122,7 +122,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
             return;
         }
 
-        this.play(this.attackConfig, true);
+        this.play(this.attackAnim, true);
         // this.effect.playEffect();
 
         if (this.attackType == 0) {
