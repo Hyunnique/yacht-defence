@@ -136,7 +136,6 @@ export default class diceScene extends Phaser.Scene{
                 let r = Math.random() * 6 + 1;
                 this.handDice.push(Math.floor(r));
             }
-            
             this.drawRolling();
             this.time.delayedCall(1000, this.drawResult, [], this);
             

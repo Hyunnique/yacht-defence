@@ -1,6 +1,4 @@
 import Mob from '../objects/mobs/Mob.js';
-import Playertest from '../objects/units/playerUnit.js';
-
 import Game from "../Game.js";
 import Unit from '../objects/units/playerUnit.js';
 import Item from "../assets/specsheets/shopItemSheet.json"
@@ -133,22 +131,6 @@ export default class gameScene extends Phaser.Scene{
         });
         this.debugGraphics = this.add.graphics();
 
-        // this.input.on('pointerdown', (pointer) => {
-        //     let t = this.getTileAtPointer(pointer, info);
-        //     if (!t) return;
-        //     console.log(`(${t.x}, ${t.y}) on ${t.layer.name}`, t);
-        // });
-        
-        // this.input.on('pointermove', (pointer) => {
-        //     let t = this.getTileAtPointer(pointer, info);
-        //     if (!t) return;
-        //     help.setText(t.index).setPosition(t.pixelX, t.pixelY);
-        //     this.pointerText.setText("x: " + t.x+ " y: " + t.y);
-        //     this.drawDebug(t);
-        // });
-        // => 마우스가 위치한 선택된 레이어의 타일의 인덱스가 몇인지를 알림
-        // 지금 경우는 배치 가능 / 불가능만 알기 위한 info 레이어를 선택
-
         this.input.on("wheel",  (pointer, gameObjects, deltaX, deltaY, deltaZ) => {
 
             if (deltaY > 0) {
@@ -192,7 +174,7 @@ export default class gameScene extends Phaser.Scene{
         this.roundNum = -1;
         this.globalnum = 1;
         this.playerHealth = 100;
-
+        this.placemode = false;
         this.m_projectiles = this.physics.add.group();
         this.unitDB = this.cache.json.get("unitDB");
         this.mobDB = this.cache.json.get("mobDB");
@@ -226,8 +208,6 @@ export default class gameScene extends Phaser.Scene{
 
         console.log(this.anims.get("magicianDie"));
 
-        // 타이머
-        this.waitForReady();
     }
 
     update(time, delta) {
@@ -262,16 +242,39 @@ export default class gameScene extends Phaser.Scene{
     initialPlace(unitData)
     {
         this.info.alpha = 1;
-        this.input.once('pointerdown', (pointer) => {
-            while (true) {
+        let newUnit = new Unit(this, -500, -500, unitData);
+        newUnit.rangeView.alpha = 1;
+        this.input.on('pointermove', (pointer) => {
+            if (this.placemode) {
                 let t = this.getTileAtPointer(pointer, this.info);
-                if (!t || t.index == "2898") continue;
-                this.m_player.push(new Playertest(this, t.pixelX + 24, t.pixelY + 24, unitData));
-                t.index = "2898";
-                break;
+                if (!t || t.index == "2898") {
+                    newUnit.rangeView.alpha = 0;
+                    newUnit.alpha = 0;
+                }
+                else {
+                    newUnit.rangeView.alpha = 1;
+                    newUnit.alpha = 1;
+                }
+                newUnit.setX(t.pixelX + 24);
+                newUnit.setY(t.pixelY + 24);
             }
-            this.info.alpha = 0;
-            this.input.setDraggable(this.m_player, true);
+        });
+        this.input.on('pointerdown', (pointer) => {
+            if (this.placemode) {
+                let t = this.getTileAtPointer(pointer, this.info);
+                if (t.index == "2897") {
+                    this.m_player.push(newUnit);
+                    newUnit.x = t.pixelX + 24;
+                    newUnit.y = t.pixelY + 24;
+                    t.index = "2898";
+                    this.info.alpha = 0;
+                    newUnit.rangeView.alpha = 0;
+                    this.input.setDraggable(this.m_player, true);
+                    this.placemode = false;
+                    this.input.off("pointermove");
+                    this.input.off("pointerdown");
+                }
+            }
         },this);
     }
 
@@ -333,14 +336,6 @@ export default class gameScene extends Phaser.Scene{
         this.debugGraphics.lineBetween(x, y, x + dx, y + dy);
     }
 
-    waitForReady()
-    {
-        /*
-        this.PhaseText = "Waiting for all players ready..."
-        this.phaseTimer = this.time.delayedCall(1000, this.toDicePhase, [], this);
-        */
-    }
-
     toDicePhase() {
         this.m_player.forEach(element => element.removeBuff());
         this.PhaseText = "Dice Phase";
@@ -380,6 +375,7 @@ export default class gameScene extends Phaser.Scene{
     // DicePhase를 마친 뒤 유닛을 선택하면 호출함
     // Unit ID를 파라미터로 가짐
     receiveUnit(unitID, tier) {
+        this.placemode = true;
         this.initialPlace(this.unitDB["unit" + unitID]);
         this.tierCnt[tier - 1]++;
         let buffvalue1 = 0;
