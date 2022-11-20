@@ -102,8 +102,8 @@
         "projectileName": "",
         "projectileAnimName": "",
         "projectileSoundName": "",
-        "effectName": "",
-        "atkSoundName": "attack1",
+        "effectName": "attack1",
+        "atkSoundName": "",
         "projectileType": 0
     },
     "unit6": {
