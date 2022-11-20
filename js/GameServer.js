@@ -62,6 +62,7 @@ module.exports = {
             this.onGameReady(socket, currentRoomId);
             this.onDiceConfirm(socket, currentRoomId);
             this.onDiceResult(socket, currentRoomId);
+            this.onPlayerBaseDamage(socket, currentRoomId);
 
             socket.on('disconnect', () => {
                 this.Rooms[currentRoomId].sockets.splice(currentRoomIndex, 1);
@@ -79,8 +80,8 @@ module.exports = {
                     this.Rooms[roomId].players.push({ // Initialize Player Object
                         name: "temp",
                         playerIndex: i,
-                        hp: 1000,
-                        maxhp: 1000,
+                        hp: 100,
+                        maxhp: 100,
                         gold: 0,
                         currentHand: "",
                         currentHandTier: 3,
@@ -103,24 +104,20 @@ module.exports = {
             round: this.Rooms[roomId].round,
         });
 
-        if (this.Rooms[roomId].round % 2 == 1) {
-            // 홀수 라운드면 Dice Phase 먼저 진행
-            this.Rooms[roomId].counter.handConfirm = 0;
-            this.Rooms[roomId].counter.handReceived = 0;
+        // 홀수 라운드면 Dice Phase 먼저 진행
+        this.Rooms[roomId].counter.handConfirm = 0;
+        this.Rooms[roomId].counter.handReceived = 0;
 
-            this.Rooms[roomId].roundChoice = Math.floor(Math.random() * 25) + 5;
+        this.Rooms[roomId].roundChoice = Math.floor(Math.random() * 25) + 5;
 
-            this.emitAll(roomId, 'dicePhase-begin', {
-                roundChoice: this.Rooms[roomId].roundChoice,
-                timeLimit: 30,
-            });
+        this.emitAll(roomId, 'dicePhase-begin', {
+            roundChoice: this.Rooms[roomId].roundChoice,
+            timeLimit: 30,
+        });
 
-            this.createTimer(roomId, "dicePhaseEnd", 30000, () => {
-                this.onDiceTimeEnd(roomId);
-            });
-        } else {
-            this.onPlacePhaseBegin(roomId);
-        }
+        this.createTimer(roomId, "dicePhaseEnd", 30000, () => {
+            this.onDiceTimeEnd(roomId);
+        });
     },
 
     onDiceConfirm(socket, roomId) {
@@ -154,13 +151,19 @@ module.exports = {
             if (this.Rooms[roomId].counter.handReceived >= this.Rooms[roomId].maxPlayers) {
 
                 let resultArray = [];
-                for (let player of this.Rooms[roomId].players) {
-                    resultArray.push({ name: player.name, hand: player.currentHand, choice: player.currentChoice, handTier: player.currentHandTier, choiceDiff: player.currentChoice - this.Rooms[roomId].roundChoice });
+
+                for (let i = 0; i < this.Rooms[roomId].players.length; i++) {
+                    resultArray.push({ idx: i, name: this.Rooms[roomId].players[i].name, hand: this.Rooms[roomId].players[i].currentHand, choice: this.Rooms[roomId].players[i].currentChoice, handTier: this.Rooms[roomId].players[i].currentHandTier, choiceDiff: this.Rooms[roomId].players[i].currentChoice - this.Rooms[roomId].roundChoice });
                 }
 
                 resultArray.sort((a, b) => {
                     return Math.abs(a.choiceDiff) - Math.abs(b.choiceDiff);
                 });
+
+                for (let i = 0; i < this.Rooms[roomId].players.length; i++) {
+                    this.Rooms[roomId].players[i].gold += 16 - (4 * i);
+                }
+                this.syncPlayerInfo(roomId);
 
                 this.emitAll(roomId, 'dicePhase-result', resultArray);
                 this.createTimer(roomId, "dicePhaseResultWait", 5000, () => {
@@ -168,6 +171,10 @@ module.exports = {
                 });
             }
         });
+    },
+
+    syncPlayerInfo(roomId) {
+        this.emitAll(roomId, 'sync-playerData', this.Rooms[roomId].players);
     },
 
     onPlacePhaseBegin(roomId) {
@@ -191,5 +198,12 @@ module.exports = {
             this.Rooms[roomId].round++;
             this.onRoundBegin(roomId);
         });
-    }
+    },
+
+    onPlayerBaseDamage(socket, roomId) {
+        socket.on('playerInfo-baseDamage', (msg) => {
+            this.Rooms[roomId].players[msg.index].hp -= msg.damage;
+            this.syncPlayerInfo(roomId);
+        });
+    },
 };

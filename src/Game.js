@@ -16,6 +16,7 @@ var Game = {
     Socket: null,
     PlayerCount: 4,
     PlayerIndex: -1,
+    PlayerData: null,
     TimelimitTimer: null,
     currentTimeLimit: 30,
     shopOpen: false,
@@ -56,6 +57,15 @@ var Game = {
         this.Socket.on("round-begin", (msg) => {
             this.GameObject.scene.getScene("gameScene").roundNum = msg.round;
             document.getElementsByClassName("ui-round-value")[0].innerText = (msg.round < 10 ? "0" + msg.round : msg.round);
+        });
+
+        this.Socket.on("sync-playerData", (msg) => {
+            this.PlayerData = msg;
+
+            for (let i = 0; i < this.PlayerCount; i++) {
+                document.getElementsByClassName("ui-hpArea-playerhp-bar")[i].style.width = Math.floor(msg[this.PlayerIndex].hp / msg[this.PlayerIndex].maxhp * 100) + "%";
+            }
+            document.getElementsByClassName("ui-gold")[0].innerText = msg[this.PlayerIndex].gold;
         });
 
         this.Socket.on("dicePhase-begin", (msg) => {
@@ -127,10 +137,10 @@ var Game = {
 
                 let currentTier = this.GameObject.scene.getScene("diceScene").currentTier;
                 let tier = {
-                    "tier1": [2, 22, 26, 27],
-                    "tier2": [24, 33, 34, 35, 38, 41, 43, 45, 50, 51, 55, 56],
-                    "tier3": [3, 9, 10, 11, 13, 19, 23, 25, 31, 32, 40, 47, 52, 53, 57, 59, 60, 62, 63],
-                    "tier4": [0, 1, 4, 5, 6, 7, 8, 14, 15, 16, 17, 18, 20, 21, 28, 29, 30, 36, 37, 39, 42, 44, 46 ,48, 49, 54, 58, 61]
+                    "tier1": [2, 22, 24, 26, 27, 35],
+                    "tier2": [33, 34, 38, 41, 43, 45, 50, 51, 52, 53, 55, 56],
+                    "tier3": [3, 9, 10, 11, 13, 19, 23, 25, 31, 32, 40, 42, 46, 47, 57, 59, 60, 62, 63],
+                    "tier4": [0, 1, 4, 5, 6, 7, 8, 14, 15, 16, 17, 18, 20, 21, 28, 29, 30, 36, 37, 39, 44, 48, 49, 54, 58, 61]
                 }
                 let unitCount = tier["tier" + currentTier].length;
                 let unitArray = [];
@@ -209,6 +219,9 @@ var Game = {
         });
 
         this.Socket.on('battlePhase-begin', (msg) => {
+
+            this.hideUI("common-unitReward");
+            this.hideUI("common-shop");
             document.getElementsByClassName("ui-phase-value")[0].innerText = "Defense";
             document.getElementsByClassName("ui-phaseTimelimit-value")[0].innerText = this.currentTimeLimit;
             this.currentTimeLimit = msg.timeLimit;
@@ -342,7 +355,14 @@ var Game = {
 
     closeShop() {
         this.hideUI("common-shop");
-    }
+    },
+
+    hitPlayerBase(damage) {
+        this.Socket.emit("playerInfo-baseDamage", {
+            index: this.PlayerIndex,
+            damage,
+        });
+    },
 };
 
 export default Game;    
