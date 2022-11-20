@@ -12,7 +12,6 @@ export default class diceScene extends Phaser.Scene{
     savedDice = [];                     // 굴리지 않을 주사위
     dices = [];                         // 주사위 전체
     throwLeft = 3;                      // 남은 던질 기회
-    leftTime = 3;                       // 남은 시간
     currentTier = -1;                   // 현재 나온 주사위로 계산된 최대 티어
     bestHand = "";                      // 현재 최고 족보
 
@@ -38,7 +37,6 @@ export default class diceScene extends Phaser.Scene{
 
     create(){
         this.initThrow();
-        this.time.delayedCall(1000, this.timeCheck, [], this);
     }                                                                
 
     update() {
@@ -85,6 +83,7 @@ export default class diceScene extends Phaser.Scene{
         this.rollable = true;
     }
     
+    /*
     timeCheck() {
         if (this.leftTime > 0) {
             this.leftTime--;
@@ -92,6 +91,7 @@ export default class diceScene extends Phaser.Scene{
             this.time.delayedCall(1000, this.timeCheck, [], this);
         }
     }
+    */
 
     // diceScene 종료
     closeScene() {

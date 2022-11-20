@@ -362,7 +362,7 @@ export default class gameScene extends Phaser.Scene{
         this.m_player.forEach(element => element.removeBuff());
         this.PhaseText = "Dice Phase";
         this.input.setDraggable(this.m_player, false);
-        this.roundNum++;
+        
         this.globalnum = 1;
         this.scene.pause().launch('diceScene');
     }
