@@ -1,9 +1,10 @@
 {
     "BatSmallA": {
-        "Health": 300,
+        "Health": 100,
         "scale": 3,
-        "m_speed": 50,
-        "defence": 15,
+        "m_speed": 10,
+        "defence": 0,
+        "damage": 1,
         "deathAnimName": "boom3",
         "deathSound": "death",
         "mobAnim": "BatSmallA"
@@ -11,44 +12,49 @@
     "WormA": {
         "Health": 300,
         "scale": 3,
-        "m_speed": 5,
-        "defence": 15,
+        "m_speed": 30,
+        "defence": 20,
+        "damage": 3,
         "deathAnimName": "boom3",
         "deathSound": "death",
         "mobAnim": "WormA"
     },
     "BrainD": {
-        "Health": 300,
+        "Health": 200,
         "scale": 3,
-        "m_speed": 5,
-        "defence": 15,
+        "m_speed": 20,
+        "defence": 10,
+        "damage": 2,
         "deathAnimName": "boom3",
         "deathSound": "death",
         "mobAnim": "BrainD"
     },
     "CloudA": {
-        "Health": 300,
+        "Health": 150,
         "scale": 3,
-        "m_speed": 5,
-        "defence": 15,
+        "m_speed": 15,
+        "defence": 5,
+        "damage": 1,
         "deathAnimName": "boom3",
         "deathSound": "death",
         "mobAnim": "CloudA"
     },
     "DyeD": {
-        "Health": 300,
+        "Health": 250,
         "scale": 3,
-        "m_speed": 5,
+        "m_speed": 25,
         "defence": 15,
+        "damage": 2,
         "deathAnimName": "boom3",
         "deathSound": "death",
         "mobAnim": "DyeD"
     },
     "EyeBallA": {
-        "Health": 300,
+        "Health": 250,
         "scale": 3,
-        "m_speed": 5,
+        "m_speed": 25,
         "defence": 15,
+        "damage": 3,
         "deathAnimName": "boom3",
         "deathSound": "death",
         "mobAnim": "EyeBallA"
@@ -56,8 +62,9 @@
     "GhastB": {
         "Health": 300,
         "scale": 3,
-        "m_speed": 5,
-        "defence": 15,
+        "m_speed": 15,
+        "defence": 0,
+        "damage": 1,
         "deathAnimName": "boom3",
         "deathSound": "death",
         "mobAnim": "GhastB"
@@ -67,6 +74,7 @@
         "scale": 3,
         "m_speed": 5,
         "defence": 15,
+        "damage": 1,
         "deathAnimName": "boom3",
         "deathSound": "death",
         "mobAnim": "HeadA"
@@ -76,6 +84,7 @@
         "scale": 3,
         "m_speed": 5,
         "defence": 15,
+        "damage": 1,
         "deathAnimName": "boom3",
         "deathSound": "death",
         "mobAnim": "MummyC"
@@ -85,6 +94,7 @@
         "scale": 3,
         "m_speed": 5,
         "defence": 15,
+        "damage": 1,
         "deathAnimName": "boom3",
         "deathSound": "death",
         "mobAnim": "PuddleA"
@@ -94,6 +104,7 @@
         "scale": 3,
         "m_speed": 5,
         "defence": 15,
+        "damage": 1,
         "deathAnimName": "boom3",
         "deathSound": "death",
         "mobAnim": "ScorpionC"
@@ -103,6 +114,7 @@
         "scale": 3,
         "m_speed": 5,
         "defence": 15,
+        "damage": 1,
         "deathAnimName": "boom3",
         "deathSound": "death",
         "mobAnim": "SkullD"
@@ -112,6 +124,7 @@
         "scale": 3,
         "m_speed": 5,
         "defence": 15,
+        "damage": 1,
         "deathAnimName": "boom3",
         "deathSound": "death",
         "mobAnim": "SlimeSmallA"
@@ -121,6 +134,7 @@
         "scale": 3,
         "m_speed": 5,
         "defence": 15,
+        "damage": 1,
         "deathAnimName": "boom3",
         "deathSound": "death",
         "mobAnim": "TentacleC"
@@ -130,6 +144,7 @@
         "scale": 3,
         "m_speed": 5,
         "defence": 40,
+        "damage": 1,
         "deathAnimName": "bearDie",
         "deathSound": "death",
         "mobAnim": "bearWalk"
@@ -139,6 +154,7 @@
         "scale": 3,
         "m_speed": 5,
         "defence": 40,
+        "damage": 1,
         "deathAnimName": "slimeKingDie",
         "deathSound": "death",
         "mobAnim": "slimeKingWalk"
@@ -148,6 +164,7 @@
         "scale": 0.4,
         "m_speed": 50,
         "defence": 40,
+        "damage": 1,
         "deathAnimName": "magicianDie",
         "deathSound": "death",
         "mobAnim": "magicianWalk"
@@ -157,6 +174,7 @@
         "scale": 3,
         "m_speed": 5,
         "defence": 40,
+        "damage": 1,
         "deathAnimName": "giantDie",
         "deathSound": "death",
         "mobAnim": "giantWalk"
@@ -166,6 +184,7 @@
         "scale": 3,
         "m_speed": 5,
         "defence": 40,
+        "damage": 1,
         "deathAnimName": "stoneGolemDie",
         "deathSound": "death",
         "mobAnim": "stoneGolemWalk"

@@ -223,7 +223,7 @@ export default class gameScene extends Phaser.Scene{
 
         if (this.checkLast && this.mobCounter == 0)
         {
-            console.log("Last Mob Dead!");
+            Game.Socket.emit('battlePhase-done', true);
             this.checkLast = false;
             this.mobCounter = 0;
         }
