@@ -1,0 +1,107 @@
+{
+    "attack1": {
+        "x": -25,
+        "y": -60,
+        "isFlip": 1
+    },
+    "attack2": {
+        "x": -25,
+        "y": -60,
+        "isFlip": 1
+    },
+    "attack4": {
+        "x": -40,
+        "y": -40,
+        "isFlip": 1
+    },
+    "attack5_2": {
+        "x": 30,
+        "y": -40,
+        "isFlip": 1
+    },
+    "attack7_1": {
+        "x": 10,
+        "y": -40,
+        "isFlip": 1
+    },
+    "attack8": {
+        "x": -20,
+        "y": -30,
+        "isFlip": 1
+    },
+    "attack9": {
+        "x": -25,
+        "y": -30,
+        "isFlip": 1
+    },
+    "attack10": {
+        "x": -25,
+        "y": -30,
+        "isFlip": 1
+    },
+    "attack12": {
+        "x": -10,
+        "y": -45,
+        "isFlip": 1
+    },
+    "attack14": {
+        "x": -25,
+        "y": -30,
+        "isFlip": 1
+    },
+    "attack16": {
+        "x": -25,
+        "y": -15,
+        "isFlip": 1
+    },
+    "attack17": {
+        "x": -20,
+        "y": -30,
+        "isFlip": 1
+    },
+    "hitted3": {
+        "x": -20,
+        "y": 0,
+        "isFlip": 0
+    },
+    "blueShot1": {
+        "x": -30,
+        "y": -20,
+        "isFlip": 0
+    },
+    "purpleShot1": {
+        "x": -30,
+        "y": -20,
+        "isFlip": 0
+    },
+    "greenShot1": {
+        "x": -30,
+        "y": -20,
+        "isFlip": 0
+    },
+    "redShot1": {
+        "x": -30,
+        "y": -20,
+        "isFlip": 0
+    },
+    "fireShot1": {
+        "x": -10,
+        "y": -30,
+        "isFlip": 1
+    },
+    "fireFromBottom": {
+        "x": -10,
+        "y": -30,
+        "isFlip": 0
+    },
+    "pierce": {
+        "x": -60,
+        "y": -30,
+        "isFlip": 1
+    },
+    "buff2": {
+        "x": -25,
+        "y": -60,
+        "isFlip": 0
+    }
+}
