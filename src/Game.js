@@ -21,6 +21,12 @@ var Game = {
     currentTimeLimit: 30,
     shopOpen: false,
     
+    shopBuff: {
+        shopAtk: 1,
+        shopPenetration: 0,
+        shopAspd: 0
+    },
+
     Initialize(config) {
         this.GameConfig = config;
 
