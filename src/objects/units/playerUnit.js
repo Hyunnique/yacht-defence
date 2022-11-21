@@ -2,6 +2,8 @@ import Homing from '../projectiles/homing.js';
 import Penetrate from '../projectiles/penetrate.js';
 import Bomb from '../projectiles/bomb.js'
 import UnitEffect from './unitEffect.js';
+import effectOffset from '../../assets/specsheets/effectOffsetSheet.json';
+import Game from "../../Game.js";
 const Config = require("../../Config");
 const Phaser = require("phaser");
 
@@ -23,26 +25,36 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.effectName = db.effectName;
         this.index = index;
 
-        this.rangeView = this.scene.add.circle(this.x, this.y, this.range,0xFF0000);
+        this.rangeView = this.scene.add.circle(this.x, this.y, this.range, 0xFF0000);
         this.rangeView.setAlpha(0);
-        this.buffAtk = 0;
+
+        this.buffAtk = 1;
         this.buffAspd = 0;
-        this.buffedPenetration = 0;
+    
+        this.globalbuffAtk = Game.shopBuff.shopAtk;
+        this.globalbuffAspd = Game.shopBuff.shopAspd;
+        this.globalbuffedPenetration = Game.shopBuff.shopPenetration;
+
         this.projectileName = db.projectileName;
         this.projectileAnimName = db.projectileAnimName;
         this.projectileType = db.projectileType;
-        
+        this.projecttileHitEffect = db.projecttileHitEffect;
         
         this.isTarget = false;
         this.isBuffTarget = true;
 
-        this.buffedAtk = 1;
+        this.buffedAtk = 0;
         this.buffedAspd = 0;
 
         this.scale = 1;
-        this.alpha = 1;      
+        this.alpha = 1;
         this.shootSound = this.scene.sound.add("shoot");
-        this.effect = new UnitEffect(scene, this);
+
+        this.effectOffsetX = effectOffset[this.effectName].x;
+        this.effectOffsetY = effectOffset[this.effectName].y;
+        this.effectIsFlip = effectOffset[this.effectName].isFlip == 1 ? true : false;
+        // console.log(this.effectOffsetX + " " + this.effectOffsetY + " " + effectOffset[this.effectName].isFlip);
+        this.effect = new UnitEffect(scene, this, this.effectIsFlip);
         
         this.target = [];
         this.attackEvent;
@@ -63,60 +75,57 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
     update() {
         this.rangeView.setX(this.x);
         this.rangeView.setY(this.y);
-        this.effect.x = this.x;
-        this.effect.y = this.y;
+        this.effect.x = this.x + this.effectOffsetX;
+        this.effect.y = this.y + this.effectOffsetY;
     }
 
     checkMob() {
         this.target = this.scene.physics.overlapCirc(this.x, this.y, this.range).filter(item => item.gameObject.isTarget == true);
         return this.target;
     }
+
+    syncGlobalBuff()
+    {
+        this.globalbuffAspd = Game.shopBuff.shopAspd;
+        this.globalbuffedPenetration = Game.shopBuff.shopPenetration;
+        this.globalbuffAtk = Game.shopBuff.shopAtk;
+    }
     
     //매 턴 시작시 전부 지우고 다시 전부 부여!!
-    giveBuff()
-    {
-        var buffTargets = [];
-        if(this.buffAspd != 0 || this.buffAtk != 0)
-            buffTargets = this.scene.physics.overlapCirc(this.x, this.y, this.range).filter(item => item.gameObject.isBuffTarget == true);
-        if (buffTargets.length == 0)
-            return;
-        buffTargets.forEach((e) => {
-            e.gameObject.buffedAspd += this.buffAspd;
-            e.gameObject.buffedAtk += this.buffAtk;
-            e.gameObject.updateBuff();
-        })
-
-    }
-
-    removeBuff()
-    {
+    giveBuff() {
         var buffTargets = [];
         if (this.buffAspd != 0 || this.buffAtk != 0) {
             buffTargets = this.scene.physics.overlapCirc(this.x, this.y, this.range).filter(item => item.gameObject.isBuffTarget == true);
             if (buffTargets.length == 0)
                 return;
             buffTargets.forEach((e) => {
-                e.gameObject.buffedAspd -= this.buffAspd;
-                e.gameObject.buffedAtk -= this.buffAtk;
-                e.gameObject.updateBuff();
+                e.gameObject.buffedAspd += this.buffAspd;
+                e.gameObject.buffedAtk += this.buffAtk;
             });
         }
+    }
+
+    removeBuff()
+    {
+        this.buffedPenetration = 0;
+        this.buffedAspd = 0;
+        this.buffedAtk = 0;
     }
 
 
     updateBuff()
     {
-        this.attack = (this.buffedAtk + 1) * this.originAttack;
-        this.aspd = this.buffedAspd + this.originAspd;
-        this.penetration = this.originPenetration + this.buffedPenetration;
+        this.attack = (this.buffedAtk + this.globalbuffAtk + 1) * this.originAttack;
+        this.aspd = this.buffedAspd + this.globalbuffAspd + this.originAspd;
+        this.penetration = this.originPenetration + this.globalbuffedPenetration;
         // this.setMotionSpeed();
     }
 
-    setMotionSpeed()
-    {
-        this.attackConfig = this.scene.anims.get(this.attackAnim);
-        this.attackConfig.frameRate *= this.aspd;
-    }
+    // setMotionSpeed()
+    // {
+    //     this.attackConfig = this.scene.anims.get(this.attackAnim);
+    //     this.attackConfig.frameRate *= this.aspd;
+    // }
 
     attackMob()
     {   
@@ -185,7 +194,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
 
     calcDamage(mobDefence)
     {
-        var defencePenValue = 1 - mobDefence * (1 - this.penetration);
-        return defencePenValue <= 0 ? 1 : this.atk * defencePenValue;
+        var defencePenValue = 1 - (mobDefence / 100) * (1 - this.penetration);
+        return defencePenValue <= 0 ? 1 : this.attack * defencePenValue;
     }
 }
