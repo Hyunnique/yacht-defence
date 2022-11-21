@@ -36,6 +36,12 @@ export default class diceScene extends Phaser.Scene{
     
 
     create(){
+        this.rollDiceSound = this.sound.add("rollDice");
+        this.tier1Sound = this.sound.add("tier1");
+        this.tier2Sound = this.sound.add("tier2");
+        this.tier3Sound = this.sound.add("tier3");
+        this.tier4Sound = this.sound.add("tier4");
+
         this.initThrow();
     }                                                                
 
@@ -43,6 +49,12 @@ export default class diceScene extends Phaser.Scene{
     }
 
     drawRolling() {
+        this.rollDiceSound.play({
+            mute: false,
+            volume: 0.5,
+            rate: 1,
+            loop: false
+        })
         this.rollable = false;
         document.getElementsByClassName("ui-keepArea")[0].innerHTML = "";
         for (let i = 0; i < this.savedDice.length; i++) {
@@ -58,6 +70,8 @@ export default class diceScene extends Phaser.Scene{
     }
 
     drawResult() {
+        this.rollDiceSound.stop();
+
         document.getElementsByClassName("ui-keepArea")[0].innerHTML = "";
         for (let i = 0; i < this.savedDice.length; i++) {
             document.getElementsByClassName("ui-keepArea")[0].innerHTML += 
@@ -79,7 +93,7 @@ export default class diceScene extends Phaser.Scene{
             };
         }
 
-        this.checkDice();
+        // this.checkDice();
         this.rollable = true;
     }
     
@@ -137,7 +151,10 @@ export default class diceScene extends Phaser.Scene{
                 this.handDice.push(Math.floor(r));
             }
             this.drawRolling();
-            this.time.delayedCall(1000, this.drawResult, [], this);
+            this.time.delayedCall(1000, () => {
+                this.drawResult();
+                this.checkDice();
+            }, [], this);
             
             document.getElementsByClassName("ui-rollcount-value")[0].innerText = this.throwLeft;
         }
@@ -240,15 +257,39 @@ export default class diceScene extends Phaser.Scene{
         switch (this.currentTier) {
             case 1:
                 document.getElementsByClassName("ui-bestHand-value")[0].style.color = "#ff1b1b";
+                this.tier1Sound.play({
+                    mute: false,
+                    volume: 0.5,
+                    rate: 1,
+                    loop: false
+                })
                 break;
             case 2:
                 document.getElementsByClassName("ui-bestHand-value")[0].style.color = "#ffd700";
+                this.tier2Sound.play({
+                    mute: false,
+                    volume: 0.5,
+                    rate: 1,
+                    loop: false 
+                })
                 break;
             case 3:
                 document.getElementsByClassName("ui-bestHand-value")[0].style.color = "#d5d5d5";
+                this.tier3Sound.play({
+                    mute: false,
+                    volume: 0.5,
+                    rate: 1,
+                    loop: false
+                })
                 break;
             default:
                 document.getElementsByClassName("ui-bestHand-value")[0].style.color = "#954c4c";
+                this.tier4Sound.play({
+                    mute: false,
+                    volume: 0.5,
+                    rate: 1,
+                    loop: false
+                })
                 break;
         };
     }

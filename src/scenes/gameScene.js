@@ -2,6 +2,7 @@ import Mob from '../objects/mobs/Mob.js';
 import Game from "../Game.js";
 import Unit from '../objects/units/playerUnit.js';
 import Item from "../assets/specsheets/shopItemSheet.json"
+import profile from '../Profile.js';
 import { GameObjects } from 'phaser';
 const Phaser = require('phaser');
 const Config = require("../Config");
@@ -156,6 +157,7 @@ export default class gameScene extends Phaser.Scene{
 
 
 //BGM
+        this.shopSound = this.sound.add("shop");
         // this.m_music = this.sound.add("music");
         // this.sound.pauseOnBlur = false;
         // const musicConfig = {
@@ -186,6 +188,7 @@ export default class gameScene extends Phaser.Scene{
         this.roundDB = this.cache.json.get("roundDB");
         this.m_player = [];
         this.selectedUnit;
+        this.onPlaceQueue;
         this.prePosX = 0;
         this.prePosY = 0;
 
@@ -232,41 +235,59 @@ export default class gameScene extends Phaser.Scene{
     initialPlace(unitData)
     {
         this.info.alpha = 1;
-        let newUnit = new Unit(this, -500, -500, unitData,this.unitIndex++);
-        newUnit.rangeView.alpha = 1;
+        this.onPlaceQueue = new Unit(this, -500, -500, unitData,this.unitIndex++);
+        this.onPlaceQueue.rangeView.alpha = 1;
         this.input.on('pointermove', (pointer) => {
             if (this.placemode) {
                 let t = this.getTileAtPointer(pointer, this.info);
                 if (!t || t.index == "2898") {
-                    newUnit.rangeView.alpha = 0;
-                    newUnit.alpha = 0;
+                    this.onPlaceQueue.rangeView.alpha = 0;
+                    this.onPlaceQueue.alpha = 0;
                 }
                 else {
-                    newUnit.rangeView.alpha = 0.4;
-                    newUnit.alpha = 1;
+                    this.onPlaceQueue.rangeView.alpha = 0.4;
+                    this.onPlaceQueue.alpha = 1;
                 }
-                newUnit.setX(t.getCenterX());
-                newUnit.setY(t.getCenterY());
+                this.onPlaceQueue.setX(t.getCenterX());
+                this.onPlaceQueue.setY(t.getCenterY());
             }
         });
         this.input.on('pointerdown', (pointer) => {
             if (this.placemode) {
                 let t = this.getTileAtPointer(pointer, this.info);
                 if (t.index == "2897") {
-                    this.m_player.push(newUnit);
+                    this.m_player.push(this.onPlaceQueue);
                     t.index = "2898";
                     this.info.alpha = 0;
-                    newUnit.rangeView.alpha = 0;
-                    t.placedUnit = newUnit;
+                    this.onPlaceQueue.rangeView.alpha = 0;
+                    t.placedUnit = this.onPlaceQueue;
                     this.placemode = false;
                     this.input.off("pointermove");
                     this.input.off("pointerdown");
-                    newUnit.setX(t.getCenterX());
-                    newUnit.setY(t.getCenterY());
+                    this.onPlaceQueue.setX(t.getCenterX());
+                    this.onPlaceQueue.setY(t.getCenterY());
+                    this.resetBuff();
+                    console.log(this.m_player);
+                    this.onPlaceQueue = undefined;
                     this.placeModeController(true);
                 }
             }
         },this);
+    }
+
+    resetBuff()
+    {
+        
+        this.m_player.forEach((e) => {
+            e.removeBuff();
+        });
+        this.m_player.forEach((e) => {
+            e.giveBuff();
+            e.syncGlobalBuff();
+        });
+        this.m_player.forEach((e) => {
+            e.updateBuff();
+        });
     }
 
     placeModeController(bool)
@@ -278,6 +299,7 @@ export default class gameScene extends Phaser.Scene{
                 this.m_player.splice(this.m_player.findIndex(e => e.index == t.placedUnit.index), 1);
                 t.index = "2897";
                 var unitID = parseInt(t.placedUnit.idleAnim.substring(4, t.placedUnit.idleAnim.length - 4));
+                this.onPlaceQueue = t.placedUnit;
                 t.placedUnit.remove();
                 this.placemode = true;
                 this.placeModeController(false);
@@ -286,6 +308,12 @@ export default class gameScene extends Phaser.Scene{
         }
         else {
             this.input.off("pointerdown");
+            if (this.onPlaceQueue != undefined) {
+                this.onPlaceQueue.destroy();
+                this.onPlaceQueue = undefined;
+                //티어 보너스 지워줘야함
+            }
+                
         }
     }
 
@@ -350,7 +378,6 @@ export default class gameScene extends Phaser.Scene{
     }
 
     toDicePhase() {
-        this.m_player.forEach(element => element.removeBuff());
         this.PhaseText = "Dice Phase";
         this.input.setDraggable(this.m_player, false);
         
@@ -374,7 +401,6 @@ export default class gameScene extends Phaser.Scene{
     }
     toBattlePhase() {
         this.placeModeController(false);
-        this.m_player.forEach(element => element.giveBuff());
         this.PhaseText = "Battle Phase";
         this.startRound();
         //this.phaseTimer = this.time.delayedCall(6000, this.toDicePhase, [], this);

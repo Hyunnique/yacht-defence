@@ -10,13 +10,13 @@ export default class Homing extends Phaser.Physics.Arcade.Sprite {
         this.scale = 0.4;
         this.alpha = 1;
         this.targetidx = 0;
+        this.hitEffect = shooter.projecttileHitEffect;
+        this.isHit = false;
         this.setBodySize(28, 28);
 
         this.target = [];
         this.isTarget = false;
         this.needSearch = false;
-
-        console.log(this.scene.anims.get("bullet"));
 
         this.play(shooter.projectileName);
 
@@ -25,11 +25,15 @@ export default class Homing extends Phaser.Physics.Arcade.Sprite {
 
         this.scene.events.on("update", this.update, this);
         this.scene.events.on("mobDeath", this.deleteTarget, this);
+
+        this.on("animationcomplete", this.hitEffectEnd, this);
     }
 
     update() {
-        this.target = this.shooter.target;
-        this.flytoMob(this.scene, this.target[this.targetidx]);   
+        if (!this.isHit) {
+            this.target = this.shooter.target;
+            this.flytoMob(this.scene, this.target[this.targetidx]);   
+        }
     }
 
     deleteTarget(mobNum) {
@@ -69,7 +73,15 @@ export default class Homing extends Phaser.Physics.Arcade.Sprite {
     }
 
     hit()
-    {
-        this.destroy();
+    {   
+        this.isHit = true;
+        this.body.reset(this.x, this.y);
+        this.play(this.hitEffect);
+    }
+
+    hitEffectEnd(animation, frame) {
+        if (animation.key === this.hitEffect) {
+            this.destroy();
+        }
     }
 }
