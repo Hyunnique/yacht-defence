@@ -32,7 +32,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.projectileName = db.projectileName;
         this.projectileAnimName = db.projectileAnimName;
         this.projectileType = db.projectileType;
-        
+        this.projecttileHitEffect = db.projecttileHitEffect;
         
         this.isTarget = false;
         this.isBuffTarget = true;
