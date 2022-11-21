@@ -73,7 +73,7 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.spritesheet("attack20", require("../assets/spritesheets/effect/attack20_sprite.png"), {frameWidth: 340, frameHeight: 340});
         this.load.spritesheet("bigFireBall", require("../assets/spritesheets/effect/big_fire_ball_sprite.png"), {frameWidth: 515, frameHeight: 746});
         this.load.spritesheet("bigFireBall90", require("../assets/spritesheets/effect/big_fire_ball_90_sprite.png"), {frameWidth: 746, frameHeight: 515});
-        this.load.spritesheet("boom", require("../assets/spritesheets/effect/boom_sprite.png"), {frameWidth: 128, frameHeight: 128});
+        this.load.spritesheet("boom", require("../assets/spritesheets/effect/boom_sprite.png"), {frameWidth: 512, frameHeight: 512});
         this.load.spritesheet("boom2", require("../assets/spritesheets/effect/boom2_sprite.png"), {frameWidth: 200, frameHeight: 500});
         this.load.spritesheet("boom3", require("../assets/spritesheets/effect/boom3_sprite.png"), {frameWidth: 300, frameHeight: 300});
         this.load.spritesheet("boom5", require("../assets/spritesheets/effect/boom5_sprite.png"), {frameWidth: 780, frameHeight: 780});
@@ -102,6 +102,7 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.spritesheet("blueShot1", require("../assets/spritesheets/effect/blue_shot_1_sprite.png"), {frameWidth: 170, frameHeight: 170});
         this.load.spritesheet("greenShot1", require("../assets/spritesheets/effect/green_shot_1_sprite.png"), {frameWidth: 170, frameHeight: 170});
         this.load.spritesheet("redShot1", require("../assets/spritesheets/effect/red_shot_1_sprite.png"), {frameWidth: 170, frameHeight: 170});
+        this.load.spritesheet("blueFire90", require("../assets/spritesheets/effect/blue_fire_90_sprite.png"), {frameWidth: 540, frameHeight: 540});
         this.load.spritesheet("redFire", require("../assets/spritesheets/effect/red_fire_sprite.png"), {frameWidth: 500, frameHeight: 500});
         this.load.spritesheet("redFire90", require("../assets/spritesheets/effect/red_fire_90_sprite.png"), {frameWidth: 501, frameHeight: 501});
         this.load.spritesheet("redFire2", require("../assets/spritesheets/effect/red_fire2_sprite.png"), {frameWidth: 540, frameHeight: 540});
@@ -117,6 +118,7 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.spritesheet("weaponProjectile4", require("../assets/spritesheets/effect/weapon_projectile_4.png"), {frameWidth: 16, frameHeight: 16});
         this.load.spritesheet("weaponProjectile5", require("../assets/spritesheets/effect/weapon_projectile_5.png"), {frameWidth: 32, frameHeight: 32});
         this.load.spritesheet("weaponProjectile6", require("../assets/spritesheets/effect/weapon_projectile_6.png"), {frameWidth: 32, frameHeight: 32});
+        this.load.spritesheet("auraBlade", require("../assets/spritesheets/effect/aura_blade.png"), {frameWidth: 722, frameHeight: 740});
         
         this.load.spritesheet("bullet", Bullet, { frameWidth: 361, frameHeight: 50 });
 
@@ -157,6 +159,7 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.audio("tier2", require("../assets/sounds/tier2.wav"));
         this.load.audio("tier3", require("../assets/sounds/tier3.wav"));
         this.load.audio("tier4", require("../assets/sounds/tier4.wav"));
+        this.load.audio("shop", require("../assets/sounds/shop.wav"));
 
         // 맵 로딩
         this.load.image("outside_ground", outside_ground);
@@ -733,6 +736,12 @@ export default class PreLoadScene extends Phaser.Scene {
             frameRate: 40
         });
         this.anims.create({
+            key: "blueFire90",
+            frames: this.anims.generateFrameNumbers("blueFire90", { start: 0 }),
+            repeat: -1,
+            frameRate: 40
+        });
+        this.anims.create({
             key: "redFire",
             frames: this.anims.generateFrameNumbers("redFire", { start: 0 }),
             repeat: -1,
@@ -822,6 +831,13 @@ export default class PreLoadScene extends Phaser.Scene {
             repeat: -1,
             frameRate: 40
         });
+        this.anims.create({
+            key: "auraBlade",
+            frames: this.anims.generateFrameNumbers("auraBlade", { start: 0 }),
+            repeat: -1,
+            frameRate: 40
+        });
+
 
 
         this.anims.create({
