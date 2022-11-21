@@ -2,6 +2,7 @@ import Homing from '../projectiles/homing.js';
 import Penetrate from '../projectiles/penetrate.js';
 import Bomb from '../projectiles/bomb.js'
 import UnitEffect from './unitEffect.js';
+import effectOffset from '../../assets/specsheets/effectOffsetSheet.json'
 const Config = require("../../Config");
 const Phaser = require("phaser");
 
@@ -42,7 +43,12 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.scale = 1;
         this.alpha = 1;      
         this.shootSound = this.scene.sound.add("shoot");
-        this.effect = new UnitEffect(scene, this);
+
+        this.effectOffsetX = effectOffset[this.effectName].x;
+        this.effectOffsetY = effectOffset[this.effectName].y;
+        this.effectIsFlip = effectOffset[this.effectName].isFlip == 1 ? true : false;
+        console.log(this.effectOffsetX + " " + this.effectOffsetY + " " + effectOffset[this.effectName].isFlip);
+        this.effect = new UnitEffect(scene, this, this.effectIsFlip);
         
         this.target = [];
         this.attackEvent;
@@ -63,8 +69,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
     update() {
         this.rangeView.setX(this.x);
         this.rangeView.setY(this.y);
-        this.effect.x = this.x;
-        this.effect.y = this.y;
+        this.effect.x = this.x + this.effectOffsetX;
+        this.effect.y = this.y + this.effectOffsetY;
     }
 
     checkMob() {
@@ -112,11 +118,11 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         // this.setMotionSpeed();
     }
 
-    setMotionSpeed()
-    {
-        this.attackConfig = this.scene.anims.get(this.attackAnim);
-        this.attackConfig.frameRate *= this.aspd;
-    }
+    // setMotionSpeed()
+    // {
+    //     this.attackConfig = this.scene.anims.get(this.attackAnim);
+    //     this.attackConfig.frameRate *= this.aspd;
+    // }
 
     attackMob()
     {   
