@@ -1,8 +1,7 @@
-export default class Profile {
-    Profile()
-    {
-        this.aspdShop = 0;
-        this.atkShop = 0;
-        this.penetrationShop = 0;
-    }
+var profile = {
+    aspdShop: 0,
+    atkShop: 0,
+    penetrationShop : 0
 }
+
+export default profile
