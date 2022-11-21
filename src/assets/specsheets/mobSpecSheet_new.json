@@ -1,0 +1,33 @@
+{
+    "Air": {
+        "mobAnim": "Air",
+        "deathAnimName": "boom3",
+        "deathSound": "death",
+        "scale": 3,
+        "health": 500,
+        "m_speed": 25,
+        "defence": 30,
+        "damage": 4,
+        "variations": 1,
+        "defaultCost": 10,
+        "appearRound": 10,
+        "boss": false
+    },
+    "Ball": {
+        "mobAnim": "Ball",
+        "deathAnimName": "boom3",
+        "deathSound": "death",
+        "scale": 3,
+        "health": 400,
+        "m_speed": 20,
+        "defence": 35,
+        "damage": 4,
+        "variations": 4,
+        "defaultCost": 8,
+        "appearRound": 8,
+        "boss": false
+    },
+    "Bat": {
+        "mobAnim": ""
+    }
+}
