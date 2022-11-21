@@ -9,6 +9,8 @@ export default class UnitEffect extends Phaser.Physics.Arcade.Sprite {
         this.alpha = 0;
         this.flipX = isFlip;
         this.depth = 1;
+        this.scene = scene;
+        
     }
 
     playEffect()
