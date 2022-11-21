@@ -186,6 +186,7 @@ export default class gameScene extends Phaser.Scene{
         this.roundDB = this.cache.json.get("roundDB");
         this.m_player = [];
         this.selectedUnit;
+        this.onPlaceQueue;
         this.prePosX = 0;
         this.prePosY = 0;
 
@@ -232,37 +233,38 @@ export default class gameScene extends Phaser.Scene{
     initialPlace(unitData)
     {
         this.info.alpha = 1;
-        let newUnit = new Unit(this, -500, -500, unitData,this.unitIndex++);
-        newUnit.rangeView.alpha = 1;
+        this.onPlaceQueue = new Unit(this, -500, -500, unitData,this.unitIndex++);
+        onPlaceQueue.rangeView.alpha = 1;
         this.input.on('pointermove', (pointer) => {
             if (this.placemode) {
                 let t = this.getTileAtPointer(pointer, this.info);
                 if (!t || t.index == "2898") {
-                    newUnit.rangeView.alpha = 0;
-                    newUnit.alpha = 0;
+                    onPlaceQueue.rangeView.alpha = 0;
+                    onPlaceQueue.alpha = 0;
                 }
                 else {
-                    newUnit.rangeView.alpha = 0.4;
-                    newUnit.alpha = 1;
+                    onPlaceQueue.rangeView.alpha = 0.4;
+                    onPlaceQueue.alpha = 1;
                 }
-                newUnit.setX(t.getCenterX());
-                newUnit.setY(t.getCenterY());
+                onPlaceQueue.setX(t.getCenterX());
+                onPlaceQueue.setY(t.getCenterY());
             }
         });
         this.input.on('pointerdown', (pointer) => {
             if (this.placemode) {
                 let t = this.getTileAtPointer(pointer, this.info);
                 if (t.index == "2897") {
-                    this.m_player.push(newUnit);
+                    this.m_player.push(onPlaceQueue);
                     t.index = "2898";
                     this.info.alpha = 0;
-                    newUnit.rangeView.alpha = 0;
-                    t.placedUnit = newUnit;
+                    onPlaceQueue.rangeView.alpha = 0;
+                    t.placedUnit = onPlaceQueue;
                     this.placemode = false;
                     this.input.off("pointermove");
                     this.input.off("pointerdown");
-                    newUnit.setX(t.getCenterX());
-                    newUnit.setY(t.getCenterY());
+                    onPlaceQueue.setX(t.getCenterX());
+                    onPlaceQueue.setY(t.getCenterY());
+                    this.onPlaceQueue = undefined;
                     this.placeModeController(true);
                 }
             }
@@ -278,6 +280,7 @@ export default class gameScene extends Phaser.Scene{
                 this.m_player.splice(this.m_player.findIndex(e => e.index == t.placedUnit.index), 1);
                 t.index = "2897";
                 var unitID = parseInt(t.placedUnit.idleAnim.substring(4, t.placedUnit.idleAnim.length - 4));
+                this.onPlaceQueue = t.placedUnit;
                 t.placedUnit.remove();
                 this.placemode = true;
                 this.placeModeController(false);
@@ -286,6 +289,12 @@ export default class gameScene extends Phaser.Scene{
         }
         else {
             this.input.off("pointerdown");
+            if (!this.onPlaceQueue) {
+                this.onPlaceQueue.destroy();
+                this.onPlaceQueue = undefined;
+                //티어 보너스 지워줘야함
+            }
+                
         }
     }
 
