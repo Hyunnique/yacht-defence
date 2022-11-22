@@ -78,6 +78,7 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.spritesheet("boom2", require("../assets/spritesheets/effect/boom2_sprite.png"), {frameWidth: 200, frameHeight: 500});
         this.load.spritesheet("boom3", require("../assets/spritesheets/effect/boom3_sprite.png"), {frameWidth: 300, frameHeight: 300});
         this.load.spritesheet("boom5", require("../assets/spritesheets/effect/boom5_sprite.png"), {frameWidth: 780, frameHeight: 780});
+        this.load.spritesheet("boom5Orange", require("../assets/spritesheets/effect/boom5_orange_sprite.png"), {frameWidth: 780, frameHeight: 780});
         this.load.spritesheet("buff1", require("../assets/spritesheets/effect/buff1_sprite.png"), {frameWidth: 128, frameHeight: 128});
         this.load.spritesheet("buff2", require("../assets/spritesheets/effect/buff2_sprite.png"), {frameWidth: 128, frameHeight: 128});
         this.load.spritesheet("buff3", require("../assets/spritesheets/effect/buff3_sprite.png"), {frameWidth: 450, frameHeight: 450});
@@ -101,6 +102,7 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.spritesheet("purpleShot2", require("../assets/spritesheets/effect/purple_shot_2_sprite.png"), {frameWidth: 420, frameHeight: 420});
         this.load.spritesheet("purpleShot3", require("../assets/spritesheets/effect/purple_shot_3.png"), {frameWidth: 400, frameHeight: 240});
         this.load.spritesheet("blueShot1", require("../assets/spritesheets/effect/blue_shot_1_sprite.png"), {frameWidth: 170, frameHeight: 170});
+        this.load.spritesheet("blueShot2", require("../assets/spritesheets/effect/blue_shot_2_sprite.png"), {frameWidth: 420, frameHeight: 420});
         this.load.spritesheet("greenShot1", require("../assets/spritesheets/effect/green_shot_1_sprite.png"), {frameWidth: 170, frameHeight: 170});
         this.load.spritesheet("redShot1", require("../assets/spritesheets/effect/red_shot_1_sprite.png"), {frameWidth: 170, frameHeight: 170});
         this.load.spritesheet("blueFire90", require("../assets/spritesheets/effect/blue_fire_90_sprite.png"), {frameWidth: 540, frameHeight: 540});
@@ -109,6 +111,7 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.spritesheet("redFire2", require("../assets/spritesheets/effect/red_fire2_sprite.png"), {frameWidth: 540, frameHeight: 540});
         this.load.spritesheet("redFire2_90", require("../assets/spritesheets/effect/red_fire2_90_sprite.png"), {frameWidth: 540, frameHeight: 540});
         this.load.spritesheet("shot", require("../assets/spritesheets/effect/shot_sprite.png"), {frameWidth: 361, frameHeight: 50});
+        this.load.spritesheet("shotGreen", require("../assets/spritesheets/effect/shot_green_sprite.png"), {frameWidth: 361, frameHeight: 50});
         this.load.spritesheet("thunder", require("../assets/spritesheets/effect/thunder_sprite.png"), {frameWidth: 340, frameHeight: 340});
         this.load.spritesheet("tornado1", require("../assets/spritesheets/effect/tornado_1_sprite.png"), {frameWidth: 800, frameHeight: 800});
         this.load.spritesheet("tornado2", require("../assets/spritesheets/effect/tornado_2.png"), {frameWidth: 800, frameHeight: 800});
@@ -118,8 +121,11 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.spritesheet("weaponProjectile3", require("../assets/spritesheets/effect/weapon_projectile_3.png"), {frameWidth: 32, frameHeight: 32});
         this.load.spritesheet("weaponProjectile4", require("../assets/spritesheets/effect/weapon_projectile_4.png"), {frameWidth: 16, frameHeight: 16});
         this.load.spritesheet("weaponProjectile5", require("../assets/spritesheets/effect/weapon_projectile_5.png"), {frameWidth: 32, frameHeight: 32});
-        this.load.spritesheet("weaponProjectile6", require("../assets/spritesheets/effect/weapon_projectile_6.png"), {frameWidth: 32, frameHeight: 32});
+        this.load.spritesheet("weaponProjectile6", require("../assets/spritesheets/effect/weapon_projectile_6.png"), {frameWidth: 256, frameHeight: 256});
         this.load.spritesheet("auraBlade", require("../assets/spritesheets/effect/aura_blade.png"), {frameWidth: 722, frameHeight: 740});
+        this.load.spritesheet("iceSpear", require("../assets/spritesheets/effect/ice_spear.png"), {frameWidth: 256, frameHeight: 256});
+        this.load.spritesheet("bomb", require("../assets/spritesheets/effect/bomb_sprite.png"), {frameWidth: 128, frameHeight: 128});
+
         
         this.load.spritesheet("bullet", Bullet, { frameWidth: 361, frameHeight: 50 });
 
@@ -161,6 +167,28 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.audio("tier3", require("../assets/sounds/tier3.wav"));
         this.load.audio("tier4", require("../assets/sounds/tier4.wav"));
         this.load.audio("shop", require("../assets/sounds/shop.wav"));
+        this.load.audio("shopBuy1", require("../assets/sounds/shop_buy1.wav"));
+        this.load.audio("shopBuy2", require("../assets/sounds/shop_buy2.wav"));
+        this.load.audio("shopBuy3", require("../assets/sounds/shop_buy3.wav"));
+        this.load.audio("attackBigFire", require("../assets/sounds/attack_big_fire.wav"));
+        this.load.audio("attackFire", require("../assets/sounds/attack_fire.wav"));
+        this.load.audio("attackBow", require("../assets/sounds/attack_bow.wav"));
+        this.load.audio("attackIce", require("../assets/sounds/attack_ice.mp3"));
+        this.load.audio("attackKnife", require("../assets/sounds/attack_knife.mp3"));
+        this.load.audio("attackLightning", require("../assets/sounds/attack_lightning.mp3"));
+        this.load.audio("attackLongWeapon", require("../assets/sounds/attack_long_weapon.mp3"));
+        this.load.audio("attackMagic1", require("../assets/sounds/attack_magic1.wav"));
+        this.load.audio("attackMagic2", require("../assets/sounds/attack_magic2.wav"));
+        this.load.audio("attackSword", require("../assets/sounds/attack_sword.mp3"));
+        this.load.audio("attackThrow", require("../assets/sounds/attack_throw.wav"));
+        this.load.audio("hitBoom1", require("../assets/sounds/hit_boom1.wav"));
+        this.load.audio("hitBoom2", require("../assets/sounds/hit_boom2.wav"));
+        this.load.audio("hitBoom3", require("../assets/sounds/hit_boom3.wav"));
+        this.load.audio("hitBow", require("../assets/sounds/hit_bow.wav"));
+        this.load.audio("hitNormal", require("../assets/sounds/hit_normal.wav"));
+        this.load.audio("hitFire", require("../assets/sounds/hit_fire.mp3"));
+
+
 
         // 맵 로딩
         this.load.image("outside_ground", outside_ground);
@@ -204,13 +232,13 @@ export default class PreLoadScene extends Phaser.Scene {
         }
         this.anims.create({
             key: "unit3atk",
-            frames: this.anims.generateFrameNumbers("unit3atk", { start: 0, end: 24 }),
+            frames: this.anims.generateFrameNumbers("unit3atk", { start: 12, end: 24 }),
             repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "unit8atk",
-            frames: this.anims.generateFrameNumbers("unit8atk", { start: 0, end: 24 }),
+            frames: this.anims.generateFrameNumbers("unit8atk", { start: 12, end: 24 }),
             repeat: 0,
             frameRate: 40
         });
@@ -222,7 +250,7 @@ export default class PreLoadScene extends Phaser.Scene {
         });
         this.anims.create({
             key: "unit21atk",
-            frames: this.anims.generateFrameNumbers("unit21atk", { start: 0, end: 24 }),
+            frames: this.anims.generateFrameNumbers("unit21atk", { start: 12, end: 24 }),
             repeat: 0,
             frameRate: 40
         });
@@ -234,25 +262,25 @@ export default class PreLoadScene extends Phaser.Scene {
         });
         this.anims.create({
             key: "unit39atk",
-            frames: this.anims.generateFrameNumbers("unit39atk", { start: 0, end: 24 }),
+            frames: this.anims.generateFrameNumbers("unit39atk", { start: 12, end: 24 }),
             repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "unit43atk",
-            frames: this.anims.generateFrameNumbers("unit43atk", { start: 0, end: 24 }),
+            frames: this.anims.generateFrameNumbers("unit43atk", { start: 12, end: 24 }),
             repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "unit46atk",
-            frames: this.anims.generateFrameNumbers("unit46atk", { start: 0, end: 24 }),
+            frames: this.anims.generateFrameNumbers("unit46atk", { start: 12, end: 24 }),
             repeat: 0,
             frameRate: 40
         });
         this.anims.create({
             key: "unit48atk",
-            frames: this.anims.generateFrameNumbers("unit48atk", { start: 0, end: 24 }),
+            frames: this.anims.generateFrameNumbers("unit48atk", { start: 12, end: 24 }),
             repeat: 0,
             frameRate: 40
         });
@@ -594,6 +622,12 @@ export default class PreLoadScene extends Phaser.Scene {
             frameRate: 40
         });
         this.anims.create({
+            key: "boom5Orange",
+            frames: this.anims.generateFrameNumbers("boom5Orange", { start: 0 }),
+            repeat: 0,
+            frameRate: 40
+        });
+        this.anims.create({
             key: "buff1",
             frames: this.anims.generateFrameNumbers("buff1", { start: 0 }),
             repeat: 0,
@@ -726,8 +760,20 @@ export default class PreLoadScene extends Phaser.Scene {
             frameRate: 40
         });
         this.anims.create({
+            key: "greenShot1",
+            frames: this.anims.generateFrameNumbers("greenShot1", { start: 0 }),
+            repeat: 0,
+            frameRate: 40
+        });
+        this.anims.create({
             key: "blueShot1",
             frames: this.anims.generateFrameNumbers("blueShot1", { start: 0 }),
+            repeat: 0,
+            frameRate: 40
+        });
+        this.anims.create({
+            key: "blueShot2",
+            frames: this.anims.generateFrameNumbers("blueShot2", { start: 0 }),
             repeat: 0,
             frameRate: 40
         });
@@ -770,6 +816,12 @@ export default class PreLoadScene extends Phaser.Scene {
         this.anims.create({
             key: "shot",
             frames: this.anims.generateFrameNumbers("shot", { start: 0 }),
+            repeat: -1,
+            frameRate: 40
+        });
+        this.anims.create({
+            key: "shotGreen",
+            frames: this.anims.generateFrameNumbers("shotGreen", { start: 0 }),
             repeat: -1,
             frameRate: 40
         });
@@ -836,6 +888,12 @@ export default class PreLoadScene extends Phaser.Scene {
         this.anims.create({
             key: "auraBlade",
             frames: this.anims.generateFrameNumbers("auraBlade", { start: 0 }),
+            repeat: -1,
+            frameRate: 40
+        });
+        this.anims.create({
+            key: "iceSpear",
+            frames: this.anims.generateFrameNumbers("iceSpear", { start: 0 }),
             repeat: -1,
             frameRate: 40
         });

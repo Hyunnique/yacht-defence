@@ -22,6 +22,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.attackType = db.attackType;
         this.idleAnim = db.idleAnim;
         this.attackAnim = db.attackAnim;
+        this.atkSoundName = this.scene.sound.add(db.atkSoundName);
+        this.hitSoundName = this.scene.sound.add(db.hitSoundName);
         this.effectName = db.effectName;
         this.index = index;
 
@@ -135,6 +137,12 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
             return;
         }
 
+        this.atkSoundName.play({
+            mute: false,
+            volume: 0.3,
+            rate: 1,
+            loop: false
+            });
         this.play(this.attackAnim, true);
         this.effect.playEffect();
 
@@ -149,12 +157,12 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
             })
         }
         else if (this.attackType == 1) {
-            this.shootSound.play({
-            mute: false,
-            volume: 0.7,
-            rate: 1,
-            loop: false
-            });
+            // this.shootSound.play({
+            // mute: false,
+            // volume: 0.7,
+            // rate: 1,
+            // loop: false
+            // });
             this.shootProjectile();
         }        
     }

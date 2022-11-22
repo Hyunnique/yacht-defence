@@ -11,7 +11,7 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
         this.alpha = 1;
         this.targetidx = 0;
         this.setBodySize(28, 28);
-        this.hitEffect = shooter.
+        this.hitEffect = shooter.projectileHitEffect;
 
         this.target = new Phaser.Math.Vector2(this.shooter.target[0].gameObject.getCenter());
         this.isTarget = false;

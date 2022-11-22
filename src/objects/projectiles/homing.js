@@ -12,6 +12,7 @@ export default class Homing extends Phaser.Physics.Arcade.Sprite {
         this.targetidx = 0;
         this.hitEffect = shooter.projecttileHitEffect;
         this.isHit = false;
+        this.hitSoundName = shooter.hitSoundName;
         this.setBodySize(28, 28);
 
         this.target = [];
@@ -76,7 +77,14 @@ export default class Homing extends Phaser.Physics.Arcade.Sprite {
     {   
         this.isHit = true;
         this.body.reset(this.x, this.y);
+        this.angle = 0;
         this.play(this.hitEffect);
+        this.hitSoundName.play({
+            mute: false,
+            volume: 0.3,
+            rate: 1,
+            loop: false
+            });
     }
 
     hitEffectEnd(animation, frame) {
