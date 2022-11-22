@@ -83,12 +83,12 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
 
     death()
     {
-        this.deathSound.play({
-            mute: false,
-            volume: 0.7,
-            rate: 1,
-            loop: false
-        });
+        // this.deathSound.play({
+        //     mute: false,
+        //     volume: 0.7,
+        //     rate: 1,
+        //     loop: false
+        // });
         this.scene.events.off("update", this.update, this);
         this.scene.events.emit("mobDeath", this.mobNum);
         this.scene.mobCounter--;
