@@ -92,6 +92,7 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.spritesheet("buff1", require("../assets/spritesheets/effect/buff1_sprite.png"), {frameWidth: 128, frameHeight: 128});
         this.load.spritesheet("buff2", require("../assets/spritesheets/effect/buff2_sprite.png"), {frameWidth: 128, frameHeight: 128});
         this.load.spritesheet("buff3", require("../assets/spritesheets/effect/buff3_sprite.png"), {frameWidth: 450, frameHeight: 450});
+        this.load.spritesheet("buff4", require("../assets/spritesheets/effect/buff4_sprite.png"), {frameWidth: 128, frameHeight: 128});
         this.load.spritesheet("electricBall", require("../assets/spritesheets/effect/electric_ball_sprite.png"), {frameWidth: 750, frameHeight: 750});
         this.load.spritesheet("fireFromBottom", require("../assets/spritesheets/effect/fire_from_bottom_sprite.png"), {frameWidth: 128, frameHeight: 128});
         this.load.spritesheet("fireShot1", require("../assets/spritesheets/effect/fire_shot_1_sprite.png"), {frameWidth: 120, frameHeight: 160});
@@ -372,9 +373,10 @@ export default class PreLoadScene extends Phaser.Scene {
 
         Object.keys(this.importedMobs).forEach(key => {
             this.anims.create({
-                key,
-                frames: this.anims.generateFrameNumbers(key, { start : 0 }),
-                repeat: -1
+                key: key.substring(0, key.length - 4),
+                frames: this.anims.generateFrameNumbers(key.substring(0, key.length - 4), { start : 0 }),
+                repeat: -1,
+                frameRate: 30
             });
         });
         // 몹 애니메이션 생성
@@ -673,6 +675,12 @@ export default class PreLoadScene extends Phaser.Scene {
         this.anims.create({
             key: "buff3",
             frames: this.anims.generateFrameNumbers("buff3", { start: 0 }),
+            repeat: 0,
+            frameRate: 40
+        });
+        this.anims.create({
+            key: "buff4",
+            frames: this.anims.generateFrameNumbers("buff4", { start: 0 }),
             repeat: 0,
             frameRate: 40
         });
