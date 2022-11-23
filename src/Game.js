@@ -22,7 +22,7 @@ var Game = {
     shopOpen: false,
     
     shopBuff: {
-        shopAtk: 1,
+        shopAtk: 0,
         shopPenetration: 0,
         shopAspd: 0
     },
@@ -237,6 +237,9 @@ var Game = {
             document.getElementsByClassName("ui-phase-value")[0].innerText = "Place";
             document.getElementsByClassName("ui-phaseTimelimit-value")[0].innerText = this.currentTimeLimit;
             this.currentTimeLimit = msg.timeLimit;
+
+            for (let i = 0; i < 3; i++)
+                document.getElementsByClassName("ui-shop-item")[i].style.display = "block";
         });
 
         this.Socket.on('placePhase-end', (msg) => {
@@ -265,10 +268,28 @@ var Game = {
                 rate: 1,
                 loop: false
             });
+            
+            document.getElementsByClassName("ui-shop-item")[msg.uiIndex].style.display = "none";
+            console.log(msg.items);
+
+            let myItemUI = document.getElementsByClassName("ui-itemArea-itemList")[0];
+            myItemUI.innerHTML = "";
+            Object.keys(msg.items).forEach((key) => {
+                myItemUI.innerHTML += "<div class='ui-itemArea-itemList-item'>" + key + ", " + msg.items[key] +"</div>"
+            })
+
+            this.shopBuff.shopAtk += itemSpecSheets["item" + msg.purchased].buffAtk;
+            this.shopBuff.shopAspd += itemSpecSheets["item" + msg.purchased].buffAspd;
+            this.shopBuff.shopPenetration += itemSpecSheets["item" + msg.purchased].buffPenetration;
         });
 
         this.Socket.on('shop-itemFailure', (msg) => {
-            ; // 구매 실패음 출력
+            this.GameObject.scene.getScene("gameScene").shopBuyFail.play({
+                mute: false,
+                volume: 0.7,
+                rate: 1,
+                loop: false
+            });
         });
     },
 
@@ -385,6 +406,19 @@ var Game = {
                     document.getElementsByClassName("ui-shop-itemSpec-atk")[i].innerText = "";
                     document.getElementsByClassName("ui-shop-itemSpec-aspd")[i].innerText = "몬스터를 상대에게 소환";
                     document.getElementsByClassName("ui-shop-itemSpec-range")[i].innerText = "";
+                    break;
+                    
+                case 6:
+                    document.getElementsByClassName("ui-shop-itemType")[i].innerText = "보유 아이템";
+                    document.getElementsByClassName("ui-shop-itemSpec-atk")[i].innerText = "";
+                    document.getElementsByClassName("ui-shop-itemSpec-aspd")[i].innerText = "남은 기회가 0 일때";
+                    document.getElementsByClassName("ui-shop-itemSpec-range")[i].innerText = "한번 더 굴립니다";
+                    break;
+                case 7:
+                    document.getElementsByClassName("ui-shop-itemType")[i].innerText = "자동 사용 아이템";
+                    document.getElementsByClassName("ui-shop-itemSpec-atk")[i].innerText = "";
+                    document.getElementsByClassName("ui-shop-itemSpec-aspd")[i].innerText = "체력을 20% 회복";
+                    document.getElementsByClassName("ui-shop-itemSpec-range")[i].innerText = "";
             }
             document.getElementsByClassName("ui-shop-itemSkill")[i].innerText = "PRICE : " + itemSpecSheets["item" + itemArray[i]].price;
             document.getElementsByClassName("ui-shop-item")[i].attributes.idx.value = itemArray[i];
@@ -392,6 +426,7 @@ var Game = {
                 this.Socket.emit("shop-itemBuy", {
                     playerIndex: this.PlayerIndex,
                     itemIndex: itemArray[i],
+                    uiIndex: i
                 });
             }
         }

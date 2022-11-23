@@ -32,7 +32,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.rangeView = this.scene.add.circle(this.x, this.y, this.range, 0xFF0000);
         this.rangeView.setAlpha(0);
 
-        this.buffAtk = 1;
+        this.buffAtk = 0;
         this.buffAspd = 0;
     
         this.globalbuffAtk = Game.shopBuff.shopAtk;
@@ -89,7 +89,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
             this.attackMob();
         
     }
-    
+
     doIdle()
     {
         if (this.target.length == 0)
@@ -99,11 +99,14 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
     
 
     checkMob() {
-        try {
-            this.target = this.scene.physics.overlapCirc(this.x, this.y, this.range).filter(item => item.gameObject.isTarget == true);
-        }
-        catch(e) {
-            console.log(this.target);
+        while (true) {
+            try {
+                this.target = this.scene.physics.overlapCirc(this.x, this.y, this.range).filter(item => item.gameObject.isTarget == true);
+            }
+            catch (e) {
+                continue;
+            }
+            finally { break; }
         }
         this.target.sort((a, b) => {
             if (a.gameObject.health == b.gameObject.health)
@@ -111,6 +114,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
             else
                 return a.gameObject.health - b.gameObject.health;
         });
+       
     }
 
     syncGlobalBuff()
@@ -145,7 +149,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
     updateBuff()
     {
         this.attack = (this.buffedAtk + this.globalbuffAtk + 1) * this.originAttack;
-        this.aspd = this.buffedAspd / 100 + this.globalbuffAspd + this.originAspd;
+        this.aspd = ((100 + this.buffedAspd) / 100) * (100 + this.globalbuffAspd) * this.originAspd;
         this.penetration = this.originPenetration + this.globalbuffedPenetration;
         // this.setMotionSpeed();
     }
