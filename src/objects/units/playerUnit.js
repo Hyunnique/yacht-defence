@@ -74,7 +74,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.scene.physics.add.existing(this);
         this.setBodySize(64, 64, true);
         this.scene.add.existing(this);
-        this.activateAttack();
+        //this.activateAttack();
         this.scene.events.on("update", this.update, this);
         this.on("animationcomplete", this.doIdle, this);
     }
@@ -111,7 +111,12 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
     
 
     checkMob() {
-        this.target = this.scene.physics.overlapCirc(this.x, this.y, this.range).filter(item => item.gameObject.isTarget == true);
+        try {
+            this.target = this.scene.physics.overlapCirc(this.x, this.y, this.range).filter(item => item.gameObject.isTarget == true);
+        }
+        catch(e) {
+            console.log(this.target);
+        }
         this.target.sort((a, b) => {
             if (a.gameObject.health == b.gameObject.health)
                 return a.gameObject.mobNum - b.gameObject.mobNum;
@@ -192,7 +197,10 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
             // loop: false
             // });
             this.shootProjectile();
-        }        
+        }
+        this.scene.time.delayedCall(1000 / this.aspd, () => {
+            this.attackReady = true;
+        }, [], this);
     }
 
     shootProjectile()
