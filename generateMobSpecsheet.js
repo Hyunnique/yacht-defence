@@ -84,6 +84,79 @@ var specData = {
     "Zombie": [650, 25, 30, 3, 2]
 };
 
+var bossData = {
+    "BossBear": {
+        "mobAnim": "bearWalk",
+        "deathAnimName": "bearDie",
+        "deathSound": "death",
+        "scale": 1,
+        "health": 4000,
+        "m_speed": 60,
+        "defence": 60,
+        "damage": 10,
+        "currentVariation": 0,
+        "variations": 1,
+        "defaultCost": 0,
+        "boss": true
+    },
+    "BossSlimeKing": {
+        "mobAnim": "slimeKingWalk",
+        "deathAnimName": "slimeKingDie",
+        "deathSound": "death",
+        "scale": 1,
+        "health": 9000,
+        "m_speed": 60,
+        "defence": 60,
+        "damage": 10,
+        "currentVariation": 0,
+        "variations": 1,
+        "defaultCost": 0,
+        "boss": true
+    },
+    "BossMagician": {
+        "mobAnim": "magicianWalk",
+        "deathAnimName": "magicianDie",
+        "deathSound": "death",
+        "scale": 1,
+        "health": 22000,
+        "m_speed": 60,
+        "defence": 60,
+        "damage": 10,
+        "currentVariation": 0,
+        "variations": 1,
+        "defaultCost": 0,
+        "boss": true
+    },
+    "BossGiant": {
+        "mobAnim": "giantWalk",
+        "deathAnimName": "giantDie",
+        "deathSound": "death",
+        "scale": 1,
+        "health": 45000,
+        "m_speed": 60,
+        "defence": 60,
+        "damage": 10,
+        "currentVariation": 0,
+        "variations": 1,
+        "defaultCost": 0,
+        "boss": true
+    },
+    "BossGolem": {
+        "mobAnim": "stoneGolemWalk",
+        "deathAnimName": "stoneGolemDie",
+        "deathSound": "death",
+        "scale": 1,
+        "health": 100000,
+        "m_speed": 60,
+        "defence": 60,
+        "damage": 10,
+        "currentVariation": 0,
+        "variations": 1,
+        "defaultCost": 0,
+        "boss": true
+    },
+};
+
 var specData_result = {};
 
 Object.keys(specData).forEach((x) => {
@@ -92,7 +165,6 @@ Object.keys(specData).forEach((x) => {
     var def = specData[x][1];
     var spd = specData[x][2];
     var damage = specData[x][3];
-    var appearRound = specData[x][4];
 
     var ehp = hp * (1 / (1 - (def / 100)));
     var diffCost = Math.floor(ehp / Math.log(spd) / 20) / 2;
@@ -111,7 +183,6 @@ Object.keys(specData).forEach((x) => {
         "currentVariation": 0,
         "variations": 0,
         "defaultCost": cost,
-        "appearRound": Math.floor(cost),
         "boss": false
     };
 });
@@ -122,6 +193,10 @@ fs.readdir("./src/assets/spritesheets/mobs")
         let param = x.substring(0, x.length - 5);
         
         if (specData[param]) specData[param].variations++;
+    });
+
+    Object.keys(bossData).forEach((x) => {
+        specData[x] = bossData[x];
     });
 
     fs.writeFile('./src/assets/specsheets/mobSpecSheetGen.json', JSON.stringify(specData, null, '\t'));
@@ -140,6 +215,5 @@ fs.readdir("./src/assets/spritesheets/mobs")
             delete specData_result[x + String.fromCharCode(65 + i)].currentVariation;
         }
     });
-
     fs.writeFile('./src/assets/specsheets/mobSpecSheet.json', JSON.stringify(specData_result, null, '\t'));
 });
