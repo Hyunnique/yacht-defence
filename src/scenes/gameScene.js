@@ -310,10 +310,14 @@ export default class gameScene extends Phaser.Scene{
         }
         else {
             this.input.off("pointerdown");
+            this.input.off("pointermove");
+            this.info.alpha = 0;
             if (this.onPlaceQueue != undefined) {
-                this.onPlaceQueue.destroy();
+                this.handleTierBonus(this.onPlaceQueue.tier, false);
+                console.log(this.tierBonus);
+                console.log(this.tierCnt);
+                this.onPlaceQueue.remove();
                 this.onPlaceQueue = undefined;
-                //티어 보너스 지워줘야함
             }
                 
         }
@@ -415,10 +419,23 @@ export default class gameScene extends Phaser.Scene{
     receiveUnit(unitID, tier) {
         this.placemode = true;
         this.initialPlace(this.unitDB["unit" + unitID]);
-        this.tierCnt[tier - 1]++;
+        
+        
+
+        this.handleTierBonus(tier,true);
+
+        for (let i = 0; i < 4; i++) {
+            document.getElementsByClassName("ui-unitArea-unitTierCount")[i].innerHTML = "";
+            document.getElementsByClassName("ui-unitArea-unitTierCount")[i].innerHTML += this.tierCnt[i] + " <span class='ui-unitArea-unitTierBonus'>(+" + this.tierBonus[i] + "%)</span>";
+        }
+
+    }
+
+    handleTierBonus(tier,bool)
+    {
+        bool ? this.tierCnt[tier - 1]++ : this.tierCnt[tier - 1]--;
         let buffvalue1 = 0;
         let buffvalue2 = 0;
-
         switch (tier) {
             case 1:
                 buffvalue1 = 20;
@@ -437,14 +454,8 @@ export default class gameScene extends Phaser.Scene{
                 break;
         }
 
-        this.tierBonus[tier - 1] += buffvalue1;
-        this.tierBonus[3] += buffvalue2;
-
-        for (let i = 0; i < 4; i++) {
-            document.getElementsByClassName("ui-unitArea-unitTierCount")[i].innerHTML = "";
-            document.getElementsByClassName("ui-unitArea-unitTierCount")[i].innerHTML += this.tierCnt[i] + " <span class='ui-unitArea-unitTierBonus'>(+" + this.tierBonus[i] + "%)</span>";
-        }
-
+        this.tierBonus[tier - 1] += buffvalue1 * (bool ? 1 : -1);
+        this.tierBonus[3] += buffvalue2 * (bool ? 1 : -1);
     }
 }
 
