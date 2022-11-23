@@ -368,7 +368,8 @@ var Game = {
             document.getElementsByClassName("ui-shop-item")[i].attributes.idx.value = itemArray[i];
             document.getElementsByClassName("ui-shop-item")[i].onclick = (e) => {
                 this.Socket.emit("shop-itemBuy", {
-                    itemIdx: itemArray[i]
+                    PlayerIndex: this.PlayerIndex,
+                    itemIndex: itemArray[i],
                 })
 
                 let soundidx = Math.floor(Math.random() * 3);
