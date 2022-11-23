@@ -130,9 +130,9 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.spritesheet("weaponProjectile1", require("../assets/spritesheets/effect/weapon_projectile_1.png"), {frameWidth: 6, frameHeight: 15});
         this.load.spritesheet("weaponProjectile2", require("../assets/spritesheets/effect/weapon_projectile_2.png"), {frameWidth: 194, frameHeight: 194});
         this.load.spritesheet("weaponProjectile3", require("../assets/spritesheets/effect/weapon_projectile_3.png"), {frameWidth: 32, frameHeight: 32});
-        this.load.spritesheet("weaponProjectile4", require("../assets/spritesheets/effect/weapon_projectile_4.png"), {frameWidth: 16, frameHeight: 16});
-        this.load.spritesheet("weaponProjectile5", require("../assets/spritesheets/effect/weapon_projectile_5.png"), {frameWidth: 32, frameHeight: 32});
-        this.load.spritesheet("weaponProjectile6", require("../assets/spritesheets/effect/weapon_projectile_6.png"), {frameWidth: 256, frameHeight: 256});
+        this.load.spritesheet("weaponProjectile4", require("../assets/spritesheets/effect/weapon_projectile_4.png"), {frameWidth: 128, frameHeight: 128});
+        this.load.spritesheet("weaponProjectile5", require("../assets/spritesheets/effect/weapon_projectile_5.png"), {frameWidth: 256, frameHeight: 256});
+        this.load.spritesheet("weaponProjectile6", require("../assets/spritesheets/effect/weapon_projectile_6.png"), {frameWidth: 32, frameHeight: 32});
         this.load.spritesheet("auraBlade", require("../assets/spritesheets/effect/aura_blade.png"), {frameWidth: 722, frameHeight: 740});
         this.load.spritesheet("iceSpear", require("../assets/spritesheets/effect/ice_spear.png"), {frameWidth: 256, frameHeight: 256});
         this.load.spritesheet("bomb", require("../assets/spritesheets/effect/bomb_sprite.png"), {frameWidth: 128, frameHeight: 128});
