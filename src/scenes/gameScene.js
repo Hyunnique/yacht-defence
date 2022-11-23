@@ -239,7 +239,7 @@ export default class gameScene extends Phaser.Scene{
     initialPlace(unitData)
     {
         this.info.alpha = 1;
-        this.onPlaceQueue = new Unit(this, -500, -500, unitData,this.unitIndex++);
+        this.onPlaceQueue = new Unit(this, -500, -500, unitData, this.unitIndex++);
         this.onPlaceQueue.rangeView.alpha = 1;
         this.input.on('pointermove', (pointer) => {
             if (this.placemode) {
@@ -271,7 +271,6 @@ export default class gameScene extends Phaser.Scene{
                     this.onPlaceQueue.setX(t.getCenterX());
                     this.onPlaceQueue.setY(t.getCenterY());
                     this.resetBuff();
-                    console.log(this.m_player);
                     this.onPlaceQueue = undefined;
                     this.placeModeController(true);
                 }
@@ -298,7 +297,7 @@ export default class gameScene extends Phaser.Scene{
     {
         if (bool)
         {
-            this.input.on("pointerdown", (pointer) => {
+            this.input.once("pointerdown", (pointer) => {
                 let t = this.getTileAtPointer(pointer, this.info);
                 this.m_player.splice(this.m_player.findIndex(e => e.index == t.placedUnit.index), 1);
                 t.index = "2897";
@@ -306,7 +305,6 @@ export default class gameScene extends Phaser.Scene{
                 this.onPlaceQueue = t.placedUnit;
                 t.placedUnit.remove();
                 this.placemode = true;
-                this.placeModeController(false);
                 this.initialPlace(this.unitDB["unit"+unitID]);
             });  
         }
@@ -316,8 +314,6 @@ export default class gameScene extends Phaser.Scene{
             this.info.alpha = 0;
             if (this.onPlaceQueue != undefined) {
                 this.handleTierBonus(this.onPlaceQueue.tier, false);
-                console.log(this.tierBonus);
-                console.log(this.tierCnt);
                 this.onPlaceQueue.remove();
                 this.onPlaceQueue = undefined;
             }
@@ -424,6 +420,7 @@ export default class gameScene extends Phaser.Scene{
         this.initialPlace(this.unitDB["unit" + unitID]);
         this.handleTierBonus(tier, true);
     }
+    
 
     handleTierBonus(tier,bool)
     {
