@@ -44,7 +44,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.projectileName = db.projectileName;
         this.projectileAnimName = db.projectileAnimName;
         this.projectileType = db.projectileType;
-        this.projecttileHitEffect = db.projecttileHitEffect;
+        this.projectileHitEffect = db.projecttileHitEffect;
+        
         
         this.isTarget = false;
         this.isBuffTarget = true;
@@ -93,9 +94,9 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
 
     syncGlobalBuff()
     {
-        this.globalbuffAspd = Game.shopBuff.shopAspd;
+        this.globalbuffAspd = Game.shopBuff.shopAspd / 100;
         this.globalbuffedPenetration = Game.shopBuff.shopPenetration;
-        this.globalbuffAtk = Game.shopBuff.shopAtk;
+        this.globalbuffAtk = (Game.shopBuff.shopAtk + this.scene.tierBonus[this.tier - 1]) / 100;
     }
     
     //매 턴 시작시 전부 지우고 다시 전부 부여!!
@@ -123,7 +124,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
     updateBuff()
     {
         this.attack = (this.buffedAtk + this.globalbuffAtk + 1) * this.originAttack;
-        this.aspd = this.buffedAspd + this.globalbuffAspd + this.originAspd;
+        this.aspd = this.buffedAspd / 100 + this.globalbuffAspd + this.originAspd;
         this.penetration = this.originPenetration + this.globalbuffedPenetration;
         // this.setMotionSpeed();
     }

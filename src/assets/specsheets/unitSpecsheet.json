@@ -476,7 +476,7 @@
         "projectileSoundName": "",
         "projecttileHitEffect": "boom5Orange",
         "effectName": "fireFromBottom",
-        "atkSoundName": "attckBigFire",
+        "atkSoundName": "attackBigFire",
         "hitSoundName": "hitBoom3",
         "projectileType": 2,
         "tier": 1

@@ -9,7 +9,7 @@ const Config = {
     backgroundColor: 0xFFFFFF,
     scene: [PreLoadScene,MainScene,gameScene,diceScene],
     pixelArt: true,
-    type: Phaser.AUTO,
+    type: Phaser.WEBGL,
     scale: {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH,

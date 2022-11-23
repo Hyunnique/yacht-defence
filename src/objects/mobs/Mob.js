@@ -9,8 +9,8 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         scene.add.existing(this);
         scene.physics.add.existing(this);
         this.isTarget = true;
-        this.Health = mobData.Health;
-        this.MaxHealth = mobData.Health;
+        this.Health = mobData.health;
+        this.MaxHealth = mobData.health;
         this.scale = mobData.scale;
         this.m_speed = mobData.m_speed;
         this.deathAnimName = mobData.deathAnimName;//나중에 DB에서 불러와 주세요
@@ -96,6 +96,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
 
         this.healthBar.destroy();
         this.tween.remove();
+        this.body.destroy();
         this.play(this.deathAnimName);
 
         var animConfig = this.scene.anims.get(this.deathAnimName);
@@ -104,6 +105,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
     }
     
     hit(projectile) {
+        console.log(this);
         if (projectile.shooter.projectileType == 1) {
             if (projectile.alreadyPenetrated.findIndex(e => e == this.mobNum) == -1) {
                 projectile.alreadyPenetrated.push(this.mobNum);
