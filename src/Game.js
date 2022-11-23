@@ -33,7 +33,7 @@ var Game = {
         this.resizeHandler(null);
         window.onresize = this.resizeHandler;
 
-        this.Socket = io.connect("http://localhost:8080");
+        this.Socket = io.connect("http://20.249.20.144:8080");
         this.serverEventHandler();
     },
 
