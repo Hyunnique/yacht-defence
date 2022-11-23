@@ -89,18 +89,6 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
             this.attackMob();
         
     }
-
-    activateAttack()
-    {
-        this.attackEvent = this.scene.time.addEvent({
-            delay: 1000 / this.aspd,
-            callback: () => {
-                this.attackReady = true;
-            },
-            loop: true,
-            startAt: 0
-        });
-    }
     
     doIdle()
     {
