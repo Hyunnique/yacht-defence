@@ -90,7 +90,6 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         //     loop: false
         // });
         this.scene.events.off("update", this.update, this);
-        this.scene.events.emit("mobDeath", this.mobNum);
         this.scene.mobCounter--;
         this.body.enable = false;
 
@@ -105,7 +104,6 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
     }
     
     hit(projectile) {
-        console.log(this);
         if (projectile.shooter.projectileType == 1) {
             if (projectile.alreadyPenetrated.findIndex(e => e == this.mobNum) == -1) {
                 projectile.alreadyPenetrated.push(this.mobNum);

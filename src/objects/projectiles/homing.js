@@ -8,8 +8,6 @@ export default class Homing extends Phaser.Physics.Arcade.Sprite {
         this.shooter = shooter;
         this.speed = 750;
         this.scale = 0.4;
-        this.alpha = 1;
-        this.targetidx = 0;
         this.hitEffect = shooter.projectileHitEffect;
         this.isHit = false;
         this.hitSoundName = shooter.hitSoundName;
@@ -17,7 +15,6 @@ export default class Homing extends Phaser.Physics.Arcade.Sprite {
 
         this.target = [];
         this.isTarget = false;
-        this.needSearch = false;
 
         this.play(shooter.projectileName);
 
@@ -25,41 +22,22 @@ export default class Homing extends Phaser.Physics.Arcade.Sprite {
         this.scene.physics.add.existing(this);
 
         this.scene.events.on("update", this.update, this);
-        this.scene.events.on("mobDeath", this.deleteTarget, this);
-
-        this.on("animationcomplete", this.hitEffectEnd, this);
     }
 
     update() {
-        if (!this.isHit) {
-            this.target = this.shooter.target;
-            this.flytoMob(this.scene, this.target[this.targetidx]);   
+        this.flytoMob(this.shooter.target);
+        if (Phaser.Math.Distance.Between(this.x, this.y, this.shooter.x, this.shooter.y) > this.shooter.range)
+            this.hit();
+    }
+
+    flytoMob(target) {
+        if (target[0] != undefined) {
+            this.setAngle(this, target[0]);
+            this.scene.physics.moveToObject(this, target[0], this.speed);
         }
-    }
-
-    deleteTarget(mobNum) {
-        this.target.splice(this.target.findIndex(e => e.mobNum == mobNum), 1);
-        if (this.target.length == 0)
-            this.destroy();
-    }
-
-    findNextTarget()
-    {
-        if (this.needSearch) {
-            this.targetidx++;
-            this.needSearch = false;
+        else {
+            this.hit();
         }
-        else
-            this.destroy();
-    }
-
-    flytoMob() {
-        try {
-            this.setAngle(this, this.target[this.targetidx]);
-            this.scene.physics.moveToObject(this, this.target[this.targetidx], this.speed);
-        } catch (e){
-            this.destroy();
-        }        
     }
 
     setAngle(shooter,target) {
@@ -75,21 +53,20 @@ export default class Homing extends Phaser.Physics.Arcade.Sprite {
 
     hit()
     {   
-        this.isHit = true;
-        this.body.reset(this.x, this.y);
+        this.scene.events.off('update', this.update, this);
+        this.setDepth(2);
         this.angle = 0;
+        this.body.destroy();
+
         this.play(this.hitEffect);
         this.hitSoundName.play({
             mute: false,
             volume: 0.3,
             rate: 1,
             loop: false
-            });
-    }
-
-    hitEffectEnd(animation, frame) {
-        if (animation.key === this.hitEffect) {
-            this.destroy();
-        }
+        });
+        var animConfig = this.scene.anims.get(this.hitEffect);
+        var animtime = animConfig.frames.length * animConfig.msPerFrame;
+        this.scene.time.delayedCall(animtime, () => { this.destroy() }, [], this.scene);
     }
 }
