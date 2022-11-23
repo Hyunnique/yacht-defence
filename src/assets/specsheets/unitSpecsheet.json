@@ -474,7 +474,7 @@
         "projectileName": "bigFireBall90",
         "projectileAnimName": "",
         "projectileSoundName": "",
-        "projecttileHitEffect": "boom5Orange",
+        "projecttileHitEffect": "boom6",
         "effectName": "fireFromBottom",
         "atkSoundName": "attackBigFire",
         "hitSoundName": "hitBoom3",

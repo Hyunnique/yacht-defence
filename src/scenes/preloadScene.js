@@ -82,11 +82,12 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.spritesheet("attack19_3", require("../assets/spritesheets/effect/attack19_3_sprite.png"), {frameWidth: 550, frameHeight: 500});
         this.load.spritesheet("attack20", require("../assets/spritesheets/effect/attack20_sprite.png"), {frameWidth: 340, frameHeight: 340});
         this.load.spritesheet("bigFireBall", require("../assets/spritesheets/effect/big_fire_ball_sprite.png"), {frameWidth: 515, frameHeight: 746});
-        this.load.spritesheet("bigFireBall90", require("../assets/spritesheets/effect/big_fire_ball_90_sprite.png"), {frameWidth: 746, frameHeight: 515});
+        this.load.spritesheet("bigFireBall90", require("../assets/spritesheets/effect/big_fire_ball_90_sprite.png"), {frameWidth: 579, frameHeight: 400});
         this.load.spritesheet("boom", require("../assets/spritesheets/effect/boom_sprite.png"), {frameWidth: 512, frameHeight: 512});
         this.load.spritesheet("boom2", require("../assets/spritesheets/effect/boom2_sprite.png"), {frameWidth: 200, frameHeight: 500});
         this.load.spritesheet("boom3", require("../assets/spritesheets/effect/boom3_sprite.png"), {frameWidth: 300, frameHeight: 300});
         this.load.spritesheet("boom5", require("../assets/spritesheets/effect/boom5_sprite.png"), {frameWidth: 780, frameHeight: 780});
+        this.load.spritesheet("boom6", require("../assets/spritesheets/effect/boom6_sprite.png"), {frameWidth: 617, frameHeight: 700});
         this.load.spritesheet("boom5Orange", require("../assets/spritesheets/effect/boom5_orange_sprite.png"), {frameWidth: 780, frameHeight: 780});
         this.load.spritesheet("buff1", require("../assets/spritesheets/effect/buff1_sprite.png"), {frameWidth: 128, frameHeight: 128});
         this.load.spritesheet("buff2", require("../assets/spritesheets/effect/buff2_sprite.png"), {frameWidth: 128, frameHeight: 128});
@@ -643,6 +644,12 @@ export default class PreLoadScene extends Phaser.Scene {
         this.anims.create({
             key: "boom5",
             frames: this.anims.generateFrameNumbers("boom5", { start: 0 }),
+            repeat: 0,
+            frameRate: 40
+        });
+        this.anims.create({
+            key: "boom6",
+            frames: this.anims.generateFrameNumbers("boom6", { start: 0 }),
             repeat: 0,
             frameRate: 40
         });
