@@ -204,15 +204,21 @@ fs.readdir("./src/assets/spritesheets/mobs")
     Object.keys(specData).forEach((x) => {
 
         let monsterDelta = 21 - specData[x].variations;
-        for (let i = 0; i < specData[x].variations; i++) {
-            
-            specData_result[x + String.fromCharCode(65 + i)] = JSON.parse(JSON.stringify(specData[x]));
-            specData_result[x + String.fromCharCode(65 + i)].mobAnim = x + String.fromCharCode(65 + i);
-            specData_result[x + String.fromCharCode(65 + i)].health *= i * monsterDelta * 2 + 1;
-            specData_result[x + String.fromCharCode(65 + i)].defence = Math.floor(specData_result[x + String.fromCharCode(65 + i)].defence * (1 + (0.02 * i * monsterDelta)));
-            specData_result[x + String.fromCharCode(65 + i)].defaultCost *= i * monsterDelta * 2 + 1;
-            delete specData_result[x + String.fromCharCode(65 + i)].variations;
-            delete specData_result[x + String.fromCharCode(65 + i)].currentVariation;
+        if (specData[x].boss) {
+            specData_result[x] = JSON.parse(JSON.stringify(specData[x]));
+            delete specData_result[x].variations;
+            delete specData_result[x].currentVariation;
+        } else {
+            for (let i = 0; i < specData[x].variations; i++) {
+                
+                specData_result[x + String.fromCharCode(65 + i)] = JSON.parse(JSON.stringify(specData[x]));
+                specData_result[x + String.fromCharCode(65 + i)].mobAnim = x + String.fromCharCode(65 + i);
+                specData_result[x + String.fromCharCode(65 + i)].health *= i * monsterDelta * 2 + 1;
+                specData_result[x + String.fromCharCode(65 + i)].defence = Math.floor(specData_result[x + String.fromCharCode(65 + i)].defence * (1 + (0.02 * i * monsterDelta)));
+                specData_result[x + String.fromCharCode(65 + i)].defaultCost *= i * monsterDelta * 2 + 1;
+                delete specData_result[x + String.fromCharCode(65 + i)].variations;
+                delete specData_result[x + String.fromCharCode(65 + i)].currentVariation;
+            }
         }
     });
     fs.writeFile('./src/assets/specsheets/mobSpecSheet.json', JSON.stringify(specData_result, null, '\t'));
