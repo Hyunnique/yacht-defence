@@ -249,7 +249,11 @@ module.exports = {
                 } else {
                     this.Rooms[roomId].players[msg.playerIndex].items[msg.itemIndex]++;
                 }
-                socket.emit('shop-itemSuccess', msg.uiIndex);
+                socket.emit('shop-itemSuccess', {
+                    uiIndex: msg.uiIndex,
+                    items: this.Rooms[roomId].players[msg.playerIndex].items,
+                    purchased: msg.itemIndex
+                });
             } else {
                 socket.emit('shop-itemFailure', msg.uiIndex);
             }
