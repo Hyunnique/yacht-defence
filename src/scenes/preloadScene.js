@@ -12,7 +12,7 @@ import outside_B from '../assets/map/tileset/props/Outside_B.png';
 import possible from '../assets/map/tileset/possible/possible.png';
 
 import unitSpecsheet from '../assets/specsheets/unitSpecsheet.json';
-import mobSpecsheet from '../assets/specsheets/mobSpecsheet.json';
+import mobSpecsheet from '../assets/specsheets/mobSpecSheet.json';
 import roundSheet from '../assets/specsheets/roundSheet.json';
 import effectSheet from '../assets/specsheets/effectOffsetSheet.json';
 
@@ -371,9 +371,10 @@ export default class PreLoadScene extends Phaser.Scene {
 
         Object.keys(this.importedMobs).forEach(key => {
             this.anims.create({
-                key,
-                frames: this.anims.generateFrameNumbers(key, { start : 0 }),
-                repeat: -1
+                key: key.substring(0, key.length - 4),
+                frames: this.anims.generateFrameNumbers(key.substring(0, key.length - 4), { start : 0 }),
+                repeat: -1,
+                frameRate: 10
             });
         });
         // 몹 애니메이션 생성
