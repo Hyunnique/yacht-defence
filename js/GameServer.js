@@ -98,8 +98,8 @@ module.exports = {
                         hp: 100,
                         maxhp: 100,
                         gold: 0,
-                        units: [],
-                        items: [],
+                        units: {},
+                        items: {},
                         currentHand: "",
                         currentHandTier: 3,
                         currentChoice: -1
@@ -238,10 +238,14 @@ module.exports = {
             let shopItem = ShopItemSheet["item" + msg.itemIndex];
             if (this.Rooms[roomId].players[msg.playerIndex].gold >= shopItem.price) {
                 this.Rooms[roomId].players[msg.playerIndex].gold -= shopItem.price;
-                this.Rooms[roomId].players[msg.playerIndex].items.push(msg.itemIndex);
-                socket.emit('shop-itemSuccess', true);
+                if (!this.Rooms[roomId].players[msg.playerIndex].items[msg.itemIndex]) {
+                    this.Rooms[roomId].players[msg.playerIndex].items[msg.itemIndex] = 1;
+                } else {
+                    this.Rooms[roomId].players[msg.playerIndex].items[msg.itemIndex]++;
+                }
+                socket.emit('shop-itemSuccess', msg.uiIndex);
             } else {
-                socket.emit('shop-itemFailure', true);
+                socket.emit('shop-itemFailure', msg.uiIndex);
             }
         });
     },
