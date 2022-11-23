@@ -105,6 +105,9 @@ var Game = {
         });
 
         this.Socket.on("dicePhase-result", (msg) => {
+
+            this.diceConfirmed = false;
+            
             for (let i = 0; i < 4; i++) {
                 document.getElementsByClassName("ui-resultTable")[0].getElementsByTagName("tr")[i+1].style.display = "none";
             }
@@ -332,8 +335,10 @@ var Game = {
 
                 // DicePhase - 주사위 확정 버튼 누르면
                 document.getElementsByClassName("ui-diceConfirmButton")[0].onclick = (e) => {
-                    document.getElementsByClassName("ui-diceConfirmButton")[0].setAttribute("disabled", "disabled");
-                    this.Socket.emit('dicePhase-handConfirm', true);
+                    if (!this.diceConfirmed) {
+                        this.diceConfirmed = true;
+                        this.Socket.emit('dicePhase-handConfirm', true);
+                    }
                 }
                 break;
             case "gameScene":
