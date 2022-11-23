@@ -22,6 +22,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         this.deathSound = this.scene.sound.add(mobData.deathSound);
         this.healthBar = this.scene.add.image(this.x-48, this.y - 24, "healthBar").setOrigin(0,0.5);
         this.play(mobData.mobAnim);
+        this.flipX = true;
 
         switch (this.moveType) {
             case "A":
@@ -40,6 +41,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
                 break;
             case "X":
                 this.path = pathBoss;
+                this.flipX = false;
                 break;
             default:
                 break;
