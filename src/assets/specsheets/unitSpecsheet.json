@@ -17,7 +17,8 @@
         "effectName": "attack1",
         "atkSoundName": "attackLongWeapon",
         "hitSoundName": "hitNormal",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 4
     },
     "unit1": {
         "name": "성문 경비병",
@@ -37,7 +38,8 @@
         "effectName": "attack1",
         "atkSoundName": "attackLongWeapon",
         "hitSoundName": "hitNormal",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 4
     },
     "unit2": {
         "name": "성기사 단장 발키리",
@@ -57,7 +59,8 @@
         "effectName": "attack9",
         "atkSoundName": "attackSword",
         "hitSoundName": "hitNormal",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 1
     },
     "unit3": {
         "name": "다크엘프 궁수",
@@ -77,7 +80,8 @@
         "effectName": "hitted3",
         "atkSoundName": "attackBow",
         "hitSoundName": "hitBow",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 3
     },
     "unit4": {
         "name": "견습 검사",
@@ -97,7 +101,8 @@
         "effectName": "attack1",
         "atkSoundName": "attackSword",
         "hitSoundName": "hitNormal",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 4
     },
     "unit5": {
         "name": "고블린 도적",
@@ -117,7 +122,8 @@
         "effectName": "attack1",
         "atkSoundName": "attackKnife",
         "hitSoundName": "hitNormal",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 4
     },
     "unit6": {
         "name": "산적",
@@ -137,7 +143,8 @@
         "effectName": "attack1",
         "atkSoundName": "attackLongWeapon",
         "hitSoundName": "hitNormal",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 4
     },
     "unit7": {
         "name": "고블린 주술사",
@@ -157,7 +164,8 @@
         "effectName": "fireShot1",
         "atkSoundName": "attackFire",
         "hitSoundName": "hitFire",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 4
     },
     "unit8": {
         "name": "스켈레톤 사냥꾼",
@@ -177,7 +185,8 @@
         "effectName": "hitted3",
         "atkSoundName": "attackBow",
         "hitSoundName": "hitBow",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 4
     },
     "unit9": {
         "name": "불의 마도사",
@@ -197,7 +206,8 @@
         "effectName": "redShot1",
         "atkSoundName": "attackFire",
         "hitSoundName": "hitBoom1",
-        "projectileType": 2
+        "projectileType": 2,
+        "tier": 3
     },
     "unit10": {
         "name": "암살 닌자",
@@ -217,7 +227,8 @@
         "effectName": "attack8",
         "atkSoundName": "attackKnife",
         "hitSoundName": "hitBow",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 3
     },
     "unit11": {
         "name": "숲 관찰대원",
@@ -237,7 +248,8 @@
         "effectName": "hitted3",
         "atkSoundName": "attackBow",
         "hitSoundName": "hitBow",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 3
     },
     "unit12": {
         "name": "용기병 전투원",
@@ -277,7 +289,8 @@
         "effectName": "blueShot1",
         "atkSoundName": "attackIce",
         "hitSoundName": "hitBow",
-        "projectileType": 2
+        "projectileType": 2,
+        "tier": 3
     },
     "unit14": {
         "name": "마도 수련생",
@@ -297,7 +310,8 @@
         "effectName": "fireShot1",
         "atkSoundName": "attackFire",
         "hitSoundName": "hitFire",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 4
     },
     "unit15": {
         "name": "왕궁 수호병",
@@ -317,7 +331,8 @@
         "effectName": "attack1",
         "atkSoundName": "attackSword",
         "hitSoundName": "hitNormal",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 4
     },
     "unit16": {
         "name": "바이킹",
@@ -337,7 +352,8 @@
         "effectName": "attack1",
         "atkSoundName": "attackLongWeapon",
         "hitSoundName": "hitNormal",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 4
     },
     "unit17": {
         "name": "스켈레톤 검사",
@@ -357,7 +373,8 @@
         "effectName": "attack1",
         "atkSoundName": "attackSword",
         "hitSoundName": "hitNormal",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 4
     },
     "unit18": {
         "name": "스켈레톤 주술사",
@@ -377,7 +394,8 @@
         "effectName": "fireShot1",
         "atkSoundName": "attackFire",
         "hitSoundName": "hitBoom1",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 4
     },
     "unit19": {
         "name": "용기병 전사",
@@ -397,7 +415,8 @@
         "effectName": "attack12",
         "atkSoundName": "attackLongWeapon",
         "hitSoundName": "hitNormal",
-        "projectileType": 1
+        "projectileType": 1,
+        "tier": 3
     },
     "unit20": {
         "name": "화염족 견습 주술사",
@@ -417,7 +436,8 @@
         "effectName": "fireShot1",
         "atkSoundName": "attackFire",
         "hitSoundName": "hitBoom1",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 4
     },
     "unit21": {
         "name": "숲 사냥꾼",
@@ -437,7 +457,8 @@
         "effectName": "hitted3",
         "atkSoundName": "attackBow",
         "hitSoundName": "hitBow",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 4
     },
     "unit22": {
         "name": "휘몰아치는 화염의 에단",
@@ -457,7 +478,8 @@
         "effectName": "fireFromBottom",
         "atkSoundName": "attckBigFire",
         "hitSoundName": "hitBoom3",
-        "projectileType": 2
+        "projectileType": 2,
+        "tier": 1
     },
     "unit23": {
         "name": "암살대 대원",
@@ -477,7 +499,8 @@
         "effectName": "attack10",
         "atkSoundName": "attackKnife",
         "hitSoundName": "hitBow",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 3
     },
     "unit24": {
         "name": "힘의 부족 대족장 후씽크",
@@ -497,7 +520,8 @@
         "effectName": "hitted3",
         "atkSoundName": "attackBow",
         "hitSoundName": "hitNormal",
-        "projectileType": 1
+        "projectileType": 1,
+        "tier": 1
     },
     "unit25": {
         "name": "견습 성기사단원",
@@ -517,7 +541,8 @@
         "effectName": "attack1",
         "atkSoundName": "attackSword",
         "hitSoundName": "hitNormal",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 3
     },
     "unit26": {
         "name": "되살아난 마검사 펠소닌",
@@ -537,7 +562,8 @@
         "effectName": "attack4",
         "atkSoundName": "attackLightning",
         "hitSoundName": "hitNormal",
-        "projectileType": 1
+        "projectileType": 1,
+        "tier": 1
     },
     "unit27": {
         "name": "버서커 카이토닐",
@@ -557,7 +583,8 @@
         "effectName": "attack14",
         "atkSoundName": "attackSword",
         "hitSoundName": "hitNormal",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 1
     },
     "unit28": {
         "name": "춘식",
@@ -577,7 +604,8 @@
         "effectName": "attack1",
         "atkSoundName": "attackLongWeapon",
         "hitSoundName": "hitNormal",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 4
     },
     "unit29": {
         "name": "강도",
@@ -597,7 +625,8 @@
         "effectName": "attack1",
         "atkSoundName": "attackKnife",
         "hitSoundName": "hitNormal",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 4
     },
     "unit30": {
         "name": "창술사",
@@ -617,7 +646,8 @@
         "effectName": "attack1",
         "atkSoundName": "attackLongWeapon",
         "hitSoundName": "hitNormal",
-        "projectileType": 2
+        "projectileType": 2,
+        "tier": 4
     },
     "unit31": {
         "name": "폭탄병",
@@ -637,7 +667,8 @@
         "effectName": "throw",
         "atkSoundName": "attackThrow",
         "hitSoundName": "hitBoom2",
-        "projectileType": 2
+        "projectileType": 2,
+        "tier": 3
     },
     "unit32": {
         "name": "스켈레톤 용기사",
@@ -657,7 +688,8 @@
         "effectName": "attack17",
         "atkSoundName": "attackSword",
         "hitSoundName": "hitNormal",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 3
     },
     "unit33": {
         "name": "기공사 달인 테스",
@@ -677,7 +709,8 @@
         "effectName": "hitted3",
         "atkSoundName": "attackMagic2",
         "hitSoundName": "hitFire",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 2
     },
     "unit34": {
         "name": "아류 기공사 소크라",
@@ -697,7 +730,8 @@
         "effectName": "hitted3",
         "atkSoundName": "attackMagic2",
         "hitSoundName": "hitFire",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 2
     },
     "unit35": {
         "name": "타이사마",
@@ -717,7 +751,8 @@
         "effectName": "attack2",
         "atkSoundName": "hitBoom3",
         "hitSoundName": "hitBoom3",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 1
     },
     "unit36": {
         "name": "창기병",
@@ -737,7 +772,8 @@
         "effectName": "attack1",
         "atkSoundName": "attackLongWeapon",
         "hitSoundName": "hitNormal",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 4
     },
     "unit37": {
         "name": "견습 격투가",
@@ -757,7 +793,8 @@
         "effectName": "attack1",
         "atkSoundName": "attackThrow",
         "hitSoundName": "hitNormal",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 4
     },
     "unit38": {
         "name": "화염족 대마도사 이프리트",
@@ -777,7 +814,8 @@
         "effectName": "redShot1",
         "atkSoundName": "attackFire",
         "hitSoundName": "hitBoom1",
-        "projectileType": 2
+        "projectileType": 2,
+        "tier": 2
     },
     "unit39": {
         "name": "스켈레톤 궁수",
@@ -797,7 +835,8 @@
         "effectName": "hitted3",
         "atkSoundName": "attackBow",
         "hitSoundName": "hitBow",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 4
     },
     "unit40": {
         "name": "암흑 마도사",
@@ -817,7 +856,8 @@
         "effectName": "purpleShot1",
         "atkSoundName": "attackMagic1",
         "hitSoundName": "hitBoom1",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 3
     },
     "unit41": {
         "name": "다크엘프 전투대장 히스",
@@ -837,7 +877,8 @@
         "effectName": "attack16",
         "atkSoundName": "attackKnife",
         "hitSoundName": "hitBow",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 2
     },
     "unit42": {
         "name": "기사 분대장",
@@ -857,7 +898,8 @@
         "effectName": "attack8",
         "atkSoundName": "attackSword",
         "hitSoundName": "hitNormal",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 3
     },
     "unit43": {
         "name": "숲 관찰대장 세트",
@@ -877,7 +919,8 @@
         "effectName": "hitted3",
         "atkSoundName": "attackBow",
         "hitSoundName": "hitBow",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 2
     },
     "unit44": {
         "name": "유적 감시병",
@@ -897,7 +940,8 @@
         "effectName": "attack1",
         "atkSoundName": "attackLongWeapon",
         "hitSoundName": "hitNormal",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 4
     },
     "unit45": {
         "name": "고위 빙결 마도사 아케리스",
@@ -917,7 +961,8 @@
         "effectName": "blueShot1",
         "atkSoundName": "attackIce",
         "hitSoundName": "hitBow",
-        "projectileType": 1
+        "projectileType": 1,
+        "tier": 2
     },
     "unit46": {
         "name": "고블린 사냥꾼",
@@ -937,7 +982,8 @@
         "effectName": "hitted3",
         "atkSoundName": "attackBow",
         "hitSoundName": "hitBow",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 3
     },
     "unit47": {
         "name": "고블린 약탈대장",
@@ -957,7 +1003,8 @@
         "effectName": "attack8",
         "atkSoundName": "attackSword",
         "hitSoundName": "hitNormal",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 3
     },
     "unit48": {
         "name": "스켈레톤 저격병",
@@ -977,7 +1024,8 @@
         "effectName": "hitted3",
         "atkSoundName": "attackBow",
         "hitSoundName": "hitBow",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 4
     },
     "unit49": {
         "name": "농부",
@@ -997,7 +1045,8 @@
         "effectName": "attack1",
         "atkSoundName": "attackLongWeapon",
         "hitSoundName": "hitNormal",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 4
     },
     "unit50": {
         "name": "암살대장 애퍼스",
@@ -1017,7 +1066,8 @@
         "effectName": "attack10",
         "atkSoundName": "attackKnife",
         "hitSoundName": "hitBow",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 2
     },
     "unit51": {
         "name": "미치광이 타이탄",
@@ -1037,7 +1087,8 @@
         "effectName": "pierce",
         "atkSoundName": "attackThrow",
         "hitSoundName": "hitBoom2",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 2
     },
     "unit52": {
         "name": "힘의 부족 도끼마스터 데럴드",
@@ -1057,7 +1108,8 @@
         "effectName": "attack5_2",
         "atkSoundName": "attackLongWeapon",
         "hitSoundName": "hitNormal",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 2
     },
     "unit53": {
         "name": "힘의 부족 창의 달인 데마린",
@@ -1077,7 +1129,8 @@
         "effectName": "attack7_1",
         "atkSoundName": "attackLongWeapon",
         "hitSoundName": "hitNormal",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 2
     },
     "unit54": {
         "name": "기사 분대원",
@@ -1097,7 +1150,8 @@
         "effectName": "attack1",
         "atkSoundName": "attackSword",
         "hitSoundName": "hitNormal",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 4
     },
     "unit55": {
         "name": "수호 마도사 아이더",
@@ -1117,7 +1171,8 @@
         "effectName": "greenShot1",
         "atkSoundName": "attackMagic1",
         "hitSoundName": "hitFire",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 2
     },
     "unit56": {
         "name": "부활한 금단의 마도사 페네스",
@@ -1137,7 +1192,8 @@
         "effectName": "purpleShot1",
         "atkSoundName": "attackMagic1",
         "hitSoundName": "hitBoom1",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 2
     },
     "unit57": {
         "name": "스켈레톤 마도사",
@@ -1157,7 +1213,8 @@
         "effectName": "fireShot1",
         "atkSoundName": "attackFire",
         "hitSoundName": "hitBoom1",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 3
     },
     "unit58": {
         "name": "선두 방어병",
@@ -1177,7 +1234,8 @@
         "effectName": "attack1",
         "atkSoundName": "attackLongWeapon",
         "hitSoundName": "hitNormal",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 4
     },
     "unit59": {
         "name": "숲의 마도사",
@@ -1197,7 +1255,8 @@
         "effectName": "greenShot1",
         "atkSoundName": "attackMagic1",
         "hitSoundName": "hitFire",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 3
     },
     "unit60": {
         "name": "화염족 마도사",
@@ -1217,7 +1276,8 @@
         "effectName": "redShot1",
         "atkSoundName": "attackMagic1",
         "hitSoundName": "hitBoom1",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 3
     },
     "unit61": {
         "name": "선두 공격병",
@@ -1237,7 +1297,8 @@
         "effectName": "attack1",
         "atkSoundName": "attackSword",
         "hitSoundName": "hitNormal",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 4
     },
     "unit62": {
         "name": "타락한 무술가",
@@ -1257,7 +1318,8 @@
         "effectName": "attack4",
         "atkSoundName": "attackThrow",
         "hitSoundName": "hitNormal",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 3
     },
     "unit63": {
         "name": "용기사 수호병",
@@ -1277,6 +1339,7 @@
         "effectName": "attack17",
         "atkSoundName": "attackLongWeapon",
         "hitSoundName": "hitNormal",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 3
     }
 }
