@@ -73,7 +73,7 @@ var Game = {
             this.PlayerData = msg;
 
             for (let i = 0; i < this.PlayerCount; i++) {
-                document.getElementsByClassName("ui-hpArea-playerhp-bar")[i].style.width = Math.floor(msg[this.PlayerIndex].hp / msg[this.PlayerIndex].maxhp * 100) + "%";
+                document.getElementsByClassName("ui-hpArea-playerhp-bar")[i].style.width = Math.floor(msg[i].hp / msg[i].maxhp * 100) + "%";
             }
             document.getElementsByClassName("ui-gold")[0].innerText = msg[this.PlayerIndex].gold;
         });
