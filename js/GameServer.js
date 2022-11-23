@@ -14,6 +14,10 @@ module.exports = {
         this.createRoom();
 
         this.onConnect();
+
+        for (let i = 1; i < 50; i++) {
+            this.generateWaveInfo(10001);
+        }
     },
 
     createRoom() {
@@ -35,13 +39,15 @@ module.exports = {
             round: 1,
             roundChoice: -1,
             generatorSheet: JSON.parse(JSON.stringify(SpecsheetGen)),
-            generatorRoundCost: 20
+            generatorRoundCost: 20,
+            generatorHpFactor: 1
         };
     },
 
     generateWaveInfo(roomId) {
-        let waveResult = waveGenerator(this.Rooms[roomId].generatorSheet, this.Rooms[roomId].generatorRoundCost, this.Rooms[roomId].round);
+        let waveResult = waveGenerator(this.Rooms[roomId].generatorSheet, this.Rooms[roomId].round, this.Rooms[roomId].generatorRoundCost, this.Rooms[roomId].generatorHpFactor);
         this.Rooms[roomId].generatorRoundCost = Math.floor(this.Rooms[roomId].generatorRoundCost * 1.1 + 20);
+        this.Rooms[roomId].generatorHpFactor = (this.Rooms[roomId].generatorHpFactor * 1.1).toFixed(2);
         this.emitAll(roomId, 'game-wavedata', waveResult);
     },
 
@@ -124,8 +130,6 @@ module.exports = {
         this.Rooms[roomId].counter.handConfirm = 0;
         this.Rooms[roomId].counter.handReceived = 0;
 
-        console.log("initialized handConfirm:" + this.Rooms[roomId].counter.handConfirm);
-
         this.Rooms[roomId].roundChoice = Math.floor(Math.random() * 25) + 5;
 
         this.emitAll(roomId, 'dicePhase-begin', {
@@ -141,7 +145,6 @@ module.exports = {
     onDiceConfirm(socket, roomId) {
         socket.on('dicePhase-handConfirm', (msg) => {
             this.Rooms[roomId].counter.handConfirm++;
-            console.log("handConfirm received:" + this.Rooms[roomId].counter.handConfirm);
 
             if (this.Rooms[roomId].counter.handConfirm >= this.Rooms[roomId].maxPlayers) {
                 clearTimeout(this.Rooms[roomId].timer["dicePhaseEnd"]);
