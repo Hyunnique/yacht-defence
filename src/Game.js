@@ -251,6 +251,21 @@ var Game = {
         this.Socket.on('battlePhase-end', (msg) => {
             // ?
         });
+
+        this.Socket.on('shop-itemSuccess', (msg) => {
+            let soundidx = Math.floor(Math.random() * 3);
+
+            this.GameObject.scene.getScene("gameScene").shopBuySound[soundidx].play({
+                mute: false,
+                volume: 0.7,
+                rate: 1,
+                loop: false
+            });
+        });
+
+        this.Socket.on('shop-itemFailure', (msg) => {
+            ; // 구매 실패음 출력
+        });
     },
 
     onPreloadDone() {
@@ -368,21 +383,9 @@ var Game = {
             document.getElementsByClassName("ui-shop-item")[i].attributes.idx.value = itemArray[i];
             document.getElementsByClassName("ui-shop-item")[i].onclick = (e) => {
                 this.Socket.emit("shop-itemBuy", {
-                    PlayerIndex: this.PlayerIndex,
+                    playerIndex: this.PlayerIndex,
                     itemIndex: itemArray[i],
-                })
-
-                let soundidx = Math.floor(Math.random() * 3);
-                this.GameObject.scene.getScene("gameScene").shopBuySound[soundidx].play({
-                    mute: false,
-                    volume: 0.7,
-                    rate: 1,
-                    loop: false
                 });
-                // => 보내고 해당 플레이어 골드 비교해서 구입성공/실패 로 보내면 될듯
-                // 성공으로 오면, 해당 아이템 판매로 표시하고, 아이템 효과 적용
-                // 구매 사운드 재생도 거기로 옮기면 될듯
-                // 실패면 그냥 냅두기
             }
         }
     },
