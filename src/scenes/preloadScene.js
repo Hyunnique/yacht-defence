@@ -20,6 +20,9 @@ import healthBar from '../assets/images/healthBar.png';
 import Bullet from '../assets/projectiles/bullet.png';
 
 export default class PreLoadScene extends Phaser.Scene {
+
+    importedMobs = null;
+
     constructor() {
         super("bootGame");
     }
@@ -148,9 +151,9 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.spritesheet("stoneGolemWalk", require("../assets/spritesheets/boss/stone_golem_walk_sprite.png"), {frameWidth: 340, frameHeight: 340});
         this.load.spritesheet("stoneGolemDie", require("../assets/spritesheets/boss/stone_golem_die_sprite.png"), {frameWidth: 340, frameHeight: 340});
 
-        var mobsImport = this.importAll(require.context("../assets/spritesheets/mobs", false, /\.png$/));
-        Object.keys(mobsImport).forEach(key => {
-            this.load.spritesheet(key.substring(0, key.length - 4), mobsImport[key], { frameWidth: 16, frameHeight: 16 });
+        this.importedMobs = this.importAll(require.context("../assets/spritesheets/mobs", false, /\.png$/));
+        Object.keys(this.importedMobs).forEach(key => {
+            this.load.spritesheet(key.substring(0, key.length - 4), this.importedMobs[key], { frameWidth: 16, frameHeight: 16 });
         });
         // 몹 로딩
         /*
@@ -366,7 +369,15 @@ export default class PreLoadScene extends Phaser.Scene {
         });
 
 
+        Object.keys(this.importedMobs).forEach(key => {
+            this.anims.create({
+                key,
+                frames: this.anims.generateFrameNumbers(key, { start : 0 }),
+                repeat: -1
+            });
+        });
         // 몹 애니메이션 생성
+        /*
         this.anims.create({
             key: "BatSmallA",
             frames: this.anims.generateFrameNumbers("BatSmallA", { start: 0, end: 5 }),
@@ -457,6 +468,7 @@ export default class PreLoadScene extends Phaser.Scene {
             repeat: -1,
             frameRate: 6
         });
+        */
         // 이펙트 애니메이션 생성
         this.anims.create({
             key: "attack1",
