@@ -125,6 +125,7 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.spritesheet("auraBlade", require("../assets/spritesheets/effect/aura_blade.png"), {frameWidth: 722, frameHeight: 740});
         this.load.spritesheet("iceSpear", require("../assets/spritesheets/effect/ice_spear.png"), {frameWidth: 256, frameHeight: 256});
         this.load.spritesheet("bomb", require("../assets/spritesheets/effect/bomb_sprite.png"), {frameWidth: 128, frameHeight: 128});
+        this.load.spritesheet("throw", require("../assets/spritesheets/effect/throw_sprite.png"), {frameWidth: 100, frameHeight: 100});
 
         
         this.load.spritesheet("bullet", Bullet, { frameWidth: 361, frameHeight: 50 });
@@ -895,6 +896,18 @@ export default class PreLoadScene extends Phaser.Scene {
             key: "iceSpear",
             frames: this.anims.generateFrameNumbers("iceSpear", { start: 0 }),
             repeat: -1,
+            frameRate: 40
+        });
+        this.anims.create({
+            key: "throw",
+            frames: this.anims.generateFrameNumbers("throw", { start: 0 }),
+            repeat: 0,
+            frameRate: 40
+        });
+        this.anims.create({
+            key: "bomb",
+            frames: this.anims.generateFrameNumbers("bomb", { start: 0 }),
+            repeat: 0,
             frameRate: 40
         });
 
