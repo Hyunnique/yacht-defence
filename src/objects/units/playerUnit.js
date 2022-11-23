@@ -32,7 +32,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.rangeView = this.scene.add.circle(this.x, this.y, this.range, 0xFF0000);
         this.rangeView.setAlpha(0);
 
-        this.buffAtk = 1;
+        this.buffAtk = 0;
         this.buffAspd = 0;
     
         this.globalbuffAtk = Game.shopBuff.shopAtk;
@@ -90,18 +90,6 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         
     }
 
-    activateAttack()
-    {
-        this.attackEvent = this.scene.time.addEvent({
-            delay: 1000 / this.aspd,
-            callback: () => {
-                this.attackReady = true;
-            },
-            loop: true,
-            startAt: 0
-        });
-    }
-    
     doIdle()
     {
         if (this.target.length == 0)
