@@ -1,3 +1,7 @@
+const waveGenerator = require("./GenerateMobWave");
+
+const SpecsheetGen = require('../src/assets/specsheets/mobSpecSheetGen.json');
+
 module.exports = {
     Socket: null,
     latestRoomId: 10000,
@@ -29,7 +33,15 @@ module.exports = {
             players: [],
             round: 1,
             roundChoice: -1,
+            generatorSheet: JSON.parse(JSON.stringify(SpecsheetGen)),
+            generatorRoundCost: 20
         };
+    },
+
+    generateWaveInfo(roomId) {
+        let waveResult = waveGenerator(this.Rooms[roomId].generatorSheet, this.Rooms[roomId].generatorRoundCost, this.Rooms[roomId].round);
+        this.Rooms[roomId].generatorRoundCost = Math.floor(this.Rooms[roomId].generatorRoundCost * 1.1 + 20);
+        this.emitAll(roomId, 'game-wavedata', waveResult);
     },
 
     createTimer(roomId, name, duration, callback) {
@@ -105,7 +117,6 @@ module.exports = {
             round: this.Rooms[roomId].round,
         });
 
-        // 홀수 라운드면 Dice Phase 먼저 진행
         this.Rooms[roomId].counter.handConfirm = 0;
         this.Rooms[roomId].counter.handReceived = 0;
 
@@ -182,6 +193,8 @@ module.exports = {
         this.emitAll(roomId, 'placePhase-begin', {
             timeLimit: 10,
         });
+
+        this.generateWaveInfo(roomId);
         
         this.createTimer(roomId, "placePhaseEnd", 10000, () => {
             this.emitAll(roomId, 'placePhase-end', true);
