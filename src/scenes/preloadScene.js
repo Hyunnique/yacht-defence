@@ -12,7 +12,7 @@ import outside_B from '../assets/map/tileset/props/Outside_B.png';
 import possible from '../assets/map/tileset/possible/possible.png';
 
 import unitSpecsheet from '../assets/specsheets/unitSpecsheet.json';
-import mobSpecsheet from '../assets/specsheets/mobSpecSheet.json';
+import mobSpecsheet from '../assets/specsheets/mobSpecsheet.json';
 import roundSheet from '../assets/specsheets/roundSheet.json';
 import effectSheet from '../assets/specsheets/effectOffsetSheet.json';
 
