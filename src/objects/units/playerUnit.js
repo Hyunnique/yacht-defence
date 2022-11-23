@@ -27,7 +27,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.effectName = db.effectName;
         this.tier = db.tier;
         this.index = index;
-
+        this.attackReady = true;
+        this.play(this.idleAnim,true);
         this.rangeView = this.scene.add.circle(this.x, this.y, this.range, 0xFF0000);
         this.rangeView.setAlpha(0);
 
@@ -63,7 +64,14 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.effect = new UnitEffect(scene, this, this.effectIsFlip);
         
         this.target = [];
-        this.attackEvent;
+        this.attackEvent = this.scene.time.addEvent({
+            delay: 1000 / this.aspd,
+            callback: () => {
+                this.attackReady = true;
+            },
+            loop: true,
+            startAt: 0
+        });
         //this.setMotionSpeed();
 
         this.kills = 0;
@@ -74,8 +82,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.setBodySize(64, 64, true);
         this.scene.add.existing(this);
         
-        this.activateAttack();
         this.scene.events.on("update", this.update, this);
+        this.on("animationcomplete", this.doIdle, this);
     }
 
     update() {
@@ -83,13 +91,28 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.rangeView.setY(this.y);
         this.effect.x = this.x + this.effectOffsetX;
         this.effect.y = this.y + this.effectOffsetY;
+        this.checkMob();
+        if (this.attackReady && this.target.length > 0)
+            this.attackMob();
+        
+    }
+    
+    doIdle()
+    {
+        if (this.target.length == 0)
+            this.play(this.idleAnim, true);
     }
 
     
 
     checkMob() {
         this.target = this.scene.physics.overlapCirc(this.x, this.y, this.range).filter(item => item.gameObject.isTarget == true);
-        return this.target;
+        this.target.sort((a, b) => {
+            if (a.gameObject.health == b.gameObject.health)
+                return a.gameObject.mobNum - b.gameObject.mobNum;
+            else
+                return a.gameObject.health - b.gameObject.health;
+        });
     }
 
     syncGlobalBuff()
@@ -137,19 +160,14 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
 
     attackMob()
     {   
-        if (this.target.length == 0)
-        {
-            this.play(this.idleAnim);
-            return;
-        }
-
+        this.attackReady = false;
         this.atkSoundName.play({
             mute: false,
             volume: 0.3,
             rate: 1,
             loop: false
             });
-        this.play(this.attackAnim, true);
+        this.play(this.attackAnim, false);
         this.effect.playEffect();
 
 
@@ -158,7 +176,6 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
                 e.gameObject.Health -= this.attack;
                 if (e.gameObject.Health <= 0) {
                     this.kills++;
-                    this.checkMob();
                 }
             })
         }
@@ -183,27 +200,10 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
             return new Bomb(this.scene, this);
     }
 
-    activateAttack()
-    {
-        this.attackEvent = this.scene.time.addEvent({
-            delay: 1000 / this.aspd,
-            callback: () => {
-                this.checkMob();
-                this.attackMob();
-            },
-            loop: true
-        });
-    }
-
-    deactivateAttack()
-    {
-        this.scene.time.removeEvent(this.attackEvent);
-    }
-
     remove() {
         this.scene.events.off("update", this.update, this);
         this.rangeView.destroy();
-        this.deactivateAttack();
+        this.scene.time.removeEvent(this.attackEvent);
         this.destroy();
     }
     
