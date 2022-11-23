@@ -1,6 +1,7 @@
 const waveGenerator = require("./GenerateMobWave");
 
 const SpecsheetGen = require('../src/assets/specsheets/mobSpecSheetGen.json');
+const Specsheet = require('../src/assets/specsheets/mobSpecsheet.json');
 const ShopItemSheet = require('../src/assets/specsheets/shopItemSheet.json');
 
 module.exports = {
@@ -14,6 +15,18 @@ module.exports = {
         this.createRoom();
 
         this.onConnect();
+
+        /* hp 테스트용
+        for (let i = 1; i <= 50; i++) {
+            console.log("Round " + i + "--");
+            let result = this.generateWaveInfo(10001);
+            this.Rooms[10001].round++;
+            
+            for (let j of result) {
+                console.log(Specsheet[j.mobName].health * (1 / (1 - (Specsheet[j.mobName].defence / 100))) * j.hpFactor);
+            }
+        }
+        */
     },
 
     createRoom() {
@@ -45,6 +58,8 @@ module.exports = {
         this.Rooms[roomId].generatorRoundCost = Math.floor(this.Rooms[roomId].generatorRoundCost * 1.1 + 20);
         this.Rooms[roomId].generatorHpFactor = (this.Rooms[roomId].generatorHpFactor * 1.1).toFixed(2);
         this.emitAll(roomId, 'game-wavedata', waveResult);
+
+        return waveResult;
     },
 
     createTimer(roomId, name, duration, callback) {
