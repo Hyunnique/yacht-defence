@@ -328,6 +328,12 @@ var Game = {
 
     openShop() {
         this.showUI("common-shop");
+        this.GameObject.scene.getScene("gameScene").shopSound.play({
+            mute: false,
+            volume: 0.7,
+            rate: 1,
+            loop: false
+        });
         let itemArray = this.GameObject.scene.getScene("gameScene").itemList;
 
         for (let i = 0; i < 3; i++) {
@@ -360,6 +366,23 @@ var Game = {
             }
             document.getElementsByClassName("ui-shop-itemSkill")[i].innerText = "PRICE : " + itemSpecSheets["item" + itemArray[i]].price;
             document.getElementsByClassName("ui-shop-item")[i].attributes.idx.value = itemArray[i];
+            document.getElementsByClassName("ui-shop-item")[i].onclick = (e) => {
+                this.Socket.emit("shop-itemBuy", {
+                    itemIdx: itemArray[i]
+                })
+
+                let soundidx = Math.floor(Math.random() * 3);
+                this.GameObject.scene.getScene("gameScene").shopBuySound[soundidx].play({
+                    mute: false,
+                    volume: 0.7,
+                    rate: 1,
+                    loop: false
+                });
+                // => 보내고 해당 플레이어 골드 비교해서 구입성공/실패 로 보내면 될듯
+                // 성공으로 오면, 해당 아이템 판매로 표시하고, 아이템 효과 적용
+                // 구매 사운드 재생도 거기로 옮기면 될듯
+                // 실패면 그냥 냅두기
+            }
         }
     },
 
