@@ -91,7 +91,7 @@ var bossData = {
         "deathSound": "death",
         "scale": 1,
         "health": 4000,
-        "m_speed": 60,
+        "m_speed": 40,
         "defence": 60,
         "damage": 10,
         "currentVariation": 0,
@@ -105,7 +105,7 @@ var bossData = {
         "deathSound": "death",
         "scale": 1,
         "health": 9000,
-        "m_speed": 60,
+        "m_speed": 40,
         "defence": 60,
         "damage": 10,
         "currentVariation": 0,
@@ -119,7 +119,7 @@ var bossData = {
         "deathSound": "death",
         "scale": 1,
         "health": 22000,
-        "m_speed": 60,
+        "m_speed": 40,
         "defence": 60,
         "damage": 10,
         "currentVariation": 0,
@@ -133,7 +133,7 @@ var bossData = {
         "deathSound": "death",
         "scale": 1,
         "health": 45000,
-        "m_speed": 60,
+        "m_speed": 40,
         "defence": 60,
         "damage": 10,
         "currentVariation": 0,
@@ -147,7 +147,7 @@ var bossData = {
         "deathSound": "death",
         "scale": 1,
         "health": 100000,
-        "m_speed": 60,
+        "m_speed": 40,
         "defence": 60,
         "damage": 10,
         "currentVariation": 0,
@@ -182,7 +182,7 @@ Object.keys(specData).forEach((x) => {
         "damage": damage,
         "currentVariation": 0,
         "variations": 0,
-        "defaultCost": cost,
+        "variationCost": [],
         "boss": false
     };
 });
@@ -199,8 +199,6 @@ fs.readdir("./src/assets/spritesheets/mobs")
         specData[x] = bossData[x];
     });
 
-    fs.writeFile('./src/assets/specsheets/mobSpecSheetGen.json', JSON.stringify(specData, null, '\t'));
-
     Object.keys(specData).forEach((x) => {
 
         let monsterDelta = 21 - specData[x].variations;
@@ -210,16 +208,30 @@ fs.readdir("./src/assets/spritesheets/mobs")
             delete specData_result[x].currentVariation;
         } else {
             for (let i = 0; i < specData[x].variations; i++) {
-                
                 specData_result[x + String.fromCharCode(65 + i)] = JSON.parse(JSON.stringify(specData[x]));
                 specData_result[x + String.fromCharCode(65 + i)].mobAnim = x + String.fromCharCode(65 + i);
-                specData_result[x + String.fromCharCode(65 + i)].health *= i * monsterDelta * 2 + 1;
+                specData_result[x + String.fromCharCode(65 + i)].health = Math.floor(specData_result[x + String.fromCharCode(65 + i)].health * (1 + (i * monsterDelta * 1.3)));
                 specData_result[x + String.fromCharCode(65 + i)].defence = Math.floor(specData_result[x + String.fromCharCode(65 + i)].defence * (1 + (0.02 * i * monsterDelta)));
-                specData_result[x + String.fromCharCode(65 + i)].defaultCost *= i * monsterDelta * 2 + 1;
+
+                var hp = specData_result[x + String.fromCharCode(65 + i)].health;
+                var def = specData_result[x + String.fromCharCode(65 + i)].defence;
+                var spd = specData_result[x + String.fromCharCode(65 + i)].m_speed;
+                var damage = specData_result[x + String.fromCharCode(65 + i)].damage;
+
+                var ehp = hp * (1 / (1 - (def / 100)));
+                var diffCost = Math.floor(ehp / Math.log(spd) / 20) / 2;
+                var damageCost = (damage - 1) * 0.5;
+                var cost = diffCost + damageCost;
+
+                specData[x].variationCost.push(cost);
+
+                specData_result[x + String.fromCharCode(65 + i)].defaultCost = cost;
+                delete specData_result[x + String.fromCharCode(65 + i)].variationCost;
                 delete specData_result[x + String.fromCharCode(65 + i)].variations;
                 delete specData_result[x + String.fromCharCode(65 + i)].currentVariation;
             }
         }
     });
+    fs.writeFile('./src/assets/specsheets/mobSpecSheetGen.json', JSON.stringify(specData, null, '\t'));
     fs.writeFile('./src/assets/specsheets/mobSpecSheet.json', JSON.stringify(specData_result, null, '\t'));
 });
