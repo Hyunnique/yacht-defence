@@ -22,7 +22,7 @@ module.exports = {
         this.Rooms[this.latestRoomId] = {
             roomId: this.latestRoomId,
             sockets: [],
-            maxPlayers: 1, // Configurable for development or singleplayer
+            maxPlayers: 3, // Configurable for development or singleplayer
             counter: {
                 ready: 0,
                 handConfirm: 0,
@@ -124,6 +124,8 @@ module.exports = {
         this.Rooms[roomId].counter.handConfirm = 0;
         this.Rooms[roomId].counter.handReceived = 0;
 
+        console.log("initialized handConfirm:" + this.Rooms[roomId].counter.handConfirm);
+
         this.Rooms[roomId].roundChoice = Math.floor(Math.random() * 25) + 5;
 
         this.emitAll(roomId, 'dicePhase-begin', {
@@ -139,6 +141,7 @@ module.exports = {
     onDiceConfirm(socket, roomId) {
         socket.on('dicePhase-handConfirm', (msg) => {
             this.Rooms[roomId].counter.handConfirm++;
+            console.log("handConfirm received:" + this.Rooms[roomId].counter.handConfirm);
 
             if (this.Rooms[roomId].counter.handConfirm >= this.Rooms[roomId].maxPlayers) {
                 clearTimeout(this.Rooms[roomId].timer["dicePhaseEnd"]);

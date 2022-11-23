@@ -33,7 +33,7 @@ var Game = {
         this.resizeHandler(null);
         window.onresize = this.resizeHandler;
 
-        this.Socket = io.connect("http://localhost:8080");
+        this.Socket = io.connect("http://20.249.20.144:8080");
         this.serverEventHandler();
     },
 
@@ -84,7 +84,8 @@ var Game = {
             document.getElementsByClassName("ui-phase-value")[0].innerText = "Dice";
             document.getElementsByClassName("ui-phaseTimelimit-value")[0].innerText = this.currentTimeLimit;
             this.currentTimeLimit = msg.timeLimit;
-
+            document.getElementsByClassName("ui-diceConfirmText")[0].innerText = "-";
+            
             document.getElementsByClassName("ui-choiceMessage-value")[0].innerText = msg.roundChoice;
             document.getElementsByClassName("ui-choiceMessage-value")[1].innerText = msg.roundChoice;
             this.showUI("diceScene-default");
