@@ -239,7 +239,10 @@ module.exports = {
             if (this.Rooms[roomId].players[msg.playerIndex].gold >= shopItem.price) {
                 this.Rooms[roomId].players[msg.playerIndex].gold -= shopItem.price;
                 this.Rooms[roomId].players[msg.playerIndex].items.push(msg.itemIndex);
-                socket.emit('shop-itemSuccess', true);
+                socket.emit('shop-itemSuccess', {
+                    uiIndex: msg.uiIndex,
+                    items: this.Rooms[roomId].players[msg.playerIndex].items
+                });
             } else {
                 socket.emit('shop-itemFailure', true);
             }
