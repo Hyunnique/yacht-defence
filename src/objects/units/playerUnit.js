@@ -64,14 +64,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.effect = new UnitEffect(scene, this, this.effectIsFlip);
         
         this.target = [];
-        this.attackEvent = this.scene.time.addEvent({
-            delay: 1000 / this.aspd,
-            callback: () => {
-                this.attackReady = true;
-            },
-            loop: true,
-            startAt: 0
-        });
+        this.attackEvent;
         //this.setMotionSpeed();
 
         this.kills = 0;
@@ -81,7 +74,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.scene.physics.add.existing(this);
         this.setBodySize(64, 64, true);
         this.scene.add.existing(this);
-        
+        this.activateAttack();
         this.scene.events.on("update", this.update, this);
         this.on("animationcomplete", this.doIdle, this);
     }
@@ -95,6 +88,18 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         if (this.attackReady && this.target.length > 0)
             this.attackMob();
         
+    }
+
+    activateAttack()
+    {
+        this.attackEvent = this.scene.time.addEvent({
+            delay: 1000 / this.aspd,
+            callback: () => {
+                this.attackReady = true;
+            },
+            loop: true,
+            startAt: 0
+        });
     }
     
     doIdle()
