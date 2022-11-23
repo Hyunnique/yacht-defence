@@ -328,7 +328,7 @@ export default class gameScene extends Phaser.Scene{
                 this.time.addEvent({
                 delay: 500,
                 callback: () => {
-                    this.m_mobs.add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum, element["mobRoute"]));
+                    this.m_mobs.add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum, element["mobRoute"],element["hpFactor"]));
                     this.globalnum++;
                 },
                 repeat: element["mobCount"]-1,
