@@ -22,7 +22,7 @@ var Game = {
     shopOpen: false,
     
     shopBuff: {
-        shopAtk: 1,
+        shopAtk: 0,
         shopPenetration: 0,
         shopAspd: 0
     },
