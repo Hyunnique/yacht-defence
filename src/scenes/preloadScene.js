@@ -50,6 +50,8 @@ export default class PreLoadScene extends Phaser.Scene {
             progressBox.destroy();
         });
 
+        this.load.image("mainBackground", require("../assets/images/main_background.png"));
+
         // 유닛 대기, 공격 모션 로딩
         for (var i = 0; i < 64; i++){
             this.load.spritesheet("unit" + i + "idle", require("../assets/spritesheets/units/unit" + i + "_idle.png"), { frameWidth: 128, frameHeight: 128 });
