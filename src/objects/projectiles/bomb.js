@@ -11,6 +11,7 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
         this.alpha = 1;
         this.targetidx = 0;
         this.setBodySize(28, 28);
+        this.setDepth(2);
         this.hitEffect = shooter.projectileHitEffect;
 
         this.target = new Phaser.Math.Vector2(this.shooter.target[0].gameObject.getCenter());
@@ -29,21 +30,30 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
 
     update()
     {
-        if (Phaser.Math.Distance.Between(this.x, this.y, this.target.x, this.target.y) < 4)
+        if (Phaser.Math.Distance.Between(this.x, this.y, this.target.x, this.target.y) < 10)
+            this.explode();
+        if (Phaser.Math.Distance.Between(this.x, this.y, this.shooter.x, this.shooter.y) > this.shooter.range)
             this.explode();
         
     }
 
-    explode()
-    {
+    explode() {
         var targets = this.scene.physics.overlapCirc(this.x, this.y, 80).filter(item => item.gameObject.isTarget == true);
-            targets.forEach(element => {
-                element.gameObject.Health -= this.shooter.calcDamage(element.gameObject.defence);
-                if (element.gameObject.Health <= 0)
-                    this.shooter.kills++;
-            });
+        targets.forEach(element => {
+            element.gameObject.Health -= this.shooter.calcDamage(element.gameObject.defence);
+            if (element.gameObject.Health <= 0)
+                this.shooter.kills++;
+        });
         this.scene.events.off("update", this.update, this);
-        this.destroy();
+
+        this.body.reset(this.x, this.y);
+        this.angle = 0;
+        this.body.destroy();
+        this.play(this.hitEffect);
+        
+        var animConfig = this.scene.anims.get(this.hitEffect);
+        var animtime = animConfig.frames.length * animConfig.msPerFrame;
+        this.scene.time.delayedCall(animtime, () => { this.destroy() }, [], this.scene);
     }
 
     setAngle(shooter,target) {

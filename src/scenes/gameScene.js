@@ -416,17 +416,8 @@ export default class gameScene extends Phaser.Scene{
     // Unit ID를 파라미터로 가짐
     receiveUnit(unitID, tier) {
         this.placemode = true;
-        this.initialPlace(this.unitDB["unit" + unitID]);
-        
-        
-
-        this.handleTierBonus(tier,true);
-
-        for (let i = 0; i < 4; i++) {
-            document.getElementsByClassName("ui-unitArea-unitTierCount")[i].innerHTML = "";
-            document.getElementsByClassName("ui-unitArea-unitTierCount")[i].innerHTML += this.tierCnt[i] + " <span class='ui-unitArea-unitTierBonus'>(+" + this.tierBonus[i] + "%)</span>";
-        }
-
+        this.initialPlace(this.unitDB["unit" + 34]);
+        this.handleTierBonus(tier, true);
     }
 
     handleTierBonus(tier,bool)
@@ -454,6 +445,11 @@ export default class gameScene extends Phaser.Scene{
 
         this.tierBonus[tier - 1] += buffvalue1 * (bool ? 1 : -1);
         this.tierBonus[3] += buffvalue2 * (bool ? 1 : -1);
+
+         for (let i = 0; i < 4; i++) {
+            document.getElementsByClassName("ui-unitArea-unitTierCount")[i].innerHTML = "";
+            document.getElementsByClassName("ui-unitArea-unitTierCount")[i].innerHTML += this.tierCnt[i] + " <span class='ui-unitArea-unitTierBonus'>(+" + this.tierBonus[i] + "%)</span>";
+        }
     }
 }
 
