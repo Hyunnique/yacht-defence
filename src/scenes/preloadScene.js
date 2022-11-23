@@ -187,6 +187,7 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.audio("shopBuy1", require("../assets/sounds/shop_buy1.wav"));
         this.load.audio("shopBuy2", require("../assets/sounds/shop_buy2.wav"));
         this.load.audio("shopBuy3", require("../assets/sounds/shop_buy3.wav"));
+        this.load.audio("shopBuyFail", require("../assets/sounds/shop_buy_fail.wav"));
         this.load.audio("attackBigFire", require("../assets/sounds/attack_big_fire.wav"));
         this.load.audio("attackFire", require("../assets/sounds/attack_fire.wav"));
         this.load.audio("attackBow", require("../assets/sounds/attack_bow.wav"));
