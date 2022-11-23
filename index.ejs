@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<script src="http://20.249.20.144:8080/external/socket.io.min.js"></script>
+	<%= "<script src='http://" + (process.env.HOST ? process.env.HOST : "localhost") + ":8080/external/socket.io.min.js'></script>" %>
 	<style>
 		.ui-sheet {
 			display: none;
