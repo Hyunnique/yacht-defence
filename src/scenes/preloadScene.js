@@ -24,6 +24,12 @@ export default class PreLoadScene extends Phaser.Scene {
         super("bootGame");
     }
 
+    importAll(r) {
+        let arr = {};
+        r.keys().map((item, index) => { arr[item.replace('./', '')] = r(item); });
+        return arr;
+    }
+
     preload() {
         var progressBar = this.add.graphics();
         var progressBox = this.add.graphics();
@@ -142,7 +148,12 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.spritesheet("stoneGolemWalk", require("../assets/spritesheets/boss/stone_golem_walk_sprite.png"), {frameWidth: 340, frameHeight: 340});
         this.load.spritesheet("stoneGolemDie", require("../assets/spritesheets/boss/stone_golem_die_sprite.png"), {frameWidth: 340, frameHeight: 340});
 
+        var mobsImport = this.importAll(require.context("../assets/spritesheets/mobs", false, /\.png$/));
+        Object.keys(mobsImport).forEach(key => {
+            this.load.spritesheet(key.substring(0, key.length - 4), mobsImport[key], { frameWidth: 16, frameHeight: 16 });
+        });
         // 몹 로딩
+        /*
         this.load.spritesheet("BatSmallA", require("../assets/spritesheets/mobs/BatSmallA.png"), { frameWidth: 16, frameHeight: 16 });
         this.load.spritesheet("WormA", require("../assets/spritesheets/mobs/WormA.png"), { frameWidth: 16, frameHeight: 16 });
         this.load.spritesheet("BrainD", require("../assets/spritesheets/mobs/BrainD.png"), { frameWidth: 16, frameHeight: 16 });
@@ -157,7 +168,7 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.spritesheet("SlimeSmallA", require("../assets/spritesheets/mobs/SlimeSmallA.png"), { frameWidth: 16, frameHeight: 16 });
         this.load.spritesheet("TentacleC", require("../assets/spritesheets/mobs/TentacleC.png"), { frameWidth: 16, frameHeight: 16 });
         this.load.spritesheet("GhastB", require("../assets/spritesheets/mobs/GhastB.png"), { frameWidth: 16, frameHeight: 16 });
-
+        */
         // 사운드 관련 로딩
         //this.load.audio("music", bgm);
         this.load.audio("death", batDeath);

@@ -11,7 +11,6 @@
 		"currentVariation": 0,
 		"variations": 1,
 		"defaultCost": 7,
-		"appearRound": 7,
 		"boss": false
 	},
 	"Ball": {
@@ -26,7 +25,6 @@
 		"currentVariation": 0,
 		"variations": 4,
 		"defaultCost": 6.5,
-		"appearRound": 6,
 		"boss": false
 	},
 	"Bat": {
@@ -41,7 +39,6 @@
 		"currentVariation": 0,
 		"variations": 20,
 		"defaultCost": 2,
-		"appearRound": 2,
 		"boss": false
 	},
 	"BatSmall": {
@@ -56,7 +53,6 @@
 		"currentVariation": 0,
 		"variations": 5,
 		"defaultCost": 1,
-		"appearRound": 1,
 		"boss": false
 	},
 	"Beard": {
@@ -71,7 +67,6 @@
 		"currentVariation": 0,
 		"variations": 2,
 		"defaultCost": 5,
-		"appearRound": 5,
 		"boss": false
 	},
 	"Brain": {
@@ -86,7 +81,6 @@
 		"currentVariation": 0,
 		"variations": 5,
 		"defaultCost": 3,
-		"appearRound": 3,
 		"boss": false
 	},
 	"Bug": {
@@ -101,7 +95,6 @@
 		"currentVariation": 0,
 		"variations": 5,
 		"defaultCost": 1.5,
-		"appearRound": 1,
 		"boss": false
 	},
 	"Butterfly": {
@@ -116,7 +109,6 @@
 		"currentVariation": 0,
 		"variations": 2,
 		"defaultCost": 0.5,
-		"appearRound": 0,
 		"boss": false
 	},
 	"Cat": {
@@ -131,7 +123,6 @@
 		"currentVariation": 0,
 		"variations": 6,
 		"defaultCost": 2,
-		"appearRound": 2,
 		"boss": false
 	},
 	"Chest": {
@@ -146,7 +137,6 @@
 		"currentVariation": 0,
 		"variations": 1,
 		"defaultCost": 11,
-		"appearRound": 11,
 		"boss": false
 	},
 	"Chicken": {
@@ -161,7 +151,6 @@
 		"currentVariation": 0,
 		"variations": 3,
 		"defaultCost": 2,
-		"appearRound": 2,
 		"boss": false
 	},
 	"Cloud": {
@@ -176,7 +165,6 @@
 		"currentVariation": 0,
 		"variations": 4,
 		"defaultCost": 2.5,
-		"appearRound": 2,
 		"boss": false
 	},
 	"Coffin": {
@@ -191,7 +179,6 @@
 		"currentVariation": 0,
 		"variations": 4,
 		"defaultCost": 4.5,
-		"appearRound": 4,
 		"boss": false
 	},
 	"Count": {
@@ -206,7 +193,6 @@
 		"currentVariation": 0,
 		"variations": 1,
 		"defaultCost": 13,
-		"appearRound": 13,
 		"boss": false
 	},
 	"Crab": {
@@ -221,7 +207,6 @@
 		"currentVariation": 0,
 		"variations": 6,
 		"defaultCost": 6,
-		"appearRound": 6,
 		"boss": false
 	},
 	"Disc": {
@@ -236,7 +221,6 @@
 		"currentVariation": 0,
 		"variations": 1,
 		"defaultCost": 12,
-		"appearRound": 12,
 		"boss": false
 	},
 	"Dog": {
@@ -251,7 +235,6 @@
 		"currentVariation": 0,
 		"variations": 7,
 		"defaultCost": 2,
-		"appearRound": 2,
 		"boss": false
 	},
 	"Duck": {
@@ -266,7 +249,6 @@
 		"currentVariation": 0,
 		"variations": 3,
 		"defaultCost": 2,
-		"appearRound": 2,
 		"boss": false
 	},
 	"Dwarf": {
@@ -281,7 +263,6 @@
 		"currentVariation": 0,
 		"variations": 6,
 		"defaultCost": 7.5,
-		"appearRound": 7,
 		"boss": false
 	},
 	"Dye": {
@@ -296,7 +277,6 @@
 		"currentVariation": 0,
 		"variations": 4,
 		"defaultCost": 4,
-		"appearRound": 4,
 		"boss": false
 	},
 	"Earth": {
@@ -311,7 +291,6 @@
 		"currentVariation": 0,
 		"variations": 3,
 		"defaultCost": 8.5,
-		"appearRound": 8,
 		"boss": false
 	},
 	"EarthSmall": {
@@ -326,7 +305,6 @@
 		"currentVariation": 0,
 		"variations": 3,
 		"defaultCost": 6,
-		"appearRound": 6,
 		"boss": false
 	},
 	"EarthSmaller": {
@@ -341,7 +319,6 @@
 		"currentVariation": 0,
 		"variations": 3,
 		"defaultCost": 4,
-		"appearRound": 4,
 		"boss": false
 	},
 	"Eel": {
@@ -356,7 +333,6 @@
 		"currentVariation": 0,
 		"variations": 4,
 		"defaultCost": 3.5,
-		"appearRound": 3,
 		"boss": false
 	},
 	"ElementalOrb": {
@@ -371,7 +347,6 @@
 		"currentVariation": 0,
 		"variations": 2,
 		"defaultCost": 8,
-		"appearRound": 8,
 		"boss": false
 	},
 	"Eye": {
@@ -386,7 +361,6 @@
 		"currentVariation": 0,
 		"variations": 4,
 		"defaultCost": 7,
-		"appearRound": 7,
 		"boss": false
 	},
 	"EyeBall": {
@@ -401,7 +375,6 @@
 		"currentVariation": 0,
 		"variations": 3,
 		"defaultCost": 5,
-		"appearRound": 5,
 		"boss": false
 	},
 	"Factory": {
@@ -416,7 +389,6 @@
 		"currentVariation": 0,
 		"variations": 2,
 		"defaultCost": 13,
-		"appearRound": 13,
 		"boss": false
 	},
 	"FireSmall": {
@@ -431,7 +403,6 @@
 		"currentVariation": 0,
 		"variations": 1,
 		"defaultCost": 3,
-		"appearRound": 3,
 		"boss": false
 	},
 	"Ghast": {
@@ -446,7 +417,6 @@
 		"currentVariation": 0,
 		"variations": 3,
 		"defaultCost": 5,
-		"appearRound": 5,
 		"boss": false
 	},
 	"Gnome": {
@@ -461,7 +431,6 @@
 		"currentVariation": 0,
 		"variations": 3,
 		"defaultCost": 8.5,
-		"appearRound": 8,
 		"boss": false
 	},
 	"Hare": {
@@ -476,7 +445,6 @@
 		"currentVariation": 0,
 		"variations": 4,
 		"defaultCost": 6,
-		"appearRound": 6,
 		"boss": false
 	},
 	"Head": {
@@ -491,7 +459,6 @@
 		"currentVariation": 0,
 		"variations": 4,
 		"defaultCost": 8.5,
-		"appearRound": 8,
 		"boss": false
 	},
 	"Hulk": {
@@ -506,7 +473,6 @@
 		"currentVariation": 0,
 		"variations": 2,
 		"defaultCost": 10.5,
-		"appearRound": 10,
 		"boss": false
 	},
 	"Klackon": {
@@ -521,7 +487,6 @@
 		"currentVariation": 0,
 		"variations": 6,
 		"defaultCost": 14,
-		"appearRound": 14,
 		"boss": false
 	},
 	"Lurker": {
@@ -536,7 +501,6 @@
 		"currentVariation": 0,
 		"variations": 3,
 		"defaultCost": 5.5,
-		"appearRound": 5,
 		"boss": false
 	},
 	"Machine": {
@@ -551,7 +515,6 @@
 		"currentVariation": 0,
 		"variations": 1,
 		"defaultCost": 10.5,
-		"appearRound": 10,
 		"boss": false
 	},
 	"Mask": {
@@ -566,7 +529,6 @@
 		"currentVariation": 0,
 		"variations": 4,
 		"defaultCost": 8.5,
-		"appearRound": 8,
 		"boss": false
 	},
 	"Monolith": {
@@ -581,7 +543,6 @@
 		"currentVariation": 0,
 		"variations": 12,
 		"defaultCost": 6,
-		"appearRound": 6,
 		"boss": false
 	},
 	"Moth": {
@@ -596,7 +557,6 @@
 		"currentVariation": 0,
 		"variations": 5,
 		"defaultCost": 3.5,
-		"appearRound": 3,
 		"boss": false
 	},
 	"Mouth": {
@@ -611,7 +571,6 @@
 		"currentVariation": 0,
 		"variations": 3,
 		"defaultCost": 5,
-		"appearRound": 5,
 		"boss": false
 	},
 	"Mummy": {
@@ -626,7 +585,6 @@
 		"currentVariation": 0,
 		"variations": 3,
 		"defaultCost": 7,
-		"appearRound": 7,
 		"boss": false
 	},
 	"Mushroom": {
@@ -641,7 +599,6 @@
 		"currentVariation": 0,
 		"variations": 2,
 		"defaultCost": 1,
-		"appearRound": 1,
 		"boss": false
 	},
 	"Orb": {
@@ -656,7 +613,6 @@
 		"currentVariation": 0,
 		"variations": 4,
 		"defaultCost": 7,
-		"appearRound": 7,
 		"boss": false
 	},
 	"Potion": {
@@ -671,7 +627,6 @@
 		"currentVariation": 0,
 		"variations": 12,
 		"defaultCost": 6.5,
-		"appearRound": 6,
 		"boss": false
 	},
 	"Pterodactyl": {
@@ -686,7 +641,6 @@
 		"currentVariation": 0,
 		"variations": 8,
 		"defaultCost": 7,
-		"appearRound": 7,
 		"boss": false
 	},
 	"Puddle": {
@@ -701,7 +655,6 @@
 		"currentVariation": 0,
 		"variations": 3,
 		"defaultCost": 4.5,
-		"appearRound": 4,
 		"boss": false
 	},
 	"Pyramid": {
@@ -716,7 +669,6 @@
 		"currentVariation": 0,
 		"variations": 2,
 		"defaultCost": 6.5,
-		"appearRound": 6,
 		"boss": false
 	},
 	"Reaper": {
@@ -731,7 +683,6 @@
 		"currentVariation": 0,
 		"variations": 1,
 		"defaultCost": 18.5,
-		"appearRound": 18,
 		"boss": false
 	},
 	"Robot": {
@@ -746,7 +697,6 @@
 		"currentVariation": 0,
 		"variations": 4,
 		"defaultCost": 11,
-		"appearRound": 11,
 		"boss": false
 	},
 	"Scorpion": {
@@ -761,7 +711,6 @@
 		"currentVariation": 0,
 		"variations": 3,
 		"defaultCost": 7.5,
-		"appearRound": 7,
 		"boss": false
 	},
 	"Sentry": {
@@ -776,7 +725,6 @@
 		"currentVariation": 0,
 		"variations": 3,
 		"defaultCost": 4.5,
-		"appearRound": 4,
 		"boss": false
 	},
 	"SentryCopter": {
@@ -791,7 +739,6 @@
 		"currentVariation": 0,
 		"variations": 3,
 		"defaultCost": 5,
-		"appearRound": 5,
 		"boss": false
 	},
 	"Shield": {
@@ -806,7 +753,6 @@
 		"currentVariation": 0,
 		"variations": 6,
 		"defaultCost": 6,
-		"appearRound": 6,
 		"boss": false
 	},
 	"Skeleton": {
@@ -821,7 +767,6 @@
 		"currentVariation": 0,
 		"variations": 4,
 		"defaultCost": 6,
-		"appearRound": 6,
 		"boss": false
 	},
 	"Skull": {
@@ -836,7 +781,6 @@
 		"currentVariation": 0,
 		"variations": 4,
 		"defaultCost": 5,
-		"appearRound": 5,
 		"boss": false
 	},
 	"SkullFlaming": {
@@ -851,7 +795,6 @@
 		"currentVariation": 0,
 		"variations": 2,
 		"defaultCost": 6,
-		"appearRound": 6,
 		"boss": false
 	},
 	"Slime": {
@@ -866,7 +809,6 @@
 		"currentVariation": 0,
 		"variations": 16,
 		"defaultCost": 2,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SlimeSmall": {
@@ -881,7 +823,6 @@
 		"currentVariation": 0,
 		"variations": 9,
 		"defaultCost": 1,
-		"appearRound": 1,
 		"boss": false
 	},
 	"SlimeSquare": {
@@ -896,7 +837,6 @@
 		"currentVariation": 0,
 		"variations": 12,
 		"defaultCost": 3,
-		"appearRound": 3,
 		"boss": false
 	},
 	"SlimeSquareSmall": {
@@ -911,7 +851,6 @@
 		"currentVariation": 0,
 		"variations": 8,
 		"defaultCost": 2,
-		"appearRound": 2,
 		"boss": false
 	},
 	"Snake": {
@@ -926,7 +865,6 @@
 		"currentVariation": 0,
 		"variations": 12,
 		"defaultCost": 2,
-		"appearRound": 2,
 		"boss": false
 	},
 	"Space": {
@@ -941,7 +879,6 @@
 		"currentVariation": 0,
 		"variations": 1,
 		"defaultCost": 23,
-		"appearRound": 23,
 		"boss": false
 	},
 	"Sword": {
@@ -956,7 +893,6 @@
 		"currentVariation": 0,
 		"variations": 2,
 		"defaultCost": 14.5,
-		"appearRound": 14,
 		"boss": false
 	},
 	"Weasel": {
@@ -971,7 +907,6 @@
 		"currentVariation": 0,
 		"variations": 3,
 		"defaultCost": 8,
-		"appearRound": 8,
 		"boss": false
 	},
 	"Witch": {
@@ -986,7 +921,6 @@
 		"currentVariation": 0,
 		"variations": 6,
 		"defaultCost": 6.5,
-		"appearRound": 6,
 		"boss": false
 	},
 	"Worm": {
@@ -1001,7 +935,6 @@
 		"currentVariation": 0,
 		"variations": 8,
 		"defaultCost": 0.5,
-		"appearRound": 0,
 		"boss": false
 	},
 	"Zombie": {
@@ -1016,7 +949,76 @@
 		"currentVariation": 0,
 		"variations": 2,
 		"defaultCost": 7,
-		"appearRound": 7,
 		"boss": false
+	},
+	"BossBear": {
+		"mobAnim": "bearWalk",
+		"deathAnimName": "bearDie",
+		"deathSound": "death",
+		"scale": 1,
+		"health": 4000,
+		"m_speed": 60,
+		"defence": 60,
+		"damage": 10,
+		"currentVariation": 0,
+		"variations": 1,
+		"defaultCost": 0,
+		"boss": true
+	},
+	"BossSlimeKing": {
+		"mobAnim": "slimeKingWalk",
+		"deathAnimName": "slimeKingDie",
+		"deathSound": "death",
+		"scale": 1,
+		"health": 9000,
+		"m_speed": 60,
+		"defence": 60,
+		"damage": 10,
+		"currentVariation": 0,
+		"variations": 1,
+		"defaultCost": 0,
+		"boss": true
+	},
+	"BossMagician": {
+		"mobAnim": "magicianWalk",
+		"deathAnimName": "magicianDie",
+		"deathSound": "death",
+		"scale": 1,
+		"health": 22000,
+		"m_speed": 60,
+		"defence": 60,
+		"damage": 10,
+		"currentVariation": 0,
+		"variations": 1,
+		"defaultCost": 0,
+		"boss": true
+	},
+	"BossGiant": {
+		"mobAnim": "giantWalk",
+		"deathAnimName": "giantDie",
+		"deathSound": "death",
+		"scale": 1,
+		"health": 45000,
+		"m_speed": 60,
+		"defence": 60,
+		"damage": 10,
+		"currentVariation": 0,
+		"variations": 1,
+		"defaultCost": 0,
+		"boss": true
+	},
+	"BossGolem": {
+		"mobAnim": "stoneGolemWalk",
+		"deathAnimName": "stoneGolemDie",
+		"deathSound": "death",
+		"scale": 1,
+		"health": 100000,
+		"m_speed": 60,
+		"defence": 60,
+		"damage": 10,
+		"currentVariation": 0,
+		"variations": 1,
+		"defaultCost": 0,
+		"boss": true
 	}
 }

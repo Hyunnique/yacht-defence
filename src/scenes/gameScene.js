@@ -61,6 +61,8 @@ export default class gameScene extends Phaser.Scene{
     tierBonus = [0, 0, 0, 0];
     gold = 0;
 
+    currentRoundData;
+
     buffAtk = 0;
     buffAspd = 0;
     buffPenetration = 0;
@@ -324,8 +326,9 @@ export default class gameScene extends Phaser.Scene{
     }
 
     startRound() {
-        this.roundDB["round" + this.roundNum].forEach((element) => {
-            this.time.addEvent({
+        //this.roundDB["round" + this.roundNum].forEach((element) => {
+        this.currentRoundData.forEach((element) => {
+                this.time.addEvent({
                 delay: 1500,
                 callback: () => {
                     this.m_mobs.add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum, element["mobRoute"]));
