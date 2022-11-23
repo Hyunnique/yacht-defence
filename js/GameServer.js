@@ -14,10 +14,6 @@ module.exports = {
         this.createRoom();
 
         this.onConnect();
-
-        for (let i = 1; i < 50; i++) {
-            this.generateWaveInfo(10001);
-        }
     },
 
     createRoom() {
