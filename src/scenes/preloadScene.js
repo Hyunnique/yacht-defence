@@ -20,8 +20,17 @@ import healthBar from '../assets/images/healthBar.png';
 import Bullet from '../assets/projectiles/bullet.png';
 
 export default class PreLoadScene extends Phaser.Scene {
+
+    importedMobs = null;
+
     constructor() {
         super("bootGame");
+    }
+
+    importAll(r) {
+        let arr = {};
+        r.keys().map((item, index) => { arr[item.replace('./', '')] = r(item); });
+        return arr;
     }
 
     preload() {
@@ -143,7 +152,12 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.spritesheet("stoneGolemWalk", require("../assets/spritesheets/boss/stone_golem_walk_sprite.png"), {frameWidth: 340, frameHeight: 340});
         this.load.spritesheet("stoneGolemDie", require("../assets/spritesheets/boss/stone_golem_die_sprite.png"), {frameWidth: 340, frameHeight: 340});
 
+        this.importedMobs = this.importAll(require.context("../assets/spritesheets/mobs", false, /\.png$/));
+        Object.keys(this.importedMobs).forEach(key => {
+            this.load.spritesheet(key.substring(0, key.length - 4), this.importedMobs[key], { frameWidth: 16, frameHeight: 16 });
+        });
         // 몹 로딩
+        /*
         this.load.spritesheet("BatSmallA", require("../assets/spritesheets/mobs/BatSmallA.png"), { frameWidth: 16, frameHeight: 16 });
         this.load.spritesheet("WormA", require("../assets/spritesheets/mobs/WormA.png"), { frameWidth: 16, frameHeight: 16 });
         this.load.spritesheet("BrainD", require("../assets/spritesheets/mobs/BrainD.png"), { frameWidth: 16, frameHeight: 16 });
@@ -158,7 +172,7 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.spritesheet("SlimeSmallA", require("../assets/spritesheets/mobs/SlimeSmallA.png"), { frameWidth: 16, frameHeight: 16 });
         this.load.spritesheet("TentacleC", require("../assets/spritesheets/mobs/TentacleC.png"), { frameWidth: 16, frameHeight: 16 });
         this.load.spritesheet("GhastB", require("../assets/spritesheets/mobs/GhastB.png"), { frameWidth: 16, frameHeight: 16 });
-
+        */
         // 사운드 관련 로딩
         //this.load.audio("music", bgm);
         this.load.audio("death", batDeath);
@@ -356,7 +370,15 @@ export default class PreLoadScene extends Phaser.Scene {
         });
 
 
+        Object.keys(this.importedMobs).forEach(key => {
+            this.anims.create({
+                key,
+                frames: this.anims.generateFrameNumbers(key, { start : 0 }),
+                repeat: -1
+            });
+        });
         // 몹 애니메이션 생성
+        /*
         this.anims.create({
             key: "BatSmallA",
             frames: this.anims.generateFrameNumbers("BatSmallA", { start: 0, end: 5 }),
@@ -447,6 +469,7 @@ export default class PreLoadScene extends Phaser.Scene {
             repeat: -1,
             frameRate: 6
         });
+        */
         // 이펙트 애니메이션 생성
         this.anims.create({
             key: "attack1",

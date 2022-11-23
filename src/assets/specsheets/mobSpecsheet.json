@@ -9,7 +9,6 @@
 		"defence": 30,
 		"damage": 4,
 		"defaultCost": 7,
-		"appearRound": 7,
 		"boss": false
 	},
 	"BallA": {
@@ -22,7 +21,6 @@
 		"defence": 35,
 		"damage": 4,
 		"defaultCost": 6.5,
-		"appearRound": 6,
 		"boss": false
 	},
 	"BallB": {
@@ -35,7 +33,6 @@
 		"defence": 46,
 		"damage": 4,
 		"defaultCost": 227.5,
-		"appearRound": 6,
 		"boss": false
 	},
 	"BallC": {
@@ -48,7 +45,6 @@
 		"defence": 58,
 		"damage": 4,
 		"defaultCost": 448.5,
-		"appearRound": 6,
 		"boss": false
 	},
 	"BallD": {
@@ -61,7 +57,6 @@
 		"defence": 70,
 		"damage": 4,
 		"defaultCost": 669.5,
-		"appearRound": 6,
 		"boss": false
 	},
 	"BatA": {
@@ -74,7 +69,6 @@
 		"defence": 0,
 		"damage": 1,
 		"defaultCost": 2,
-		"appearRound": 2,
 		"boss": false
 	},
 	"BatB": {
@@ -87,7 +81,6 @@
 		"defence": 0,
 		"damage": 1,
 		"defaultCost": 6,
-		"appearRound": 2,
 		"boss": false
 	},
 	"BatC": {
@@ -100,7 +93,6 @@
 		"defence": 0,
 		"damage": 1,
 		"defaultCost": 10,
-		"appearRound": 2,
 		"boss": false
 	},
 	"BatD": {
@@ -113,7 +105,6 @@
 		"defence": 0,
 		"damage": 1,
 		"defaultCost": 14,
-		"appearRound": 2,
 		"boss": false
 	},
 	"BatE": {
@@ -126,7 +117,6 @@
 		"defence": 0,
 		"damage": 1,
 		"defaultCost": 18,
-		"appearRound": 2,
 		"boss": false
 	},
 	"BatF": {
@@ -139,7 +129,6 @@
 		"defence": 0,
 		"damage": 1,
 		"defaultCost": 22,
-		"appearRound": 2,
 		"boss": false
 	},
 	"BatG": {
@@ -152,7 +141,6 @@
 		"defence": 0,
 		"damage": 1,
 		"defaultCost": 26,
-		"appearRound": 2,
 		"boss": false
 	},
 	"BatH": {
@@ -165,7 +153,6 @@
 		"defence": 0,
 		"damage": 1,
 		"defaultCost": 30,
-		"appearRound": 2,
 		"boss": false
 	},
 	"BatI": {
@@ -178,7 +165,6 @@
 		"defence": 0,
 		"damage": 1,
 		"defaultCost": 34,
-		"appearRound": 2,
 		"boss": false
 	},
 	"BatJ": {
@@ -191,7 +177,6 @@
 		"defence": 0,
 		"damage": 1,
 		"defaultCost": 38,
-		"appearRound": 2,
 		"boss": false
 	},
 	"BatK": {
@@ -204,7 +189,6 @@
 		"defence": 0,
 		"damage": 1,
 		"defaultCost": 42,
-		"appearRound": 2,
 		"boss": false
 	},
 	"BatL": {
@@ -217,7 +201,6 @@
 		"defence": 0,
 		"damage": 1,
 		"defaultCost": 46,
-		"appearRound": 2,
 		"boss": false
 	},
 	"BatM": {
@@ -230,7 +213,6 @@
 		"defence": 0,
 		"damage": 1,
 		"defaultCost": 50,
-		"appearRound": 2,
 		"boss": false
 	},
 	"BatN": {
@@ -243,7 +225,6 @@
 		"defence": 0,
 		"damage": 1,
 		"defaultCost": 54,
-		"appearRound": 2,
 		"boss": false
 	},
 	"BatO": {
@@ -256,7 +237,6 @@
 		"defence": 0,
 		"damage": 1,
 		"defaultCost": 58,
-		"appearRound": 2,
 		"boss": false
 	},
 	"BatP": {
@@ -269,7 +249,6 @@
 		"defence": 0,
 		"damage": 1,
 		"defaultCost": 62,
-		"appearRound": 2,
 		"boss": false
 	},
 	"BatQ": {
@@ -282,7 +261,6 @@
 		"defence": 0,
 		"damage": 1,
 		"defaultCost": 66,
-		"appearRound": 2,
 		"boss": false
 	},
 	"BatR": {
@@ -295,7 +273,6 @@
 		"defence": 0,
 		"damage": 1,
 		"defaultCost": 70,
-		"appearRound": 2,
 		"boss": false
 	},
 	"BatS": {
@@ -308,7 +285,6 @@
 		"defence": 0,
 		"damage": 1,
 		"defaultCost": 74,
-		"appearRound": 2,
 		"boss": false
 	},
 	"BatT": {
@@ -321,7 +297,6 @@
 		"defence": 0,
 		"damage": 1,
 		"defaultCost": 78,
-		"appearRound": 2,
 		"boss": false
 	},
 	"BatSmallA": {
@@ -334,7 +309,6 @@
 		"defence": 0,
 		"damage": 1,
 		"defaultCost": 1,
-		"appearRound": 1,
 		"boss": false
 	},
 	"BatSmallB": {
@@ -347,7 +321,6 @@
 		"defence": 0,
 		"damage": 1,
 		"defaultCost": 33,
-		"appearRound": 1,
 		"boss": false
 	},
 	"BatSmallC": {
@@ -360,7 +333,6 @@
 		"defence": 0,
 		"damage": 1,
 		"defaultCost": 65,
-		"appearRound": 1,
 		"boss": false
 	},
 	"BatSmallD": {
@@ -373,7 +345,6 @@
 		"defence": 0,
 		"damage": 1,
 		"defaultCost": 97,
-		"appearRound": 1,
 		"boss": false
 	},
 	"BatSmallE": {
@@ -386,7 +357,6 @@
 		"defence": 0,
 		"damage": 1,
 		"defaultCost": 129,
-		"appearRound": 1,
 		"boss": false
 	},
 	"BeardA": {
@@ -399,7 +369,6 @@
 		"defence": 30,
 		"damage": 3,
 		"defaultCost": 5,
-		"appearRound": 5,
 		"boss": false
 	},
 	"BeardB": {
@@ -412,7 +381,6 @@
 		"defence": 41,
 		"damage": 3,
 		"defaultCost": 195,
-		"appearRound": 5,
 		"boss": false
 	},
 	"BrainA": {
@@ -425,7 +393,6 @@
 		"defence": 10,
 		"damage": 3,
 		"defaultCost": 3,
-		"appearRound": 3,
 		"boss": false
 	},
 	"BrainB": {
@@ -438,7 +405,6 @@
 		"defence": 13,
 		"damage": 3,
 		"defaultCost": 99,
-		"appearRound": 3,
 		"boss": false
 	},
 	"BrainC": {
@@ -451,7 +417,6 @@
 		"defence": 16,
 		"damage": 3,
 		"defaultCost": 195,
-		"appearRound": 3,
 		"boss": false
 	},
 	"BrainD": {
@@ -464,7 +429,6 @@
 		"defence": 19,
 		"damage": 3,
 		"defaultCost": 291,
-		"appearRound": 3,
 		"boss": false
 	},
 	"BrainE": {
@@ -477,7 +441,6 @@
 		"defence": 22,
 		"damage": 3,
 		"defaultCost": 387,
-		"appearRound": 3,
 		"boss": false
 	},
 	"BugA": {
@@ -490,7 +453,6 @@
 		"defence": 5,
 		"damage": 1,
 		"defaultCost": 1.5,
-		"appearRound": 1,
 		"boss": false
 	},
 	"BugB": {
@@ -503,7 +465,6 @@
 		"defence": 6,
 		"damage": 1,
 		"defaultCost": 49.5,
-		"appearRound": 1,
 		"boss": false
 	},
 	"BugC": {
@@ -516,7 +477,6 @@
 		"defence": 8,
 		"damage": 1,
 		"defaultCost": 97.5,
-		"appearRound": 1,
 		"boss": false
 	},
 	"BugD": {
@@ -529,7 +489,6 @@
 		"defence": 9,
 		"damage": 1,
 		"defaultCost": 145.5,
-		"appearRound": 1,
 		"boss": false
 	},
 	"BugE": {
@@ -542,7 +501,6 @@
 		"defence": 11,
 		"damage": 1,
 		"defaultCost": 193.5,
-		"appearRound": 1,
 		"boss": false
 	},
 	"ButterflyA": {
@@ -555,7 +513,6 @@
 		"defence": 5,
 		"damage": 1,
 		"defaultCost": 0.5,
-		"appearRound": 0,
 		"boss": false
 	},
 	"ButterflyB": {
@@ -568,7 +525,6 @@
 		"defence": 6,
 		"damage": 1,
 		"defaultCost": 19.5,
-		"appearRound": 0,
 		"boss": false
 	},
 	"CatA": {
@@ -581,7 +537,6 @@
 		"defence": 15,
 		"damage": 2,
 		"defaultCost": 2,
-		"appearRound": 2,
 		"boss": false
 	},
 	"CatB": {
@@ -594,7 +549,6 @@
 		"defence": 19,
 		"damage": 2,
 		"defaultCost": 62,
-		"appearRound": 2,
 		"boss": false
 	},
 	"CatC": {
@@ -607,7 +561,6 @@
 		"defence": 24,
 		"damage": 2,
 		"defaultCost": 122,
-		"appearRound": 2,
 		"boss": false
 	},
 	"CatD": {
@@ -620,7 +573,6 @@
 		"defence": 28,
 		"damage": 2,
 		"defaultCost": 182,
-		"appearRound": 2,
 		"boss": false
 	},
 	"CatE": {
@@ -633,7 +585,6 @@
 		"defence": 33,
 		"damage": 2,
 		"defaultCost": 242,
-		"appearRound": 2,
 		"boss": false
 	},
 	"CatF": {
@@ -646,7 +597,6 @@
 		"defence": 37,
 		"damage": 2,
 		"defaultCost": 302,
-		"appearRound": 2,
 		"boss": false
 	},
 	"ChestA": {
@@ -659,7 +609,6 @@
 		"defence": 30,
 		"damage": 4,
 		"defaultCost": 11,
-		"appearRound": 11,
 		"boss": false
 	},
 	"ChickenA": {
@@ -672,7 +621,6 @@
 		"defence": 10,
 		"damage": 2,
 		"defaultCost": 2,
-		"appearRound": 2,
 		"boss": false
 	},
 	"ChickenB": {
@@ -685,7 +633,6 @@
 		"defence": 13,
 		"damage": 2,
 		"defaultCost": 74,
-		"appearRound": 2,
 		"boss": false
 	},
 	"ChickenC": {
@@ -698,7 +645,6 @@
 		"defence": 17,
 		"damage": 2,
 		"defaultCost": 146,
-		"appearRound": 2,
 		"boss": false
 	},
 	"CloudA": {
@@ -711,7 +657,6 @@
 		"defence": 10,
 		"damage": 2,
 		"defaultCost": 2.5,
-		"appearRound": 2,
 		"boss": false
 	},
 	"CloudB": {
@@ -724,7 +669,6 @@
 		"defence": 13,
 		"damage": 2,
 		"defaultCost": 87.5,
-		"appearRound": 2,
 		"boss": false
 	},
 	"CloudC": {
@@ -737,7 +681,6 @@
 		"defence": 16,
 		"damage": 2,
 		"defaultCost": 172.5,
-		"appearRound": 2,
 		"boss": false
 	},
 	"CloudD": {
@@ -750,7 +693,6 @@
 		"defence": 20,
 		"damage": 2,
 		"defaultCost": 257.5,
-		"appearRound": 2,
 		"boss": false
 	},
 	"CoffinA": {
@@ -763,7 +705,6 @@
 		"defence": 20,
 		"damage": 3,
 		"defaultCost": 4.5,
-		"appearRound": 4,
 		"boss": false
 	},
 	"CoffinB": {
@@ -776,7 +717,6 @@
 		"defence": 26,
 		"damage": 3,
 		"defaultCost": 157.5,
-		"appearRound": 4,
 		"boss": false
 	},
 	"CoffinC": {
@@ -789,7 +729,6 @@
 		"defence": 33,
 		"damage": 3,
 		"defaultCost": 310.5,
-		"appearRound": 4,
 		"boss": false
 	},
 	"CoffinD": {
@@ -802,7 +741,6 @@
 		"defence": 40,
 		"damage": 3,
 		"defaultCost": 463.5,
-		"appearRound": 4,
 		"boss": false
 	},
 	"CountA": {
@@ -815,7 +753,6 @@
 		"defence": 35,
 		"damage": 5,
 		"defaultCost": 13,
-		"appearRound": 13,
 		"boss": false
 	},
 	"CrabA": {
@@ -828,7 +765,6 @@
 		"defence": 40,
 		"damage": 3,
 		"defaultCost": 6,
-		"appearRound": 6,
 		"boss": false
 	},
 	"CrabB": {
@@ -841,7 +777,6 @@
 		"defence": 52,
 		"damage": 3,
 		"defaultCost": 186,
-		"appearRound": 6,
 		"boss": false
 	},
 	"CrabC": {
@@ -854,7 +789,6 @@
 		"defence": 64,
 		"damage": 3,
 		"defaultCost": 366,
-		"appearRound": 6,
 		"boss": false
 	},
 	"CrabD": {
@@ -867,7 +801,6 @@
 		"defence": 76,
 		"damage": 3,
 		"defaultCost": 546,
-		"appearRound": 6,
 		"boss": false
 	},
 	"CrabE": {
@@ -880,7 +813,6 @@
 		"defence": 88,
 		"damage": 3,
 		"defaultCost": 726,
-		"appearRound": 6,
 		"boss": false
 	},
 	"CrabF": {
@@ -893,7 +825,6 @@
 		"defence": 100,
 		"damage": 3,
 		"defaultCost": 906,
-		"appearRound": 6,
 		"boss": false
 	},
 	"DiscA": {
@@ -906,7 +837,6 @@
 		"defence": 15,
 		"damage": 4,
 		"defaultCost": 12,
-		"appearRound": 12,
 		"boss": false
 	},
 	"DogA": {
@@ -919,7 +849,6 @@
 		"defence": 15,
 		"damage": 2,
 		"defaultCost": 2,
-		"appearRound": 2,
 		"boss": false
 	},
 	"DogB": {
@@ -932,7 +861,6 @@
 		"defence": 19,
 		"damage": 2,
 		"defaultCost": 58,
-		"appearRound": 2,
 		"boss": false
 	},
 	"DogC": {
@@ -945,7 +873,6 @@
 		"defence": 23,
 		"damage": 2,
 		"defaultCost": 114,
-		"appearRound": 2,
 		"boss": false
 	},
 	"DogD": {
@@ -958,7 +885,6 @@
 		"defence": 27,
 		"damage": 2,
 		"defaultCost": 170,
-		"appearRound": 2,
 		"boss": false
 	},
 	"DogE": {
@@ -971,7 +897,6 @@
 		"defence": 31,
 		"damage": 2,
 		"defaultCost": 226,
-		"appearRound": 2,
 		"boss": false
 	},
 	"DogF": {
@@ -984,7 +909,6 @@
 		"defence": 36,
 		"damage": 2,
 		"defaultCost": 282,
-		"appearRound": 2,
 		"boss": false
 	},
 	"DogG": {
@@ -997,7 +921,6 @@
 		"defence": 40,
 		"damage": 2,
 		"defaultCost": 338,
-		"appearRound": 2,
 		"boss": false
 	},
 	"DuckA": {
@@ -1010,7 +933,6 @@
 		"defence": 10,
 		"damage": 2,
 		"defaultCost": 2,
-		"appearRound": 2,
 		"boss": false
 	},
 	"DuckB": {
@@ -1023,7 +945,6 @@
 		"defence": 13,
 		"damage": 2,
 		"defaultCost": 74,
-		"appearRound": 2,
 		"boss": false
 	},
 	"DuckC": {
@@ -1036,7 +957,6 @@
 		"defence": 17,
 		"damage": 2,
 		"defaultCost": 146,
-		"appearRound": 2,
 		"boss": false
 	},
 	"DwarfA": {
@@ -1049,7 +969,6 @@
 		"defence": 25,
 		"damage": 4,
 		"defaultCost": 7.5,
-		"appearRound": 7,
 		"boss": false
 	},
 	"DwarfB": {
@@ -1062,7 +981,6 @@
 		"defence": 32,
 		"damage": 4,
 		"defaultCost": 232.5,
-		"appearRound": 7,
 		"boss": false
 	},
 	"DwarfC": {
@@ -1075,7 +993,6 @@
 		"defence": 40,
 		"damage": 4,
 		"defaultCost": 457.5,
-		"appearRound": 7,
 		"boss": false
 	},
 	"DwarfD": {
@@ -1088,7 +1005,6 @@
 		"defence": 47,
 		"damage": 4,
 		"defaultCost": 682.5,
-		"appearRound": 7,
 		"boss": false
 	},
 	"DwarfE": {
@@ -1101,7 +1017,6 @@
 		"defence": 55,
 		"damage": 4,
 		"defaultCost": 907.5,
-		"appearRound": 7,
 		"boss": false
 	},
 	"DwarfF": {
@@ -1114,7 +1029,6 @@
 		"defence": 62,
 		"damage": 4,
 		"defaultCost": 1132.5,
-		"appearRound": 7,
 		"boss": false
 	},
 	"DyeA": {
@@ -1127,7 +1041,6 @@
 		"defence": 15,
 		"damage": 2,
 		"defaultCost": 4,
-		"appearRound": 4,
 		"boss": false
 	},
 	"DyeB": {
@@ -1140,7 +1053,6 @@
 		"defence": 20,
 		"damage": 2,
 		"defaultCost": 140,
-		"appearRound": 4,
 		"boss": false
 	},
 	"DyeC": {
@@ -1153,7 +1065,6 @@
 		"defence": 25,
 		"damage": 2,
 		"defaultCost": 276,
-		"appearRound": 4,
 		"boss": false
 	},
 	"DyeD": {
@@ -1166,7 +1077,6 @@
 		"defence": 30,
 		"damage": 2,
 		"defaultCost": 412,
-		"appearRound": 4,
 		"boss": false
 	},
 	"EarthA": {
@@ -1179,7 +1089,6 @@
 		"defence": 60,
 		"damage": 2,
 		"defaultCost": 8.5,
-		"appearRound": 8,
 		"boss": false
 	},
 	"EarthB": {
@@ -1192,7 +1101,6 @@
 		"defence": 81,
 		"damage": 2,
 		"defaultCost": 314.5,
-		"appearRound": 8,
 		"boss": false
 	},
 	"EarthC": {
@@ -1205,7 +1113,6 @@
 		"defence": 103,
 		"damage": 2,
 		"defaultCost": 620.5,
-		"appearRound": 8,
 		"boss": false
 	},
 	"EarthSmallA": {
@@ -1218,7 +1125,6 @@
 		"defence": 50,
 		"damage": 2,
 		"defaultCost": 6,
-		"appearRound": 6,
 		"boss": false
 	},
 	"EarthSmallB": {
@@ -1231,7 +1137,6 @@
 		"defence": 68,
 		"damage": 2,
 		"defaultCost": 222,
-		"appearRound": 6,
 		"boss": false
 	},
 	"EarthSmallC": {
@@ -1244,7 +1149,6 @@
 		"defence": 86,
 		"damage": 2,
 		"defaultCost": 438,
-		"appearRound": 6,
 		"boss": false
 	},
 	"EarthSmallerA": {
@@ -1257,7 +1161,6 @@
 		"defence": 40,
 		"damage": 2,
 		"defaultCost": 4,
-		"appearRound": 4,
 		"boss": false
 	},
 	"EarthSmallerB": {
@@ -1270,7 +1173,6 @@
 		"defence": 54,
 		"damage": 2,
 		"defaultCost": 148,
-		"appearRound": 4,
 		"boss": false
 	},
 	"EarthSmallerC": {
@@ -1283,7 +1185,6 @@
 		"defence": 68,
 		"damage": 2,
 		"defaultCost": 292,
-		"appearRound": 4,
 		"boss": false
 	},
 	"EelA": {
@@ -1296,7 +1197,6 @@
 		"defence": 20,
 		"damage": 4,
 		"defaultCost": 3.5,
-		"appearRound": 3,
 		"boss": false
 	},
 	"EelB": {
@@ -1309,7 +1209,6 @@
 		"defence": 26,
 		"damage": 4,
 		"defaultCost": 122.5,
-		"appearRound": 3,
 		"boss": false
 	},
 	"EelC": {
@@ -1322,7 +1221,6 @@
 		"defence": 33,
 		"damage": 4,
 		"defaultCost": 241.5,
-		"appearRound": 3,
 		"boss": false
 	},
 	"EelD": {
@@ -1335,7 +1233,6 @@
 		"defence": 40,
 		"damage": 4,
 		"defaultCost": 360.5,
-		"appearRound": 3,
 		"boss": false
 	},
 	"ElementalOrbA": {
@@ -1348,7 +1245,6 @@
 		"defence": 30,
 		"damage": 4,
 		"defaultCost": 8,
-		"appearRound": 8,
 		"boss": false
 	},
 	"ElementalOrbB": {
@@ -1361,7 +1257,6 @@
 		"defence": 41,
 		"damage": 4,
 		"defaultCost": 312,
-		"appearRound": 8,
 		"boss": false
 	},
 	"EyeA": {
@@ -1374,7 +1269,6 @@
 		"defence": 25,
 		"damage": 4,
 		"defaultCost": 7,
-		"appearRound": 7,
 		"boss": false
 	},
 	"EyeB": {
@@ -1387,7 +1281,6 @@
 		"defence": 33,
 		"damage": 4,
 		"defaultCost": 245,
-		"appearRound": 7,
 		"boss": false
 	},
 	"EyeC": {
@@ -1400,7 +1293,6 @@
 		"defence": 42,
 		"damage": 4,
 		"defaultCost": 483,
-		"appearRound": 7,
 		"boss": false
 	},
 	"EyeD": {
@@ -1413,7 +1305,6 @@
 		"defence": 50,
 		"damage": 4,
 		"defaultCost": 721,
-		"appearRound": 7,
 		"boss": false
 	},
 	"EyeBallA": {
@@ -1426,7 +1317,6 @@
 		"defence": 20,
 		"damage": 2,
 		"defaultCost": 5,
-		"appearRound": 5,
 		"boss": false
 	},
 	"EyeBallB": {
@@ -1439,7 +1329,6 @@
 		"defence": 27,
 		"damage": 2,
 		"defaultCost": 185,
-		"appearRound": 5,
 		"boss": false
 	},
 	"EyeBallC": {
@@ -1452,7 +1341,6 @@
 		"defence": 34,
 		"damage": 2,
 		"defaultCost": 365,
-		"appearRound": 5,
 		"boss": false
 	},
 	"FactoryA": {
@@ -1465,7 +1353,6 @@
 		"defence": 30,
 		"damage": 4,
 		"defaultCost": 13,
-		"appearRound": 13,
 		"boss": false
 	},
 	"FactoryB": {
@@ -1478,7 +1365,6 @@
 		"defence": 41,
 		"damage": 4,
 		"defaultCost": 507,
-		"appearRound": 13,
 		"boss": false
 	},
 	"FireSmallA": {
@@ -1491,7 +1377,6 @@
 		"defence": 0,
 		"damage": 3,
 		"defaultCost": 3,
-		"appearRound": 3,
 		"boss": false
 	},
 	"GhastA": {
@@ -1504,7 +1389,6 @@
 		"defence": 0,
 		"damage": 3,
 		"defaultCost": 5,
-		"appearRound": 5,
 		"boss": false
 	},
 	"GhastB": {
@@ -1517,7 +1401,6 @@
 		"defence": 0,
 		"damage": 3,
 		"defaultCost": 185,
-		"appearRound": 5,
 		"boss": false
 	},
 	"GhastC": {
@@ -1530,7 +1413,6 @@
 		"defence": 0,
 		"damage": 3,
 		"defaultCost": 365,
-		"appearRound": 5,
 		"boss": false
 	},
 	"GnomeA": {
@@ -1543,7 +1425,6 @@
 		"defence": 20,
 		"damage": 4,
 		"defaultCost": 8.5,
-		"appearRound": 8,
 		"boss": false
 	},
 	"GnomeB": {
@@ -1556,7 +1437,6 @@
 		"defence": 27,
 		"damage": 4,
 		"defaultCost": 314.5,
-		"appearRound": 8,
 		"boss": false
 	},
 	"GnomeC": {
@@ -1569,7 +1449,6 @@
 		"defence": 34,
 		"damage": 4,
 		"defaultCost": 620.5,
-		"appearRound": 8,
 		"boss": false
 	},
 	"HareA": {
@@ -1582,7 +1461,6 @@
 		"defence": 5,
 		"damage": 4,
 		"defaultCost": 6,
-		"appearRound": 6,
 		"boss": false
 	},
 	"HareB": {
@@ -1595,7 +1473,6 @@
 		"defence": 6,
 		"damage": 4,
 		"defaultCost": 210,
-		"appearRound": 6,
 		"boss": false
 	},
 	"HareC": {
@@ -1608,7 +1485,6 @@
 		"defence": 8,
 		"damage": 4,
 		"defaultCost": 414,
-		"appearRound": 6,
 		"boss": false
 	},
 	"HareD": {
@@ -1621,7 +1497,6 @@
 		"defence": 10,
 		"damage": 4,
 		"defaultCost": 618,
-		"appearRound": 6,
 		"boss": false
 	},
 	"HeadA": {
@@ -1634,7 +1509,6 @@
 		"defence": 30,
 		"damage": 3,
 		"defaultCost": 8.5,
-		"appearRound": 8,
 		"boss": false
 	},
 	"HeadB": {
@@ -1647,7 +1521,6 @@
 		"defence": 40,
 		"damage": 3,
 		"defaultCost": 297.5,
-		"appearRound": 8,
 		"boss": false
 	},
 	"HeadC": {
@@ -1660,7 +1533,6 @@
 		"defence": 50,
 		"damage": 3,
 		"defaultCost": 586.5,
-		"appearRound": 8,
 		"boss": false
 	},
 	"HeadD": {
@@ -1673,7 +1545,6 @@
 		"defence": 60,
 		"damage": 3,
 		"defaultCost": 875.5,
-		"appearRound": 8,
 		"boss": false
 	},
 	"HulkA": {
@@ -1686,7 +1557,6 @@
 		"defence": 30,
 		"damage": 4,
 		"defaultCost": 10.5,
-		"appearRound": 10,
 		"boss": false
 	},
 	"HulkB": {
@@ -1699,7 +1569,6 @@
 		"defence": 41,
 		"damage": 4,
 		"defaultCost": 409.5,
-		"appearRound": 10,
 		"boss": false
 	},
 	"KlackonA": {
@@ -1712,7 +1581,6 @@
 		"defence": 20,
 		"damage": 4,
 		"defaultCost": 14,
-		"appearRound": 14,
 		"boss": false
 	},
 	"KlackonB": {
@@ -1725,7 +1593,6 @@
 		"defence": 26,
 		"damage": 4,
 		"defaultCost": 434,
-		"appearRound": 14,
 		"boss": false
 	},
 	"KlackonC": {
@@ -1738,7 +1605,6 @@
 		"defence": 32,
 		"damage": 4,
 		"defaultCost": 854,
-		"appearRound": 14,
 		"boss": false
 	},
 	"KlackonD": {
@@ -1751,7 +1617,6 @@
 		"defence": 38,
 		"damage": 4,
 		"defaultCost": 1274,
-		"appearRound": 14,
 		"boss": false
 	},
 	"KlackonE": {
@@ -1764,7 +1629,6 @@
 		"defence": 44,
 		"damage": 4,
 		"defaultCost": 1694,
-		"appearRound": 14,
 		"boss": false
 	},
 	"KlackonF": {
@@ -1777,7 +1641,6 @@
 		"defence": 50,
 		"damage": 4,
 		"defaultCost": 2114,
-		"appearRound": 14,
 		"boss": false
 	},
 	"LurkerA": {
@@ -1790,7 +1653,6 @@
 		"defence": 50,
 		"damage": 3,
 		"defaultCost": 5.5,
-		"appearRound": 5,
 		"boss": false
 	},
 	"LurkerB": {
@@ -1803,7 +1665,6 @@
 		"defence": 68,
 		"damage": 3,
 		"defaultCost": 203.5,
-		"appearRound": 5,
 		"boss": false
 	},
 	"LurkerC": {
@@ -1816,7 +1677,6 @@
 		"defence": 86,
 		"damage": 3,
 		"defaultCost": 401.5,
-		"appearRound": 5,
 		"boss": false
 	},
 	"MachineA": {
@@ -1829,7 +1689,6 @@
 		"defence": 30,
 		"damage": 3,
 		"defaultCost": 10.5,
-		"appearRound": 10,
 		"boss": false
 	},
 	"MaskA": {
@@ -1842,7 +1701,6 @@
 		"defence": 25,
 		"damage": 3,
 		"defaultCost": 8.5,
-		"appearRound": 8,
 		"boss": false
 	},
 	"MaskB": {
@@ -1855,7 +1713,6 @@
 		"defence": 33,
 		"damage": 3,
 		"defaultCost": 297.5,
-		"appearRound": 8,
 		"boss": false
 	},
 	"MaskC": {
@@ -1868,7 +1725,6 @@
 		"defence": 42,
 		"damage": 3,
 		"defaultCost": 586.5,
-		"appearRound": 8,
 		"boss": false
 	},
 	"MaskD": {
@@ -1881,7 +1737,6 @@
 		"defence": 50,
 		"damage": 3,
 		"defaultCost": 875.5,
-		"appearRound": 8,
 		"boss": false
 	},
 	"MonolithA": {
@@ -1894,7 +1749,6 @@
 		"defence": 20,
 		"damage": 3,
 		"defaultCost": 6,
-		"appearRound": 6,
 		"boss": false
 	},
 	"MonolithB": {
@@ -1907,7 +1761,6 @@
 		"defence": 23,
 		"damage": 3,
 		"defaultCost": 114,
-		"appearRound": 6,
 		"boss": false
 	},
 	"MonolithC": {
@@ -1920,7 +1773,6 @@
 		"defence": 27,
 		"damage": 3,
 		"defaultCost": 222,
-		"appearRound": 6,
 		"boss": false
 	},
 	"MonolithD": {
@@ -1933,7 +1785,6 @@
 		"defence": 30,
 		"damage": 3,
 		"defaultCost": 330,
-		"appearRound": 6,
 		"boss": false
 	},
 	"MonolithE": {
@@ -1946,7 +1797,6 @@
 		"defence": 34,
 		"damage": 3,
 		"defaultCost": 438,
-		"appearRound": 6,
 		"boss": false
 	},
 	"MonolithF": {
@@ -1959,7 +1809,6 @@
 		"defence": 38,
 		"damage": 3,
 		"defaultCost": 546,
-		"appearRound": 6,
 		"boss": false
 	},
 	"MonolithG": {
@@ -1972,7 +1821,6 @@
 		"defence": 41,
 		"damage": 3,
 		"defaultCost": 654,
-		"appearRound": 6,
 		"boss": false
 	},
 	"MonolithH": {
@@ -1985,7 +1833,6 @@
 		"defence": 45,
 		"damage": 3,
 		"defaultCost": 762,
-		"appearRound": 6,
 		"boss": false
 	},
 	"MonolithI": {
@@ -1998,7 +1845,6 @@
 		"defence": 48,
 		"damage": 3,
 		"defaultCost": 870,
-		"appearRound": 6,
 		"boss": false
 	},
 	"MonolithJ": {
@@ -2011,7 +1857,6 @@
 		"defence": 52,
 		"damage": 3,
 		"defaultCost": 978,
-		"appearRound": 6,
 		"boss": false
 	},
 	"MonolithK": {
@@ -2024,7 +1869,6 @@
 		"defence": 56,
 		"damage": 3,
 		"defaultCost": 1086,
-		"appearRound": 6,
 		"boss": false
 	},
 	"MonolithL": {
@@ -2037,7 +1881,6 @@
 		"defence": 59,
 		"damage": 3,
 		"defaultCost": 1194,
-		"appearRound": 6,
 		"boss": false
 	},
 	"MothA": {
@@ -2050,7 +1893,6 @@
 		"defence": 15,
 		"damage": 2,
 		"defaultCost": 3.5,
-		"appearRound": 3,
 		"boss": false
 	},
 	"MothB": {
@@ -2063,7 +1905,6 @@
 		"defence": 19,
 		"damage": 2,
 		"defaultCost": 115.5,
-		"appearRound": 3,
 		"boss": false
 	},
 	"MothC": {
@@ -2076,7 +1917,6 @@
 		"defence": 24,
 		"damage": 2,
 		"defaultCost": 227.5,
-		"appearRound": 3,
 		"boss": false
 	},
 	"MothD": {
@@ -2089,7 +1929,6 @@
 		"defence": 29,
 		"damage": 2,
 		"defaultCost": 339.5,
-		"appearRound": 3,
 		"boss": false
 	},
 	"MothE": {
@@ -2102,7 +1941,6 @@
 		"defence": 34,
 		"damage": 2,
 		"defaultCost": 451.5,
-		"appearRound": 3,
 		"boss": false
 	},
 	"MouthA": {
@@ -2115,7 +1953,6 @@
 		"defence": 15,
 		"damage": 3,
 		"defaultCost": 5,
-		"appearRound": 5,
 		"boss": false
 	},
 	"MouthB": {
@@ -2128,7 +1965,6 @@
 		"defence": 20,
 		"damage": 3,
 		"defaultCost": 185,
-		"appearRound": 5,
 		"boss": false
 	},
 	"MouthC": {
@@ -2141,7 +1977,6 @@
 		"defence": 25,
 		"damage": 3,
 		"defaultCost": 365,
-		"appearRound": 5,
 		"boss": false
 	},
 	"MummyA": {
@@ -2154,7 +1989,6 @@
 		"defence": 25,
 		"damage": 3,
 		"defaultCost": 7,
-		"appearRound": 7,
 		"boss": false
 	},
 	"MummyB": {
@@ -2167,7 +2001,6 @@
 		"defence": 34,
 		"damage": 3,
 		"defaultCost": 259,
-		"appearRound": 7,
 		"boss": false
 	},
 	"MummyC": {
@@ -2180,7 +2013,6 @@
 		"defence": 43,
 		"damage": 3,
 		"defaultCost": 511,
-		"appearRound": 7,
 		"boss": false
 	},
 	"MushroomA": {
@@ -2193,7 +2025,6 @@
 		"defence": 15,
 		"damage": 1,
 		"defaultCost": 1,
-		"appearRound": 1,
 		"boss": false
 	},
 	"MushroomB": {
@@ -2206,7 +2037,6 @@
 		"defence": 20,
 		"damage": 1,
 		"defaultCost": 39,
-		"appearRound": 1,
 		"boss": false
 	},
 	"OrbA": {
@@ -2219,7 +2049,6 @@
 		"defence": 40,
 		"damage": 3,
 		"defaultCost": 7,
-		"appearRound": 7,
 		"boss": false
 	},
 	"OrbB": {
@@ -2232,7 +2061,6 @@
 		"defence": 53,
 		"damage": 3,
 		"defaultCost": 245,
-		"appearRound": 7,
 		"boss": false
 	},
 	"OrbC": {
@@ -2245,7 +2073,6 @@
 		"defence": 67,
 		"damage": 3,
 		"defaultCost": 483,
-		"appearRound": 7,
 		"boss": false
 	},
 	"OrbD": {
@@ -2258,7 +2085,6 @@
 		"defence": 80,
 		"damage": 3,
 		"defaultCost": 721,
-		"appearRound": 7,
 		"boss": false
 	},
 	"PotionA": {
@@ -2271,7 +2097,6 @@
 		"defence": 5,
 		"damage": 3,
 		"defaultCost": 6.5,
-		"appearRound": 6,
 		"boss": false
 	},
 	"PotionB": {
@@ -2284,7 +2109,6 @@
 		"defence": 5,
 		"damage": 3,
 		"defaultCost": 123.5,
-		"appearRound": 6,
 		"boss": false
 	},
 	"PotionC": {
@@ -2297,7 +2121,6 @@
 		"defence": 6,
 		"damage": 3,
 		"defaultCost": 240.5,
-		"appearRound": 6,
 		"boss": false
 	},
 	"PotionD": {
@@ -2310,7 +2133,6 @@
 		"defence": 7,
 		"damage": 3,
 		"defaultCost": 357.5,
-		"appearRound": 6,
 		"boss": false
 	},
 	"PotionE": {
@@ -2323,7 +2145,6 @@
 		"defence": 8,
 		"damage": 3,
 		"defaultCost": 474.5,
-		"appearRound": 6,
 		"boss": false
 	},
 	"PotionF": {
@@ -2336,7 +2157,6 @@
 		"defence": 9,
 		"damage": 3,
 		"defaultCost": 591.5,
-		"appearRound": 6,
 		"boss": false
 	},
 	"PotionG": {
@@ -2349,7 +2169,6 @@
 		"defence": 10,
 		"damage": 3,
 		"defaultCost": 708.5,
-		"appearRound": 6,
 		"boss": false
 	},
 	"PotionH": {
@@ -2362,7 +2181,6 @@
 		"defence": 11,
 		"damage": 3,
 		"defaultCost": 825.5,
-		"appearRound": 6,
 		"boss": false
 	},
 	"PotionI": {
@@ -2375,7 +2193,6 @@
 		"defence": 12,
 		"damage": 3,
 		"defaultCost": 942.5,
-		"appearRound": 6,
 		"boss": false
 	},
 	"PotionJ": {
@@ -2388,7 +2205,6 @@
 		"defence": 13,
 		"damage": 3,
 		"defaultCost": 1059.5,
-		"appearRound": 6,
 		"boss": false
 	},
 	"PotionK": {
@@ -2401,7 +2217,6 @@
 		"defence": 14,
 		"damage": 3,
 		"defaultCost": 1176.5,
-		"appearRound": 6,
 		"boss": false
 	},
 	"PotionL": {
@@ -2414,7 +2229,6 @@
 		"defence": 14,
 		"damage": 3,
 		"defaultCost": 1293.5,
-		"appearRound": 6,
 		"boss": false
 	},
 	"PterodactylA": {
@@ -2427,7 +2241,6 @@
 		"defence": 15,
 		"damage": 3,
 		"defaultCost": 7,
-		"appearRound": 7,
 		"boss": false
 	},
 	"PterodactylB": {
@@ -2440,7 +2253,6 @@
 		"defence": 18,
 		"damage": 3,
 		"defaultCost": 189,
-		"appearRound": 7,
 		"boss": false
 	},
 	"PterodactylC": {
@@ -2453,7 +2265,6 @@
 		"defence": 22,
 		"damage": 3,
 		"defaultCost": 371,
-		"appearRound": 7,
 		"boss": false
 	},
 	"PterodactylD": {
@@ -2466,7 +2277,6 @@
 		"defence": 26,
 		"damage": 3,
 		"defaultCost": 553,
-		"appearRound": 7,
 		"boss": false
 	},
 	"PterodactylE": {
@@ -2479,7 +2289,6 @@
 		"defence": 30,
 		"damage": 3,
 		"defaultCost": 735,
-		"appearRound": 7,
 		"boss": false
 	},
 	"PterodactylF": {
@@ -2492,7 +2301,6 @@
 		"defence": 34,
 		"damage": 3,
 		"defaultCost": 917,
-		"appearRound": 7,
 		"boss": false
 	},
 	"PterodactylG": {
@@ -2505,7 +2313,6 @@
 		"defence": 38,
 		"damage": 3,
 		"defaultCost": 1099,
-		"appearRound": 7,
 		"boss": false
 	},
 	"PterodactylH": {
@@ -2518,7 +2325,6 @@
 		"defence": 42,
 		"damage": 3,
 		"defaultCost": 1281,
-		"appearRound": 7,
 		"boss": false
 	},
 	"PuddleA": {
@@ -2531,7 +2337,6 @@
 		"defence": 10,
 		"damage": 3,
 		"defaultCost": 4.5,
-		"appearRound": 4,
 		"boss": false
 	},
 	"PuddleB": {
@@ -2544,7 +2349,6 @@
 		"defence": 13,
 		"damage": 3,
 		"defaultCost": 166.5,
-		"appearRound": 4,
 		"boss": false
 	},
 	"PuddleC": {
@@ -2557,7 +2361,6 @@
 		"defence": 17,
 		"damage": 3,
 		"defaultCost": 328.5,
-		"appearRound": 4,
 		"boss": false
 	},
 	"PyramidA": {
@@ -2570,7 +2373,6 @@
 		"defence": 25,
 		"damage": 3,
 		"defaultCost": 6.5,
-		"appearRound": 6,
 		"boss": false
 	},
 	"PyramidB": {
@@ -2583,7 +2385,6 @@
 		"defence": 34,
 		"damage": 3,
 		"defaultCost": 253.5,
-		"appearRound": 6,
 		"boss": false
 	},
 	"ReaperA": {
@@ -2596,7 +2397,6 @@
 		"defence": 40,
 		"damage": 5,
 		"defaultCost": 18.5,
-		"appearRound": 18,
 		"boss": false
 	},
 	"RobotA": {
@@ -2609,7 +2409,6 @@
 		"defence": 30,
 		"damage": 4,
 		"defaultCost": 11,
-		"appearRound": 11,
 		"boss": false
 	},
 	"RobotB": {
@@ -2622,7 +2421,6 @@
 		"defence": 40,
 		"damage": 4,
 		"defaultCost": 385,
-		"appearRound": 11,
 		"boss": false
 	},
 	"RobotC": {
@@ -2635,7 +2433,6 @@
 		"defence": 50,
 		"damage": 4,
 		"defaultCost": 759,
-		"appearRound": 11,
 		"boss": false
 	},
 	"RobotD": {
@@ -2648,7 +2445,6 @@
 		"defence": 60,
 		"damage": 4,
 		"defaultCost": 1133,
-		"appearRound": 11,
 		"boss": false
 	},
 	"ScorpionA": {
@@ -2661,7 +2457,6 @@
 		"defence": 15,
 		"damage": 3,
 		"defaultCost": 7.5,
-		"appearRound": 7,
 		"boss": false
 	},
 	"ScorpionB": {
@@ -2674,7 +2469,6 @@
 		"defence": 20,
 		"damage": 3,
 		"defaultCost": 277.5,
-		"appearRound": 7,
 		"boss": false
 	},
 	"ScorpionC": {
@@ -2687,7 +2481,6 @@
 		"defence": 25,
 		"damage": 3,
 		"defaultCost": 547.5,
-		"appearRound": 7,
 		"boss": false
 	},
 	"SentryA": {
@@ -2700,7 +2493,6 @@
 		"defence": 25,
 		"damage": 3,
 		"defaultCost": 4.5,
-		"appearRound": 4,
 		"boss": false
 	},
 	"SentryB": {
@@ -2713,7 +2505,6 @@
 		"defence": 34,
 		"damage": 3,
 		"defaultCost": 166.5,
-		"appearRound": 4,
 		"boss": false
 	},
 	"SentryC": {
@@ -2726,7 +2517,6 @@
 		"defence": 43,
 		"damage": 3,
 		"defaultCost": 328.5,
-		"appearRound": 4,
 		"boss": false
 	},
 	"SentryCopterA": {
@@ -2739,7 +2529,6 @@
 		"defence": 25,
 		"damage": 3,
 		"defaultCost": 5,
-		"appearRound": 5,
 		"boss": false
 	},
 	"SentryCopterB": {
@@ -2752,7 +2541,6 @@
 		"defence": 34,
 		"damage": 3,
 		"defaultCost": 185,
-		"appearRound": 5,
 		"boss": false
 	},
 	"SentryCopterC": {
@@ -2765,7 +2553,6 @@
 		"defence": 43,
 		"damage": 3,
 		"defaultCost": 365,
-		"appearRound": 5,
 		"boss": false
 	},
 	"ShieldA": {
@@ -2778,7 +2565,6 @@
 		"defence": 60,
 		"damage": 1,
 		"defaultCost": 6,
-		"appearRound": 6,
 		"boss": false
 	},
 	"ShieldB": {
@@ -2791,7 +2577,6 @@
 		"defence": 78,
 		"damage": 1,
 		"defaultCost": 186,
-		"appearRound": 6,
 		"boss": false
 	},
 	"ShieldC": {
@@ -2804,7 +2589,6 @@
 		"defence": 96,
 		"damage": 1,
 		"defaultCost": 366,
-		"appearRound": 6,
 		"boss": false
 	},
 	"ShieldD": {
@@ -2817,7 +2601,6 @@
 		"defence": 114,
 		"damage": 1,
 		"defaultCost": 546,
-		"appearRound": 6,
 		"boss": false
 	},
 	"ShieldE": {
@@ -2830,7 +2613,6 @@
 		"defence": 132,
 		"damage": 1,
 		"defaultCost": 726,
-		"appearRound": 6,
 		"boss": false
 	},
 	"ShieldF": {
@@ -2843,7 +2625,6 @@
 		"defence": 150,
 		"damage": 1,
 		"defaultCost": 906,
-		"appearRound": 6,
 		"boss": false
 	},
 	"SkeletonA": {
@@ -2856,7 +2637,6 @@
 		"defence": 20,
 		"damage": 3,
 		"defaultCost": 6,
-		"appearRound": 6,
 		"boss": false
 	},
 	"SkeletonB": {
@@ -2869,7 +2649,6 @@
 		"defence": 26,
 		"damage": 3,
 		"defaultCost": 210,
-		"appearRound": 6,
 		"boss": false
 	},
 	"SkeletonC": {
@@ -2882,7 +2661,6 @@
 		"defence": 33,
 		"damage": 3,
 		"defaultCost": 414,
-		"appearRound": 6,
 		"boss": false
 	},
 	"SkeletonD": {
@@ -2895,7 +2673,6 @@
 		"defence": 40,
 		"damage": 3,
 		"defaultCost": 618,
-		"appearRound": 6,
 		"boss": false
 	},
 	"SkullA": {
@@ -2908,7 +2685,6 @@
 		"defence": 15,
 		"damage": 3,
 		"defaultCost": 5,
-		"appearRound": 5,
 		"boss": false
 	},
 	"SkullB": {
@@ -2921,7 +2697,6 @@
 		"defence": 20,
 		"damage": 3,
 		"defaultCost": 175,
-		"appearRound": 5,
 		"boss": false
 	},
 	"SkullC": {
@@ -2934,7 +2709,6 @@
 		"defence": 25,
 		"damage": 3,
 		"defaultCost": 345,
-		"appearRound": 5,
 		"boss": false
 	},
 	"SkullD": {
@@ -2947,7 +2721,6 @@
 		"defence": 30,
 		"damage": 3,
 		"defaultCost": 515,
-		"appearRound": 5,
 		"boss": false
 	},
 	"SkullFlamingA": {
@@ -2960,7 +2733,6 @@
 		"defence": 15,
 		"damage": 5,
 		"defaultCost": 6,
-		"appearRound": 6,
 		"boss": false
 	},
 	"SkullFlamingB": {
@@ -2973,7 +2745,6 @@
 		"defence": 20,
 		"damage": 5,
 		"defaultCost": 234,
-		"appearRound": 6,
 		"boss": false
 	},
 	"SlimeA": {
@@ -2986,7 +2757,6 @@
 		"defence": 10,
 		"damage": 1,
 		"defaultCost": 2,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SlimeB": {
@@ -2999,7 +2769,6 @@
 		"defence": 11,
 		"damage": 1,
 		"defaultCost": 22,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SlimeC": {
@@ -3012,7 +2781,6 @@
 		"defence": 12,
 		"damage": 1,
 		"defaultCost": 42,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SlimeD": {
@@ -3025,7 +2793,6 @@
 		"defence": 13,
 		"damage": 1,
 		"defaultCost": 62,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SlimeE": {
@@ -3038,7 +2805,6 @@
 		"defence": 14,
 		"damage": 1,
 		"defaultCost": 82,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SlimeF": {
@@ -3051,7 +2817,6 @@
 		"defence": 15,
 		"damage": 1,
 		"defaultCost": 102,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SlimeG": {
@@ -3064,7 +2829,6 @@
 		"defence": 16,
 		"damage": 1,
 		"defaultCost": 122,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SlimeH": {
@@ -3077,7 +2841,6 @@
 		"defence": 17,
 		"damage": 1,
 		"defaultCost": 142,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SlimeI": {
@@ -3090,7 +2853,6 @@
 		"defence": 18,
 		"damage": 1,
 		"defaultCost": 162,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SlimeJ": {
@@ -3103,7 +2865,6 @@
 		"defence": 19,
 		"damage": 1,
 		"defaultCost": 182,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SlimeK": {
@@ -3116,7 +2877,6 @@
 		"defence": 20,
 		"damage": 1,
 		"defaultCost": 202,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SlimeL": {
@@ -3129,7 +2889,6 @@
 		"defence": 21,
 		"damage": 1,
 		"defaultCost": 222,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SlimeM": {
@@ -3142,7 +2901,6 @@
 		"defence": 22,
 		"damage": 1,
 		"defaultCost": 242,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SlimeN": {
@@ -3155,7 +2913,6 @@
 		"defence": 23,
 		"damage": 1,
 		"defaultCost": 262,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SlimeO": {
@@ -3168,7 +2925,6 @@
 		"defence": 24,
 		"damage": 1,
 		"defaultCost": 282,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SlimeP": {
@@ -3181,7 +2937,6 @@
 		"defence": 25,
 		"damage": 1,
 		"defaultCost": 302,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SlimeSmallA": {
@@ -3194,7 +2949,6 @@
 		"defence": 10,
 		"damage": 1,
 		"defaultCost": 1,
-		"appearRound": 1,
 		"boss": false
 	},
 	"SlimeSmallB": {
@@ -3207,7 +2961,6 @@
 		"defence": 12,
 		"damage": 1,
 		"defaultCost": 25,
-		"appearRound": 1,
 		"boss": false
 	},
 	"SlimeSmallC": {
@@ -3220,7 +2973,6 @@
 		"defence": 14,
 		"damage": 1,
 		"defaultCost": 49,
-		"appearRound": 1,
 		"boss": false
 	},
 	"SlimeSmallD": {
@@ -3233,7 +2985,6 @@
 		"defence": 17,
 		"damage": 1,
 		"defaultCost": 73,
-		"appearRound": 1,
 		"boss": false
 	},
 	"SlimeSmallE": {
@@ -3246,7 +2997,6 @@
 		"defence": 19,
 		"damage": 1,
 		"defaultCost": 97,
-		"appearRound": 1,
 		"boss": false
 	},
 	"SlimeSmallF": {
@@ -3259,7 +3009,6 @@
 		"defence": 22,
 		"damage": 1,
 		"defaultCost": 121,
-		"appearRound": 1,
 		"boss": false
 	},
 	"SlimeSmallG": {
@@ -3272,7 +3021,6 @@
 		"defence": 24,
 		"damage": 1,
 		"defaultCost": 145,
-		"appearRound": 1,
 		"boss": false
 	},
 	"SlimeSmallH": {
@@ -3285,7 +3033,6 @@
 		"defence": 26,
 		"damage": 1,
 		"defaultCost": 169,
-		"appearRound": 1,
 		"boss": false
 	},
 	"SlimeSmallI": {
@@ -3298,7 +3045,6 @@
 		"defence": 29,
 		"damage": 1,
 		"defaultCost": 193,
-		"appearRound": 1,
 		"boss": false
 	},
 	"SlimeSquareA": {
@@ -3311,7 +3057,6 @@
 		"defence": 15,
 		"damage": 2,
 		"defaultCost": 3,
-		"appearRound": 3,
 		"boss": false
 	},
 	"SlimeSquareB": {
@@ -3324,7 +3069,6 @@
 		"defence": 17,
 		"damage": 2,
 		"defaultCost": 57,
-		"appearRound": 3,
 		"boss": false
 	},
 	"SlimeSquareC": {
@@ -3337,7 +3081,6 @@
 		"defence": 20,
 		"damage": 2,
 		"defaultCost": 111,
-		"appearRound": 3,
 		"boss": false
 	},
 	"SlimeSquareD": {
@@ -3350,7 +3093,6 @@
 		"defence": 23,
 		"damage": 2,
 		"defaultCost": 165,
-		"appearRound": 3,
 		"boss": false
 	},
 	"SlimeSquareE": {
@@ -3363,7 +3105,6 @@
 		"defence": 25,
 		"damage": 2,
 		"defaultCost": 219,
-		"appearRound": 3,
 		"boss": false
 	},
 	"SlimeSquareF": {
@@ -3376,7 +3117,6 @@
 		"defence": 28,
 		"damage": 2,
 		"defaultCost": 273,
-		"appearRound": 3,
 		"boss": false
 	},
 	"SlimeSquareG": {
@@ -3389,7 +3129,6 @@
 		"defence": 31,
 		"damage": 2,
 		"defaultCost": 327,
-		"appearRound": 3,
 		"boss": false
 	},
 	"SlimeSquareH": {
@@ -3402,7 +3141,6 @@
 		"defence": 33,
 		"damage": 2,
 		"defaultCost": 381,
-		"appearRound": 3,
 		"boss": false
 	},
 	"SlimeSquareI": {
@@ -3415,7 +3153,6 @@
 		"defence": 36,
 		"damage": 2,
 		"defaultCost": 435,
-		"appearRound": 3,
 		"boss": false
 	},
 	"SlimeSquareJ": {
@@ -3428,7 +3165,6 @@
 		"defence": 39,
 		"damage": 2,
 		"defaultCost": 489,
-		"appearRound": 3,
 		"boss": false
 	},
 	"SlimeSquareK": {
@@ -3441,7 +3177,6 @@
 		"defence": 42,
 		"damage": 2,
 		"defaultCost": 543,
-		"appearRound": 3,
 		"boss": false
 	},
 	"SlimeSquareL": {
@@ -3454,7 +3189,6 @@
 		"defence": 44,
 		"damage": 2,
 		"defaultCost": 597,
-		"appearRound": 3,
 		"boss": false
 	},
 	"SlimeSquareSmallA": {
@@ -3467,7 +3201,6 @@
 		"defence": 15,
 		"damage": 2,
 		"defaultCost": 2,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SlimeSquareSmallB": {
@@ -3480,7 +3213,6 @@
 		"defence": 18,
 		"damage": 2,
 		"defaultCost": 54,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SlimeSquareSmallC": {
@@ -3493,7 +3225,6 @@
 		"defence": 22,
 		"damage": 2,
 		"defaultCost": 106,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SlimeSquareSmallD": {
@@ -3506,7 +3237,6 @@
 		"defence": 26,
 		"damage": 2,
 		"defaultCost": 158,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SlimeSquareSmallE": {
@@ -3519,7 +3249,6 @@
 		"defence": 30,
 		"damage": 2,
 		"defaultCost": 210,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SlimeSquareSmallF": {
@@ -3532,7 +3261,6 @@
 		"defence": 34,
 		"damage": 2,
 		"defaultCost": 262,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SlimeSquareSmallG": {
@@ -3545,7 +3273,6 @@
 		"defence": 38,
 		"damage": 2,
 		"defaultCost": 314,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SlimeSquareSmallH": {
@@ -3558,7 +3285,6 @@
 		"defence": 42,
 		"damage": 2,
 		"defaultCost": 366,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SnakeA": {
@@ -3571,7 +3297,6 @@
 		"defence": 20,
 		"damage": 1,
 		"defaultCost": 2,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SnakeB": {
@@ -3584,7 +3309,6 @@
 		"defence": 23,
 		"damage": 1,
 		"defaultCost": 38,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SnakeC": {
@@ -3597,7 +3321,6 @@
 		"defence": 27,
 		"damage": 1,
 		"defaultCost": 74,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SnakeD": {
@@ -3610,7 +3333,6 @@
 		"defence": 30,
 		"damage": 1,
 		"defaultCost": 110,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SnakeE": {
@@ -3623,7 +3345,6 @@
 		"defence": 34,
 		"damage": 1,
 		"defaultCost": 146,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SnakeF": {
@@ -3636,7 +3357,6 @@
 		"defence": 38,
 		"damage": 1,
 		"defaultCost": 182,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SnakeG": {
@@ -3649,7 +3369,6 @@
 		"defence": 41,
 		"damage": 1,
 		"defaultCost": 218,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SnakeH": {
@@ -3662,7 +3381,6 @@
 		"defence": 45,
 		"damage": 1,
 		"defaultCost": 254,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SnakeI": {
@@ -3675,7 +3393,6 @@
 		"defence": 48,
 		"damage": 1,
 		"defaultCost": 290,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SnakeJ": {
@@ -3688,7 +3405,6 @@
 		"defence": 52,
 		"damage": 1,
 		"defaultCost": 326,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SnakeK": {
@@ -3701,7 +3417,6 @@
 		"defence": 56,
 		"damage": 1,
 		"defaultCost": 362,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SnakeL": {
@@ -3714,7 +3429,6 @@
 		"defence": 59,
 		"damage": 1,
 		"defaultCost": 398,
-		"appearRound": 2,
 		"boss": false
 	},
 	"SpaceA": {
@@ -3727,7 +3441,6 @@
 		"defence": 30,
 		"damage": 3,
 		"defaultCost": 23,
-		"appearRound": 23,
 		"boss": false
 	},
 	"SwordA": {
@@ -3740,7 +3453,6 @@
 		"defence": 30,
 		"damage": 4,
 		"defaultCost": 14.5,
-		"appearRound": 14,
 		"boss": false
 	},
 	"SwordB": {
@@ -3753,7 +3465,6 @@
 		"defence": 41,
 		"damage": 4,
 		"defaultCost": 565.5,
-		"appearRound": 14,
 		"boss": false
 	},
 	"WeaselA": {
@@ -3766,7 +3477,6 @@
 		"defence": 25,
 		"damage": 4,
 		"defaultCost": 8,
-		"appearRound": 8,
 		"boss": false
 	},
 	"WeaselB": {
@@ -3779,7 +3489,6 @@
 		"defence": 34,
 		"damage": 4,
 		"defaultCost": 296,
-		"appearRound": 8,
 		"boss": false
 	},
 	"WeaselC": {
@@ -3792,7 +3501,6 @@
 		"defence": 43,
 		"damage": 4,
 		"defaultCost": 584,
-		"appearRound": 8,
 		"boss": false
 	},
 	"WitchA": {
@@ -3805,7 +3513,6 @@
 		"defence": 30,
 		"damage": 4,
 		"defaultCost": 6.5,
-		"appearRound": 6,
 		"boss": false
 	},
 	"WitchB": {
@@ -3818,7 +3525,6 @@
 		"defence": 39,
 		"damage": 4,
 		"defaultCost": 201.5,
-		"appearRound": 6,
 		"boss": false
 	},
 	"WitchC": {
@@ -3831,7 +3537,6 @@
 		"defence": 48,
 		"damage": 4,
 		"defaultCost": 396.5,
-		"appearRound": 6,
 		"boss": false
 	},
 	"WitchD": {
@@ -3844,7 +3549,6 @@
 		"defence": 57,
 		"damage": 4,
 		"defaultCost": 591.5,
-		"appearRound": 6,
 		"boss": false
 	},
 	"WitchE": {
@@ -3857,7 +3561,6 @@
 		"defence": 66,
 		"damage": 4,
 		"defaultCost": 786.5,
-		"appearRound": 6,
 		"boss": false
 	},
 	"WitchF": {
@@ -3870,7 +3573,6 @@
 		"defence": 75,
 		"damage": 4,
 		"defaultCost": 981.5,
-		"appearRound": 6,
 		"boss": false
 	},
 	"WormA": {
@@ -3883,7 +3585,6 @@
 		"defence": 5,
 		"damage": 1,
 		"defaultCost": 0.5,
-		"appearRound": 0,
 		"boss": false
 	},
 	"WormB": {
@@ -3896,7 +3597,6 @@
 		"defence": 6,
 		"damage": 1,
 		"defaultCost": 13.5,
-		"appearRound": 0,
 		"boss": false
 	},
 	"WormC": {
@@ -3909,7 +3609,6 @@
 		"defence": 7,
 		"damage": 1,
 		"defaultCost": 26.5,
-		"appearRound": 0,
 		"boss": false
 	},
 	"WormD": {
@@ -3922,7 +3621,6 @@
 		"defence": 8,
 		"damage": 1,
 		"defaultCost": 39.5,
-		"appearRound": 0,
 		"boss": false
 	},
 	"WormE": {
@@ -3935,7 +3633,6 @@
 		"defence": 10,
 		"damage": 1,
 		"defaultCost": 52.5,
-		"appearRound": 0,
 		"boss": false
 	},
 	"WormF": {
@@ -3948,7 +3645,6 @@
 		"defence": 11,
 		"damage": 1,
 		"defaultCost": 65.5,
-		"appearRound": 0,
 		"boss": false
 	},
 	"WormG": {
@@ -3961,7 +3657,6 @@
 		"defence": 12,
 		"damage": 1,
 		"defaultCost": 78.5,
-		"appearRound": 0,
 		"boss": false
 	},
 	"WormH": {
@@ -3974,7 +3669,6 @@
 		"defence": 14,
 		"damage": 1,
 		"defaultCost": 91.5,
-		"appearRound": 0,
 		"boss": false
 	},
 	"ZombieA": {
@@ -3987,7 +3681,6 @@
 		"defence": 25,
 		"damage": 3,
 		"defaultCost": 7,
-		"appearRound": 7,
 		"boss": false
 	},
 	"ZombieB": {
@@ -4000,7 +3693,66 @@
 		"defence": 34,
 		"damage": 3,
 		"defaultCost": 273,
-		"appearRound": 7,
 		"boss": false
+	},
+	"BossBearA": {
+		"mobAnim": "BossBearA",
+		"deathAnimName": "bearDie",
+		"deathSound": "death",
+		"scale": 1,
+		"health": 4000,
+		"m_speed": 60,
+		"defence": 60,
+		"damage": 10,
+		"defaultCost": 0,
+		"boss": true
+	},
+	"BossSlimeKingA": {
+		"mobAnim": "BossSlimeKingA",
+		"deathAnimName": "slimeKingDie",
+		"deathSound": "death",
+		"scale": 1,
+		"health": 9000,
+		"m_speed": 60,
+		"defence": 60,
+		"damage": 10,
+		"defaultCost": 0,
+		"boss": true
+	},
+	"BossMagicianA": {
+		"mobAnim": "BossMagicianA",
+		"deathAnimName": "magicianDie",
+		"deathSound": "death",
+		"scale": 1,
+		"health": 22000,
+		"m_speed": 60,
+		"defence": 60,
+		"damage": 10,
+		"defaultCost": 0,
+		"boss": true
+	},
+	"BossGiantA": {
+		"mobAnim": "BossGiantA",
+		"deathAnimName": "giantDie",
+		"deathSound": "death",
+		"scale": 1,
+		"health": 45000,
+		"m_speed": 60,
+		"defence": 60,
+		"damage": 10,
+		"defaultCost": 0,
+		"boss": true
+	},
+	"BossGolemA": {
+		"mobAnim": "BossGolemA",
+		"deathAnimName": "stoneGolemDie",
+		"deathSound": "death",
+		"scale": 1,
+		"health": 100000,
+		"m_speed": 60,
+		"defence": 60,
+		"damage": 10,
+		"defaultCost": 0,
+		"boss": true
 	}
 }
