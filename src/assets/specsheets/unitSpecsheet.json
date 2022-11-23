@@ -634,7 +634,7 @@
         "projectileAnimName": "",
         "projectileSoundName": "",
         "projecttileHitEffect": "boom2",
-        "effectName": "",
+        "effectName": "throw",
         "atkSoundName": "attackThrow",
         "hitSoundName": "hitBoom2",
         "projectileType": 2
