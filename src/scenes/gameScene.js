@@ -162,6 +162,7 @@ export default class gameScene extends Phaser.Scene{
         this.shopSound = this.sound.add("shop");
         this.shopBuySound = [];
         for (let i = 1; i <= 3; i++) this.shopBuySound.push(this.sound.add("shopBuy" + i));
+        this.shopBuyFailSound = this.sound.add("shopBuyFail");
         // this.m_music = this.sound.add("music");
         // this.sound.pauseOnBlur = false;
         // const musicConfig = {
