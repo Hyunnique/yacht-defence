@@ -25,6 +25,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.atkSoundName = this.scene.sound.add(db.atkSoundName);
         this.hitSoundName = this.scene.sound.add(db.hitSoundName);
         this.effectName = db.effectName;
+        this.tier = db.tier;
         this.index = index;
 
         this.rangeView = this.scene.add.circle(this.x, this.y, this.range, 0xFF0000);
@@ -37,6 +38,9 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.globalbuffAspd = Game.shopBuff.shopAspd;
         this.globalbuffedPenetration = Game.shopBuff.shopPenetration;
 
+        this.buffedAtk = 0;
+        this.buffedAspd = 0;
+
         this.projectileName = db.projectileName;
         this.projectileAnimName = db.projectileAnimName;
         this.projectileType = db.projectileType;
@@ -45,8 +49,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.isTarget = false;
         this.isBuffTarget = true;
 
-        this.buffedAtk = 0;
-        this.buffedAspd = 0;
+       
 
         this.scale = 1;
         this.alpha = 1;
@@ -80,6 +83,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.effect.x = this.x + this.effectOffsetX;
         this.effect.y = this.y + this.effectOffsetY;
     }
+
+    
 
     checkMob() {
         this.target = this.scene.physics.overlapCirc(this.x, this.y, this.range).filter(item => item.gameObject.isTarget == true);
@@ -194,12 +199,13 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.scene.time.removeEvent(this.attackEvent);
     }
 
-    remove()
-    {
+    remove() {
+        this.scene.events.off("update", this.update, this);
+        this.rangeView.destroy();
         this.deactivateAttack();
         this.destroy();
     }
-
+    
     calcDamage(mobDefence)
     {
         var defencePenValue = 1 - (mobDefence / 100) * (1 - this.penetration);
