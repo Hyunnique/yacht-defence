@@ -33,7 +33,7 @@ var Game = {
         this.resizeHandler(null);
         window.onresize = this.resizeHandler;
 
-        this.Socket = io.connect("http://20.249.20.144:8080");
+        this.Socket = io.connect("http://" + (process.env.HOST ? process.env.HOST : "localhost") + ":8080");
         this.serverEventHandler();
     },
 
@@ -311,6 +311,7 @@ var Game = {
 
                 // DicePhase - 주사위 확정 버튼 누르면
                 document.getElementsByClassName("ui-diceConfirmButton")[0].onclick = (e) => {
+                    document.getElementsByClassName("ui-diceConfirmButton")[0].setAttribute("disabled", "disabled");
                     this.Socket.emit('dicePhase-handConfirm', true);
                 }
                 break;
