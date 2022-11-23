@@ -1,6 +1,7 @@
 const waveGenerator = require("./GenerateMobWave");
 
 const SpecsheetGen = require('../src/assets/specsheets/mobSpecSheetGen.json');
+const ShopItemSheet = require('../src/assets/specsheets/shopItemSheet.json');
 
 module.exports = {
     Socket: null,
@@ -76,6 +77,7 @@ module.exports = {
             this.onDiceResult(socket, currentRoomId);
             this.onBattlePhaseDone(socket, currentRoomId);
             this.onPlayerBaseDamage(socket, currentRoomId);
+            this.onShopItemBuy(socket, currentRoomId);
 
             socket.on('disconnect', () => {
                 this.Rooms[currentRoomId].sockets.splice(currentRoomIndex, 1);
@@ -96,6 +98,8 @@ module.exports = {
                         hp: 100,
                         maxhp: 100,
                         gold: 0,
+                        units: [],
+                        items: [],
                         currentHand: "",
                         currentHandTier: 3,
                         currentChoice: -1
@@ -226,6 +230,19 @@ module.exports = {
         socket.on('playerInfo-baseDamage', (msg) => {
             this.Rooms[roomId].players[msg.index].hp -= msg.damage;
             this.syncPlayerInfo(roomId);
+        });
+    },
+
+    onShopItemBuy(socket, roomId) {
+        socket.on('shop-itemBuy', (msg) => {
+            let shopItem = ShopItemSheet["item" + msg.itemIndex];
+            if (this.Rooms[roomId].players[msg.playerIndex].gold >= shopItem.price) {
+                this.Rooms[roomId].players[msg.playerIndex].gold -= shopItem.price;
+                this.Rooms[roomId].players[msg.playerIndex].items.push(msg.itemIndex);
+                socket.emit('shop-itemSuccess', true);
+            } else {
+                socket.emit('shop-itemFailure', true);
+            }
         });
     },
 };
