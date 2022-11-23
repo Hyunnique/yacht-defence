@@ -77,6 +77,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         //this.activateAttack();
         this.scene.events.on("update", this.update, this);
         this.on("animationcomplete", this.doIdle, this);
+        console.log(this);
     }
 
     update() {
@@ -86,8 +87,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.effect.y = this.y + this.effectOffsetY;
         this.checkMob();
         if (this.attackReady && this.target.length > 0)
-            this.attackMob();
-        
+            this.attackMob();     
     }
 
     doIdle()
@@ -119,7 +119,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
 
     syncGlobalBuff()
     {
-        this.globalbuffAspd = Game.shopBuff.shopAspd / 100;
+        this.globalbuffAspd = Game.shopBuff.shopAspd;
         this.globalbuffedPenetration = Game.shopBuff.shopPenetration;
         this.globalbuffAtk = (Game.shopBuff.shopAtk + this.scene.tierBonus[this.tier - 1]) / 100;
     }
@@ -149,7 +149,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
     updateBuff()
     {
         this.attack = (this.buffedAtk + this.globalbuffAtk + 1) * this.originAttack;
-        this.aspd = ((100 + this.buffedAspd) / 100) * (100 + this.globalbuffAspd) * this.originAspd;
+        this.aspd = ((100 + this.buffedAspd) / 100) * ((100 + this.globalbuffAspd)/100) * this.originAspd;
         this.penetration = this.originPenetration + this.globalbuffedPenetration;
         // this.setMotionSpeed();
     }
@@ -192,6 +192,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         }
         this.scene.time.delayedCall(1000 / this.aspd, () => {
             this.attackReady = true;
+            console.log(1);
         }, [], this);
     }
 
