@@ -3695,8 +3695,8 @@
 		"defaultCost": 273,
 		"boss": false
 	},
-	"BossBearA": {
-		"mobAnim": "BossBearA",
+	"BossBear": {
+		"mobAnim": "bearWalk",
 		"deathAnimName": "bearDie",
 		"deathSound": "death",
 		"scale": 1,
@@ -3707,8 +3707,8 @@
 		"defaultCost": 0,
 		"boss": true
 	},
-	"BossSlimeKingA": {
-		"mobAnim": "BossSlimeKingA",
+	"BossSlimeKing": {
+		"mobAnim": "slimeKingWalk",
 		"deathAnimName": "slimeKingDie",
 		"deathSound": "death",
 		"scale": 1,
@@ -3719,8 +3719,8 @@
 		"defaultCost": 0,
 		"boss": true
 	},
-	"BossMagicianA": {
-		"mobAnim": "BossMagicianA",
+	"BossMagician": {
+		"mobAnim": "magicianWalk",
 		"deathAnimName": "magicianDie",
 		"deathSound": "death",
 		"scale": 1,
@@ -3731,8 +3731,8 @@
 		"defaultCost": 0,
 		"boss": true
 	},
-	"BossGiantA": {
-		"mobAnim": "BossGiantA",
+	"BossGiant": {
+		"mobAnim": "giantWalk",
 		"deathAnimName": "giantDie",
 		"deathSound": "death",
 		"scale": 1,
@@ -3743,8 +3743,8 @@
 		"defaultCost": 0,
 		"boss": true
 	},
-	"BossGolemA": {
-		"mobAnim": "BossGolemA",
+	"BossGolem": {
+		"mobAnim": "stoneGolemWalk",
 		"deathAnimName": "stoneGolemDie",
 		"deathSound": "death",
 		"scale": 1,
