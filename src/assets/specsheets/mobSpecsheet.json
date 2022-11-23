@@ -8,8 +8,8 @@
 		"m_speed": 25,
 		"defence": 30,
 		"damage": 4,
-		"defaultCost": 7,
-		"boss": false
+		"boss": false,
+		"defaultCost": 7
 	},
 	"BallA": {
 		"mobAnim": "BallA",
@@ -20,44 +20,44 @@
 		"m_speed": 20,
 		"defence": 35,
 		"damage": 4,
-		"defaultCost": 6.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 6.5
 	},
 	"BallB": {
 		"mobAnim": "BallB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 14000,
+		"health": 9240,
 		"m_speed": 20,
 		"defence": 46,
 		"damage": 4,
-		"defaultCost": 227.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 144
 	},
 	"BallC": {
 		"mobAnim": "BallC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 27600,
+		"health": 18080,
 		"m_speed": 20,
 		"defence": 58,
 		"damage": 4,
-		"defaultCost": 448.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 360.5
 	},
 	"BallD": {
 		"mobAnim": "BallD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 41200,
+		"health": 26920,
 		"m_speed": 20,
 		"defence": 70,
 		"damage": 4,
-		"defaultCost": 669.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 750
 	},
 	"BatA": {
 		"mobAnim": "BatA",
@@ -68,236 +68,236 @@
 		"m_speed": 10,
 		"defence": 0,
 		"damage": 1,
-		"defaultCost": 2,
-		"boss": false
+		"boss": false,
+		"defaultCost": 2
 	},
 	"BatB": {
 		"mobAnim": "BatB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 600,
+		"health": 459,
 		"m_speed": 10,
 		"defence": 0,
 		"damage": 1,
-		"defaultCost": 6,
-		"boss": false
+		"boss": false,
+		"defaultCost": 4.5
 	},
 	"BatC": {
 		"mobAnim": "BatC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 1000,
+		"health": 720,
 		"m_speed": 10,
 		"defence": 0,
 		"damage": 1,
-		"defaultCost": 10,
-		"boss": false
+		"boss": false,
+		"defaultCost": 7.5
 	},
 	"BatD": {
 		"mobAnim": "BatD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 1400,
+		"health": 980,
 		"m_speed": 10,
 		"defence": 0,
 		"damage": 1,
-		"defaultCost": 14,
-		"boss": false
+		"boss": false,
+		"defaultCost": 10.5
 	},
 	"BatE": {
 		"mobAnim": "BatE",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 1800,
+		"health": 1240,
 		"m_speed": 10,
 		"defence": 0,
 		"damage": 1,
-		"defaultCost": 18,
-		"boss": false
+		"boss": false,
+		"defaultCost": 13
 	},
 	"BatF": {
 		"mobAnim": "BatF",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 2200,
+		"health": 1500,
 		"m_speed": 10,
 		"defence": 0,
 		"damage": 1,
-		"defaultCost": 22,
-		"boss": false
+		"boss": false,
+		"defaultCost": 16
 	},
 	"BatG": {
 		"mobAnim": "BatG",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 2600,
+		"health": 1760,
 		"m_speed": 10,
 		"defence": 0,
 		"damage": 1,
-		"defaultCost": 26,
-		"boss": false
+		"boss": false,
+		"defaultCost": 19
 	},
 	"BatH": {
 		"mobAnim": "BatH",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 3000,
+		"health": 2020,
 		"m_speed": 10,
 		"defence": 0,
 		"damage": 1,
-		"defaultCost": 30,
-		"boss": false
+		"boss": false,
+		"defaultCost": 21.5
 	},
 	"BatI": {
 		"mobAnim": "BatI",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 3400,
+		"health": 2280,
 		"m_speed": 10,
 		"defence": 0,
 		"damage": 1,
-		"defaultCost": 34,
-		"boss": false
+		"boss": false,
+		"defaultCost": 24.5
 	},
 	"BatJ": {
 		"mobAnim": "BatJ",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 3800,
+		"health": 2540,
 		"m_speed": 10,
 		"defence": 0,
 		"damage": 1,
-		"defaultCost": 38,
-		"boss": false
+		"boss": false,
+		"defaultCost": 27.5
 	},
 	"BatK": {
 		"mobAnim": "BatK",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 4200,
+		"health": 2800,
 		"m_speed": 10,
 		"defence": 0,
 		"damage": 1,
-		"defaultCost": 42,
-		"boss": false
+		"boss": false,
+		"defaultCost": 30
 	},
 	"BatL": {
 		"mobAnim": "BatL",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 4600,
+		"health": 3060,
 		"m_speed": 10,
 		"defence": 0,
 		"damage": 1,
-		"defaultCost": 46,
-		"boss": false
+		"boss": false,
+		"defaultCost": 33
 	},
 	"BatM": {
 		"mobAnim": "BatM",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 5000,
+		"health": 3320,
 		"m_speed": 10,
 		"defence": 0,
 		"damage": 1,
-		"defaultCost": 50,
-		"boss": false
+		"boss": false,
+		"defaultCost": 36
 	},
 	"BatN": {
 		"mobAnim": "BatN",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 5400,
+		"health": 3580,
 		"m_speed": 10,
 		"defence": 0,
 		"damage": 1,
-		"defaultCost": 54,
-		"boss": false
+		"boss": false,
+		"defaultCost": 38.5
 	},
 	"BatO": {
 		"mobAnim": "BatO",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 5800,
+		"health": 3840,
 		"m_speed": 10,
 		"defence": 0,
 		"damage": 1,
-		"defaultCost": 58,
-		"boss": false
+		"boss": false,
+		"defaultCost": 41.5
 	},
 	"BatP": {
 		"mobAnim": "BatP",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 6200,
+		"health": 4100,
 		"m_speed": 10,
 		"defence": 0,
 		"damage": 1,
-		"defaultCost": 62,
-		"boss": false
+		"boss": false,
+		"defaultCost": 44.5
 	},
 	"BatQ": {
 		"mobAnim": "BatQ",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 6600,
+		"health": 4360,
 		"m_speed": 10,
 		"defence": 0,
 		"damage": 1,
-		"defaultCost": 66,
-		"boss": false
+		"boss": false,
+		"defaultCost": 47
 	},
 	"BatR": {
 		"mobAnim": "BatR",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 7000,
+		"health": 4620,
 		"m_speed": 10,
 		"defence": 0,
 		"damage": 1,
-		"defaultCost": 70,
-		"boss": false
+		"boss": false,
+		"defaultCost": 50
 	},
 	"BatS": {
 		"mobAnim": "BatS",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 7400,
+		"health": 4880,
 		"m_speed": 10,
 		"defence": 0,
 		"damage": 1,
-		"defaultCost": 74,
-		"boss": false
+		"boss": false,
+		"defaultCost": 52.5
 	},
 	"BatT": {
 		"mobAnim": "BatT",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 7800,
+		"health": 5140,
 		"m_speed": 10,
 		"defence": 0,
 		"damage": 1,
-		"defaultCost": 78,
-		"boss": false
+		"boss": false,
+		"defaultCost": 55.5
 	},
 	"BatSmallA": {
 		"mobAnim": "BatSmallA",
@@ -308,56 +308,56 @@
 		"m_speed": 10,
 		"defence": 0,
 		"damage": 1,
-		"defaultCost": 1,
-		"boss": false
+		"boss": false,
+		"defaultCost": 1
 	},
 	"BatSmallB": {
 		"mobAnim": "BatSmallB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 3300,
+		"health": 2180,
 		"m_speed": 10,
 		"defence": 0,
 		"damage": 1,
-		"defaultCost": 33,
-		"boss": false
+		"boss": false,
+		"defaultCost": 23.5
 	},
 	"BatSmallC": {
 		"mobAnim": "BatSmallC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 6500,
+		"health": 4260,
 		"m_speed": 10,
 		"defence": 0,
 		"damage": 1,
-		"defaultCost": 65,
-		"boss": false
+		"boss": false,
+		"defaultCost": 46
 	},
 	"BatSmallD": {
 		"mobAnim": "BatSmallD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 9700,
+		"health": 6340,
 		"m_speed": 10,
 		"defence": 0,
 		"damage": 1,
-		"defaultCost": 97,
-		"boss": false
+		"boss": false,
+		"defaultCost": 68.5
 	},
 	"BatSmallE": {
 		"mobAnim": "BatSmallE",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 12900,
+		"health": 8420,
 		"m_speed": 10,
 		"defence": 0,
 		"damage": 1,
-		"defaultCost": 129,
-		"boss": false
+		"boss": false,
+		"defaultCost": 91
 	},
 	"BeardA": {
 		"mobAnim": "BeardA",
@@ -368,20 +368,20 @@
 		"m_speed": 20,
 		"defence": 30,
 		"damage": 3,
-		"defaultCost": 5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 5
 	},
 	"BeardB": {
 		"mobAnim": "BeardB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 13650,
+		"health": 8995,
 		"m_speed": 20,
 		"defence": 41,
 		"damage": 3,
-		"defaultCost": 195,
-		"boss": false
+		"boss": false,
+		"defaultCost": 128
 	},
 	"BrainA": {
 		"mobAnim": "BrainA",
@@ -392,56 +392,56 @@
 		"m_speed": 20,
 		"defence": 10,
 		"damage": 3,
-		"defaultCost": 3,
-		"boss": false
+		"boss": false,
+		"defaultCost": 3
 	},
 	"BrainB": {
 		"mobAnim": "BrainB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 8250,
+		"health": 5450,
 		"m_speed": 20,
 		"defence": 13,
 		"damage": 3,
-		"defaultCost": 99,
-		"boss": false
+		"boss": false,
+		"defaultCost": 53
 	},
 	"BrainC": {
 		"mobAnim": "BrainC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 16250,
+		"health": 10650,
 		"m_speed": 20,
 		"defence": 16,
 		"damage": 3,
-		"defaultCost": 195,
-		"boss": false
+		"boss": false,
+		"defaultCost": 106.5
 	},
 	"BrainD": {
 		"mobAnim": "BrainD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 24250,
+		"health": 15850,
 		"m_speed": 20,
 		"defence": 19,
 		"damage": 3,
-		"defaultCost": 291,
-		"boss": false
+		"boss": false,
+		"defaultCost": 164
 	},
 	"BrainE": {
 		"mobAnim": "BrainE",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 32250,
+		"health": 21050,
 		"m_speed": 20,
 		"defence": 22,
 		"damage": 3,
-		"defaultCost": 387,
-		"boss": false
+		"boss": false,
+		"defaultCost": 226
 	},
 	"BugA": {
 		"mobAnim": "BugA",
@@ -452,56 +452,56 @@
 		"m_speed": 15,
 		"defence": 5,
 		"damage": 1,
-		"defaultCost": 1.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 1.5
 	},
 	"BugB": {
 		"mobAnim": "BugB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 6600,
+		"health": 4360,
 		"m_speed": 15,
 		"defence": 6,
 		"damage": 1,
-		"defaultCost": 49.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 42.5
 	},
 	"BugC": {
 		"mobAnim": "BugC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 13000,
+		"health": 8520,
 		"m_speed": 15,
 		"defence": 8,
 		"damage": 1,
-		"defaultCost": 97.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 85
 	},
 	"BugD": {
 		"mobAnim": "BugD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 19400,
+		"health": 12680,
 		"m_speed": 15,
 		"defence": 9,
 		"damage": 1,
-		"defaultCost": 145.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 128.5
 	},
 	"BugE": {
 		"mobAnim": "BugE",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 25800,
+		"health": 16840,
 		"m_speed": 15,
 		"defence": 11,
 		"damage": 1,
-		"defaultCost": 193.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 174.5
 	},
 	"ButterflyA": {
 		"mobAnim": "ButterflyA",
@@ -512,20 +512,20 @@
 		"m_speed": 15,
 		"defence": 5,
 		"damage": 1,
-		"defaultCost": 0.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 0.5
 	},
 	"ButterflyB": {
 		"mobAnim": "ButterflyB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 3900,
+		"health": 2570,
 		"m_speed": 15,
 		"defence": 6,
 		"damage": 1,
-		"defaultCost": 19.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 25
 	},
 	"CatA": {
 		"mobAnim": "CatA",
@@ -536,68 +536,68 @@
 		"m_speed": 20,
 		"defence": 15,
 		"damage": 2,
-		"defaultCost": 2,
-		"boss": false
+		"boss": false,
+		"defaultCost": 2
 	},
 	"CatB": {
 		"mobAnim": "CatB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 6200,
+		"health": 4100,
 		"m_speed": 20,
 		"defence": 19,
 		"damage": 2,
-		"defaultCost": 62,
-		"boss": false
+		"boss": false,
+		"defaultCost": 42.5
 	},
 	"CatC": {
 		"mobAnim": "CatC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 12200,
+		"health": 8000,
 		"m_speed": 20,
 		"defence": 24,
 		"damage": 2,
-		"defaultCost": 122,
-		"boss": false
+		"boss": false,
+		"defaultCost": 88
 	},
 	"CatD": {
 		"mobAnim": "CatD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 18200,
+		"health": 11900,
 		"m_speed": 20,
 		"defence": 28,
 		"damage": 2,
-		"defaultCost": 182,
-		"boss": false
+		"boss": false,
+		"defaultCost": 138
 	},
 	"CatE": {
 		"mobAnim": "CatE",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 24200,
+		"health": 15800,
 		"m_speed": 20,
 		"defence": 33,
 		"damage": 2,
-		"defaultCost": 242,
-		"boss": false
+		"boss": false,
+		"defaultCost": 197
 	},
 	"CatF": {
 		"mobAnim": "CatF",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 30200,
+		"health": 19700,
 		"m_speed": 20,
 		"defence": 37,
 		"damage": 2,
-		"defaultCost": 302,
-		"boss": false
+		"boss": false,
+		"defaultCost": 261
 	},
 	"ChestA": {
 		"mobAnim": "ChestA",
@@ -608,8 +608,8 @@
 		"m_speed": 20,
 		"defence": 30,
 		"damage": 4,
-		"defaultCost": 11,
-		"boss": false
+		"boss": false,
+		"defaultCost": 11
 	},
 	"ChickenA": {
 		"mobAnim": "ChickenA",
@@ -620,32 +620,32 @@
 		"m_speed": 20,
 		"defence": 10,
 		"damage": 2,
-		"defaultCost": 2,
-		"boss": false
+		"boss": false,
+		"defaultCost": 2
 	},
 	"ChickenB": {
 		"mobAnim": "ChickenB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 7400,
+		"health": 4880,
 		"m_speed": 20,
 		"defence": 13,
 		"damage": 2,
-		"defaultCost": 74,
-		"boss": false
+		"boss": false,
+		"defaultCost": 47
 	},
 	"ChickenC": {
 		"mobAnim": "ChickenC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 14600,
+		"health": 9560,
 		"m_speed": 20,
 		"defence": 17,
 		"damage": 2,
-		"defaultCost": 146,
-		"boss": false
+		"boss": false,
+		"defaultCost": 96.5
 	},
 	"CloudA": {
 		"mobAnim": "CloudA",
@@ -656,44 +656,44 @@
 		"m_speed": 15,
 		"defence": 10,
 		"damage": 2,
-		"defaultCost": 2.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 2.5
 	},
 	"CloudB": {
 		"mobAnim": "CloudB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 7000,
+		"health": 4620,
 		"m_speed": 15,
 		"defence": 13,
 		"damage": 2,
-		"defaultCost": 87.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 49.5
 	},
 	"CloudC": {
 		"mobAnim": "CloudC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 13800,
+		"health": 9040,
 		"m_speed": 15,
 		"defence": 16,
 		"damage": 2,
-		"defaultCost": 172.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 99.5
 	},
 	"CloudD": {
 		"mobAnim": "CloudD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 20600,
+		"health": 13460,
 		"m_speed": 15,
 		"defence": 20,
 		"damage": 2,
-		"defaultCost": 257.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 155.5
 	},
 	"CoffinA": {
 		"mobAnim": "CoffinA",
@@ -704,44 +704,44 @@
 		"m_speed": 25,
 		"defence": 20,
 		"damage": 3,
-		"defaultCost": 4.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 4.5
 	},
 	"CoffinB": {
 		"mobAnim": "CoffinB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 14000,
+		"health": 9240,
 		"m_speed": 25,
 		"defence": 26,
 		"damage": 3,
-		"defaultCost": 157.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 97.5
 	},
 	"CoffinC": {
 		"mobAnim": "CoffinC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 27600,
+		"health": 18080,
 		"m_speed": 25,
 		"defence": 33,
 		"damage": 3,
-		"defaultCost": 310.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 210.5
 	},
 	"CoffinD": {
 		"mobAnim": "CoffinD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 41200,
+		"health": 26920,
 		"m_speed": 25,
 		"defence": 40,
 		"damage": 3,
-		"defaultCost": 463.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 349
 	},
 	"CountA": {
 		"mobAnim": "CountA",
@@ -752,8 +752,8 @@
 		"m_speed": 30,
 		"defence": 35,
 		"damage": 5,
-		"defaultCost": 13,
-		"boss": false
+		"boss": false,
+		"defaultCost": 13
 	},
 	"CrabA": {
 		"mobAnim": "CrabA",
@@ -764,68 +764,68 @@
 		"m_speed": 25,
 		"defence": 40,
 		"damage": 3,
-		"defaultCost": 6,
-		"boss": false
+		"boss": false,
+		"defaultCost": 6
 	},
 	"CrabB": {
 		"mobAnim": "CrabB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 12400,
+		"health": 8200,
 		"m_speed": 25,
 		"defence": 52,
 		"damage": 3,
-		"defaultCost": 186,
-		"boss": false
+		"boss": false,
+		"defaultCost": 133.5
 	},
 	"CrabC": {
 		"mobAnim": "CrabC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 24400,
+		"health": 16000,
 		"m_speed": 25,
 		"defence": 64,
 		"damage": 3,
-		"defaultCost": 366,
-		"boss": false
+		"boss": false,
+		"defaultCost": 346
 	},
 	"CrabD": {
 		"mobAnim": "CrabD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 36400,
+		"health": 23800,
 		"m_speed": 25,
 		"defence": 76,
 		"damage": 3,
-		"defaultCost": 546,
-		"boss": false
+		"boss": false,
+		"defaultCost": 771
 	},
 	"CrabE": {
 		"mobAnim": "CrabE",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 48400,
+		"health": 31600,
 		"m_speed": 25,
 		"defence": 88,
 		"damage": 3,
-		"defaultCost": 726,
-		"boss": false
+		"boss": false,
+		"defaultCost": 2046
 	},
 	"CrabF": {
 		"mobAnim": "CrabF",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 60400,
+		"health": 39400,
 		"m_speed": 25,
 		"defence": 100,
 		"damage": 3,
-		"defaultCost": 906,
-		"boss": false
+		"boss": false,
+		"defaultCost": null
 	},
 	"DiscA": {
 		"mobAnim": "DiscA",
@@ -836,8 +836,8 @@
 		"m_speed": 15,
 		"defence": 15,
 		"damage": 4,
-		"defaultCost": 12,
-		"boss": false
+		"boss": false,
+		"defaultCost": 12
 	},
 	"DogA": {
 		"mobAnim": "DogA",
@@ -848,80 +848,80 @@
 		"m_speed": 20,
 		"defence": 15,
 		"damage": 2,
-		"defaultCost": 2,
-		"boss": false
+		"boss": false,
+		"defaultCost": 2
 	},
 	"DogB": {
 		"mobAnim": "DogB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 5800,
+		"health": 3840,
 		"m_speed": 20,
 		"defence": 19,
 		"damage": 2,
-		"defaultCost": 58,
-		"boss": false
+		"boss": false,
+		"defaultCost": 40
 	},
 	"DogC": {
 		"mobAnim": "DogC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 11400,
+		"health": 7480,
 		"m_speed": 20,
 		"defence": 23,
 		"damage": 2,
-		"defaultCost": 114,
-		"boss": false
+		"boss": false,
+		"defaultCost": 81.5
 	},
 	"DogD": {
 		"mobAnim": "DogD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 17000,
+		"health": 11120,
 		"m_speed": 20,
 		"defence": 27,
 		"damage": 2,
-		"defaultCost": 170,
-		"boss": false
+		"boss": false,
+		"defaultCost": 127.5
 	},
 	"DogE": {
 		"mobAnim": "DogE",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 22600,
+		"health": 14760,
 		"m_speed": 20,
 		"defence": 31,
 		"damage": 2,
-		"defaultCost": 226,
-		"boss": false
+		"boss": false,
+		"defaultCost": 179
 	},
 	"DogF": {
 		"mobAnim": "DogF",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 28200,
+		"health": 18400,
 		"m_speed": 20,
 		"defence": 36,
 		"damage": 2,
-		"defaultCost": 282,
-		"boss": false
+		"boss": false,
+		"defaultCost": 240
 	},
 	"DogG": {
 		"mobAnim": "DogG",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 33800,
+		"health": 22040,
 		"m_speed": 20,
 		"defence": 40,
 		"damage": 2,
-		"defaultCost": 338,
-		"boss": false
+		"boss": false,
+		"defaultCost": 307
 	},
 	"DuckA": {
 		"mobAnim": "DuckA",
@@ -932,32 +932,32 @@
 		"m_speed": 20,
 		"defence": 10,
 		"damage": 2,
-		"defaultCost": 2,
-		"boss": false
+		"boss": false,
+		"defaultCost": 2
 	},
 	"DuckB": {
 		"mobAnim": "DuckB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 7400,
+		"health": 4880,
 		"m_speed": 20,
 		"defence": 13,
 		"damage": 2,
-		"defaultCost": 74,
-		"boss": false
+		"boss": false,
+		"defaultCost": 47
 	},
 	"DuckC": {
 		"mobAnim": "DuckC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 14600,
+		"health": 9560,
 		"m_speed": 20,
 		"defence": 17,
 		"damage": 2,
-		"defaultCost": 146,
-		"boss": false
+		"boss": false,
+		"defaultCost": 96.5
 	},
 	"DwarfA": {
 		"mobAnim": "DwarfA",
@@ -968,68 +968,68 @@
 		"m_speed": 25,
 		"defence": 25,
 		"damage": 4,
-		"defaultCost": 7.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 7.5
 	},
 	"DwarfB": {
 		"mobAnim": "DwarfB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 18600,
+		"health": 12300,
 		"m_speed": 25,
 		"defence": 32,
 		"damage": 4,
-		"defaultCost": 232.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 141.5
 	},
 	"DwarfC": {
 		"mobAnim": "DwarfC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 36600,
+		"health": 24000,
 		"m_speed": 25,
 		"defence": 40,
 		"damage": 4,
-		"defaultCost": 457.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 312
 	},
 	"DwarfD": {
 		"mobAnim": "DwarfD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 54600,
+		"health": 35700,
 		"m_speed": 25,
 		"defence": 47,
 		"damage": 4,
-		"defaultCost": 682.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 524.5
 	},
 	"DwarfE": {
 		"mobAnim": "DwarfE",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 72600,
+		"health": 47400,
 		"m_speed": 25,
 		"defence": 55,
 		"damage": 4,
-		"defaultCost": 907.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 819.5
 	},
 	"DwarfF": {
 		"mobAnim": "DwarfF",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 90600,
+		"health": 59100,
 		"m_speed": 25,
 		"defence": 62,
 		"damage": 4,
-		"defaultCost": 1132.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 1209
 	},
 	"DyeA": {
 		"mobAnim": "DyeA",
@@ -1040,44 +1040,44 @@
 		"m_speed": 10,
 		"defence": 15,
 		"damage": 2,
-		"defaultCost": 4,
-		"boss": false
+		"boss": false,
+		"defaultCost": 4
 	},
 	"DyeB": {
 		"mobAnim": "DyeB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 10500,
+		"health": 6930,
 		"m_speed": 10,
 		"defence": 20,
 		"damage": 2,
-		"defaultCost": 140,
-		"boss": false
+		"boss": false,
+		"defaultCost": 94.5
 	},
 	"DyeC": {
 		"mobAnim": "DyeC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 20700,
+		"health": 13560,
 		"m_speed": 10,
 		"defence": 25,
 		"damage": 2,
-		"defaultCost": 276,
-		"boss": false
+		"boss": false,
+		"defaultCost": 196.5
 	},
 	"DyeD": {
 		"mobAnim": "DyeD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 30900,
+		"health": 20190,
 		"m_speed": 10,
 		"defence": 30,
 		"damage": 2,
-		"defaultCost": 412,
-		"boss": false
+		"boss": false,
+		"defaultCost": 313.5
 	},
 	"EarthA": {
 		"mobAnim": "EarthA",
@@ -1088,32 +1088,32 @@
 		"m_speed": 40,
 		"defence": 60,
 		"damage": 2,
-		"defaultCost": 8.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 8.5
 	},
 	"EarthB": {
 		"mobAnim": "EarthB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 18500,
+		"health": 12200,
 		"m_speed": 40,
 		"defence": 81,
 		"damage": 2,
-		"defaultCost": 314.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 435.5
 	},
 	"EarthC": {
 		"mobAnim": "EarthC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 36500,
+		"health": 23900,
 		"m_speed": 40,
 		"defence": 103,
 		"damage": 2,
-		"defaultCost": 620.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": -5399
 	},
 	"EarthSmallA": {
 		"mobAnim": "EarthSmallA",
@@ -1124,32 +1124,32 @@
 		"m_speed": 35,
 		"defence": 50,
 		"damage": 2,
-		"defaultCost": 6,
-		"boss": false
+		"boss": false,
+		"defaultCost": 6
 	},
 	"EarthSmallB": {
 		"mobAnim": "EarthSmallB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 14800,
+		"health": 9760,
 		"m_speed": 35,
 		"defence": 68,
 		"damage": 2,
-		"defaultCost": 222,
-		"boss": false
+		"boss": false,
+		"defaultCost": 214.5
 	},
 	"EarthSmallC": {
 		"mobAnim": "EarthSmallC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 29200,
+		"health": 19120,
 		"m_speed": 35,
 		"defence": 86,
 		"damage": 2,
-		"defaultCost": 438,
-		"boss": false
+		"boss": false,
+		"defaultCost": 960.5
 	},
 	"EarthSmallerA": {
 		"mobAnim": "EarthSmallerA",
@@ -1160,32 +1160,32 @@
 		"m_speed": 30,
 		"defence": 40,
 		"damage": 2,
-		"defaultCost": 4,
-		"boss": false
+		"boss": false,
+		"defaultCost": 4
 	},
 	"EarthSmallerB": {
 		"mobAnim": "EarthSmallerB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 11100,
+		"health": 7320,
 		"m_speed": 30,
 		"defence": 54,
 		"damage": 2,
-		"defaultCost": 148,
-		"boss": false
+		"boss": false,
+		"defaultCost": 117
 	},
 	"EarthSmallerC": {
 		"mobAnim": "EarthSmallerC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 21900,
+		"health": 14340,
 		"m_speed": 30,
 		"defence": 68,
 		"damage": 2,
-		"defaultCost": 292,
-		"boss": false
+		"boss": false,
+		"defaultCost": 329.5
 	},
 	"EelA": {
 		"mobAnim": "EelA",
@@ -1196,44 +1196,44 @@
 		"m_speed": 8,
 		"defence": 20,
 		"damage": 4,
-		"defaultCost": 3.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 3.5
 	},
 	"EelB": {
 		"mobAnim": "EelB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 5250,
+		"health": 3465,
 		"m_speed": 8,
 		"defence": 26,
 		"damage": 4,
-		"defaultCost": 122.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 57.5
 	},
 	"EelC": {
 		"mobAnim": "EelC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 10350,
+		"health": 6780,
 		"m_speed": 8,
 		"defence": 33,
 		"damage": 4,
-		"defaultCost": 241.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 123
 	},
 	"EelD": {
 		"mobAnim": "EelD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 15450,
+		"health": 10095,
 		"m_speed": 8,
 		"defence": 40,
 		"damage": 4,
-		"defaultCost": 360.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 203.5
 	},
 	"ElementalOrbA": {
 		"mobAnim": "ElementalOrbA",
@@ -1244,20 +1244,20 @@
 		"m_speed": 15,
 		"defence": 30,
 		"damage": 4,
-		"defaultCost": 8,
-		"boss": false
+		"boss": false,
+		"defaultCost": 8
 	},
 	"ElementalOrbB": {
 		"mobAnim": "ElementalOrbB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 19500,
+		"health": 12850,
 		"m_speed": 15,
 		"defence": 41,
 		"damage": 4,
-		"defaultCost": 312,
-		"boss": false
+		"boss": false,
+		"defaultCost": 202.5
 	},
 	"EyeA": {
 		"mobAnim": "EyeA",
@@ -1268,44 +1268,44 @@
 		"m_speed": 15,
 		"defence": 25,
 		"damage": 4,
-		"defaultCost": 7,
-		"boss": false
+		"boss": false,
+		"defaultCost": 7
 	},
 	"EyeB": {
 		"mobAnim": "EyeB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 15750,
+		"health": 10395,
 		"m_speed": 15,
 		"defence": 33,
 		"damage": 4,
-		"defaultCost": 245,
-		"boss": false
+		"boss": false,
+		"defaultCost": 144.5
 	},
 	"EyeC": {
 		"mobAnim": "EyeC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 31050,
+		"health": 20340,
 		"m_speed": 15,
 		"defence": 42,
 		"damage": 4,
-		"defaultCost": 483,
-		"boss": false
+		"boss": false,
+		"defaultCost": 325
 	},
 	"EyeD": {
 		"mobAnim": "EyeD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 46350,
+		"health": 30285,
 		"m_speed": 15,
 		"defence": 50,
 		"damage": 4,
-		"defaultCost": 721,
-		"boss": false
+		"boss": false,
+		"defaultCost": 560.5
 	},
 	"EyeBallA": {
 		"mobAnim": "EyeBallA",
@@ -1316,32 +1316,32 @@
 		"m_speed": 10,
 		"defence": 20,
 		"damage": 2,
-		"defaultCost": 5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 5
 	},
 	"EyeBallB": {
 		"mobAnim": "EyeBallB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 12950,
+		"health": 8540,
 		"m_speed": 10,
 		"defence": 27,
 		"damage": 2,
-		"defaultCost": 185,
-		"boss": false
+		"boss": false,
+		"defaultCost": 127.5
 	},
 	"EyeBallC": {
 		"mobAnim": "EyeBallC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 25550,
+		"health": 16730,
 		"m_speed": 10,
 		"defence": 34,
 		"damage": 2,
-		"defaultCost": 365,
-		"boss": false
+		"boss": false,
+		"defaultCost": 275.5
 	},
 	"FactoryA": {
 		"mobAnim": "FactoryA",
@@ -1352,20 +1352,20 @@
 		"m_speed": 20,
 		"defence": 30,
 		"damage": 4,
-		"defaultCost": 13,
-		"boss": false
+		"boss": false,
+		"defaultCost": 13
 	},
 	"FactoryB": {
 		"mobAnim": "FactoryB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 39000,
+		"health": 25700,
 		"m_speed": 20,
 		"defence": 41,
 		"damage": 4,
-		"defaultCost": 507,
-		"boss": false
+		"boss": false,
+		"defaultCost": 365
 	},
 	"FireSmallA": {
 		"mobAnim": "FireSmallA",
@@ -1376,8 +1376,8 @@
 		"m_speed": 10,
 		"defence": 0,
 		"damage": 3,
-		"defaultCost": 3,
-		"boss": false
+		"boss": false,
+		"defaultCost": 3
 	},
 	"GhastA": {
 		"mobAnim": "GhastA",
@@ -1388,32 +1388,32 @@
 		"m_speed": 12,
 		"defence": 0,
 		"damage": 3,
-		"defaultCost": 5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 5
 	},
 	"GhastB": {
 		"mobAnim": "GhastB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 14800,
+		"health": 9760,
 		"m_speed": 12,
 		"defence": 0,
 		"damage": 3,
-		"defaultCost": 185,
-		"boss": false
+		"boss": false,
+		"defaultCost": 99
 	},
 	"GhastC": {
 		"mobAnim": "GhastC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 29200,
+		"health": 19120,
 		"m_speed": 12,
 		"defence": 0,
 		"damage": 3,
-		"defaultCost": 365,
-		"boss": false
+		"boss": false,
+		"defaultCost": 193
 	},
 	"GnomeA": {
 		"mobAnim": "GnomeA",
@@ -1424,32 +1424,32 @@
 		"m_speed": 20,
 		"defence": 20,
 		"damage": 4,
-		"defaultCost": 8.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 8.5
 	},
 	"GnomeB": {
 		"mobAnim": "GnomeB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 25900,
+		"health": 17080,
 		"m_speed": 20,
 		"defence": 27,
 		"damage": 4,
-		"defaultCost": 314.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 196.5
 	},
 	"GnomeC": {
 		"mobAnim": "GnomeC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 51100,
+		"health": 33460,
 		"m_speed": 20,
 		"defence": 34,
 		"damage": 4,
-		"defaultCost": 620.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 424.5
 	},
 	"HareA": {
 		"mobAnim": "HareA",
@@ -1460,44 +1460,44 @@
 		"m_speed": 15,
 		"defence": 5,
 		"damage": 4,
-		"defaultCost": 6,
-		"boss": false
+		"boss": false,
+		"defaultCost": 6
 	},
 	"HareB": {
 		"mobAnim": "HareB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 17500,
+		"health": 11550,
 		"m_speed": 15,
 		"defence": 6,
 		"damage": 4,
-		"defaultCost": 210,
-		"boss": false
+		"boss": false,
+		"defaultCost": 114.5
 	},
 	"HareC": {
 		"mobAnim": "HareC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 34500,
+		"health": 22600,
 		"m_speed": 15,
 		"defence": 8,
 		"damage": 4,
-		"defaultCost": 414,
-		"boss": false
+		"boss": false,
+		"defaultCost": 228
 	},
 	"HareD": {
 		"mobAnim": "HareD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 51500,
+		"health": 33650,
 		"m_speed": 15,
 		"defence": 10,
 		"damage": 4,
-		"defaultCost": 618,
-		"boss": false
+		"boss": false,
+		"defaultCost": 346.5
 	},
 	"HeadA": {
 		"mobAnim": "HeadA",
@@ -1508,44 +1508,44 @@
 		"m_speed": 25,
 		"defence": 30,
 		"damage": 3,
-		"defaultCost": 8.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 8.5
 	},
 	"HeadB": {
 		"mobAnim": "HeadB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 24500,
+		"health": 16170,
 		"m_speed": 25,
 		"defence": 40,
 		"damage": 3,
-		"defaultCost": 297.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 210
 	},
 	"HeadC": {
 		"mobAnim": "HeadC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 48300,
+		"health": 31640,
 		"m_speed": 25,
 		"defence": 50,
 		"damage": 3,
-		"defaultCost": 586.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 492
 	},
 	"HeadD": {
 		"mobAnim": "HeadD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 72100,
+		"health": 47110,
 		"m_speed": 25,
 		"defence": 60,
 		"damage": 3,
-		"defaultCost": 875.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 915.5
 	},
 	"HulkA": {
 		"mobAnim": "HulkA",
@@ -1556,20 +1556,20 @@
 		"m_speed": 30,
 		"defence": 30,
 		"damage": 4,
-		"defaultCost": 10.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 10.5
 	},
 	"HulkB": {
 		"mobAnim": "HulkB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 35100,
+		"health": 23130,
 		"m_speed": 30,
 		"defence": 41,
 		"damage": 4,
-		"defaultCost": 409.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 289.5
 	},
 	"KlackonA": {
 		"mobAnim": "KlackonA",
@@ -1580,68 +1580,68 @@
 		"m_speed": 20,
 		"defence": 20,
 		"damage": 4,
-		"defaultCost": 14,
-		"boss": false
+		"boss": false,
+		"defaultCost": 14
 	},
 	"KlackonB": {
 		"mobAnim": "KlackonB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 37200,
+		"health": 24600,
 		"m_speed": 20,
 		"defence": 26,
 		"damage": 4,
-		"defaultCost": 434,
-		"boss": false
+		"boss": false,
+		"defaultCost": 278.5
 	},
 	"KlackonC": {
 		"mobAnim": "KlackonC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 73200,
+		"health": 48000,
 		"m_speed": 20,
 		"defence": 32,
 		"damage": 4,
-		"defaultCost": 854,
-		"boss": false
+		"boss": false,
+		"defaultCost": 590.5
 	},
 	"KlackonD": {
 		"mobAnim": "KlackonD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 109200,
+		"health": 71400,
 		"m_speed": 20,
 		"defence": 38,
 		"damage": 4,
-		"defaultCost": 1274,
-		"boss": false
+		"boss": false,
+		"defaultCost": 962.5
 	},
 	"KlackonE": {
 		"mobAnim": "KlackonE",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 145200,
+		"health": 94800,
 		"m_speed": 20,
 		"defence": 44,
 		"damage": 4,
-		"defaultCost": 1694,
-		"boss": false
+		"boss": false,
+		"defaultCost": 1414
 	},
 	"KlackonF": {
 		"mobAnim": "KlackonF",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 181200,
+		"health": 118200,
 		"m_speed": 20,
 		"defence": 50,
 		"damage": 4,
-		"defaultCost": 2114,
-		"boss": false
+		"boss": false,
+		"defaultCost": 1974
 	},
 	"LurkerA": {
 		"mobAnim": "LurkerA",
@@ -1652,32 +1652,32 @@
 		"m_speed": 25,
 		"defence": 50,
 		"damage": 3,
-		"defaultCost": 5.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 5.5
 	},
 	"LurkerB": {
 		"mobAnim": "LurkerB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 11100,
+		"health": 7320,
 		"m_speed": 25,
 		"defence": 68,
 		"damage": 3,
-		"defaultCost": 203.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 178.5
 	},
 	"LurkerC": {
 		"mobAnim": "LurkerC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 21900,
+		"health": 14340,
 		"m_speed": 25,
 		"defence": 86,
 		"damage": 3,
-		"defaultCost": 401.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 796.5
 	},
 	"MachineA": {
 		"mobAnim": "MachineA",
@@ -1688,8 +1688,8 @@
 		"m_speed": 20,
 		"defence": 30,
 		"damage": 3,
-		"defaultCost": 10.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 10.5
 	},
 	"MaskA": {
 		"mobAnim": "MaskA",
@@ -1700,44 +1700,44 @@
 		"m_speed": 20,
 		"defence": 25,
 		"damage": 3,
-		"defaultCost": 8.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 8.5
 	},
 	"MaskB": {
 		"mobAnim": "MaskB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 24500,
+		"health": 16170,
 		"m_speed": 20,
 		"defence": 33,
 		"damage": 3,
-		"defaultCost": 297.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 202
 	},
 	"MaskC": {
 		"mobAnim": "MaskC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 48300,
+		"health": 31640,
 		"m_speed": 20,
 		"defence": 42,
 		"damage": 3,
-		"defaultCost": 586.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 456
 	},
 	"MaskD": {
 		"mobAnim": "MaskD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 72100,
+		"health": 47110,
 		"m_speed": 20,
 		"defence": 50,
 		"damage": 3,
-		"defaultCost": 875.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 787
 	},
 	"MonolithA": {
 		"mobAnim": "MonolithA",
@@ -1748,140 +1748,140 @@
 		"m_speed": 20,
 		"defence": 20,
 		"damage": 3,
-		"defaultCost": 6,
-		"boss": false
+		"boss": false,
+		"defaultCost": 6
 	},
 	"MonolithB": {
 		"mobAnim": "MonolithB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 9500,
+		"health": 6350,
 		"m_speed": 20,
 		"defence": 23,
 		"damage": 3,
-		"defaultCost": 114,
-		"boss": false
+		"boss": false,
+		"defaultCost": 69.5
 	},
 	"MonolithC": {
 		"mobAnim": "MonolithC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 18500,
+		"health": 12200,
 		"m_speed": 20,
 		"defence": 27,
 		"damage": 3,
-		"defaultCost": 222,
-		"boss": false
+		"boss": false,
+		"defaultCost": 140
 	},
 	"MonolithD": {
 		"mobAnim": "MonolithD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 27500,
+		"health": 18050,
 		"m_speed": 20,
 		"defence": 30,
 		"damage": 3,
-		"defaultCost": 330,
-		"boss": false
+		"boss": false,
+		"defaultCost": 216
 	},
 	"MonolithE": {
 		"mobAnim": "MonolithE",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 36500,
+		"health": 23900,
 		"m_speed": 20,
 		"defence": 34,
 		"damage": 3,
-		"defaultCost": 438,
-		"boss": false
+		"boss": false,
+		"defaultCost": 303
 	},
 	"MonolithF": {
 		"mobAnim": "MonolithF",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 45500,
+		"health": 29750,
 		"m_speed": 20,
 		"defence": 38,
 		"damage": 3,
-		"defaultCost": 546,
-		"boss": false
+		"boss": false,
+		"defaultCost": 401
 	},
 	"MonolithG": {
 		"mobAnim": "MonolithG",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 54500,
+		"health": 35600,
 		"m_speed": 20,
 		"defence": 41,
 		"damage": 3,
-		"defaultCost": 654,
-		"boss": false
+		"boss": false,
+		"defaultCost": 504.5
 	},
 	"MonolithH": {
 		"mobAnim": "MonolithH",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 63500,
+		"health": 41450,
 		"m_speed": 20,
 		"defence": 45,
 		"damage": 3,
-		"defaultCost": 762,
-		"boss": false
+		"boss": false,
+		"defaultCost": 629.5
 	},
 	"MonolithI": {
 		"mobAnim": "MonolithI",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 72500,
+		"health": 47300,
 		"m_speed": 20,
 		"defence": 48,
 		"damage": 3,
-		"defaultCost": 870,
-		"boss": false
+		"boss": false,
+		"defaultCost": 760
 	},
 	"MonolithJ": {
 		"mobAnim": "MonolithJ",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 81500,
+		"health": 53150,
 		"m_speed": 20,
 		"defence": 52,
 		"damage": 3,
-		"defaultCost": 978,
-		"boss": false
+		"boss": false,
+		"defaultCost": 925
 	},
 	"MonolithK": {
 		"mobAnim": "MonolithK",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 90500,
+		"health": 59000,
 		"m_speed": 20,
 		"defence": 56,
 		"damage": 3,
-		"defaultCost": 1086,
-		"boss": false
+		"boss": false,
+		"defaultCost": 1120
 	},
 	"MonolithL": {
 		"mobAnim": "MonolithL",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 99500,
+		"health": 64850,
 		"m_speed": 20,
 		"defence": 59,
 		"damage": 3,
-		"defaultCost": 1194,
-		"boss": false
+		"boss": false,
+		"defaultCost": 1320.5
 	},
 	"MothA": {
 		"mobAnim": "MothA",
@@ -1892,56 +1892,56 @@
 		"m_speed": 15,
 		"defence": 15,
 		"damage": 2,
-		"defaultCost": 3.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 3.5
 	},
 	"MothB": {
 		"mobAnim": "MothB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 9900,
+		"health": 6540,
 		"m_speed": 15,
 		"defence": 19,
 		"damage": 2,
-		"defaultCost": 115.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 75
 	},
 	"MothC": {
 		"mobAnim": "MothC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 19500,
+		"health": 12780,
 		"m_speed": 15,
 		"defence": 24,
 		"damage": 2,
-		"defaultCost": 227.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 155.5
 	},
 	"MothD": {
 		"mobAnim": "MothD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 29100,
+		"health": 19020,
 		"m_speed": 15,
 		"defence": 29,
 		"damage": 2,
-		"defaultCost": 339.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 247.5
 	},
 	"MothE": {
 		"mobAnim": "MothE",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 38700,
+		"health": 25260,
 		"m_speed": 15,
 		"defence": 34,
 		"damage": 2,
-		"defaultCost": 451.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 353.5
 	},
 	"MouthA": {
 		"mobAnim": "MouthA",
@@ -1952,32 +1952,32 @@
 		"m_speed": 15,
 		"defence": 15,
 		"damage": 3,
-		"defaultCost": 5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 5
 	},
 	"MouthB": {
 		"mobAnim": "MouthB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 14800,
+		"health": 9760,
 		"m_speed": 15,
 		"defence": 20,
 		"damage": 3,
-		"defaultCost": 185,
-		"boss": false
+		"boss": false,
+		"defaultCost": 113.5
 	},
 	"MouthC": {
 		"mobAnim": "MouthC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 29200,
+		"health": 19120,
 		"m_speed": 15,
 		"defence": 25,
 		"damage": 3,
-		"defaultCost": 365,
-		"boss": false
+		"boss": false,
+		"defaultCost": 236
 	},
 	"MummyA": {
 		"mobAnim": "MummyA",
@@ -1988,32 +1988,32 @@
 		"m_speed": 30,
 		"defence": 25,
 		"damage": 3,
-		"defaultCost": 7,
-		"boss": false
+		"boss": false,
+		"defaultCost": 7
 	},
 	"MummyB": {
 		"mobAnim": "MummyB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 24050,
+		"health": 15860,
 		"m_speed": 30,
 		"defence": 34,
 		"damage": 3,
-		"defaultCost": 259,
-		"boss": false
+		"boss": false,
+		"defaultCost": 177.5
 	},
 	"MummyC": {
 		"mobAnim": "MummyC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 47450,
+		"health": 31070,
 		"m_speed": 30,
 		"defence": 43,
 		"damage": 3,
-		"defaultCost": 511,
-		"boss": false
+		"boss": false,
+		"defaultCost": 401.5
 	},
 	"MushroomA": {
 		"mobAnim": "MushroomA",
@@ -2024,20 +2024,20 @@
 		"m_speed": 20,
 		"defence": 15,
 		"damage": 1,
-		"defaultCost": 1,
-		"boss": false
+		"boss": false,
+		"defaultCost": 1
 	},
 	"MushroomB": {
 		"mobAnim": "MushroomB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 5850,
+		"health": 3855,
 		"m_speed": 20,
 		"defence": 20,
 		"damage": 1,
-		"defaultCost": 39,
-		"boss": false
+		"boss": false,
+		"defaultCost": 40
 	},
 	"OrbA": {
 		"mobAnim": "OrbA",
@@ -2048,44 +2048,44 @@
 		"m_speed": 15,
 		"defence": 40,
 		"damage": 3,
-		"defaultCost": 7,
-		"boss": false
+		"boss": false,
+		"defaultCost": 7
 	},
 	"OrbB": {
 		"mobAnim": "OrbB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 14000,
+		"health": 9240,
 		"m_speed": 15,
 		"defence": 53,
 		"damage": 3,
-		"defaultCost": 245,
-		"boss": false
+		"boss": false,
+		"defaultCost": 182
 	},
 	"OrbC": {
 		"mobAnim": "OrbC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 27600,
+		"health": 18080,
 		"m_speed": 15,
 		"defence": 67,
 		"damage": 3,
-		"defaultCost": 483,
-		"boss": false
+		"boss": false,
+		"defaultCost": 506.5
 	},
 	"OrbD": {
 		"mobAnim": "OrbD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 41200,
+		"health": 26920,
 		"m_speed": 15,
 		"defence": 80,
 		"damage": 3,
-		"defaultCost": 721,
-		"boss": false
+		"boss": false,
+		"defaultCost": 1243.5
 	},
 	"PotionA": {
 		"mobAnim": "PotionA",
@@ -2096,140 +2096,140 @@
 		"m_speed": 15,
 		"defence": 5,
 		"damage": 3,
-		"defaultCost": 6.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 6.5
 	},
 	"PotionB": {
 		"mobAnim": "PotionB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 11400,
+		"health": 7620,
 		"m_speed": 15,
 		"defence": 5,
 		"damage": 3,
-		"defaultCost": 123.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 75
 	},
 	"PotionC": {
 		"mobAnim": "PotionC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 22200,
+		"health": 14640,
 		"m_speed": 15,
 		"defence": 6,
 		"damage": 3,
-		"defaultCost": 240.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 144.5
 	},
 	"PotionD": {
 		"mobAnim": "PotionD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 33000,
+		"health": 21660,
 		"m_speed": 15,
 		"defence": 7,
 		"damage": 3,
-		"defaultCost": 357.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 216
 	},
 	"PotionE": {
 		"mobAnim": "PotionE",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 43800,
+		"health": 28680,
 		"m_speed": 15,
 		"defence": 8,
 		"damage": 3,
-		"defaultCost": 474.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 288.5
 	},
 	"PotionF": {
 		"mobAnim": "PotionF",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 54600,
+		"health": 35700,
 		"m_speed": 15,
 		"defence": 9,
 		"damage": 3,
-		"defaultCost": 591.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 363
 	},
 	"PotionG": {
 		"mobAnim": "PotionG",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 65400,
+		"health": 42720,
 		"m_speed": 15,
 		"defence": 10,
 		"damage": 3,
-		"defaultCost": 708.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 439
 	},
 	"PotionH": {
 		"mobAnim": "PotionH",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 76200,
+		"health": 49740,
 		"m_speed": 15,
 		"defence": 11,
 		"damage": 3,
-		"defaultCost": 825.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 516.5
 	},
 	"PotionI": {
 		"mobAnim": "PotionI",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 87000,
+		"health": 56760,
 		"m_speed": 15,
 		"defence": 12,
 		"damage": 3,
-		"defaultCost": 942.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 596
 	},
 	"PotionJ": {
 		"mobAnim": "PotionJ",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 97800,
+		"health": 63780,
 		"m_speed": 15,
 		"defence": 13,
 		"damage": 3,
-		"defaultCost": 1059.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 677.5
 	},
 	"PotionK": {
 		"mobAnim": "PotionK",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 108600,
+		"health": 70800,
 		"m_speed": 15,
 		"defence": 14,
 		"damage": 3,
-		"defaultCost": 1176.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 761
 	},
 	"PotionL": {
 		"mobAnim": "PotionL",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 119400,
+		"health": 77820,
 		"m_speed": 15,
 		"defence": 14,
 		"damage": 3,
-		"defaultCost": 1293.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 836
 	},
 	"PterodactylA": {
 		"mobAnim": "PterodactylA",
@@ -2240,92 +2240,92 @@
 		"m_speed": 10,
 		"defence": 15,
 		"damage": 3,
-		"defaultCost": 7,
-		"boss": false
+		"boss": false,
+		"defaultCost": 7
 	},
 	"PterodactylB": {
 		"mobAnim": "PterodactylB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 13500,
+		"health": 8950,
 		"m_speed": 10,
 		"defence": 18,
 		"damage": 3,
-		"defaultCost": 189,
-		"boss": false
+		"boss": false,
+		"defaultCost": 119.5
 	},
 	"PterodactylC": {
 		"mobAnim": "PterodactylC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 26500,
+		"health": 17400,
 		"m_speed": 10,
 		"defence": 22,
 		"damage": 3,
-		"defaultCost": 371,
-		"boss": false
+		"boss": false,
+		"defaultCost": 243
 	},
 	"PterodactylD": {
 		"mobAnim": "PterodactylD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 39500,
+		"health": 25850,
 		"m_speed": 10,
 		"defence": 26,
 		"damage": 3,
-		"defaultCost": 553,
-		"boss": false
+		"boss": false,
+		"defaultCost": 380
 	},
 	"PterodactylE": {
 		"mobAnim": "PterodactylE",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 52500,
+		"health": 34300,
 		"m_speed": 10,
 		"defence": 30,
 		"damage": 3,
-		"defaultCost": 735,
-		"boss": false
+		"boss": false,
+		"defaultCost": 533
 	},
 	"PterodactylF": {
 		"mobAnim": "PterodactylF",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 65500,
+		"health": 42750,
 		"m_speed": 10,
 		"defence": 34,
 		"damage": 3,
-		"defaultCost": 917,
-		"boss": false
+		"boss": false,
+		"defaultCost": 704
 	},
 	"PterodactylG": {
 		"mobAnim": "PterodactylG",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 78500,
+		"health": 51200,
 		"m_speed": 10,
 		"defence": 38,
 		"damage": 3,
-		"defaultCost": 1099,
-		"boss": false
+		"boss": false,
+		"defaultCost": 897.5
 	},
 	"PterodactylH": {
 		"mobAnim": "PterodactylH",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 91500,
+		"health": 59650,
 		"m_speed": 10,
 		"defence": 42,
 		"damage": 3,
-		"defaultCost": 1281,
-		"boss": false
+		"boss": false,
+		"defaultCost": 1117.5
 	},
 	"PuddleA": {
 		"mobAnim": "PuddleA",
@@ -2336,32 +2336,32 @@
 		"m_speed": 15,
 		"defence": 10,
 		"damage": 3,
-		"defaultCost": 4.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 4.5
 	},
 	"PuddleB": {
 		"mobAnim": "PuddleB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 12950,
+		"health": 8540,
 		"m_speed": 15,
 		"defence": 13,
 		"damage": 3,
-		"defaultCost": 166.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 91.5
 	},
 	"PuddleC": {
 		"mobAnim": "PuddleC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 25550,
+		"health": 16730,
 		"m_speed": 15,
 		"defence": 17,
 		"damage": 3,
-		"defaultCost": 328.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 187
 	},
 	"PyramidA": {
 		"mobAnim": "PyramidA",
@@ -2372,20 +2372,20 @@
 		"m_speed": 20,
 		"defence": 25,
 		"damage": 3,
-		"defaultCost": 6.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 6.5
 	},
 	"PyramidB": {
 		"mobAnim": "PyramidB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 19500,
+		"health": 12850,
 		"m_speed": 20,
 		"defence": 34,
 		"damage": 3,
-		"defaultCost": 253.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 163
 	},
 	"ReaperA": {
 		"mobAnim": "ReaperA",
@@ -2396,8 +2396,8 @@
 		"m_speed": 20,
 		"defence": 40,
 		"damage": 5,
-		"defaultCost": 18.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 18.5
 	},
 	"RobotA": {
 		"mobAnim": "RobotA",
@@ -2408,44 +2408,44 @@
 		"m_speed": 20,
 		"defence": 30,
 		"damage": 4,
-		"defaultCost": 11,
-		"boss": false
+		"boss": false,
+		"defaultCost": 11
 	},
 	"RobotB": {
 		"mobAnim": "RobotB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 28000,
+		"health": 18480,
 		"m_speed": 20,
 		"defence": 40,
 		"damage": 4,
-		"defaultCost": 385,
-		"boss": false
+		"boss": false,
+		"defaultCost": 258.5
 	},
 	"RobotC": {
 		"mobAnim": "RobotC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 55200,
+		"health": 36160,
 		"m_speed": 20,
 		"defence": 50,
 		"damage": 4,
-		"defaultCost": 759,
-		"boss": false
+		"boss": false,
+		"defaultCost": 605
 	},
 	"RobotD": {
 		"mobAnim": "RobotD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 82400,
+		"health": 53840,
 		"m_speed": 20,
 		"defence": 60,
 		"damage": 4,
-		"defaultCost": 1133,
-		"boss": false
+		"boss": false,
+		"defaultCost": 1124.5
 	},
 	"ScorpionA": {
 		"mobAnim": "ScorpionA",
@@ -2456,32 +2456,32 @@
 		"m_speed": 15,
 		"defence": 15,
 		"damage": 3,
-		"defaultCost": 7.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 7.5
 	},
 	"ScorpionB": {
 		"mobAnim": "ScorpionB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 22200,
+		"health": 14640,
 		"m_speed": 15,
 		"defence": 20,
 		"damage": 3,
-		"defaultCost": 277.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 169.5
 	},
 	"ScorpionC": {
 		"mobAnim": "ScorpionC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 43800,
+		"health": 28680,
 		"m_speed": 15,
 		"defence": 25,
 		"damage": 3,
-		"defaultCost": 547.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 354
 	},
 	"SentryA": {
 		"mobAnim": "SentryA",
@@ -2492,32 +2492,32 @@
 		"m_speed": 15,
 		"defence": 25,
 		"damage": 3,
-		"defaultCost": 4.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 4.5
 	},
 	"SentryB": {
 		"mobAnim": "SentryB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 11100,
+		"health": 7320,
 		"m_speed": 15,
 		"defence": 34,
 		"damage": 3,
-		"defaultCost": 166.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 103
 	},
 	"SentryC": {
 		"mobAnim": "SentryC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 21900,
+		"health": 14340,
 		"m_speed": 15,
 		"defence": 43,
 		"damage": 3,
-		"defaultCost": 328.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 233
 	},
 	"SentryCopterA": {
 		"mobAnim": "SentryCopterA",
@@ -2528,32 +2528,32 @@
 		"m_speed": 10,
 		"defence": 25,
 		"damage": 3,
-		"defaultCost": 5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 5
 	},
 	"SentryCopterB": {
 		"mobAnim": "SentryCopterB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 11100,
+		"health": 7320,
 		"m_speed": 10,
 		"defence": 34,
 		"damage": 3,
-		"defaultCost": 185,
-		"boss": false
+		"boss": false,
+		"defaultCost": 121
 	},
 	"SentryCopterC": {
 		"mobAnim": "SentryCopterC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 21900,
+		"health": 14340,
 		"m_speed": 10,
 		"defence": 43,
 		"damage": 3,
-		"defaultCost": 365,
-		"boss": false
+		"boss": false,
+		"defaultCost": 274
 	},
 	"ShieldA": {
 		"mobAnim": "ShieldA",
@@ -2564,68 +2564,68 @@
 		"m_speed": 20,
 		"defence": 60,
 		"damage": 1,
-		"defaultCost": 6,
-		"boss": false
+		"boss": false,
+		"defaultCost": 6
 	},
 	"ShieldB": {
 		"mobAnim": "ShieldB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 9300,
+		"health": 6150,
 		"m_speed": 20,
 		"defence": 78,
 		"damage": 1,
-		"defaultCost": 186,
-		"boss": false
+		"boss": false,
+		"defaultCost": 233
 	},
 	"ShieldC": {
 		"mobAnim": "ShieldC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 18300,
+		"health": 12000,
 		"m_speed": 20,
 		"defence": 96,
 		"damage": 1,
-		"defaultCost": 366,
-		"boss": false
+		"boss": false,
+		"defaultCost": 2503.5
 	},
 	"ShieldD": {
 		"mobAnim": "ShieldD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 27300,
+		"health": 17850,
 		"m_speed": 20,
 		"defence": 114,
 		"damage": 1,
-		"defaultCost": 546,
-		"boss": false
+		"boss": false,
+		"defaultCost": -1064.5
 	},
 	"ShieldE": {
 		"mobAnim": "ShieldE",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 36300,
+		"health": 23700,
 		"m_speed": 20,
 		"defence": 132,
 		"damage": 1,
-		"defaultCost": 726,
-		"boss": false
+		"boss": false,
+		"defaultCost": -618.5
 	},
 	"ShieldF": {
 		"mobAnim": "ShieldF",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 45300,
+		"health": 29550,
 		"m_speed": 20,
 		"defence": 150,
 		"damage": 1,
-		"defaultCost": 906,
-		"boss": false
+		"boss": false,
+		"defaultCost": -493.5
 	},
 	"SkeletonA": {
 		"mobAnim": "SkeletonA",
@@ -2636,44 +2636,44 @@
 		"m_speed": 20,
 		"defence": 20,
 		"damage": 3,
-		"defaultCost": 6,
-		"boss": false
+		"boss": false,
+		"defaultCost": 6
 	},
 	"SkeletonB": {
 		"mobAnim": "SkeletonB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 17500,
+		"health": 11550,
 		"m_speed": 20,
 		"defence": 26,
 		"damage": 3,
-		"defaultCost": 210,
-		"boss": false
+		"boss": false,
+		"defaultCost": 131
 	},
 	"SkeletonC": {
 		"mobAnim": "SkeletonC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 34500,
+		"health": 22600,
 		"m_speed": 20,
 		"defence": 33,
 		"damage": 3,
-		"defaultCost": 414,
-		"boss": false
+		"boss": false,
+		"defaultCost": 282
 	},
 	"SkeletonD": {
 		"mobAnim": "SkeletonD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 51500,
+		"health": 33650,
 		"m_speed": 20,
 		"defence": 40,
 		"damage": 3,
-		"defaultCost": 618,
-		"boss": false
+		"boss": false,
+		"defaultCost": 469
 	},
 	"SkullA": {
 		"mobAnim": "SkullA",
@@ -2684,44 +2684,44 @@
 		"m_speed": 15,
 		"defence": 15,
 		"damage": 3,
-		"defaultCost": 5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 5
 	},
 	"SkullB": {
 		"mobAnim": "SkullB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 14000,
+		"health": 9240,
 		"m_speed": 15,
 		"defence": 20,
 		"damage": 3,
-		"defaultCost": 175,
-		"boss": false
+		"boss": false,
+		"defaultCost": 107.5
 	},
 	"SkullC": {
 		"mobAnim": "SkullC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 27600,
+		"health": 18080,
 		"m_speed": 15,
 		"defence": 25,
 		"damage": 3,
-		"defaultCost": 345,
-		"boss": false
+		"boss": false,
+		"defaultCost": 223.5
 	},
 	"SkullD": {
 		"mobAnim": "SkullD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 41200,
+		"health": 26920,
 		"m_speed": 15,
 		"defence": 30,
 		"damage": 3,
-		"defaultCost": 515,
-		"boss": false
+		"boss": false,
+		"defaultCost": 356
 	},
 	"SkullFlamingA": {
 		"mobAnim": "SkullFlamingA",
@@ -2732,20 +2732,20 @@
 		"m_speed": 15,
 		"defence": 15,
 		"damage": 5,
-		"defaultCost": 6,
-		"boss": false
+		"boss": false,
+		"defaultCost": 6
 	},
 	"SkullFlamingB": {
 		"mobAnim": "SkullFlamingB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 15600,
+		"health": 10280,
 		"m_speed": 15,
 		"defence": 20,
 		"damage": 5,
-		"defaultCost": 234,
-		"boss": false
+		"boss": false,
+		"defaultCost": 120.5
 	},
 	"SlimeA": {
 		"mobAnim": "SlimeA",
@@ -2756,188 +2756,188 @@
 		"m_speed": 15,
 		"defence": 10,
 		"damage": 1,
-		"defaultCost": 2,
-		"boss": false
+		"boss": false,
+		"defaultCost": 2
 	},
 	"SlimeB": {
 		"mobAnim": "SlimeB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 2200,
+		"health": 1500,
 		"m_speed": 15,
 		"defence": 11,
 		"damage": 1,
-		"defaultCost": 22,
-		"boss": false
+		"boss": false,
+		"defaultCost": 15.5
 	},
 	"SlimeC": {
 		"mobAnim": "SlimeC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 4200,
+		"health": 2800,
 		"m_speed": 15,
 		"defence": 12,
 		"damage": 1,
-		"defaultCost": 42,
-		"boss": false
+		"boss": false,
+		"defaultCost": 29
 	},
 	"SlimeD": {
 		"mobAnim": "SlimeD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 6200,
+		"health": 4100,
 		"m_speed": 15,
 		"defence": 13,
 		"damage": 1,
-		"defaultCost": 62,
-		"boss": false
+		"boss": false,
+		"defaultCost": 43.5
 	},
 	"SlimeE": {
 		"mobAnim": "SlimeE",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 8200,
+		"health": 5400,
 		"m_speed": 15,
 		"defence": 14,
 		"damage": 1,
-		"defaultCost": 82,
-		"boss": false
+		"boss": false,
+		"defaultCost": 57.5
 	},
 	"SlimeF": {
 		"mobAnim": "SlimeF",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 10200,
+		"health": 6700,
 		"m_speed": 15,
 		"defence": 15,
 		"damage": 1,
-		"defaultCost": 102,
-		"boss": false
+		"boss": false,
+		"defaultCost": 72.5
 	},
 	"SlimeG": {
 		"mobAnim": "SlimeG",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 12200,
+		"health": 8000,
 		"m_speed": 15,
 		"defence": 16,
 		"damage": 1,
-		"defaultCost": 122,
-		"boss": false
+		"boss": false,
+		"defaultCost": 87.5
 	},
 	"SlimeH": {
 		"mobAnim": "SlimeH",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 14200,
+		"health": 9300,
 		"m_speed": 15,
 		"defence": 17,
 		"damage": 1,
-		"defaultCost": 142,
-		"boss": false
+		"boss": false,
+		"defaultCost": 103
 	},
 	"SlimeI": {
 		"mobAnim": "SlimeI",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 16200,
+		"health": 10600,
 		"m_speed": 15,
 		"defence": 18,
 		"damage": 1,
-		"defaultCost": 162,
-		"boss": false
+		"boss": false,
+		"defaultCost": 119
 	},
 	"SlimeJ": {
 		"mobAnim": "SlimeJ",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 18200,
+		"health": 11900,
 		"m_speed": 15,
 		"defence": 19,
 		"damage": 1,
-		"defaultCost": 182,
-		"boss": false
+		"boss": false,
+		"defaultCost": 135.5
 	},
 	"SlimeK": {
 		"mobAnim": "SlimeK",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 20200,
+		"health": 13200,
 		"m_speed": 15,
 		"defence": 20,
 		"damage": 1,
-		"defaultCost": 202,
-		"boss": false
+		"boss": false,
+		"defaultCost": 152
 	},
 	"SlimeL": {
 		"mobAnim": "SlimeL",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 22200,
+		"health": 14500,
 		"m_speed": 15,
 		"defence": 21,
 		"damage": 1,
-		"defaultCost": 222,
-		"boss": false
+		"boss": false,
+		"defaultCost": 169
 	},
 	"SlimeM": {
 		"mobAnim": "SlimeM",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 24200,
+		"health": 15800,
 		"m_speed": 15,
 		"defence": 22,
 		"damage": 1,
-		"defaultCost": 242,
-		"boss": false
+		"boss": false,
+		"defaultCost": 187
 	},
 	"SlimeN": {
 		"mobAnim": "SlimeN",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 26200,
+		"health": 17100,
 		"m_speed": 15,
 		"defence": 23,
 		"damage": 1,
-		"defaultCost": 262,
-		"boss": false
+		"boss": false,
+		"defaultCost": 205
 	},
 	"SlimeO": {
 		"mobAnim": "SlimeO",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 28200,
+		"health": 18400,
 		"m_speed": 15,
 		"defence": 24,
 		"damage": 1,
-		"defaultCost": 282,
-		"boss": false
+		"boss": false,
+		"defaultCost": 223.5
 	},
 	"SlimeP": {
 		"mobAnim": "SlimeP",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 30200,
+		"health": 19700,
 		"m_speed": 15,
 		"defence": 25,
 		"damage": 1,
-		"defaultCost": 302,
-		"boss": false
+		"boss": false,
+		"defaultCost": 242
 	},
 	"SlimeSmallA": {
 		"mobAnim": "SlimeSmallA",
@@ -2948,104 +2948,104 @@
 		"m_speed": 15,
 		"defence": 10,
 		"damage": 1,
-		"defaultCost": 1,
-		"boss": false
+		"boss": false,
+		"defaultCost": 1
 	},
 	"SlimeSmallB": {
 		"mobAnim": "SlimeSmallB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 2500,
+		"health": 1660,
 		"m_speed": 15,
 		"defence": 12,
 		"damage": 1,
-		"defaultCost": 25,
-		"boss": false
+		"boss": false,
+		"defaultCost": 17
 	},
 	"SlimeSmallC": {
 		"mobAnim": "SlimeSmallC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 4900,
+		"health": 3220,
 		"m_speed": 15,
 		"defence": 14,
 		"damage": 1,
-		"defaultCost": 49,
-		"boss": false
+		"boss": false,
+		"defaultCost": 34.5
 	},
 	"SlimeSmallD": {
 		"mobAnim": "SlimeSmallD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 7300,
+		"health": 4780,
 		"m_speed": 15,
 		"defence": 17,
 		"damage": 1,
-		"defaultCost": 73,
-		"boss": false
+		"boss": false,
+		"defaultCost": 53
 	},
 	"SlimeSmallE": {
 		"mobAnim": "SlimeSmallE",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 9700,
+		"health": 6340,
 		"m_speed": 15,
 		"defence": 19,
 		"damage": 1,
-		"defaultCost": 97,
-		"boss": false
+		"boss": false,
+		"defaultCost": 72
 	},
 	"SlimeSmallF": {
 		"mobAnim": "SlimeSmallF",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 12100,
+		"health": 7900,
 		"m_speed": 15,
 		"defence": 22,
 		"damage": 1,
-		"defaultCost": 121,
-		"boss": false
+		"boss": false,
+		"defaultCost": 93.5
 	},
 	"SlimeSmallG": {
 		"mobAnim": "SlimeSmallG",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 14500,
+		"health": 9460,
 		"m_speed": 15,
 		"defence": 24,
 		"damage": 1,
-		"defaultCost": 145,
-		"boss": false
+		"boss": false,
+		"defaultCost": 114.5
 	},
 	"SlimeSmallH": {
 		"mobAnim": "SlimeSmallH",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 16900,
+		"health": 11020,
 		"m_speed": 15,
 		"defence": 26,
 		"damage": 1,
-		"defaultCost": 169,
-		"boss": false
+		"boss": false,
+		"defaultCost": 137
 	},
 	"SlimeSmallI": {
 		"mobAnim": "SlimeSmallI",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 19300,
+		"health": 12580,
 		"m_speed": 15,
 		"defence": 29,
 		"damage": 1,
-		"defaultCost": 193,
-		"boss": false
+		"boss": false,
+		"defaultCost": 163.5
 	},
 	"SlimeSquareA": {
 		"mobAnim": "SlimeSquareA",
@@ -3056,140 +3056,140 @@
 		"m_speed": 15,
 		"defence": 15,
 		"damage": 2,
-		"defaultCost": 3,
-		"boss": false
+		"boss": false,
+		"defaultCost": 3
 	},
 	"SlimeSquareB": {
 		"mobAnim": "SlimeSquareB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 4750,
+		"health": 3175,
 		"m_speed": 15,
 		"defence": 17,
 		"damage": 2,
-		"defaultCost": 57,
-		"boss": false
+		"boss": false,
+		"defaultCost": 35.5
 	},
 	"SlimeSquareC": {
 		"mobAnim": "SlimeSquareC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 9250,
+		"health": 6100,
 		"m_speed": 15,
 		"defence": 20,
 		"damage": 2,
-		"defaultCost": 111,
-		"boss": false
+		"boss": false,
+		"defaultCost": 70.5
 	},
 	"SlimeSquareD": {
 		"mobAnim": "SlimeSquareD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 13750,
+		"health": 9025,
 		"m_speed": 15,
 		"defence": 23,
 		"damage": 2,
-		"defaultCost": 165,
-		"boss": false
+		"boss": false,
+		"defaultCost": 108.5
 	},
 	"SlimeSquareE": {
 		"mobAnim": "SlimeSquareE",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 18250,
+		"health": 11950,
 		"m_speed": 15,
 		"defence": 25,
 		"damage": 2,
-		"defaultCost": 219,
-		"boss": false
+		"boss": false,
+		"defaultCost": 147.5
 	},
 	"SlimeSquareF": {
 		"mobAnim": "SlimeSquareF",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 22750,
+		"health": 14875,
 		"m_speed": 15,
 		"defence": 28,
 		"damage": 2,
-		"defaultCost": 273,
-		"boss": false
+		"boss": false,
+		"defaultCost": 191
 	},
 	"SlimeSquareG": {
 		"mobAnim": "SlimeSquareG",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 27250,
+		"health": 17800,
 		"m_speed": 15,
 		"defence": 31,
 		"damage": 2,
-		"defaultCost": 327,
-		"boss": false
+		"boss": false,
+		"defaultCost": 238.5
 	},
 	"SlimeSquareH": {
 		"mobAnim": "SlimeSquareH",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 31750,
+		"health": 20725,
 		"m_speed": 15,
 		"defence": 33,
 		"damage": 2,
-		"defaultCost": 381,
-		"boss": false
+		"boss": false,
+		"defaultCost": 286
 	},
 	"SlimeSquareI": {
 		"mobAnim": "SlimeSquareI",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 36250,
+		"health": 23650,
 		"m_speed": 15,
 		"defence": 36,
 		"damage": 2,
-		"defaultCost": 435,
-		"boss": false
+		"boss": false,
+		"defaultCost": 341.5
 	},
 	"SlimeSquareJ": {
 		"mobAnim": "SlimeSquareJ",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 40750,
+		"health": 26575,
 		"m_speed": 15,
 		"defence": 39,
 		"damage": 2,
-		"defaultCost": 489,
-		"boss": false
+		"boss": false,
+		"defaultCost": 402.5
 	},
 	"SlimeSquareK": {
 		"mobAnim": "SlimeSquareK",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 45250,
+		"health": 29500,
 		"m_speed": 15,
 		"defence": 42,
 		"damage": 2,
-		"defaultCost": 543,
-		"boss": false
+		"boss": false,
+		"defaultCost": 470
 	},
 	"SlimeSquareL": {
 		"mobAnim": "SlimeSquareL",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 49750,
+		"health": 32425,
 		"m_speed": 15,
 		"defence": 44,
 		"damage": 2,
-		"defaultCost": 597,
-		"boss": false
+		"boss": false,
+		"defaultCost": 535
 	},
 	"SlimeSquareSmallA": {
 		"mobAnim": "SlimeSquareSmallA",
@@ -3200,92 +3200,92 @@
 		"m_speed": 15,
 		"defence": 15,
 		"damage": 2,
-		"defaultCost": 2,
-		"boss": false
+		"boss": false,
+		"defaultCost": 2
 	},
 	"SlimeSquareSmallB": {
 		"mobAnim": "SlimeSquareSmallB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 4050,
+		"health": 2685,
 		"m_speed": 15,
 		"defence": 18,
 		"damage": 2,
-		"defaultCost": 54,
-		"boss": false
+		"boss": false,
+		"defaultCost": 30.5
 	},
 	"SlimeSquareSmallC": {
 		"mobAnim": "SlimeSquareSmallC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 7950,
+		"health": 5220,
 		"m_speed": 15,
 		"defence": 22,
 		"damage": 2,
-		"defaultCost": 106,
-		"boss": false
+		"boss": false,
+		"defaultCost": 62
 	},
 	"SlimeSquareSmallD": {
 		"mobAnim": "SlimeSquareSmallD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 11850,
+		"health": 7755,
 		"m_speed": 15,
 		"defence": 26,
 		"damage": 2,
-		"defaultCost": 158,
-		"boss": false
+		"boss": false,
+		"defaultCost": 97
 	},
 	"SlimeSquareSmallE": {
 		"mobAnim": "SlimeSquareSmallE",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 15750,
+		"health": 10290,
 		"m_speed": 15,
 		"defence": 30,
 		"damage": 2,
-		"defaultCost": 210,
-		"boss": false
+		"boss": false,
+		"defaultCost": 136
 	},
 	"SlimeSquareSmallF": {
 		"mobAnim": "SlimeSquareSmallF",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 19650,
+		"health": 12825,
 		"m_speed": 15,
 		"defence": 34,
 		"damage": 2,
-		"defaultCost": 262,
-		"boss": false
+		"boss": false,
+		"defaultCost": 179.5
 	},
 	"SlimeSquareSmallG": {
 		"mobAnim": "SlimeSquareSmallG",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 23550,
+		"health": 15360,
 		"m_speed": 15,
 		"defence": 38,
 		"damage": 2,
-		"defaultCost": 314,
-		"boss": false
+		"boss": false,
+		"defaultCost": 229
 	},
 	"SlimeSquareSmallH": {
 		"mobAnim": "SlimeSquareSmallH",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 27450,
+		"health": 17895,
 		"m_speed": 15,
 		"defence": 42,
 		"damage": 2,
-		"defaultCost": 366,
-		"boss": false
+		"boss": false,
+		"defaultCost": 285
 	},
 	"SnakeA": {
 		"mobAnim": "SnakeA",
@@ -3296,140 +3296,140 @@
 		"m_speed": 15,
 		"defence": 20,
 		"damage": 1,
-		"defaultCost": 2,
-		"boss": false
+		"boss": false,
+		"defaultCost": 2
 	},
 	"SnakeB": {
 		"mobAnim": "SnakeB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 3800,
+		"health": 2540,
 		"m_speed": 15,
 		"defence": 23,
 		"damage": 1,
-		"defaultCost": 38,
-		"boss": false
+		"boss": false,
+		"defaultCost": 30
 	},
 	"SnakeC": {
 		"mobAnim": "SnakeC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 7400,
+		"health": 4880,
 		"m_speed": 15,
 		"defence": 27,
 		"damage": 1,
-		"defaultCost": 74,
-		"boss": false
+		"boss": false,
+		"defaultCost": 61.5
 	},
 	"SnakeD": {
 		"mobAnim": "SnakeD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 11000,
+		"health": 7220,
 		"m_speed": 15,
 		"defence": 30,
 		"damage": 1,
-		"defaultCost": 110,
-		"boss": false
+		"boss": false,
+		"defaultCost": 95
 	},
 	"SnakeE": {
 		"mobAnim": "SnakeE",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 14600,
+		"health": 9560,
 		"m_speed": 15,
 		"defence": 34,
 		"damage": 1,
-		"defaultCost": 146,
-		"boss": false
+		"boss": false,
+		"defaultCost": 133.5
 	},
 	"SnakeF": {
 		"mobAnim": "SnakeF",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 18200,
+		"health": 11900,
 		"m_speed": 15,
 		"defence": 38,
 		"damage": 1,
-		"defaultCost": 182,
-		"boss": false
+		"boss": false,
+		"defaultCost": 177
 	},
 	"SnakeG": {
 		"mobAnim": "SnakeG",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 21800,
+		"health": 14240,
 		"m_speed": 15,
 		"defence": 41,
 		"damage": 1,
-		"defaultCost": 218,
-		"boss": false
+		"boss": false,
+		"defaultCost": 222.5
 	},
 	"SnakeH": {
 		"mobAnim": "SnakeH",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 25400,
+		"health": 16580,
 		"m_speed": 15,
 		"defence": 45,
 		"damage": 1,
-		"defaultCost": 254,
-		"boss": false
+		"boss": false,
+		"defaultCost": 278
 	},
 	"SnakeI": {
 		"mobAnim": "SnakeI",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 29000,
+		"health": 18920,
 		"m_speed": 15,
 		"defence": 48,
 		"damage": 1,
-		"defaultCost": 290,
-		"boss": false
+		"boss": false,
+		"defaultCost": 335.5
 	},
 	"SnakeJ": {
 		"mobAnim": "SnakeJ",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 32600,
+		"health": 21260,
 		"m_speed": 15,
 		"defence": 52,
 		"damage": 1,
-		"defaultCost": 326,
-		"boss": false
+		"boss": false,
+		"defaultCost": 408.5
 	},
 	"SnakeK": {
 		"mobAnim": "SnakeK",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 36200,
+		"health": 23600,
 		"m_speed": 15,
 		"defence": 56,
 		"damage": 1,
-		"defaultCost": 362,
-		"boss": false
+		"boss": false,
+		"defaultCost": 495
 	},
 	"SnakeL": {
 		"mobAnim": "SnakeL",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 39800,
+		"health": 25940,
 		"m_speed": 15,
 		"defence": 59,
 		"damage": 1,
-		"defaultCost": 398,
-		"boss": false
+		"boss": false,
+		"defaultCost": 584
 	},
 	"SpaceA": {
 		"mobAnim": "SpaceA",
@@ -3440,8 +3440,8 @@
 		"m_speed": 25,
 		"defence": 30,
 		"damage": 3,
-		"defaultCost": 23,
-		"boss": false
+		"boss": false,
+		"defaultCost": 23
 	},
 	"SwordA": {
 		"mobAnim": "SwordA",
@@ -3452,20 +3452,20 @@
 		"m_speed": 15,
 		"defence": 30,
 		"damage": 4,
-		"defaultCost": 14.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 14.5
 	},
 	"SwordB": {
 		"mobAnim": "SwordB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 39000,
+		"health": 25700,
 		"m_speed": 15,
 		"defence": 41,
 		"damage": 4,
-		"defaultCost": 565.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 403.5
 	},
 	"WeaselA": {
 		"mobAnim": "WeaselA",
@@ -3476,32 +3476,32 @@
 		"m_speed": 20,
 		"defence": 25,
 		"damage": 4,
-		"defaultCost": 8,
-		"boss": false
+		"boss": false,
+		"defaultCost": 8
 	},
 	"WeaselB": {
 		"mobAnim": "WeaselB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 22200,
+		"health": 14640,
 		"m_speed": 20,
 		"defence": 34,
 		"damage": 4,
-		"defaultCost": 296,
-		"boss": false
+		"boss": false,
+		"defaultCost": 186.5
 	},
 	"WeaselC": {
 		"mobAnim": "WeaselC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 43800,
+		"health": 28680,
 		"m_speed": 20,
 		"defence": 43,
 		"damage": 4,
-		"defaultCost": 584,
-		"boss": false
+		"boss": false,
+		"defaultCost": 421
 	},
 	"WitchA": {
 		"mobAnim": "WitchA",
@@ -3512,68 +3512,68 @@
 		"m_speed": 15,
 		"defence": 30,
 		"damage": 4,
-		"defaultCost": 6.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 6.5
 	},
 	"WitchB": {
 		"mobAnim": "WitchB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 12400,
+		"health": 8200,
 		"m_speed": 15,
 		"defence": 39,
 		"damage": 4,
-		"defaultCost": 201.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 125.5
 	},
 	"WitchC": {
 		"mobAnim": "WitchC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 24400,
+		"health": 16000,
 		"m_speed": 15,
 		"defence": 48,
 		"damage": 4,
-		"defaultCost": 396.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 285.5
 	},
 	"WitchD": {
 		"mobAnim": "WitchD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 36400,
+		"health": 23800,
 		"m_speed": 15,
 		"defence": 57,
 		"damage": 4,
-		"defaultCost": 591.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 512
 	},
 	"WitchE": {
 		"mobAnim": "WitchE",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 48400,
+		"health": 31600,
 		"m_speed": 15,
 		"defence": 66,
 		"damage": 4,
-		"defaultCost": 786.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 859.5
 	},
 	"WitchF": {
 		"mobAnim": "WitchF",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 60400,
+		"health": 39400,
 		"m_speed": 15,
 		"defence": 75,
 		"damage": 4,
-		"defaultCost": 981.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 1456
 	},
 	"WormA": {
 		"mobAnim": "WormA",
@@ -3584,92 +3584,92 @@
 		"m_speed": 20,
 		"defence": 5,
 		"damage": 1,
-		"defaultCost": 0.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 0.5
 	},
 	"WormB": {
 		"mobAnim": "WormB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 2700,
+		"health": 1790,
 		"m_speed": 20,
 		"defence": 6,
 		"damage": 1,
-		"defaultCost": 13.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 15.5
 	},
 	"WormC": {
 		"mobAnim": "WormC",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 5300,
+		"health": 3480,
 		"m_speed": 20,
 		"defence": 7,
 		"damage": 1,
-		"defaultCost": 26.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 31
 	},
 	"WormD": {
 		"mobAnim": "WormD",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 7900,
+		"health": 5170,
 		"m_speed": 20,
 		"defence": 8,
 		"damage": 1,
-		"defaultCost": 39.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 46.5
 	},
 	"WormE": {
 		"mobAnim": "WormE",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 10500,
+		"health": 6860,
 		"m_speed": 20,
 		"defence": 10,
 		"damage": 1,
-		"defaultCost": 52.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 63.5
 	},
 	"WormF": {
 		"mobAnim": "WormF",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 13100,
+		"health": 8550,
 		"m_speed": 20,
 		"defence": 11,
 		"damage": 1,
-		"defaultCost": 65.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 80
 	},
 	"WormG": {
 		"mobAnim": "WormG",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 15700,
+		"health": 10240,
 		"m_speed": 20,
 		"defence": 12,
 		"damage": 1,
-		"defaultCost": 78.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 97
 	},
 	"WormH": {
 		"mobAnim": "WormH",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 18300,
+		"health": 11930,
 		"m_speed": 20,
 		"defence": 14,
 		"damage": 1,
-		"defaultCost": 91.5,
-		"boss": false
+		"boss": false,
+		"defaultCost": 115.5
 	},
 	"ZombieA": {
 		"mobAnim": "ZombieA",
@@ -3680,20 +3680,20 @@
 		"m_speed": 30,
 		"defence": 25,
 		"damage": 3,
-		"defaultCost": 7,
-		"boss": false
+		"boss": false,
+		"defaultCost": 7
 	},
 	"ZombieB": {
 		"mobAnim": "ZombieB",
 		"deathAnimName": "boom3",
 		"deathSound": "death",
 		"scale": 3,
-		"health": 25350,
+		"health": 16705,
 		"m_speed": 30,
 		"defence": 34,
 		"damage": 3,
-		"defaultCost": 273,
-		"boss": false
+		"boss": false,
+		"defaultCost": 187
 	},
 	"BossBear": {
 		"mobAnim": "bearWalk",
@@ -3701,7 +3701,7 @@
 		"deathSound": "death",
 		"scale": 1,
 		"health": 4000,
-		"m_speed": 60,
+		"m_speed": 40,
 		"defence": 60,
 		"damage": 10,
 		"defaultCost": 0,
@@ -3713,7 +3713,7 @@
 		"deathSound": "death",
 		"scale": 1,
 		"health": 9000,
-		"m_speed": 60,
+		"m_speed": 40,
 		"defence": 60,
 		"damage": 10,
 		"defaultCost": 0,
@@ -3725,7 +3725,7 @@
 		"deathSound": "death",
 		"scale": 1,
 		"health": 22000,
-		"m_speed": 60,
+		"m_speed": 40,
 		"defence": 60,
 		"damage": 10,
 		"defaultCost": 0,
@@ -3737,7 +3737,7 @@
 		"deathSound": "death",
 		"scale": 1,
 		"health": 45000,
-		"m_speed": 60,
+		"m_speed": 40,
 		"defence": 60,
 		"damage": 10,
 		"defaultCost": 0,
@@ -3749,7 +3749,7 @@
 		"deathSound": "death",
 		"scale": 1,
 		"health": 100000,
-		"m_speed": 60,
+		"m_speed": 40,
 		"defence": 60,
 		"damage": 10,
 		"defaultCost": 0,

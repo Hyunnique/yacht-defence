@@ -4,13 +4,13 @@ import Game from "../../Game.js";
 
 export default class Mob extends Phaser.Physics.Arcade.Sprite {
 
-    constructor(scene, mobData,num,mobRoute) {
+    constructor(scene, mobData,num,mobRoute,hpFactor) {
         super(scene, -5000, -5000, mobData.mobAnim);
         scene.add.existing(this);
         scene.physics.add.existing(this);
         this.isTarget = true;
-        this.Health = mobData.health;
-        this.MaxHealth = mobData.health;
+        this.Health = mobData.health * hpFactor;
+        this.MaxHealth = mobData.health * hpFactor;
         this.scale = mobData.scale;
         this.m_speed = mobData.m_speed;
         this.deathAnimName = mobData.deathAnimName;//나중에 DB에서 불러와 주세요
