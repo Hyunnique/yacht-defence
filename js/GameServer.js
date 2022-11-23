@@ -22,7 +22,7 @@ module.exports = {
         this.Rooms[this.latestRoomId] = {
             roomId: this.latestRoomId,
             sockets: [],
-            maxPlayers: 1, // Configurable for development or singleplayer
+            maxPlayers: 3, // Configurable for development or singleplayer
             counter: {
                 ready: 0,
                 handConfirm: 0,
@@ -98,8 +98,8 @@ module.exports = {
                         hp: 100,
                         maxhp: 100,
                         gold: 0,
-                        units: [],
-                        items: [],
+                        units: {},
+                        items: {},
                         currentHand: "",
                         currentHandTier: 3,
                         currentChoice: -1
@@ -124,6 +124,8 @@ module.exports = {
         this.Rooms[roomId].counter.handConfirm = 0;
         this.Rooms[roomId].counter.handReceived = 0;
 
+        console.log("initialized handConfirm:" + this.Rooms[roomId].counter.handConfirm);
+
         this.Rooms[roomId].roundChoice = Math.floor(Math.random() * 25) + 5;
 
         this.emitAll(roomId, 'dicePhase-begin', {
@@ -139,6 +141,7 @@ module.exports = {
     onDiceConfirm(socket, roomId) {
         socket.on('dicePhase-handConfirm', (msg) => {
             this.Rooms[roomId].counter.handConfirm++;
+            console.log("handConfirm received:" + this.Rooms[roomId].counter.handConfirm);
 
             if (this.Rooms[roomId].counter.handConfirm >= this.Rooms[roomId].maxPlayers) {
                 clearTimeout(this.Rooms[roomId].timer["dicePhaseEnd"]);
@@ -238,13 +241,14 @@ module.exports = {
             let shopItem = ShopItemSheet["item" + msg.itemIndex];
             if (this.Rooms[roomId].players[msg.playerIndex].gold >= shopItem.price) {
                 this.Rooms[roomId].players[msg.playerIndex].gold -= shopItem.price;
-                this.Rooms[roomId].players[msg.playerIndex].items.push(msg.itemIndex);
-                socket.emit('shop-itemSuccess', {
-                    uiIndex: msg.uiIndex,
-                    items: this.Rooms[roomId].players[msg.playerIndex].items
-                });
+                if (!this.Rooms[roomId].players[msg.playerIndex].items[msg.itemIndex]) {
+                    this.Rooms[roomId].players[msg.playerIndex].items[msg.itemIndex] = 1;
+                } else {
+                    this.Rooms[roomId].players[msg.playerIndex].items[msg.itemIndex]++;
+                }
+                socket.emit('shop-itemSuccess', msg.uiIndex);
             } else {
-                socket.emit('shop-itemFailure', true);
+                socket.emit('shop-itemFailure', msg.uiIndex);
             }
         });
     },
