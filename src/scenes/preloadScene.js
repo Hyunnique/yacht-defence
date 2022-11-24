@@ -146,8 +146,8 @@ export default class PreLoadScene extends Phaser.Scene {
         // 보스 몹 로딩
         this.load.spritesheet("bearWalk", require("../assets/spritesheets/boss/bear_walk_sprite.png"), {frameWidth: 340, frameHeight: 340});
         this.load.spritesheet("bearDie", require("../assets/spritesheets/boss/bear_die_sprite.png"), {frameWidth: 740, frameHeight: 340});
-        this.load.spritesheet("giantWalk", require("../assets/spritesheets/boss/giant_walk_sprite.png"), {frameWidth: 340, frameHeight: 340});
-        this.load.spritesheet("giantDie", require("../assets/spritesheets/boss/giant_walk_sprite.png"), {frameWidth: 252, frameHeight: 356});
+        this.load.spritesheet("giantWalk", require("../assets/spritesheets/boss/giant_walk_sprite.png"), {frameWidth: 252, frameHeight: 356});
+        this.load.spritesheet("giantDie", require("../assets/spritesheets/boss/giant_die_sprite.png"), {frameWidth: 267, frameHeight: 388});
         this.load.spritesheet("magicianWalk", require("../assets/spritesheets/boss/magician_walk_sprite.png"), {frameWidth: 340, frameHeight: 340});
         this.load.spritesheet("magicianDie", require("../assets/spritesheets/boss/magician_die_sprite.png"), {frameWidth: 340, frameHeight: 340});
         this.load.spritesheet("slimeKingWalk", require("../assets/spritesheets/boss/slime_king_walk_sprite.png"), {frameWidth: 340, frameHeight: 340});
@@ -325,13 +325,13 @@ export default class PreLoadScene extends Phaser.Scene {
         });
         this.anims.create({
             key: "giantWalk",
-            frames: this.anims.generateFrameNumbers("giantWalk", { start: 0, end: 11 }),
+            frames: this.anims.generateFrameNumbers("giantWalk", { start: 0, end: 26 }),
             repeat: -1,
             frameRate: 40
         });
         this.anims.create({
             key: "giantDie",
-            frames: this.anims.generateFrameNumbers("giantDie", { start: 0, end: 26 }),
+            frames: this.anims.generateFrameNumbers("giantDie", { start: 0, end: 11 }),
             repeat: -1,
             frameRate: 40
         });
