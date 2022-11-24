@@ -258,6 +258,10 @@ module.exports = {
 
     onPlayerBaseDamage(socket, roomId) {
         socket.on('playerInfo-baseDamage', (msg) => {
+            console.log("Player " + (msg.index + 1) + " Hit!");
+
+            if (!this.Rooms[roomId].players[msg.index]) return;
+            
             this.Rooms[roomId].players[msg.index].hp -= msg.damage;
             this.syncPlayerInfo(roomId);
         });
