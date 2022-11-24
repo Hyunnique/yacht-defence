@@ -51,7 +51,6 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.isTarget = false;
         this.isBuffTarget = true;
 
-       
 
         this.scale = 1;
         this.alpha = 1;
@@ -165,7 +164,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.attackReady = false;
         this.atkSoundName.play({
             mute: false,
-            volume: 0.3,
+            volume: 0.2 * Game.gameVolume,
             rate: 1,
             loop: false
             });

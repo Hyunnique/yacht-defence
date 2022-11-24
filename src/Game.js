@@ -20,6 +20,7 @@ var Game = {
     TimelimitTimer: null,
     currentTimeLimit: 30,
     shopOpen: false,
+    gameVolume: 1,
     
     shopBuff: {
         shopAtk: 0,
@@ -157,7 +158,7 @@ var Game = {
                     "tier4": [0, 1, 4, 5, 6, 7, 8, 14, 15, 16, 17, 18, 20, 21, 28, 29, 30, 36, 37, 39, 44, 48, 49, 54, 58, 61]
                 }
                 let unitCount = tier["tier" + currentTier].length;
-                let unitArray = [];
+                let unitArray = [22, 22, 22];
 
                 for (let i = 0; i < 3; i++) {
                     switch (currentTier) {
@@ -175,16 +176,16 @@ var Game = {
                             break;
                     }
                 }
-                for (let i = 0; i < 3; i++) {
-                    while (true) {
-                        let _r = Math.floor(Math.random() * unitCount);
-                        let unitNo = tier["tier" + currentTier][_r];
-                        if (!unitArray.includes(unitNo)) {
-                            unitArray.push(unitNo);
-                            break;
-                        }
-                    }
-                }
+                // for (let i = 0; i < 3; i++) {
+                //     while (true) {
+                //         let _r = Math.floor(Math.random() * unitCount);
+                //         let unitNo = tier["tier" + currentTier][_r];
+                //         if (!unitArray.includes(unitNo)) {
+                //             unitArray.push(unitNo);
+                //             break;
+                //         }
+                //     }
+                // }
 
                 for (let i = 0; i < 3; i++) {
                     let unitType = ""
@@ -264,26 +265,14 @@ var Game = {
 
             this.GameObject.scene.getScene("gameScene").shopBuySound[soundidx].play({
                 mute: false,
-                volume: 0.7,
+                volume: 0.7 * this.gameVolume,
                 rate: 1,
                 loop: false
             });
             
             document.getElementsByClassName("ui-shop-item")[msg.uiIndex].style.display = "none";
 
-            let myItemUI = document.getElementsByClassName("ui-itemArea-itemList")[0];
-            myItemUI.innerHTML = "";
-
-            // itemType 0, 6만 패시브 아이템임
-            Object.keys(msg.items)
-            .filter((key) => [0, 6].includes(itemSpecSheets["item" + key].itemType))
-            .forEach((key) => {
-                myItemUI.innerHTML += "<li class='ui-itemArea-itemList-item' idx=" + key + ">" + msg.items[key] + "</li>"
-            })
-
-            Array.from(document.getElementsByClassName("ui-itemArea-itemList-item")).forEach((e) => {
-                e.style.backgroundImage = "url('" + icons["icon" + itemSpecSheets["item" + e.attributes["idx"].value].icon + ".png"] + "')";
-            })
+            this.updateItemUI(msg);
 
             this.shopBuff.shopAtk += itemSpecSheets["item" + msg.purchased].buffAtk;
             this.shopBuff.shopAspd += itemSpecSheets["item" + msg.purchased].buffAspd;
@@ -293,11 +282,24 @@ var Game = {
         this.Socket.on('shop-itemFailure', (msg) => {
             this.GameObject.scene.getScene("gameScene").shopBuyFail.play({
                 mute: false,
-                volume: 0.7,
+                volume: 0.7 * this.gameVolume,
                 rate: 1,
                 loop: false
             });
         });
+
+        this.Socket.on('lastChance-success', (msg) => {
+            console.log("success");
+            this.updateItemUI(msg);
+
+            this.GameObject.scene.getScene("diceScene").itemUsed = true;
+            this.GameObject.scene.getScene("diceScene").throwLeft++;
+            this.GameObject.scene.getScene("diceScene").rollDice();
+        })
+
+        this.Socket.on('lastChance-Failure', (msg) => {
+            console.log("fail");
+        })
     },
 
     onPreloadDone() {
@@ -380,7 +382,7 @@ var Game = {
         this.showUI("common-shop");
         this.GameObject.scene.getScene("gameScene").shopSound.play({
             mute: false,
-            volume: 0.7,
+            volume: 0.7 * this.gameVolume,
             rate: 1,
             loop: false
         });
@@ -449,6 +451,22 @@ var Game = {
             damage,
         });
     },
+
+    updateItemUI(msg) {
+        let myItemUI = document.getElementsByClassName("ui-itemArea-itemList")[0];
+        myItemUI.innerHTML = "";
+
+        // itemType 0, 6만 패시브 아이템임
+        Object.keys(msg.items)
+        .filter((key) => [0, 6].includes(itemSpecSheets["item" + key].itemType))
+        .forEach((key) => {
+            myItemUI.innerHTML += "<li class='ui-itemArea-itemList-item' idx=" + key + ">" + msg.items[key] + "</li>"
+        })
+
+        Array.from(document.getElementsByClassName("ui-itemArea-itemList-item")).forEach((e) => {
+            e.style.backgroundImage = "url('" + icons["icon" + itemSpecSheets["item" + e.attributes["idx"].value].icon + ".png"] + "')";
+        })
+    }
 };
 
 export default Game;    
