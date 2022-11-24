@@ -42,12 +42,21 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
     }
 
     explode() {
-        var targets = this.scene.physics.overlapCirc(this.x, this.y, this.explodeRange).filter(item => item.gameObject.isTarget == true);
-        targets.forEach(element => {
-            element.gameObject.Health -= this.shooter.calcDamage(element.gameObject.defence);
-            if (element.gameObject.Health <= 0)
-                this.shooter.kills++;
+        var targets = this.scene.physics.overlapCirc(this.x, this.y, this.explodeRange).filter(item => {
+            if (item.gameObject) return item.gameObject.isTarget;
+            else return false;
         });
+        for (var i = 0; i < targets.length; i++)
+        {
+            try {
+                element.gameObject.Health -= this.shooter.calcDamage(element.gameObject.defence);
+                // if (element.gameObject.Health <= 0)
+                //     this.shooter.kills++;
+            }
+            catch(e) {
+                continue;
+            }
+        }
         this.scene.events.off("update", this.update, this);
 
         this.body.reset(this.x, this.y);
