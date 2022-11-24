@@ -109,7 +109,8 @@ module.exports = {
             this.onDiceLastChance(socket, currentRoomId);
 
             socket.on('disconnect', () => {
-                this.Rooms[currentRoomId].sockets.splice(currentRoomIndex, 1);
+                console.log("someone disconnected");
+                //this.Rooms[currentRoomId].sockets.splice(currentRoomIndex, 1);
             });
         });
     },
@@ -258,10 +259,9 @@ module.exports = {
 
     onPlayerBaseDamage(socket, roomId) {
         socket.on('playerInfo-baseDamage', (msg) => {
-            console.log("Player " + (msg.index + 1) + " Hit!");
 
             if (!this.Rooms[roomId].players[msg.index]) return;
-            
+
             this.Rooms[roomId].players[msg.index].hp -= msg.damage;
             this.syncPlayerInfo(roomId);
         });
@@ -296,6 +296,9 @@ module.exports = {
 
     onChatMessage(socket, roomId) {
         socket.on('chat-message', (msg) => {
+
+            if (!this.Rooms[roomId].players[msg.playerIndex]) return;
+
             this.emitAll(roomId, 'chat-message', {
                 playerIndex: msg.playerIndex,
                 name: this.Rooms[roomId].players[msg.playerIndex].name,
