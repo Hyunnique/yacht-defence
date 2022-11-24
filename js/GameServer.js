@@ -95,7 +95,8 @@ module.exports = {
             this.onBattlePhaseDone(socket, currentRoomId);
             this.onPlayerBaseDamage(socket, currentRoomId);
             this.onShopItemBuy(socket, currentRoomId);
-            this.onDiceLastChance(socket, currentRoomId)
+            this.onChatMessage(socket, currentRoomId);
+            this.onDiceLastChance(socket, currentRoomId);
 
             socket.on('disconnect', () => {
                 this.Rooms[currentRoomId].sockets.splice(currentRoomIndex, 1);
@@ -278,6 +279,16 @@ module.exports = {
             }
         });
     },
+
+    onChatMessage(socket, roomId) {
+        socket.on('chat-message', (msg) => {
+            this.emitAll(roomId, 'chat-message', {
+                playerIndex: msg.playerIndex,
+                name: this.Rooms[roomId].players[msg.playerIndex].name,
+                message: msg.message
+            });
+        });
+    }, 
 
     onDiceLastChance(socket, roomId) {
         socket.on('dicePhase-lastChance', (msg) => {
