@@ -274,10 +274,14 @@ module.exports = {
 
     onChatMessage(socket, roomId) {
         socket.on('chat-message', (msg) => {
-            this.emitAll(roomId, 'chat-message', this.Rooms[roomId].players[msg.playerIndex].name + " : " + msg.message);
+            this.emitAll(roomId, 'chat-message', {
+                playerIndex: msg.playerIndex,
+                name: this.Rooms[roomId].players[msg.playerIndex].name,
+                message: msg.message
+            });
         });
     }, 
-    
+
     onDiceLastChance(socket, roomId) {
         socket.on('dicePhase-lastChance', (msg) => {
             if (!this.Rooms[roomId].players[msg.playerIndex].items[20] || this.Rooms[roomId].players[msg.playerIndex].items[20] == 0) {
