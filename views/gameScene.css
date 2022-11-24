@@ -205,3 +205,16 @@
     border: 1px solid black;
     background-color: rgba(255, 255, 255, 0.4);
 }
+
+.ui-gameScene-bottomFloating .ui-itemArea-itemList-item {
+    position: relative;
+    width: 10%;
+    aspect-ratio: 1 / 1;
+
+    background-size: cover;
+    float: left;
+
+    font-size: 1.3rem;
+    color: white;
+    text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+}
