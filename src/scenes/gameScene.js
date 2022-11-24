@@ -396,17 +396,17 @@ export default class gameScene extends Phaser.Scene{
     }
     toPlacePhase() {
         this.PhaseText = "Place Phase";
-        this.itemList = [20, 20, 20];
+        this.itemList = [];
         let itemCount = Object.keys(Item).length;
-        // for (let i = 0; i < 3; i++) { 
-        //     while (true) {
-        //         let _r = Math.floor(Math.random() * itemCount);
-        //         if (!this.itemList.includes(_r)) {
-        //             this.itemList.push(_r);
-        //             break;
-        //         }
-        //     }
-        // }
+        for (let i = 0; i < 3; i++) { 
+            while (true) {
+                let _r = Math.floor(Math.random() * itemCount);
+                if (!this.itemList.includes(_r)) {
+                    this.itemList.push(_r);
+                    break;
+                }
+            }
+        }
         //this.phaseTimer = this.time.delayedCall(20000, this.toBattlePhase, [], this);
     }
     toBattlePhase() {

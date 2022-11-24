@@ -35,7 +35,7 @@ export default class Homing extends Phaser.Physics.Arcade.Sprite {
     flytoMob(target) {
         if (target[0] != undefined) {
             this.setAngle(this, target[0]);
-            this.scene.physics.moveToObject(this, target[0], this.speed);
+            this.scene.physics.moveTo(this, target[0].centerX, target[0].centerY, this.speed);
         }
         else {
             this.hit();
