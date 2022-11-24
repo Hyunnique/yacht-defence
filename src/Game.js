@@ -211,7 +211,21 @@ var Game = {
                     document.getElementsByClassName("ui-unitReward-unitType")[i].innerText = unitType;
                     document.getElementsByClassName("ui-unitReward-unitSpec-atk")[i].innerText = "ATK : " + unitSpecSheets["unit" + unitArray[i]].attack;
                     document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : " + unitSpecSheets["unit" + unitArray[i]].aspd;
-                    document.getElementsByClassName("ui-unitReward-unitSpec-range")[i].innerText = "RANGE : " + unitSpecSheets["unit" + unitArray[i]].range;
+
+                    switch (unitSpecSheets["unit" + unitArray[i]].rangeType) {
+                        case 0:
+                            document.getElementsByClassName("ui-unitReward-unitSpec-range")[i].innerText = "RANGE : VERY SHORT";
+                            break;
+                        case 1:
+                            document.getElementsByClassName("ui-unitReward-unitSpec-range")[i].innerText = "RANGE : SHORT";
+                            break;
+                        case 2:
+                            document.getElementsByClassName("ui-unitReward-unitSpec-range")[i].innerText = "RANGE : MEDIUM";
+                            break;
+                        case 3:
+                            document.getElementsByClassName("ui-unitReward-unitSpec-range")[i].innerText = "RANGE : LONG";
+                            break;
+                    }
                     document.getElementsByClassName("ui-unitReward-unitSkill")[i].innerText = "";
 
                     document.getElementsByClassName("ui-unitReward-unit")[i].attributes.idx.value = unitArray[i];
