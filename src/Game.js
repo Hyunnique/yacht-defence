@@ -173,7 +173,7 @@ var Game = {
                     "tier4": [0, 1, 4, 5, 6, 7, 8, 14, 15, 16, 17, 18, 20, 21, 28, 29, 30, 36, 37, 39, 44, 48, 49, 54, 58, 61]
                 }
                 let unitCount = tier["tier" + currentTier].length;
-                let unitArray = [35, 0, 8]; //9
+                let unitArray = []; //9
 
                 for (let i = 0; i < 3; i++) {
                     switch (currentTier) {
@@ -191,16 +191,16 @@ var Game = {
                             break;
                     }
                 }
-                // for (let i = 0; i < 3; i++) {
-                //     while (true) {
-                //         let _r = Math.floor(Math.random() * unitCount);
-                //         let unitNo = tier["tier" + currentTier][_r];
-                //         if (!unitArray.includes(unitNo)) {
-                //             unitArray.push(unitNo);
-                //             break;
-                //         }
-                //     }
-                // }
+                for (let i = 0; i < 3; i++) {
+                    while (true) {
+                        let _r = Math.floor(Math.random() * unitCount);
+                        let unitNo = tier["tier" + currentTier][_r];
+                        if (!unitArray.includes(unitNo)) {
+                            unitArray.push(unitNo);
+                            break;
+                        }
+                    }
+                }
 
                 for (let i = 0; i < 3; i++) {
                     let unitType = ""
