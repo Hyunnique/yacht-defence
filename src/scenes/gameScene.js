@@ -323,10 +323,14 @@ export default class gameScene extends Phaser.Scene{
     }
 
     startRound() {
-        //this.roundDB["round" + this.roundNum].forEach((element) => {
+        let initialDelay = 1200;
+        if (this.roundNum < 10) initialDelay = 1200;
+        else if (this.roundNum < 20) initialDelay = 800;
+        else initialDelay = 400;
+        
         this.currentRoundData.forEach((element) => {
                 this.time.addEvent({
-                delay: 500,
+                delay: initialDelay,
                 callback: () => {
                     this.m_mobs.add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum, element["mobRoute"],element["hpFactor"]));
                     this.globalnum++;
