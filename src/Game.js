@@ -13,6 +13,7 @@ const playerColors = ["lightgreen", "lightcoral", "lightskyblue", "lightgoldenro
 
 // 전역변수로 유지해서 Scene에서도 접근할 수 있게 함
 var Game = {
+    MatchmakeJoined: false,
     GameObject: null,
     GameConfig: null,
     Socket: null,
@@ -37,11 +38,23 @@ var Game = {
         this.resizeHandler(null);
         window.onresize = this.resizeHandler;
 
-        this.Socket = io.connect("http://" + (process.env.HOST ? process.env.HOST : "localhost") + ":8080");
-        this.serverEventHandler();
+        this.showUI("mainScene-default");
+
+        document.getElementsByClassName("multi-matchmaking")[0].onclick = (e) => {
+            
+            if (!this.MatchmakeJoined) {
+                this.MatchmakeJoined = true;
+                this.Socket = io.connect("http://" + (process.env.HOST ? process.env.HOST : "localhost") + ":8080");
+                this.serverEventHandler();
+            }
+        };
     },
 
     serverEventHandler() {
+        this.Socket.on('connect', () => {
+            ;
+        });
+
         this.Socket.on("matchmaking-wait", (msg) => {
             console.log("Waiting for players : " + msg);
         });
@@ -62,6 +75,11 @@ var Game = {
         this.Socket.on("game-defaultData", (msg) => {
             this.PlayerCount = msg.playerCount;
             this.PlayerIndex = msg.playerIndex;
+
+            this.Socket.emit("connect-playerName", {
+                playerIndex: this.PlayerIndex,
+                name: document.getElementsByClassName("multi-name")[0].value
+            });
         });
 
         this.Socket.on("game-wavedata", (msg) => {
