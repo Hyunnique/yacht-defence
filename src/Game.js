@@ -270,12 +270,19 @@ var Game = {
             });
             
             document.getElementsByClassName("ui-shop-item")[msg.uiIndex].style.display = "none";
-            console.log(msg.items);
 
             let myItemUI = document.getElementsByClassName("ui-itemArea-itemList")[0];
             myItemUI.innerHTML = "";
-            Object.keys(msg.items).forEach((key) => {
-                myItemUI.innerHTML += "<div class='ui-itemArea-itemList-item'>" + key + ", " + msg.items[key] +"</div>"
+
+            // itemType 0, 6만 패시브 아이템임
+            Object.keys(msg.items)
+            .filter((key) => [0, 6].includes(itemSpecSheets["item" + key].itemType))
+            .forEach((key) => {
+                myItemUI.innerHTML += "<li class='ui-itemArea-itemList-item' idx=" + key + ">" + msg.items[key] + "</li>"
+            })
+
+            Array.from(document.getElementsByClassName("ui-itemArea-itemList-item")).forEach((e) => {
+                e.style.backgroundImage = "url('" + icons["icon" + itemSpecSheets["item" + e.attributes["idx"].value].icon + ".png"] + "')";
             })
 
             this.shopBuff.shopAtk += itemSpecSheets["item" + msg.purchased].buffAtk;

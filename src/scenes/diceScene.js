@@ -14,6 +14,8 @@ export default class diceScene extends Phaser.Scene{
     throwLeft = 3;                      // 남은 던질 기회
     currentTier = -1;                   // 현재 나온 주사위로 계산된 최대 티어
     bestHand = "";                      // 현재 최고 족보
+    predictMin = 0;                        // 예상 초이스값
+    predictMax = 0;                        // 예상 초이스값
 
     one = 0;
     two = 0;
@@ -93,6 +95,8 @@ export default class diceScene extends Phaser.Scene{
             };
         }
 
+        document.getElementsByClassName("ui-choicePredict")[0].innerText = "Possible Choice : " + this.predictMin + " ~ " + this.predictMax;
+
         // this.checkDice();
         this.rollable = true;
     }
@@ -118,6 +122,8 @@ export default class diceScene extends Phaser.Scene{
         this.dices = [];                         
         this.throwLeft = 3;                      
         this.currentTier = -1;
+        this.predictMin = 5;
+        this.predictMax = 30;
     
         this.one = 0;
         this.two = 0;
@@ -152,12 +158,20 @@ export default class diceScene extends Phaser.Scene{
             }
             this.drawRolling();
             this.time.delayedCall(1000, () => {
+                this.predictChoice();
                 this.drawResult();
                 this.checkDice();
             }, [], this);
             
             document.getElementsByClassName("ui-rollcount-value")[0].innerText = this.throwLeft;
         }
+    }
+
+    // 가능한 지금 굴리는 추사위로 가능한 초이스값 계산
+    predictChoice() {
+        let saveSum = this.savedDice.reduce((a, b) => a + b, 0);
+        this.predictMin = saveSum + this.handDice.length;
+        this.predictMax = saveSum + this.handDice.length * 6;
     }
 
     // 선택한 주사위를 굴릴 주사위에서 제외
@@ -168,7 +182,7 @@ export default class diceScene extends Phaser.Scene{
         tempArr.splice(idx, 1);
         this.handDice = [...tempArr];
         this.savedDice = [...this.savedDice, temp];
-
+        this.predictChoice();
         this.drawResult();
     }
 
@@ -180,7 +194,7 @@ export default class diceScene extends Phaser.Scene{
         tempArr.splice(idx, 1);
         this.savedDice = [...tempArr];
         this.handDice = [...this.handDice, temp];
-
+        this.predictChoice();
         this.drawResult();
     }
 
