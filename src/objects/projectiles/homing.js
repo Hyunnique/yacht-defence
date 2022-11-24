@@ -1,3 +1,5 @@
+import Game from "../../Game";
+
 const Phaser = require("phaser");
 
 export default class Homing extends Phaser.Physics.Arcade.Sprite {
@@ -61,7 +63,7 @@ export default class Homing extends Phaser.Physics.Arcade.Sprite {
         this.play(this.hitEffect);
         this.hitSoundName.play({
             mute: false,
-            volume: 0.3,
+            volume: 0.2 * Game.gameVolume,
             rate: 1,
             loop: false
         });

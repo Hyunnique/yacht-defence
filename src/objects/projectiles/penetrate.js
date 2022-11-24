@@ -1,3 +1,5 @@
+import Game from "../../Game";
+
 const Phaser = require("phaser");
 
 export default class Penetrate extends Phaser.Physics.Arcade.Sprite {
@@ -53,7 +55,7 @@ export default class Penetrate extends Phaser.Physics.Arcade.Sprite {
     {
         this.hitSoundName.play({
             mute: false,
-            volume: 0.2,
+            volume: 0.2 * Game.gameVolume,
             rate: 1,
             loop: false
         });
