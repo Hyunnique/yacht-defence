@@ -95,6 +95,7 @@ module.exports = {
             this.onBattlePhaseDone(socket, currentRoomId);
             this.onPlayerBaseDamage(socket, currentRoomId);
             this.onShopItemBuy(socket, currentRoomId);
+            this.onDiceLastChance(socket, currentRoomId)
 
             socket.on('disconnect', () => {
                 this.Rooms[currentRoomId].sockets.splice(currentRoomIndex, 1);
@@ -127,7 +128,8 @@ module.exports = {
                         playerIndex: i
                     });
                 }
-
+                
+                this.syncPlayerInfo(roomId);
                 this.onRoundBegin(roomId);
             }
         });
@@ -255,7 +257,11 @@ module.exports = {
             let shopItem = ShopItemSheet["item" + msg.itemIndex];
             if (this.Rooms[roomId].players[msg.playerIndex].gold >= shopItem.price) {
                 this.Rooms[roomId].players[msg.playerIndex].gold -= shopItem.price;
-                if (!this.Rooms[roomId].players[msg.playerIndex].items[msg.itemIndex]) {
+
+                if (msg.itemIndex == 21) {
+                    this.Rooms[roomId].players[msg.playerIndex].hp += this.Rooms[roomId].players[msg.playerIndex].hp + 20 > 100 ? 100 : this.Rooms[roomId].players[msg.playerIndex].hp + 20;
+                }
+                else if (!this.Rooms[roomId].players[msg.playerIndex].items[msg.itemIndex]) {
                     this.Rooms[roomId].players[msg.playerIndex].items[msg.itemIndex] = 1;
                 } else {
                     this.Rooms[roomId].players[msg.playerIndex].items[msg.itemIndex]++;
@@ -265,6 +271,8 @@ module.exports = {
                     items: this.Rooms[roomId].players[msg.playerIndex].items,
                     purchased: msg.itemIndex
                 });
+
+                this.syncPlayerInfo(roomId);
             } else {
                 socket.emit('shop-itemFailure', msg.uiIndex);
             }

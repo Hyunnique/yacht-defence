@@ -247,7 +247,7 @@
         "buffPenetration": 0,
         "additionalMob": "",
         "mobCount": 0,
-        "price": 0,
+        "price": 2,
         "tier": 3,
         "icon": 4
     },
@@ -259,7 +259,7 @@
         "buffPenetration": 0,
         "additionalMob": "",
         "mobCount": 0,
-        "price": 0,
+        "price": 1,
         "tier": 3,
         "icon": 9
     }
