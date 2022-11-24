@@ -89,6 +89,7 @@ module.exports = {
                 // do nothing
             } else {
                 this.Rooms[this.latestRoomId].sockets.push(socket);
+                this.socketMap[socket.id] = this.latestRoomId;
 
                 let currentRoomId = this.latestRoomId;
                 let currentRoomIndex = this.Rooms[currentRoomId].sockets.length - 1;
