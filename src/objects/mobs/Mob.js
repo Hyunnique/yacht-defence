@@ -63,16 +63,18 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
             yoyo: false
         });
 
+        this.healthBarWidth = this.healthBar.displayWidth;
+        // this.scene.tweens.add({
+        //     targets: this.healthBar,
+        //     displayWidth: this.healthBarWidth
+        // });
+
         this.scene.events.on("update", this.update, this);
     }
     update()
     {   
         this.healthBar.setPosition(this.getCenter().x-48, this.getCenter().y - 24);
-        const width = this.healthBar.displayWidth * (this.Health / this.MaxHealth);
-        this.scene.tweens.add({
-            targets: this.healthBar,
-            displayWidth: width
-        });
+        this.healthBar.displayWidth = this.healthBarWidth * (this.Health / this.MaxHealth);
 
         if (this.Health <= 0 && !this.deathCalled) {
             this.death();

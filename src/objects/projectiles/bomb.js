@@ -1,3 +1,5 @@
+import Game from "../../Game";
+
 const Phaser = require("phaser");
 
 export default class Bomb extends Phaser.Physics.Arcade.Sprite {
@@ -50,7 +52,12 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
         this.angle = 0;
         this.body.destroy();
         this.play(this.hitEffect);
-        this.scene.sound.play("hitBoom1");
+        this.scene.sound.play("hitBoom1", {
+            mute: false,
+            volume: 0.2 * Game.gameVolume,
+            rate: 1,
+            loop: false
+        });
         
         var animConfig = this.scene.anims.get(this.hitEffect);
         var animtime = animConfig.frames.length * animConfig.msPerFrame;

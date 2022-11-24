@@ -396,17 +396,17 @@ export default class gameScene extends Phaser.Scene{
     }
     toPlacePhase() {
         this.PhaseText = "Place Phase";
-        this.itemList = [];
+        this.itemList = [20, 20, 20];
         let itemCount = Object.keys(Item).length;
-        for (let i = 0; i < 3; i++) { 
-            while (true) {
-                let _r = Math.floor(Math.random() * itemCount);
-                if (!this.itemList.includes(_r)) {
-                    this.itemList.push(_r);
-                    break;
-                }
-            }
-        }
+        // for (let i = 0; i < 3; i++) { 
+        //     while (true) {
+        //         let _r = Math.floor(Math.random() * itemCount);
+        //         if (!this.itemList.includes(_r)) {
+        //             this.itemList.push(_r);
+        //             break;
+        //         }
+        //     }
+        // }
         //this.phaseTimer = this.time.delayedCall(20000, this.toBattlePhase, [], this);
     }
     toBattlePhase() {
@@ -453,7 +453,7 @@ export default class gameScene extends Phaser.Scene{
         this.tierBonus[tier - 1] += buffvalue1 * (bool ? 1 : -1);
         this.tierBonus[3] += buffvalue2 * (bool ? 1 : -1);
 
-         for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < 4; i++) {
             document.getElementsByClassName("ui-unitArea-unitTierCount")[i].innerHTML = "";
             document.getElementsByClassName("ui-unitArea-unitTierCount")[i].innerHTML += this.tierCnt[i] + " <span class='ui-unitArea-unitTierBonus'>(+" + this.tierBonus[i] + "%)</span>";
         }
