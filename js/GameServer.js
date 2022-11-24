@@ -109,7 +109,8 @@ module.exports = {
             this.onDiceLastChance(socket, currentRoomId);
 
             socket.on('disconnect', () => {
-                this.Rooms[currentRoomId].sockets.splice(currentRoomIndex, 1);
+                console.log("someone disconnected");
+                //this.Rooms[currentRoomId].sockets.splice(currentRoomIndex, 1);
             });
         });
     },
