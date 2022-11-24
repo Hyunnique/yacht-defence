@@ -44,7 +44,7 @@ module.exports = function generateRound(SpecsheetGen, round, roundCost, hpFactor
         // 보스 라운드가 아닐 때
     } else {
         // 보스 라운드일 때
-        let waveBoss = Object.keys(SpecsheetGen).filter((x) => SpecsheetGen[x].boss)[Math.floor((round % 25) / 5)];
+        let waveBoss = Object.keys(SpecsheetGen).filter((x) => SpecsheetGen[x].boss)[Math.floor(((round - 5) % 25) / 5)];
         currentWaveInfo.push({
             "mobName": waveBoss,
             "mobCount": 1,
