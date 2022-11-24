@@ -34,7 +34,7 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
 
     update()
     {
-        if (Phaser.Math.Distance.Between(this.x, this.y, this.target.x, this.target.y) < 1)
+        if (Phaser.Math.Distance.Between(this.x, this.y, this.target.x, this.target.y) < 20)
             this.explode();
         if (Phaser.Math.Distance.Between(this.x, this.y, this.shooter.x, this.shooter.y) > this.shooter.range)
             this.explode();
@@ -51,7 +51,7 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
         this.scene.events.off("update", this.update, this);
 
         this.body.reset(this.x, this.y);
-        this.angle = 0;
+        this.rotation = 0;
         this.body.destroy();
         
         this.setScale = this.explodeScale;
