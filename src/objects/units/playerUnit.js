@@ -114,7 +114,6 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
             }
             finally { break; }
         }
-        
     }
 
     syncGlobalBuff()
