@@ -89,6 +89,10 @@ module.exports = {
                 this.emitAll(currentRoomId, 'matchmaking-wait', this.Rooms[currentRoomId].sockets.length);
             }
 
+            socket.on("connect-playerName", (msg) => {
+                this.Rooms[currentRoomId].players[msg.playerIndex].name = msg.name;
+            });
+
             this.onGameReady(socket, currentRoomId);
             this.onDiceConfirm(socket, currentRoomId);
             this.onDiceResult(socket, currentRoomId);
