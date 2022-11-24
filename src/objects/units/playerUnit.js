@@ -51,6 +51,10 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
             this.projectileSpeed = db.projectileSpeed;
             this.explodeScale = db.explodeScale;
         }
+        else if (this.projectileType == 1) {
+            this.projectileWidth = db.projectileWidth;
+            this.projectileHeight = db.projectileHeight;
+        }
         
         this.isTarget = false;
         this.isBuffTarget = true;
@@ -64,7 +68,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.effectOffsetY = effectOffset[this.effectName].y;
         this.effectIsFlip = effectOffset[this.effectName].isFlip == 1 ? true : false;
         // console.log(this.effectOffsetX + " " + this.effectOffsetY + " " + effectOffset[this.effectName].isFlip);
-        this.effect = new UnitEffect(scene, this, this.effectIsFlip);
+        this.effect = new UnitEffect(scene, this, this.effectIsFlip, db.name);
         
         this.target = [];
         this.attackEvent;
