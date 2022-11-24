@@ -77,7 +77,6 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.scene.physics.add.existing(this);
         this.setBodySize(64, 64, true);
         this.scene.add.existing(this);
-        //this.activateAttack();
         this.scene.events.on("update", this.update, this);
         this.on("animationcomplete", this.doIdle, this);
     }
