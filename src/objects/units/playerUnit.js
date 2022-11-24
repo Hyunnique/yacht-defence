@@ -46,7 +46,11 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.projectileAnimName = db.projectileAnimName;
         this.projectileType = db.projectileType;
         this.projectileHitEffect = db.projecttileHitEffect;
-        
+        if (this.projectileType == 2) {
+            this.explodeRange = db.explodeRange;
+            this.projectileSpeed = db.projectileSpeed;
+            this.explodeScale = db.explodeScale;
+        }
         
         this.isTarget = false;
         this.isBuffTarget = true;
