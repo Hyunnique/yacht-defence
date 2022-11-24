@@ -76,7 +76,6 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         //this.activateAttack();
         this.scene.events.on("update", this.update, this);
         this.on("animationcomplete", this.doIdle, this);
-        console.log(this);
     }
 
     update() {
@@ -91,8 +90,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
 
     doIdle()
     {
-        if (this.target.length == 0)
-            this.play(this.idleAnim, true);
+        this.play(this.idleAnim, true);
     }
 
     
@@ -191,7 +189,6 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         }
         this.scene.time.delayedCall(1000 / this.aspd, () => {
             this.attackReady = true;
-            console.log(1);
         }, [], this);
     }
 
