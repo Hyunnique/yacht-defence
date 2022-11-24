@@ -435,7 +435,7 @@ export default class gameScene extends Phaser.Scene{
     // Unit ID를 파라미터로 가짐
     receiveUnit(unitID, tier) {
         this.placemode = true;
-        this.initialPlace(this.unitDB["unit" + 2]);
+        this.initialPlace(this.unitDB["unit" + unitID]);
         this.handleTierBonus(tier, true);
     }
     

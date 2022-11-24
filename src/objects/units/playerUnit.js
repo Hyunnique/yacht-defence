@@ -41,6 +41,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
 
         if (this.range == this.buffRange)
             this.rangeView.setStrokeStyle(8, 0xFF0000);
+        
         this.buffAtk = 0;
         this.buffAspd = 0;
     
