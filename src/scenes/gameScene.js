@@ -187,6 +187,7 @@ export default class gameScene extends Phaser.Scene{
         this.playerHealth = 100;
         this.placemode = false;
         this.checkLast = false;
+        this.eventChecked = false;
         this.m_projectiles = this.physics.add.group();
         this.unitDB = this.cache.json.get("unitDB");
         this.mobDB = this.cache.json.get("mobDB");
@@ -226,13 +227,15 @@ export default class gameScene extends Phaser.Scene{
         else if (x > this.cameras.main.width - 50) this.cameras.main.scrollX += 12;
         else if (x < 50) this.cameras.main.scrollX -= 12;
         else if (y > this.cameras.main.height - 50) this.cameras.main.scrollY += 12;
-        else if (y < 50) this.cameras.main.scrollY -= 12;       
+        else if (y < 50) this.cameras.main.scrollY -= 12;
 
-        if (this.checkLast && this.mobCounter == 0)
+        if (this.checkLast && this.mobCounter == 0 && !this.eventChecked)
         {
-            Game.Socket.emit('battlePhase-done', true);
-            this.checkLast = false;
-            this.mobCounter = 0;
+            this.eventChecked = true;
+            this.events.once("mobAnimDone", () => {
+                Game.Socket.emit('battlePhase-done', true);
+                this.checkLast = false;
+            },this);            
         }
     }
 
@@ -408,6 +411,7 @@ export default class gameScene extends Phaser.Scene{
     toBattlePhase() {
         this.placeModeController(false);
         this.PhaseText = "Battle Phase";
+        this.eventChecked = false;
         this.startRound();
         //this.phaseTimer = this.time.delayedCall(6000, this.toDicePhase, [], this);
     }

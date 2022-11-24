@@ -49,7 +49,7 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
         this.scene.events.off("update", this.update, this);
 
         this.body.reset(this.x, this.y);
-        this.angle = 0;
+        this.rotation = 0;
         this.body.destroy();
         this.play(this.hitEffect);
         this.scene.sound.play("hitBoom1", {
