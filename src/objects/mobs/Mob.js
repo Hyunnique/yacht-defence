@@ -13,8 +13,9 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         this.MaxHealth = mobData.health * hpFactor;
         this.scale = mobData.scale;
         this.m_speed = mobData.m_speed;
-        this.deathAnimName = mobData.deathAnimName;//나중에 DB에서 불러와 주세요
+        this.deathAnimName = mobData.deathAnimName;
         this.defence = mobData.defence;
+        this.damage = mobData.damage;
         this.mobNum = num;
         this.moveType = mobRoute;
         this.deathCalled = false;
@@ -77,7 +78,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
             this.death();
         }
         else if (Phaser.Math.Distance.Between(this.x, this.y, 2400, 720) < 1 && !this.deathCalled) {
-            Game.hitPlayerBase(1);
+            Game.hitPlayerBase(this.damage);
             this.deathCalled = true;
             this.death();
         }
