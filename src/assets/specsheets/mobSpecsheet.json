@@ -3702,7 +3702,7 @@
 		"scale": 1,
 		"health": 4000,
 		"m_speed": 40,
-		"defence": 60,
+		"defence": 50,
 		"damage": 10,
 		"defaultCost": 0,
 		"boss": true
@@ -3714,7 +3714,7 @@
 		"scale": 1,
 		"health": 9000,
 		"m_speed": 40,
-		"defence": 60,
+		"defence": 50,
 		"damage": 10,
 		"defaultCost": 0,
 		"boss": true
