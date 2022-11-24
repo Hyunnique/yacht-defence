@@ -9,6 +9,8 @@ const icons = importAll(require.context("./assets/images/icons", false, /\.png$/
 import unitSpecSheets from "./assets/specsheets/unitSpecsheet.json";
 import itemSpecSheets from "./assets/specsheets/shopItemSheet.json";
 
+const playerColors = ["lightgreen", "lightcoral", "lightskyblue", "lightgoldenrodyellow"];
+
 // 전역변수로 유지해서 Scene에서도 접근할 수 있게 함
 var Game = {
     GameObject: null,
@@ -17,6 +19,7 @@ var Game = {
     PlayerCount: 4,
     PlayerIndex: -1,
     PlayerData: null,
+    ChatMessageTimer: null,
     TimelimitTimer: null,
     currentTimeLimit: 30,
     shopOpen: false,
@@ -68,6 +71,18 @@ var Game = {
         this.Socket.on("round-begin", (msg) => {
             this.GameObject.scene.getScene("gameScene").roundNum = msg.round;
             document.getElementsByClassName("ui-round-value")[0].innerText = (msg.round < 10 ? "0" + msg.round : msg.round);
+        });
+
+        this.Socket.on("chat-message", (msg) => {
+            clearTimeout(this.ChatMessageTimer);
+            document.getElementsByClassName("ui-chatMessages")[0].style.opacity = "1";
+            this.ChatMessageTimer = setTimeout(() => {
+                document.getElementsByClassName("ui-chatMessages")[0].style.opacity = "0";
+            }, 3000);
+
+            document.getElementsByClassName("ui-chatMessages")[0].innerHTML +=
+            "<li class='ui-chatMessageData'><span class='ui-chatMessageData-name text-outline' style='color: " + playerColors[msg.playerIndex] + ";'>" + msg.name + "</span> : " + 
+            "<span class='ui-chatMessageData-message text-outline'>" + msg.message + "</span></li>\n";
         });
 
         this.Socket.on("sync-playerData", (msg) => {
@@ -368,6 +383,31 @@ var Game = {
                 this.clearUI();
                 this.showUI("gameScene-topFloating");
                 this.showUI("gameScene-bottomFloating");
+
+                document.onkeydown = (e) => {
+                    console.log(e);
+                    if (e.key == "Enter") {
+                        if (document.activeElement === document.getElementsByClassName("ui-chatInput")[0]) {
+                            if (document.getElementsByClassName("ui-chatInput")[0].value.trim() != "") {
+                                this.Socket.emit('chat-message', {
+                                    playerIndex: this.PlayerIndex,
+                                    message: document.getElementsByClassName("ui-chatInput")[0].value
+                                });
+                            }
+
+                            document.getElementsByClassName("ui-chatInput")[0].value = "";
+                                document.getElementsByClassName("ui-chatInput")[0].style.backgroundColor = "rgba(255, 255, 255, 0)";
+                            document.activeElement.blur();
+                        } else {
+                            document.getElementsByClassName("ui-chatInput")[0].focus();
+                            document.getElementsByClassName("ui-chatInput")[0].style.backgroundColor = "rgba(255, 255, 255, 0.4)";
+                        }
+                    } else if (e.key == " ") {
+                        if (document.activeElement === document.getElementsByClassName("ui-chatInput")[0]) {
+                            document.getElementsByClassName("ui-chatInput")[0].value += " ";
+                        }
+                    }
+                }
                 break;
             default:
                 this.GameObject.scene.start(sceneName);
