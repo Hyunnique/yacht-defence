@@ -13,8 +13,8 @@ export default class Penetrate extends Phaser.Physics.Arcade.Sprite {
         this.alpha = 1;
         this.targetidx = 0;
         this.hitSoundName = shooter.hitSoundName;
-        this.setBodySize(28, 28);
-
+        this.setBodySize(shooter.projectileWidth, shooter.projectileHeight);
+        
         this.alreadyPenetrated = [];
 
         
