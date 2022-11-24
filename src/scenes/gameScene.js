@@ -244,6 +244,7 @@ export default class gameScene extends Phaser.Scene{
         this.info.alpha = 1;
         this.onPlaceQueue = new Unit(this, this.input.activePointer.x, this.input.activePointer.y, unitData, this.unitIndex++);
         this.onPlaceQueue.rangeView.alpha = 0.4;
+        this.onPlaceQueue.buffRangeView.alpha = 0.6;
         this.moveUnit();
     }
 
@@ -254,10 +255,12 @@ export default class gameScene extends Phaser.Scene{
                 let t = this.getTileAtPointer(pointer, this.info);
                 if (!t || t.index == "2898") {
                     this.onPlaceQueue.rangeView.alpha = 0;
+                    this.onPlaceQueue.buffRangeView.alpha = 0;
                     this.onPlaceQueue.alpha = 0;
                 }
                 else {
                     this.onPlaceQueue.rangeView.alpha = 0.4;
+                    this.onPlaceQueue.buffRangeView.alpha = 0.6;
                     this.onPlaceQueue.alpha = 1;
                 }
                 this.onPlaceQueue.setX(t.getCenterX());
@@ -272,6 +275,7 @@ export default class gameScene extends Phaser.Scene{
                     t.index = "2898";
                     this.info.alpha = 0;
                     this.onPlaceQueue.rangeView.alpha = 0;
+                    this.onPlaceQueue.buffRangeView.alpha = 0;
                     t.placedUnit = this.onPlaceQueue;
                     this.placemode = false;
                     this.input.off("pointermove");
@@ -312,6 +316,7 @@ export default class gameScene extends Phaser.Scene{
                 this.preTile.index = "2897";
                 this.onPlaceQueue = this.preTile.placedUnit;
                 this.onPlaceQueue.rangeView.alpha = 0.4;
+                this.onPlaceQueue.buffRangeView.alpha = 0.6;
                 this.placemode = true;
                 this.moveUnit();
             });  
@@ -321,11 +326,19 @@ export default class gameScene extends Phaser.Scene{
             this.input.off("pointermove");
             this.info.alpha = 0;
             if (this.onPlaceQueue != undefined) {
-                this.onPlaceQueue.setX(this.preTile.getCenterX());
-                this.onPlaceQueue.setY(this.preTile.getCenterY());
-                this.preTile.placedUnit = this.onPlaceQueue;
+                if (this.preTile == undefined) { 
+                    this.handleTierBonus(this.onPlaceQueue.tier, false);
+                    this.onPlaceQueue.remove();                    
+                }
+                else {
+                    this.onPlaceQueue.setX(this.preTile.getCenterX());
+                    this.onPlaceQueue.setY(this.preTile.getCenterY());
+                    this.preTile.placedUnit = this.onPlaceQueue;
+                    
+                    this.preTile.index = "2898";
+                }
                 this.onPlaceQueue.rangeView.alpha = 0;
-                this.preTile.index = "2898";
+                this.onPlaceQueue.buffRangeView.alpha = 0;   
                 this.onPlaceQueue = undefined;
                 this.preTile = undefined;
             }
