@@ -49,7 +49,7 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
         for (var i = 0; i < targets.length; i++)
         {
             try {
-                element.gameObject.Health -= this.shooter.calcDamage(element.gameObject.defence);
+                targets[i].gameObject.Health -= this.shooter.calcDamage(targets[i].gameObject.defence);
                 // if (element.gameObject.Health <= 0)
                 //     this.shooter.kills++;
             }
