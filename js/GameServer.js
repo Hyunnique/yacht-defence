@@ -56,12 +56,13 @@ module.exports = {
 
     generateWaveInfo(roomId) {
         let waveResult = waveGenerator(this.Rooms[roomId].generatorSheet, this.Rooms[roomId].round, this.Rooms[roomId].generatorRoundCost, this.Rooms[roomId].generatorHpFactor);
-        this.Rooms[roomId].generatorRoundCost = Math.floor(this.Rooms[roomId].generatorRoundCost * 1.07 + 20);
-        
+
+        this.Rooms[roomId].generatorHpFactor = (this.Rooms[roomId].generatorHpFactor * 1.08).toFixed(2);
+
         if (this.Rooms[roomId].round % 10 == 0) {
-            this.Rooms[roomId].generatorHpFactor = (this.Rooms[roomId].generatorHpFactor * 1.5).toFixed(2);
+            this.Rooms[roomId].generatorRoundCost = Math.floor(this.Rooms[roomId].generatorRoundCost * 1.3 + 30);
         } else {
-            this.Rooms[roomId].generatorHpFactor = (this.Rooms[roomId].generatorHpFactor * 1.1).toFixed(2);
+            this.Rooms[roomId].generatorRoundCost = Math.floor(this.Rooms[roomId].generatorRoundCost * 1.05 + 30);
         }
 
         this.emitAll(roomId, 'game-wavedata', waveResult);
