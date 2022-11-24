@@ -8,6 +8,7 @@ module.exports = {
     Socket: null,
     latestRoomId: 10000,
     Rooms: {},
+    socketMap: {},
 
     init(socket) {
         this.Socket = socket;
@@ -83,35 +84,40 @@ module.exports = {
 
     onConnect() {
         this.Socket.on('connection', (socket) => {
-            this.Rooms[this.latestRoomId].sockets.push(socket);
-
-            let currentRoomId = this.latestRoomId;
-            let currentRoomIndex = this.Rooms[currentRoomId].sockets.length - 1;
-
-            if (this.Rooms[currentRoomId].sockets.length == this.Rooms[currentRoomId].maxPlayers) {
-                this.emitAll(currentRoomId, 'matchmaking-done', this.currentRoomId);
-                this.createRoom(); // 다음 매칭을 위해 미리 방을 생성해둠
+            
+            if (this.socketMap[socket.id]) {
+                // do nothing
             } else {
-                this.emitAll(currentRoomId, 'matchmaking-wait', this.Rooms[currentRoomId].sockets.length);
+                this.Rooms[this.latestRoomId].sockets.push(socket);
+
+                let currentRoomId = this.latestRoomId;
+                let currentRoomIndex = this.Rooms[currentRoomId].sockets.length - 1;
+
+                if (this.Rooms[currentRoomId].sockets.length == this.Rooms[currentRoomId].maxPlayers) {
+                    this.emitAll(currentRoomId, 'matchmaking-done', this.currentRoomId);
+                    this.createRoom(); // 다음 매칭을 위해 미리 방을 생성해둠
+                } else {
+                    this.emitAll(currentRoomId, 'matchmaking-wait', this.Rooms[currentRoomId].sockets.length);
+                }
+
+                socket.on("connect-playerName", (msg) => {
+                    this.Rooms[currentRoomId].players[msg.playerIndex].name = msg.name;
+                });
+
+                this.onGameReady(socket, currentRoomId);
+                this.onDiceConfirm(socket, currentRoomId);
+                this.onDiceResult(socket, currentRoomId);
+                this.onBattlePhaseDone(socket, currentRoomId);
+                this.onPlayerBaseDamage(socket, currentRoomId);
+                this.onShopItemBuy(socket, currentRoomId);
+                this.onChatMessage(socket, currentRoomId);
+                this.onDiceLastChance(socket, currentRoomId);
+
+                socket.on('disconnect', () => {
+                    console.log("someone disconnected");
+                    //this.Rooms[currentRoomId].sockets.splice(currentRoomIndex, 1);
+                });
             }
-
-            socket.on("connect-playerName", (msg) => {
-                this.Rooms[currentRoomId].players[msg.playerIndex].name = msg.name;
-            });
-
-            this.onGameReady(socket, currentRoomId);
-            this.onDiceConfirm(socket, currentRoomId);
-            this.onDiceResult(socket, currentRoomId);
-            this.onBattlePhaseDone(socket, currentRoomId);
-            this.onPlayerBaseDamage(socket, currentRoomId);
-            this.onShopItemBuy(socket, currentRoomId);
-            this.onChatMessage(socket, currentRoomId);
-            this.onDiceLastChance(socket, currentRoomId);
-
-            socket.on('disconnect', () => {
-                console.log("someone disconnected");
-                //this.Rooms[currentRoomId].sockets.splice(currentRoomIndex, 1);
-            });
         });
     },
 
