@@ -12,6 +12,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         super(scene, x, y, db.idleSprite);
 
         this.setOrigin(0.5, 0.5);
+        this.setDepth(3);
         this.originAttack = db.attack;
         this.originAspd = db.aspd;
         this.originPenetration = db.penetration;
@@ -19,6 +20,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.aspd = db.aspd;
         this.penetration = db.penetration;
         this.range = db.range;
+        this.buffRange = db.buffRange;
         this.attackType = db.attackType;
         this.idleAnim = db.idleAnim;
         this.attackAnim = db.attackAnim;
@@ -30,8 +32,15 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.attackReady = true;
         this.play(this.idleAnim,true);
         this.rangeView = this.scene.add.circle(this.x, this.y, this.range, 0xFF0000);
+        this.rangeView.setDepth(1);
         this.rangeView.setAlpha(0);
 
+        this.buffRangeView = this.scene.add.circle(this.x, this.y, this.buffRange, 0x00FF00);
+        this.buffRangeView.setAlpha(0);
+        this.buffRangeView.setDepth(2);
+
+        if (this.range == this.buffRange)
+            this.rangeView.setStrokeStyle(8, 0xFF0000);
         this.buffAtk = 0;
         this.buffAspd = 0;
     
@@ -88,6 +97,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
     update() {
         this.rangeView.setX(this.x);
         this.rangeView.setY(this.y);
+        this.buffRangeView.setX(this.x);
+        this.buffRangeView.setY(this.y);
         this.effect.x = this.x + this.effectOffsetX;
         this.effect.y = this.y + this.effectOffsetY;
         this.checkMob();
@@ -132,7 +143,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
     giveBuff() {
         var buffTargets = [];
         if (this.buffAspd != 0 || this.buffAtk != 0) {
-            buffTargets = this.scene.physics.overlapCirc(this.x, this.y, this.range).filter(item => item.gameObject.isBuffTarget == true);
+            buffTargets = this.scene.physics.overlapCirc(this.x, this.y, this.buffRange).filter(item => item.gameObject.isBuffTarget == true);
             if (buffTargets.length == 0)
                 return;
             buffTargets.forEach((e) => {
