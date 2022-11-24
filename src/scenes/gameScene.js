@@ -187,6 +187,7 @@ export default class gameScene extends Phaser.Scene{
         this.playerHealth = 100;
         this.placemode = false;
         this.checkLast = false;
+        this.eventChecked = false;
         this.m_projectiles = this.physics.add.group();
         this.unitDB = this.cache.json.get("unitDB");
         this.mobDB = this.cache.json.get("mobDB");
@@ -194,8 +195,7 @@ export default class gameScene extends Phaser.Scene{
         this.m_player = [];
         this.selectedUnit;
         this.onPlaceQueue;
-        this.prePosX = 0;
-        this.prePosY = 0;
+        this.preTile;
 
         this.physics.add.overlap(this.m_projectiles, this.m_mobs, (projectile, mob) => mob.hit(projectile), null, this);
         this.cameras.main.setBounds(0, 0, 2400, 1440);
@@ -227,22 +227,29 @@ export default class gameScene extends Phaser.Scene{
         else if (x > this.cameras.main.width - 50) this.cameras.main.scrollX += 12;
         else if (x < 50) this.cameras.main.scrollX -= 12;
         else if (y > this.cameras.main.height - 50) this.cameras.main.scrollY += 12;
-        else if (y < 50) this.cameras.main.scrollY -= 12;       
+        else if (y < 50) this.cameras.main.scrollY -= 12;
 
-        if (this.checkLast && this.mobCounter == 0)
+        if (this.checkLast && this.mobCounter == 0 && !this.eventChecked)
         {
-            Game.Socket.emit('battlePhase-done', true);
-            this.checkLast = false;
-            this.mobCounter = 0;
+            this.eventChecked = true;
+            this.events.once("mobAnimDone", () => {
+                Game.Socket.emit('battlePhase-done', true);
+                this.checkLast = false;
+            },this);            
         }
     }
 
     initialPlace(unitData)
     {
         this.info.alpha = 1;
-        this.onPlaceQueue = new Unit(this, -500, -500, unitData, this.unitIndex++);
-        this.onPlaceQueue.rangeView.alpha = 1;
-        this.input.on('pointermove', (pointer) => {
+        this.onPlaceQueue = new Unit(this, this.input.activePointer.x, this.input.activePointer.y, unitData, this.unitIndex++);
+        this.onPlaceQueue.rangeView.alpha = 0.4;
+        this.moveUnit();
+    }
+
+    moveUnit()
+    {
+         this.input.on('pointermove', (pointer) => {
             if (this.placemode) {
                 let t = this.getTileAtPointer(pointer, this.info);
                 if (!t || t.index == "2898") {
@@ -299,14 +306,14 @@ export default class gameScene extends Phaser.Scene{
         if (bool)
         {
             this.input.once("pointerdown", (pointer) => {
-                let t = this.getTileAtPointer(pointer, this.info);
-                this.m_player.splice(this.m_player.findIndex(e => e.index == t.placedUnit.index), 1);
-                t.index = "2897";
-                var unitID = parseInt(t.placedUnit.idleAnim.substring(4, t.placedUnit.idleAnim.length - 4));
-                this.onPlaceQueue = t.placedUnit;
-                t.placedUnit.remove();
+                this.preTile = this.getTileAtPointer(pointer, this.info);
+                this.info.alpha = 1;
+                this.m_player.splice(this.m_player.findIndex(e => e.index == this.preTile.placedUnit.index), 1);
+                this.preTile.index = "2897";
+                this.onPlaceQueue = this.preTile.placedUnit;
+                this.onPlaceQueue.rangeView.alpha = 0.4;
                 this.placemode = true;
-                this.initialPlace(this.unitDB["unit"+unitID]);
+                this.moveUnit();
             });  
         }
         else {
@@ -314,9 +321,13 @@ export default class gameScene extends Phaser.Scene{
             this.input.off("pointermove");
             this.info.alpha = 0;
             if (this.onPlaceQueue != undefined) {
-                this.handleTierBonus(this.onPlaceQueue.tier, false);
-                this.onPlaceQueue.remove();
+                this.onPlaceQueue.setX(this.preTile.getCenterX());
+                this.onPlaceQueue.setY(this.preTile.getCenterY());
+                this.preTile.placedUnit = this.onPlaceQueue;
+                this.onPlaceQueue.rangeView.alpha = 0;
+                this.preTile.index = "2898";
                 this.onPlaceQueue = undefined;
+                this.preTile = undefined;
             }
                 
         }
@@ -341,18 +352,6 @@ export default class gameScene extends Phaser.Scene{
             this.mobCounter += element["mobCount"];
         });
         this.checkLast = true;
-    }
-
-    placeUnitOnTile(tile, Unit, prePosX, prePosY) {
-        if (tile.index == "2897") {
-            tile.index = "2898";
-            Unit.x = tile.pixelX + 24;
-            Unit.y = tile.pixelY + 24;
-        }
-        else if (tile.index == "2898") {
-            Unit.x = prePosX;
-            Unit.y = prePosY;
-        }
     }
 
     mobPos(id)
@@ -412,6 +411,7 @@ export default class gameScene extends Phaser.Scene{
     toBattlePhase() {
         this.placeModeController(false);
         this.PhaseText = "Battle Phase";
+        this.eventChecked = false;
         this.startRound();
         //this.phaseTimer = this.time.delayedCall(6000, this.toDicePhase, [], this);
     }
