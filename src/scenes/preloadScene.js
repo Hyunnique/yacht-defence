@@ -247,67 +247,71 @@ export default class PreLoadScene extends Phaser.Scene {
                 key: "unit" + i + "atk",
                 frames: this.anims.generateFrameNumbers("unit" + i + "atk", { start: 0, end: 12 }),
                 repeat: 0,
-                frameRate: 40
+                frameRate: 60
             });    
         }
         this.anims.create({
             key: "unit3atk",
             frames: this.anims.generateFrameNumbers("unit3atk", { start: 12, end: 24 }),
             repeat: 0,
-            frameRate: 40
+            frameRate: 60
         });
         this.anims.create({
             key: "unit8atk",
             frames: this.anims.generateFrameNumbers("unit8atk", { start: 12, end: 24 }),
             repeat: 0,
-            frameRate: 40
+            frameRate: 60
         });
         this.anims.create({
             key: "unit9atk",
             frames: this.anims.generateFrameNumbers("unit9atk", { start: 0, end: 18 }),
             repeat: 0,
-            frameRate: 40
+            frameRate: 60
         });
         this.anims.create({
             key: "unit21atk",
             frames: this.anims.generateFrameNumbers("unit21atk", { start: 12, end: 24 }),
             repeat: 0,
-            frameRate: 40
+            frameRate: 60
         });
         this.anims.create({
             key: "unit22atk",
             frames: this.anims.generateFrameNumbers("unit22atk", { start: 0, end: 18 }),
             repeat: 0,
-            frameRate: 40
+            frameRate: 60
         });
         this.anims.create({
             key: "unit39atk",
             frames: this.anims.generateFrameNumbers("unit39atk", { start: 12, end: 24 }),
             repeat: 0,
-            frameRate: 40
+            frameRate: 60
         });
         this.anims.create({
             key: "unit43atk",
             frames: this.anims.generateFrameNumbers("unit43atk", { start: 12, end: 24 }),
             repeat: 0,
-            frameRate: 40
+            frameRate: 60
         });
         this.anims.create({
             key: "unit46atk",
             frames: this.anims.generateFrameNumbers("unit46atk", { start: 12, end: 24 }),
             repeat: 0,
-            frameRate: 40
+            frameRate: 60
         });
         this.anims.create({
             key: "unit48atk",
             frames: this.anims.generateFrameNumbers("unit48atk", { start: 12, end: 24 }),
             repeat: 0,
-            frameRate: 40
+            frameRate: 60
         });
         // 공격 프레임 속도 40 (프레임당 0.025초) 기준
         // 13프레임의 경우 0.325초 (1초에 3.07회)
         // 19프레임의 경우 0.475초 (1초에 2.10회)
-        // 25프레임의 경우 0.625초 (1초에 1.6회)
+        // 각각 저 횟수 이상으로 공격할 수 없음
+
+        // 공격 프레임 속도 60 (프레임당 0.017초) 기준
+        // 13프레임의 경우 0.221초 (1초에 4.52회)
+        // 19프레임의 경우 0.323초 (1초에 3.09회)
         // 각각 저 횟수 이상으로 공격할 수 없음
 
         // 보스 몹 애니메이션 생성

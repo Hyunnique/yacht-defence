@@ -2,8 +2,8 @@
     "unit0": {
         "name": "고블린",
         "unitType": 1,
-        "attack": 100,
-        "aspd": 0.8,
+        "attack": 90,
+        "aspd": 0.7,
         "range": 240,
         "rangeType": 1,
         "penetration": 0.1,
@@ -24,8 +24,8 @@
     "unit1": {
         "name": "성문 경비병",
         "unitType": 0,
-        "attack": 100,
-        "aspd": 0.8,
+        "attack": 110,
+        "aspd": 0.6,
         "range": 240,
         "rangeType": 1,
         "penetration": 0.1,
@@ -47,7 +47,7 @@
         "name": "성기사 단장 발키리",
         "unitType": 3,
         "attack": 100,
-        "aspd": 0.8,
+        "aspd": 1,
         "range": 168,
         "rangeType": 0,
         "penetration": 0.1,
@@ -69,7 +69,7 @@
         "name": "다크엘프 궁수",
         "unitType": 2,
         "attack": 100,
-        "aspd": 0.8,
+        "aspd": 1.5,
         "range": 480,
         "rangeType": 3,
         "penetration": 0,
@@ -90,8 +90,8 @@
     "unit4": {
         "name": "견습 검사",
         "unitType": 1,
-        "attack": 100,
-        "aspd": 0.8,
+        "attack": 90,
+        "aspd": 1.0,
         "range": 168,
         "rangeType": 0,
         "penetration": 0.1,
@@ -112,8 +112,8 @@
     "unit5": {
         "name": "고블린 도적",
         "unitType": 2,
-        "attack": 100,
-        "aspd": 0.8,
+        "attack": 75,
+        "aspd": 1.2,
         "range": 168,
         "rangeType": 0,
         "penetration": 0.1,
@@ -134,8 +134,8 @@
     "unit6": {
         "name": "산적",
         "unitType": 0,
-        "attack": 100,
-        "aspd": 0.8,
+        "attack": 180,
+        "aspd": 0.5,
         "range": 168,
         "rangeType": 0,
         "penetration": 0.1,
@@ -172,14 +172,17 @@
         "effectName": "fireShot1",
         "atkSoundName": "attackFire",
         "hitSoundName": "hitFire",
-        "projectileType": 0,
+        "projectileType": 2,
+        "explodeScale": 1,
+        "explodeRange": 168,
+        "projectileSpeed": 500,
         "tier": 4
     },
     "unit8": {
         "name": "스켈레톤 사냥꾼",
         "unitType": 2,
-        "attack": 100,
-        "aspd": 0.8,
+        "attack": 120,
+        "aspd": 1.5,
         "range": 480,
         "rangeType": 3,
         "penetration": 0,
@@ -201,7 +204,7 @@
         "name": "불의 마도사",
         "unitType": 1,
         "attack": 100,
-        "aspd": 0.8,
+        "aspd": 1.0,
         "range": 336,
         "rangeType": 2,
         "penetration": 0,
@@ -217,6 +220,9 @@
         "atkSoundName": "attackFire",
         "hitSoundName": "hitBoom1",
         "projectileType": 2,
+        "explodeScale": 1,
+        "explodeRange": 256,
+        "projectileSpeed": 500,
         "tier": 3
     },
     "unit10": {
@@ -267,7 +273,7 @@
         "name": "용기병 전투원",
         "unitType": 1,
         "attack": 100,
-        "aspd": 0.8,
+        "aspd": 0.6,
         "range": 168,
         "rangeType": 0,
         "penetration": 0.1,
@@ -282,7 +288,8 @@
         "effectName": "attack1",
         "atkSoundName": "attackLongWeapon",
         "hitSoundName": "hitNormal",
-        "projectileType": 0
+        "projectileType": 0,
+        "tier": 3
     },
     "unit13": {
         "name": "얼음 마도사",
@@ -303,14 +310,14 @@
         "effectName": "blueShot1",
         "atkSoundName": "attackIce",
         "hitSoundName": "hitBow",
-        "projectileType": 2,
+        "projectileType": 1,
         "tier": 3
     },
     "unit14": {
         "name": "마도 수련생",
         "unitType": 1,
         "attack": 100,
-        "aspd": 0.8,
+        "aspd": 0.6,
         "range": 336,
         "rangeType": 2,
         "penetration": 0,
@@ -325,7 +332,10 @@
         "effectName": "fireShot1",
         "atkSoundName": "attackFire",
         "hitSoundName": "hitFire",
-        "projectileType": 0,
+        "projectileType": 2,
+        "explodeScale": 1.4,
+        "explodeRange": 240,
+        "projectileSpeed": 500,
         "tier": 4
     },
     "unit15": {
@@ -413,7 +423,10 @@
         "effectName": "fireShot1",
         "atkSoundName": "attackFire",
         "hitSoundName": "hitBoom1",
-        "projectileType": 0,
+        "projectileType": 2,
+        "explodeScale": 1,
+        "explodeRange": 256,
+        "projectileSpeed": 500,
         "tier": 4
     },
     "unit19": {
@@ -435,7 +448,7 @@
         "effectName": "attack12",
         "atkSoundName": "attackLongWeapon",
         "hitSoundName": "hitNormal",
-        "projectileType": 1,
+        "projectileType": 0,
         "tier": 3
     },
     "unit20": {
@@ -457,7 +470,10 @@
         "effectName": "fireShot1",
         "atkSoundName": "attackFire",
         "hitSoundName": "hitBoom1",
-        "projectileType": 0,
+        "projectileType": 2,
+        "explodeScale": 1,
+        "explodeRange": 256,
+        "projectileSpeed": 500,
         "tier": 4
     },
     "unit21": {
@@ -502,6 +518,9 @@
         "atkSoundName": "attackBigFire",
         "hitSoundName": "hitBoom3",
         "projectileType": 2,
+        "explodeScale": 1,
+        "explodeRange": 256,
+        "projectileSpeed": 500,
         "tier": 1
     },
     "unit23": {
@@ -677,7 +696,7 @@
         "effectName": "attack1",
         "atkSoundName": "attackLongWeapon",
         "hitSoundName": "hitNormal",
-        "projectileType": 2,
+        "projectileType": 0,
         "tier": 4
     },
     "unit31": {
@@ -700,6 +719,9 @@
         "atkSoundName": "attackThrow",
         "hitSoundName": "hitBoom2",
         "projectileType": 2,
+        "explodeScale": 1,
+        "explodeRange": 256,
+        "projectileSpeed": 500,
         "tier": 3
     },
     "unit32": {
@@ -743,7 +765,10 @@
         "effectName": "hitted3",
         "atkSoundName": "attackMagic2",
         "hitSoundName": "hitFire",
-        "projectileType": 0,
+        "projectileType": 2,
+        "explodeScale": 1,
+        "explodeRange": 256,
+        "projectileSpeed": 500,
         "tier": 2
     },
     "unit34": {
@@ -765,7 +790,10 @@
         "effectName": "hitted3",
         "atkSoundName": "attackMagic2",
         "hitSoundName": "hitFire",
-        "projectileType": 0,
+        "projectileType": 2,
+        "explodeScale": 1,
+        "explodeRange": 256,
+        "projectileSpeed": 500,
         "tier": 2
     },
     "unit35": {
@@ -854,6 +882,9 @@
         "atkSoundName": "attackFire",
         "hitSoundName": "hitBoom1",
         "projectileType": 2,
+        "explodeScale": 1,
+        "explodeRange": 256,
+        "projectileSpeed": 500,
         "tier": 2
     },
     "unit39": {
@@ -897,7 +928,10 @@
         "effectName": "purpleShot1",
         "atkSoundName": "attackMagic1",
         "hitSoundName": "hitBoom1",
-        "projectileType": 0,
+        "projectileType": 2,
+        "explodeScale": 1,
+        "explodeRange": 256,
+        "projectileSpeed": 500,
         "tier": 3
     },
     "unit41": {
@@ -1227,7 +1261,10 @@
         "effectName": "greenShot1",
         "atkSoundName": "attackMagic1",
         "hitSoundName": "hitFire",
-        "projectileType": 0,
+        "projectileType": 2,
+        "explodeScale": 1,
+        "explodeRange": 256,
+        "projectileSpeed": 500,
         "tier": 2
     },
     "unit56": {
@@ -1249,7 +1286,10 @@
         "effectName": "purpleShot1",
         "atkSoundName": "attackMagic1",
         "hitSoundName": "hitBoom1",
-        "projectileType": 0,
+        "projectileType": 2,
+        "explodeScale": 1,
+        "explodeRange": 256,
+        "projectileSpeed": 500,
         "tier": 2
     },
     "unit57": {
@@ -1271,7 +1311,10 @@
         "effectName": "fireShot1",
         "atkSoundName": "attackFire",
         "hitSoundName": "hitBoom1",
-        "projectileType": 0,
+        "projectileType": 2,
+        "explodeScale": 1,
+        "explodeRange": 256,
+        "projectileSpeed": 500,
         "tier": 3
     },
     "unit58": {
@@ -1315,7 +1358,10 @@
         "effectName": "greenShot1",
         "atkSoundName": "attackMagic1",
         "hitSoundName": "hitFire",
-        "projectileType": 0,
+        "projectileType": 2,
+        "explodeScale": 1,
+        "explodeRange": 256,
+        "projectileSpeed": 500,
         "tier": 3
     },
     "unit60": {
@@ -1337,7 +1383,10 @@
         "effectName": "redShot1",
         "atkSoundName": "attackMagic1",
         "hitSoundName": "hitBoom1",
-        "projectileType": 0,
+        "projectileType": 2,
+        "explodeScale": 1,
+        "explodeRange": 256,
+        "projectileSpeed": 500,
         "tier": 3
     },
     "unit61": {

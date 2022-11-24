@@ -8,13 +8,15 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
         super(scene, shooter.x, shooter.y, shooter.projectileName);
         this.scene.m_projectiles.add(this);
         this.shooter = shooter;
-        this.speed = 250;
+        this.speed = shooter.projectileSpeed;
         this.scale = 0.4;
         this.alpha = 1;
         this.targetidx = 0;
         this.setBodySize(this.width/2, this.height/2);
         this.setDepth(2);
         this.hitEffect = shooter.projectileHitEffect;
+        this.explodeRange = shooter.explodeRange;
+        this.explodeScale = shooter.explodeScale;
 
         this.target = new Phaser.Math.Vector2(this.shooter.target[0].gameObject.getCenter());
         this.isTarget = false;
@@ -40,7 +42,7 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
     }
 
     explode() {
-        var targets = this.scene.physics.overlapCirc(this.x, this.y, this.height/2).filter(item => item.gameObject.isTarget == true);
+        var targets = this.scene.physics.overlapCirc(this.x, this.y, this.explodeRange).filter(item => item.gameObject.isTarget == true);
         targets.forEach(element => {
             element.gameObject.Health -= this.shooter.calcDamage(element.gameObject.defence);
             if (element.gameObject.Health <= 0)
@@ -51,6 +53,8 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
         this.body.reset(this.x, this.y);
         this.angle = 0;
         this.body.destroy();
+        
+        this.setScale = this.explodeScale;
         this.play(this.hitEffect);
         this.scene.sound.play("hitBoom1", {
             mute: false,
