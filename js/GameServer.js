@@ -264,7 +264,7 @@ module.exports = {
                 this.Rooms[roomId].players[msg.playerIndex].gold -= shopItem.price;
 
                 if (msg.itemIndex == 21) {
-                    this.Rooms[roomId].players[msg.playerIndex].hp += this.Rooms[roomId].players[msg.playerIndex].hp + 20 > 100 ? 100 : this.Rooms[roomId].players[msg.playerIndex].hp + 20;
+                    this.Rooms[roomId].players[msg.playerIndex].hp = this.Rooms[roomId].players[msg.playerIndex].hp + 20 > 100 ? 100 : this.Rooms[roomId].players[msg.playerIndex].hp + 20;
                 }
                 else if (!this.Rooms[roomId].players[msg.playerIndex].items[msg.itemIndex]) {
                     this.Rooms[roomId].players[msg.playerIndex].items[msg.itemIndex] = 1;

@@ -1388,7 +1388,7 @@
     "unit50": {
         "name": "암살대장 애퍼스",
         "unitType": 2,
-        "attack": 330,
+        "attack": 310,
         "aspd": 1.1,
         "range": 480,
         "rangeType": 3,
