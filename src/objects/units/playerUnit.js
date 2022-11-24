@@ -46,7 +46,15 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.projectileAnimName = db.projectileAnimName;
         this.projectileType = db.projectileType;
         this.projectileHitEffect = db.projecttileHitEffect;
-        
+        if (this.projectileType == 2) {
+            this.explodeRange = db.explodeRange;
+            this.projectileSpeed = db.projectileSpeed;
+            this.explodeScale = db.explodeScale;
+        }
+        else if (this.projectileType == 1) {
+            this.projectileWidth = db.projectileWidth;
+            this.projectileHeight = db.projectileHeight;
+        }
         
         this.isTarget = false;
         this.isBuffTarget = true;
@@ -60,7 +68,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.effectOffsetY = effectOffset[this.effectName].y;
         this.effectIsFlip = effectOffset[this.effectName].isFlip == 1 ? true : false;
         // console.log(this.effectOffsetX + " " + this.effectOffsetY + " " + effectOffset[this.effectName].isFlip);
-        this.effect = new UnitEffect(scene, this, this.effectIsFlip);
+        this.effect = new UnitEffect(scene, this, this.effectIsFlip, db.name);
         
         this.target = [];
         this.attackEvent;
@@ -73,10 +81,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.scene.physics.add.existing(this);
         this.setBodySize(64, 64, true);
         this.scene.add.existing(this);
-        //this.activateAttack();
         this.scene.events.on("update", this.update, this);
         this.on("animationcomplete", this.doIdle, this);
-        console.log(this);
     }
 
     update() {
@@ -91,8 +97,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
 
     doIdle()
     {
-        if (this.target.length == 0)
-            this.play(this.idleAnim, true);
+        this.play(this.idleAnim, true);
     }
 
     
@@ -191,7 +196,6 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         }
         this.scene.time.delayedCall(1000 / this.aspd, () => {
             this.attackReady = true;
-            console.log(1);
         }, [], this);
     }
 
