@@ -158,7 +158,7 @@ var Game = {
                     "tier4": [0, 1, 4, 5, 6, 7, 8, 14, 15, 16, 17, 18, 20, 21, 28, 29, 30, 36, 37, 39, 44, 48, 49, 54, 58, 61]
                 }
                 let unitCount = tier["tier" + currentTier].length;
-                let unitArray = [22, 22, 22];
+                let unitArray = [];
 
                 for (let i = 0; i < 3; i++) {
                     switch (currentTier) {
@@ -176,16 +176,16 @@ var Game = {
                             break;
                     }
                 }
-                // for (let i = 0; i < 3; i++) {
-                //     while (true) {
-                //         let _r = Math.floor(Math.random() * unitCount);
-                //         let unitNo = tier["tier" + currentTier][_r];
-                //         if (!unitArray.includes(unitNo)) {
-                //             unitArray.push(unitNo);
-                //             break;
-                //         }
-                //     }
-                // }
+                for (let i = 0; i < 3; i++) {
+                    while (true) {
+                        let _r = Math.floor(Math.random() * unitCount);
+                        let unitNo = tier["tier" + currentTier][_r];
+                        if (!unitArray.includes(unitNo)) {
+                            unitArray.push(unitNo);
+                            break;
+                        }
+                    }
+                }
 
                 for (let i = 0; i < 3; i++) {
                     let unitType = ""
@@ -289,7 +289,6 @@ var Game = {
         });
 
         this.Socket.on('lastChance-success', (msg) => {
-            console.log("success");
             this.updateItemUI(msg);
 
             this.GameObject.scene.getScene("diceScene").itemUsed = true;
@@ -298,7 +297,7 @@ var Game = {
         })
 
         this.Socket.on('lastChance-Failure', (msg) => {
-            console.log("fail");
+            
         })
     },
 
@@ -329,7 +328,7 @@ var Game = {
                 this.showUI("gameScene-topFloating");
                 this.showUI("gameScene-bottomFloating");
 
-                
+                document.getElementsByClassName("ui-diceRerollButton")[0].style.color = 'black';
                 document.getElementsByClassName("ui-diceRerollButton")[0].onclick = (e) => {
                     this.Socket.emit("dicePhase-start", "true");
                     this.GameObject.scene.getScene("diceScene").rollDice();
@@ -460,7 +459,8 @@ var Game = {
         Object.keys(msg.items)
         .filter((key) => [0, 6].includes(itemSpecSheets["item" + key].itemType))
         .forEach((key) => {
-            myItemUI.innerHTML += "<li class='ui-itemArea-itemList-item' idx=" + key + ">" + msg.items[key] + "</li>"
+            if (msg.items[key] > 0)
+                myItemUI.innerHTML += "<li class='ui-itemArea-itemList-item' idx=" + key + ">" + msg.items[key] + "</li>"
         })
 
         Array.from(document.getElementsByClassName("ui-itemArea-itemList-item")).forEach((e) => {
