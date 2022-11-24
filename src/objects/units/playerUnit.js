@@ -167,6 +167,9 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.attack = (this.buffedAtk + this.globalbuffAtk + 1) * this.originAttack;
         this.aspd = ((100 + this.buffedAspd) / 100) * ((100 + this.globalbuffAspd)/100) * this.originAspd;
         this.penetration = this.originPenetration + this.globalbuffedPenetration;
+        if (this.penetration > 1) this.penetration = 1;
+        else if (this.penetration < 0) this.penetration = 0;
+        
         // this.setMotionSpeed();
     }
 
