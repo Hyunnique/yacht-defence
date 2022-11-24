@@ -250,7 +250,7 @@ export default class gameScene extends Phaser.Scene{
 
     moveUnit()
     {
-         this.input.on('pointermove', (pointer) => {
+        this.input.on('pointermove', (pointer) => {
             if (this.placemode) {
                 let t = this.getTileAtPointer(pointer, this.info);
                 if (!t || t.index == "2898") {
