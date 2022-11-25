@@ -242,13 +242,20 @@ export default class gameScene extends Phaser.Scene{
     clickHandler(pointer)
     {
         if (this.PhaseText == "Place Phase" && pointer.leftButtonDown())
+        {
+            this.unitInfoHandler(pointer, false);
             this.moveUnit(pointer);
+        }
         else if (pointer.rightButtonDown()) {
-            this.unitInfoHandler(pointer);
+            this.unitInfoHandler(pointer,true);
+        }
+        else if (pointer.leftButtonDown())
+        {
+            this.unitInfoHandler(pointer, false);    
         }
     }
 
-    unitInfoHandler(pointer)
+    unitInfoHandler(pointer,bool)
     {
         if (!this.placemode) {
             let t = this.getTileAtPointer(pointer, this.info);
@@ -258,11 +265,13 @@ export default class gameScene extends Phaser.Scene{
                     this.selectedUnit.rangeView.alpha = 0;
                     this.selectedUnit.buffRangeView.alpha = 0;
                 }
-                this.selectedUnit = t.placedUnit;
-                this.selectedUnit.rangeView.alpha = 0.4;
-                this.selectedUnit.buffRangeView.alpha = 0.6;
+                if (bool) { 
+                    this.selectedUnit = t.placedUnit;
+                    this.selectedUnit.rangeView.alpha = 0.4;
+                    this.selectedUnit.buffRangeView.alpha = 0.6;
+                }
             }
-            else if(this.selectedUnit != undefined){
+            else if(this.selectedUnit != undefined){ 
                 this.selectedUnit.rangeView.alpha = 0;
                 this.selectedUnit.buffRangeView.alpha = 0;
                 this.selectedUnit = undefined;
