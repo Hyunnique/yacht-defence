@@ -34,7 +34,7 @@ export default class Homing extends Phaser.Physics.Arcade.Sprite {
 
     flytoMob(target) {
         if (target[0] != undefined) {
-            this.setAngle(this, target[0]);
+            this.setAngle(target[0]);
             try {
                 this.scene.physics.moveTo(this, target[0].center.x, target[0].center.y, this.speed);    
             } catch (error) {
@@ -46,7 +46,7 @@ export default class Homing extends Phaser.Physics.Arcade.Sprite {
         }
     }
 
-    setAngle(shooter,target) {
+    setAngle(target) {
         const angleToMob = Phaser.Math.Angle.Between(
             this.x,
             this.y,
