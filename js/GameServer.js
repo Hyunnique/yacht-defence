@@ -15,17 +15,16 @@ module.exports = {
 
         this.createRoom();
 
-        this.onConnect();
+        this.connectionHandler();
 
-        /* hp 테스트용
+        /* 난이도 계수 테스트
         for (let i = 1; i <= 50; i++) {
             console.log("Round " + i + "--");
+            console.log("Round Cost : " + this.Rooms[10001].generatorRoundCost);
+            console.log("HPFactor : " + this.Rooms[10001].generatorHpFactor);
+
             let result = this.generateWaveInfo(10001);
             this.Rooms[10001].round++;
-            
-            for (let j of result) {
-                console.log(Specsheet[j.mobName].health * (1 / (1 - (Specsheet[j.mobName].defence / 100))) * j.hpFactor);
-            }
         }
         */
     },
@@ -35,7 +34,7 @@ module.exports = {
 
         this.Rooms[this.latestRoomId] = {
             roomId: this.latestRoomId,
-            sockets: [],
+            players: [],
             maxPlayers: (process.env.PLAYERS ? parseInt(process.env.PLAYERS) : 1), // Configurable for development or singleplayer
             counter: {
                 ready: 0,
@@ -45,7 +44,6 @@ module.exports = {
             timer: {
 
             },
-            players: [],
             round: 1,
             roundChoice: -1,
             generatorSheet: JSON.parse(JSON.stringify(SpecsheetGen)),
@@ -57,12 +55,12 @@ module.exports = {
     generateWaveInfo(roomId) {
         let waveResult = waveGenerator(this.Rooms[roomId].generatorSheet, this.Rooms[roomId].round, this.Rooms[roomId].generatorRoundCost, this.Rooms[roomId].generatorHpFactor);
 
-        this.Rooms[roomId].generatorHpFactor = (this.Rooms[roomId].generatorHpFactor * 1.08).toFixed(2);
+        this.Rooms[roomId].generatorHpFactor = (this.Rooms[roomId].generatorHpFactor * 1.1).toFixed(2);
 
         if (this.Rooms[roomId].round % 10 == 0) {
-            this.Rooms[roomId].generatorRoundCost = Math.floor(this.Rooms[roomId].generatorRoundCost * 1.3 + 30);
+            this.Rooms[roomId].generatorRoundCost = Math.floor(this.Rooms[roomId].generatorRoundCost * 1.5 + 25);
         } else {
-            this.Rooms[roomId].generatorRoundCost = Math.floor(this.Rooms[roomId].generatorRoundCost * 1.05 + 30);
+            this.Rooms[roomId].generatorRoundCost = Math.floor(this.Rooms[roomId].generatorRoundCost * 1.09 + 25);
         }
 
         this.emitAll(roomId, 'game-wavedata', waveResult);
@@ -78,33 +76,45 @@ module.exports = {
     },
 
     emitAll(roomId, eventName, eventMessage) {
-        for (let socket of this.Rooms[roomId].sockets) {
-            socket.emit(eventName, eventMessage);
+        for (let player of this.Rooms[roomId].players) {
+            player.socket.emit(eventName, eventMessage);
         }
     },
 
-    onConnect() {
+    connectionHandler() {
         this.Socket.on('connection', (socket) => {
-            
-            if (this.socketMap[socket.id]) {
-                // do nothing
-            } else {
-                this.Rooms[this.latestRoomId].sockets.push(socket);
-                this.socketMap[socket.id] = this.latestRoomId;
+            socket.on('connect-matchmaking', (msg) => {
+
+                let { clientID, name } = msg;
 
                 let currentRoomId = this.latestRoomId;
-                let currentRoomIndex = this.Rooms[currentRoomId].sockets.length - 1;
+                let socketRoomIndex = this.Rooms[currentRoomId].sockets.length - 1;
 
-                if (this.Rooms[currentRoomId].sockets.length == this.Rooms[currentRoomId].maxPlayers) {
+                this.Rooms[currentRoomId].players.push({ // Initialize Player Object
+                    name: name,
+                    socket: socket,
+                    playerIndex: i,
+                    hp: 100,
+                    maxhp: 100,
+                    gold: 0,
+                    units: {},
+                    items: {},
+                    currentHand: "",
+                    currentHandTier: 3,
+                    currentChoice: -1
+                });
+
+                this.socketMap[clientID] = {
+                    roomId: currentRoomId,
+                    roomIndex: socketRoomIndex
+                };
+
+                if (this.Rooms[currentRoomId].players.length == this.Rooms[currentRoomId].maxPlayers) {
                     this.emitAll(currentRoomId, 'matchmaking-done', this.currentRoomId);
                     this.createRoom(); // 다음 매칭을 위해 미리 방을 생성해둠
                 } else {
-                    this.emitAll(currentRoomId, 'matchmaking-wait', this.Rooms[currentRoomId].sockets.length);
+                    this.emitAll(currentRoomId, 'matchmaking-wait', this.Rooms[currentRoomId].players.length);
                 }
-
-                socket.on("connect-playerName", (msg) => {
-                    this.Rooms[currentRoomId].players[msg.playerIndex].name = msg.name;
-                });
 
                 this.onGameReady(socket, currentRoomId);
                 this.onDiceConfirm(socket, currentRoomId);
@@ -114,13 +124,36 @@ module.exports = {
                 this.onShopItemBuy(socket, currentRoomId);
                 this.onChatMessage(socket, currentRoomId);
                 this.onDiceLastChance(socket, currentRoomId);
+            });
 
-                socket.on('disconnect', () => {
-                    console.log("someone disconnected");
-                    //this.Rooms[currentRoomId].sockets.splice(currentRoomIndex, 1);
-                });
+            socket.on('connect-reconnect', (msg) => {
+                
+                let { clientID, beforeID } = msg;
+
+                this.socketMap[clientID] = this.socketMap[beforeID];
+                delete this.socketMap[beforeID];
+            });
+
+            socket.on('disconnect', () => {
+                // disconnected
+            });
+
+            if (this.socketMap[socket.id]) {
+                // do nothing
+            } else {
+                this.Rooms[this.latestRoomId].sockets.push(socket);
+                this.socketMap[socket.id] = this.latestRoomId;
+
+                let currentRoomId = this.latestRoomId;
+                let currentRoomIndex = this.Rooms[currentRoomId].sockets.length - 1;
+
+                
             }
         });
+    },
+
+    enterRoom(socket) {
+
     },
 
     onGameReady(socket, roomId) {
@@ -130,18 +163,6 @@ module.exports = {
             if (this.Rooms[roomId].counter.ready >= this.Rooms[roomId].maxPlayers) {
 
                 for (let i = 0; i < this.Rooms[roomId].maxPlayers; i++) {
-                    this.Rooms[roomId].players.push({ // Initialize Player Object
-                        name: "temp",
-                        playerIndex: i,
-                        hp: 100,
-                        maxhp: 100,
-                        gold: 0,
-                        units: {},
-                        items: {},
-                        currentHand: "",
-                        currentHandTier: 3,
-                        currentChoice: -1
-                    });
 
                     this.Rooms[roomId].sockets[i].emit('game-defaultData', {
                         playerCount: this.Rooms[roomId].maxPlayers,
