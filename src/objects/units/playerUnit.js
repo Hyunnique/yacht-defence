@@ -155,8 +155,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
             if (buffTargets.length == 0)
                 return;
             buffTargets.forEach((e) => {
-                e.gameObject.buffedAspd *= (1 + this.buffAspd/100);
-                e.gameObject.buffedAtk *= (1 + this.buffAtk/100);
+                e.gameObject.buffedAspd += this.buffAspd;
+                e.gameObject.buffedAtk += this.buffAtk;
             });
         }
     }
@@ -171,8 +171,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
 
     updateBuff()
     {
-        this.attack = this.buffedAtk * this.globalbuffAtk * this.originAttack;
-        this.aspd = this.buffedAspd * ((100 + this.globalbuffAspd)/100) * this.originAspd;
+        this.attack = (1 + this.buffedAtk / 100) * this.globalbuffAtk * this.originAttack;
+        this.aspd = (1 + this.buffedAspd / 100) * ((100 + this.globalbuffAspd) / 100) * this.originAspd;
         this.penetration = this.originPenetration + this.globalbuffedPenetration;
         if (this.penetration > 1) this.penetration = 1;
         else if (this.penetration < 0) this.penetration = 0;
