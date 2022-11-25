@@ -241,17 +241,14 @@ export default class gameScene extends Phaser.Scene{
 
     clickHandler(pointer)
     {
-        if (this.PhaseText == "Place Phase" && pointer.leftButtonDown())
+        if (pointer.leftButtonDown())
         {
             this.unitInfoHandler(pointer, false);
-            this.moveUnit(pointer);
+            if(this.PhaseText == "Place Phase" && !this.placemode)
+                this.moveUnit(pointer);
         }
         else if (pointer.rightButtonDown()) {
             this.unitInfoHandler(pointer,true);
-        }
-        else if (pointer.leftButtonDown())
-        {
-            this.unitInfoHandler(pointer, false);    
         }
     }
 
@@ -298,6 +295,7 @@ export default class gameScene extends Phaser.Scene{
             this.preTile.index = "2897";
             this.onPlaceQueue.rangeView.alpha = 0.4;
             this.onPlaceQueue.buffRangeView.alpha = 0.6;
+            this.m_player.splice(this.m_player.findIndex(e => { e.index == this.onPlaceQueue.index }), 1);
         }
         else {
             this.preTile = undefined;
@@ -326,6 +324,7 @@ export default class gameScene extends Phaser.Scene{
     unitPlaceHandler(pointer) {
         let t = this.getTileAtPointer(pointer, this.info);
         if (t.index == "2897") {
+            console.log("hi!");
             this.m_player.push(this.onPlaceQueue);
             t.index = "2898";
             this.info.alpha = 0;
@@ -334,12 +333,12 @@ export default class gameScene extends Phaser.Scene{
             t.placedUnit = this.onPlaceQueue;
             this.placemode = false;
             this.input.off("pointermove");
-            this.input.off("pointerdown",this.unitPlaceHandler,this);
+            this.input.off("pointerdown", this.unitPlaceHandler, this);
             this.onPlaceQueue.setX(t.getCenterX());
             this.onPlaceQueue.setY(t.getCenterY());
             this.resetBuff();
             this.onPlaceQueue = undefined;
-        }     
+        }
     }
 
     resetBuff()
@@ -361,6 +360,8 @@ export default class gameScene extends Phaser.Scene{
         this.input.off("pointerdown", this.unitPlaceHandler, this);
         this.input.off("pointermove");
         this.info.alpha = 0;
+        console.log(this.onPlaceQueue);
+        console.log(this.preTile);
         if (this.onPlaceQueue != undefined) {
             if (this.preTile == undefined) {
                 this.handleTierBonus(this.onPlaceQueue.tier, false);
@@ -370,12 +371,11 @@ export default class gameScene extends Phaser.Scene{
                 this.onPlaceQueue.alpha = 1;
                 this.onPlaceQueue.setX(this.preTile.getCenterX());
                 this.onPlaceQueue.setY(this.preTile.getCenterY());
-                this.preTile.placedUnit = this.onPlaceQueue;
-                    
+                this.preTile.placedUnit = this.onPlaceQueue;   
+                this.onPlaceQueue.rangeView.alpha = 0;
+                this.onPlaceQueue.buffRangeView.alpha = 0;
                 this.preTile.index = "2898";
             }
-            this.onPlaceQueue.rangeView.alpha = 0;
-            this.onPlaceQueue.buffRangeView.alpha = 0;
             this.onPlaceQueue = undefined;
             this.preTile = undefined;
         }
