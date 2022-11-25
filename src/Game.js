@@ -424,6 +424,7 @@ var Game = {
                 this.clearUI();
                 this.shopOpen = false;
                 this.showUI("gameScene-topFloating");
+                this.showUI("gameScene-midFloating");
                 this.showUI("gameScene-bottomFloating");
 
                 document.getElementsByClassName("ui-diceRerollButton")[0].style.color = 'black';

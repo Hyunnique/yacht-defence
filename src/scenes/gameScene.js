@@ -241,24 +241,37 @@ export default class gameScene extends Phaser.Scene{
 
     clickHandler(pointer)
     {
-        if (this.PhaseText == "Place Phase" && pointer.rightButtonDown())
+        if (this.PhaseText == "Place Phase" && pointer.leftButtonDown())
+        {
+            this.unitInfoHandler(pointer, false);
             this.moveUnit(pointer);
-        else if (pointer.leftButtonDown()) {
-            this.unitInfoHandler(pointer);
+        }
+        else if (pointer.rightButtonDown()) {
+            this.unitInfoHandler(pointer,true);
+        }
+        else if (pointer.leftButtonDown())
+        {
+            this.unitInfoHandler(pointer, false);    
         }
     }
 
-    unitInfoHandler(pointer)
+    unitInfoHandler(pointer,bool)
     {
         if (!this.placemode) {
             let t = this.getTileAtPointer(pointer, this.info);
             console.log(t.placedUnit == undefined ? "empty!" : t.placedUnit);
             if (t.placedUnit != undefined) {
-                this.selectedUnit = t.placedUnit;
-                this.selectedUnit.rangeView.alpha = 0.4;
-                this.selectedUnit.buffRangeView.alpha = 0.6;
+                if (this.selectedUnit != undefined) {
+                    this.selectedUnit.rangeView.alpha = 0;
+                    this.selectedUnit.buffRangeView.alpha = 0;
+                }
+                if (bool) { 
+                    this.selectedUnit = t.placedUnit;
+                    this.selectedUnit.rangeView.alpha = 0.4;
+                    this.selectedUnit.buffRangeView.alpha = 0.6;
+                }
             }
-            else if(this.selectedUnit != undefined){
+            else if(this.selectedUnit != undefined){ 
                 this.selectedUnit.rangeView.alpha = 0;
                 this.selectedUnit.buffRangeView.alpha = 0;
                 this.selectedUnit = undefined;
@@ -354,6 +367,7 @@ export default class gameScene extends Phaser.Scene{
                 this.onPlaceQueue.remove();
             }
             else {
+                this.onPlaceQueue.alpha = 1;
                 this.onPlaceQueue.setX(this.preTile.getCenterX());
                 this.onPlaceQueue.setY(this.preTile.getCenterY());
                 this.preTile.placedUnit = this.onPlaceQueue;
