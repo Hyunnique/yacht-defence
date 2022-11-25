@@ -125,7 +125,7 @@ var Game = {
             document.getElementsByClassName("ui-chatMessages")[0].style.opacity = "1";
             this.ChatMessageTimer = setTimeout(() => {
                 document.getElementsByClassName("ui-chatMessages")[0].style.opacity = "0";
-            }, 3000);
+            }, 4000);
 
             document.getElementsByClassName("ui-chatMessages")[0].innerHTML +=
             "<li class='ui-chatMessageData'><span class='ui-chatMessageData-name text-outline' style='color: " + playerColors[msg.playerIndex] + ";'>" + msg.name + "</span> : " + 
@@ -470,6 +470,8 @@ var Game = {
                         } else {
                             document.getElementsByClassName("ui-chatInput")[0].focus();
                             document.getElementsByClassName("ui-chatInput")[0].style.backgroundColor = "rgba(255, 255, 255, 0.4)";
+                            
+                            document.getElementsByClassName("ui-chatMessages")[0].style.opacity = "1";
                         }
                     } else if (e.key == " ") {
                         if (document.activeElement === document.getElementsByClassName("ui-chatInput")[0]) {

@@ -1029,7 +1029,7 @@
     "unit37": {
         "name": "견습 격투가",
         "unitType": 2,
-        "attack": 35,
+        "attack": 50,
         "aspd": 1.8,
         "range": 168,
         "rangeType": 0,
@@ -1718,7 +1718,7 @@
     "unit62": {
         "name": "타락한 무술가",
         "unitType": 2,
-        "attack": 45,
+        "attack": 65,
         "aspd": 1.9,
         "range": 168,
         "rangeType": 0,
