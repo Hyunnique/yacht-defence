@@ -17,6 +17,7 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
         this.hitEffect = shooter.projectileHitEffect;
         this.explodeRange = shooter.explodeRange;
         this.explodeScale = shooter.explodeScale;
+        this.hitSoundName = shooter.hitSoundName;
 
         this.target = new Phaser.Math.Vector2(this.shooter.target[0].gameObject.getCenter());
         this.isTarget = false;
@@ -65,12 +66,7 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
 
         this.scale = this.explodeScale;
         this.play(this.hitEffect);
-        this.scene.sound.play("hitBoom1", {
-            mute: false,
-            volume: 0.2 * Game.gameVolume,
-            rate: 1,
-            loop: false
-        });
+        this.hitSoundName.play(Game.effectSoundConfig);
         
         var animConfig = this.scene.anims.get(this.hitEffect);
         var animtime = animConfig.frames.length * animConfig.msPerFrame;

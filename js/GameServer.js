@@ -39,7 +39,8 @@ module.exports = {
             counter: {
                 ready: 0,
                 handConfirm: 0,
-                handReceived: 0
+                handReceived: 0,
+                connect: 0
             },
             timer: {
 
@@ -169,14 +170,20 @@ module.exports = {
                         playerIndex: i
                     });
                 }
+                // 인원수만큼 만들고, 'game-defaultData'로 보냄
                 
-                this.syncPlayerInfo(roomId);
-                this.onRoundBegin(roomId);
+                // this.onRoundBegin(roomId);
             }
         });
     },
 
+    initGameInfo(roomId) {
+        this.emitAll(roomId, 'init-gameData', this.Rooms[roomId].players);
+    },
+
     onRoundBegin(roomId) {
+        this.initGameInfo(roomId);
+
         this.emitAll(roomId, 'round-begin', {
             round: this.Rooms[roomId].round,
         });
