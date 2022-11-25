@@ -386,7 +386,10 @@ export default class gameScene extends Phaser.Scene{
     }
 
     removeOtherPlayerUnit() {
-        this.spectate_player_units.forEach(e => { e.remove() });
+        this.spectate_player_units.forEach(e => {
+            console.log(e);
+            e.remove()
+        });
     }
 
     resetBuff()
