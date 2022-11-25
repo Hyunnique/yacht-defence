@@ -122,8 +122,6 @@ export default class gameScene extends Phaser.Scene{
         let help = this.add.text(0, 0, '', { font: '48px monospace' }); 
         let cursors = this.input.keyboard.createCursorKeys();
 
-
-
 //카메라
         this.controls = new Phaser.Cameras.Controls.FixedKeyControl({
             camera: this.cameras.main,
@@ -254,7 +252,17 @@ export default class gameScene extends Phaser.Scene{
     {
         if (!this.placemode) {
             let t = this.getTileAtPointer(pointer, this.info);
-            console.log(t.placedUnit == undefined? "empty!" : t.placedUnit);
+            console.log(t.placedUnit == undefined ? "empty!" : t.placedUnit);
+            if (t.placedUnit != undefined) {
+                this.selectedUnit = t.placedUnit;
+                this.selectedUnit.rangeView.alpha = 0.4;
+                this.selectedUnit.buffRangeView.alpha = 0.6;
+            }
+            else if(this.selectedUnit != undefined){
+                this.selectedUnit.rangeView.alpha = 0;
+                this.selectedUnit.buffRangeView.alpha = 0;
+                this.selectedUnit = undefined;
+            }
         }
     }
 
@@ -268,14 +276,11 @@ export default class gameScene extends Phaser.Scene{
     }
 
     moveUnit(pointer)
-    {
-        this.placemode = true;
-        this.info.alpha = 1;
+    {   
         if (pointer) {
             this.preTile = this.getTileAtPointer(pointer, this.info);
             if (this.preTile == undefined || this.preTile.placedUnit == undefined)
                 return;
-            console.log(1);
             this.onPlaceQueue = this.preTile.placedUnit;
             this.preTile.index = "2897";
             this.onPlaceQueue.rangeView.alpha = 0.4;
@@ -284,6 +289,8 @@ export default class gameScene extends Phaser.Scene{
         else {
             this.preTile = undefined;
         }
+        this.placemode = true;
+        this.info.alpha = 1;
         this.input.on('pointermove', (pointer) => {
             let t = this.getTileAtPointer(pointer, this.info);
             if (!t || t.index == "2898") {
