@@ -224,6 +224,7 @@ export default class gameScene extends Phaser.Scene{
 
         this.m_player = [];
         this.spectate_player = [];
+        this.spectate_player_units = [];
 
         this.selectedUnit;
         this.onPlaceQueue;
@@ -379,10 +380,15 @@ export default class gameScene extends Phaser.Scene{
 
     placeOtherPlayerUnit() {
         var index = 0;
-        console.log(this.spectate_player);
         this.spectate_player.forEach(e => {
-            new Unit(this, e.x + 2400, e.y, this.unitDB["unit" + e.id], index++, e.id);
+            this.spectate_player_units.push(new Unit(this, e.x + 2400, e.y, this.unitDB["unit" + e.id], index++, e.id));
         });
+    }
+
+    removeOtherPlayerUnit() {
+        this.spectate_player_units.forEach(e =>
+            e.remove()
+        );
     }
 
     resetBuff()
