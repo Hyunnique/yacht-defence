@@ -17,9 +17,7 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
         this.hitEffect = shooter.projectileHitEffect;
         this.explodeRange = shooter.explodeRange;
         this.explodeScale = shooter.explodeScale;
-        this.hitSoundName = shooter.hitSoundName;
-
-        this.target = new Phaser.Math.Vector2(this.shooter.target[0].gameObject.getCenter());
+        this.hitSoundName = shooter.hitSoundName;  
         this.isTarget = false;
 
         this.scene.add.existing(this);
@@ -31,6 +29,12 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
         this.setAngle(this, this.target);
         this.scene.physics.moveTo(this, this.target.x, this.target.y, this.speed);
         this.scene.events.on("update", this.update, this);
+        
+        try {
+            this.target = new Phaser.Math.Vector2(this.shooter.target[0].gameObject.getCenter());    
+        } catch (error) {
+            this.explode();
+        }
     }
 
     update()
