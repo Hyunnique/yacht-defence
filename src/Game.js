@@ -18,6 +18,8 @@ var Game = {
     GameObject: null,
     GameConfig: null,
     Socket: null,
+
+    PlayerDataInitiated: false,
     PlayerCount: 4,
     PlayerIndex: -1,
     PlayerData: null,
@@ -148,6 +150,17 @@ var Game = {
         this.Socket.on("sync-playerData", (msg) => {
             this.PlayerData = msg;
 
+            if (!this.PlayerDataInitiated) {
+                this.PlayerDataInitiated = true;
+
+                for (let i = 0; i < this.PlayerCount; i++) {
+                    document.getElementsByClassName("ui-hpArea-playerText")[i].innerHTML = this.PlayerData[i].name;
+                }
+
+                for (let i = this.PlayerCount; i < 4; i++) {
+                    document.getElementsByClassName("ui-hpArea-player")[i].style.visibility = "hidden";
+                } 
+            }
             for (let i = 0; i < this.PlayerCount; i++) {
                 document.getElementsByClassName("ui-hpArea-playerhp-bar")[i].style.width = Math.floor(msg[i].hp / msg[i].maxhp * 100) + "%";
                 document.getElementsByClassName("ui-hpArea-playerhp-text")[i].innerHTML = Math.floor(msg[i].hp / msg[i].maxhp * 100) + "%";
