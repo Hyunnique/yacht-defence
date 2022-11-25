@@ -301,14 +301,21 @@ var Game = {
 
                 for (let i = 0; i < 3; i++) {
                     let unitType = ""
-                    switch (unitSpecSheets["unit" + unitArray[i]].attackType) {
+                    switch (unitSpecSheets["unit" + unitArray[i]].unitType) {
                         case 0:
                             unitType = "근거리";
                             break;
                         case 1:
-                            if (unitArray[i].projectileType == 0) unitType = "추적형";
-                            else if (unitArray[i].projectileType == 0) unitType = "관통형";
-                            else unitType = "폭발형";
+                            unitType = "추적형";
+                            break;
+                        case 2:
+                            unitType = "관통형";
+                            break;
+                        case 3:
+                            unitType = "폭발형";
+                            break;
+                        case 4:
+                            unitType = "지원형";
                             break;
                     }
 
