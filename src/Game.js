@@ -8,6 +8,7 @@ const unitGIF = importAll(require.context("./assets/images/units", false, /\.gif
 const icons = importAll(require.context("./assets/images/icons", false, /\.png$/));
 import unitSpecSheets from "./assets/specsheets/unitSpecsheet.json";
 import itemSpecSheets from "./assets/specsheets/shopItemSheet.json";
+import { socketMap } from "../js/GameServer";
 
 const playerColors = ["lightgreen", "lightcoral", "lightskyblue", "lightgoldenrodyellow"];
 
@@ -64,11 +65,12 @@ var Game = {
                     name: document.getElementsByClassName("multi-name")[0].value
                 });
                 
-                this.Socket.on('reconnecting', () => {
+                this.Socket.io.on('reconnecting', () => {
 
                 });
 
-                this.Socket.on('reconnection', () => {
+                this.Socket.io.on('reconnect', () => {
+                    console.log("reconnected!");
                     this.Socket.emit('connect-reconnect', {
                         clientID: this.Socket.id,
                         beforeID: this.ClientID
@@ -83,7 +85,7 @@ var Game = {
     },
 
     serverEventHandler() {
-        this.Socket.on('connect', () => {
+        this.Socket.io.on('connect', () => {
             ;
         });
 
@@ -129,23 +131,6 @@ var Game = {
             "<li class='ui-chatMessageData'><span class='ui-chatMessageData-name text-outline' style='color: " + playerColors[msg.playerIndex] + ";'>" + msg.name + "</span> : " + 
             "<span class='ui-chatMessageData-message text-outline'>" + msg.message + "</span></li>\n";
         });
-
-        this.Socket.on("init-gameData", (msg) => {
-            this.PlayerData = msg;
-            console.log(msg);
-            for (let i = 0; i < this.PlayerCount; i++) {
-                document.getElementsByClassName("ui-hpArea-playerText")[i].innerHTML = this.PlayerData[i].name;
-                document.getElementsByClassName("ui-hpArea-playerhp-bar")[i].style.width = Math.floor(msg[i].hp / msg[i].maxhp * 100) + "%";
-                document.getElementsByClassName("ui-hpArea-playerhp-text")[i].innerHTML = Math.floor(msg[i].hp / msg[i].maxhp * 100) + "%";
-
-            }
-            document.getElementsByClassName("ui-gold")[0].innerText = msg[this.PlayerIndex].gold;
-
-            for (let i = this.PlayerCount; i < 4; i++) {
-                document.getElementsByClassName("ui-hpArea-player")[i].style.visibility = "hidden";
-            } 
-        })
-        // => 맨 처음 시작시 플레이어들 정보를 받아서 인원수만큼 체력바 남기고 닉네임으로 바꿈
 
         this.Socket.on("sync-playerData", (msg) => {
             this.PlayerData = msg;
