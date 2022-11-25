@@ -122,8 +122,6 @@ export default class gameScene extends Phaser.Scene{
         let help = this.add.text(0, 0, '', { font: '48px monospace' }); 
         let cursors = this.input.keyboard.createCursorKeys();
 
-
-
 //카메라
         this.controls = new Phaser.Cameras.Controls.FixedKeyControl({
             camera: this.cameras.main,
@@ -254,7 +252,17 @@ export default class gameScene extends Phaser.Scene{
     {
         if (!this.placemode) {
             let t = this.getTileAtPointer(pointer, this.info);
-            console.log(t.placedUnit == undefined? "empty!" : t.placedUnit);
+            console.log(t.placedUnit == undefined ? "empty!" : t.placedUnit);
+            if (t.placedUnit != undefined) {
+                this.selectedUnit = t.placedUnit;
+                this.selectedUnit.rangeView.alpha = 0.4;
+                this.selectedUnit.buffRangeView.alpha = 0.6;
+            }
+            else if(this.selectedUnit != undefined){
+                this.selectedUnit.rangeView.alpha = 0;
+                this.selectedUnit.buffRangeView.alpha = 0;
+                this.selectedUnit = undefined;
+            }
         }
     }
 
@@ -268,9 +276,7 @@ export default class gameScene extends Phaser.Scene{
     }
 
     moveUnit(pointer)
-    {
-
-        
+    {   
         if (pointer) {
             this.preTile = this.getTileAtPointer(pointer, this.info);
             if (this.preTile == undefined || this.preTile.placedUnit == undefined)
