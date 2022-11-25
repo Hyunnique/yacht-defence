@@ -273,7 +273,8 @@ export default class gameScene extends Phaser.Scene{
     }
 
     clickHandler(pointer)
-    {
+    {   
+        console.log(this.getTileAtPointer(pointer, this.info));
         if (pointer.leftButtonDown())
         {
             this.unitInfoHandler(pointer, false);
@@ -349,6 +350,7 @@ export default class gameScene extends Phaser.Scene{
             }
             this.onPlaceQueue.setX(t.getCenterX());
             this.onPlaceQueue.setY(t.getCenterY());
+            this.onPlaceQueue.setDepth(this.onPlaceQueue.y / 48);
         }
         );
         this.input.on('pointerdown', this.unitPlaceHandler, this);
@@ -369,6 +371,7 @@ export default class gameScene extends Phaser.Scene{
             this.input.off("pointerdown", this.unitPlaceHandler, this);
             this.onPlaceQueue.setX(t.getCenterX());
             this.onPlaceQueue.setY(t.getCenterY());
+            this.onPlaceQueue.setDepth(this.onPlaceQueue.y / 48);
             this.resetBuff();
             this.onPlaceQueue = undefined;
         }
