@@ -77,7 +77,13 @@ export default class gameScene extends Phaser.Scene{
 
     create() {
 // 맵
+        this.mapWidth = 2400;
+        this.mapHeight = 1440;
+        this.mapOffsetX = 0;
+        this.mapOffsetY = 0;
+        
         const map = this.make.tilemap({key: "map_forest"});
+        const mapOthers = this.make.tilemap({key: "map_forest"});
 
         const outside_ground = map.addTilesetImage("outside_ground", "outside_ground");
         const outside_roof = map.addTilesetImage("outside_roof", "outside_roof");
@@ -94,6 +100,16 @@ export default class gameScene extends Phaser.Scene{
         const tree2_back = map.createLayer("Tree2_B", outside_B, 0, 0);
         const tree1_front = map.createLayer("Tree1_F", outside_B, 0, 0);
         const tree2_front = map.createLayer("Tree2_F", outside_B, 0, 0);
+
+        const tileOthers = mapOthers.createLayer("tile", outside_ground, 2400, 0);
+        const wallOthers = mapOthers.createLayer("wall", outside_wall, 2400, 0);
+        const bridgeOthers = mapOthers.createLayer("bridge", outside_B, 2400, 0);
+        const grassOthers = mapOthers.createLayer("grass", outside_B, 2400, 0);
+        const tree1_backOthers = mapOthers.createLayer("Tree1_B", outside_B, 2400, 0);
+        const tree2_backOthers = mapOthers.createLayer("Tree2_B", outside_B, 2400, 0);
+        const tree1_frontOthers = mapOthers.createLayer("Tree1_F", outside_B, 2400, 0);
+        const tree2_frontOthers = mapOthers.createLayer("Tree2_F", outside_B, 2400, 0);
+
         this.info = map.createLayer("info", possible, 0, 0); 
         this.info.alpha = 0;
         // info layer 기준 tileset index가
@@ -101,9 +117,23 @@ export default class gameScene extends Phaser.Scene{
         // 배치 불가능 2898
 
         const tileData = outside_ground.tileData;
-
         for (let tileid in tileData) {
             let layer = map.layers[0];
+            layer.data.forEach(tileRow => {
+                tileRow.forEach(tile => {
+                    if (tile.index - outside_ground.firstgid === parseInt(tileid, 10)) {
+                        this.animatedTiles.push(
+                            new AnimatedTile(
+                                tile,
+                                tileData[tileid].animation,
+                                outside_ground.firstgid
+                            )
+                        )
+                    }
+                });
+            });
+
+            layer = mapOthers.layers[0];
             layer.data.forEach(tileRow => {
                 tileRow.forEach(tile => {
                     if (tile.index - outside_ground.firstgid === parseInt(tileid, 10)) {
@@ -150,6 +180,7 @@ export default class gameScene extends Phaser.Scene{
             // this.camera.centerOn(pointer.worldX, pointer.worldY);
             // this.camera.pan(pointer.worldX, pointer.worldY, 2000, "Power2");
         });
+        this.cameras.main.setBounds(0, 0, 2400, 1440);
 
 
 
@@ -196,7 +227,6 @@ export default class gameScene extends Phaser.Scene{
         this.preTile;
 
         this.physics.add.overlap(this.m_projectiles, this.m_mobs, (projectile, mob) => mob.hit(projectile), null, this);
-        this.cameras.main.setBounds(0, 0, 2400, 1440);
 
         this.input.on("pointerdown", this.clickHandler, this);
     }

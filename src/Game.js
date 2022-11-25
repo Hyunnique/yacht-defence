@@ -140,6 +140,35 @@ var Game = {
 
                 for (let i = 0; i < this.PlayerCount; i++) {
                     document.getElementsByClassName("ui-hpArea-playerText")[i].innerHTML = this.PlayerData[i].name;
+                    if (i == this.PlayerIndex) {
+                        document.getElementsByClassName("ui-hpArea-player")[i].onclick = (e) => {
+                            for (let i = 0; i < this.PlayerCount; i++) 
+                                document.getElementsByClassName("ui-hpArea-player")[i].style.border = "none";
+                            document.getElementsByClassName("ui-hpArea-player")[i].style.border = "2px solid gold";
+
+                            this.GameObject.scene.getScene("gameScene").cameras.main.scrollX = 0;
+                            this.GameObject.scene.getScene("gameScene").cameras.main.scrollY = 0;
+                            this.GameObject.scene.getScene("gameScene").cameras.main.setBounds(0, 0, 2400, 1440);
+
+                            this.GameObject.scene.getScene("gameScene").mapOffsetX = 0;
+                            this.GameObject.scene.getScene("gameScene").mapOffsetY = 0;
+                        }
+                        document.getElementsByClassName("ui-hpArea-player")[i].style.border = "2px solid gold";
+                    }
+                    else {
+                        document.getElementsByClassName("ui-hpArea-player")[i].onclick = (e) => {
+                            for (let i = 0; i < this.PlayerCount; i++) 
+                                document.getElementsByClassName("ui-hpArea-player")[i].style.border = "none";
+                            document.getElementsByClassName("ui-hpArea-player")[i].style.border = "2px solid gold";
+
+                            this.GameObject.scene.getScene("gameScene").cameras.main.scrollX = 2400;
+                            this.GameObject.scene.getScene("gameScene").cameras.main.scrollY = 0;
+                            this.GameObject.scene.getScene("gameScene").cameras.main.setBounds(2400, 0, 2400, 1440);
+
+                            this.GameObject.scene.getScene("gameScene").mapOffsetX = 2400;
+                            this.GameObject.scene.getScene("gameScene").mapOffsetY = 0;
+                        }
+                    }
                 }
 
                 for (let i = this.PlayerCount; i < 4; i++) {
