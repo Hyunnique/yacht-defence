@@ -56,12 +56,12 @@ module.exports = {
     generateWaveInfo(roomId) {
         let waveResult = waveGenerator(this.Rooms[roomId].generatorSheet, this.Rooms[roomId].round, this.Rooms[roomId].generatorRoundCost, this.Rooms[roomId].generatorHpFactor);
 
-        this.Rooms[roomId].generatorHpFactor = (this.Rooms[roomId].generatorHpFactor * 1.1).toFixed(2);
+        this.Rooms[roomId].generatorHpFactor = (this.Rooms[roomId].generatorHpFactor * 1.07).toFixed(2);
 
         if (this.Rooms[roomId].round % 10 == 0) {
-            this.Rooms[roomId].generatorRoundCost = Math.floor(this.Rooms[roomId].generatorRoundCost * 1.5 + 25);
+            this.Rooms[roomId].generatorRoundCost = Math.floor(this.Rooms[roomId].generatorRoundCost * 1.4);
         } else {
-            this.Rooms[roomId].generatorRoundCost = Math.floor(this.Rooms[roomId].generatorRoundCost * 1.09 + 25);
+            this.Rooms[roomId].generatorRoundCost = Math.floor(this.Rooms[roomId].generatorRoundCost * 1.07 + 30);
         }
 
         this.emitAll(roomId, 'game-wavedata', waveResult);
@@ -243,7 +243,7 @@ module.exports = {
                 });
 
                 for (let i = 0; i < resultArray.length; i++) {
-                    this.Rooms[roomId].players[resultArray[i].idx].gold += 16 - (4 * i);
+                    this.Rooms[roomId].players[resultArray[i].idx].gold += 15 - (5 * i);
                 }
                 this.syncPlayerInfo(roomId);
 
