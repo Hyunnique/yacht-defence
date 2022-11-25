@@ -54,7 +54,9 @@
 }
 
 .ui-gameScene-midFloating .ui-bossArea-bosshp {
-    display: inline-block;
+    position: relative;
+
+    display: block;
     width: 100%;
     height: 100%;
     line-height: 100%;
@@ -69,12 +71,23 @@
 .ui-gameScene-midFloating .ui-bossArea-bosshp-bar {
     width: 100%;
     height: 100%;
-    background-color: lightcoral;
+    background-color: rgb(161, 0, 0);
 }
 
-.ui-gameScene-bottomFloating .ui-bossArea-bosshp-text {
-    position: relative;
-    bottom: 1rem;
+.ui-gameScene-midFloating .ui-bossArea-bosshp-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    top: 0;
+    line-height: 100%;
+
+    color: white;
 }   
 
 .ui-gameScene-bottomFloating {
