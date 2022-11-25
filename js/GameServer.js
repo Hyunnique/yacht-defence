@@ -89,7 +89,7 @@ module.exports = {
                 let { clientID, name } = msg;
 
                 let currentRoomId = this.latestRoomId;
-                let socketRoomIndex = this.Rooms[currentRoomId].players.length - 1;
+                let socketRoomIndex = this.Rooms[currentRoomId].players.length;
 
                 this.Rooms[currentRoomId].players.push({ // Initialize Player Object
                     name: name,
@@ -131,6 +131,11 @@ module.exports = {
                 
                 let { clientID, beforeID } = msg;
 
+                if (!this.socketMap[beforeID]) {
+                    socket.disconnect();
+                    return;
+                }
+
                 this.socketMap[clientID] = this.socketMap[beforeID];
                 delete this.socketMap[beforeID];
 
@@ -163,7 +168,6 @@ module.exports = {
             if (this.Rooms[roomId].counter.ready >= this.Rooms[roomId].maxPlayers) {
 
                 for (let i = 0; i < this.Rooms[roomId].maxPlayers; i++) {
-
                     this.Rooms[roomId].players[i].socket.emit('game-defaultData', {
                         playerCount: this.Rooms[roomId].maxPlayers,
                         playerIndex: i
@@ -175,12 +179,8 @@ module.exports = {
         });
     },
 
-    initGameInfo(roomId) {
-        this.emitAll(roomId, 'init-gameData', this.Rooms[roomId].players);
-    },
-
     onRoundBegin(roomId) {
-        this.initGameInfo(roomId);
+        this.syncPlayerInfo(roomId);
 
         this.emitAll(roomId, 'round-begin', {
             round: this.Rooms[roomId].round,
@@ -255,7 +255,14 @@ module.exports = {
     },
 
     syncPlayerInfo(roomId) {
-        this.emitAll(roomId, 'sync-playerData', this.Rooms[roomId].players);
+        this.emitAll(roomId, 'sync-playerData', this.Rooms[roomId].players.map(x => {
+            return {
+                "name": x.name,
+                "hp": x.hp,
+                "maxhp": x.maxhp,
+                "gold": x.gold
+            }
+        }));
     },
 
     onPlacePhaseBegin(roomId) {
