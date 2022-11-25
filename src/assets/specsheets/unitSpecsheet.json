@@ -1,7 +1,7 @@
 {
     "unit0": {
         "name": "고블린",
-        "unitType": 1,
+        "unitType": 0,
         "attack": 90,
         "aspd": 0.7,
         "range": 240,
@@ -55,7 +55,7 @@
     },
     "unit2": {
         "name": "성기사 단장 발키리",
-        "unitType": 3,
+        "unitType": 4,
         "attack": 140,
         "aspd": 0.9,
         "range": 168,
@@ -82,7 +82,7 @@
     },
     "unit3": {
         "name": "다크엘프 궁수",
-        "unitType": 2,
+        "unitType": 1,
         "attack": 135,
         "aspd": 1.8,
         "range": 480,
@@ -109,7 +109,7 @@
     },
     "unit4": {
         "name": "견습 검사",
-        "unitType": 1,
+        "unitType": 0,
         "attack": 90,
         "aspd": 1.0,
         "range": 168,
@@ -136,7 +136,7 @@
     },
     "unit5": {
         "name": "고블린 도적",
-        "unitType": 2,
+        "unitType": 0,
         "attack": 75,
         "aspd": 1.2,
         "range": 168,
@@ -190,7 +190,7 @@
     },
     "unit7": {
         "name": "고블린 주술사",
-        "unitType": 1,
+        "unitType": 3,
         "attack": 100,
         "aspd": 0.8,
         "range": 336,
@@ -220,7 +220,7 @@
     },
     "unit8": {
         "name": "스켈레톤 사냥꾼",
-        "unitType": 2,
+        "unitType": 1,
         "attack": 120,
         "aspd": 1.5,
         "range": 480,
@@ -247,7 +247,7 @@
     },
     "unit9": {
         "name": "불의 마도사",
-        "unitType": 1,
+        "unitType": 3,
         "attack": 130,
         "aspd": 0.8,
         "range": 336,
@@ -277,7 +277,7 @@
     },
     "unit10": {
         "name": "암살 닌자",
-        "unitType": 2,
+        "unitType": 0,
         "attack": 80,
         "aspd": 1.5,
         "range": 168,
@@ -304,7 +304,7 @@
     },
     "unit11": {
         "name": "숲 관찰대원",
-        "unitType": 0,
+        "unitType": 1,
         "attack": 160,
         "aspd": 1.5,
         "range": 480,
@@ -331,7 +331,7 @@
     },
     "unit12": {
         "name": "용기병 전투원",
-        "unitType": 1,
+        "unitType": 0,
         "attack": 200,
         "aspd": 0.6,
         "range": 168,
@@ -358,7 +358,7 @@
     },
     "unit13": {
         "name": "얼음 마도사",
-        "unitType": 1,
+        "unitType": 2,
         "attack": 100,
         "aspd": 1.0,
         "range": 336,
@@ -387,7 +387,7 @@
     },
     "unit14": {
         "name": "마도 수련생",
-        "unitType": 1,
+        "unitType": 3,
         "attack": 100,
         "aspd": 0.6,
         "range": 336,
@@ -498,7 +498,7 @@
     },
     "unit18": {
         "name": "스켈레톤 주술사",
-        "unitType": 0,
+        "unitType": 3,
         "attack": 140,
         "aspd": 0.6,
         "range": 336,
@@ -528,7 +528,7 @@
     },
     "unit19": {
         "name": "용기병 전사",
-        "unitType": 1,
+        "unitType": 0,
         "attack": 90,
         "aspd": 1.0,
         "range": 240,
@@ -555,7 +555,7 @@
     },
     "unit20": {
         "name": "화염족 견습 주술사",
-        "unitType": 1,
+        "unitType": 3,
         "attack": 60,
         "aspd": 1.3,
         "range": 336,
@@ -585,7 +585,7 @@
     },
     "unit21": {
         "name": "숲 사냥꾼",
-        "unitType": 2,
+        "unitType": 1,
         "attack": 150,
         "aspd": 1.2,
         "range": 480,
@@ -612,7 +612,7 @@
     },
     "unit22": {
         "name": "휘몰아치는 화염의 에단",
-        "unitType": 1,
+        "unitType": 3,
         "attack": 440,
         "aspd": 0.5,
         "range": 336,
@@ -642,7 +642,7 @@
     },
     "unit23": {
         "name": "암살대 대원",
-        "unitType": 2,
+        "unitType": 1,
         "attack": 260,
         "aspd": 1.0,
         "range": 480,
@@ -669,7 +669,7 @@
     },
     "unit24": {
         "name": "힘의 부족 대족장 후씽크",
-        "unitType": 0,
+        "unitType": 1,
         "attack": 500,
         "aspd": 1.2,
         "range": 480,
@@ -696,7 +696,7 @@
     },
     "unit25": {
         "name": "견습 성기사단원",
-        "unitType": 3,
+        "unitType": 0,
         "attack": 50,
         "aspd": 0.8,
         "range": 168,
@@ -723,7 +723,7 @@
     },
     "unit26": {
         "name": "되살아난 마검사 펠소닌",
-        "unitType": 1,
+        "unitType": 2,
         "attack": 180,
         "aspd": 1.5,
         "range": 336,
@@ -752,7 +752,7 @@
     },
     "unit27": {
         "name": "버서커 카이토닐",
-        "unitType": 2,
+        "unitType": 0,
         "attack": 150,
         "aspd": 1.4,
         "range": 240,
@@ -806,7 +806,7 @@
     },
     "unit29": {
         "name": "강도",
-        "unitType": 2,
+        "unitType": 0,
         "attack": 60,
         "aspd": 1.5,
         "range": 168,
@@ -833,7 +833,7 @@
     },
     "unit30": {
         "name": "창술사",
-        "unitType": 1,
+        "unitType": 0,
         "attack": 60,
         "aspd": 1.0,
         "range": 240,
@@ -860,7 +860,7 @@
     },
     "unit31": {
         "name": "폭탄병",
-        "unitType": 1,
+        "unitType": 3,
         "attack": 100,
         "aspd": 0.7,
         "range": 480,
@@ -890,7 +890,7 @@
     },
     "unit32": {
         "name": "스켈레톤 용기사",
-        "unitType": 1,
+        "unitType": 0,
         "attack": 120,
         "aspd": 1.0,
         "range": 168,
@@ -947,7 +947,7 @@
     },
     "unit34": {
         "name": "아류 기공사 소크라",
-        "unitType": 0,
+        "unitType": 1,
         "attack": 330,
         "aspd": 1.3,
         "range": 336,
@@ -1028,7 +1028,7 @@
     },
     "unit37": {
         "name": "견습 격투가",
-        "unitType": 2,
+        "unitType": 0,
         "attack": 50,
         "aspd": 1.8,
         "range": 168,
@@ -1055,7 +1055,7 @@
     },
     "unit38": {
         "name": "화염족 대마도사 이프리트",
-        "unitType": 1,
+        "unitType": 3,
         "attack": 200,
         "aspd": 0.6,
         "range": 336,
@@ -1085,7 +1085,7 @@
     },
     "unit39": {
         "name": "스켈레톤 궁수",
-        "unitType": 2,
+        "unitType": 1,
         "attack": 190,
         "aspd": 1.0,
         "range": 480,
@@ -1112,7 +1112,7 @@
     },
     "unit40": {
         "name": "암흑 마도사",
-        "unitType": 0,
+        "unitType": 3,
         "attack": 80,
         "aspd": 1.3,
         "range": 336,
@@ -1142,7 +1142,7 @@
     },
     "unit41": {
         "name": "다크엘프 전투대장 히스",
-        "unitType": 2,
+        "unitType": 0,
         "attack": 150,
         "aspd": 1.1,
         "range": 168,
@@ -1169,7 +1169,7 @@
     },
     "unit42": {
         "name": "기사 분대장",
-        "unitType": 1,
+        "unitType": 0,
         "attack": 140,
         "aspd": 0.9,
         "range": 168,
@@ -1196,7 +1196,7 @@
     },
     "unit43": {
         "name": "숲 관찰대장 세트",
-        "unitType": 2,
+        "unitType": 1,
         "attack": 240,
         "aspd": 1.3,
         "range": 480,
@@ -1250,7 +1250,7 @@
     },
     "unit45": {
         "name": "고위 빙결 마도사 아케리스",
-        "unitType": 1,
+        "unitType": 2,
         "attack": 190,
         "aspd": 0.7,
         "range": 480,
@@ -1279,7 +1279,7 @@
     },
     "unit46": {
         "name": "고블린 사냥꾼",
-        "unitType": 2,
+        "unitType": 1,
         "attack": 185,
         "aspd": 1.3,
         "range": 480,
@@ -1306,7 +1306,7 @@
     },
     "unit47": {
         "name": "고블린 약탈대장",
-        "unitType": 2,
+        "unitType": 0,
         "attack": 110,
         "aspd": 1.1,
         "range": 168,
@@ -1333,7 +1333,7 @@
     },
     "unit48": {
         "name": "스켈레톤 저격병",
-        "unitType": 0,
+        "unitType": 1,
         "attack": 350,
         "aspd": 0.6,
         "range": 480,
@@ -1360,7 +1360,7 @@
     },
     "unit49": {
         "name": "농부",
-        "unitType": 1,
+        "unitType": 0,
         "attack": 110,
         "aspd": 0.6,
         "range": 240,
@@ -1387,7 +1387,7 @@
     },
     "unit50": {
         "name": "암살대장 애퍼스",
-        "unitType": 2,
+        "unitType": 1,
         "attack": 310,
         "aspd": 1.1,
         "range": 480,
@@ -1495,7 +1495,7 @@
     },
     "unit54": {
         "name": "기사 분대원",
-        "unitType": 1,
+        "unitType": 0,
         "attack": 85,
         "aspd": 1.0,
         "range": 168,
@@ -1522,7 +1522,7 @@
     },
     "unit55": {
         "name": "수호 마도사 아이더",
-        "unitType": 3,
+        "unitType": 4,
         "attack": 40,
         "aspd": 1.5,
         "range": 336,
@@ -1549,7 +1549,7 @@
     },
     "unit56": {
         "name": "부활한 금단의 마도사 페네스",
-        "unitType": 3,
+        "unitType": 4,
         "attack": 100,
         "aspd": 0.6,
         "range": 336,
@@ -1579,7 +1579,7 @@
     },
     "unit57": {
         "name": "스켈레톤 마도사",
-        "unitType": 3,
+        "unitType": 4,
         "attack": 100,
         "aspd": 0.3,
         "range": 336,
@@ -1636,7 +1636,7 @@
     },
     "unit59": {
         "name": "숲의 마도사",
-        "unitType": 3,
+        "unitType": 4,
         "attack": 40,
         "aspd": 1.0,
         "range": 480,
@@ -1663,7 +1663,7 @@
     },
     "unit60": {
         "name": "화염족 마도사",
-        "unitType": 0,
+        "unitType": 1,
         "attack": 270,
         "aspd": 1.2,
         "range": 336,
@@ -1717,7 +1717,7 @@
     },
     "unit62": {
         "name": "타락한 무술가",
-        "unitType": 2,
+        "unitType": 0,
         "attack": 65,
         "aspd": 1.9,
         "range": 168,
