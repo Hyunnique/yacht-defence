@@ -77,6 +77,7 @@ var Game = {
                     });
 
                     this.ClientID = this.Socket.id;
+                    console.log(this.Socket.id);
                 });
 
                 this.serverEventHandler();
