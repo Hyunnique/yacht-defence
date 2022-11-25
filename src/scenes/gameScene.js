@@ -343,7 +343,6 @@ export default class gameScene extends Phaser.Scene{
 
     resetBuff()
     {
-        
         this.m_player.forEach((e) => {
             e.removeBuff();
         });

@@ -51,8 +51,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.globalbuffAspd = Game.shopBuff.shopAspd;
         this.globalbuffedPenetration = Game.shopBuff.shopPenetration;
 
-        this.buffedAtk = 0;
-        this.buffedAspd = 0;
+        this.buffedAtk = 1;
+        this.buffedAspd = 1;
 
         this.projectileName = db.projectileName;
         this.projectileAnimName = db.projectileAnimName;
@@ -144,7 +144,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
     {
         this.globalbuffAspd = Game.shopBuff.shopAspd;
         this.globalbuffedPenetration = Game.shopBuff.shopPenetration;
-        this.globalbuffAtk = (Game.shopBuff.shopAtk + this.scene.tierBonus[this.tier - 1]) / 100;
+        this.globalbuffAtk = (1 + Game.shopBuff.shopAtk / 100)*(1 + this.scene.tierBonus[this.tier - 1] / 100);
     }
     
     //매 턴 시작시 전부 지우고 다시 전부 부여!!
@@ -155,8 +155,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
             if (buffTargets.length == 0)
                 return;
             buffTargets.forEach((e) => {
-                e.gameObject.buffedAspd += this.buffAspd;
-                e.gameObject.buffedAtk += this.buffAtk;
+                e.gameObject.buffedAspd *= (1 + this.buffAspd/100);
+                e.gameObject.buffedAtk *= (1 + this.buffAtk/100);
             });
         }
     }
@@ -171,8 +171,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
 
     updateBuff()
     {
-        this.attack = (this.buffedAtk + this.globalbuffAtk + 1) * this.originAttack;
-        this.aspd = ((100 + this.buffedAspd) / 100) * ((100 + this.globalbuffAspd)/100) * this.originAspd;
+        this.attack = this.buffedAtk * this.globalbuffAtk * this.originAttack;
+        this.aspd = this.buffedAspd * ((100 + this.globalbuffAspd)/100) * this.originAspd;
         this.penetration = this.originPenetration + this.globalbuffedPenetration;
         if (this.penetration > 1) this.penetration = 1;
         else if (this.penetration < 0) this.penetration = 0;
