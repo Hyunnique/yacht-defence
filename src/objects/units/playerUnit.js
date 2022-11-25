@@ -51,8 +51,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.globalbuffAspd = Game.shopBuff.shopAspd;
         this.globalbuffedPenetration = Game.shopBuff.shopPenetration;
 
-        this.buffedAtk = 1;
-        this.buffedAspd = 1;
+        this.buffedAtk = 0;
+        this.buffedAspd = 0;
 
         this.projectileName = db.projectileName;
         this.projectileAnimName = db.projectileAnimName;
