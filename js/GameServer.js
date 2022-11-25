@@ -56,7 +56,7 @@ module.exports = {
     generateWaveInfo(roomId) {
         let waveResult = waveGenerator(this.Rooms[roomId].generatorSheet, this.Rooms[roomId].round, this.Rooms[roomId].generatorRoundCost, this.Rooms[roomId].generatorHpFactor);
 
-        this.Rooms[roomId].generatorHpFactor = (this.Rooms[roomId].generatorHpFactor * 1.05).toFixed(2);
+        this.Rooms[roomId].generatorHpFactor = (this.Rooms[roomId].generatorHpFactor * 1.06).toFixed(2);
 
         if (this.Rooms[roomId].round % 10 == 0) {
             this.Rooms[roomId].generatorRoundCost = Math.floor(this.Rooms[roomId].generatorRoundCost * 1.4);
@@ -117,14 +117,7 @@ module.exports = {
                     this.emitAll(currentRoomId, 'matchmaking-wait', this.Rooms[currentRoomId].players.length);
                 }
 
-                this.onGameReady(socket, currentRoomId);
-                this.onDiceConfirm(socket, currentRoomId);
-                this.onDiceResult(socket, currentRoomId);
-                this.onBattlePhaseDone(socket, currentRoomId);
-                this.onPlayerBaseDamage(socket, currentRoomId);
-                this.onShopItemBuy(socket, currentRoomId);
-                this.onChatMessage(socket, currentRoomId);
-                this.onDiceLastChance(socket, currentRoomId);
+                this.attachEventListeners(socket, currentRoomId);
             });
 
             socket.on('connect-reconnect', (msg) => {
@@ -142,14 +135,7 @@ module.exports = {
 
                 this.Rooms[this.socketMap[clientID].roomId].players[this.socketMap[clientID].roomIndex].socket = socket;
 
-                this.onGameReady(socket, this.socketMap[clientID].roomId);
-                this.onDiceConfirm(socket, this.socketMap[clientID].roomId);
-                this.onDiceResult(socket, this.socketMap[clientID].roomId);
-                this.onBattlePhaseDone(socket, this.socketMap[clientID].roomId);
-                this.onPlayerBaseDamage(socket, this.socketMap[clientID].roomId);
-                this.onShopItemBuy(socket, this.socketMap[clientID].roomId);
-                this.onChatMessage(socket, this.socketMap[clientID].roomId);
-                this.onDiceLastChance(socket, this.socketMap[clientID].roomId);
+                this.attachEventListeners(socket, this.socketMap[clientID].roomId);
             });
 
             socket.on('disconnect', () => {
@@ -158,8 +144,17 @@ module.exports = {
         });
     },
 
-    enterRoom(socket) {
-
+    attachEventListeners(socket, roomId) {
+        this.onGameReady(socket, roomId);
+        this.onDiceConfirm(socket, roomId);
+        this.onDiceResult(socket, roomId);
+        this.onBattlePhaseDone(socket, roomId);
+        this.onPlayerBaseDamage(socket, roomId);
+        this.onShopItemBuy(socket, roomId);
+        this.onChatMessage(socket, roomId);
+        this.onDiceLastChance(socket, roomId);
+        this.onReceiveUnitData(socket, roomId);
+        this.onRequestUnitData(socket, roomId);
     },
 
     onGameReady(socket, roomId) {
@@ -362,6 +357,20 @@ module.exports = {
                     items: this.Rooms[roomId].players[msg.playerIndex].items
                 })
             }
+        });
+    },
+
+    onReceiveUnitData(socket, roomId) {
+        socket.on('player-unitData', (msg) => {
+            this.Rooms[this.socketMap[socket.id].roomId].players[this.socketMap[socket.id].roomIndex].units = msg;
+        });
+    },
+
+    onRequestUnitData(socket, roomId) {
+        socket.on('player-requestUnitData', (msg) => {
+            let { playerIndex } = msg;
+
+            socket.emit('player-unitData', this.Rooms[roomId].players[playerIndex].units);
         });
     },
 };

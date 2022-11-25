@@ -142,6 +142,8 @@ var Game = {
                     document.getElementsByClassName("ui-hpArea-playerText")[i].innerHTML = this.PlayerData[i].name;
                     if (i == this.PlayerIndex) {
                         document.getElementsByClassName("ui-hpArea-player")[i].onclick = (e) => {
+
+                            this.Socket.emit("player-requestUnitData", { playerIndex: i });
                             for (let i = 0; i < this.PlayerCount; i++) 
                                 document.getElementsByClassName("ui-hpArea-player")[i].style.border = "none";
                             document.getElementsByClassName("ui-hpArea-player")[i].style.border = "2px solid gold";
@@ -157,6 +159,8 @@ var Game = {
                     }
                     else {
                         document.getElementsByClassName("ui-hpArea-player")[i].onclick = (e) => {
+
+                            this.Socket.emit("player-requestUnitData", { playerIndex: i });
                             for (let i = 0; i < this.PlayerCount; i++) 
                                 document.getElementsByClassName("ui-hpArea-player")[i].style.border = "none";
                             document.getElementsByClassName("ui-hpArea-player")[i].style.border = "2px solid gold";
@@ -182,6 +186,10 @@ var Game = {
             document.getElementsByClassName("ui-gold")[0].innerText = msg[this.PlayerIndex].gold;
         });
 
+        this.Socket.on("player-unitData", (msg) => {
+            this.GameObject.scene.getScene("gameScene").spectate_player = msg;
+        });
+        
         this.Socket.on("dicePhase-begin", (msg) => {
             this.showScene("diceScene");
 
@@ -361,6 +369,14 @@ var Game = {
         });
 
         this.Socket.on('placePhase-end', (msg) => {
+            this.Socket.emit('player-unitData', this.GameObject.scene.getScene("gameScene").m_player.map(unit => {
+                return {
+                    x: unit.x,
+                    y: unit.y,
+                    id: unit.id
+                };
+            }));
+
             this.GameObject.scene.getScene("gameScene").toBattlePhase();
         });
 

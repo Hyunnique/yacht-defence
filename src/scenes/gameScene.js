@@ -221,7 +221,10 @@ export default class gameScene extends Phaser.Scene{
         this.unitDB = this.cache.json.get("unitDB");
         this.mobDB = this.cache.json.get("mobDB");
         this.roundDB = this.cache.json.get("roundDB");
+
         this.m_player = [];
+        this.spectate_player = [];
+
         this.selectedUnit;
         this.onPlaceQueue;
         this.preTile;
