@@ -103,12 +103,29 @@ var Game = {
             "<span class='ui-chatMessageData-message text-outline'>" + msg.message + "</span></li>\n";
         });
 
+        this.Socket.on("init-gameData", (msg) => {
+            this.PlayerData = msg;
+            console.log(msg);
+            for (let i = 0; i < this.PlayerCount; i++) {
+                document.getElementsByClassName("ui-hpArea-playerText")[i].innerHTML = this.PlayerData[i].name;
+                document.getElementsByClassName("ui-hpArea-playerhp-bar")[i].style.width = Math.floor(msg[i].hp / msg[i].maxhp * 100) + "%";
+                document.getElementsByClassName("ui-hpArea-playerhp-text")[i].innerHTML = Math.floor(msg[i].hp / msg[i].maxhp * 100) + "%";
+
+            }
+            document.getElementsByClassName("ui-gold")[0].innerText = msg[this.PlayerIndex].gold;
+
+            for (let i = this.PlayerCount; i < 4; i++) {
+                document.getElementsByClassName("ui-hpArea-player")[i].style.visibility = "hidden";
+            } 
+        })
+        // => 맨 처음 시작시 플레이어들 정보를 받아서 인원수만큼 체력바 남기고 닉네임으로 바꿈
+
         this.Socket.on("sync-playerData", (msg) => {
             this.PlayerData = msg;
 
             for (let i = 0; i < this.PlayerCount; i++) {
-                document.getElementsByClassName("ui-hpArea-playerText")[i].innerHTML = this.PlayerData[i].name;
                 document.getElementsByClassName("ui-hpArea-playerhp-bar")[i].style.width = Math.floor(msg[i].hp / msg[i].maxhp * 100) + "%";
+                document.getElementsByClassName("ui-hpArea-playerhp-text")[i].innerHTML = Math.floor(msg[i].hp / msg[i].maxhp * 100) + "%";
             }
             document.getElementsByClassName("ui-gold")[0].innerText = msg[this.PlayerIndex].gold;
         });
@@ -325,6 +342,14 @@ var Game = {
             this.shopBuff.shopAtk += itemSpecSheets["item" + msg.purchased].buffAtk;
             this.shopBuff.shopAspd += itemSpecSheets["item" + msg.purchased].buffAspd;
             this.shopBuff.shopPenetration += itemSpecSheets["item" + msg.purchased].buffPenetration;
+
+            console.log(this.shopBuff.shopAtk)
+            console.log(this.shopBuff.shopAspd)
+            console.log(this.shopBuff.shopPenetration)
+
+            document.getElementsByClassName("ui-itemOverallArea-overall-atk")[0].innerText = "ATK: " + (this.shopBuff.shopAtk >= 0 ? "+" + this.shopBuff.shopAtk : this.shopBuff.shopAtk) + "%";
+            document.getElementsByClassName("ui-itemOverallArea-overall-aspd")[0].innerText = "SPD: " + (this.shopBuff.shopAspd >= 0 ? "+" + this.shopBuff.shopAspd : this.shopBuff.shopAspd) + "%";
+            document.getElementsByClassName("ui-itemOverallArea-overall-pen")[0].innerText = "PEN: " + (this.shopBuff.shopPenetration >= 0 ? "+" + this.shopBuff.shopPenetration : this.shopBuff.shopPenetration) + "%p";
         });
 
         this.Socket.on('shop-itemFailure', (msg) => {
@@ -404,7 +429,7 @@ var Game = {
                 this.showUI("gameScene-bottomFloating");
 
                 document.onkeydown = (e) => {
-                    console.log(e);
+                    // console.log(e);
                     if (e.key == "Enter") {
                         if (document.activeElement === document.getElementsByClassName("ui-chatInput")[0]) {
                             if (document.getElementsByClassName("ui-chatInput")[0].value.trim() != "") {
