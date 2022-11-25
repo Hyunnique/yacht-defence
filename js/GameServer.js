@@ -89,12 +89,12 @@ module.exports = {
                 let { clientID, name } = msg;
 
                 let currentRoomId = this.latestRoomId;
-                let socketRoomIndex = this.Rooms[currentRoomId].sockets.length - 1;
+                let socketRoomIndex = this.Rooms[currentRoomId].players.length - 1;
 
                 this.Rooms[currentRoomId].players.push({ // Initialize Player Object
                     name: name,
                     socket: socket,
-                    playerIndex: i,
+                    playerIndex: socketRoomIndex,
                     hp: 100,
                     maxhp: 100,
                     gold: 0,
@@ -133,23 +133,22 @@ module.exports = {
 
                 this.socketMap[clientID] = this.socketMap[beforeID];
                 delete this.socketMap[beforeID];
+
+                this.Rooms[this.socketMap[clientID].roomId].players[this.socketMap[clientID].roomIndex].socket = socket;
+
+                this.onGameReady(socket, currentRoomId);
+                this.onDiceConfirm(socket, currentRoomId);
+                this.onDiceResult(socket, currentRoomId);
+                this.onBattlePhaseDone(socket, currentRoomId);
+                this.onPlayerBaseDamage(socket, currentRoomId);
+                this.onShopItemBuy(socket, currentRoomId);
+                this.onChatMessage(socket, currentRoomId);
+                this.onDiceLastChance(socket, currentRoomId);
             });
 
             socket.on('disconnect', () => {
                 // disconnected
             });
-
-            if (this.socketMap[socket.id]) {
-                // do nothing
-            } else {
-                this.Rooms[this.latestRoomId].sockets.push(socket);
-                this.socketMap[socket.id] = this.latestRoomId;
-
-                let currentRoomId = this.latestRoomId;
-                let currentRoomIndex = this.Rooms[currentRoomId].sockets.length - 1;
-
-                
-            }
         });
     },
 
@@ -165,14 +164,13 @@ module.exports = {
 
                 for (let i = 0; i < this.Rooms[roomId].maxPlayers; i++) {
 
-                    this.Rooms[roomId].sockets[i].emit('game-defaultData', {
+                    this.Rooms[roomId].players[i].socket.emit('game-defaultData', {
                         playerCount: this.Rooms[roomId].maxPlayers,
                         playerIndex: i
                     });
                 }
-                // 인원수만큼 만들고, 'game-defaultData'로 보냄
-                
-                // this.onRoundBegin(roomId);
+
+                this.onRoundBegin(roomId);
             }
         });
     },
