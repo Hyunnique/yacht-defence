@@ -40,7 +40,8 @@ module.exports = {
             counter: {
                 ready: 0,
                 handConfirm: 0,
-                handReceived: 0
+                handReceived: 0,
+                connect: 0
             },
             timer: {
 
@@ -104,6 +105,14 @@ module.exports = {
 
                 socket.on("connect-playerName", (msg) => {
                     this.Rooms[currentRoomId].players[msg.playerIndex].name = msg.name;
+                    this.Rooms[currentRoomId].counter.connect++;
+
+                    if (this.Rooms[currentRoomId].maxPlayers == this.Rooms[currentRoomId].counter.connect) {
+                        this.initGameInfo(currentRoomId);
+                        this.onRoundBegin(currentRoomId);
+                    }
+                    // game-defaultData로 보낸 것에 대해 답으로 받은 것들 인원수만큼 받으면 initGameInfo를 통해 초기화
+                    // 이후 onRoundBegin을 통해 게임 시작
                 });
 
                 this.onGameReady(socket, currentRoomId);
@@ -131,7 +140,7 @@ module.exports = {
 
                 for (let i = 0; i < this.Rooms[roomId].maxPlayers; i++) {
                     this.Rooms[roomId].players.push({ // Initialize Player Object
-                        name: "temp",
+                        name: "test",
                         playerIndex: i,
                         hp: 100,
                         maxhp: 100,
@@ -148,14 +157,20 @@ module.exports = {
                         playerIndex: i
                     });
                 }
+                // 인원수만큼 만들고, 'game-defaultData'로 보냄
                 
-                this.syncPlayerInfo(roomId);
-                this.onRoundBegin(roomId);
+                // this.onRoundBegin(roomId);
             }
         });
     },
 
+    initGameInfo(roomId) {
+        this.emitAll(roomId, 'init-gameData', this.Rooms[roomId].players);
+    },
+
     onRoundBegin(roomId) {
+        this.initGameInfo(roomId);
+
         this.emitAll(roomId, 'round-begin', {
             round: this.Rooms[roomId].round,
         });
