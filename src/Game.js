@@ -143,7 +143,6 @@ var Game = {
                     if (i == this.PlayerIndex) {
                         document.getElementsByClassName("ui-hpArea-player")[i].onclick = (e) => {
 
-                            this.Socket.emit("player-requestUnitData", { playerIndex: i });
                             for (let i = 0; i < this.PlayerCount; i++) 
                                 document.getElementsByClassName("ui-hpArea-player")[i].style.border = "none";
                             document.getElementsByClassName("ui-hpArea-player")[i].style.border = "2px solid gold";
