@@ -25,7 +25,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         this.deathSound = this.scene.sound.add(mobData.deathSound);
         this.healthBar = this.scene.add.image(this.x-48, this.y - 24, "healthBar").setOrigin(0,0.5);
         this.play(mobData.mobAnim);
-        this.flipX = !mobData.boss;
+        this.flipX = ! mobData.boss;
 
         switch (this.moveType) {
             case "A":
