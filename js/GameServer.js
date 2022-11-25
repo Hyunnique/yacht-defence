@@ -131,6 +131,9 @@ module.exports = {
                 
                 let { clientID, beforeID } = msg;
 
+                console.log(msg);
+                console.log("reconnect!");
+                
                 if (!this.socketMap[beforeID]) {
                     socket.disconnect();
                     return;
