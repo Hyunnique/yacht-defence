@@ -14,6 +14,7 @@ const playerColors = ["lightgreen", "lightcoral", "lightskyblue", "lightgoldenro
 
 // 전역변수로 유지해서 Scene에서도 접근할 수 있게 함
 var Game = {
+    tierColors: ["#ff1b1b", "#ffd700", "#d5d5d5", "#954c4c"],
     MatchmakeJoined: false,
     ClientID: null,
     GameObject: null,
