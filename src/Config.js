@@ -3,7 +3,7 @@ import MainScene from "./scenes/mainScene";
 import PreLoadScene from "./scenes/preloadScene";
 import diceScene from "./scenes/diceScene";
 import PathFollowerPlugin from 'phaser3-rex-plugins/plugins/pathfollower-plugin.js';
-
+import OutlinePipelinePlugin from 'phaser3-rex-plugins/plugins/outlinepipeline-plugin.js';
 
 const Config = {
     backgroundColor: 0xFFFFFF,
@@ -29,6 +29,10 @@ const Config = {
         global: [{
             key: 'rexPathFollower',
             plugin: PathFollowerPlugin,
+            start: true
+        }, {
+            key: 'rexOutlinePipeline',
+            plugin: OutlinePipelinePlugin,
             start: true
         }]
     }

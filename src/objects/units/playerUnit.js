@@ -7,6 +7,7 @@ import Game from "../../Game.js";
 const Config = require("../../Config");
 const Phaser = require("phaser");
 
+
 export default class Unit extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y, db, index) {
         super(scene, x, y, db.idleSprite);
@@ -85,6 +86,12 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
 
         this.kills = 0;
         this.isTarget = false;
+
+        this.pipelineInstance = scene.plugins.get('rexOutlinePipeline').add(this, {
+            thickness: 4,
+            outlineColor: Game.tierColors[this.tier - 1],
+            quality: 1
+        });
 
         this.setInteractive({ draggable: true });
         this.scene.physics.add.existing(this);
