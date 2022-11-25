@@ -77,7 +77,6 @@ var Game = {
                     });
 
                     this.ClientID = this.Socket.id;
-                    console.log(this.Socket.id);
                 });
 
                 this.serverEventHandler();
@@ -590,6 +589,10 @@ var Game = {
         Array.from(document.getElementsByClassName("ui-itemArea-itemList-item")).forEach((e) => {
             e.style.backgroundImage = "url('" + icons["icon" + itemSpecSheets["item" + e.attributes["idx"].value].icon + ".png"] + "')";
         })
+    },
+
+    updateMobCounter() {
+        document.getElementsByClassName("ui-monsterCount-value")[0].innerText = this.GameObject.scene.getScene("gameScene").mobCounter;
     }
 };
 

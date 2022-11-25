@@ -132,9 +132,6 @@ module.exports = {
                 beforeID = msg.beforeID;
                 clientID = socket.id;
                 
-                console.log("reconnect!");
-                console.log(" " + beforeID);
-                console.log(" " + clientID);
                 if (!this.socketMap[beforeID]) {
                     socket.disconnect();
                     return;
@@ -264,19 +261,21 @@ module.exports = {
                 "name": x.name,
                 "hp": x.hp,
                 "maxhp": x.maxhp,
-                "gold": x.gold
+                "gold": x.gold,
+                "items": x.items,
+                "units": x.units,
             }
         }));
     },
 
     onPlacePhaseBegin(roomId) {
         this.emitAll(roomId, 'placePhase-begin', {
-            timeLimit: 10,
+            timeLimit: 20,
         });
 
         this.generateWaveInfo(roomId);
         
-        this.createTimer(roomId, "placePhaseEnd", 10000, () => {
+        this.createTimer(roomId, "placePhaseEnd", 20000, () => {
             this.emitAll(roomId, 'placePhase-end', true);
             this.onBattlePhaseBegin(roomId);
         });
@@ -286,7 +285,7 @@ module.exports = {
         this.Rooms[roomId].counter.battlePhaseDone = 0;
 
         this.emitAll(roomId, 'battlePhase-begin', {
-            timeLimit: 30,
+            timeLimit: 0,
         });
     },
 
