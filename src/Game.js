@@ -187,6 +187,7 @@ var Game = {
         });
 
         this.Socket.on("player-unitData", (msg) => {
+            this.GameObject.scene.getScene("gameScene").removeOtherPlayerUnit();
             this.GameObject.scene.getScene("gameScene").spectate_player = msg;
             this.GameObject.scene.getScene("gameScene").placeOtherPlayerUnit();
         });
