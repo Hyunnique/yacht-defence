@@ -19,6 +19,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         this.mobNum = num;
         this.moveType = mobRoute;
         this.deathCalled = false;
+        this.dotDamageDict = {};
 
         this.deathSound = this.scene.sound.add(mobData.deathSound);
         this.healthBar = this.scene.add.image(this.x-48, this.y - 24, "healthBar").setOrigin(0,0.5);
@@ -88,12 +89,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
 
     death()
     {
-        // this.deathSound.play({
-        //     mute: false,
-        //     volume: 0.7,
-        //     rate: 1,
-        //     loop: false
-        // });
+        // this.deathSound.play(Game.effectSoundConfig);
         this.scene.events.off("update", this.update, this);
         this.scene.mobCounter--;
         this.body.enable = false;
@@ -107,7 +103,6 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         var animtime = animConfig.frames.length * animConfig.msPerFrame;
         this.scene.time.delayedCall(animtime, () => {
             this.scene.events.emit("mobAnimDone");
-            console.log(1);
             this.destroy();
         }, [], this.scene);
     }
@@ -126,6 +121,22 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         else {
             this.Health -= projectile.shooter.calcDamage(this.defence);
             projectile.hit();
+        }
+    }
+
+    dotDamageFactory(dotDamageConfig) {
+        if (this.dotDamageDict[dotDamageConfig.callerID] == undefined) {
+            this.dotDamageDict[dotDamageConfig.callerID] = this.scene.time.addEvent({
+                delay: dotDamage.delay,
+                repeatCount: dotDamageConfig.duation * (1000 / dotDamage.delay),
+                callback: () => this.Health -= dotDamageConfig.damage,
+                startAt: 0
+            });
+        }
+        else {
+            this.scene.time.delayedCall(dotDamage.getRemaining(), () => {
+                this.dotDamageDict[dotDamageConfig.callerID].reset(dotDamageConfig);
+            }, [], this);
         }
     }
 }

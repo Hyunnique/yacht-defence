@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
-	<%= "<script src='http://" + (process.env.HOST ? process.env.HOST : "localhost") + ":8080/external/socket.io.min.js'></script>" %>
-	<style>
-		.ui-sheet {
-			display: none;
-		}
-	</style>
+	<%= "<script src='http://" + (process.env.HOST ? process.env.HOST : "localhost" )
+		+ ":8080/external/socket.io.min.js'></script>" %>
+		<style>
+			.ui-sheet {
+				display: none;
+			}
+		</style>
 </head>
-<body>
+
+<body oncontextmenu="return false;">
 	<div id="ui-container">
 		<div class="ui-sheets">
 			<%= require('html-loader!./views/common.ejs').default %>
-			<%= require('html-loader!./views/mainScene.ejs').default %>
-			<%= require('html-loader!./views/diceScene.ejs').default %>
-			<%= require('html-loader!./views/gameScene.ejs').default %>
+				<%= require('html-loader!./views/mainScene.ejs').default %>
+					<%= require('html-loader!./views/diceScene.ejs').default %>
+						<%= require('html-loader!./views/gameScene.ejs').default %>
 		</div>
 	</div>
 </body>
+
 </html>
