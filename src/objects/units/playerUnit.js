@@ -118,10 +118,10 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
             try {
                 this.target = this.scene.physics.overlapCirc(this.x, this.y, this.range).filter(item => item.gameObject.isTarget == true);
                 this.target.sort((a, b) => {
-                    if (a.gameObject.health == b.gameObject.health)
+                    if (a.gameObject.Health == b.gameObject.Health)
                         return a.gameObject.mobNum - b.gameObject.mobNum;
                     else
-                        return a.gameObject.health - b.gameObject.health;
+                        return a.gameObject.Health - b.gameObject.Health;
                 });
             }
             catch (e) {
