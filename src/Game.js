@@ -154,7 +154,7 @@ var Game = {
                             this.GameObject.scene.getScene("gameScene").mapOffsetX = 0;
                             this.GameObject.scene.getScene("gameScene").mapOffsetY = 0;
                         }
-                        document.getElementsByClassName("ui-hpArea-player")[i].style.border = "2px solid gold";
+                        document.getElementsByClassName("ui-hpArea-player")[i].style.border = "2px solid white";
                     }
                     else {
                         document.getElementsByClassName("ui-hpArea-player")[i].onclick = (e) => {
@@ -301,18 +301,14 @@ var Game = {
 
                 for (let i = 0; i < 3; i++) {
                     let unitType = ""
-                    switch (unitSpecSheets["unit" + unitArray[i]].unitType) {
+                    switch (unitSpecSheets["unit" + unitArray[i]].attackType) {
                         case 0:
-                            unitType = "공격형";
+                            unitType = "근거리";
                             break;
                         case 1:
-                            unitType = "밸런스형";
-                            break;
-                        case 2: 
-                            unitType = "속도형";
-                            break;
-                        case 3:
-                            unitType = "지원형";
+                            if (unitArray[i].projectileType == 0) unitType = "추적형";
+                            else if (unitArray[i].projectileType == 0) unitType = "관통형";
+                            else unitType = "폭발형";
                             break;
                     }
 
@@ -322,7 +318,22 @@ var Game = {
                         document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.fontSize = (1.2 - 0.1*(unitSpecSheets["unit" + unitArray[i]].name.length - 12)) + "rem" 
                     document.getElementsByClassName("ui-unitReward-unitType")[i].innerText = unitType;
                     document.getElementsByClassName("ui-unitReward-unitSpec-atk")[i].innerText = "ATK : " + unitSpecSheets["unit" + unitArray[i]].attack;
-                    document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : " + unitSpecSheets["unit" + unitArray[i]].aspd;
+
+                    if (unitSpecSheets["unit" + unitArray[i]] < 0.6) {
+                        document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : VERY SLOW";
+                    }
+                    else if (unitSpecSheets["unit" + unitArray[i]] < 0.8) {
+                        document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : SLOW";
+                    }
+                    else if (unitSpecSheets["unit" + unitArray[i]] < 1.3) {
+                        document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : NORMAL"
+                    }
+                    else if (unitSpecSheets["unit" + unitArray[i]] < 1.6) {
+                        document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : FAST"
+                    }
+                    else {
+                        document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : VERY FAST"
+                    }
 
                     switch (unitSpecSheets["unit" + unitArray[i]].rangeType) {
                         case 0:
@@ -339,7 +350,6 @@ var Game = {
                             break;
                     }
                     document.getElementsByClassName("ui-unitReward-unitSkill")[i].innerText = "";
-
                     document.getElementsByClassName("ui-unitReward-unit")[i].attributes.idx.value = unitArray[i];
                     document.getElementsByClassName("ui-unitReward-unit")[i].attributes.tier.value = currentTier;
                 }
@@ -646,3 +656,4 @@ var Game = {
 };
 
 export default Game;    
+
