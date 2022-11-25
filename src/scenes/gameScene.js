@@ -289,10 +289,10 @@ export default class gameScene extends Phaser.Scene{
     {   
         if (pointer) {
             this.preTile = this.getTileAtPointer(pointer, this.info);
+            this.preTile.index = "2897";
             if (this.preTile == undefined || this.preTile.placedUnit == undefined)
                 return;
             this.onPlaceQueue = this.preTile.placedUnit;
-            this.preTile.index = "2897";
             this.onPlaceQueue.rangeView.alpha = 0.4;
             this.onPlaceQueue.buffRangeView.alpha = 0.6;
             this.m_player.splice(this.m_player.findIndex(e => { e.index == this.onPlaceQueue.index }), 1);
@@ -360,8 +360,7 @@ export default class gameScene extends Phaser.Scene{
         this.input.off("pointerdown", this.unitPlaceHandler, this);
         this.input.off("pointermove");
         this.info.alpha = 0;
-        console.log(this.onPlaceQueue);
-        console.log(this.preTile);
+        this.placemode = false;
         if (this.onPlaceQueue != undefined) {
             if (this.preTile == undefined) {
                 this.handleTierBonus(this.onPlaceQueue.tier, false);

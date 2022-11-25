@@ -34,7 +34,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         else if (this.isBoss) {
             Game.showUI("bossArea");
             document.getElementsByClassName("ui-bossArea-bosshp-bar")[0].style.width = (this.Health / this.MaxHealth) * 100 + "%";
-            document.getElementsByClassName("ui-bossArea-bosshp-text")[0].innerText = this.Health + "/" + this.MaxHealth;
+            document.getElementsByClassName("ui-bossArea-bosshp-text")[0].innerText = this.Health.toLocaleString() + "/" + this.MaxHealth.toLocaleString();
         }
         
 
@@ -91,7 +91,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         }
         else if (this.isBoss) {
             document.getElementsByClassName("ui-bossArea-bosshp-bar")[0].style.width =  (this.Health / this.MaxHealth) * 100  + "%";
-            document.getElementsByClassName("ui-bossArea-bosshp-text")[0].innerText = this.Health + "/" + this.MaxHealth;
+            document.getElementsByClassName("ui-bossArea-bosshp-text")[0].innerText = Math.floor(this.Health).toLocaleString() + "/" + this.MaxHealth.toLocaleString();
         }
 
         if (this.Health <= 0 && !this.deathCalled) {
