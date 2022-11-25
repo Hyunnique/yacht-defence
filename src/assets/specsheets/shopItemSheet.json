@@ -7,7 +7,7 @@
         "buffPenetration": 0,
         "additionalMob": "",
         "mobCount": 0,
-        "price": 0,
+        "price": 60,
         "tier": 3,
         "icon": 1
     },
@@ -19,7 +19,7 @@
         "buffPenetration": 0,
         "additionalMob": "",
         "mobCount": 0,
-        "price": 0,
+        "price": 60,
         "tier": 3,
         "icon": 17
     },
@@ -31,7 +31,7 @@
         "buffPenetration": 6,
         "additionalMob": "",
         "mobCount": 0,
-        "price": 0,
+        "price": 60,
         "tier": 3,
         "icon": 18
     },
@@ -43,7 +43,7 @@
         "buffPenetration": 0,
         "additionalMob": "",
         "mobCount": 0,
-        "price": 0,
+        "price": 60,
         "tier": 3,
         "icon": 7
     },
@@ -55,7 +55,7 @@
         "buffPenetration": 3,
         "additionalMob": "",
         "mobCount": 0,
-        "price": 0,
+        "price": 60,
         "tier": 3,
         "icon": 5
     },
@@ -67,7 +67,7 @@
         "buffPenetration": 3,
         "additionalMob": "",
         "mobCount": 0,
-        "price": 0,
+        "price": 60,
         "tier": 3,
         "icon": 6
     },
@@ -79,7 +79,7 @@
         "buffPenetration": 2,
         "additionalMob": "",
         "mobCount": 0,
-        "price": 0,
+        "price": 60,
         "tier": 3,
         "icon": 0
     },
@@ -91,7 +91,7 @@
         "buffPenetration": 0,
         "additionalMob": "",
         "mobCount": 0,
-        "price": 0,
+        "price": 60,
         "tier": 3,
         "icon": 13
     },
@@ -103,7 +103,7 @@
         "buffPenetration": 9,
         "additionalMob": "",
         "mobCount": 0,
-        "price": 0,
+        "price": 60,
         "tier": 3,
         "icon": 8
     },
@@ -115,7 +115,7 @@
         "buffPenetration": 0,
         "additionalMob": "",
         "mobCount": 0,
-        "price": 0,
+        "price": 60,
         "tier": 3,
         "icon": 16
     },
@@ -127,7 +127,7 @@
         "buffPenetration": 9,
         "additionalMob": "",
         "mobCount": 0,
-        "price": 0,
+        "price": 60,
         "tier": 3,
         "icon": 2
     },
@@ -139,7 +139,7 @@
         "buffPenetration": -3,
         "additionalMob": "",
         "mobCount": 0,
-        "price": 0,
+        "price": 60,
         "tier": 3,
         "icon": 11
     },
@@ -151,7 +151,7 @@
         "buffPenetration": -3,
         "additionalMob": "",
         "mobCount": 0,
-        "price": 0,
+        "price": 60,
         "tier": 3,
         "icon": 14
     },
