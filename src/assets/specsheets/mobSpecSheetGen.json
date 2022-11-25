@@ -7,11 +7,11 @@
 		"health": 500,
 		"m_speed": 25,
 		"defence": 30,
-		"damage": 4,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 1,
 		"variationCost": [
-			7
+			6
 		],
 		"boss": false
 	},
@@ -23,14 +23,14 @@
 		"health": 400,
 		"m_speed": 20,
 		"defence": 35,
-		"damage": 4,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 4,
 		"variationCost": [
-			6.5,
-			144,
-			360.5,
-			750
+			5.5,
+			143,
+			359.5,
+			749
 		],
 		"boss": false
 	},
@@ -42,30 +42,30 @@
 		"health": 200,
 		"m_speed": 10,
 		"defence": 0,
-		"damage": 1,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 20,
 		"variationCost": [
-			2,
-			4.5,
-			7.5,
-			10.5,
-			13,
-			16,
-			19,
-			21.5,
-			24.5,
-			27.5,
-			30,
-			33,
-			36,
-			38.5,
-			41.5,
-			44.5,
-			47,
-			50,
-			52.5,
-			55.5
+			2.5,
+			5,
+			8,
+			11,
+			13.5,
+			16.5,
+			19.5,
+			22,
+			25,
+			28,
+			30.5,
+			33.5,
+			36.5,
+			39,
+			42,
+			45,
+			47.5,
+			50.5,
+			53,
+			56
 		],
 		"boss": false
 	},
@@ -77,15 +77,15 @@
 		"health": 100,
 		"m_speed": 10,
 		"defence": 0,
-		"damage": 1,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 5,
 		"variationCost": [
-			1,
-			23.5,
-			46,
-			68.5,
-			91
+			1.5,
+			24,
+			46.5,
+			69,
+			91.5
 		],
 		"boss": false
 	},
@@ -97,12 +97,12 @@
 		"health": 350,
 		"m_speed": 20,
 		"defence": 30,
-		"damage": 3,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 2,
 		"variationCost": [
-			5,
-			128
+			4.5,
+			127.5
 		],
 		"boss": false
 	},
@@ -114,15 +114,15 @@
 		"health": 250,
 		"m_speed": 20,
 		"defence": 10,
-		"damage": 3,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 5,
 		"variationCost": [
-			3,
-			53,
-			106.5,
-			164,
-			226
+			2.5,
+			52.5,
+			106,
+			163.5,
+			225.5
 		],
 		"boss": false
 	},
@@ -134,15 +134,15 @@
 		"health": 200,
 		"m_speed": 15,
 		"defence": 5,
-		"damage": 1,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 5,
 		"variationCost": [
-			1.5,
-			42.5,
-			85,
-			128.5,
-			174.5
+			2,
+			43,
+			85.5,
+			129,
+			175
 		],
 		"boss": false
 	},
@@ -154,12 +154,12 @@
 		"health": 100,
 		"m_speed": 15,
 		"defence": 5,
-		"damage": 1,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 2,
 		"variationCost": [
-			0.5,
-			25
+			1,
+			25.5
 		],
 		"boss": false
 	},
@@ -192,11 +192,11 @@
 		"health": 800,
 		"m_speed": 20,
 		"defence": 30,
-		"damage": 4,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 1,
 		"variationCost": [
-			11
+			10
 		],
 		"boss": false
 	},
@@ -245,14 +245,14 @@
 		"health": 400,
 		"m_speed": 25,
 		"defence": 20,
-		"damage": 3,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 4,
 		"variationCost": [
-			4.5,
-			97.5,
-			210.5,
-			349
+			4,
+			97,
+			210,
+			348.5
 		],
 		"boss": false
 	},
@@ -264,11 +264,11 @@
 		"health": 1000,
 		"m_speed": 30,
 		"defence": 35,
-		"damage": 5,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 1,
 		"variationCost": [
-			13
+			11.5
 		],
 		"boss": false
 	},
@@ -280,15 +280,15 @@
 		"health": 400,
 		"m_speed": 25,
 		"defence": 40,
-		"damage": 3,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 6,
 		"variationCost": [
-			6,
-			133.5,
-			346,
-			771,
-			2046,
+			5.5,
+			133,
+			345.5,
+			770.5,
+			2045.5,
 			null
 		],
 		"boss": false
@@ -301,11 +301,11 @@
 		"health": 1000,
 		"m_speed": 15,
 		"defence": 15,
-		"damage": 4,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 1,
 		"variationCost": [
-			12
+			11
 		],
 		"boss": false
 	},
@@ -357,16 +357,16 @@
 		"health": 600,
 		"m_speed": 25,
 		"defence": 25,
-		"damage": 4,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 6,
 		"variationCost": [
-			7.5,
-			141.5,
-			312,
-			524.5,
-			819.5,
-			1209
+			6.5,
+			140.5,
+			311,
+			523.5,
+			818.5,
+			1208
 		],
 		"boss": false
 	},
@@ -451,14 +451,14 @@
 		"health": 150,
 		"m_speed": 8,
 		"defence": 20,
-		"damage": 4,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 4,
 		"variationCost": [
-			3.5,
-			57.5,
-			123,
-			203.5
+			2.5,
+			56.5,
+			122,
+			202.5
 		],
 		"boss": false
 	},
@@ -470,12 +470,12 @@
 		"health": 500,
 		"m_speed": 15,
 		"defence": 30,
-		"damage": 4,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 2,
 		"variationCost": [
-			8,
-			202.5
+			7,
+			201.5
 		],
 		"boss": false
 	},
@@ -487,14 +487,14 @@
 		"health": 450,
 		"m_speed": 15,
 		"defence": 25,
-		"damage": 4,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 4,
 		"variationCost": [
-			7,
-			144.5,
-			325,
-			560.5
+			6,
+			143.5,
+			324,
+			559.5
 		],
 		"boss": false
 	},
@@ -524,12 +524,12 @@
 		"health": 1000,
 		"m_speed": 20,
 		"defence": 30,
-		"damage": 4,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 2,
 		"variationCost": [
-			13,
-			365
+			12,
+			364
 		],
 		"boss": false
 	},
@@ -541,11 +541,11 @@
 		"health": 200,
 		"m_speed": 10,
 		"defence": 0,
-		"damage": 3,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 1,
 		"variationCost": [
-			3
+			2.5
 		],
 		"boss": false
 	},
@@ -557,13 +557,13 @@
 		"health": 400,
 		"m_speed": 12,
 		"defence": 0,
-		"damage": 3,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 3,
 		"variationCost": [
-			5,
-			99,
-			193
+			4.5,
+			98.5,
+			192.5
 		],
 		"boss": false
 	},
@@ -575,13 +575,13 @@
 		"health": 700,
 		"m_speed": 20,
 		"defence": 20,
-		"damage": 4,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 3,
 		"variationCost": [
-			8.5,
-			196.5,
-			424.5
+			7.5,
+			195.5,
+			423.5
 		],
 		"boss": false
 	},
@@ -593,14 +593,14 @@
 		"health": 500,
 		"m_speed": 15,
 		"defence": 5,
-		"damage": 4,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 4,
 		"variationCost": [
-			6,
-			114.5,
-			228,
-			346.5
+			5,
+			113.5,
+			227,
+			345.5
 		],
 		"boss": false
 	},
@@ -612,14 +612,14 @@
 		"health": 700,
 		"m_speed": 25,
 		"defence": 30,
-		"damage": 3,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 4,
 		"variationCost": [
-			8.5,
-			210,
-			492,
-			915.5
+			8,
+			209.5,
+			491.5,
+			915
 		],
 		"boss": false
 	},
@@ -631,12 +631,12 @@
 		"health": 900,
 		"m_speed": 30,
 		"defence": 30,
-		"damage": 4,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 2,
 		"variationCost": [
-			10.5,
-			289.5
+			9.5,
+			288.5
 		],
 		"boss": false
 	},
@@ -648,16 +648,16 @@
 		"health": 1200,
 		"m_speed": 20,
 		"defence": 20,
-		"damage": 4,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 6,
 		"variationCost": [
-			14,
-			278.5,
-			590.5,
-			962.5,
-			1414,
-			1974
+			13,
+			277.5,
+			589.5,
+			961.5,
+			1413,
+			1973
 		],
 		"boss": false
 	},
@@ -669,13 +669,13 @@
 		"health": 300,
 		"m_speed": 25,
 		"defence": 50,
-		"damage": 3,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 3,
 		"variationCost": [
-			5.5,
-			178.5,
-			796.5
+			5,
+			178,
+			796
 		],
 		"boss": false
 	},
@@ -687,11 +687,11 @@
 		"health": 800,
 		"m_speed": 20,
 		"defence": 30,
-		"damage": 3,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 1,
 		"variationCost": [
-			10.5
+			10
 		],
 		"boss": false
 	},
@@ -703,14 +703,14 @@
 		"health": 700,
 		"m_speed": 20,
 		"defence": 25,
-		"damage": 3,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 4,
 		"variationCost": [
-			8.5,
-			202,
-			456,
-			787
+			8,
+			201.5,
+			455.5,
+			786.5
 		],
 		"boss": false
 	},
@@ -722,22 +722,22 @@
 		"health": 500,
 		"m_speed": 20,
 		"defence": 20,
-		"damage": 3,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 12,
 		"variationCost": [
-			6,
-			69.5,
-			140,
-			216,
-			303,
-			401,
-			504.5,
-			629.5,
-			760,
-			925,
-			1120,
-			1320.5
+			5.5,
+			69,
+			139.5,
+			215.5,
+			302.5,
+			400.5,
+			504,
+			629,
+			759.5,
+			924.5,
+			1119.5,
+			1320
 		],
 		"boss": false
 	},
@@ -769,13 +769,13 @@
 		"health": 400,
 		"m_speed": 15,
 		"defence": 15,
-		"damage": 3,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 3,
 		"variationCost": [
-			5,
-			113.5,
-			236
+			4.5,
+			113,
+			235.5
 		],
 		"boss": false
 	},
@@ -787,13 +787,13 @@
 		"health": 650,
 		"m_speed": 30,
 		"defence": 25,
-		"damage": 3,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 3,
 		"variationCost": [
-			7,
-			177.5,
-			401.5
+			6.5,
+			177,
+			401
 		],
 		"boss": false
 	},
@@ -805,12 +805,12 @@
 		"health": 150,
 		"m_speed": 20,
 		"defence": 15,
-		"damage": 1,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 2,
 		"variationCost": [
-			1,
-			40
+			1.5,
+			40.5
 		],
 		"boss": false
 	},
@@ -822,14 +822,14 @@
 		"health": 400,
 		"m_speed": 15,
 		"defence": 40,
-		"damage": 3,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 4,
 		"variationCost": [
-			7,
-			182,
-			506.5,
-			1243.5
+			6.5,
+			181.5,
+			506,
+			1243
 		],
 		"boss": false
 	},
@@ -841,22 +841,22 @@
 		"health": 600,
 		"m_speed": 15,
 		"defence": 5,
-		"damage": 3,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 12,
 		"variationCost": [
-			6.5,
-			75,
-			144.5,
-			216,
-			288.5,
-			363,
-			439,
-			516.5,
-			596,
-			677.5,
-			761,
-			836
+			6,
+			74.5,
+			144,
+			215.5,
+			288,
+			362.5,
+			438.5,
+			516,
+			595.5,
+			677,
+			760.5,
+			835.5
 		],
 		"boss": false
 	},
@@ -868,18 +868,18 @@
 		"health": 500,
 		"m_speed": 10,
 		"defence": 15,
-		"damage": 3,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 8,
 		"variationCost": [
-			7,
-			119.5,
-			243,
-			380,
-			533,
-			704,
-			897.5,
-			1117.5
+			6.5,
+			119,
+			242.5,
+			379.5,
+			532.5,
+			703.5,
+			897,
+			1117
 		],
 		"boss": false
 	},
@@ -891,13 +891,13 @@
 		"health": 350,
 		"m_speed": 15,
 		"defence": 10,
-		"damage": 3,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 3,
 		"variationCost": [
-			4.5,
-			91.5,
-			187
+			4,
+			91,
+			186.5
 		],
 		"boss": false
 	},
@@ -909,12 +909,12 @@
 		"health": 500,
 		"m_speed": 20,
 		"defence": 25,
-		"damage": 3,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 2,
 		"variationCost": [
-			6.5,
-			163
+			6,
+			162.5
 		],
 		"boss": false
 	},
@@ -926,11 +926,11 @@
 		"health": 1200,
 		"m_speed": 20,
 		"defence": 40,
-		"damage": 5,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 1,
 		"variationCost": [
-			18.5
+			17
 		],
 		"boss": false
 	},
@@ -942,14 +942,14 @@
 		"health": 800,
 		"m_speed": 20,
 		"defence": 30,
-		"damage": 4,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 4,
 		"variationCost": [
-			11,
-			258.5,
-			605,
-			1124.5
+			10,
+			257.5,
+			604,
+			1123.5
 		],
 		"boss": false
 	},
@@ -961,13 +961,13 @@
 		"health": 600,
 		"m_speed": 15,
 		"defence": 15,
-		"damage": 3,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 3,
 		"variationCost": [
-			7.5,
-			169.5,
-			354
+			7,
+			169,
+			353.5
 		],
 		"boss": false
 	},
@@ -979,13 +979,13 @@
 		"health": 300,
 		"m_speed": 15,
 		"defence": 25,
-		"damage": 3,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 3,
 		"variationCost": [
-			4.5,
-			103,
-			233
+			4,
+			102.5,
+			232.5
 		],
 		"boss": false
 	},
@@ -997,13 +997,13 @@
 		"health": 300,
 		"m_speed": 10,
 		"defence": 25,
-		"damage": 3,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 3,
 		"variationCost": [
-			5,
-			121,
-			274
+			4.5,
+			120.5,
+			273.5
 		],
 		"boss": false
 	},
@@ -1015,16 +1015,16 @@
 		"health": 300,
 		"m_speed": 20,
 		"defence": 60,
-		"damage": 1,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 6,
 		"variationCost": [
-			6,
-			233,
-			2503.5,
-			-1064.5,
-			-618.5,
-			-493.5
+			6.5,
+			233.5,
+			2504,
+			-1064,
+			-618,
+			-493
 		],
 		"boss": false
 	},
@@ -1036,14 +1036,14 @@
 		"health": 500,
 		"m_speed": 20,
 		"defence": 20,
-		"damage": 3,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 4,
 		"variationCost": [
-			6,
-			131,
-			282,
-			469
+			5.5,
+			130.5,
+			281.5,
+			468.5
 		],
 		"boss": false
 	},
@@ -1055,14 +1055,14 @@
 		"health": 400,
 		"m_speed": 15,
 		"defence": 15,
-		"damage": 3,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 4,
 		"variationCost": [
-			5,
-			107.5,
-			223.5,
-			356
+			4.5,
+			107,
+			223,
+			355.5
 		],
 		"boss": false
 	},
@@ -1074,12 +1074,12 @@
 		"health": 400,
 		"m_speed": 15,
 		"defence": 15,
-		"damage": 5,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 2,
 		"variationCost": [
-			6,
-			120.5
+			4.5,
+			119
 		],
 		"boss": false
 	},
@@ -1091,26 +1091,26 @@
 		"health": 200,
 		"m_speed": 15,
 		"defence": 10,
-		"damage": 1,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 16,
 		"variationCost": [
-			2,
-			15.5,
-			29,
-			43.5,
-			57.5,
-			72.5,
-			87.5,
-			103,
-			119,
-			135.5,
-			152,
-			169,
-			187,
-			205,
-			223.5,
-			242
+			2.5,
+			16,
+			29.5,
+			44,
+			58,
+			73,
+			88,
+			103.5,
+			119.5,
+			136,
+			152.5,
+			169.5,
+			187.5,
+			205.5,
+			224,
+			242.5
 		],
 		"boss": false
 	},
@@ -1122,19 +1122,19 @@
 		"health": 100,
 		"m_speed": 15,
 		"defence": 10,
-		"damage": 1,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 9,
 		"variationCost": [
-			1,
-			17,
-			34.5,
-			53,
-			72,
-			93.5,
-			114.5,
-			137,
-			163.5
+			1.5,
+			17.5,
+			35,
+			53.5,
+			72.5,
+			94,
+			115,
+			137.5,
+			164
 		],
 		"boss": false
 	},
@@ -1196,22 +1196,22 @@
 		"health": 200,
 		"m_speed": 15,
 		"defence": 20,
-		"damage": 1,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 12,
 		"variationCost": [
-			2,
-			30,
-			61.5,
-			95,
-			133.5,
-			177,
-			222.5,
-			278,
-			335.5,
-			408.5,
-			495,
-			584
+			2.5,
+			30.5,
+			62,
+			95.5,
+			134,
+			177.5,
+			223,
+			278.5,
+			336,
+			409,
+			495.5,
+			584.5
 		],
 		"boss": false
 	},
@@ -1223,11 +1223,11 @@
 		"health": 2000,
 		"m_speed": 25,
 		"defence": 30,
-		"damage": 3,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 1,
 		"variationCost": [
-			23
+			22.5
 		],
 		"boss": false
 	},
@@ -1239,12 +1239,12 @@
 		"health": 1000,
 		"m_speed": 15,
 		"defence": 30,
-		"damage": 4,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 2,
 		"variationCost": [
-			14.5,
-			403.5
+			13.5,
+			402.5
 		],
 		"boss": false
 	},
@@ -1256,13 +1256,13 @@
 		"health": 600,
 		"m_speed": 20,
 		"defence": 25,
-		"damage": 4,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 3,
 		"variationCost": [
-			8,
-			186.5,
-			421
+			7,
+			185.5,
+			420
 		],
 		"boss": false
 	},
@@ -1274,16 +1274,16 @@
 		"health": 400,
 		"m_speed": 15,
 		"defence": 30,
-		"damage": 4,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 6,
 		"variationCost": [
-			6.5,
-			125.5,
-			285.5,
-			512,
-			859.5,
-			1456
+			5.5,
+			124.5,
+			284.5,
+			511,
+			858.5,
+			1455
 		],
 		"boss": false
 	},
@@ -1295,18 +1295,18 @@
 		"health": 100,
 		"m_speed": 20,
 		"defence": 5,
-		"damage": 1,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 8,
 		"variationCost": [
-			0.5,
-			15.5,
-			31,
-			46.5,
-			63.5,
-			80,
-			97,
-			115.5
+			1,
+			16,
+			31.5,
+			47,
+			64,
+			80.5,
+			97.5,
+			116
 		],
 		"boss": false
 	},
@@ -1318,12 +1318,12 @@
 		"health": 650,
 		"m_speed": 30,
 		"defence": 25,
-		"damage": 3,
+		"damage": 2,
 		"currentVariation": 0,
 		"variations": 2,
 		"variationCost": [
-			7,
-			187
+			6.5,
+			186.5
 		],
 		"boss": false
 	},
@@ -1332,8 +1332,8 @@
 		"deathAnimName": "bearDie",
 		"deathSound": "death",
 		"scale": 1,
-		"health": 4000,
-		"m_speed": 40,
+		"health": 6000,
+		"m_speed": 30,
 		"defence": 50,
 		"damage": 10,
 		"currentVariation": 0,
@@ -1346,8 +1346,8 @@
 		"deathAnimName": "slimeKingDie",
 		"deathSound": "death",
 		"scale": 1,
-		"health": 9000,
-		"m_speed": 40,
+		"health": 15000,
+		"m_speed": 30,
 		"defence": 50,
 		"damage": 10,
 		"currentVariation": 0,
@@ -1360,8 +1360,8 @@
 		"deathAnimName": "magicianDie",
 		"deathSound": "death",
 		"scale": 1,
-		"health": 22000,
-		"m_speed": 40,
+		"health": 40000,
+		"m_speed": 30,
 		"defence": 60,
 		"damage": 10,
 		"currentVariation": 0,
@@ -1374,8 +1374,8 @@
 		"deathAnimName": "giantDie",
 		"deathSound": "death",
 		"scale": 1,
-		"health": 45000,
-		"m_speed": 40,
+		"health": 100000,
+		"m_speed": 30,
 		"defence": 60,
 		"damage": 10,
 		"currentVariation": 0,
@@ -1388,8 +1388,8 @@
 		"deathAnimName": "stoneGolemDie",
 		"deathSound": "death",
 		"scale": 1,
-		"health": 100000,
-		"m_speed": 40,
+		"health": 250000,
+		"m_speed": 30,
 		"defence": 60,
 		"damage": 10,
 		"currentVariation": 0,

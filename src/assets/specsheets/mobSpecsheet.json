@@ -7,9 +7,9 @@
 		"health": 500,
 		"m_speed": 25,
 		"defence": 30,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 7
+		"defaultCost": 6
 	},
 	"BallA": {
 		"mobAnim": "BallA",
@@ -19,9 +19,9 @@
 		"health": 400,
 		"m_speed": 20,
 		"defence": 35,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 6.5
+		"defaultCost": 5.5
 	},
 	"BallB": {
 		"mobAnim": "BallB",
@@ -31,9 +31,9 @@
 		"health": 9240,
 		"m_speed": 20,
 		"defence": 46,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 144
+		"defaultCost": 143
 	},
 	"BallC": {
 		"mobAnim": "BallC",
@@ -43,9 +43,9 @@
 		"health": 18080,
 		"m_speed": 20,
 		"defence": 58,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 360.5
+		"defaultCost": 359.5
 	},
 	"BallD": {
 		"mobAnim": "BallD",
@@ -55,9 +55,9 @@
 		"health": 26920,
 		"m_speed": 20,
 		"defence": 70,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 750
+		"defaultCost": 749
 	},
 	"BatA": {
 		"mobAnim": "BatA",
@@ -67,9 +67,9 @@
 		"health": 200,
 		"m_speed": 10,
 		"defence": 0,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 2
+		"defaultCost": 2.5
 	},
 	"BatB": {
 		"mobAnim": "BatB",
@@ -79,9 +79,9 @@
 		"health": 459,
 		"m_speed": 10,
 		"defence": 0,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 4.5
+		"defaultCost": 5
 	},
 	"BatC": {
 		"mobAnim": "BatC",
@@ -91,9 +91,9 @@
 		"health": 720,
 		"m_speed": 10,
 		"defence": 0,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 7.5
+		"defaultCost": 8
 	},
 	"BatD": {
 		"mobAnim": "BatD",
@@ -103,9 +103,9 @@
 		"health": 980,
 		"m_speed": 10,
 		"defence": 0,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 10.5
+		"defaultCost": 11
 	},
 	"BatE": {
 		"mobAnim": "BatE",
@@ -115,9 +115,9 @@
 		"health": 1240,
 		"m_speed": 10,
 		"defence": 0,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 13
+		"defaultCost": 13.5
 	},
 	"BatF": {
 		"mobAnim": "BatF",
@@ -127,9 +127,9 @@
 		"health": 1500,
 		"m_speed": 10,
 		"defence": 0,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 16
+		"defaultCost": 16.5
 	},
 	"BatG": {
 		"mobAnim": "BatG",
@@ -139,9 +139,9 @@
 		"health": 1760,
 		"m_speed": 10,
 		"defence": 0,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 19
+		"defaultCost": 19.5
 	},
 	"BatH": {
 		"mobAnim": "BatH",
@@ -151,9 +151,9 @@
 		"health": 2020,
 		"m_speed": 10,
 		"defence": 0,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 21.5
+		"defaultCost": 22
 	},
 	"BatI": {
 		"mobAnim": "BatI",
@@ -163,9 +163,9 @@
 		"health": 2280,
 		"m_speed": 10,
 		"defence": 0,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 24.5
+		"defaultCost": 25
 	},
 	"BatJ": {
 		"mobAnim": "BatJ",
@@ -175,9 +175,9 @@
 		"health": 2540,
 		"m_speed": 10,
 		"defence": 0,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 27.5
+		"defaultCost": 28
 	},
 	"BatK": {
 		"mobAnim": "BatK",
@@ -187,9 +187,9 @@
 		"health": 2800,
 		"m_speed": 10,
 		"defence": 0,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 30
+		"defaultCost": 30.5
 	},
 	"BatL": {
 		"mobAnim": "BatL",
@@ -199,9 +199,9 @@
 		"health": 3060,
 		"m_speed": 10,
 		"defence": 0,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 33
+		"defaultCost": 33.5
 	},
 	"BatM": {
 		"mobAnim": "BatM",
@@ -211,9 +211,9 @@
 		"health": 3320,
 		"m_speed": 10,
 		"defence": 0,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 36
+		"defaultCost": 36.5
 	},
 	"BatN": {
 		"mobAnim": "BatN",
@@ -223,9 +223,9 @@
 		"health": 3580,
 		"m_speed": 10,
 		"defence": 0,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 38.5
+		"defaultCost": 39
 	},
 	"BatO": {
 		"mobAnim": "BatO",
@@ -235,9 +235,9 @@
 		"health": 3840,
 		"m_speed": 10,
 		"defence": 0,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 41.5
+		"defaultCost": 42
 	},
 	"BatP": {
 		"mobAnim": "BatP",
@@ -247,9 +247,9 @@
 		"health": 4100,
 		"m_speed": 10,
 		"defence": 0,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 44.5
+		"defaultCost": 45
 	},
 	"BatQ": {
 		"mobAnim": "BatQ",
@@ -259,9 +259,9 @@
 		"health": 4360,
 		"m_speed": 10,
 		"defence": 0,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 47
+		"defaultCost": 47.5
 	},
 	"BatR": {
 		"mobAnim": "BatR",
@@ -271,9 +271,9 @@
 		"health": 4620,
 		"m_speed": 10,
 		"defence": 0,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 50
+		"defaultCost": 50.5
 	},
 	"BatS": {
 		"mobAnim": "BatS",
@@ -283,9 +283,9 @@
 		"health": 4880,
 		"m_speed": 10,
 		"defence": 0,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 52.5
+		"defaultCost": 53
 	},
 	"BatT": {
 		"mobAnim": "BatT",
@@ -295,9 +295,9 @@
 		"health": 5140,
 		"m_speed": 10,
 		"defence": 0,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 55.5
+		"defaultCost": 56
 	},
 	"BatSmallA": {
 		"mobAnim": "BatSmallA",
@@ -307,9 +307,9 @@
 		"health": 100,
 		"m_speed": 10,
 		"defence": 0,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 1
+		"defaultCost": 1.5
 	},
 	"BatSmallB": {
 		"mobAnim": "BatSmallB",
@@ -319,9 +319,9 @@
 		"health": 2180,
 		"m_speed": 10,
 		"defence": 0,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 23.5
+		"defaultCost": 24
 	},
 	"BatSmallC": {
 		"mobAnim": "BatSmallC",
@@ -331,9 +331,9 @@
 		"health": 4260,
 		"m_speed": 10,
 		"defence": 0,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 46
+		"defaultCost": 46.5
 	},
 	"BatSmallD": {
 		"mobAnim": "BatSmallD",
@@ -343,9 +343,9 @@
 		"health": 6340,
 		"m_speed": 10,
 		"defence": 0,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 68.5
+		"defaultCost": 69
 	},
 	"BatSmallE": {
 		"mobAnim": "BatSmallE",
@@ -355,9 +355,9 @@
 		"health": 8420,
 		"m_speed": 10,
 		"defence": 0,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 91
+		"defaultCost": 91.5
 	},
 	"BeardA": {
 		"mobAnim": "BeardA",
@@ -367,9 +367,9 @@
 		"health": 350,
 		"m_speed": 20,
 		"defence": 30,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 5
+		"defaultCost": 4.5
 	},
 	"BeardB": {
 		"mobAnim": "BeardB",
@@ -379,9 +379,9 @@
 		"health": 8995,
 		"m_speed": 20,
 		"defence": 41,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 128
+		"defaultCost": 127.5
 	},
 	"BrainA": {
 		"mobAnim": "BrainA",
@@ -391,9 +391,9 @@
 		"health": 250,
 		"m_speed": 20,
 		"defence": 10,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 3
+		"defaultCost": 2.5
 	},
 	"BrainB": {
 		"mobAnim": "BrainB",
@@ -403,9 +403,9 @@
 		"health": 5450,
 		"m_speed": 20,
 		"defence": 13,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 53
+		"defaultCost": 52.5
 	},
 	"BrainC": {
 		"mobAnim": "BrainC",
@@ -415,9 +415,9 @@
 		"health": 10650,
 		"m_speed": 20,
 		"defence": 16,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 106.5
+		"defaultCost": 106
 	},
 	"BrainD": {
 		"mobAnim": "BrainD",
@@ -427,9 +427,9 @@
 		"health": 15850,
 		"m_speed": 20,
 		"defence": 19,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 164
+		"defaultCost": 163.5
 	},
 	"BrainE": {
 		"mobAnim": "BrainE",
@@ -439,9 +439,9 @@
 		"health": 21050,
 		"m_speed": 20,
 		"defence": 22,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 226
+		"defaultCost": 225.5
 	},
 	"BugA": {
 		"mobAnim": "BugA",
@@ -451,9 +451,9 @@
 		"health": 200,
 		"m_speed": 15,
 		"defence": 5,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 1.5
+		"defaultCost": 2
 	},
 	"BugB": {
 		"mobAnim": "BugB",
@@ -463,9 +463,9 @@
 		"health": 4360,
 		"m_speed": 15,
 		"defence": 6,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 42.5
+		"defaultCost": 43
 	},
 	"BugC": {
 		"mobAnim": "BugC",
@@ -475,9 +475,9 @@
 		"health": 8520,
 		"m_speed": 15,
 		"defence": 8,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 85
+		"defaultCost": 85.5
 	},
 	"BugD": {
 		"mobAnim": "BugD",
@@ -487,9 +487,9 @@
 		"health": 12680,
 		"m_speed": 15,
 		"defence": 9,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 128.5
+		"defaultCost": 129
 	},
 	"BugE": {
 		"mobAnim": "BugE",
@@ -499,9 +499,9 @@
 		"health": 16840,
 		"m_speed": 15,
 		"defence": 11,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 174.5
+		"defaultCost": 175
 	},
 	"ButterflyA": {
 		"mobAnim": "ButterflyA",
@@ -511,9 +511,9 @@
 		"health": 100,
 		"m_speed": 15,
 		"defence": 5,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 0.5
+		"defaultCost": 1
 	},
 	"ButterflyB": {
 		"mobAnim": "ButterflyB",
@@ -523,9 +523,9 @@
 		"health": 2570,
 		"m_speed": 15,
 		"defence": 6,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 25
+		"defaultCost": 25.5
 	},
 	"CatA": {
 		"mobAnim": "CatA",
@@ -607,9 +607,9 @@
 		"health": 800,
 		"m_speed": 20,
 		"defence": 30,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 11
+		"defaultCost": 10
 	},
 	"ChickenA": {
 		"mobAnim": "ChickenA",
@@ -703,9 +703,9 @@
 		"health": 400,
 		"m_speed": 25,
 		"defence": 20,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 4.5
+		"defaultCost": 4
 	},
 	"CoffinB": {
 		"mobAnim": "CoffinB",
@@ -715,9 +715,9 @@
 		"health": 9240,
 		"m_speed": 25,
 		"defence": 26,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 97.5
+		"defaultCost": 97
 	},
 	"CoffinC": {
 		"mobAnim": "CoffinC",
@@ -727,9 +727,9 @@
 		"health": 18080,
 		"m_speed": 25,
 		"defence": 33,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 210.5
+		"defaultCost": 210
 	},
 	"CoffinD": {
 		"mobAnim": "CoffinD",
@@ -739,9 +739,9 @@
 		"health": 26920,
 		"m_speed": 25,
 		"defence": 40,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 349
+		"defaultCost": 348.5
 	},
 	"CountA": {
 		"mobAnim": "CountA",
@@ -751,9 +751,9 @@
 		"health": 1000,
 		"m_speed": 30,
 		"defence": 35,
-		"damage": 5,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 13
+		"defaultCost": 11.5
 	},
 	"CrabA": {
 		"mobAnim": "CrabA",
@@ -763,9 +763,9 @@
 		"health": 400,
 		"m_speed": 25,
 		"defence": 40,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 6
+		"defaultCost": 5.5
 	},
 	"CrabB": {
 		"mobAnim": "CrabB",
@@ -775,9 +775,9 @@
 		"health": 8200,
 		"m_speed": 25,
 		"defence": 52,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 133.5
+		"defaultCost": 133
 	},
 	"CrabC": {
 		"mobAnim": "CrabC",
@@ -787,9 +787,9 @@
 		"health": 16000,
 		"m_speed": 25,
 		"defence": 64,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 346
+		"defaultCost": 345.5
 	},
 	"CrabD": {
 		"mobAnim": "CrabD",
@@ -799,9 +799,9 @@
 		"health": 23800,
 		"m_speed": 25,
 		"defence": 76,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 771
+		"defaultCost": 770.5
 	},
 	"CrabE": {
 		"mobAnim": "CrabE",
@@ -811,9 +811,9 @@
 		"health": 31600,
 		"m_speed": 25,
 		"defence": 88,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 2046
+		"defaultCost": 2045.5
 	},
 	"CrabF": {
 		"mobAnim": "CrabF",
@@ -823,7 +823,7 @@
 		"health": 39400,
 		"m_speed": 25,
 		"defence": 100,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
 		"defaultCost": null
 	},
@@ -835,9 +835,9 @@
 		"health": 1000,
 		"m_speed": 15,
 		"defence": 15,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 12
+		"defaultCost": 11
 	},
 	"DogA": {
 		"mobAnim": "DogA",
@@ -967,9 +967,9 @@
 		"health": 600,
 		"m_speed": 25,
 		"defence": 25,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 7.5
+		"defaultCost": 6.5
 	},
 	"DwarfB": {
 		"mobAnim": "DwarfB",
@@ -979,9 +979,9 @@
 		"health": 12300,
 		"m_speed": 25,
 		"defence": 32,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 141.5
+		"defaultCost": 140.5
 	},
 	"DwarfC": {
 		"mobAnim": "DwarfC",
@@ -991,9 +991,9 @@
 		"health": 24000,
 		"m_speed": 25,
 		"defence": 40,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 312
+		"defaultCost": 311
 	},
 	"DwarfD": {
 		"mobAnim": "DwarfD",
@@ -1003,9 +1003,9 @@
 		"health": 35700,
 		"m_speed": 25,
 		"defence": 47,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 524.5
+		"defaultCost": 523.5
 	},
 	"DwarfE": {
 		"mobAnim": "DwarfE",
@@ -1015,9 +1015,9 @@
 		"health": 47400,
 		"m_speed": 25,
 		"defence": 55,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 819.5
+		"defaultCost": 818.5
 	},
 	"DwarfF": {
 		"mobAnim": "DwarfF",
@@ -1027,9 +1027,9 @@
 		"health": 59100,
 		"m_speed": 25,
 		"defence": 62,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 1209
+		"defaultCost": 1208
 	},
 	"DyeA": {
 		"mobAnim": "DyeA",
@@ -1195,9 +1195,9 @@
 		"health": 150,
 		"m_speed": 8,
 		"defence": 20,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 3.5
+		"defaultCost": 2.5
 	},
 	"EelB": {
 		"mobAnim": "EelB",
@@ -1207,9 +1207,9 @@
 		"health": 3465,
 		"m_speed": 8,
 		"defence": 26,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 57.5
+		"defaultCost": 56.5
 	},
 	"EelC": {
 		"mobAnim": "EelC",
@@ -1219,9 +1219,9 @@
 		"health": 6780,
 		"m_speed": 8,
 		"defence": 33,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 123
+		"defaultCost": 122
 	},
 	"EelD": {
 		"mobAnim": "EelD",
@@ -1231,9 +1231,9 @@
 		"health": 10095,
 		"m_speed": 8,
 		"defence": 40,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 203.5
+		"defaultCost": 202.5
 	},
 	"ElementalOrbA": {
 		"mobAnim": "ElementalOrbA",
@@ -1243,9 +1243,9 @@
 		"health": 500,
 		"m_speed": 15,
 		"defence": 30,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 8
+		"defaultCost": 7
 	},
 	"ElementalOrbB": {
 		"mobAnim": "ElementalOrbB",
@@ -1255,9 +1255,9 @@
 		"health": 12850,
 		"m_speed": 15,
 		"defence": 41,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 202.5
+		"defaultCost": 201.5
 	},
 	"EyeA": {
 		"mobAnim": "EyeA",
@@ -1267,9 +1267,9 @@
 		"health": 450,
 		"m_speed": 15,
 		"defence": 25,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 7
+		"defaultCost": 6
 	},
 	"EyeB": {
 		"mobAnim": "EyeB",
@@ -1279,9 +1279,9 @@
 		"health": 10395,
 		"m_speed": 15,
 		"defence": 33,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 144.5
+		"defaultCost": 143.5
 	},
 	"EyeC": {
 		"mobAnim": "EyeC",
@@ -1291,9 +1291,9 @@
 		"health": 20340,
 		"m_speed": 15,
 		"defence": 42,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 325
+		"defaultCost": 324
 	},
 	"EyeD": {
 		"mobAnim": "EyeD",
@@ -1303,9 +1303,9 @@
 		"health": 30285,
 		"m_speed": 15,
 		"defence": 50,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 560.5
+		"defaultCost": 559.5
 	},
 	"EyeBallA": {
 		"mobAnim": "EyeBallA",
@@ -1351,9 +1351,9 @@
 		"health": 1000,
 		"m_speed": 20,
 		"defence": 30,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 13
+		"defaultCost": 12
 	},
 	"FactoryB": {
 		"mobAnim": "FactoryB",
@@ -1363,9 +1363,9 @@
 		"health": 25700,
 		"m_speed": 20,
 		"defence": 41,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 365
+		"defaultCost": 364
 	},
 	"FireSmallA": {
 		"mobAnim": "FireSmallA",
@@ -1375,9 +1375,9 @@
 		"health": 200,
 		"m_speed": 10,
 		"defence": 0,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 3
+		"defaultCost": 2.5
 	},
 	"GhastA": {
 		"mobAnim": "GhastA",
@@ -1387,9 +1387,9 @@
 		"health": 400,
 		"m_speed": 12,
 		"defence": 0,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 5
+		"defaultCost": 4.5
 	},
 	"GhastB": {
 		"mobAnim": "GhastB",
@@ -1399,9 +1399,9 @@
 		"health": 9760,
 		"m_speed": 12,
 		"defence": 0,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 99
+		"defaultCost": 98.5
 	},
 	"GhastC": {
 		"mobAnim": "GhastC",
@@ -1411,9 +1411,9 @@
 		"health": 19120,
 		"m_speed": 12,
 		"defence": 0,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 193
+		"defaultCost": 192.5
 	},
 	"GnomeA": {
 		"mobAnim": "GnomeA",
@@ -1423,9 +1423,9 @@
 		"health": 700,
 		"m_speed": 20,
 		"defence": 20,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 8.5
+		"defaultCost": 7.5
 	},
 	"GnomeB": {
 		"mobAnim": "GnomeB",
@@ -1435,9 +1435,9 @@
 		"health": 17080,
 		"m_speed": 20,
 		"defence": 27,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 196.5
+		"defaultCost": 195.5
 	},
 	"GnomeC": {
 		"mobAnim": "GnomeC",
@@ -1447,9 +1447,9 @@
 		"health": 33460,
 		"m_speed": 20,
 		"defence": 34,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 424.5
+		"defaultCost": 423.5
 	},
 	"HareA": {
 		"mobAnim": "HareA",
@@ -1459,9 +1459,9 @@
 		"health": 500,
 		"m_speed": 15,
 		"defence": 5,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 6
+		"defaultCost": 5
 	},
 	"HareB": {
 		"mobAnim": "HareB",
@@ -1471,9 +1471,9 @@
 		"health": 11550,
 		"m_speed": 15,
 		"defence": 6,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 114.5
+		"defaultCost": 113.5
 	},
 	"HareC": {
 		"mobAnim": "HareC",
@@ -1483,9 +1483,9 @@
 		"health": 22600,
 		"m_speed": 15,
 		"defence": 8,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 228
+		"defaultCost": 227
 	},
 	"HareD": {
 		"mobAnim": "HareD",
@@ -1495,9 +1495,9 @@
 		"health": 33650,
 		"m_speed": 15,
 		"defence": 10,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 346.5
+		"defaultCost": 345.5
 	},
 	"HeadA": {
 		"mobAnim": "HeadA",
@@ -1507,9 +1507,9 @@
 		"health": 700,
 		"m_speed": 25,
 		"defence": 30,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 8.5
+		"defaultCost": 8
 	},
 	"HeadB": {
 		"mobAnim": "HeadB",
@@ -1519,9 +1519,9 @@
 		"health": 16170,
 		"m_speed": 25,
 		"defence": 40,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 210
+		"defaultCost": 209.5
 	},
 	"HeadC": {
 		"mobAnim": "HeadC",
@@ -1531,9 +1531,9 @@
 		"health": 31640,
 		"m_speed": 25,
 		"defence": 50,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 492
+		"defaultCost": 491.5
 	},
 	"HeadD": {
 		"mobAnim": "HeadD",
@@ -1543,9 +1543,9 @@
 		"health": 47110,
 		"m_speed": 25,
 		"defence": 60,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 915.5
+		"defaultCost": 915
 	},
 	"HulkA": {
 		"mobAnim": "HulkA",
@@ -1555,9 +1555,9 @@
 		"health": 900,
 		"m_speed": 30,
 		"defence": 30,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 10.5
+		"defaultCost": 9.5
 	},
 	"HulkB": {
 		"mobAnim": "HulkB",
@@ -1567,9 +1567,9 @@
 		"health": 23130,
 		"m_speed": 30,
 		"defence": 41,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 289.5
+		"defaultCost": 288.5
 	},
 	"KlackonA": {
 		"mobAnim": "KlackonA",
@@ -1579,9 +1579,9 @@
 		"health": 1200,
 		"m_speed": 20,
 		"defence": 20,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 14
+		"defaultCost": 13
 	},
 	"KlackonB": {
 		"mobAnim": "KlackonB",
@@ -1591,9 +1591,9 @@
 		"health": 24600,
 		"m_speed": 20,
 		"defence": 26,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 278.5
+		"defaultCost": 277.5
 	},
 	"KlackonC": {
 		"mobAnim": "KlackonC",
@@ -1603,9 +1603,9 @@
 		"health": 48000,
 		"m_speed": 20,
 		"defence": 32,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 590.5
+		"defaultCost": 589.5
 	},
 	"KlackonD": {
 		"mobAnim": "KlackonD",
@@ -1615,9 +1615,9 @@
 		"health": 71400,
 		"m_speed": 20,
 		"defence": 38,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 962.5
+		"defaultCost": 961.5
 	},
 	"KlackonE": {
 		"mobAnim": "KlackonE",
@@ -1627,9 +1627,9 @@
 		"health": 94800,
 		"m_speed": 20,
 		"defence": 44,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 1414
+		"defaultCost": 1413
 	},
 	"KlackonF": {
 		"mobAnim": "KlackonF",
@@ -1639,9 +1639,9 @@
 		"health": 118200,
 		"m_speed": 20,
 		"defence": 50,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 1974
+		"defaultCost": 1973
 	},
 	"LurkerA": {
 		"mobAnim": "LurkerA",
@@ -1651,9 +1651,9 @@
 		"health": 300,
 		"m_speed": 25,
 		"defence": 50,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 5.5
+		"defaultCost": 5
 	},
 	"LurkerB": {
 		"mobAnim": "LurkerB",
@@ -1663,9 +1663,9 @@
 		"health": 7320,
 		"m_speed": 25,
 		"defence": 68,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 178.5
+		"defaultCost": 178
 	},
 	"LurkerC": {
 		"mobAnim": "LurkerC",
@@ -1675,9 +1675,9 @@
 		"health": 14340,
 		"m_speed": 25,
 		"defence": 86,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 796.5
+		"defaultCost": 796
 	},
 	"MachineA": {
 		"mobAnim": "MachineA",
@@ -1687,9 +1687,9 @@
 		"health": 800,
 		"m_speed": 20,
 		"defence": 30,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 10.5
+		"defaultCost": 10
 	},
 	"MaskA": {
 		"mobAnim": "MaskA",
@@ -1699,9 +1699,9 @@
 		"health": 700,
 		"m_speed": 20,
 		"defence": 25,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 8.5
+		"defaultCost": 8
 	},
 	"MaskB": {
 		"mobAnim": "MaskB",
@@ -1711,9 +1711,9 @@
 		"health": 16170,
 		"m_speed": 20,
 		"defence": 33,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 202
+		"defaultCost": 201.5
 	},
 	"MaskC": {
 		"mobAnim": "MaskC",
@@ -1723,9 +1723,9 @@
 		"health": 31640,
 		"m_speed": 20,
 		"defence": 42,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 456
+		"defaultCost": 455.5
 	},
 	"MaskD": {
 		"mobAnim": "MaskD",
@@ -1735,9 +1735,9 @@
 		"health": 47110,
 		"m_speed": 20,
 		"defence": 50,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 787
+		"defaultCost": 786.5
 	},
 	"MonolithA": {
 		"mobAnim": "MonolithA",
@@ -1747,9 +1747,9 @@
 		"health": 500,
 		"m_speed": 20,
 		"defence": 20,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 6
+		"defaultCost": 5.5
 	},
 	"MonolithB": {
 		"mobAnim": "MonolithB",
@@ -1759,9 +1759,9 @@
 		"health": 6350,
 		"m_speed": 20,
 		"defence": 23,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 69.5
+		"defaultCost": 69
 	},
 	"MonolithC": {
 		"mobAnim": "MonolithC",
@@ -1771,9 +1771,9 @@
 		"health": 12200,
 		"m_speed": 20,
 		"defence": 27,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 140
+		"defaultCost": 139.5
 	},
 	"MonolithD": {
 		"mobAnim": "MonolithD",
@@ -1783,9 +1783,9 @@
 		"health": 18050,
 		"m_speed": 20,
 		"defence": 30,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 216
+		"defaultCost": 215.5
 	},
 	"MonolithE": {
 		"mobAnim": "MonolithE",
@@ -1795,9 +1795,9 @@
 		"health": 23900,
 		"m_speed": 20,
 		"defence": 34,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 303
+		"defaultCost": 302.5
 	},
 	"MonolithF": {
 		"mobAnim": "MonolithF",
@@ -1807,9 +1807,9 @@
 		"health": 29750,
 		"m_speed": 20,
 		"defence": 38,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 401
+		"defaultCost": 400.5
 	},
 	"MonolithG": {
 		"mobAnim": "MonolithG",
@@ -1819,9 +1819,9 @@
 		"health": 35600,
 		"m_speed": 20,
 		"defence": 41,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 504.5
+		"defaultCost": 504
 	},
 	"MonolithH": {
 		"mobAnim": "MonolithH",
@@ -1831,9 +1831,9 @@
 		"health": 41450,
 		"m_speed": 20,
 		"defence": 45,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 629.5
+		"defaultCost": 629
 	},
 	"MonolithI": {
 		"mobAnim": "MonolithI",
@@ -1843,9 +1843,9 @@
 		"health": 47300,
 		"m_speed": 20,
 		"defence": 48,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 760
+		"defaultCost": 759.5
 	},
 	"MonolithJ": {
 		"mobAnim": "MonolithJ",
@@ -1855,9 +1855,9 @@
 		"health": 53150,
 		"m_speed": 20,
 		"defence": 52,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 925
+		"defaultCost": 924.5
 	},
 	"MonolithK": {
 		"mobAnim": "MonolithK",
@@ -1867,9 +1867,9 @@
 		"health": 59000,
 		"m_speed": 20,
 		"defence": 56,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 1120
+		"defaultCost": 1119.5
 	},
 	"MonolithL": {
 		"mobAnim": "MonolithL",
@@ -1879,9 +1879,9 @@
 		"health": 64850,
 		"m_speed": 20,
 		"defence": 59,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 1320.5
+		"defaultCost": 1320
 	},
 	"MothA": {
 		"mobAnim": "MothA",
@@ -1951,9 +1951,9 @@
 		"health": 400,
 		"m_speed": 15,
 		"defence": 15,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 5
+		"defaultCost": 4.5
 	},
 	"MouthB": {
 		"mobAnim": "MouthB",
@@ -1963,9 +1963,9 @@
 		"health": 9760,
 		"m_speed": 15,
 		"defence": 20,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 113.5
+		"defaultCost": 113
 	},
 	"MouthC": {
 		"mobAnim": "MouthC",
@@ -1975,9 +1975,9 @@
 		"health": 19120,
 		"m_speed": 15,
 		"defence": 25,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 236
+		"defaultCost": 235.5
 	},
 	"MummyA": {
 		"mobAnim": "MummyA",
@@ -1987,9 +1987,9 @@
 		"health": 650,
 		"m_speed": 30,
 		"defence": 25,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 7
+		"defaultCost": 6.5
 	},
 	"MummyB": {
 		"mobAnim": "MummyB",
@@ -1999,9 +1999,9 @@
 		"health": 15860,
 		"m_speed": 30,
 		"defence": 34,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 177.5
+		"defaultCost": 177
 	},
 	"MummyC": {
 		"mobAnim": "MummyC",
@@ -2011,9 +2011,9 @@
 		"health": 31070,
 		"m_speed": 30,
 		"defence": 43,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 401.5
+		"defaultCost": 401
 	},
 	"MushroomA": {
 		"mobAnim": "MushroomA",
@@ -2023,9 +2023,9 @@
 		"health": 150,
 		"m_speed": 20,
 		"defence": 15,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 1
+		"defaultCost": 1.5
 	},
 	"MushroomB": {
 		"mobAnim": "MushroomB",
@@ -2035,9 +2035,9 @@
 		"health": 3855,
 		"m_speed": 20,
 		"defence": 20,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 40
+		"defaultCost": 40.5
 	},
 	"OrbA": {
 		"mobAnim": "OrbA",
@@ -2047,9 +2047,9 @@
 		"health": 400,
 		"m_speed": 15,
 		"defence": 40,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 7
+		"defaultCost": 6.5
 	},
 	"OrbB": {
 		"mobAnim": "OrbB",
@@ -2059,9 +2059,9 @@
 		"health": 9240,
 		"m_speed": 15,
 		"defence": 53,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 182
+		"defaultCost": 181.5
 	},
 	"OrbC": {
 		"mobAnim": "OrbC",
@@ -2071,9 +2071,9 @@
 		"health": 18080,
 		"m_speed": 15,
 		"defence": 67,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 506.5
+		"defaultCost": 506
 	},
 	"OrbD": {
 		"mobAnim": "OrbD",
@@ -2083,9 +2083,9 @@
 		"health": 26920,
 		"m_speed": 15,
 		"defence": 80,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 1243.5
+		"defaultCost": 1243
 	},
 	"PotionA": {
 		"mobAnim": "PotionA",
@@ -2095,9 +2095,9 @@
 		"health": 600,
 		"m_speed": 15,
 		"defence": 5,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 6.5
+		"defaultCost": 6
 	},
 	"PotionB": {
 		"mobAnim": "PotionB",
@@ -2107,9 +2107,9 @@
 		"health": 7620,
 		"m_speed": 15,
 		"defence": 5,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 75
+		"defaultCost": 74.5
 	},
 	"PotionC": {
 		"mobAnim": "PotionC",
@@ -2119,9 +2119,9 @@
 		"health": 14640,
 		"m_speed": 15,
 		"defence": 6,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 144.5
+		"defaultCost": 144
 	},
 	"PotionD": {
 		"mobAnim": "PotionD",
@@ -2131,9 +2131,9 @@
 		"health": 21660,
 		"m_speed": 15,
 		"defence": 7,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 216
+		"defaultCost": 215.5
 	},
 	"PotionE": {
 		"mobAnim": "PotionE",
@@ -2143,9 +2143,9 @@
 		"health": 28680,
 		"m_speed": 15,
 		"defence": 8,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 288.5
+		"defaultCost": 288
 	},
 	"PotionF": {
 		"mobAnim": "PotionF",
@@ -2155,9 +2155,9 @@
 		"health": 35700,
 		"m_speed": 15,
 		"defence": 9,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 363
+		"defaultCost": 362.5
 	},
 	"PotionG": {
 		"mobAnim": "PotionG",
@@ -2167,9 +2167,9 @@
 		"health": 42720,
 		"m_speed": 15,
 		"defence": 10,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 439
+		"defaultCost": 438.5
 	},
 	"PotionH": {
 		"mobAnim": "PotionH",
@@ -2179,9 +2179,9 @@
 		"health": 49740,
 		"m_speed": 15,
 		"defence": 11,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 516.5
+		"defaultCost": 516
 	},
 	"PotionI": {
 		"mobAnim": "PotionI",
@@ -2191,9 +2191,9 @@
 		"health": 56760,
 		"m_speed": 15,
 		"defence": 12,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 596
+		"defaultCost": 595.5
 	},
 	"PotionJ": {
 		"mobAnim": "PotionJ",
@@ -2203,9 +2203,9 @@
 		"health": 63780,
 		"m_speed": 15,
 		"defence": 13,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 677.5
+		"defaultCost": 677
 	},
 	"PotionK": {
 		"mobAnim": "PotionK",
@@ -2215,9 +2215,9 @@
 		"health": 70800,
 		"m_speed": 15,
 		"defence": 14,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 761
+		"defaultCost": 760.5
 	},
 	"PotionL": {
 		"mobAnim": "PotionL",
@@ -2227,9 +2227,9 @@
 		"health": 77820,
 		"m_speed": 15,
 		"defence": 14,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 836
+		"defaultCost": 835.5
 	},
 	"PterodactylA": {
 		"mobAnim": "PterodactylA",
@@ -2239,9 +2239,9 @@
 		"health": 500,
 		"m_speed": 10,
 		"defence": 15,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 7
+		"defaultCost": 6.5
 	},
 	"PterodactylB": {
 		"mobAnim": "PterodactylB",
@@ -2251,9 +2251,9 @@
 		"health": 8950,
 		"m_speed": 10,
 		"defence": 18,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 119.5
+		"defaultCost": 119
 	},
 	"PterodactylC": {
 		"mobAnim": "PterodactylC",
@@ -2263,9 +2263,9 @@
 		"health": 17400,
 		"m_speed": 10,
 		"defence": 22,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 243
+		"defaultCost": 242.5
 	},
 	"PterodactylD": {
 		"mobAnim": "PterodactylD",
@@ -2275,9 +2275,9 @@
 		"health": 25850,
 		"m_speed": 10,
 		"defence": 26,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 380
+		"defaultCost": 379.5
 	},
 	"PterodactylE": {
 		"mobAnim": "PterodactylE",
@@ -2287,9 +2287,9 @@
 		"health": 34300,
 		"m_speed": 10,
 		"defence": 30,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 533
+		"defaultCost": 532.5
 	},
 	"PterodactylF": {
 		"mobAnim": "PterodactylF",
@@ -2299,9 +2299,9 @@
 		"health": 42750,
 		"m_speed": 10,
 		"defence": 34,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 704
+		"defaultCost": 703.5
 	},
 	"PterodactylG": {
 		"mobAnim": "PterodactylG",
@@ -2311,9 +2311,9 @@
 		"health": 51200,
 		"m_speed": 10,
 		"defence": 38,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 897.5
+		"defaultCost": 897
 	},
 	"PterodactylH": {
 		"mobAnim": "PterodactylH",
@@ -2323,9 +2323,9 @@
 		"health": 59650,
 		"m_speed": 10,
 		"defence": 42,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 1117.5
+		"defaultCost": 1117
 	},
 	"PuddleA": {
 		"mobAnim": "PuddleA",
@@ -2335,9 +2335,9 @@
 		"health": 350,
 		"m_speed": 15,
 		"defence": 10,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 4.5
+		"defaultCost": 4
 	},
 	"PuddleB": {
 		"mobAnim": "PuddleB",
@@ -2347,9 +2347,9 @@
 		"health": 8540,
 		"m_speed": 15,
 		"defence": 13,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 91.5
+		"defaultCost": 91
 	},
 	"PuddleC": {
 		"mobAnim": "PuddleC",
@@ -2359,9 +2359,9 @@
 		"health": 16730,
 		"m_speed": 15,
 		"defence": 17,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 187
+		"defaultCost": 186.5
 	},
 	"PyramidA": {
 		"mobAnim": "PyramidA",
@@ -2371,9 +2371,9 @@
 		"health": 500,
 		"m_speed": 20,
 		"defence": 25,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 6.5
+		"defaultCost": 6
 	},
 	"PyramidB": {
 		"mobAnim": "PyramidB",
@@ -2383,9 +2383,9 @@
 		"health": 12850,
 		"m_speed": 20,
 		"defence": 34,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 163
+		"defaultCost": 162.5
 	},
 	"ReaperA": {
 		"mobAnim": "ReaperA",
@@ -2395,9 +2395,9 @@
 		"health": 1200,
 		"m_speed": 20,
 		"defence": 40,
-		"damage": 5,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 18.5
+		"defaultCost": 17
 	},
 	"RobotA": {
 		"mobAnim": "RobotA",
@@ -2407,9 +2407,9 @@
 		"health": 800,
 		"m_speed": 20,
 		"defence": 30,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 11
+		"defaultCost": 10
 	},
 	"RobotB": {
 		"mobAnim": "RobotB",
@@ -2419,9 +2419,9 @@
 		"health": 18480,
 		"m_speed": 20,
 		"defence": 40,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 258.5
+		"defaultCost": 257.5
 	},
 	"RobotC": {
 		"mobAnim": "RobotC",
@@ -2431,9 +2431,9 @@
 		"health": 36160,
 		"m_speed": 20,
 		"defence": 50,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 605
+		"defaultCost": 604
 	},
 	"RobotD": {
 		"mobAnim": "RobotD",
@@ -2443,9 +2443,9 @@
 		"health": 53840,
 		"m_speed": 20,
 		"defence": 60,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 1124.5
+		"defaultCost": 1123.5
 	},
 	"ScorpionA": {
 		"mobAnim": "ScorpionA",
@@ -2455,9 +2455,9 @@
 		"health": 600,
 		"m_speed": 15,
 		"defence": 15,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 7.5
+		"defaultCost": 7
 	},
 	"ScorpionB": {
 		"mobAnim": "ScorpionB",
@@ -2467,9 +2467,9 @@
 		"health": 14640,
 		"m_speed": 15,
 		"defence": 20,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 169.5
+		"defaultCost": 169
 	},
 	"ScorpionC": {
 		"mobAnim": "ScorpionC",
@@ -2479,9 +2479,9 @@
 		"health": 28680,
 		"m_speed": 15,
 		"defence": 25,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 354
+		"defaultCost": 353.5
 	},
 	"SentryA": {
 		"mobAnim": "SentryA",
@@ -2491,9 +2491,9 @@
 		"health": 300,
 		"m_speed": 15,
 		"defence": 25,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 4.5
+		"defaultCost": 4
 	},
 	"SentryB": {
 		"mobAnim": "SentryB",
@@ -2503,9 +2503,9 @@
 		"health": 7320,
 		"m_speed": 15,
 		"defence": 34,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 103
+		"defaultCost": 102.5
 	},
 	"SentryC": {
 		"mobAnim": "SentryC",
@@ -2515,9 +2515,9 @@
 		"health": 14340,
 		"m_speed": 15,
 		"defence": 43,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 233
+		"defaultCost": 232.5
 	},
 	"SentryCopterA": {
 		"mobAnim": "SentryCopterA",
@@ -2527,9 +2527,9 @@
 		"health": 300,
 		"m_speed": 10,
 		"defence": 25,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 5
+		"defaultCost": 4.5
 	},
 	"SentryCopterB": {
 		"mobAnim": "SentryCopterB",
@@ -2539,9 +2539,9 @@
 		"health": 7320,
 		"m_speed": 10,
 		"defence": 34,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 121
+		"defaultCost": 120.5
 	},
 	"SentryCopterC": {
 		"mobAnim": "SentryCopterC",
@@ -2551,9 +2551,9 @@
 		"health": 14340,
 		"m_speed": 10,
 		"defence": 43,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 274
+		"defaultCost": 273.5
 	},
 	"ShieldA": {
 		"mobAnim": "ShieldA",
@@ -2563,9 +2563,9 @@
 		"health": 300,
 		"m_speed": 20,
 		"defence": 60,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 6
+		"defaultCost": 6.5
 	},
 	"ShieldB": {
 		"mobAnim": "ShieldB",
@@ -2575,9 +2575,9 @@
 		"health": 6150,
 		"m_speed": 20,
 		"defence": 78,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 233
+		"defaultCost": 233.5
 	},
 	"ShieldC": {
 		"mobAnim": "ShieldC",
@@ -2587,9 +2587,9 @@
 		"health": 12000,
 		"m_speed": 20,
 		"defence": 96,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 2503.5
+		"defaultCost": 2504
 	},
 	"ShieldD": {
 		"mobAnim": "ShieldD",
@@ -2599,9 +2599,9 @@
 		"health": 17850,
 		"m_speed": 20,
 		"defence": 114,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": -1064.5
+		"defaultCost": -1064
 	},
 	"ShieldE": {
 		"mobAnim": "ShieldE",
@@ -2611,9 +2611,9 @@
 		"health": 23700,
 		"m_speed": 20,
 		"defence": 132,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": -618.5
+		"defaultCost": -618
 	},
 	"ShieldF": {
 		"mobAnim": "ShieldF",
@@ -2623,9 +2623,9 @@
 		"health": 29550,
 		"m_speed": 20,
 		"defence": 150,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": -493.5
+		"defaultCost": -493
 	},
 	"SkeletonA": {
 		"mobAnim": "SkeletonA",
@@ -2635,9 +2635,9 @@
 		"health": 500,
 		"m_speed": 20,
 		"defence": 20,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 6
+		"defaultCost": 5.5
 	},
 	"SkeletonB": {
 		"mobAnim": "SkeletonB",
@@ -2647,9 +2647,9 @@
 		"health": 11550,
 		"m_speed": 20,
 		"defence": 26,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 131
+		"defaultCost": 130.5
 	},
 	"SkeletonC": {
 		"mobAnim": "SkeletonC",
@@ -2659,9 +2659,9 @@
 		"health": 22600,
 		"m_speed": 20,
 		"defence": 33,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 282
+		"defaultCost": 281.5
 	},
 	"SkeletonD": {
 		"mobAnim": "SkeletonD",
@@ -2671,9 +2671,9 @@
 		"health": 33650,
 		"m_speed": 20,
 		"defence": 40,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 469
+		"defaultCost": 468.5
 	},
 	"SkullA": {
 		"mobAnim": "SkullA",
@@ -2683,9 +2683,9 @@
 		"health": 400,
 		"m_speed": 15,
 		"defence": 15,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 5
+		"defaultCost": 4.5
 	},
 	"SkullB": {
 		"mobAnim": "SkullB",
@@ -2695,9 +2695,9 @@
 		"health": 9240,
 		"m_speed": 15,
 		"defence": 20,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 107.5
+		"defaultCost": 107
 	},
 	"SkullC": {
 		"mobAnim": "SkullC",
@@ -2707,9 +2707,9 @@
 		"health": 18080,
 		"m_speed": 15,
 		"defence": 25,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 223.5
+		"defaultCost": 223
 	},
 	"SkullD": {
 		"mobAnim": "SkullD",
@@ -2719,9 +2719,9 @@
 		"health": 26920,
 		"m_speed": 15,
 		"defence": 30,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 356
+		"defaultCost": 355.5
 	},
 	"SkullFlamingA": {
 		"mobAnim": "SkullFlamingA",
@@ -2731,9 +2731,9 @@
 		"health": 400,
 		"m_speed": 15,
 		"defence": 15,
-		"damage": 5,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 6
+		"defaultCost": 4.5
 	},
 	"SkullFlamingB": {
 		"mobAnim": "SkullFlamingB",
@@ -2743,9 +2743,9 @@
 		"health": 10280,
 		"m_speed": 15,
 		"defence": 20,
-		"damage": 5,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 120.5
+		"defaultCost": 119
 	},
 	"SlimeA": {
 		"mobAnim": "SlimeA",
@@ -2755,9 +2755,9 @@
 		"health": 200,
 		"m_speed": 15,
 		"defence": 10,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 2
+		"defaultCost": 2.5
 	},
 	"SlimeB": {
 		"mobAnim": "SlimeB",
@@ -2767,9 +2767,9 @@
 		"health": 1500,
 		"m_speed": 15,
 		"defence": 11,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 15.5
+		"defaultCost": 16
 	},
 	"SlimeC": {
 		"mobAnim": "SlimeC",
@@ -2779,9 +2779,9 @@
 		"health": 2800,
 		"m_speed": 15,
 		"defence": 12,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 29
+		"defaultCost": 29.5
 	},
 	"SlimeD": {
 		"mobAnim": "SlimeD",
@@ -2791,9 +2791,9 @@
 		"health": 4100,
 		"m_speed": 15,
 		"defence": 13,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 43.5
+		"defaultCost": 44
 	},
 	"SlimeE": {
 		"mobAnim": "SlimeE",
@@ -2803,9 +2803,9 @@
 		"health": 5400,
 		"m_speed": 15,
 		"defence": 14,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 57.5
+		"defaultCost": 58
 	},
 	"SlimeF": {
 		"mobAnim": "SlimeF",
@@ -2815,9 +2815,9 @@
 		"health": 6700,
 		"m_speed": 15,
 		"defence": 15,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 72.5
+		"defaultCost": 73
 	},
 	"SlimeG": {
 		"mobAnim": "SlimeG",
@@ -2827,9 +2827,9 @@
 		"health": 8000,
 		"m_speed": 15,
 		"defence": 16,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 87.5
+		"defaultCost": 88
 	},
 	"SlimeH": {
 		"mobAnim": "SlimeH",
@@ -2839,9 +2839,9 @@
 		"health": 9300,
 		"m_speed": 15,
 		"defence": 17,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 103
+		"defaultCost": 103.5
 	},
 	"SlimeI": {
 		"mobAnim": "SlimeI",
@@ -2851,9 +2851,9 @@
 		"health": 10600,
 		"m_speed": 15,
 		"defence": 18,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 119
+		"defaultCost": 119.5
 	},
 	"SlimeJ": {
 		"mobAnim": "SlimeJ",
@@ -2863,9 +2863,9 @@
 		"health": 11900,
 		"m_speed": 15,
 		"defence": 19,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 135.5
+		"defaultCost": 136
 	},
 	"SlimeK": {
 		"mobAnim": "SlimeK",
@@ -2875,9 +2875,9 @@
 		"health": 13200,
 		"m_speed": 15,
 		"defence": 20,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 152
+		"defaultCost": 152.5
 	},
 	"SlimeL": {
 		"mobAnim": "SlimeL",
@@ -2887,9 +2887,9 @@
 		"health": 14500,
 		"m_speed": 15,
 		"defence": 21,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 169
+		"defaultCost": 169.5
 	},
 	"SlimeM": {
 		"mobAnim": "SlimeM",
@@ -2899,9 +2899,9 @@
 		"health": 15800,
 		"m_speed": 15,
 		"defence": 22,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 187
+		"defaultCost": 187.5
 	},
 	"SlimeN": {
 		"mobAnim": "SlimeN",
@@ -2911,9 +2911,9 @@
 		"health": 17100,
 		"m_speed": 15,
 		"defence": 23,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 205
+		"defaultCost": 205.5
 	},
 	"SlimeO": {
 		"mobAnim": "SlimeO",
@@ -2923,9 +2923,9 @@
 		"health": 18400,
 		"m_speed": 15,
 		"defence": 24,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 223.5
+		"defaultCost": 224
 	},
 	"SlimeP": {
 		"mobAnim": "SlimeP",
@@ -2935,9 +2935,9 @@
 		"health": 19700,
 		"m_speed": 15,
 		"defence": 25,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 242
+		"defaultCost": 242.5
 	},
 	"SlimeSmallA": {
 		"mobAnim": "SlimeSmallA",
@@ -2947,9 +2947,9 @@
 		"health": 100,
 		"m_speed": 15,
 		"defence": 10,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 1
+		"defaultCost": 1.5
 	},
 	"SlimeSmallB": {
 		"mobAnim": "SlimeSmallB",
@@ -2959,9 +2959,9 @@
 		"health": 1660,
 		"m_speed": 15,
 		"defence": 12,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 17
+		"defaultCost": 17.5
 	},
 	"SlimeSmallC": {
 		"mobAnim": "SlimeSmallC",
@@ -2971,9 +2971,9 @@
 		"health": 3220,
 		"m_speed": 15,
 		"defence": 14,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 34.5
+		"defaultCost": 35
 	},
 	"SlimeSmallD": {
 		"mobAnim": "SlimeSmallD",
@@ -2983,9 +2983,9 @@
 		"health": 4780,
 		"m_speed": 15,
 		"defence": 17,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 53
+		"defaultCost": 53.5
 	},
 	"SlimeSmallE": {
 		"mobAnim": "SlimeSmallE",
@@ -2995,9 +2995,9 @@
 		"health": 6340,
 		"m_speed": 15,
 		"defence": 19,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 72
+		"defaultCost": 72.5
 	},
 	"SlimeSmallF": {
 		"mobAnim": "SlimeSmallF",
@@ -3007,9 +3007,9 @@
 		"health": 7900,
 		"m_speed": 15,
 		"defence": 22,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 93.5
+		"defaultCost": 94
 	},
 	"SlimeSmallG": {
 		"mobAnim": "SlimeSmallG",
@@ -3019,9 +3019,9 @@
 		"health": 9460,
 		"m_speed": 15,
 		"defence": 24,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 114.5
+		"defaultCost": 115
 	},
 	"SlimeSmallH": {
 		"mobAnim": "SlimeSmallH",
@@ -3031,9 +3031,9 @@
 		"health": 11020,
 		"m_speed": 15,
 		"defence": 26,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 137
+		"defaultCost": 137.5
 	},
 	"SlimeSmallI": {
 		"mobAnim": "SlimeSmallI",
@@ -3043,9 +3043,9 @@
 		"health": 12580,
 		"m_speed": 15,
 		"defence": 29,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 163.5
+		"defaultCost": 164
 	},
 	"SlimeSquareA": {
 		"mobAnim": "SlimeSquareA",
@@ -3295,9 +3295,9 @@
 		"health": 200,
 		"m_speed": 15,
 		"defence": 20,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 2
+		"defaultCost": 2.5
 	},
 	"SnakeB": {
 		"mobAnim": "SnakeB",
@@ -3307,9 +3307,9 @@
 		"health": 2540,
 		"m_speed": 15,
 		"defence": 23,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 30
+		"defaultCost": 30.5
 	},
 	"SnakeC": {
 		"mobAnim": "SnakeC",
@@ -3319,9 +3319,9 @@
 		"health": 4880,
 		"m_speed": 15,
 		"defence": 27,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 61.5
+		"defaultCost": 62
 	},
 	"SnakeD": {
 		"mobAnim": "SnakeD",
@@ -3331,9 +3331,9 @@
 		"health": 7220,
 		"m_speed": 15,
 		"defence": 30,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 95
+		"defaultCost": 95.5
 	},
 	"SnakeE": {
 		"mobAnim": "SnakeE",
@@ -3343,9 +3343,9 @@
 		"health": 9560,
 		"m_speed": 15,
 		"defence": 34,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 133.5
+		"defaultCost": 134
 	},
 	"SnakeF": {
 		"mobAnim": "SnakeF",
@@ -3355,9 +3355,9 @@
 		"health": 11900,
 		"m_speed": 15,
 		"defence": 38,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 177
+		"defaultCost": 177.5
 	},
 	"SnakeG": {
 		"mobAnim": "SnakeG",
@@ -3367,9 +3367,9 @@
 		"health": 14240,
 		"m_speed": 15,
 		"defence": 41,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 222.5
+		"defaultCost": 223
 	},
 	"SnakeH": {
 		"mobAnim": "SnakeH",
@@ -3379,9 +3379,9 @@
 		"health": 16580,
 		"m_speed": 15,
 		"defence": 45,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 278
+		"defaultCost": 278.5
 	},
 	"SnakeI": {
 		"mobAnim": "SnakeI",
@@ -3391,9 +3391,9 @@
 		"health": 18920,
 		"m_speed": 15,
 		"defence": 48,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 335.5
+		"defaultCost": 336
 	},
 	"SnakeJ": {
 		"mobAnim": "SnakeJ",
@@ -3403,9 +3403,9 @@
 		"health": 21260,
 		"m_speed": 15,
 		"defence": 52,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 408.5
+		"defaultCost": 409
 	},
 	"SnakeK": {
 		"mobAnim": "SnakeK",
@@ -3415,9 +3415,9 @@
 		"health": 23600,
 		"m_speed": 15,
 		"defence": 56,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 495
+		"defaultCost": 495.5
 	},
 	"SnakeL": {
 		"mobAnim": "SnakeL",
@@ -3427,9 +3427,9 @@
 		"health": 25940,
 		"m_speed": 15,
 		"defence": 59,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 584
+		"defaultCost": 584.5
 	},
 	"SpaceA": {
 		"mobAnim": "SpaceA",
@@ -3439,9 +3439,9 @@
 		"health": 2000,
 		"m_speed": 25,
 		"defence": 30,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 23
+		"defaultCost": 22.5
 	},
 	"SwordA": {
 		"mobAnim": "SwordA",
@@ -3451,9 +3451,9 @@
 		"health": 1000,
 		"m_speed": 15,
 		"defence": 30,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 14.5
+		"defaultCost": 13.5
 	},
 	"SwordB": {
 		"mobAnim": "SwordB",
@@ -3463,9 +3463,9 @@
 		"health": 25700,
 		"m_speed": 15,
 		"defence": 41,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 403.5
+		"defaultCost": 402.5
 	},
 	"WeaselA": {
 		"mobAnim": "WeaselA",
@@ -3475,9 +3475,9 @@
 		"health": 600,
 		"m_speed": 20,
 		"defence": 25,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 8
+		"defaultCost": 7
 	},
 	"WeaselB": {
 		"mobAnim": "WeaselB",
@@ -3487,9 +3487,9 @@
 		"health": 14640,
 		"m_speed": 20,
 		"defence": 34,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 186.5
+		"defaultCost": 185.5
 	},
 	"WeaselC": {
 		"mobAnim": "WeaselC",
@@ -3499,9 +3499,9 @@
 		"health": 28680,
 		"m_speed": 20,
 		"defence": 43,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 421
+		"defaultCost": 420
 	},
 	"WitchA": {
 		"mobAnim": "WitchA",
@@ -3511,9 +3511,9 @@
 		"health": 400,
 		"m_speed": 15,
 		"defence": 30,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 6.5
+		"defaultCost": 5.5
 	},
 	"WitchB": {
 		"mobAnim": "WitchB",
@@ -3523,9 +3523,9 @@
 		"health": 8200,
 		"m_speed": 15,
 		"defence": 39,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 125.5
+		"defaultCost": 124.5
 	},
 	"WitchC": {
 		"mobAnim": "WitchC",
@@ -3535,9 +3535,9 @@
 		"health": 16000,
 		"m_speed": 15,
 		"defence": 48,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 285.5
+		"defaultCost": 284.5
 	},
 	"WitchD": {
 		"mobAnim": "WitchD",
@@ -3547,9 +3547,9 @@
 		"health": 23800,
 		"m_speed": 15,
 		"defence": 57,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 512
+		"defaultCost": 511
 	},
 	"WitchE": {
 		"mobAnim": "WitchE",
@@ -3559,9 +3559,9 @@
 		"health": 31600,
 		"m_speed": 15,
 		"defence": 66,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 859.5
+		"defaultCost": 858.5
 	},
 	"WitchF": {
 		"mobAnim": "WitchF",
@@ -3571,9 +3571,9 @@
 		"health": 39400,
 		"m_speed": 15,
 		"defence": 75,
-		"damage": 4,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 1456
+		"defaultCost": 1455
 	},
 	"WormA": {
 		"mobAnim": "WormA",
@@ -3583,9 +3583,9 @@
 		"health": 100,
 		"m_speed": 20,
 		"defence": 5,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 0.5
+		"defaultCost": 1
 	},
 	"WormB": {
 		"mobAnim": "WormB",
@@ -3595,9 +3595,9 @@
 		"health": 1790,
 		"m_speed": 20,
 		"defence": 6,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 15.5
+		"defaultCost": 16
 	},
 	"WormC": {
 		"mobAnim": "WormC",
@@ -3607,9 +3607,9 @@
 		"health": 3480,
 		"m_speed": 20,
 		"defence": 7,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 31
+		"defaultCost": 31.5
 	},
 	"WormD": {
 		"mobAnim": "WormD",
@@ -3619,9 +3619,9 @@
 		"health": 5170,
 		"m_speed": 20,
 		"defence": 8,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 46.5
+		"defaultCost": 47
 	},
 	"WormE": {
 		"mobAnim": "WormE",
@@ -3631,9 +3631,9 @@
 		"health": 6860,
 		"m_speed": 20,
 		"defence": 10,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 63.5
+		"defaultCost": 64
 	},
 	"WormF": {
 		"mobAnim": "WormF",
@@ -3643,9 +3643,9 @@
 		"health": 8550,
 		"m_speed": 20,
 		"defence": 11,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 80
+		"defaultCost": 80.5
 	},
 	"WormG": {
 		"mobAnim": "WormG",
@@ -3655,9 +3655,9 @@
 		"health": 10240,
 		"m_speed": 20,
 		"defence": 12,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 97
+		"defaultCost": 97.5
 	},
 	"WormH": {
 		"mobAnim": "WormH",
@@ -3667,9 +3667,9 @@
 		"health": 11930,
 		"m_speed": 20,
 		"defence": 14,
-		"damage": 1,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 115.5
+		"defaultCost": 116
 	},
 	"ZombieA": {
 		"mobAnim": "ZombieA",
@@ -3679,9 +3679,9 @@
 		"health": 650,
 		"m_speed": 30,
 		"defence": 25,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 7
+		"defaultCost": 6.5
 	},
 	"ZombieB": {
 		"mobAnim": "ZombieB",
@@ -3691,17 +3691,17 @@
 		"health": 16705,
 		"m_speed": 30,
 		"defence": 34,
-		"damage": 3,
+		"damage": 2,
 		"boss": false,
-		"defaultCost": 187
+		"defaultCost": 186.5
 	},
 	"BossBear": {
 		"mobAnim": "bearWalk",
 		"deathAnimName": "bearDie",
 		"deathSound": "death",
 		"scale": 1,
-		"health": 4000,
-		"m_speed": 40,
+		"health": 6000,
+		"m_speed": 30,
 		"defence": 50,
 		"damage": 10,
 		"defaultCost": 0,
@@ -3712,8 +3712,8 @@
 		"deathAnimName": "slimeKingDie",
 		"deathSound": "death",
 		"scale": 1,
-		"health": 9000,
-		"m_speed": 40,
+		"health": 15000,
+		"m_speed": 30,
 		"defence": 50,
 		"damage": 10,
 		"defaultCost": 0,
@@ -3724,8 +3724,8 @@
 		"deathAnimName": "magicianDie",
 		"deathSound": "death",
 		"scale": 1,
-		"health": 22000,
-		"m_speed": 40,
+		"health": 40000,
+		"m_speed": 30,
 		"defence": 60,
 		"damage": 10,
 		"defaultCost": 0,
@@ -3736,8 +3736,8 @@
 		"deathAnimName": "giantDie",
 		"deathSound": "death",
 		"scale": 1,
-		"health": 45000,
-		"m_speed": 40,
+		"health": 100000,
+		"m_speed": 30,
 		"defence": 60,
 		"damage": 10,
 		"defaultCost": 0,
@@ -3748,8 +3748,8 @@
 		"deathAnimName": "stoneGolemDie",
 		"deathSound": "death",
 		"scale": 1,
-		"health": 100000,
-		"m_speed": 40,
+		"health": 250000,
+		"m_speed": 30,
 		"defence": 60,
 		"damage": 10,
 		"defaultCost": 0,
