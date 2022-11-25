@@ -273,8 +273,9 @@ export default class gameScene extends Phaser.Scene{
         this.info.alpha = 1;
         if (pointer) {
             this.preTile = this.getTileAtPointer(pointer, this.info);
-            if (!this.preTile || !this.preTile.placedUnit)
+            if (this.preTile == undefined || this.preTile.placedUnit == undefined)
                 return;
+            console.log(1);
             this.onPlaceQueue = this.preTile.placedUnit;
             this.preTile.index = "2897";
             this.onPlaceQueue.rangeView.alpha = 0.4;

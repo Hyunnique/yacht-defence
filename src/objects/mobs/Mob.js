@@ -19,6 +19,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         this.mobNum = num;
         this.moveType = mobRoute;
         this.deathCalled = false;
+        this.isBoss = mobData.boss;
         this.dotDamageDict = {};
 
         this.deathSound = this.scene.sound.add(mobData.deathSound);
