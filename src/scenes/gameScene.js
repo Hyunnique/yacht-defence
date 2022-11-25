@@ -381,7 +381,7 @@ export default class gameScene extends Phaser.Scene{
         var index = 0;
         console.log(this.spectate_player);
         this.spectate_player.forEach(e => {
-            new Unit(this, e.x + 2400, y, this.unitDB["unit" + e.id], index++, e.id);
+            new Unit(this, e.x + 2400, e.y, this.unitDB["unit" + e.id], index++, e.id);
         });
     }
 
