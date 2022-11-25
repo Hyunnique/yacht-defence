@@ -22,7 +22,7 @@ const Config = {
         default: "arcade",
         arcade: {
             fps: 60,
-            debug: process.env.DEBUG
+            debug: false
         }
     },
     plugins: {
