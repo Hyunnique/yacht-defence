@@ -7,7 +7,7 @@ import OutlinePipelinePlugin from 'phaser3-rex-plugins/plugins/outlinepipeline-p
 
 const Config = {
     backgroundColor: 0xFFFFFF,
-    scene: [PreLoadScene,MainScene,gameScene,diceScene],
+    scene: [MainScene,PreLoadScene,gameScene,diceScene],
     pixelArt: true,
     type: Phaser.WEBGL,
     scale: {
