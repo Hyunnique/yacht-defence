@@ -9,7 +9,7 @@ const Phaser = require("phaser");
 
 
 export default class Unit extends Phaser.Physics.Arcade.Sprite {
-    constructor(scene, x, y, db, index) {
+    constructor(scene, x, y, db, index,id) {
         super(scene, x, y, db.idleSprite);
 
         this.setOrigin(0.5, 0.5);
@@ -30,6 +30,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.effectName = db.effectName;
         this.tier = db.tier;
         this.index = index;
+        this.id = id;
         this.attackReady = true;
         this.play(this.idleAnim,true);
         this.rangeView = this.scene.add.circle(this.x, this.y, this.range, 0xFF0000);
@@ -143,7 +144,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
     {
         this.globalbuffAspd = Game.shopBuff.shopAspd;
         this.globalbuffedPenetration = Game.shopBuff.shopPenetration;
-        this.globalbuffAtk = (Game.shopBuff.shopAtk + this.scene.tierBonus[this.tier - 1]) / 100;
+        this.globalbuffAtk = (1 + Game.shopBuff.shopAtk / 100)*(1 + this.scene.tierBonus[this.tier - 1] / 100);
     }
     
     //매 턴 시작시 전부 지우고 다시 전부 부여!!
@@ -170,8 +171,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
 
     updateBuff()
     {
-        this.attack = (this.buffedAtk + this.globalbuffAtk + 1) * this.originAttack;
-        this.aspd = ((100 + this.buffedAspd) / 100) * ((100 + this.globalbuffAspd)/100) * this.originAspd;
+        this.attack = (1 + this.buffedAtk / 100) * this.globalbuffAtk * this.originAttack;
+        this.aspd = (1 + this.buffedAspd / 100) * ((100 + this.globalbuffAspd) / 100) * this.originAspd;
         this.penetration = this.originPenetration + this.globalbuffedPenetration;
         if (this.penetration > 1) this.penetration = 1;
         else if (this.penetration < 0) this.penetration = 0;

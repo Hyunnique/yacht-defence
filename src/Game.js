@@ -47,12 +47,11 @@ var Game = {
 
     Initialize(config) {
         this.GameConfig = config;
+        
 
         this.resizeHandler(null);
         window.onresize = this.resizeHandler;
-
         this.GameObject = new Phaser.Game(this.GameConfig);
-
         this.showUI("mainScene-default");
 
         this.Socket = io.connect("http://" + (process.env.HOST ? process.env.HOST : "localhost") + ":8080");

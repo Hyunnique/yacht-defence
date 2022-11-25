@@ -306,10 +306,10 @@ export default class gameScene extends Phaser.Scene{
         }
     }
 
-    initialPlace(unitData)
+    initialPlace(unitData,unitID)
     {
         this.info.alpha = 1;
-        this.onPlaceQueue = new Unit(this, this.input.activePointer.x, this.input.activePointer.y, unitData, this.unitIndex++);
+        this.onPlaceQueue = new Unit(this, this.input.activePointer.x, this.input.activePointer.y, unitData, this.unitIndex++,unitID);
         this.onPlaceQueue.rangeView.alpha = 0.4;
         this.onPlaceQueue.buffRangeView.alpha = 0.6;
         this.moveUnit();
@@ -373,7 +373,6 @@ export default class gameScene extends Phaser.Scene{
 
     resetBuff()
     {
-        
         this.m_player.forEach((e) => {
             e.removeBuff();
         });
@@ -499,7 +498,7 @@ export default class gameScene extends Phaser.Scene{
     // Unit ID를 파라미터로 가짐
     receiveUnit(unitID, tier) {
         this.placemode = true;
-        this.initialPlace(this.unitDB["unit" + unitID]);
+        this.initialPlace(this.unitDB["unit" + unitID],unitID);
         this.handleTierBonus(tier, true);
     }
     
