@@ -26,6 +26,16 @@ var Game = {
     shopOpen: false,
     gameVolume: 1,
     
+    bgmSoundConfig: {
+        mute: false,
+        volume: 1
+    },
+
+    effectSoundConfig: {
+        mute: false,
+        volume: 1
+    },
+
     shopBuff: {
         shopAtk: 0,
         shopPenetration: 0,
@@ -330,7 +340,7 @@ var Game = {
 
             this.GameObject.scene.getScene("gameScene").shopBuySound[soundidx].play({
                 mute: false,
-                volume: 0.7 * this.gameVolume,
+                volume: 0.7 * this.effectSoundConfig.volume,
                 rate: 1,
                 loop: false
             });
@@ -479,7 +489,7 @@ var Game = {
         this.showUI("common-shop");
         this.GameObject.scene.getScene("gameScene").shopSound.play({
             mute: false,
-            volume: 0.7 * this.gameVolume,
+            volume: 0.7 * this.effectSoundConfig.volume,
             rate: 1,
             loop: false
         });

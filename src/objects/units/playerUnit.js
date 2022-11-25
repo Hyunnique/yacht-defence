@@ -81,7 +81,6 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.effect = new UnitEffect(scene, this, this.effectIsFlip, db.name);
         
         this.target = [];
-        this.attackEvent;
         //this.setMotionSpeed();
 
         this.kills = 0;
@@ -227,7 +226,6 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
     remove() {
         this.scene.events.off("update", this.update, this);
         this.rangeView.destroy();
-        this.scene.time.removeEvent(this.attackEvent);
         this.destroy();
     }
     

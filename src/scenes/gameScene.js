@@ -199,6 +199,8 @@ export default class gameScene extends Phaser.Scene{
 
         this.physics.add.overlap(this.m_projectiles, this.m_mobs, (projectile, mob) => mob.hit(projectile), null, this);
         this.cameras.main.setBounds(0, 0, 2400, 1440);
+
+        this.input.on("pointerdown", this.clickHandler, this);
     }
 
     update(time, delta) {
@@ -239,6 +241,23 @@ export default class gameScene extends Phaser.Scene{
         }
     }
 
+    clickHandler(pointer)
+    {
+        if (this.PhaseText == "Place Phase" && pointer.rightButtonDown())
+            this.moveUnit(pointer);
+        else if (pointer.leftButtonDown()) {
+            this.unitInfoHandler(pointer);
+        }
+    }
+
+    unitInfoHandler(pointer)
+    {
+        if (!this.placemode) {
+            let t = this.getTileAtPointer(pointer, this.info);
+            console.log(t.placedUnit == undefined? "empty!" : t.placedUnit);
+        }
+    }
+
     initialPlace(unitData)
     {
         this.info.alpha = 1;
@@ -248,46 +267,58 @@ export default class gameScene extends Phaser.Scene{
         this.moveUnit();
     }
 
-    moveUnit()
+    moveUnit(pointer)
     {
+        this.placemode = true;
+        this.info.alpha = 1;
+        if (pointer) {
+            this.preTile = this.getTileAtPointer(pointer, this.info);
+            if (!this.preTile || !this.preTile.placedUnit)
+                return;
+            this.onPlaceQueue = this.preTile.placedUnit;
+            this.preTile.index = "2897";
+            this.onPlaceQueue.rangeView.alpha = 0.4;
+            this.onPlaceQueue.buffRangeView.alpha = 0.6;
+        }
+        else {
+            this.preTile = undefined;
+        }
         this.input.on('pointermove', (pointer) => {
-            if (this.placemode) {
-                let t = this.getTileAtPointer(pointer, this.info);
-                if (!t || t.index == "2898") {
-                    this.onPlaceQueue.rangeView.alpha = 0;
-                    this.onPlaceQueue.buffRangeView.alpha = 0;
-                    this.onPlaceQueue.alpha = 0;
-                }
-                else {
-                    this.onPlaceQueue.rangeView.alpha = 0.4;
-                    this.onPlaceQueue.buffRangeView.alpha = 0.6;
-                    this.onPlaceQueue.alpha = 1;
-                }
-                this.onPlaceQueue.setX(t.getCenterX());
-                this.onPlaceQueue.setY(t.getCenterY());
+            let t = this.getTileAtPointer(pointer, this.info);
+            if (!t || t.index == "2898") {
+                this.onPlaceQueue.rangeView.alpha = 0;
+                this.onPlaceQueue.buffRangeView.alpha = 0;
+                this.onPlaceQueue.alpha = 0;
             }
-        });
-        this.input.on('pointerdown', (pointer) => {
-            if (this.placemode) {
-                let t = this.getTileAtPointer(pointer, this.info);
-                if (t.index == "2897") {
-                    this.m_player.push(this.onPlaceQueue);
-                    t.index = "2898";
-                    this.info.alpha = 0;
-                    this.onPlaceQueue.rangeView.alpha = 0;
-                    this.onPlaceQueue.buffRangeView.alpha = 0;
-                    t.placedUnit = this.onPlaceQueue;
-                    this.placemode = false;
-                    this.input.off("pointermove");
-                    this.input.off("pointerdown");
-                    this.onPlaceQueue.setX(t.getCenterX());
-                    this.onPlaceQueue.setY(t.getCenterY());
-                    this.resetBuff();
-                    this.onPlaceQueue = undefined;
-                    this.placeModeController(true);
-                }
+            else {
+                this.onPlaceQueue.rangeView.alpha = 0.4;
+                this.onPlaceQueue.buffRangeView.alpha = 0.6;
+                this.onPlaceQueue.alpha = 1;
             }
-        },this);
+            this.onPlaceQueue.setX(t.getCenterX());
+            this.onPlaceQueue.setY(t.getCenterY());
+        }
+        );
+        this.input.on('pointerdown', this.unitPlaceHandler, this);
+    }
+
+    unitPlaceHandler(pointer) {
+        let t = this.getTileAtPointer(pointer, this.info);
+        if (t.index == "2897") {
+            this.m_player.push(this.onPlaceQueue);
+            t.index = "2898";
+            this.info.alpha = 0;
+            this.onPlaceQueue.rangeView.alpha = 0;
+            this.onPlaceQueue.buffRangeView.alpha = 0;
+            t.placedUnit = this.onPlaceQueue;
+            this.placemode = false;
+            this.input.off("pointermove");
+            this.input.off("pointerdown",this.unitPlaceHandler,this);
+            this.onPlaceQueue.setX(t.getCenterX());
+            this.onPlaceQueue.setY(t.getCenterY());
+            this.resetBuff();
+            this.onPlaceQueue = undefined;
+        }     
     }
 
     resetBuff()
@@ -305,44 +336,26 @@ export default class gameScene extends Phaser.Scene{
         });
     }
 
-    placeModeController(bool)
-    {
-        if (bool)
-        {
-            this.input.once("pointerdown", (pointer) => {
-                this.preTile = this.getTileAtPointer(pointer, this.info);
-                this.info.alpha = 1;
-                this.m_player.splice(this.m_player.findIndex(e => e.index == this.preTile.placedUnit.index), 1);
-                this.preTile.index = "2897";
-                this.onPlaceQueue = this.preTile.placedUnit;
-                this.onPlaceQueue.rangeView.alpha = 0.4;
-                this.onPlaceQueue.buffRangeView.alpha = 0.6;
-                this.placemode = true;
-                this.moveUnit();
-            });  
-        }
-        else {
-            this.input.off("pointerdown");
-            this.input.off("pointermove");
-            this.info.alpha = 0;
-            if (this.onPlaceQueue != undefined) {
-                if (this.preTile == undefined) { 
-                    this.handleTierBonus(this.onPlaceQueue.tier, false);
-                    this.onPlaceQueue.remove();                    
-                }
-                else {
-                    this.onPlaceQueue.setX(this.preTile.getCenterX());
-                    this.onPlaceQueue.setY(this.preTile.getCenterY());
-                    this.preTile.placedUnit = this.onPlaceQueue;
-                    
-                    this.preTile.index = "2898";
-                }
-                this.onPlaceQueue.rangeView.alpha = 0;
-                this.onPlaceQueue.buffRangeView.alpha = 0;   
-                this.onPlaceQueue = undefined;
-                this.preTile = undefined;
+    placeModeTimeOver() {
+        this.input.off("pointerdown", this.unitPlaceHandler, this);
+        this.input.off("pointermove");
+        this.info.alpha = 0;
+        if (this.onPlaceQueue != undefined) {
+            if (this.preTile == undefined) {
+                this.handleTierBonus(this.onPlaceQueue.tier, false);
+                this.onPlaceQueue.remove();
             }
-                
+            else {
+                this.onPlaceQueue.setX(this.preTile.getCenterX());
+                this.onPlaceQueue.setY(this.preTile.getCenterY());
+                this.preTile.placedUnit = this.onPlaceQueue;
+                    
+                this.preTile.index = "2898";
+            }
+            this.onPlaceQueue.rangeView.alpha = 0;
+            this.onPlaceQueue.buffRangeView.alpha = 0;
+            this.onPlaceQueue = undefined;
+            this.preTile = undefined;
         }
     }
 
@@ -422,7 +435,7 @@ export default class gameScene extends Phaser.Scene{
         //this.phaseTimer = this.time.delayedCall(20000, this.toBattlePhase, [], this);
     }
     toBattlePhase() {
-        this.placeModeController(false);
+        this.placeModeTimeOver();
         this.PhaseText = "Battle Phase";
         this.eventChecked = false;
         this.startRound();
