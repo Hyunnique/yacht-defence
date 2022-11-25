@@ -47,6 +47,7 @@ var Game = {
 
     Initialize(config) {
         this.GameConfig = config;
+        this.GameObject = new Phaser.Game(this.GameConfig);
 
         this.resizeHandler(null);
         window.onresize = this.resizeHandler;
@@ -54,7 +55,7 @@ var Game = {
         this.showUI("mainScene-default");
 
         this.Socket = io.connect("http://" + (process.env.HOST ? process.env.HOST : "localhost") + ":8080");
-
+        
         document.getElementsByClassName("multi-matchmaking")[0].onclick = (e) => {
             
             if (!this.MatchmakeJoined) {
@@ -95,8 +96,7 @@ var Game = {
 
         this.Socket.on("matchmaking-done", (msg) => {
             console.log("matchmaking done!");
-            this.GameObject = new Phaser.Game(this.GameConfig);
-
+            this.showScene("PreLoadScene");
             this.TimelimitTimer = setInterval(() => {
                 if (this.currentTimeLimit > 0) this.currentTimeLimit--;
                 document.getElementsByClassName("ui-phaseTimelimit-value")[0].innerText = this.currentTimeLimit;
@@ -483,7 +483,7 @@ var Game = {
                 break;
             default:
                 this.GameObject.scene.start(sceneName);
-                this.showUI(sceneName + "-default");
+                //this.showUI(sceneName + "-default");
                 break;
         }
     },
