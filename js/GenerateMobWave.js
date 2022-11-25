@@ -41,13 +41,7 @@ module.exports = function generateRound(SpecsheetGen, round, roundCost, hpFactor
     // 물론 중복해서 뽑힐 경우는 중복 가능
 
     const WaveMonsterCount = [10, 15, 20];
-    let waveBoss = Object.keys(SpecsheetGen).filter((x) => SpecsheetGen[x].boss)[Math.floor(((round - 5) % 25) / 5)];
-        currentWaveInfo.push({
-            "mobName": "BossGolem",
-            "mobCount": 1,
-            "hpFactor": hpFactor,
-            "mobRoute": "X"
-        });
+
     if (round % 5 != 0) {
         // 보스 라운드가 아닐 때
     } else {
