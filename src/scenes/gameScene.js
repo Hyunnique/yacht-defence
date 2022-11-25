@@ -390,6 +390,7 @@ export default class gameScene extends Phaser.Scene{
             console.log(e);
             e.remove()
         });
+        this.spectate_player_units = [];
     }
 
     resetBuff()
