@@ -88,7 +88,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.isTarget = false;
 
         this.pipelineInstance = scene.plugins.get('rexOutlinePipeline').add(this, {
-            thickness: 3,
+            thickness: 4,
             outlineColor: Game.tierColors[this.tier - 1],
             quality: 1
         });
