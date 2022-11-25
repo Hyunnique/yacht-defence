@@ -14,6 +14,7 @@ const playerColors = ["lightgreen", "lightcoral", "lightskyblue", "lightgoldenro
 // 전역변수로 유지해서 Scene에서도 접근할 수 있게 함
 var Game = {
     MatchmakeJoined: false,
+    ClientID: null,
     GameObject: null,
     GameConfig: null,
     Socket: null,
@@ -40,11 +41,31 @@ var Game = {
 
         this.showUI("mainScene-default");
 
+        this.Socket = io.connect("http://" + (process.env.HOST ? process.env.HOST : "localhost") + ":8080");
+
         document.getElementsByClassName("multi-matchmaking")[0].onclick = (e) => {
             
             if (!this.MatchmakeJoined) {
                 this.MatchmakeJoined = true;
-                this.Socket = io.connect("http://" + (process.env.HOST ? process.env.HOST : "localhost") + ":8080");
+                this.ClientID = this.Socket.id;
+                this.Socket.emit("connect-matchmaking", {
+                    clientID: this.ClientID,
+                    name: document.getElementsByClassName("multi-name")[0].value
+                });
+                
+                this.Socket.on('reconnecting', () => {
+
+                });
+
+                this.Socket.on('reconnection', () => {
+                    this.Socket.emit('connect-reconnect', {
+                        clientID: this.Socket.id,
+                        beforeID: this.ClientID
+                    });
+
+                    this.ClientID = this.Socket.id;
+                });
+
                 this.serverEventHandler();
             }
         };
@@ -75,11 +96,6 @@ var Game = {
         this.Socket.on("game-defaultData", (msg) => {
             this.PlayerCount = msg.playerCount;
             this.PlayerIndex = msg.playerIndex;
-
-            this.Socket.emit("connect-playerName", {
-                playerIndex: this.PlayerIndex,
-                name: document.getElementsByClassName("multi-name")[0].value
-            });
         });
 
         this.Socket.on("game-wavedata", (msg) => {
