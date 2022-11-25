@@ -210,7 +210,7 @@ fs.readdir("./src/assets/spritesheets/mobs")
             for (let i = 0; i < specData[x].variations; i++) {
                 specData_result[x + String.fromCharCode(65 + i)] = JSON.parse(JSON.stringify(specData[x]));
                 specData_result[x + String.fromCharCode(65 + i)].mobAnim = x + String.fromCharCode(65 + i);
-                specData_result[x + String.fromCharCode(65 + i)].health = Math.floor(specData_result[x + String.fromCharCode(65 + i)].health * (1 + (i * monsterDelta * 1.3)));
+                specData_result[x + String.fromCharCode(65 + i)].health = Math.floor(specData_result[x + String.fromCharCode(65 + i)].health * (1 + (i * monsterDelta * 1.5)));
                 specData_result[x + String.fromCharCode(65 + i)].defence = Math.floor(specData_result[x + String.fromCharCode(65 + i)].defence * (1 + (0.02 * i * monsterDelta)));
 
                 var hp = specData_result[x + String.fromCharCode(65 + i)].health;
