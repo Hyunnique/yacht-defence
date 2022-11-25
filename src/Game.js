@@ -8,7 +8,6 @@ const unitGIF = importAll(require.context("./assets/images/units", false, /\.gif
 const icons = importAll(require.context("./assets/images/icons", false, /\.png$/));
 import unitSpecSheets from "./assets/specsheets/unitSpecsheet.json";
 import itemSpecSheets from "./assets/specsheets/shopItemSheet.json";
-import { socketMap } from "../js/GameServer";
 
 const playerColors = ["lightgreen", "lightcoral", "lightskyblue", "lightgoldenrodyellow"];
 
