@@ -24,7 +24,7 @@ export default class PreLoadScene extends Phaser.Scene {
     importedMobs = null;
 
     constructor() {
-        super("bootGame");
+        super("PreLoadScene");
     }
 
     importAll(r) {
