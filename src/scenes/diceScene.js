@@ -286,7 +286,7 @@ export default class diceScene extends Phaser.Scene{
                 document.getElementsByClassName("ui-bestHand-value")[0].style.color = "#ff1b1b";
                 this.tier1Sound.play({
                     mute: false,
-                    volume: 0.5 * Game.gameVolume,
+                    volume: 0.5 * Game.effectSoundConfig.volume,
                     rate: 1,
                     loop: false
                 })
@@ -295,7 +295,7 @@ export default class diceScene extends Phaser.Scene{
                 document.getElementsByClassName("ui-bestHand-value")[0].style.color = "#ffd700";
                 this.tier2Sound.play({
                     mute: false,
-                    volume: 0.5 * Game.gameVolume,
+                    volume: 0.5 * Game.effectSoundConfig.volume,
                     rate: 1,
                     loop: false 
                 })
@@ -304,7 +304,7 @@ export default class diceScene extends Phaser.Scene{
                 document.getElementsByClassName("ui-bestHand-value")[0].style.color = "#d5d5d5";
                 this.tier3Sound.play({
                     mute: false,
-                    volume: 0.5 * Game.gameVolume,
+                    volume: 0.5 * Game.effectSoundConfig.volume,
                     rate: 1,
                     loop: false
                 })
@@ -313,7 +313,7 @@ export default class diceScene extends Phaser.Scene{
                 document.getElementsByClassName("ui-bestHand-value")[0].style.color = "#954c4c";
                 this.tier4Sound.play({
                     mute: false,
-                    volume: 0.5 * Game.gameVolume,
+                    volume: 0.5 * Game.effectSoundConfig.volume,
                     rate: 1,
                     loop: false
                 })

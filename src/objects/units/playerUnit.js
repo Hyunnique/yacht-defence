@@ -183,7 +183,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.attackReady = false;
         this.atkSoundName.play({
             mute: false,
-            volume: 0.2 * Game.gameVolume,
+            volume: 0.2 * Game.effectSoundConfig.volume,
             rate: 1,
             loop: false
             });
@@ -193,10 +193,10 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
 
         if (this.attackType == 0) {
             this.target.forEach(e => {
-                e.gameObject.Health -= this.attack;
-                if (e.gameObject.Health <= 0) {
-                    this.kills++;
-                }
+                if (e.gameObject.Health) e.gameObject.Health -= this.attack;
+                // if (e.gameObject.Health <= 0) {
+                //     this.kills++;
+                // }
             })
         }
         else if (this.attackType == 1) {

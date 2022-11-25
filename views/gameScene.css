@@ -115,8 +115,8 @@
 
 .ui-gameScene-bottomFloating .ui-hpArea-row {
     position: absolute;
-    left: 5%;
-    width: 90%;
+    /* left: 5%; */
+    width: 95%;
     height: 40%;
 
     text-align: center;
@@ -144,8 +144,11 @@
 
 .ui-gameScene-bottomFloating .ui-hpArea-playerText {
     display: inline-block;
-    width: 30%;
+    width: 50%;
     text-align: center;
+    margin-right: 0.1rem;
+
+    font-size: 0.9rem;
 }
 
 .ui-gameScene-bottomFloating .ui-hpArea-playerhp {
@@ -276,11 +279,12 @@
 .ui-gameScene-bottomFloating .ui-itemOverallArea {
     position: absolute;
     top: 30%;
-    left: 88%;
+    left: 89%;
     width: 23%;
     height: 90%;
 }
 
 .ui-gameScene-bottomFloating .ui-itemOverallArea-overall {
     list-style: none;
+    font-size: 0.9rem;
 }

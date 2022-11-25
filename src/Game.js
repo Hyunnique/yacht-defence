@@ -24,7 +24,6 @@ var Game = {
     TimelimitTimer: null,
     currentTimeLimit: 30,
     shopOpen: false,
-    gameVolume: 1,
     
     bgmSoundConfig: {
         mute: false,
@@ -33,7 +32,7 @@ var Game = {
 
     effectSoundConfig: {
         mute: false,
-        volume: 1
+        volume: 0.3
     },
 
     shopBuff: {
@@ -367,7 +366,7 @@ var Game = {
         this.Socket.on('shop-itemFailure', (msg) => {
             this.GameObject.scene.getScene("gameScene").shopBuyFail.play({
                 mute: false,
-                volume: 0.7 * this.gameVolume,
+                volume: 0.7 * this.effectSoundConfig.volume,
                 rate: 1,
                 loop: false
             });
