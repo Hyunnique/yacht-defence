@@ -35,11 +35,11 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
                 break;
             case "C":
                 this.path = pathC; 
-                this.m_speed /= 2;
+                // this.m_speed /= 2;
                 break;
             case "D":
                 this.path = pathD;
-                this.m_speed /= 2;
+                // this.m_speed /= 2;
                 break;
             case "X":
                 this.path = pathBoss;
