@@ -23,9 +23,20 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         this.dotDamageDict = {};
 
         this.deathSound = this.scene.sound.add(mobData.deathSound);
-        this.healthBar = this.scene.add.image(this.x-48, this.y - 24, "healthBar").setOrigin(0,0.5);
+        
         this.play(mobData.mobAnim);
-        this.flipX = ! mobData.boss;
+        this.flipX = !mobData.boss;
+
+        if (!this.isBoss) {
+            this.healthBar = this.scene.add.image(this.x-48, this.y - 24, "healthBar").setOrigin(0,0.5);
+            this.healthBarWidth = this.healthBar.displayWidth;
+        }
+        else if (this.isBoss) {
+            Game.showUI("bossArea");
+            document.getElementsByClassName("ui-bossArea-bosshp-bar")[0].style.width = (this.Health / this.MaxHealth) * 100 + "%";
+            document.getElementsByClassName("ui-bossArea-bosshp-text")[0].innerText = this.Health + "/" + this.MaxHealth;
+        }
+        
 
         switch (this.moveType) {
             case "A":
@@ -65,7 +76,6 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
             yoyo: false
         });
 
-        this.healthBarWidth = this.healthBar.displayWidth;
         // this.scene.tweens.add({
         //     targets: this.healthBar,
         //     displayWidth: this.healthBarWidth
@@ -75,8 +85,14 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
     }
     update()
     {   
-        this.healthBar.setPosition(this.getCenter().x-48, this.getCenter().y - 24);
-        this.healthBar.displayWidth = this.healthBarWidth * (this.Health / this.MaxHealth);
+        if (!this.isBoss) {
+            this.healthBar.setPosition(this.getCenter().x-48, this.getCenter().y - 24);
+            this.healthBar.displayWidth = this.healthBarWidth * (this.Health / this.MaxHealth);
+        }
+        else if (this.isBoss) {
+            document.getElementsByClassName("ui-bossArea-bosshp-bar")[0].style.width =  (this.Health / this.MaxHealth) * 100  + "%";
+            document.getElementsByClassName("ui-bossArea-bosshp-text")[0].innerText = this.Health + "/" + this.MaxHealth;
+        }
 
         if (this.Health <= 0 && !this.deathCalled) {
             this.death();
@@ -96,7 +112,9 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         Game.updateMobCounter();
         this.body.enable = false;
 
-        this.healthBar.destroy();
+        if (!this.isBoss) this.healthBar.destroy();
+        else if (this.isBoss) Game.hideUI("bossArea");
+
         this.tween.remove();
         this.body.destroy();
         this.play(this.deathAnimName);
