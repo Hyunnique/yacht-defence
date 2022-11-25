@@ -328,6 +328,8 @@ var Game = {
                 loop: false
             });
             
+            this.GameObject.scene.getScene("gameScene").resetBuff();
+
             document.getElementsByClassName("ui-shop-item")[msg.uiIndex].style.display = "none";
 
             this.updateItemUI(msg);
