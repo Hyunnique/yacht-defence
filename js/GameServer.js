@@ -129,11 +129,12 @@ module.exports = {
 
             socket.on('connect-reconnect', (msg) => {
                 
-                let { clientID, beforeID } = msg;
-
-                console.log(msg);
-                console.log("reconnect!");
+                beforeID = msg.beforeID;
+                clientID = socket.id;
                 
+                console.log("reconnect!");
+                console.log(" " + beforeID);
+                console.log(" " + clientID);
                 if (!this.socketMap[beforeID]) {
                     socket.disconnect();
                     return;
@@ -144,14 +145,14 @@ module.exports = {
 
                 this.Rooms[this.socketMap[clientID].roomId].players[this.socketMap[clientID].roomIndex].socket = socket;
 
-                this.onGameReady(socket, currentRoomId);
-                this.onDiceConfirm(socket, currentRoomId);
-                this.onDiceResult(socket, currentRoomId);
-                this.onBattlePhaseDone(socket, currentRoomId);
-                this.onPlayerBaseDamage(socket, currentRoomId);
-                this.onShopItemBuy(socket, currentRoomId);
-                this.onChatMessage(socket, currentRoomId);
-                this.onDiceLastChance(socket, currentRoomId);
+                this.onGameReady(socket, this.socketMap[clientID].roomId);
+                this.onDiceConfirm(socket, this.socketMap[clientID].roomId);
+                this.onDiceResult(socket, this.socketMap[clientID].roomId);
+                this.onBattlePhaseDone(socket, this.socketMap[clientID].roomId);
+                this.onPlayerBaseDamage(socket, this.socketMap[clientID].roomId);
+                this.onShopItemBuy(socket, this.socketMap[clientID].roomId);
+                this.onChatMessage(socket, this.socketMap[clientID].roomId);
+                this.onDiceLastChance(socket, this.socketMap[clientID].roomId);
             });
 
             socket.on('disconnect', () => {
