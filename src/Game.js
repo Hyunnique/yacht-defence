@@ -37,7 +37,7 @@ var Game = {
 
     effectSoundConfig: {
         mute: false,
-        volume: 0.5
+        volume: 0.3
     },
 
     shopBuff: {
@@ -146,7 +146,7 @@ var Game = {
 
                             for (let i = 0; i < this.PlayerCount; i++) 
                                 document.getElementsByClassName("ui-hpArea-player")[i].style.border = "none";
-                            document.getElementsByClassName("ui-hpArea-player")[i].style.border = "2px solid gold";
+                            document.getElementsByClassName("ui-hpArea-player")[i].style.border = "2px solid white";
 
                             this.GameObject.scene.getScene("gameScene").cameras.main.scrollX = 0;
                             this.GameObject.scene.getScene("gameScene").cameras.main.scrollY = 0;
@@ -327,16 +327,16 @@ var Game = {
                     document.getElementsByClassName("ui-unitReward-unitType")[i].innerText = unitType;
                     document.getElementsByClassName("ui-unitReward-unitSpec-atk")[i].innerText = "ATK : " + unitSpecSheets["unit" + unitArray[i]].attack;
 
-                    if (unitSpecSheets["unit" + unitArray[i]] < 0.6) {
+                    if (unitSpecSheets["unit" + unitArray[i]].aspd < 0.6) {
                         document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : VERY SLOW";
                     }
-                    else if (unitSpecSheets["unit" + unitArray[i]] < 0.8) {
+                    else if (unitSpecSheets["unit" + unitArray[i]].aspd < 0.8) {
                         document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : SLOW";
                     }
-                    else if (unitSpecSheets["unit" + unitArray[i]] < 1.3) {
+                    else if (unitSpecSheets["unit" + unitArray[i]].aspd < 1.3) {
                         document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : NORMAL"
                     }
-                    else if (unitSpecSheets["unit" + unitArray[i]] < 1.6) {
+                    else if (unitSpecSheets["unit" + unitArray[i]].aspd < 1.6) {
                         document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : FAST"
                     }
                     else {
