@@ -9,7 +9,7 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
         if (shooter.playerNum == 0)
             this.scene.m_projectiles.add(this);
         else
-            this.scene.spectate_player_projectiles[playerNum].add(this);
+            this.scene.spectate_player_projectiles[shooter.playerNum].add(this);
         this.shooter = shooter;
         this.speed = shooter.projectileSpeed;
         this.scale = 0.4;
@@ -22,8 +22,8 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
         this.explodeScale = shooter.explodeScale;
         this.hitSoundName = shooter.hitSoundName;  
         this.isTarget = false;
-        if (shooter.playerNum != 0)
-            this.setVisible(false);
+        // if (shooter.playerNum != 0)
+        //     this.setVisible(false);
 
         try {
             this.target = new Phaser.Math.Vector2(this.shooter.target[0].gameObject.getCenter());    
