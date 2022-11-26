@@ -165,7 +165,7 @@ export default class gameScene extends Phaser.Scene {
 
             if (deltaY > 0) {
                 var newZoom = this.cameras.main.zoom - .2;
-                if (newZoom > 0.7) {
+                if (newZoom > 0.3) {
                     this.cameras.main.zoom = newZoom;
                 }
             }
