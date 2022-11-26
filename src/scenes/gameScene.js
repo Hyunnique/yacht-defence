@@ -81,73 +81,70 @@ export default class gameScene extends Phaser.Scene{
         this.mapHeight = 1440;
         this.mapOffsetX = 0;
         this.mapOffsetY = 0;
-        
-        const map = this.make.tilemap({key: "map_forest"});
-        const mapOthers = this.make.tilemap({key: "map_forest"});
 
-        const outside_ground = map.addTilesetImage("outside_ground", "outside_ground");
-        const outside_roof = map.addTilesetImage("outside_roof", "outside_roof");
-        const outside_wall = map.addTilesetImage("outside_wall", "outside_wall");
-        const outside_stair = map.addTilesetImage("outside_stair", "outside_stair");
-        const outside_B = map.addTilesetImage("Outside_B", "outside_B");
-        const possible = map.addTilesetImage("possible", "possible");
+        let map = [];
+        let outside_ground = [];
+        let outside_roof = [];
+        let outside_wall = [];
+        let outside_stair = [];
+        let outside_B = [];
+        let possible = [];
+        let tile = [];
+        let wall = [];
+        let bridge = [];
+        let grass = [];
+        let tree1_back = [];
+        let tree2_back = [];
+        let tree1_front = [];
+        let tree2_front = [];
 
-        const tile = map.createLayer("tile", outside_ground, 0, 0);
-        const wall = map.createLayer("wall", outside_wall, 0, 0);
-        const bridge = map.createLayer("bridge", outside_B, 0, 0);
-        const grass = map.createLayer("grass", outside_B, 0, 0);
-        const tree1_back = map.createLayer("Tree1_B", outside_B, 0, 0);
-        const tree2_back = map.createLayer("Tree2_B", outside_B, 0, 0);
-        const tree1_front = map.createLayer("Tree1_F", outside_B, 0, 0);
-        const tree2_front = map.createLayer("Tree2_F", outside_B, 0, 0);
+        for (let i = 0; i < 4; i++) {
+            map.push(this.make.tilemap({key: "map_forest"}));
+            outside_ground.push(map[i].addTilesetImage("outside_ground", "outside_ground"));
+            outside_roof.push(map[i].addTilesetImage("outside_roof", "outside_roof"));
+            outside_wall.push(map[i].addTilesetImage("outside_wall", "outside_wall"));
+            outside_stair.push(map[i].addTilesetImage("outside_stair", "outside_stair"));
+            outside_B.push(map[i].addTilesetImage("Outside_B", "outside_B"));
+            possible.push(map[i].addTilesetImage("possible", "possible"));
+            tile.push(map[i].createLayer("tile", outside_ground, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
+            wall.push(map[i].createLayer("wall", outside_wall, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
+            bridge.push(map[i].createLayer("bridge", outside_B, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
+            grass.push(map[i].createLayer("grass", outside_B, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
+            tree1_back.push(map[i].createLayer("Tree1_B", outside_B, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
+            tree2_back.push(map[i].createLayer("Tree2_B", outside_B, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
+            tree1_front.push(map[i].createLayer("Tree1_F", outside_B, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
+            tree2_front.push(map[i].createLayer("Tree2_F", outside_B, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
+        }
 
-        const tileOthers = mapOthers.createLayer("tile", outside_ground, 2400, 0);
-        const wallOthers = mapOthers.createLayer("wall", outside_wall, 2400, 0);
-        const bridgeOthers = mapOthers.createLayer("bridge", outside_B, 2400, 0);
-        const grassOthers = mapOthers.createLayer("grass", outside_B, 2400, 0);
-        const tree1_backOthers = mapOthers.createLayer("Tree1_B", outside_B, 2400, 0);
-        const tree2_backOthers = mapOthers.createLayer("Tree2_B", outside_B, 2400, 0);
-        const tree1_frontOthers = mapOthers.createLayer("Tree1_F", outside_B, 2400, 0);
-        const tree2_frontOthers = mapOthers.createLayer("Tree2_F", outside_B, 2400, 0);
-
-        this.info = map.createLayer("info", possible, 0, 0); 
+        this.info = map[0].createLayer("info", possible, 0, 0); 
         this.info.alpha = 0;
         // info layer 기준 tileset index가
         // 배치 가능 2897
         // 배치 불가능 2898
 
-        const tileData = outside_ground.tileData;
-        for (let tileid in tileData) {
-            let layer = map.layers[0];
-            layer.data.forEach(tileRow => {
-                tileRow.forEach(tile => {
-                    if (tile.index - outside_ground.firstgid === parseInt(tileid, 10)) {
-                        this.animatedTiles.push(
-                            new AnimatedTile(
-                                tile,
-                                tileData[tileid].animation,
-                                outside_ground.firstgid
-                            )
-                        )
-                    }
-                });
-            });
 
-            layer = mapOthers.layers[0];
-            layer.data.forEach(tileRow => {
-                tileRow.forEach(tile => {
-                    if (tile.index - outside_ground.firstgid === parseInt(tileid, 10)) {
-                        this.animatedTiles.push(
-                            new AnimatedTile(
-                                tile,
-                                tileData[tileid].animation,
-                                outside_ground.firstgid
-                            )
-                        )
-                    }
-                });
-            });
+        for (let i = 0; i < 4; i++) {
+            const tileData = outside_ground[i].tileData;
+            for (let tileid in tileData) {
+                map.forEach((m) => {
+                    let layer = m.layers[0];
+                    layer.data.forEach(tileRow => {
+                        tileRow.forEach(tile => {
+                            if (tile.index - outside_ground[i].firstgid === parseInt(tileid, 10)) {
+                                this.animatedTiles.push(
+                                    new AnimatedTile(
+                                        tile,
+                                        tileData[tileid].animation,
+                                        outside_ground[i].firstgid
+                                    )
+                                )
+                            }
+                        });
+                    });
+                })
+            }
         }
+
         
         let help = this.add.text(0, 0, '', { font: '48px monospace' }); 
         let cursors = this.input.keyboard.createCursorKeys();
