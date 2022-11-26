@@ -208,6 +208,9 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
                 this.destroy();
             }, [], this.scene);
         }
+        else {
+            this.destroy();
+        }
     }
     
     hit(projectile) {
