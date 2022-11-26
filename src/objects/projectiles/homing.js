@@ -21,8 +21,8 @@ export default class Homing extends Phaser.Physics.Arcade.Sprite {
         this.target = [];
         this.isTarget = false;
 
-        // if (shooter.playerNum != 0)
-        //     this.setVisible(false);
+        if (shooter.playerNum != 0)
+            this.setVisible(false);
 
         this.play(shooter.projectileName);
 
@@ -33,6 +33,10 @@ export default class Homing extends Phaser.Physics.Arcade.Sprite {
     }
 
     update() {
+        if (this.playerNum == this.scene.currentView)
+            this.setVisible(true);
+        else
+            this.setVisible(false);
         this.flytoMob(this.shooter.target);
     }
 

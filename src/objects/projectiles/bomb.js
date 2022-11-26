@@ -22,8 +22,8 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
         this.explodeScale = shooter.explodeScale;
         this.hitSoundName = shooter.hitSoundName;  
         this.isTarget = false;
-        // if (shooter.playerNum != 0)
-        //     this.setVisible(false);
+        if (shooter.playerNum != 0)
+            this.setVisible(false);
 
         try {
             this.target = new Phaser.Math.Vector2(this.shooter.target[0].gameObject.getCenter());    
@@ -46,6 +46,10 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
 
     update()
     {
+        if (this.playerNum == this.scene.currentView)
+            this.setVisible(true);
+        else
+            this.setVisible(false);
         var distance = Phaser.Math.Distance.Between(this.x, this.y, this.target.x, this.target.y);
         if (distance < 20 || distance > this.shooter.range)
             this.explode();        
