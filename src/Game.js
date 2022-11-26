@@ -29,7 +29,7 @@ var Game = {
     TimelimitTimer: null,
     currentTimeLimit: 30,
     shopOpen: false,
-    wasWatching: 0,
+    wasWatching: -1,
     
     bgmSoundConfig: {
         mute: false,
@@ -160,15 +160,6 @@ var Game = {
                             document.getElementsByClassName("ui-hpArea-player")[i].classList.add("text-outline-gold");
 
                             this.Socket.emit("player-requestUnitData", { playerIndex: i });
-                            if (this.wasWatching != i)
-                            {
-                                this.GameObject.scene.getScene("gameScene").setVisibility(this.wasWatching, false);
-                            }
-                            this.wasWatching = i;
-                            this.GameObject.scene.getScene("gameScene").setVisibility(this.wasWatching, true);
-                            //for (let i = 0; i < msg.length; i++) 
-                            //    document.getElementsByClassName("ui-hpArea-player")[i].style.border = "none";
-                            //document.getElementsByClassName("ui-hpArea-player")[i].style.border = "2px solid gold";
 
                             this.GameObject.scene.getScene("gameScene").cameras.main.scrollX = 2400 * (i % 2);
                             this.GameObject.scene.getScene("gameScene").cameras.main.scrollY = 1440 * Math.floor(i / 2);
@@ -194,7 +185,12 @@ var Game = {
         this.Socket.on("player-unitData", (msg) => {
             this.GameObject.scene.getScene("gameScene").removeOtherPlayerUnit(msg.index);
             this.GameObject.scene.getScene("gameScene").spectate_player = msg.unitData;
-            this.GameObject.scene.getScene("gameScene").placeOtherPlayerUnit();
+            this.GameObject.scene.getScene("gameScene").placeOtherPlayerUnit(msg.index);
+            // if (this.wasWatching != msg.index && this.wasWatching != -1) {
+            //     this.GameObject.scene.getScene("gameScene").setVisibility(this.wasWatching, false);
+            // }
+            // this.wasWatching = msg.index;
+            // this.GameObject.scene.getScene("gameScene").setVisibility(this.wasWatching, true);
         });
         
         this.Socket.on("dicePhase-begin", (msg) => {
