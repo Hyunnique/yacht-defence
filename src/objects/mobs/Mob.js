@@ -44,7 +44,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         this.dotDamageDict = {};
         this.playerNum = playerNum;
         if (this.playerNum != 0) {
-             this.setVisible(false);
+            this.setVisible(false);
         }
 
         this.deathSound = this.scene.sound.add(mobData.deathSound);
@@ -163,7 +163,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
             this.healthBar.displayWidth = this.healthBarWidth * (this.Health / this.MaxHealth);
         }
         else {
-            if (this.playerNum == 0) {
+            if (this.playerNum == this.scene.currentView) {
                 document.getElementsByClassName("ui-bossArea-bosshp-bar")[0].style.width =  (this.Health / this.MaxHealth) * 100  + "%";
                 document.getElementsByClassName("ui-bossArea-bosshp-text")[0].innerText = Math.floor(this.Health).toLocaleString() + "/" + this.MaxHealth.toLocaleString();
             }
@@ -200,7 +200,6 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         this.body.enable = false;
 
         if (!this.isBoss) this.healthBar.destroy();
-        else if (this.isBoss && this.playerNum == 0) Game.hideUI("bossArea");
 
         this.tween.remove();
         this.body.destroy();
