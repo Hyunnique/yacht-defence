@@ -45,6 +45,8 @@
     height: 3%;
     top: 10%;
     left: 10%;
+
+    pointer-events: none;
 }
 
 .ui-gameScene-midFloating .ui-bossArea {
