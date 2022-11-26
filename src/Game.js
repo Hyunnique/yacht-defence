@@ -28,6 +28,7 @@ var Game = {
     TimelimitTimer: null,
     currentTimeLimit: 30,
     shopOpen: false,
+    wasWatching: 0,
     
     bgmSoundConfig: {
         mute: false,
@@ -159,8 +160,13 @@ var Game = {
                     }
                     else {
                         document.getElementsByClassName("ui-hpArea-player")[i].onclick = (e) => {
-
                             this.Socket.emit("player-requestUnitData", { playerIndex: i });
+                            if (this.wasWatching != i)
+                            {
+                                this.GameObject.scene.getScene("gameScene").setVisibility(this.wasWatching, false);
+                            }
+                            this.wasWatching = i;
+                            this.GameObject.scene.getScene("gameScene").setVisibility(this.wasWatching, true);
                             for (let i = 0; i < this.PlayerCount; i++) 
                                 document.getElementsByClassName("ui-hpArea-player")[i].style.border = "none";
                             document.getElementsByClassName("ui-hpArea-player")[i].style.border = "2px solid gold";
