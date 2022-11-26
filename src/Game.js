@@ -636,7 +636,7 @@ var Game = {
                 }
                 break;
             default:
-                this.GameObject.scene.start(sceneName);
+                this.GameObject.scene.getScene("mainScene").scene.stop().start(sceneName);
                 //this.showUI(sceneName + "-default");
                 break;
         }
