@@ -60,12 +60,12 @@ module.exports = {
         let waveResult = waveGenerator(this.Rooms[roomId].generatorInfo.sheet, this.Rooms[roomId].roundInfo.num, this.Rooms[roomId].generatorInfo.cost, this.Rooms[roomId].generatorInfo.hpFactor);
 
         if (this.Rooms[roomId].roundInfo.num % 10 == 0) {
-            this.Rooms[roomId].generatorInfo.cost = Math.floor(this.Rooms[roomId].generatorInfo.cost * 1.4 + (30 * Math.pow(1.06, this.Rooms[roomId].roundInfo.num)));
+            this.Rooms[roomId].generatorInfo.cost = Math.floor(this.Rooms[roomId].generatorInfo.cost * 1.35 + (30 * Math.pow(1.06, this.Rooms[roomId].roundInfo.num)));
         } else {
             this.Rooms[roomId].generatorInfo.cost = Math.floor(this.Rooms[roomId].generatorInfo.cost * 1.06 + (30 * Math.pow(1.06, this.Rooms[roomId].roundInfo.num)));
         }
 
-        this.Rooms[roomId].generatorInfo.hpFactor = (this.Rooms[roomId].generatorInfo.hpFactor * 1.07 + (0.05 * Math.pow(1.06, this.Rooms[roomId].roundInfo.num))).toFixed(2);
+        this.Rooms[roomId].generatorInfo.hpFactor = (this.Rooms[roomId].generatorInfo.hpFactor * 1.06 + (0.05 * Math.pow(1.06, this.Rooms[roomId].roundInfo.num))).toFixed(2);
 
         this.emitAll(roomId, 'game-wavedata', waveResult);
 
@@ -122,6 +122,7 @@ module.exports = {
                     flags: {},
                     hp: 100,
                     maxhp: 100,
+                    dead: false,
                     gold: 0,
                     units: [],
                     items: {},
@@ -193,6 +194,7 @@ module.exports = {
                 "name": x.name,
                 "hp": x.hp,
                 "maxhp": x.maxhp,
+                "dead": x.dead,
                 "gold": x.gold,
                 "items": x.items,
                 "units": x.units,
@@ -346,6 +348,10 @@ module.exports = {
     onPlayerBaseDamage(socket, roomId) {
         socket.on('playerInfo-baseDamage', (msg) => {
             this.Rooms[roomId].players[this.getRoomIndex(socket.id)].hp -= msg;
+            if (this.Rooms[roomId].players[this.getRoomIndex(socket.id)].hp <= 0) {
+                this.Rooms[roomId].players[this.getRoomIndex(socket.id)].hp = 0;
+                this.Rooms[roomId].players[this.getRoomIndex(socket.id)].dead = true;
+            }
             this.syncPlayerInfo(roomId);
         });
     },
@@ -353,7 +359,7 @@ module.exports = {
     onShopItemBuy(socket, roomId) {
         socket.on('shop-itemBuy', (msg) => {
             let shopItem = ShopItemSheet["item" + msg.itemIndex];
-            if (this.Rooms[roomId].players[this.getRoomIndex(socket.id)].gold >= shopItem.price) {
+            if (this.Rooms[roomId].players[this.getRoomIndex(socket.id)].gold >= shopItem.price && !(this.Rooms[roomId].players[this.getRoomIndex(socket.id)].dead)) {
                 this.Rooms[roomId].players[this.getRoomIndex(socket.id)].gold -= shopItem.price;
 
                 if (msg.itemIndex == 21) {
@@ -388,7 +394,7 @@ module.exports = {
 
                 this.Rooms[roomId].players[i].socket.emit('chat-message', {
                     playerIndex: chatter,
-                    name: this.Rooms[roomId].players[this.getRoomIndex(socket.id)].name,
+                    name: this.Rooms[roomId].players[this.getRoomIndex(socket.id)].name + (this.Rooms[roomId].players[this.getRoomIndex(socket.id)].dead ? " (사망)" : ""),
                     message: msg
                 });
             }
