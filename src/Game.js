@@ -192,6 +192,7 @@ var Game = {
                     document.getElementsByClassName("ui-hpArea-playerhp-text")[i].innerHTML = "DEAD";
                     document.getElementsByClassName("ui-hpArea-player")[i].classList.remove("text-outline-gold");
                     document.getElementsByClassName("ui-hpArea-playerhp")[i].style.borderColor = "grey";
+                    document.getElementsByClassName("ui-hpArea-playerText")[i].style.color = "grey";
                 }
                 else {
                     document.getElementsByClassName("ui-hpArea-playerhp-bar")[i].style.width = Math.floor(msg[i].hp / msg[i].maxhp * 100) + "%";
