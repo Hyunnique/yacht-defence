@@ -297,7 +297,7 @@ export default class gameScene extends Phaser.Scene {
             else if (pointer.worldX > 2400 && pointer.worldY > 1440)
                 index = 3;
             let t = this.getTileAtPointer(pointer, this.info[index]);
-            //console.log(t.placedUnit == undefined || t.placedUnit == null ? "empty!" : t.placedUnit);
+            console.log(t);
 
             if (t.placedUnit != undefined) {
                 if (this.selectedUnit != undefined) {
@@ -418,7 +418,7 @@ export default class gameScene extends Phaser.Scene {
 
     removeOtherPlayerUnit(playerNum) {
         this.spectate_player_units[playerNum].forEach(e => {
-            let t = this.info[playerNum].getTileAtWorldXY(e.x, e.y, true);
+            let t = this.info[playerNum].getTileAtWorldXY(e.x + (2400 * (playerNum % 2)), e.y + (1440 * Math.floor(playerNum / 2)), true);
             t.placedUnit = undefined;
             e.remove();
         });
