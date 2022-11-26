@@ -177,7 +177,7 @@ export default class gameScene extends Phaser.Scene{
             // this.camera.centerOn(pointer.worldX, pointer.worldY);
             // this.camera.pan(pointer.worldX, pointer.worldY, 2000, "Power2");
         });
-        this.cameras.main.setBounds(0, 0, 2400, 1440);
+        this.cameras.main.setBounds(0, 0, 4800, 2880);
 
 
 
@@ -218,15 +218,25 @@ export default class gameScene extends Phaser.Scene{
         this.roundDB = this.cache.json.get("roundDB");
 
         this.m_player = [];
-        this.spectate_player = [[],[],[]];
-        this.spectate_player_units = [[],[],[]];
-        this.spectate_player_mobs = [[],[],[]];
+        this.spectate_player = [[], [], [], []];
+        this.spectate_player_units = [[], [], [], []];
+        this.spectate_player_mobs = [];
+        this.spectate_player_projectiles = [];
+        for (var i = 0; i < 4; i++)
+        {
+            this.spectate_player_mobs.push(this.physics.add.group());
+            this.spectate_player_projectiles.push(this.physics.add.group());
+        }
+
 
         this.selectedUnit;
         this.onPlaceQueue;
         this.preTile;
 
         this.physics.add.overlap(this.m_projectiles, this.m_mobs, (projectile, mob) => mob.hit(projectile), null, this);
+        this.spectate_player_mobs.forEach((e,i) => {
+            this.physics.add.overlap(this.spectate_player_projectiles[i], e, (projectile, mob) => mob.hit(projectile), null, this);
+        });
 
         this.input.on("pointerdown", this.clickHandler, this);
     }
@@ -310,7 +320,7 @@ export default class gameScene extends Phaser.Scene{
     initialPlace(unitData,unitID)
     {
         this.info.alpha = 1;
-        this.onPlaceQueue = new Unit(this, this.input.activePointer.x, this.input.activePointer.y, unitData, this.unitIndex++,unitID);
+        this.onPlaceQueue = new Unit(this, this.input.activePointer.x, this.input.activePointer.y, unitData, this.unitIndex++, unitID, 0);
         this.onPlaceQueue.rangeView.alpha = 0.4;
         this.onPlaceQueue.buffRangeView.alpha = 0.6;
         this.moveUnit();
