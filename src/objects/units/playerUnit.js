@@ -183,12 +183,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
     attackMob()
     {   
         this.attackReady = false;
-        this.atkSoundName.play({
-            mute: false,
-            volume: 0.2 * Game.effectSoundConfig.volume,
-            rate: 1,
-            loop: false
-            });
+        if(this.playerNum == this.scene.currentView)
+            this.atkSoundName.play(Game.effectSoundConfig);
         this.play(this.attackAnim, false);
         this.effect.playEffect();
 
