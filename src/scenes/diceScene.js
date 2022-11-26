@@ -51,12 +51,7 @@ export default class diceScene extends Phaser.Scene{
     }
 
     drawRolling() {
-        this.rollDiceSound.play({
-            mute: false,
-            volume: 0.5,
-            rate: 1,
-            loop: false
-        })
+        this.rollDiceSound.play(Game.effectSoundConfig);
         this.rollable = false;
         document.getElementsByClassName("ui-keepArea")[0].innerHTML = "";
         for (let i = 0; i < this.savedDice.length; i++) {
