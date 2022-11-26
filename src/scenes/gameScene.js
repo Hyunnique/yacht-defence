@@ -397,7 +397,7 @@ export default class gameScene extends Phaser.Scene {
         Game.syncFieldStatus();
     }
 
-    placeOtherPlayerUnit(playerNum,shopBuffs,tierBuffs) {
+    placeOtherPlayerUnit(playerNum, shopBuffs, tierBuffs) {
         var index = 0;
         this.spectate_player.forEach(e => {
             var unit = new Unit(this, e.x + (2400 * (playerNum % 2)), e.y + (1440 * Math.floor(playerNum / 2)), this.unitDB["unit" + e.id], null, e.id, playerNum);
@@ -463,6 +463,7 @@ export default class gameScene extends Phaser.Scene {
                 this.handleTierBonus(this.onPlaceQueue.tier, false);
                 this.onPlaceQueue.remove();
                 this.onPlaceQueue = undefined;
+                Game.syncFieldStatus();
             }
             else {
                 this.unitPlacer(this.preTile);
@@ -605,8 +606,8 @@ export default class gameScene extends Phaser.Scene {
     // Unit ID를 파라미터로 가짐
     receiveUnit(unitID, tier) {
         this.placemode = true;
-        this.initialPlace(this.unitDB["unit" + unitID],unitID);
         this.handleTierBonus(tier, true);
+        this.initialPlace(this.unitDB["unit" + unitID],unitID);
     }
     
 
