@@ -122,6 +122,7 @@ module.exports = {
                     flags: {},
                     hp: 100,
                     maxhp: 100,
+                    dead: false,
                     gold: 0,
                     units: [],
                     items: {},
@@ -193,6 +194,7 @@ module.exports = {
                 "name": x.name,
                 "hp": x.hp,
                 "maxhp": x.maxhp,
+                "dead": x.dead,
                 "gold": x.gold,
                 "items": x.items,
                 "units": x.units,
@@ -346,6 +348,10 @@ module.exports = {
     onPlayerBaseDamage(socket, roomId) {
         socket.on('playerInfo-baseDamage', (msg) => {
             this.Rooms[roomId].players[this.getRoomIndex(socket.id)].hp -= msg;
+            if (this.Rooms[roomId].players[this.getRoomIndex(socket.id)].hp <= 0) {
+                this.Rooms[roomId].players[this.getRoomIndex(socket.id)].hp = 0;
+                this.Rooms[roomId].players[this.getRoomIndex(socket.id)].dead = true;
+            }
             this.syncPlayerInfo(roomId);
         });
     },
@@ -353,7 +359,7 @@ module.exports = {
     onShopItemBuy(socket, roomId) {
         socket.on('shop-itemBuy', (msg) => {
             let shopItem = ShopItemSheet["item" + msg.itemIndex];
-            if (this.Rooms[roomId].players[this.getRoomIndex(socket.id)].gold >= shopItem.price) {
+            if (this.Rooms[roomId].players[this.getRoomIndex(socket.id)].gold >= shopItem.price && !(this.Rooms[roomId].players[this.getRoomIndex(socket.id)].dead)) {
                 this.Rooms[roomId].players[this.getRoomIndex(socket.id)].gold -= shopItem.price;
 
                 if (msg.itemIndex == 21) {
@@ -388,7 +394,7 @@ module.exports = {
 
                 this.Rooms[roomId].players[i].socket.emit('chat-message', {
                     playerIndex: chatter,
-                    name: this.Rooms[roomId].players[this.getRoomIndex(socket.id)].name,
+                    name: this.Rooms[roomId].players[this.getRoomIndex(socket.id)].name + (this.Rooms[roomId].players[this.getRoomIndex(socket.id)].dead ? " (사망)" : ""),
                     message: msg
                 });
             }
