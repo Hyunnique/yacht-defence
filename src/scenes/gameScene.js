@@ -409,11 +409,7 @@ export default class gameScene extends Phaser.Scene {
     }
 
     setVisibility(playerNum, bool) {
-        if (playerNum == 0)
-            return;
-        this.physics.overlapRect(2400 * (playerNum % 2), (1440 * Math.floor(playerNum / 2)), 2440, 1440).forEach(e => {
-            e.gameObjects.setVisible(bool);
-        });
+        this.currentView;
     }
 
     removeOtherPlayerUnit(playerNum) {

@@ -195,7 +195,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         this.body.enable = false;
 
         if (!this.isBoss) this.healthBar.destroy();
-        else if (this.isBoss) Game.hideUI("bossArea");
+        else if (this.isBoss && this.playerNum == 0) Game.hideUI("bossArea");
 
         this.tween.remove();
         this.body.destroy();
