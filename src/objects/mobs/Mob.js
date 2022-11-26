@@ -57,7 +57,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
             this.healthBar = this.scene.add.image(this.x-48, this.y - 24, "healthBar").setOrigin(0,0.5);
             this.healthBarWidth = this.healthBar.displayWidth;
         }
-        else if (this.isBoss && this.playerNum != 0) {
+        else if (this.isBoss && this.playerNum == 0) {
             Game.showUI("bossArea");
             document.getElementsByClassName("ui-bossArea-bosshp-bar")[0].style.width = (this.Health / this.MaxHealth) * 100 + "%";
             document.getElementsByClassName("ui-bossArea-bosshp-text")[0].innerText = this.Health.toLocaleString() + "/" + this.MaxHealth.toLocaleString();
