@@ -43,19 +43,21 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         this.isBoss = mobData.boss;
         this.dotDamageDict = {};
         this.playerNum = playerNum;
-        if (this.playerNum != 0)
+        if (this.playerNum != 0) {
             this.setVisible(false);
+        }
 
         this.deathSound = this.scene.sound.add(mobData.deathSound);
         
         this.play(mobData.mobAnim);
         this.flipX = !mobData.boss;
 
+        
         if (!this.isBoss) {
             this.healthBar = this.scene.add.image(this.x-48, this.y - 24, "healthBar").setOrigin(0,0.5);
             this.healthBarWidth = this.healthBar.displayWidth;
         }
-        else if (this.isBoss) {
+        else if (this.isBoss && this.playerNum != 0) {
             Game.showUI("bossArea");
             document.getElementsByClassName("ui-bossArea-bosshp-bar")[0].style.width = (this.Health / this.MaxHealth) * 100 + "%";
             document.getElementsByClassName("ui-bossArea-bosshp-text")[0].innerText = this.Health.toLocaleString() + "/" + this.MaxHealth.toLocaleString();
@@ -151,6 +153,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
     update()
     {   
         if (!this.isBoss) {
+            this.healthBar.setVisible(this.visible);
             this.healthBar.setPosition(this.getCenter().x-48, this.getCenter().y - 24);
             this.healthBar.displayWidth = this.healthBarWidth * (this.Health / this.MaxHealth);
         }
