@@ -167,16 +167,14 @@ export default class diceScene extends Phaser.Scene{
             document.getElementsByClassName("ui-rollcount-value")[0].innerText = this.throwLeft;
 
             if (this.throwLeft == 0) {
-                if (!Game.PlayerData[Game.PlayerIndex].items[20] || Game.PlayerData[Game.PlayerIndex].items[20] == 0 || this.itemUsed)
+                if (!Game.PlayerData[0].items[20] || Game.PlayerData[0].items[20] == 0 || this.itemUsed)
                     document.getElementsByClassName("ui-diceRerollButton")[0].style.color = 'red';
                 else   
                     document.getElementsByClassName("ui-diceRerollButton")[0].style.color = 'green';
             }
         }
         else if (this.throwLeft == 0 && this.rollable && !this.itemUsed) {
-            Game.Socket.emit("dicePhase-lastChance", {
-                playerIndex: Game.PlayerIndex,
-            })
+            Game.Socket.emit("dicePhase-lastChance", true);
         }
     }
 
