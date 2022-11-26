@@ -49,7 +49,7 @@ class AnimatedTile {
 
 
 
-export default class gameScene extends Phaser.Scene{
+export default class gameScene extends Phaser.Scene {
     constructor() {
         super("gameScene");
     }
@@ -76,7 +76,7 @@ export default class gameScene extends Phaser.Scene{
     PhaseText = "";
 
     create() {
-// 맵
+        // 맵
         this.mapWidth = 2400;
         this.mapHeight = 1440;
         this.mapOffsetX = 0;
@@ -100,7 +100,7 @@ export default class gameScene extends Phaser.Scene{
         this.info = [];
 
         for (let i = 0; i < 4; i++) {
-            map.push(this.make.tilemap({key: "map_forest"}));
+            map.push(this.make.tilemap({ key: "map_forest" }));
             outside_ground.push(map[i].addTilesetImage("outside_ground", "outside_ground"));
             outside_roof.push(map[i].addTilesetImage("outside_roof", "outside_roof"));
             outside_wall.push(map[i].addTilesetImage("outside_wall", "outside_wall"));
@@ -147,10 +147,10 @@ export default class gameScene extends Phaser.Scene{
         }
 
         
-        let help = this.add.text(0, 0, '', { font: '48px monospace' }); 
+        let help = this.add.text(0, 0, '', { font: '48px monospace' });
         let cursors = this.input.keyboard.createCursorKeys();
 
-//카메라
+        //카메라
         this.controls = new Phaser.Cameras.Controls.FixedKeyControl({
             camera: this.cameras.main,
             left: cursors.left,
@@ -161,18 +161,18 @@ export default class gameScene extends Phaser.Scene{
         });
         this.debugGraphics = this.add.graphics();
 
-        this.input.on("wheel",  (pointer, gameObjects, deltaX, deltaY, deltaZ) => {
+        this.input.on("wheel", (pointer, gameObjects, deltaX, deltaY, deltaZ) => {
 
             if (deltaY > 0) {
-                var newZoom = this.cameras.main.zoom -.2;
+                var newZoom = this.cameras.main.zoom - .2;
                 if (newZoom > 0.7) {
-                    this.cameras.main.zoom = newZoom;     
+                    this.cameras.main.zoom = newZoom;
                 }
             }
             if (deltaY < 0) {
-                var newZoom = this.cameras.main.zoom +.2;
+                var newZoom = this.cameras.main.zoom + .2;
                 if (newZoom < 1.7) {
-                    this.cameras.main.zoom = newZoom;     
+                    this.cameras.main.zoom = newZoom;
                 }
             }
             // this.camera.centerOn(pointer.worldX, pointer.worldY);
@@ -181,7 +181,7 @@ export default class gameScene extends Phaser.Scene{
         this.cameras.main.setBounds(0, 0, 2400, 1440);
         this.currentView = 0;
 
-//BGM
+        //BGM
         this.shopSound = this.sound.add("shop");
         this.shopBuySound = [];
         for (let i = 1; i <= 3; i++) this.shopBuySound.push(this.sound.add("shopBuy" + i));
@@ -195,7 +195,7 @@ export default class gameScene extends Phaser.Scene{
         
 
 
-//몹/유저유닛/투사체 관련
+        //몹/유저유닛/투사체 관련
         this.m_mobs = this.physics.add.group();
         this.mobArray = [];
         this.roundNum = 0;
@@ -220,8 +220,7 @@ export default class gameScene extends Phaser.Scene{
         console.log(this.spectate_player_units);
         this.spectate_player_mobs = [];
         this.spectate_player_projectiles = [];
-        for (var i = 0; i < 4; i++)
-        {
+        for (var i = 0; i < 4; i++) {
             this.spectate_player_mobs.push(this.physics.add.group());
             this.spectate_player_projectiles.push(this.physics.add.group());
         }
@@ -232,7 +231,7 @@ export default class gameScene extends Phaser.Scene{
         this.preTile;
 
         this.physics.add.overlap(this.m_projectiles, this.m_mobs, (projectile, mob) => mob.hit(projectile), null, this);
-        this.spectate_player_mobs.forEach((e,i) => {
+        this.spectate_player_mobs.forEach((e, i) => {
             this.physics.add.overlap(this.spectate_player_projectiles[i], e, (projectile, mob) => mob.hit(projectile), null, this);
         });
 
@@ -254,7 +253,7 @@ export default class gameScene extends Phaser.Scene{
             this.cameras.main.scrollX -= 12;
             this.cameras.main.scrollY -= 12;
         }
-        else if (x > this.cameras.main.width- 50 && y < 50) {
+        else if (x > this.cameras.main.width - 50 && y < 50) {
             this.cameras.main.scrollX += 12;
             this.cameras.main.scrollY -= 12;
         }
@@ -267,31 +266,27 @@ export default class gameScene extends Phaser.Scene{
         else if (y > this.cameras.main.height - 50) this.cameras.main.scrollY += 12;
         else if (y < 50) this.cameras.main.scrollY -= 12;
 
-        if (this.checkLast && this.mobCounter == 0 && !this.eventChecked)
-        {
+        if (this.checkLast && this.mobCounter == 0 && !this.eventChecked) {
             this.eventChecked = true;
             this.events.once("mobAnimDone", () => {
                 Game.Socket.emit('battlePhase-done', true);
                 this.checkLast = false;
-            },this);            
+            }, this);
         }
     }
 
-    clickHandler(pointer)
-    {
-        if (pointer.leftButtonDown())
-        {
+    clickHandler(pointer) {
+        if (pointer.leftButtonDown()) {
             this.unitInfoHandler(pointer, false);
-            if(this.PhaseText == "Place Phase" && !this.placemode)
+            if (this.PhaseText == "Place Phase" && !this.placemode)
                 this.moveUnit(pointer);
         }
         else if (pointer.rightButtonDown()) {
-            this.unitInfoHandler(pointer,true);
+            this.unitInfoHandler(pointer, true);
         }
     }
 
-    unitInfoHandler(pointer,bool)
-    {
+    unitInfoHandler(pointer, bool) {
         if (!this.placemode) {
             var index;
             if (pointer.worldX < 2400 && pointer.worldY < 1440)
@@ -310,7 +305,7 @@ export default class gameScene extends Phaser.Scene{
                     this.selectedUnit.rangeView.alpha = 0;
                     this.selectedUnit.buffRangeView.alpha = 0;
                 }
-                if (bool) { 
+                if (bool) {
                     this.selectedUnit = t.placedUnit;
                     this.selectedUnit.rangeView.alpha = 0.4;
                     this.selectedUnit.buffRangeView.alpha = 0.6;
@@ -318,7 +313,7 @@ export default class gameScene extends Phaser.Scene{
                     Game.showUnitInfo(t.placedUnit);
                 }
             }
-            else if(this.selectedUnit != undefined){ 
+            else if (this.selectedUnit != undefined) {
                 this.selectedUnit.rangeView.alpha = 0;
                 this.selectedUnit.buffRangeView.alpha = 0;
                 this.selectedUnit = undefined;
@@ -328,8 +323,7 @@ export default class gameScene extends Phaser.Scene{
         }
     }
 
-    initialPlace(unitData,unitID)
-    {
+    initialPlace(unitData, unitID) {
         this.info[0].alpha = 1;
         this.onPlaceQueue = new Unit(this, this.input.activePointer.x, this.input.activePointer.y, unitData, this.unitIndex++, unitID, 0);
         this.onPlaceQueue.rangeView.alpha = 0.4;
@@ -337,8 +331,7 @@ export default class gameScene extends Phaser.Scene{
         this.moveUnit();
     }
 
-    moveUnit(pointer)
-    {   
+    moveUnit(pointer) {
         if (pointer) {
             if (pointer.worldX > 2400 || pointer.worldY > 1440)
                 return;
@@ -391,10 +384,10 @@ export default class gameScene extends Phaser.Scene{
     unitPlacer(t) {
         this.onPlaceQueue.alpha = 1;
         this.m_player.push(this.onPlaceQueue);
-        t.index = "2898";     
+        t.index = "2898";
         this.onPlaceQueue.rangeView.alpha = 0;
         this.onPlaceQueue.buffRangeView.alpha = 0;
-        t.placedUnit = this.onPlaceQueue;     
+        t.placedUnit = this.onPlaceQueue;
         this.onPlaceQueue.setX(t.getCenterX());
         this.onPlaceQueue.setY(t.getCenterY());
         this.onPlaceQueue.setDepth(((this.onPlaceQueue.y / 48) * (this.onPlaceQueue.x / 48)));
@@ -407,7 +400,7 @@ export default class gameScene extends Phaser.Scene{
         this.spectate_player.forEach(e => {
             var unit = new Unit(this, e.x + (2400 * (playerNum % 2)), e.y + (1440 * Math.floor(playerNum / 2)), this.unitDB["unit" + e.id], null, e.id, playerNum);
             this.spectate_player_units[playerNum].push(unit);
-            let t = info[playerNum].getTileAtWorldXY( e.x + (2400 * (playerNum % 2)), e.y + (1440 * Math.floor(playerNum / 2)), true);
+            let t = info[playerNum].getTileAtWorldXY(e.x + (2400 * (playerNum % 2)), e.y + (1440 * Math.floor(playerNum / 2)), true);
             t.index = "2898";
             t.placedUnit = unit;
             unit.setDepth(((unit.y / 48) * (unit.x / 48)));
@@ -415,10 +408,9 @@ export default class gameScene extends Phaser.Scene{
         });
     }
 
-    setVisibility(playerNum,bool)
-    {
+    setVisibility(playerNum, bool) {
         if (playerNum == 0)
-            return; 
+            return;
         console.log(this.physics.overlapRect(2400 * (playerNum % 2), (1440 * Math.floor(playerNum / 2)), 2440, 1440));
         this.physics.overlapRect(2400 * (playerNum % 2), (1440 * Math.floor(playerNum / 2)), 2440, 1440).forEach(e => {
             e.gameObjects.setVisible(bool);
@@ -434,8 +426,7 @@ export default class gameScene extends Phaser.Scene{
         this.spectate_player_units[playerNum] = [];
     }
 
-    resetOtherBuff(buffArray,playerNum)
-    {
+    resetOtherBuff(buffArray, playerNum) {
         this.spectate_player_units[playerNum].forEach((e) => { e.removeBuff() });
         this.spectate_player_units[playerNum].forEach((e) => {
             e.giveBuff();
@@ -447,8 +438,7 @@ export default class gameScene extends Phaser.Scene{
     }
 
 
-    resetBuff()
-    {
+    resetBuff() {
         this.m_player.forEach((e) => {
             e.removeBuff();
         });
@@ -475,7 +465,7 @@ export default class gameScene extends Phaser.Scene{
             else {
                 this.unitPlacer(this.preTile);
                 this.preTile = undefined;
-            }           
+            }
         }
     }
 
@@ -487,44 +477,51 @@ export default class gameScene extends Phaser.Scene{
         else if (this.roundNum <= 30) initialDelay = 600;
         else initialDelay = 300;
         
-        this.currentRoundData.forEach((element ,index) => {
+        this.currentRoundData.forEach((element, index) => {
+            this.mobCounter += element["mobCount"];
             this.time.addEvent({
                 delay: initialDelay,
                 callback: () => {
-                    this.m_mobs.add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum, element["mobRoute"],element["hpFactor"],0));
+                    this.m_mobs.add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum, element["mobRoute"], element["hpFactor"], 0));
                     this.globalnum++;
                 },
-                repeat: element["mobCount"]-1,
+                repeat: element["mobCount"] - 1,
                 startAt: index * 100
             });
-            this.time.addEvent({
-                delay: initialDelay,
-                callback: () => {
-                    this.spectate_player_mobs[1].add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum1, element["mobRoute"], element["hpFactor"], 1));
-                    this.globalnum1++;
-                },
-                repeat: element["mobCount"]-1,
-                startAt: index * 100
-            });
-            this.time.addEvent({
-                delay: initialDelay,
-                callback: () => {
-                    this.spectate_player_mobs[2].add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum2, element["mobRoute"], element["hpFactor"], 2));
-                    this.globalnum2++;
-                },
-                repeat: element["mobCount"]-1,
-                startAt: index * 100
-            });
-            this.time.addEvent({
-                delay: initialDelay,
-                callback: () => {
-                    this.spectate_player_mobs[3].add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum3, element["mobRoute"], element["hpFactor"], 3));
-                    this.globalnum3++;
-                },
-                repeat: element["mobCount"]-1,
-                startAt: index * 100
-            });
-            this.mobCounter += element["mobCount"];
+            if (Game.PlayerData.length > 1) {
+                this.time.addEvent({
+                    delay: initialDelay,
+                    callback: () => {
+                        this.spectate_player_mobs[1].add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum1, element["mobRoute"], element["hpFactor"], 1));
+                        this.globalnum1++;
+                    },
+                    repeat: element["mobCount"] - 1,
+                    startAt: index * 100
+                });
+                if (Game.PlayerData.length > 2) {
+                    this.time.addEvent({
+                        delay: initialDelay,
+                        callback: () => {
+                            this.spectate_player_mobs[2].add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum2, element["mobRoute"], element["hpFactor"], 2));
+                            this.globalnum2++;
+                        },
+                        repeat: element["mobCount"] - 1,
+                        startAt: index * 100
+                    });
+                    if (Game.PlayerData.length > 3) {
+                        this.time.addEvent({
+                            delay: initialDelay,
+                            callback: () => {
+                                this.spectate_player_mobs[3].add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum3, element["mobRoute"], element["hpFactor"], 3));
+                                this.globalnum3++;
+                            },
+                            repeat: element["mobCount"] - 1,
+                            startAt: index * 100
+                        });
+            
+                    }
+                }
+            }
         });
         this.checkLast = true;
     }
