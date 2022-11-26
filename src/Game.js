@@ -154,6 +154,9 @@ var Game = {
 
                             this.GameObject.scene.getScene("gameScene").mapOffsetX = 0;
                             this.GameObject.scene.getScene("gameScene").mapOffsetY = 0;
+
+                            this.GameObject.scene.getScene("gameScene").currentView = 0;
+
                         }
                     }
                     else {
@@ -173,6 +176,7 @@ var Game = {
 
                             this.GameObject.scene.getScene("gameScene").mapOffsetX = 2400 * (i % 2);
                             this.GameObject.scene.getScene("gameScene").mapOffsetY = 1440 * Math.floor(i / 2);
+                            this.GameObject.scene.getScene("gameScene").currentView = i;
                         }
                     }
                 }
