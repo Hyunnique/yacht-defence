@@ -16,7 +16,7 @@ module.exports = {
         this.createRoom();
         this.connectionHandler();
 
-        
+        /*
         for (let i = 1; i <= 50; i++) {
             console.log("Round " + i + "--");
             console.log("Round Cost : " + this.Rooms[10001].generatorInfo.cost);
@@ -25,7 +25,7 @@ module.exports = {
             let result = this.generateWaveInfo(10001);
             this.Rooms[10001].roundInfo.num++;
         }
-        
+        */
     },
 
     createRoom() {
@@ -412,16 +412,18 @@ module.exports = {
             this.Rooms[roomId].players[this.getRoomIndex(socket.id)].units = msg.units;
             this.Rooms[roomId].players[this.getRoomIndex(socket.id)].shopBuffs = msg.shopBuffs;
             this.Rooms[roomId].players[this.getRoomIndex(socket.id)].tierBuffs = msg.tierBuffs;
-        });
 
-        for (let i = 0; i < this.Rooms[roomId].players.length; i++) {
-            this.Rooms[roomId].players[i].socket.emit('sync-playerFieldStatus', {
-                index: this.zerofyNumber(i, this.getRoomIndex(socket.id)),
-                units: msg.units,
-                shopBuffs: msg.shopBuffs,
-                tierBuffs: msg.tierBuffs
-            });
-        }
+            for (let i = 0; i < this.Rooms[roomId].players.length; i++) {
+                if (i == this.getRoomIndex(socket.id)) continue;
+                
+                this.Rooms[roomId].players[i].socket.emit('sync-playerFieldStatus', {
+                    index: this.zerofyNumber(i, this.getRoomIndex(socket.id)),
+                    units: msg.units,
+                    shopBuffs: msg.shopBuffs,
+                    tierBuffs: msg.tierBuffs
+                });
+            }
+        });
     }
 };
 
