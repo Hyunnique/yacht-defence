@@ -34,7 +34,7 @@ module.exports = {
         this.Rooms[this.latestRoomId] = {
             roomId: this.latestRoomId,
             players: [],
-            maxPlayers: (process.env.PLAYERS ? parseInt(process.env.PLAYERS) : 1), // Configurable for development or singleplayer
+            maxPlayers: (process.env.PLAYERS ? parseInt(process.env.PLAYERS) : 2), // Configurable for development or singleplayer
             timer: {},
             roundInfo: {
                 num: 1,
