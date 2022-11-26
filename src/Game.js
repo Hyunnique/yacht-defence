@@ -16,6 +16,7 @@ const playerColors = ["lightgreen", "lightcoral", "lightskyblue", "lightgoldenro
 // 전역변수로 유지해서 Scene에서도 접근할 수 있게 함
 var Game = {
     tierColors: [0xff1b1b, 0xffd700, 0xd5d5d5, 0x954c4c],
+    tierColorsCss: ["#ff1b1b", "#ffd700", "#d5d5d5", "#954c4c"],
     MatchmakeJoined: false,
     ClientID: null,
     GameObject: null,
@@ -30,6 +31,7 @@ var Game = {
     TimelimitTimer: null,
     currentTimeLimit: 30,
     shopOpen: false,
+    wasWatching: 0,
     
     bgmSoundConfig: {
         mute: false,
@@ -147,8 +149,8 @@ var Game = {
                         document.getElementsByClassName("ui-hpArea-player")[i].onclick = (e) => {
 
                             for (let i = 0; i < this.PlayerCount; i++) 
-                                document.getElementsByClassName("ui-hpArea-player")[i].style.border = "none";
-                            document.getElementsByClassName("ui-hpArea-player")[i].style.border = "2px solid white";
+                                //document.getElementsByClassName("ui-hpArea-player")[i].style.border = "none";
+                            document.getElementsByClassName("ui-hpArea-player")[i].classList.add("text-outline-gold");
 
                             this.GameObject.scene.getScene("gameScene").cameras.main.scrollX = 0;
                             this.GameObject.scene.getScene("gameScene").cameras.main.scrollY = 0;
@@ -157,22 +159,27 @@ var Game = {
                             this.GameObject.scene.getScene("gameScene").mapOffsetX = 0;
                             this.GameObject.scene.getScene("gameScene").mapOffsetY = 0;
                         }
-                        document.getElementsByClassName("ui-hpArea-player")[i].style.border = "2px solid white";
+                        //document.getElementsByClassName("ui-hpArea-player")[i].style.border = "2px solid white";
                     }
                     else {
                         document.getElementsByClassName("ui-hpArea-player")[i].onclick = (e) => {
-
                             this.Socket.emit("player-requestUnitData", { playerIndex: i });
+                            if (this.wasWatching != i)
+                            {
+                                this.GameObject.scene.getScene("gameScene").setVisibility(this.wasWatching, false);
+                            }
+                            this.wasWatching = i;
+                            this.GameObject.scene.getScene("gameScene").setVisibility(this.wasWatching, true);
                             for (let i = 0; i < this.PlayerCount; i++) 
                                 document.getElementsByClassName("ui-hpArea-player")[i].style.border = "none";
                             document.getElementsByClassName("ui-hpArea-player")[i].style.border = "2px solid gold";
 
-                            this.GameObject.scene.getScene("gameScene").cameras.main.scrollX = 2400;
-                            this.GameObject.scene.getScene("gameScene").cameras.main.scrollY = 0;
-                            this.GameObject.scene.getScene("gameScene").cameras.main.setBounds(2400, 0, 2400, 1440);
+                            this.GameObject.scene.getScene("gameScene").cameras.main.scrollX = 2400 * (i % 2);
+                            this.GameObject.scene.getScene("gameScene").cameras.main.scrollY = 1440 * Math.floor(i / 2);
+                            this.GameObject.scene.getScene("gameScene").cameras.main.setBounds(2400 * (i % 2), 1440 * Math.floor(i / 2), 2400, 1440);
 
-                            this.GameObject.scene.getScene("gameScene").mapOffsetX = 2400;
-                            this.GameObject.scene.getScene("gameScene").mapOffsetY = 0;
+                            this.GameObject.scene.getScene("gameScene").mapOffsetX = 2400 * (i % 2);
+                            this.GameObject.scene.getScene("gameScene").mapOffsetY = 1440 * Math.floor(i / 2);
                         }
                     }
                 }
@@ -408,6 +415,7 @@ var Game = {
             document.getElementsByClassName("ui-phase-value")[0].innerText = "Defense";
             document.getElementsByClassName("ui-phaseTimelimit-value")[0].innerText = this.currentTimeLimit;
             this.currentTimeLimit = msg.timeLimit;
+            this.updateMobCounter();
         });
 
         this.Socket.on('battlePhase-end', (msg) => {
@@ -417,15 +425,11 @@ var Game = {
         this.Socket.on('shop-itemSuccess', (msg) => {
             let soundidx = Math.floor(Math.random() * 3);
 
-            this.GameObject.scene.getScene("gameScene").shopBuySound[soundidx].play({
-                mute: false,
-                volume: 0.7 * this.effectSoundConfig.volume,
-                rate: 1,
-                loop: false
-            });
+            this.GameObject.scene.getScene("gameScene").shopBuySound[soundidx].play(this.effectSoundConfig);
             
-            this.GameObject.scene.getScene("gameScene").resetBuff();
+            
 
+            this.hideUI("unitInfoArea");
             document.getElementsByClassName("ui-shop-item")[msg.uiIndex].style.display = "none";
 
             this.updateItemUI(msg);
@@ -434,22 +438,15 @@ var Game = {
             this.shopBuff.shopAspd += itemSpecSheets["item" + msg.purchased].buffAspd;
             this.shopBuff.shopPenetration += itemSpecSheets["item" + msg.purchased].buffPenetration;
 
-            console.log(this.shopBuff.shopAtk)
-            console.log(this.shopBuff.shopAspd)
-            console.log(this.shopBuff.shopPenetration)
-
+            this.GameObject.scene.getScene("gameScene").resetBuff();
+            
             document.getElementsByClassName("ui-itemOverallArea-overall-atk")[0].innerText = "ATK: " + (this.shopBuff.shopAtk >= 0 ? "+" + this.shopBuff.shopAtk : this.shopBuff.shopAtk) + "%";
             document.getElementsByClassName("ui-itemOverallArea-overall-aspd")[0].innerText = "SPD: " + (this.shopBuff.shopAspd >= 0 ? "+" + this.shopBuff.shopAspd : this.shopBuff.shopAspd) + "%";
             document.getElementsByClassName("ui-itemOverallArea-overall-pen")[0].innerText = "PEN: " + (this.shopBuff.shopPenetration >= 0 ? "+" + this.shopBuff.shopPenetration : this.shopBuff.shopPenetration) + "%p";
         });
 
         this.Socket.on('shop-itemFailure', (msg) => {
-            this.GameObject.scene.getScene("gameScene").shopBuyFail.play({
-                mute: false,
-                volume: 0.7 * this.effectSoundConfig.volume,
-                rate: 1,
-                loop: false
-            });
+            this.GameObject.scene.getScene("gameScene").shopBuyFail.play(this.effectSoundConfig);
         });
 
         this.Socket.on('lastChance-success', (msg) => {
@@ -658,12 +655,7 @@ var Game = {
 
     openShop() {
         this.showUI("common-shop");
-        this.GameObject.scene.getScene("gameScene").shopSound.play({
-            mute: false,
-            volume: 0.7 * this.effectSoundConfig.volume,
-            rate: 1,
-            loop: false
-        });
+        this.GameObject.scene.getScene("gameScene").shopSound.play(this.effectSoundConfig);
         let itemArray = this.GameObject.scene.getScene("gameScene").itemList;
 
         for (let i = 0; i < 3; i++) {
@@ -749,6 +741,42 @@ var Game = {
 
     updateMobCounter() {
         document.getElementsByClassName("ui-monsterCount-value")[0].innerText = this.GameObject.scene.getScene("gameScene").mobCounter;
+    },
+
+    showUnitInfo(unit) {
+        this.showUI("unitInfoArea");
+        
+        let unitType = "";
+        switch (unitSpecSheets["unit" + unit.id].unitType) {
+            case 0:
+                unitType = "근거리";
+                break;
+            case 1:
+                unitType = "추적형";
+                break;
+            case 2:
+                unitType = "관통형";
+                break;
+            case 3:
+                unitType = "폭발형";
+                break;
+            case 4:
+                unitType = "지원형";
+                break;
+        }
+
+        document.getElementsByClassName("ui-unitInfoArea-unitImage")[0].style.backgroundImage = "url('" + unitGIF["unit_" + unit.id + ".gif"] + "')";
+        document.getElementsByClassName("ui-unitInfoArea-unitName")[0].innerText = unitSpecSheets["unit" + unit.id].name;
+        document.getElementsByClassName("ui-unitInfoArea-unitName")[0].style.color = this.tierColorsCss[unit.tier - 1];
+        document.getElementsByClassName("ui-unitInfoArea-unitAtk-value")[0].innerText = Math.floor(unit.attack);
+        document.getElementsByClassName("ui-unitInfoArea-unitAspd-value")[0].innerText = unit.aspd.toFixed(2);
+        document.getElementsByClassName("ui-unitInfoArea-unitRange-value")[0].innerText = Math.floor(unit.range);
+        document.getElementsByClassName("ui-unitInfoArea-unitPenetration-value")[0].innerText = Math.floor(unit.penetration * 100) + "%";
+        document.getElementsByClassName("ui-unitInfoArea-unitAttackType")[0].innerText = unitType;
+    },
+
+    hideUnitInfo() {
+        this.hideUI("unitInfoArea");
     }
 };
 
