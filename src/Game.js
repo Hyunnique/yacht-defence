@@ -171,12 +171,12 @@ var Game = {
                                 document.getElementsByClassName("ui-hpArea-player")[i].style.border = "none";
                             document.getElementsByClassName("ui-hpArea-player")[i].style.border = "2px solid gold";
 
-                            this.GameObject.scene.getScene("gameScene").cameras.main.scrollX = 2400;
-                            this.GameObject.scene.getScene("gameScene").cameras.main.scrollY = 0;
-                            this.GameObject.scene.getScene("gameScene").cameras.main.setBounds(2400, 0, 2400, 1440);
+                            this.GameObject.scene.getScene("gameScene").cameras.main.scrollX = 2400 * (i % 2);
+                            this.GameObject.scene.getScene("gameScene").cameras.main.scrollY = 1440 * Math.floor(i / 2);
+                            this.GameObject.scene.getScene("gameScene").cameras.main.setBounds(2400 * (i % 2), 1440 * Math.floor(i / 2), 2400, 1440);
 
-                            this.GameObject.scene.getScene("gameScene").mapOffsetX = 2400;
-                            this.GameObject.scene.getScene("gameScene").mapOffsetY = 0;
+                            this.GameObject.scene.getScene("gameScene").mapOffsetX = 2400 * (i % 2);
+                            this.GameObject.scene.getScene("gameScene").mapOffsetY = 1440 * Math.floor(i / 2);
                         }
                     }
                 }
