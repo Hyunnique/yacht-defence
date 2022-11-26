@@ -397,7 +397,7 @@ export default class gameScene extends Phaser.Scene {
         Game.syncFieldStatus();
     }
 
-    placeOtherPlayerUnit(playerNum) {
+    placeOtherPlayerUnit(playerNum,shopBuffs,tierBuffs) {
         var index = 0;
         this.spectate_player.forEach(e => {
             var unit = new Unit(this, e.x + (2400 * (playerNum % 2)), e.y + (1440 * Math.floor(playerNum / 2)), this.unitDB["unit" + e.id], null, e.id, playerNum);
@@ -406,7 +406,7 @@ export default class gameScene extends Phaser.Scene {
             t.index = "2898";
             t.placedUnit = unit;
             unit.setDepth(((unit.y / 48) * (unit.x / 48)));
-            // this.resetBuff();
+            this.resetOtherBuff(playerNum,shopBuffs,tierBuffs)
         });
     }
 
@@ -428,11 +428,11 @@ export default class gameScene extends Phaser.Scene {
         this.spectate_player_units[playerNum] = [];
     }
 
-    resetOtherBuff(buffArray, playerNum) {
+    resetOtherBuff(playerNum,shopBuff,tierBuffs) {
         this.spectate_player_units[playerNum].forEach((e) => { e.removeBuff() });
         this.spectate_player_units[playerNum].forEach((e) => {
             e.giveBuff();
-            e.syncGivenGlobalBuff(buffArray);
+            e.syncGivenGlobalBuff(shopBuff,tierBuffs);
         });
         this.spectate_player_units[playerNum].forEach((e) => {
             e.updateBuff();

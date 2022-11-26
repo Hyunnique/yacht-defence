@@ -183,7 +183,6 @@ module.exports = {
         this.onChatMessage(socket, roomId);
         this.onDiceLastChance(socket, roomId);
         this.onReceiveUnitData(socket, roomId);
-        this.onRequestUnitData(socket, roomId);
     },
 
     syncPlayerInfo(roomId) {
@@ -421,22 +420,7 @@ module.exports = {
             shopBuffs: msg.shopBuffs,
             tierBuffs: msg.tierBuffs
         });
-    },
-
-    onRequestUnitData(socket, roomId) {
-        socket.on('player-requestUnitData', (msg) => {
-            let { playerIndex } = msg;
-
-            let actualRequest = this.zerofyNumber(this.getRoomIndex(socket.id), playerIndex);
-
-            socket.emit('player-unitData', {
-                index: playerIndex,
-                units: this.Rooms[roomId].players[actualRequest].units,
-                shopBuffs: this.Rooms[roomId].players[actualRequest].shopBuffs,
-                tierBuffs: this.Rooms[roomId].players[actualRequest].tierBuffs
-            });
-        });
-    },
+    } 
 };
 
     
