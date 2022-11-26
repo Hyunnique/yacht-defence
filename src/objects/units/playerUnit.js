@@ -32,8 +32,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.index = index;
         this.id = id;
         this.playerNum = playerNum;
-        if (playerNum != 0)
-            this.setVisible(false);
+        // if (playerNum != 0)
+        //     this.setVisible(false);
         this.attackReady = true;
         this.play(this.idleAnim,true);
         this.rangeView = this.scene.add.circle(this.x, this.y, this.range, 0xFF0000);
