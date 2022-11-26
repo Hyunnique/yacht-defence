@@ -43,7 +43,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         this.isBoss = mobData.boss;
         this.dotDamageDict = {};
         this.playerNum = playerNum;
-        if (this.playerNum != 1)
+        if (this.playerNum != 0)
             this.setVisible(false);
 
         this.deathSound = this.scene.sound.add(mobData.deathSound);
