@@ -158,7 +158,7 @@ var Game = {
                     else {
                         document.getElementsByClassName("ui-hpArea-player")[i].onclick = (e) => {
                             document.getElementsByClassName("ui-hpArea-player")[i].classList.add("text-outline-gold");
-                            
+
                             this.Socket.emit("player-requestUnitData", { playerIndex: i });
                             if (this.wasWatching != i)
                             {
@@ -166,9 +166,9 @@ var Game = {
                             }
                             this.wasWatching = i;
                             this.GameObject.scene.getScene("gameScene").setVisibility(this.wasWatching, true);
-                            for (let i = 0; i < msg.length; i++) 
-                                document.getElementsByClassName("ui-hpArea-player")[i].style.border = "none";
-                            document.getElementsByClassName("ui-hpArea-player")[i].style.border = "2px solid gold";
+                            //for (let i = 0; i < msg.length; i++) 
+                            //    document.getElementsByClassName("ui-hpArea-player")[i].style.border = "none";
+                            //document.getElementsByClassName("ui-hpArea-player")[i].style.border = "2px solid gold";
 
                             this.GameObject.scene.getScene("gameScene").cameras.main.scrollX = 2400 * (i % 2);
                             this.GameObject.scene.getScene("gameScene").cameras.main.scrollY = 1440 * Math.floor(i / 2);
