@@ -186,8 +186,17 @@ var Game = {
                 } 
             }
             for (let i = 0; i < msg.length; i++) {
-                document.getElementsByClassName("ui-hpArea-playerhp-bar")[i].style.width = Math.floor(msg[i].hp / msg[i].maxhp * 100) + "%";
-                document.getElementsByClassName("ui-hpArea-playerhp-text")[i].innerHTML = Math.floor(msg[i].hp / msg[i].maxhp * 100) + "%";
+                if (msg[i].dead) {
+                    document.getElementsByClassName("ui-hpArea-playerhp-bar")[i].style.width = "0%";
+                    document.getElementsByClassName("ui-hpArea-playerhp-bar")[i].style.backgroundColor = "grey";
+                    document.getElementsByClassName("ui-hpArea-playerhp-text")[i].innerHTML = "DEAD";
+                    document.getElementsByClassName("ui-hpArea-player")[i].classList.remove("text-outline-gold");
+                    document.getElementsByClassName("ui-hpArea-player")[i].style.borderColor = "grey";
+                }
+                else {
+                    document.getElementsByClassName("ui-hpArea-playerhp-bar")[i].style.width = Math.floor(msg[i].hp / msg[i].maxhp * 100) + "%";
+                    document.getElementsByClassName("ui-hpArea-playerhp-text")[i].innerHTML = Math.floor(msg[i].hp / msg[i].maxhp * 100) + "%";
+                }
             }
             document.getElementsByClassName("ui-gold")[0].innerText = msg[0].gold;
         });
@@ -423,7 +432,7 @@ var Game = {
         });
 
         this.Socket.on('battlePhase-end', (msg) => {
-            // ?
+            Game.hideUI("bossArea");
         });
 
         this.Socket.on('shop-itemSuccess', (msg) => {
