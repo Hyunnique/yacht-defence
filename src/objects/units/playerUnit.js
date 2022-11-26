@@ -175,15 +175,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.penetration = this.originPenetration + this.globalbuffedPenetration;
         if (this.penetration > 1) this.penetration = 1;
         else if (this.penetration < 0) this.penetration = 0;
-        
-        // this.setMotionSpeed();
     }
-
-    // setMotionSpeed()
-    // {
-    //     this.attackConfig = this.scene.anims.get(this.attackAnim);
-    //     this.attackConfig.frameRate *= this.aspd;
-    // }
 
     attackMob()
     {   
@@ -234,6 +226,13 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.scene.events.off("update", this.update, this);
         this.rangeView.destroy();
         this.destroy();
+    }
+
+    syncGivenGlobalBuff(buffArray)
+    {
+        this.globalbuffAspd = buffArray.shopAspd;
+        this.globalbuffedPenetration = buffArray.shopPenetration;
+        this.globalbuffAtk = (1 + buffArray.shopAtk / 100)*(1 + buffArray.tierBonus[this.tier - 1] / 100);
     }
     
     calcDamage(mobDefence)
