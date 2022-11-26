@@ -22,8 +22,6 @@ var Game = {
     Socket: null,
 
     PlayerDataInitiated: false,
-    PlayerCount: 4,
-    PlayerIndex: -1,
     PlayerData: null,
     ChatMessageTimer: null,
     TimelimitTimer: null,
@@ -109,11 +107,6 @@ var Game = {
             }, 1000);
         });
 
-        this.Socket.on("game-defaultData", (msg) => {
-            this.PlayerCount = msg.playerCount;
-            this.PlayerIndex = msg.playerIndex;
-        });
-
         this.Socket.on("game-wavedata", (msg) => {
             this.GameObject.scene.getScene("gameScene").currentRoundData = msg;
         });
@@ -141,12 +134,12 @@ var Game = {
             if (!this.PlayerDataInitiated) {
                 this.PlayerDataInitiated = true;
 
-                for (let i = 0; i < this.PlayerCount; i++) {
+                for (let i = 0; i < msg.length; i++) {
                     document.getElementsByClassName("ui-hpArea-playerText")[i].innerHTML = this.PlayerData[i].name;
-                    if (i == this.PlayerIndex) {
+                    if (i == 0) {
                         document.getElementsByClassName("ui-hpArea-player")[i].onclick = (e) => {
 
-                            for (let i = 0; i < this.PlayerCount; i++) 
+                            for (let i = 0; i < msg.length; i++) 
                                 //document.getElementsByClassName("ui-hpArea-player")[i].style.border = "none";
                             document.getElementsByClassName("ui-hpArea-player")[i].classList.add("text-outline-gold");
 
@@ -168,7 +161,7 @@ var Game = {
                             }
                             this.wasWatching = i;
                             this.GameObject.scene.getScene("gameScene").setVisibility(this.wasWatching, true);
-                            for (let i = 0; i < this.PlayerCount; i++) 
+                            for (let i = 0; i < msg.length; i++) 
                                 document.getElementsByClassName("ui-hpArea-player")[i].style.border = "none";
                             document.getElementsByClassName("ui-hpArea-player")[i].style.border = "2px solid gold";
 
@@ -182,20 +175,20 @@ var Game = {
                     }
                 }
 
-                for (let i = this.PlayerCount; i < 4; i++) {
+                for (let i = msg.length; i < 4; i++) {
                     document.getElementsByClassName("ui-hpArea-player")[i].style.visibility = "hidden";
                 } 
             }
-            for (let i = 0; i < this.PlayerCount; i++) {
+            for (let i = 0; i < msg.length; i++) {
                 document.getElementsByClassName("ui-hpArea-playerhp-bar")[i].style.width = Math.floor(msg[i].hp / msg[i].maxhp * 100) + "%";
                 document.getElementsByClassName("ui-hpArea-playerhp-text")[i].innerHTML = Math.floor(msg[i].hp / msg[i].maxhp * 100) + "%";
             }
-            document.getElementsByClassName("ui-gold")[0].innerText = msg[this.PlayerIndex].gold;
+            document.getElementsByClassName("ui-gold")[0].innerText = msg[0].gold;
         });
 
         this.Socket.on("player-unitData", (msg) => {
-            this.GameObject.scene.getScene("gameScene").removeOtherPlayerUnit();
-            this.GameObject.scene.getScene("gameScene").spectate_player = msg;
+            this.GameObject.scene.getScene("gameScene").removeOtherPlayerUnit(msg.index);
+            this.GameObject.scene.getScene("gameScene").spectate_player = msg.unitData;
             this.GameObject.scene.getScene("gameScene").placeOtherPlayerUnit();
         });
         
@@ -218,7 +211,6 @@ var Game = {
 
         this.Socket.on("dicePhase-forceConfirm", (msg) => {
             this.Socket.emit('dicePhase-handInfo', {
-                index: this.PlayerIndex,
                 hand: this.GameObject.scene.getScene("diceScene").bestHand,
                 handTier: this.GameObject.scene.getScene("diceScene").currentTier,
                 choice: this.GameObject.scene.getScene("diceScene").choice
@@ -233,13 +225,15 @@ var Game = {
                 document.getElementsByClassName("ui-resultTable")[0].getElementsByTagName("tr")[i+1].style.display = "none";
             }
 
-            for (let i = 0; i < this.PlayerCount; i++) {
+            for (let i = 0; i < msg.length; i++) {
                 document.getElementsByClassName("ui-resultTable")[0].getElementsByTagName("tr")[i+1]
                 .getElementsByTagName("td")[1].innerText = msg[i].name;
                 document.getElementsByClassName("ui-resultTable")[0].getElementsByTagName("tr")[i+1]
                 .getElementsByTagName("td")[2].innerText = msg[i].choice + "(" + (msg[i].choiceDiff > 0 ? "+" : "") + msg[i].choiceDiff + ")";
                 document.getElementsByClassName("ui-resultTable")[0].getElementsByTagName("tr")[i+1]
                 .getElementsByTagName("td")[3].innerText = msg[i].hand;
+                document.getElementsByClassName("ui-resultTable")[0].getElementsByTagName("tr")[i+1]
+                .getElementsByTagName("td")[4].getElementsByClassName("ui-resultTable-goldValue")[0].innerText = msg[i].rewardGold;
 
                 switch (msg[i].handTier) {
                     case 1:
@@ -530,10 +524,7 @@ var Game = {
                     if (e.key == "Enter") {
                         if (document.activeElement === document.getElementsByClassName("ui-chatInput")[0]) {
                             if (document.getElementsByClassName("ui-chatInput")[0].value.trim() != "") {
-                                this.Socket.emit('chat-message', {
-                                    playerIndex: this.PlayerIndex,
-                                    message: document.getElementsByClassName("ui-chatInput")[0].value
-                                });
+                                this.Socket.emit('chat-message', document.getElementsByClassName("ui-chatInput")[0].value);
                             }
 
                             document.getElementsByClassName("ui-chatInput")[0].value = "";
@@ -629,7 +620,6 @@ var Game = {
             document.getElementsByClassName("ui-shop-item")[i].attributes.idx.value = itemArray[i];
             document.getElementsByClassName("ui-shop-item")[i].onclick = (e) => {
                 this.Socket.emit("shop-itemBuy", {
-                    playerIndex: this.PlayerIndex,
                     itemIndex: itemArray[i],
                     uiIndex: i
                 });
@@ -642,10 +632,7 @@ var Game = {
     },
 
     hitPlayerBase(damage) {
-        this.Socket.emit("playerInfo-baseDamage", {
-            index: this.PlayerIndex,
-            damage,
-        });
+        this.Socket.emit("playerInfo-baseDamage", damage);
     },
 
     updateItemUI(msg) {
