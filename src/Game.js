@@ -138,12 +138,14 @@ var Game = {
 
                 for (let i = 0; i < msg.length; i++) {
                     document.getElementsByClassName("ui-hpArea-playerText")[i].innerHTML = this.PlayerData[i].name;
-                    document.getElementsByClassName("ui-hpArea-player")[i].classList.remove("text-outline-gold");
+
                     if (i == 0) {
                         document.getElementsByClassName("ui-hpArea-player")[i].onclick = (e) => {
 
-                            for (let i = 0; i < msg.length; i++) 
-                                //document.getElementsByClassName("ui-hpArea-player")[i].style.border = "none";
+                            for (let i = 0; i < msg.length; i++) {
+                                document.getElementsByClassName("ui-hpArea-player")[i].classList.remove("text-outline-gold");
+                            }
+
                             document.getElementsByClassName("ui-hpArea-player")[i].classList.add("text-outline-gold");
 
                             this.GameObject.scene.getScene("gameScene").cameras.main.scrollX = 0;
@@ -153,10 +155,14 @@ var Game = {
                             this.GameObject.scene.getScene("gameScene").mapOffsetX = 0;
                             this.GameObject.scene.getScene("gameScene").mapOffsetY = 0;
                         }
-                        //document.getElementsByClassName("ui-hpArea-player")[i].style.border = "2px solid white";
                     }
                     else {
                         document.getElementsByClassName("ui-hpArea-player")[i].onclick = (e) => {
+                            
+                            for (let i = 0; i < msg.length; i++) {
+                                document.getElementsByClassName("ui-hpArea-player")[i].classList.remove("text-outline-gold");
+                            }
+                            
                             document.getElementsByClassName("ui-hpArea-player")[i].classList.add("text-outline-gold");
 
                             this.Socket.emit("player-requestUnitData", { playerIndex: i });
