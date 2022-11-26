@@ -159,25 +159,11 @@ export default class PreLoadScene extends Phaser.Scene {
         Object.keys(this.importedMobs).forEach(key => {
             this.load.spritesheet(key.substring(0, key.length - 4), this.importedMobs[key], { frameWidth: 16, frameHeight: 16 });
         });
-        // 몹 로딩
-        /*
-        this.load.spritesheet("BatSmallA", require("../assets/spritesheets/mobs/BatSmallA.png"), { frameWidth: 16, frameHeight: 16 });
-        this.load.spritesheet("WormA", require("../assets/spritesheets/mobs/WormA.png"), { frameWidth: 16, frameHeight: 16 });
-        this.load.spritesheet("BrainD", require("../assets/spritesheets/mobs/BrainD.png"), { frameWidth: 16, frameHeight: 16 });
-        this.load.spritesheet("CloudA", require("../assets/spritesheets/mobs/CloudA.png"), { frameWidth: 16, frameHeight: 16 });
-        this.load.spritesheet("EyeBallA", require("../assets/spritesheets/mobs/EyeBallA.png"), { frameWidth: 16, frameHeight: 16 });
-        this.load.spritesheet("DyeD", require("../assets/spritesheets/mobs/DyeD.png"), { frameWidth: 16, frameHeight: 16 });
-        this.load.spritesheet("HeadA", require("../assets/spritesheets/mobs/HeadA.png"), { frameWidth: 16, frameHeight: 16 });
-        this.load.spritesheet("MummyC", require("../assets/spritesheets/mobs/MummyC.png"), { frameWidth: 16, frameHeight: 16 });
-        this.load.spritesheet("PuddleA", require("../assets/spritesheets/mobs/PuddleA.png"), { frameWidth: 16, frameHeight: 16 });
-        this.load.spritesheet("ScorpionC", require("../assets/spritesheets/mobs/ScorpionC.png"), { frameWidth: 16, frameHeight: 16 });
-        this.load.spritesheet("SkullD", require("../assets/spritesheets/mobs/SkullD.png"), { frameWidth: 16, frameHeight: 16 });
-        this.load.spritesheet("SlimeSmallA", require("../assets/spritesheets/mobs/SlimeSmallA.png"), { frameWidth: 16, frameHeight: 16 });
-        this.load.spritesheet("TentacleC", require("../assets/spritesheets/mobs/TentacleC.png"), { frameWidth: 16, frameHeight: 16 });
-        this.load.spritesheet("GhastB", require("../assets/spritesheets/mobs/GhastB.png"), { frameWidth: 16, frameHeight: 16 });
-        */
+        
         // 사운드 관련 로딩
-        //this.load.audio("music", bgm);
+        this.load.audio("bossPrepareMusic", require("../assets/sounds/bossPrepare.mp3"));
+        this.load.audio("bossFight", require("../assets/sounds/bossFight.mp3"));
+        this.load.audio("normal", require("../assets/sounds/normal.mp3"));
         this.load.audio("death", batDeath);
         this.load.audio("shoot", bulletShoot);
         this.load.audio("rollDice", require("../assets/sounds/roll_dice.wav"));

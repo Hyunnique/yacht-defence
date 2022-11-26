@@ -192,18 +192,13 @@ export default class gameScene extends Phaser.Scene{
         this.shopBuySound = [];
         for (let i = 1; i <= 3; i++) this.shopBuySound.push(this.sound.add("shopBuy" + i));
         this.shopBuyFailSound = this.sound.add("shopBuyFail");
-        // this.m_music = this.sound.add("music");
-        // this.sound.pauseOnBlur = false;
-        // const musicConfig = {
-        //     mute: false,
-        //     volume: 0.7,
-        //     rate: 1,
-        //     detune: 0,
-        //     seek: 0,
-        //     loop: true,
-        //     delay: 0
-        // };
-        //this.m_music.play(musicConfig);
+        this.sound.pauseOnBlur = false;
+        this.bossPrepareMusic = this.sound.add("bossPrepareMusic");
+        this.bossFightMusic = this.sound.add("bossFight");
+        this.normalMusic = this.sound.add("normal");
+
+        this.normalMusic.play(Game.bgmSoundConfig);
+        
 
 
 //몹/유저유닛/투사체 관련
@@ -324,10 +319,11 @@ export default class gameScene extends Phaser.Scene{
     {   
         if (pointer) {
             this.preTile = this.getTileAtPointer(pointer, this.info);
-            this.preTile.index = "2897";
             if (this.preTile == undefined || this.preTile.placedUnit == undefined)
                 return;
+            this.preTile.index = "2897";
             this.onPlaceQueue = this.preTile.placedUnit;
+            this.preTile.placedUnit = undefined;
             this.onPlaceQueue.rangeView.alpha = 0.4;
             this.onPlaceQueue.buffRangeView.alpha = 0.6;
             this.m_player.splice(this.m_player.findIndex(e => { e.index == this.onPlaceQueue.index }), 1);
@@ -351,7 +347,7 @@ export default class gameScene extends Phaser.Scene{
             }
             this.onPlaceQueue.setX(t.getCenterX());
             this.onPlaceQueue.setY(t.getCenterY());
-            this.onPlaceQueue.setDepth(this.onPlaceQueue.y / 48);
+            this.onPlaceQueue.setDepth(((this.onPlaceQueue.y / 48) * (this.onPlaceQueue.x / 48)));
         }
         );
         this.input.on('pointerdown', this.unitPlaceHandler, this);
@@ -369,6 +365,7 @@ export default class gameScene extends Phaser.Scene{
     }
 
     unitPlacer(t) {
+        this.onPlaceQueue.alpha = 1;
         this.m_player.push(this.onPlaceQueue);
         t.index = "2898";     
         this.onPlaceQueue.rangeView.alpha = 0;
@@ -376,7 +373,7 @@ export default class gameScene extends Phaser.Scene{
         t.placedUnit = this.onPlaceQueue;     
         this.onPlaceQueue.setX(t.getCenterX());
         this.onPlaceQueue.setY(t.getCenterY());
-        this.onPlaceQueue.setDepth(this.onPlaceQueue.y / 48);
+        this.onPlaceQueue.setDepth(((this.onPlaceQueue.y / 48) * (this.onPlaceQueue.x / 48)));
         this.resetBuff();
         this.onPlaceQueue = undefined;
     }
@@ -482,6 +479,15 @@ export default class gameScene extends Phaser.Scene{
     }
 
     toDicePhase() {
+        if (this.roundNum % 5 == 0) {
+            this.plugins.get('rexSoundFade').fadeOut(this.normalMusic, 2500, false);
+            this.plugins.get('rexSoundFade').fadeIn(this.bossPrepareMusic, 2500, Game.bgmSoundConfig.volume, 0);
+        }
+        else if (this.normalMusic.config.volume == 0) {
+            this.plugins.get('rexSoundFade').fadeOut(this.bossFightMusic, 2500, false);
+            this.plugins.get('rexSoundFade').fadeIn(this.normalMusic, 2500, Game.bgmSoundConfig.volume, 0);
+        }
+        console.log(this.normalMusic.config);
         this.PhaseText = "Dice Phase";        
         this.globalnum = 1;
         this.scene.pause().launch('diceScene');
@@ -505,6 +511,10 @@ export default class gameScene extends Phaser.Scene{
         this.placeModeTimeOver();
         this.PhaseText = "Battle Phase";
         this.eventChecked = false;
+        if (this.roundNum % 5 == 0) {
+            this.plugins.get('rexSoundFade').fadeOut(this.bossPrepareMusic, 2500, false);
+            this.plugins.get('rexSoundFade').fadeIn(this.bossFightMusic, 2500, Game.bgmSoundConfig.volume, 0);
+        }
         this.startRound();
         //this.phaseTimer = this.time.delayedCall(6000, this.toDicePhase, [], this);
     }

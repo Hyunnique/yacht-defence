@@ -4,6 +4,7 @@ import PreLoadScene from "./scenes/preloadScene";
 import diceScene from "./scenes/diceScene";
 import PathFollowerPlugin from 'phaser3-rex-plugins/plugins/pathfollower-plugin.js';
 import OutlinePipelinePlugin from 'phaser3-rex-plugins/plugins/outlinepipeline-plugin.js';
+import SoundFadePlugin from 'phaser3-rex-plugins/plugins/soundfade-plugin.js';
 
 const Config = {
     backgroundColor: 0xFFFFFF,
@@ -30,11 +31,18 @@ const Config = {
             key: 'rexPathFollower',
             plugin: PathFollowerPlugin,
             start: true
-        }, {
+            },
+            {
             key: 'rexOutlinePipeline',
             plugin: OutlinePipelinePlugin,
             start: true
-        }]
+            },
+            {
+                key: 'rexSoundFade',
+                plugin: SoundFadePlugin,
+                start: true
+            }
+        ]
     }
 };
 
