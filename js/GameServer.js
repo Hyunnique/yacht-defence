@@ -16,7 +16,7 @@ module.exports = {
         this.createRoom();
         this.connectionHandler();
 
-        
+        /*
         for (let i = 1; i <= 50; i++) {
             console.log("Round " + i + "--");
             console.log("Round Cost : " + this.Rooms[10001].generatorInfo.cost);
@@ -25,7 +25,7 @@ module.exports = {
             let result = this.generateWaveInfo(10001);
             this.Rooms[10001].roundInfo.num++;
         }
-        
+        */
     },
 
     createRoom() {
