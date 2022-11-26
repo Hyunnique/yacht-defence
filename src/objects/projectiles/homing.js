@@ -28,8 +28,6 @@ export default class Homing extends Phaser.Physics.Arcade.Sprite {
 
     update() {
         this.flytoMob(this.shooter.target);
-        // if (Phaser.Math.Distance.Between(this.x, this.y, this.shooter.x, this.shooter.y) > this.shooter.range)
-        //     this.hit();
     }
 
     flytoMob(target) {
@@ -47,13 +45,12 @@ export default class Homing extends Phaser.Physics.Arcade.Sprite {
     }
 
     setAngle(target) {
-        const angleToMob = Phaser.Math.Angle.Between(
+        this.rotation = Phaser.Math.Angle.Between(
             this.x,
             this.y,
             target.center.x,
             target.center.y
         );
-        this.rotation = angleToMob;
         this.body.setAngularVelocity(0);
     }
 
