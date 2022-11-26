@@ -43,9 +43,9 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         this.isBoss = mobData.boss;
         this.dotDamageDict = {};
         this.playerNum = playerNum;
-        // if (this.playerNum != 0) {
-        //     this.setVisible(false);
-        // }
+        if (this.playerNum != 0) {
+             this.setVisible(false);
+        }
 
         this.deathSound = this.scene.sound.add(mobData.deathSound);
         
@@ -151,7 +151,12 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
 
     }
     update()
-    {   
+    {       
+        if (this.playerNum == this.scene.currentView)
+            this.setVisible(true);
+        else
+            this.setVisible(false);
+        
         if (!this.isBoss) {
             this.healthBar.setVisible(this.visible);
             this.healthBar.setPosition(this.getCenter().x-48, this.getCenter().y - 24);

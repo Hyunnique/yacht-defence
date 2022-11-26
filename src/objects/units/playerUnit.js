@@ -32,8 +32,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.index = index;
         this.id = id;
         this.playerNum = playerNum;
-        // if (playerNum != 0)
-        //     this.setVisible(false);
+
         this.attackReady = true;
         this.play(this.idleAnim,true);
         this.rangeView = this.scene.add.circle(this.x, this.y, this.range, 0xFF0000);
@@ -84,6 +83,13 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.effectIsFlip = effectOffset[this.effectName].isFlip == 1 ? true : false;
         // console.log(this.effectOffsetX + " " + this.effectOffsetY + " " + effectOffset[this.effectName].isFlip);
         this.effect = new UnitEffect(scene, this, this.effectIsFlip, db.name);
+
+        
+        if (playerNum != 0) {
+            this.setVisible(false);
+            this.effect.setVisible(false);
+        }
+        
         
         this.target = [];
         //this.setMotionSpeed();
@@ -105,6 +111,15 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
     }
 
     update() {
+        if (this.playerNum == this.scene.currentView) {
+            this.setVisible(true);
+            this.effect.setVisible(true);
+        }
+        else {
+            this.setVisible(false);
+            this.effect.setVisible(false);
+        }
+        
         this.rangeView.setX(this.x);
         this.rangeView.setY(this.y);
         this.buffRangeView.setX(this.x);

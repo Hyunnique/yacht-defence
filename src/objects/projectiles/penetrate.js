@@ -29,8 +29,8 @@ export default class Penetrate extends Phaser.Physics.Arcade.Sprite {
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);    
         
-        // if (shooter.playerNum != 0)
-        //     this.setVisible(false);
+        if (shooter.playerNum != 0)
+            this.setVisible(false);
 
         this.flyto = new Phaser.Math.Vector2();
 
@@ -43,6 +43,10 @@ export default class Penetrate extends Phaser.Physics.Arcade.Sprite {
 
     update()
     {
+        if (this.playerNum == this.scene.currentView)
+            this.setVisible(true);
+        else
+            this.setVisible(false);
         if (Phaser.Math.Distance.Between(this.x, this.y, this.shooter.x, this.shooter.y) >= this.shooter.range)
             this.destroy();
     }
