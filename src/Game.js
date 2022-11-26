@@ -397,7 +397,7 @@ var Game = {
 
         this.Socket.on('placePhase-begin', (msg) => {
             document.getElementsByClassName("ui-goldArea")[0].onclick = (e) => {
-                if (!this.shopOpen) {
+                if (!this.shopOpen && this.PlayerData[0].hp > 0) {
                     this.openShop();
                     this.shopOpen = true;
                 }
