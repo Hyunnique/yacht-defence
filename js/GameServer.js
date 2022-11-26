@@ -12,9 +12,7 @@ module.exports = {
 
     init(socket) {
         this.Socket = socket;
-
         this.createRoom();
-
         this.connectionHandler();
 
         /* 난이도 계수 테스트
@@ -35,16 +33,9 @@ module.exports = {
         this.Rooms[this.latestRoomId] = {
             roomId: this.latestRoomId,
             players: [],
+            counter: { ready: 0, connect: 0 },
             maxPlayers: (process.env.PLAYERS ? parseInt(process.env.PLAYERS) : 1), // Configurable for development or singleplayer
-            counter: {
-                ready: 0,
-                handConfirm: 0,
-                handReceived: 0,
-                connect: 0
-            },
-            timer: {
-
-            },
+            timer: {},
             round: 1,
             roundChoice: -1,
             generatorSheet: JSON.parse(JSON.stringify(SpecsheetGen)),
@@ -56,12 +47,12 @@ module.exports = {
     generateWaveInfo(roomId) {
         let waveResult = waveGenerator(this.Rooms[roomId].generatorSheet, this.Rooms[roomId].round, this.Rooms[roomId].generatorRoundCost, this.Rooms[roomId].generatorHpFactor);
 
-        this.Rooms[roomId].generatorHpFactor = (this.Rooms[roomId].generatorHpFactor * 1.06).toFixed(2);
+        this.Rooms[roomId].generatorHpFactor = (this.Rooms[roomId].generatorHpFactor * 1.065).toFixed(2);
 
         if (this.Rooms[roomId].round % 10 == 0) {
-            this.Rooms[roomId].generatorRoundCost = Math.floor(this.Rooms[roomId].generatorRoundCost * 1.4);
+            this.Rooms[roomId].generatorRoundCost = Math.floor(this.Rooms[roomId].generatorRoundCost * 1.35);
         } else {
-            this.Rooms[roomId].generatorRoundCost = Math.floor(this.Rooms[roomId].generatorRoundCost * 1.06 + 20);
+            this.Rooms[roomId].generatorRoundCost = Math.floor(this.Rooms[roomId].generatorRoundCost * 1.07 + 15);
         }
 
         this.emitAll(roomId, 'game-wavedata', waveResult);
