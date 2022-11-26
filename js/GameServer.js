@@ -87,6 +87,12 @@ module.exports = {
         }
     },
 
+    zerofyNumber(target, index) {
+        if (target == index) return 0;
+        else if (index == 0) return target;
+        else return index;
+    },
+
     emitAll(roomId, eventName, eventMessage) {
         for (let player of this.Rooms[roomId].players) {
             player.socket.emit(eventName, eventMessage);
@@ -117,6 +123,12 @@ module.exports = {
                     gold: 0,
                     units: [],
                     items: {},
+                    shopBuffs: { 
+                        shopAtk: 0,
+                        shopPenetration: 0,
+                        shopAspd: 0
+                    },
+                    tierBuffs: [0, 0, 0, 0],
                     currentHand: "",
                     currentHandTier: 3,
                     currentChoice: -1
@@ -397,8 +409,17 @@ module.exports = {
     },
 
     onReceiveUnitData(socket, roomId) {
-        socket.on('player-unitData', (msg) => {
-            this.Rooms[roomId].players[this.getRoomIndex(socket.id)].units = msg;
+        socket.on('player-syncFieldStatus', (msg) => {
+            this.Rooms[roomId].players[this.getRoomIndex(socket.id)].units = msg.units;
+            this.Rooms[roomId].players[this.getRoomIndex(socket.id)].shopBuffs = msg.shopBuffs;
+            this.Rooms[roomId].players[this.getRoomIndex(socket.id)].tierBuffs = msg.tierBuffs;
+        });
+
+        this.emitAll(roomId, 'sync-playerFieldStatus', {
+            index: this.zerofyNumber(i, this.getRoomIndex(socket.id)),
+            units: msg.units,
+            shopBuffs: msg.shopBuffs,
+            tierBuffs: msg.tierBuffs
         });
     },
 
@@ -406,15 +427,13 @@ module.exports = {
         socket.on('player-requestUnitData', (msg) => {
             let { playerIndex } = msg;
 
-            let actualRequest = -1;
-
-            if (playerIndex == 0) actualRequest = this.getRoomIndex(socket.id);
-            else if (playerIndex == this.getRoomIndex(socket.id)) actualRequest = 0;
-            else actualRequest = playerIndex;
+            let actualRequest = this.zerofyNumber(this.getRoomIndex(socket.id), playerIndex);
 
             socket.emit('player-unitData', {
                 index: playerIndex,
-                unitData: this.Rooms[roomId].players[actualRequest].units
+                units: this.Rooms[roomId].players[actualRequest].units,
+                shopBuffs: this.Rooms[roomId].players[actualRequest].shopBuffs,
+                tierBuffs: this.Rooms[roomId].players[actualRequest].tierBuffs
             });
         });
     },

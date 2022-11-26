@@ -400,6 +400,8 @@ export default class gameScene extends Phaser.Scene{
         this.onPlaceQueue.setDepth(((this.onPlaceQueue.y / 48) * (this.onPlaceQueue.x / 48)));
         this.resetBuff();
         this.onPlaceQueue = undefined;
+
+        Game.syncFieldStatus();
     }
 
     placeOtherPlayerUnit(playerNum) {
