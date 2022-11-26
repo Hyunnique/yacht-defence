@@ -170,11 +170,17 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.buffedAtk = 0;
     }
 
+    syncGivenGlobalBuff(shopBuff,tierBuffs)
+    {
+        this.globalbuffAspd = shopBuff.shopAspd;
+        this.globalbuffedPenetration = shopBuff.shopPenetration;
+        this.globalbuffAtk = (1 + shopBuff.shopAtk / 100)*(1 + tierBuffs[this.tier - 1] / 100);
+    }
 
     updateBuff()
     {
         this.attack = (1 + this.buffedAtk / 100) * this.globalbuffAtk * this.originAttack;
-        this.aspd = (1 + this.buffedAspd / 100) * ((100 + this.globalbuffAspd) / 100) * this.originAspd;
+        this.aspd = (1 + this.buffedAspd / 100) * (1 + this.globalbuffAspd / 100) * this.originAspd;
         this.penetration = this.originPenetration + this.globalbuffedPenetration;
         if (this.penetration > 1) this.penetration = 1;
         else if (this.penetration < 0) this.penetration = 0;
@@ -227,12 +233,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.destroy();
     }
 
-    syncGivenGlobalBuff(shopBuff,tierBuffs)
-    {
-        this.globalbuffAspd = shopBuff.shopAspd;
-        this.globalbuffedPenetration = shopBuff.shopPenetration;
-        this.globalbuffAtk = (1 + shopBuff.shopAtk / 100)*(1 + tierBuffs[this.tier - 1] / 100);
-    }
+    
     
     calcDamage(mobDefence)
     {

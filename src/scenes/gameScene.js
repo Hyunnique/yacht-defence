@@ -439,6 +439,7 @@ export default class gameScene extends Phaser.Scene {
 
 
     resetBuff() {
+        console.log(this.m_player);
         this.m_player.forEach((e) => {
             e.removeBuff();
         });
@@ -449,6 +450,7 @@ export default class gameScene extends Phaser.Scene {
         this.m_player.forEach((e) => {
             e.updateBuff();
         });
+        console.log(this.m_player);
     }
 
     placeModeTimeOver() {
