@@ -16,16 +16,16 @@ module.exports = {
         this.createRoom();
         this.connectionHandler();
 
-        /* 난이도 계수 테스트
+        
         for (let i = 1; i <= 50; i++) {
             console.log("Round " + i + "--");
-            console.log("Round Cost : " + this.Rooms[10001].generatorRoundCost);
-            console.log("HPFactor : " + this.Rooms[10001].generatorHpFactor);
+            console.log("Round Cost : " + this.Rooms[10001].generatorInfo.cost);
+            console.log("HPFactor : " + this.Rooms[10001].generatorInfo.hpFactor);
 
             let result = this.generateWaveInfo(10001);
-            this.Rooms[10001].round++;
+            this.Rooms[10001].roundInfo.num++;
         }
-        */
+        
     },
 
     createRoom() {
@@ -34,7 +34,7 @@ module.exports = {
         this.Rooms[this.latestRoomId] = {
             roomId: this.latestRoomId,
             players: [],
-            maxPlayers: (process.env.PLAYERS ? parseInt(process.env.PLAYERS) : 1), // Configurable for development or singleplayer
+            maxPlayers: (process.env.PLAYERS ? parseInt(process.env.PLAYERS) : 2), // Configurable for development or singleplayer
             timer: {},
             roundInfo: {
                 num: 1,
@@ -59,13 +59,13 @@ module.exports = {
     generateWaveInfo(roomId) {
         let waveResult = waveGenerator(this.Rooms[roomId].generatorInfo.sheet, this.Rooms[roomId].roundInfo.num, this.Rooms[roomId].generatorInfo.cost, this.Rooms[roomId].generatorInfo.hpFactor);
 
-        this.Rooms[roomId].generatorInfo.hpFactor = (this.Rooms[roomId].generatorInfo.hpFactor * 1.06).toFixed(2);
-
         if (this.Rooms[roomId].roundInfo.num % 10 == 0) {
-            this.Rooms[roomId].generatorInfo.cost = Math.floor(this.Rooms[roomId].generatorInfo.cost * 1.35);
+            this.Rooms[roomId].generatorInfo.cost = Math.floor(this.Rooms[roomId].generatorInfo.cost * 1.5 + (20 * Math.pow(1.06, this.Rooms[roomId].roundInfo.num)));
         } else {
-            this.Rooms[roomId].generatorInfo.cost = Math.floor(this.Rooms[roomId].generatorInfo.cost * 1.07 + 15);
+            this.Rooms[roomId].generatorInfo.cost = Math.floor(this.Rooms[roomId].generatorInfo.cost * 1.06 + (20 * Math.pow(1.06, this.Rooms[roomId].roundInfo.num)));
         }
+
+        this.Rooms[roomId].generatorInfo.hpFactor = (this.Rooms[roomId].generatorInfo.hpFactor * 1.08 + (0.05 * Math.pow(1.06, this.Rooms[roomId].roundInfo.num))).toFixed(2);
 
         this.emitAll(roomId, 'game-wavedata', waveResult);
 
@@ -269,11 +269,11 @@ module.exports = {
                     [20, 15, 5, 0]
                 ];
 
-                let latestChoiceResult = -1;
+                let latestChoiceDiffResult = -1;
                 let latestChoiceReward = -1;
                 for (let i = 0; i < resultArray.length; i++) {
                     // 동률일 경우 모두 높은 골드로 지급
-                    if (latestChoiceResult != -1 && latestChoiceResult == resultArray[i].choice) {
+                    if (latestChoiceDiffResult != -1 && latestChoiceDiffResult == resultArray[i].choiceDiff) {
                         this.Rooms[roomId].players[resultArray[i].idx].gold += latestChoiceReward;
                         resultArray[i].rewardGold = latestChoiceReward;
                     } else {
@@ -281,7 +281,7 @@ module.exports = {
                         resultArray[i].rewardGold = choiceRewardByPlayers[resultArray.length - 1][i];
                     }
 
-                    latestChoiceResult = resultArray[i].choice;
+                    latestChoiceDiffResult = resultArray[i].choiceDiff;
                     latestChoiceReward = resultArray[i].rewardGold;
                 }
 
@@ -376,7 +376,7 @@ module.exports = {
                 this.Rooms[roomId].players[i].socket.emit('chat-message', {
                     playerIndex: chatter,
                     name: this.Rooms[roomId].players[this.getRoomIndex(socket.id)].name,
-                    message: msg.message
+                    message: msg
                 });
             }
         });
