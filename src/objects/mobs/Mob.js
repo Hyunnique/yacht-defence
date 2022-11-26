@@ -36,7 +36,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         this.m_speed = mobData.m_speed;
         this.deathAnimName = mobData.deathAnimName;
         this.defence = mobData.defence;
-        this.damage = mobData.damage;
+        //this.damage = mobData.damage;
         this.mobNum = num;
         this.moveType = mobRoute + playerNum;
         this.deathCalled = false;
@@ -166,8 +166,17 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
             this.death();
         }
         else if (this.tween.progress == 1 && !this.deathCalled) {
-            if(this.playerNum == 0)
-                Game.hitPlayerBase(this.damage);
+            if(this.playerNum == 0) {
+                let b_Damage = 2;
+
+                if (this.isBoss) b_Damage = 20;
+                else if (this.scene.roundNum <= 10) b_Damage = 2;
+                else if (this.scene.roundNum <= 25) b_Damage = 3;
+                else b_Damage = 4;
+
+                Game.hitPlayerBase(b_Damage);
+            }
+
             this.deathCalled = true;
             this.death();
         }
