@@ -81,73 +81,70 @@ export default class gameScene extends Phaser.Scene{
         this.mapHeight = 1440;
         this.mapOffsetX = 0;
         this.mapOffsetY = 0;
-        
-        const map = this.make.tilemap({key: "map_forest"});
-        const mapOthers = this.make.tilemap({key: "map_forest"});
 
-        const outside_ground = map.addTilesetImage("outside_ground", "outside_ground");
-        const outside_roof = map.addTilesetImage("outside_roof", "outside_roof");
-        const outside_wall = map.addTilesetImage("outside_wall", "outside_wall");
-        const outside_stair = map.addTilesetImage("outside_stair", "outside_stair");
-        const outside_B = map.addTilesetImage("Outside_B", "outside_B");
-        const possible = map.addTilesetImage("possible", "possible");
+        let map = [];
+        let outside_ground = [];
+        let outside_roof = [];
+        let outside_wall = [];
+        let outside_stair = [];
+        let outside_B = [];
+        let possible = [];
+        let tile = [];
+        let wall = [];
+        let bridge = [];
+        let grass = [];
+        let tree1_back = [];
+        let tree2_back = [];
+        let tree1_front = [];
+        let tree2_front = [];
 
-        const tile = map.createLayer("tile", outside_ground, 0, 0);
-        const wall = map.createLayer("wall", outside_wall, 0, 0);
-        const bridge = map.createLayer("bridge", outside_B, 0, 0);
-        const grass = map.createLayer("grass", outside_B, 0, 0);
-        const tree1_back = map.createLayer("Tree1_B", outside_B, 0, 0);
-        const tree2_back = map.createLayer("Tree2_B", outside_B, 0, 0);
-        const tree1_front = map.createLayer("Tree1_F", outside_B, 0, 0);
-        const tree2_front = map.createLayer("Tree2_F", outside_B, 0, 0);
+        for (let i = 0; i < 4; i++) {
+            map.push(this.make.tilemap({key: "map_forest"}));
+            outside_ground.push(map[i].addTilesetImage("outside_ground", "outside_ground"));
+            outside_roof.push(map[i].addTilesetImage("outside_roof", "outside_roof"));
+            outside_wall.push(map[i].addTilesetImage("outside_wall", "outside_wall"));
+            outside_stair.push(map[i].addTilesetImage("outside_stair", "outside_stair"));
+            outside_B.push(map[i].addTilesetImage("Outside_B", "outside_B"));
+            possible.push(map[i].addTilesetImage("possible", "possible"));
+            tile.push(map[i].createLayer("tile", outside_ground, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
+            wall.push(map[i].createLayer("wall", outside_wall, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
+            bridge.push(map[i].createLayer("bridge", outside_B, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
+            grass.push(map[i].createLayer("grass", outside_B, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
+            tree1_back.push(map[i].createLayer("Tree1_B", outside_B, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
+            tree2_back.push(map[i].createLayer("Tree2_B", outside_B, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
+            tree1_front.push(map[i].createLayer("Tree1_F", outside_B, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
+            tree2_front.push(map[i].createLayer("Tree2_F", outside_B, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
+        }
 
-        const tileOthers = mapOthers.createLayer("tile", outside_ground, 2400, 0);
-        const wallOthers = mapOthers.createLayer("wall", outside_wall, 2400, 0);
-        const bridgeOthers = mapOthers.createLayer("bridge", outside_B, 2400, 0);
-        const grassOthers = mapOthers.createLayer("grass", outside_B, 2400, 0);
-        const tree1_backOthers = mapOthers.createLayer("Tree1_B", outside_B, 2400, 0);
-        const tree2_backOthers = mapOthers.createLayer("Tree2_B", outside_B, 2400, 0);
-        const tree1_frontOthers = mapOthers.createLayer("Tree1_F", outside_B, 2400, 0);
-        const tree2_frontOthers = mapOthers.createLayer("Tree2_F", outside_B, 2400, 0);
-
-        this.info = map.createLayer("info", possible, 0, 0); 
+        this.info = map[0].createLayer("info", possible, 0, 0); 
         this.info.alpha = 0;
         // info layer 기준 tileset index가
         // 배치 가능 2897
         // 배치 불가능 2898
 
-        const tileData = outside_ground.tileData;
-        for (let tileid in tileData) {
-            let layer = map.layers[0];
-            layer.data.forEach(tileRow => {
-                tileRow.forEach(tile => {
-                    if (tile.index - outside_ground.firstgid === parseInt(tileid, 10)) {
-                        this.animatedTiles.push(
-                            new AnimatedTile(
-                                tile,
-                                tileData[tileid].animation,
-                                outside_ground.firstgid
-                            )
-                        )
-                    }
-                });
-            });
 
-            layer = mapOthers.layers[0];
-            layer.data.forEach(tileRow => {
-                tileRow.forEach(tile => {
-                    if (tile.index - outside_ground.firstgid === parseInt(tileid, 10)) {
-                        this.animatedTiles.push(
-                            new AnimatedTile(
-                                tile,
-                                tileData[tileid].animation,
-                                outside_ground.firstgid
-                            )
-                        )
-                    }
-                });
-            });
+        for (let i = 0; i < 4; i++) {
+            const tileData = outside_ground[i].tileData;
+            for (let tileid in tileData) {
+                map.forEach((m) => {
+                    let layer = m.layers[0];
+                    layer.data.forEach(tileRow => {
+                        tileRow.forEach(tile => {
+                            if (tile.index - outside_ground[i].firstgid === parseInt(tileid, 10)) {
+                                this.animatedTiles.push(
+                                    new AnimatedTile(
+                                        tile,
+                                        tileData[tileid].animation,
+                                        outside_ground[i].firstgid
+                                    )
+                                )
+                            }
+                        });
+                    });
+                })
+            }
         }
+
         
         let help = this.add.text(0, 0, '', { font: '48px monospace' }); 
         let cursors = this.input.keyboard.createCursorKeys();
@@ -180,7 +177,7 @@ export default class gameScene extends Phaser.Scene{
             // this.camera.centerOn(pointer.worldX, pointer.worldY);
             // this.camera.pan(pointer.worldX, pointer.worldY, 2000, "Power2");
         });
-        this.cameras.main.setBounds(0, 0, 2400, 1440);
+        this.cameras.main.setBounds(0, 0, 4800, 2880);
 
 
 
@@ -206,6 +203,9 @@ export default class gameScene extends Phaser.Scene{
         this.mobArray = [];
         this.roundNum = 0;
         this.globalnum = 1;
+        this.globalnum1 = 1;
+        this.globalnum2 = 1;
+        this.globalnum3 = 1;
         this.mobCounter = 0;
         this.unitIndex = 0;
         this.playerHealth = 100;
@@ -218,14 +218,25 @@ export default class gameScene extends Phaser.Scene{
         this.roundDB = this.cache.json.get("roundDB");
 
         this.m_player = [];
-        this.spectate_player = [];
-        this.spectate_player_units = [];
+        this.spectate_player = [[], [], [], []];
+        this.spectate_player_units = [[], [], [], []];
+        this.spectate_player_mobs = [];
+        this.spectate_player_projectiles = [];
+        for (var i = 0; i < 4; i++)
+        {
+            this.spectate_player_mobs.push(this.physics.add.group());
+            this.spectate_player_projectiles.push(this.physics.add.group());
+        }
+
 
         this.selectedUnit;
         this.onPlaceQueue;
         this.preTile;
 
         this.physics.add.overlap(this.m_projectiles, this.m_mobs, (projectile, mob) => mob.hit(projectile), null, this);
+        this.spectate_player_mobs.forEach((e,i) => {
+            this.physics.add.overlap(this.spectate_player_projectiles[i], e, (projectile, mob) => mob.hit(projectile), null, this);
+        });
 
         this.input.on("pointerdown", this.clickHandler, this);
     }
@@ -314,7 +325,7 @@ export default class gameScene extends Phaser.Scene{
     initialPlace(unitData,unitID)
     {
         this.info.alpha = 1;
-        this.onPlaceQueue = new Unit(this, this.input.activePointer.x, this.input.activePointer.y, unitData, this.unitIndex++,unitID);
+        this.onPlaceQueue = new Unit(this, this.input.activePointer.x, this.input.activePointer.y, unitData, this.unitIndex++, unitID, 0);
         this.onPlaceQueue.rangeView.alpha = 0.4;
         this.onPlaceQueue.buffRangeView.alpha = 0.6;
         this.moveUnit();
@@ -383,29 +394,39 @@ export default class gameScene extends Phaser.Scene{
         this.onPlaceQueue = undefined;
     }
 
-    placeOtherPlayerUnit() {
+    placeOtherPlayerUnit(playerNum) {
         var index = 0;
         this.spectate_player.forEach(e => {
-            this.spectate_player_units.push(new Unit(this, e.x + 2400, e.y, this.unitDB["unit" + e.id], index++, e.id));
+            this.spectate_player_units[playerNum].push(new Unit(this, e.x + 2400, e.y, this.unitDB["unit" + e.id], index++, e.id,playerNum));
         });
     }
 
-    removeOtherPlayerUnit() {
-        this.spectate_player_units.forEach(e => {
+    setVisibility(playerNum,bool)
+    {
+        if (playerNum == 0)
+            return; 
+        this.physics.overlapRect(2400 * (playerNum % 2), (1440 * Math.floor(playerNum / 2)), 2440, 1440).forEach(e => {
+            e.gameObjects.setVisible(bool);
+        });
+        
+    }
+
+    removeOtherPlayerUnit(playerNum) {
+        this.spectate_player_units[playerNum].forEach(e => {
             console.log(e);
             e.remove()
         });
-        this.spectate_player_units = [];
+        this.spectate_player_units[playerNum] = [];
     }
 
-    resetOtherBuff(buffArray)
+    resetOtherBuff(buffArray,playerNum)
     {
-        this.spectate_player_units.forEach((e) => { e.removeBuff() });
-        this.spectate_player_units.forEach((e) => {
+        this.spectate_player_units[playerNum].forEach((e) => { e.removeBuff() });
+        this.spectate_player_units[playerNum].forEach((e) => {
             e.giveBuff();
             e.syncGivenGlobalBuff(buffArray);
         });
-        this.spectate_player_units.forEach((e) => {
+        this.spectate_player_units[playerNum].forEach((e) => {
             e.updateBuff();
         });
     }
@@ -449,15 +470,42 @@ export default class gameScene extends Phaser.Scene{
         else if (this.roundNum < 20) initialDelay = 800;
         else initialDelay = 400;
         
-        this.currentRoundData.forEach((element) => {
-                this.time.addEvent({
+        this.currentRoundData.forEach((element ,index) => {
+            this.time.addEvent({
                 delay: initialDelay,
                 callback: () => {
-                    this.m_mobs.add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum, element["mobRoute"],element["hpFactor"]));
+                    this.m_mobs.add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum, element["mobRoute"],element["hpFactor"],0));
                     this.globalnum++;
                 },
                 repeat: element["mobCount"]-1,
-                startAt: 0
+                startAt: index * 100
+            });
+            this.time.addEvent({
+                delay: initialDelay,
+                callback: () => {
+                    this.spectate_player_mobs[1].add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum1, element["mobRoute"], element["hpFactor"], 1));
+                    this.globalnum1++;
+                },
+                repeat: element["mobCount"]-1,
+                startAt: index * 100
+            });
+            this.time.addEvent({
+                delay: initialDelay,
+                callback: () => {
+                    this.spectate_player_mobs[2].add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum2, element["mobRoute"], element["hpFactor"], 2));
+                    this.globalnum2++;
+                },
+                repeat: element["mobCount"]-1,
+                startAt: index * 100
+            });
+            this.time.addEvent({
+                delay: initialDelay,
+                callback: () => {
+                    this.spectate_player_mobs[3].add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum3, element["mobRoute"], element["hpFactor"], 3));
+                    this.globalnum3++;
+                },
+                repeat: element["mobCount"]-1,
+                startAt: index * 100
             });
             this.mobCounter += element["mobCount"];
         });
