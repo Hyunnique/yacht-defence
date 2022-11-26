@@ -94,7 +94,6 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
             quality: 1
         });
 
-        this.setInteractive({ draggable: true });
         this.scene.physics.add.existing(this);
         this.setBodySize(64, 64, true);
         this.scene.add.existing(this);
