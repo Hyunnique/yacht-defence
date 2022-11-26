@@ -50,7 +50,7 @@ module.exports = function generateRound(SpecsheetGen, round, roundCost, hpFactor
         currentWaveInfo.push({
             "mobName": waveBoss,
             "mobCount": 1,
-            "hpFactor": (hpFactor * (roundCost / 110) * 4).toFixed(2),
+            "hpFactor": (hpFactor * (roundCost / 35)).toFixed(2),
             "mobRoute": "X"
         });
     }
