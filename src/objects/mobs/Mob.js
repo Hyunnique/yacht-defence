@@ -165,8 +165,9 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         if (this.Health <= 0 && !this.deathCalled) {
             this.death();
         }
-        else if (Phaser.Math.Distance.Between(this.x, this.y, 2400, 720) < 1 && !this.deathCalled) {
-            Game.hitPlayerBase(this.damage);
+        else if (this.tween.progress == 1 && !this.deathCalled) {
+            if(this.playerNum == 0)
+                Game.hitPlayerBase(this.damage);
             this.deathCalled = true;
             this.death();
         }

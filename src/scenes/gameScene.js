@@ -177,7 +177,7 @@ export default class gameScene extends Phaser.Scene{
             // this.camera.centerOn(pointer.worldX, pointer.worldY);
             // this.camera.pan(pointer.worldX, pointer.worldY, 2000, "Power2");
         });
-        this.cameras.main.setBounds(0, 0, 4800, 2880);
+        this.cameras.main.setBounds(0, 0, 2400, 1440);
 
 
 
