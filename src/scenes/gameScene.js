@@ -360,22 +360,25 @@ export default class gameScene extends Phaser.Scene{
     unitPlaceHandler(pointer) {
         let t = this.getTileAtPointer(pointer, this.info);
         if (t.index == "2897") {
-            console.log("hi!");
-            this.m_player.push(this.onPlaceQueue);
-            t.index = "2898";
+            this.unitPlacer(t);
             this.info.alpha = 0;
-            this.onPlaceQueue.rangeView.alpha = 0;
-            this.onPlaceQueue.buffRangeView.alpha = 0;
-            t.placedUnit = this.onPlaceQueue;
             this.placemode = false;
             this.input.off("pointermove");
             this.input.off("pointerdown", this.unitPlaceHandler, this);
-            this.onPlaceQueue.setX(t.getCenterX());
-            this.onPlaceQueue.setY(t.getCenterY());
-            this.onPlaceQueue.setDepth(this.onPlaceQueue.y / 48);
-            this.resetBuff();
-            this.onPlaceQueue = undefined;
         }
+    }
+
+    unitPlacer(t) {
+        this.m_player.push(this.onPlaceQueue);
+        t.index = "2898";     
+        this.onPlaceQueue.rangeView.alpha = 0;
+        this.onPlaceQueue.buffRangeView.alpha = 0;
+        t.placedUnit = this.onPlaceQueue;     
+        this.onPlaceQueue.setX(t.getCenterX());
+        this.onPlaceQueue.setY(t.getCenterY());
+        this.onPlaceQueue.setDepth(this.onPlaceQueue.y / 48);
+        this.resetBuff();
+        this.onPlaceQueue = undefined;
     }
 
     placeOtherPlayerUnit() {
@@ -416,19 +419,12 @@ export default class gameScene extends Phaser.Scene{
             if (this.preTile == undefined) {
                 this.handleTierBonus(this.onPlaceQueue.tier, false);
                 this.onPlaceQueue.remove();
+                this.onPlaceQueue = undefined;
             }
             else {
-                this.onPlaceQueue.alpha = 1;
-                this.onPlaceQueue.setX(this.preTile.getCenterX());
-                this.onPlaceQueue.setY(this.preTile.getCenterY());
-                this.m_player.push(this.onPlaceQueue);
-                this.preTile.placedUnit = this.onPlaceQueue;   
-                this.onPlaceQueue.rangeView.alpha = 0;
-                this.onPlaceQueue.buffRangeView.alpha = 0;
-                this.preTile.index = "2898";
-            }
-            this.onPlaceQueue = undefined;
-            this.preTile = undefined;
+                this.unitPlacer(this.preTile);
+                this.preTile = undefined;
+            }           
         }
     }
 
@@ -503,7 +499,7 @@ export default class gameScene extends Phaser.Scene{
                 }
             }
         }
-        this.time.delayedCall(19999, this.toBattlePhase, [], this);
+        this.time.delayedCall(19999, this.placeModeTimeOver, [], this);
     }
     toBattlePhase() {
         this.placeModeTimeOver();
