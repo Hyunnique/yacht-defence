@@ -412,16 +412,16 @@ module.exports = {
             this.Rooms[roomId].players[this.getRoomIndex(socket.id)].units = msg.units;
             this.Rooms[roomId].players[this.getRoomIndex(socket.id)].shopBuffs = msg.shopBuffs;
             this.Rooms[roomId].players[this.getRoomIndex(socket.id)].tierBuffs = msg.tierBuffs;
-        });
 
-        for (let i = 0; i < this.Rooms[roomId].players.length; i++) {
-            this.Rooms[roomId].players[i].socket.emit('sync-playerFieldStatus', {
-                index: this.zerofyNumber(i, this.getRoomIndex(socket.id)),
-                units: msg.units,
-                shopBuffs: msg.shopBuffs,
-                tierBuffs: msg.tierBuffs
-            });
-        }
+            for (let i = 0; i < this.Rooms[roomId].players.length; i++) {
+                this.Rooms[roomId].players[i].socket.emit('sync-playerFieldStatus', {
+                    index: this.zerofyNumber(i, this.getRoomIndex(socket.id)),
+                    units: msg.units,
+                    shopBuffs: msg.shopBuffs,
+                    tierBuffs: msg.tierBuffs
+                });
+            }
+        });
     }
 };
 
