@@ -217,7 +217,6 @@ export default class gameScene extends Phaser.Scene {
         this.m_player = [];
         this.spectate_player = [];
         this.spectate_player_units = Array(4).fill(null).map(() => Array());
-        console.log(this.spectate_player_units);
         this.spectate_player_mobs = [];
         this.spectate_player_projectiles = [];
         for (var i = 0; i < 4; i++) {
@@ -413,7 +412,6 @@ export default class gameScene extends Phaser.Scene {
     setVisibility(playerNum, bool) {
         if (playerNum == 0)
             return;
-        console.log(this.physics.overlapRect(2400 * (playerNum % 2), (1440 * Math.floor(playerNum / 2)), 2440, 1440));
         this.physics.overlapRect(2400 * (playerNum % 2), (1440 * Math.floor(playerNum / 2)), 2440, 1440).forEach(e => {
             e.gameObjects.setVisible(bool);
         });
