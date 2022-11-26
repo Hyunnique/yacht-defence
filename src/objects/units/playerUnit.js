@@ -227,11 +227,11 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.destroy();
     }
 
-    syncGivenGlobalBuff(buffArray)
+    syncGivenGlobalBuff(shopBuff,tierBuffs)
     {
-        this.globalbuffAspd = buffArray.shopAspd;
-        this.globalbuffedPenetration = buffArray.shopPenetration;
-        this.globalbuffAtk = (1 + buffArray.shopAtk / 100)*(1 + buffArray.tierBonus[this.tier - 1] / 100);
+        this.globalbuffAspd = shopBuff.shopAspd;
+        this.globalbuffedPenetration = shopBuff.shopPenetration;
+        this.globalbuffAtk = (1 + shopBuff.shopAtk / 100)*(1 + tierBuffs.tierBonus[this.tier - 1] / 100);
     }
     
     calcDamage(mobDefence)
