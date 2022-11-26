@@ -97,6 +97,7 @@ export default class gameScene extends Phaser.Scene{
         let tree2_back = [];
         let tree1_front = [];
         let tree2_front = [];
+        this.info = [];
 
         for (let i = 0; i < 4; i++) {
             map.push(this.make.tilemap({key: "map_forest"}));
@@ -114,10 +115,10 @@ export default class gameScene extends Phaser.Scene{
             tree2_back.push(map[i].createLayer("Tree2_B", outside_B, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
             tree1_front.push(map[i].createLayer("Tree1_F", outside_B, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
             tree2_front.push(map[i].createLayer("Tree2_F", outside_B, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
+            this.info.push(map[i].createLayer("info", possible, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
+            this.info[i].alpha = 0;
         }
 
-        this.info = map[0].createLayer("info", possible, 0, 0); 
-        this.info.alpha = 0;
         // info layer 기준 tileset index가
         // 배치 가능 2897
         // 배치 불가능 2898
