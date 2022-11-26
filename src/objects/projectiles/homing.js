@@ -33,7 +33,7 @@ export default class Homing extends Phaser.Physics.Arcade.Sprite {
     }
 
     update() {
-        if (this.playerNum == this.scene.currentView)
+        if (this.shooter.playerNum == this.scene.currentView)
             this.setVisible(true);
         else
             this.setVisible(false);
