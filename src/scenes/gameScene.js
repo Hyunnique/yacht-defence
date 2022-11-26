@@ -393,6 +393,19 @@ export default class gameScene extends Phaser.Scene{
         this.spectate_player_units = [];
     }
 
+    resetOtherBuff(buffArray)
+    {
+        this.spectate_player_units.forEach((e) => { e.removeBuff() });
+        this.spectate_player_units.forEach((e) => {
+            e.giveBuff();
+            e.syncGivenGlobalBuff(buffArray);
+        });
+        this.spectate_player_units.forEach((e) => {
+            e.updateBuff();
+        });
+    }
+
+
     resetBuff()
     {
         this.m_player.forEach((e) => {
