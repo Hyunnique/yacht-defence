@@ -430,7 +430,7 @@ var Game = {
                 loop: false
             });
             
-            this.GameObject.scene.getScene("gameScene").resetBuff();
+            
 
             document.getElementsByClassName("ui-shop-item")[msg.uiIndex].style.display = "none";
 
@@ -440,10 +440,8 @@ var Game = {
             this.shopBuff.shopAspd += itemSpecSheets["item" + msg.purchased].buffAspd;
             this.shopBuff.shopPenetration += itemSpecSheets["item" + msg.purchased].buffPenetration;
 
-            console.log(this.shopBuff.shopAtk)
-            console.log(this.shopBuff.shopAspd)
-            console.log(this.shopBuff.shopPenetration)
-
+            this.GameObject.scene.getScene("gameScene").resetBuff();
+            
             document.getElementsByClassName("ui-itemOverallArea-overall-atk")[0].innerText = "ATK: " + (this.shopBuff.shopAtk >= 0 ? "+" + this.shopBuff.shopAtk : this.shopBuff.shopAtk) + "%";
             document.getElementsByClassName("ui-itemOverallArea-overall-aspd")[0].innerText = "SPD: " + (this.shopBuff.shopAspd >= 0 ? "+" + this.shopBuff.shopAspd : this.shopBuff.shopAspd) + "%";
             document.getElementsByClassName("ui-itemOverallArea-overall-pen")[0].innerText = "PEN: " + (this.shopBuff.shopPenetration >= 0 ? "+" + this.shopBuff.shopPenetration : this.shopBuff.shopPenetration) + "%p";
