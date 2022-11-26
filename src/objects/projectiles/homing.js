@@ -18,6 +18,9 @@ export default class Homing extends Phaser.Physics.Arcade.Sprite {
         this.target = [];
         this.isTarget = false;
 
+        if (shooter.playerNum != 0)
+            this.setVisible(false);
+
         this.play(shooter.projectileName);
 
         this.scene.add.existing(this);

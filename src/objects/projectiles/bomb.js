@@ -19,6 +19,8 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
         this.explodeScale = shooter.explodeScale;
         this.hitSoundName = shooter.hitSoundName;  
         this.isTarget = false;
+        if (shooter.playerNum != 0)
+            this.setVisible(false);
 
         try {
             this.target = new Phaser.Math.Vector2(this.shooter.target[0].gameObject.getCenter());    

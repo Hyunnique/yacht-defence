@@ -206,6 +206,9 @@ export default class gameScene extends Phaser.Scene{
         this.mobArray = [];
         this.roundNum = 0;
         this.globalnum = 1;
+        this.globalnum1 = 1;
+        this.globalnum2 = 1;
+        this.globalnum3 = 1;
         this.mobCounter = 0;
         this.unitIndex = 0;
         this.playerHealth = 100;
@@ -218,8 +221,9 @@ export default class gameScene extends Phaser.Scene{
         this.roundDB = this.cache.json.get("roundDB");
 
         this.m_player = [];
-        this.spectate_player = [];
-        this.spectate_player_units = [];
+        this.spectate_player = [[],[],[]];
+        this.spectate_player_units = [[],[],[]];
+        this.spectate_player_mobs = [[],[],[]];
 
         this.selectedUnit;
         this.onPlaceQueue;
@@ -378,29 +382,29 @@ export default class gameScene extends Phaser.Scene{
         this.onPlaceQueue = undefined;
     }
 
-    placeOtherPlayerUnit() {
+    placeOtherPlayerUnit(playerNum) {
         var index = 0;
         this.spectate_player.forEach(e => {
-            this.spectate_player_units.push(new Unit(this, e.x + 2400, e.y, this.unitDB["unit" + e.id], index++, e.id));
+            this.spectate_player_units[playerNum].push(new Unit(this, e.x + 2400, e.y, this.unitDB["unit" + e.id], index++, e.id,playerNum));
         });
     }
 
-    removeOtherPlayerUnit() {
-        this.spectate_player_units.forEach(e => {
+    removeOtherPlayerUnit(playerNum) {
+        this.spectate_player_units[playerNum].forEach(e => {
             console.log(e);
             e.remove()
         });
-        this.spectate_player_units = [];
+        this.spectate_player_units[playerNum] = [];
     }
 
-    resetOtherBuff(buffArray)
+    resetOtherBuff(buffArray,playerNum)
     {
-        this.spectate_player_units.forEach((e) => { e.removeBuff() });
-        this.spectate_player_units.forEach((e) => {
+        this.spectate_player_units[playerNum].forEach((e) => { e.removeBuff() });
+        this.spectate_player_units[playerNum].forEach((e) => {
             e.giveBuff();
             e.syncGivenGlobalBuff(buffArray);
         });
-        this.spectate_player_units.forEach((e) => {
+        this.spectate_player_units[playerNum].forEach((e) => {
             e.updateBuff();
         });
     }
@@ -444,15 +448,42 @@ export default class gameScene extends Phaser.Scene{
         else if (this.roundNum < 20) initialDelay = 800;
         else initialDelay = 400;
         
-        this.currentRoundData.forEach((element) => {
-                this.time.addEvent({
+        this.currentRoundData.forEach((element ,index) => {
+            this.time.addEvent({
                 delay: initialDelay,
                 callback: () => {
-                    this.m_mobs.add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum, element["mobRoute"],element["hpFactor"]));
+                    this.m_mobs.add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum, element["mobRoute"],element["hpFactor"],0));
                     this.globalnum++;
                 },
                 repeat: element["mobCount"]-1,
-                startAt: 0
+                startAt: index * 100
+            });
+            this.time.addEvent({
+                delay: initialDelay,
+                callback: () => {
+                    this.spectate_player_mobs[1].add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum1, element["mobRoute"], element["hpFactor"], 1));
+                    this.globalnum1++;
+                },
+                repeat: element["mobCount"]-1,
+                startAt: index * 100
+            });
+            this.time.addEvent({
+                delay: initialDelay,
+                callback: () => {
+                    this.spectate_player_mobs[2].add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum2, element["mobRoute"], element["hpFactor"], 2));
+                    this.globalnum2++;
+                },
+                repeat: element["mobCount"]-1,
+                startAt: index * 100
+            });
+            this.time.addEvent({
+                delay: initialDelay,
+                callback: () => {
+                    this.spectate_player_mobs[3].add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum3, element["mobRoute"], element["hpFactor"], 3));
+                    this.globalnum3++;
+                },
+                repeat: element["mobCount"]-1,
+                startAt: index * 100
             });
             this.mobCounter += element["mobCount"];
         });
