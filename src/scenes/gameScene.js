@@ -286,7 +286,8 @@ export default class gameScene extends Phaser.Scene{
     {
         if (!this.placemode) {
             let t = this.getTileAtPointer(pointer, this.info);
-            console.log(t.placedUnit == undefined || t.placedUnit == null ? "empty!" : t.placedUnit);
+            //console.log(t.placedUnit == undefined || t.placedUnit == null ? "empty!" : t.placedUnit);
+
             if (t.placedUnit != undefined) {
                 if (this.selectedUnit != undefined) {
                     this.selectedUnit.rangeView.alpha = 0;
@@ -296,12 +297,16 @@ export default class gameScene extends Phaser.Scene{
                     this.selectedUnit = t.placedUnit;
                     this.selectedUnit.rangeView.alpha = 0.4;
                     this.selectedUnit.buffRangeView.alpha = 0.6;
+
+                    Game.showUnitInfo(t.placedUnit);
                 }
             }
             else if(this.selectedUnit != undefined){ 
                 this.selectedUnit.rangeView.alpha = 0;
                 this.selectedUnit.buffRangeView.alpha = 0;
                 this.selectedUnit = undefined;
+
+                Game.hideUnitInfo();
             }
         }
     }

@@ -107,7 +107,7 @@
     position: absolute;
     bottom: 100%;
     left: 17%;
-    width: 81%;
+    width: 51%;
     height: 100%;
     pointer-events: none;
 }
@@ -151,6 +151,86 @@
     height: 100%;
 
     color: black;
+}
+
+.ui-gameScene-bottomFloating .ui-unitInfoArea {
+    display: none;
+    
+    position: absolute;
+    bottom: 105%;
+    right: 0;
+    width: 30%;
+    height: 60%;
+    pointer-events: none;
+
+    border: 2px solid black;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.ui-gameScene-bottomFloating .ui-unitInfoArea-unitImage {
+    position: absolute;
+    top: 10%;
+    left: 3%;
+    height: 80%;
+    border: 1px solid black;
+    aspect-ratio: 1 / 1;
+
+    background-size: cover;
+}
+
+.ui-gameScene-bottomFloating .ui-unitInfoArea-unitDetails {
+
+    display: flex;
+    flex-direction: column;
+
+    position: absolute;
+    top: 10%;
+    left: 24%;
+
+    width: 72%;
+    height: 80%;
+}
+
+.ui-gameScene-bottomFloating .ui-unitInfoArea-detailRows {
+
+    width: 70%;
+    height: 30%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.ui-gameScene-bottomFloating .ui-unitInfoArea-unitStat {
+    display: flex;
+    align-items: center;
+
+    width: 50%;
+    height: 100%;
+    font-size: 0.9rem;
+}
+
+.ui-gameScene-bottomFloating .ui-unitInfoArea-unitName {
+    font-size: 0.9rem;
+    margin-bottom: 5%;
+}
+
+.ui-gameScene-bottomFloating .ui-unitInfoArea-icon {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+}
+
+.ui-gameScene-bottomFloating .ui-unitInfoArea-value {
+    margin-left: 10%;
+}
+
+.ui-gameScene-bottomFloating .ui-unitInfoArea-unitAttackType {
+    position: absolute;
+    right: 3%;
+    top: 10%;
+
+    font-size: 0.9rem;
+    color: white;
 }
 
 .ui-gameScene-bottomFloating .ui-hpArea {

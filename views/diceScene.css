@@ -228,3 +228,9 @@
     width: 20%;
     text-align: center;
 }
+
+.ui-diceScene-result .ui-resultTable-goldWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
