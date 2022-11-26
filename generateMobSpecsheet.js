@@ -22,8 +22,8 @@ var specData = {
     "Duck": [200, 10, 20, 2, 3],
     "Dwarf": [600, 25, 25, 4, 6],
     "Dye": [300, 15, 10, 2, 4],
-    "Earth": [500, 60, 40, 2, 3],
-    "EarthSmall": [400, 50, 35, 2, 3],
+    "Earth": [500, 60, 30, 2, 3],
+    "EarthSmall": [400, 50, 30, 2, 3],
     "EarthSmaller": [300, 40, 30, 2, 3],
     "Eel": [150, 20, 8, 4, 4],
     "ElementalOrb": [500, 30, 15, 4, 2],
@@ -85,15 +85,15 @@ var specData = {
 };
 
 var bossData = {
+    
     "BossBear": {
         "mobAnim": "bearWalk",
         "deathAnimName": "bearDie",
         "deathSound": "death",
         "scale": 1,
-        "health": 6000,
+        "health": 1000,
         "m_speed": 30,
-        "defence": 50,
-        "damage": 10,
+        "defence": 60,
         "currentVariation": 0,
         "variations": 1,
         "defaultCost": 0,
@@ -104,10 +104,9 @@ var bossData = {
         "deathAnimName": "slimeKingDie",
         "deathSound": "death",
         "scale": 1,
-        "health": 15000,
+        "health": 1000,
         "m_speed": 30,
-        "defence": 50,
-        "damage": 10,
+        "defence": 60,
         "currentVariation": 0,
         "variations": 1,
         "defaultCost": 0,
@@ -118,10 +117,9 @@ var bossData = {
         "deathAnimName": "magicianDie",
         "deathSound": "death",
         "scale": 1,
-        "health": 40000,
+        "health": 1000,
         "m_speed": 30,
         "defence": 60,
-        "damage": 10,
         "currentVariation": 0,
         "variations": 1,
         "defaultCost": 0,
@@ -132,10 +130,9 @@ var bossData = {
         "deathAnimName": "giantDie",
         "deathSound": "death",
         "scale": 1,
-        "health": 100000,
+        "health": 1000,
         "m_speed": 30,
         "defence": 60,
-        "damage": 10,
         "currentVariation": 0,
         "variations": 1,
         "defaultCost": 0,
@@ -146,10 +143,9 @@ var bossData = {
         "deathAnimName": "stoneGolemDie",
         "deathSound": "death",
         "scale": 1,
-        "health": 250000,
+        "health": 1000,
         "m_speed": 30,
         "defence": 60,
-        "damage": 10,
         "currentVariation": 0,
         "variations": 1,
         "defaultCost": 0,
@@ -164,12 +160,9 @@ Object.keys(specData).forEach((x) => {
     var hp = specData[x][0];
     var def = specData[x][1];
     var spd = specData[x][2];
-    var damage = specData[x][3];
 
     var ehp = hp * (1 / (1 - (def / 100)));
-    var diffCost = Math.floor(ehp / Math.log(spd) / 20) / 2;
-    var damageCost = (damage - 1) * 0.5;
-    var cost = diffCost + damageCost;
+    var cost = Math.floor(ehp / Math.log(spd) / 20) / 2;
 
     specData[x] = {
         "mobAnim": x,
@@ -179,7 +172,6 @@ Object.keys(specData).forEach((x) => {
         "health": hp,
         "m_speed": spd,
         "defence": def,
-        "damage": 2,
         "currentVariation": 0,
         "variations": 0,
         "variationCost": [],
@@ -210,18 +202,15 @@ fs.readdir("./src/assets/spritesheets/mobs")
             for (let i = 0; i < specData[x].variations; i++) {
                 specData_result[x + String.fromCharCode(65 + i)] = JSON.parse(JSON.stringify(specData[x]));
                 specData_result[x + String.fromCharCode(65 + i)].mobAnim = x + String.fromCharCode(65 + i);
-                specData_result[x + String.fromCharCode(65 + i)].health = Math.floor(specData_result[x + String.fromCharCode(65 + i)].health * (1 + (i * monsterDelta * 1.5)));
-                specData_result[x + String.fromCharCode(65 + i)].defence = Math.floor(specData_result[x + String.fromCharCode(65 + i)].defence * (1 + (0.02 * i * monsterDelta)));
+                specData_result[x + String.fromCharCode(65 + i)].health = Math.floor(specData_result[x + String.fromCharCode(65 + i)].health * (1 + (i * monsterDelta * 2.0)));
+                specData_result[x + String.fromCharCode(65 + i)].defence = Math.floor(specData_result[x + String.fromCharCode(65 + i)].defence * (1 + (0.05 * i * monsterDelta)));
 
                 var hp = specData_result[x + String.fromCharCode(65 + i)].health;
                 var def = specData_result[x + String.fromCharCode(65 + i)].defence;
                 var spd = specData_result[x + String.fromCharCode(65 + i)].m_speed;
-                var damage = specData_result[x + String.fromCharCode(65 + i)].damage;
 
                 var ehp = hp * (1 / (1 - (def / 100)));
-                var diffCost = Math.floor(ehp / Math.log(spd) / 20) / 2;
-                var damageCost = (damage - 1) * 0.5;
-                var cost = diffCost + damageCost;
+                var cost = Math.floor(ehp / Math.log(spd) / 20) / 2;
 
                 specData[x].variationCost.push(cost);
 
