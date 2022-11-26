@@ -50,12 +50,9 @@ module.exports = function generateRound(SpecsheetGen, round, roundCost, hpFactor
         currentWaveInfo.push({
             "mobName": waveBoss,
             "mobCount": 1,
-            "hpFactor": (hpFactor - 1 + Math.pow((roundCost / 20), 1.3)).toFixed(2),
+            "hpFactor": (hpFactor * (roundCost / 100) * 4).toFixed(2),
             "mobRoute": "X"
         });
-
-        console.log("Estimated Mob HP : " + 400 * hpFactor)
-        console.log("Boss HP : " + 1000 * (hpFactor * Math.pow(1.0005, (roundCost / 10))).toFixed(2));
     }
 
     while (currentWaveCount < maxWaveCount) {
