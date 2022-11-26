@@ -423,12 +423,7 @@ var Game = {
         this.Socket.on('shop-itemSuccess', (msg) => {
             let soundidx = Math.floor(Math.random() * 3);
 
-            this.GameObject.scene.getScene("gameScene").shopBuySound[soundidx].play({
-                mute: false,
-                volume: 0.7 * this.effectSoundConfig.volume,
-                rate: 1,
-                loop: false
-            });
+            this.GameObject.scene.getScene("gameScene").shopBuySound[soundidx].play(this.effectSoundConfig);
             
             
 
@@ -449,12 +444,7 @@ var Game = {
         });
 
         this.Socket.on('shop-itemFailure', (msg) => {
-            this.GameObject.scene.getScene("gameScene").shopBuyFail.play({
-                mute: false,
-                volume: 0.7 * this.effectSoundConfig.volume,
-                rate: 1,
-                loop: false
-            });
+            this.GameObject.scene.getScene("gameScene").shopBuyFail.play(this.effectSoundConfig);
         });
 
         this.Socket.on('lastChance-success', (msg) => {
@@ -576,12 +566,7 @@ var Game = {
 
     openShop() {
         this.showUI("common-shop");
-        this.GameObject.scene.getScene("gameScene").shopSound.play({
-            mute: false,
-            volume: 0.7 * this.effectSoundConfig.volume,
-            rate: 1,
-            loop: false
-        });
+        this.GameObject.scene.getScene("gameScene").shopSound.play(this.effectSoundConfig);
         let itemArray = this.GameObject.scene.getScene("gameScene").itemList;
 
         for (let i = 0; i < 3; i++) {
