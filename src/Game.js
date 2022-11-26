@@ -138,6 +138,7 @@ var Game = {
 
                 for (let i = 0; i < msg.length; i++) {
                     document.getElementsByClassName("ui-hpArea-playerText")[i].innerHTML = this.PlayerData[i].name;
+                    document.getElementsByClassName("ui-hpArea-player")[i].classList.remove("text-outline-gold");
                     if (i == 0) {
                         document.getElementsByClassName("ui-hpArea-player")[i].onclick = (e) => {
 
@@ -156,6 +157,8 @@ var Game = {
                     }
                     else {
                         document.getElementsByClassName("ui-hpArea-player")[i].onclick = (e) => {
+                            document.getElementsByClassName("ui-hpArea-player")[i].classList.add("text-outline-gold");
+                            
                             this.Socket.emit("player-requestUnitData", { playerIndex: i });
                             if (this.wasWatching != i)
                             {
