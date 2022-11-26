@@ -164,8 +164,14 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         }
         else {
             if (this.playerNum == this.scene.currentView) {
-                document.getElementsByClassName("ui-bossArea-bosshp-bar")[0].style.width =  (this.Health / this.MaxHealth) * 100  + "%";
-                document.getElementsByClassName("ui-bossArea-bosshp-text")[0].innerText = Math.floor(this.Health).toLocaleString() + "/" + this.MaxHealth.toLocaleString();
+                if (this.Health <= 0) {
+                    document.getElementsByClassName("ui-bossArea-bosshp-bar")[0].style.width =  "0%";
+                    document.getElementsByClassName("ui-bossArea-bosshp-text")[0].innerText = "0";
+                }
+                else {
+                    document.getElementsByClassName("ui-bossArea-bosshp-bar")[0].style.width =  (this.Health / this.MaxHealth) * 100  + "%";
+                    document.getElementsByClassName("ui-bossArea-bosshp-text")[0].innerText = Math.floor(this.Health).toLocaleString() + "/" + this.MaxHealth.toLocaleString();
+                }
             }
         }
 
