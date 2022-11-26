@@ -213,8 +213,8 @@ export default class gameScene extends Phaser.Scene{
         this.roundDB = this.cache.json.get("roundDB");
 
         this.m_player = [];
-        this.spectate_player = [[], [], [], []];
-        this.spectate_player_units = [[], [], [], []];
+        this.spectate_player = Array(4).fill(null).map(() => Array());
+        this.spectate_player_units = Array(4).fill(null).map(() => Array());
         this.spectate_player_mobs = [];
         this.spectate_player_projectiles = [];
         for (var i = 0; i < 4; i++)
@@ -391,7 +391,7 @@ export default class gameScene extends Phaser.Scene{
 
     placeOtherPlayerUnit(playerNum) {
         var index = 0;
-        this.spectate_player.forEach(e => {
+        this.spectate_player[playerNum].forEach(e => {
             this.spectate_player_units[playerNum].push(new Unit(this, e.x + 2400, e.y, this.unitDB["unit" + e.id], index++, e.id,playerNum));
         });
     }
