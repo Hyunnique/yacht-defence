@@ -6,6 +6,8 @@ function importAll(r) {
 
 const unitGIF = importAll(require.context("./assets/images/units", false, /\.gif$/));
 const icons = importAll(require.context("./assets/images/icons", false, /\.png$/));
+const muteURL = require("../src/assets/images/mute.png");
+const notMuteURL = require("../src/assets/images/notMute.png");
 import unitSpecSheets from "./assets/specsheets/unitSpecsheet.json";
 import itemSpecSheets from "./assets/specsheets/shopItemSheet.json";
 
@@ -31,13 +33,13 @@ var Game = {
     
     bgmSoundConfig: {
         mute: false,
-        volume: 0.2,
+        volume: 0.5,
         loop: true
     },
 
     effectSoundConfig: {
         mute: false,
-        volume: 0.3
+        volume: 0.5
     },
 
     shopBuff: {
@@ -488,7 +490,7 @@ var Game = {
                 this.clearUI();
                 this.shopOpen = false;
                 this.showUI("gameScene-topFloating");
-                this.showUI("gameScene-midFloating");
+                this.showUI("gameScene-topRightFloating");
                 this.showUI("gameScene-bottomFloating");
 
                 document.getElementsByClassName("ui-diceRerollButton")[0].style.color = 'black';
@@ -516,6 +518,7 @@ var Game = {
                 this.GameObject.scene.start(sceneName);
                 this.clearUI();
                 this.showUI("gameScene-topFloating");
+                this.showUI("gameScene-topRightFloating");
                 this.showUI("gameScene-bottomFloating");
 
                 document.onkeydown = (e) => {
@@ -542,6 +545,92 @@ var Game = {
                         if (document.activeElement === document.getElementsByClassName("ui-chatInput")[0]) {
                             document.getElementsByClassName("ui-chatInput")[0].value += " ";
                         }
+                    }
+                }
+
+                let volumeUI = document.getElementsByClassName("ui-gameScene-topRightFloating-wrapper")[0];
+                volumeUI.addEventListener("mousedown", (e) => {
+                    if (e.button === 0) {
+                        volumeUI.style.transform = "translateX(0%)"
+                    }
+                    else if (e.button === 2) {
+                        volumeUI.style.transform = "translateX(85%)"
+                    }
+                });
+
+                document.getElementsByClassName("ui-mute")[0].onclick = (e) => {
+                    if (this.bgmSoundConfig.volume != 0) {
+                        if (this.bgmSoundConfig.mute) {
+                            this.bgmSoundConfig.mute = false;
+                            document.getElementsByClassName("ui-volume-volumeSlider")[0].value = this.bgmSoundConfig.volume * 100;
+                            this.GameObject.scene.getScene("gameScene").normalMusic.setMute(false);
+                            this.GameObject.scene.getScene("gameScene").bossPrepareMusic.setMute(false);
+                            this.GameObject.scene.getScene("gameScene").bossFightMusic.setMute(false);
+
+                            document.getElementsByClassName("ui-mute")[0].style.backgroundImage = "url(" + notMuteURL + ")";
+                        }
+                        else {
+                            this.bgmSoundConfig.mute = true;
+                            document.getElementsByClassName("ui-volume-volumeSlider")[0].value = 0;
+                            this.GameObject.scene.getScene("gameScene").normalMusic.setMute(true);
+                            this.GameObject.scene.getScene("gameScene").bossPrepareMusic.setMute(true);
+                            this.GameObject.scene.getScene("gameScene").bossFightMusic.setMute(true);
+
+                            document.getElementsByClassName("ui-mute")[0].style.backgroundImage = "url(" + muteURL + ")";
+                        }
+                    }
+                }
+
+                
+                document.getElementsByClassName("ui-mute")[1].onclick = (e) => {
+                    if (this.effectSoundConfig.volume != 0) {
+                        if (this.effectSoundConfig.mute) {
+                            this.effectSoundConfig.mute = false;
+                            document.getElementsByClassName("ui-volume-volumeSlider")[1].value = this.effectSoundConfig.volume * 100;
+                            document.getElementsByClassName("ui-mute")[1].style.backgroundImage = "url(" + notMuteURL + ")";
+                        }
+                        else {
+                            this.effectSoundConfig.mute = true;
+                            document.getElementsByClassName("ui-volume-volumeSlider")[1].value = 0;
+                            document.getElementsByClassName("ui-mute")[1].style.backgroundImage = "url(" + muteURL + ")";
+                        }
+                    }
+                }
+
+                document.getElementsByClassName("ui-volume-volumeSlider")[0].onchange = (e) => {
+                    this.bgmSoundConfig.volume = document.getElementsByClassName("ui-volume-volumeSlider")[0].value / 100;
+
+                    if (this.bgmSoundConfig.volume != 0) {
+                        document.getElementsByClassName("ui-mute")[0].style.backgroundImage = "url(" + notMuteURL + ")";
+                        this.bgmSoundConfig.mute = false;
+
+                        this.GameObject.scene.getScene("gameScene").normalMusic.setMute(false);
+                        this.GameObject.scene.getScene("gameScene").bossPrepareMusic.setMute(false);
+                        this.GameObject.scene.getScene("gameScene").bossFightMusic.setMute(false);
+                        this.GameObject.scene.getScene("gameScene").normalMusic.setVolume(this.bgmSoundConfig.volume);
+                        this.GameObject.scene.getScene("gameScene").bossPrepareMusic.setVolume(this.bgmSoundConfig.volume);
+                        this.GameObject.scene.getScene("gameScene").bossFightMusic.setVolume(this.bgmSoundConfig.volume);
+                    }
+                    else {
+                        document.getElementsByClassName("ui-mute")[0].style.backgroundImage = "url(" + muteURL + ")";
+                        this.bgmSoundConfig.mute = true;
+
+                        this.GameObject.scene.getScene("gameScene").normalMusic.setMute(true);
+                        this.GameObject.scene.getScene("gameScene").bossPrepareMusic.setMute(true);
+                        this.GameObject.scene.getScene("gameScene").bossFightMusic.setMute(true);
+                    }
+                }
+
+                document.getElementsByClassName("ui-volume-volumeSlider")[1].onchange = (e) => {
+                    this.effectSoundConfig.volume = document.getElementsByClassName("ui-volume-volumeSlider")[1].value / 100;
+
+                    if (this.effectSoundConfig.volume != 0) {
+                        document.getElementsByClassName("ui-mute")[1].style.backgroundImage = "url(" + notMuteURL + ")";
+                        this.effectSoundConfig.mute = false;
+                    }
+                    else {
+                        document.getElementsByClassName("ui-mute")[1].style.backgroundImage = "url(" + muteURL + ")";
+                        this.effectSoundConfig.mute = true;
                     }
                 }
                 break;
@@ -664,4 +753,3 @@ var Game = {
 };
 
 export default Game;    
-
