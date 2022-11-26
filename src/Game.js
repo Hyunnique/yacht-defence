@@ -193,14 +193,23 @@ var Game = {
         });
 
         this.Socket.on("player-unitData", (msg) => {
+            /// msg = { index, units, shopBuffs, tierBuffs }
+            /// 내가 관전을 요청한 경우의 데이터를 받았을 때 발생하는 이벤트
+
             this.GameObject.scene.getScene("gameScene").removeOtherPlayerUnit(msg.index);
-            this.GameObject.scene.getScene("gameScene").spectate_player = msg.unitData;
+            this.GameObject.scene.getScene("gameScene").spectate_player = msg.units;
             this.GameObject.scene.getScene("gameScene").placeOtherPlayerUnit(msg.index);
             // if (this.wasWatching != msg.index && this.wasWatching != -1) {
             //     this.GameObject.scene.getScene("gameScene").setVisibility(this.wasWatching, false);
             // }
             // this.wasWatching = msg.index;
             // this.GameObject.scene.getScene("gameScene").setVisibility(this.wasWatching, true);
+        });
+
+        this.Socket.on("sync-playerFieldStatus", (msg) => {
+            /// msg = { index, units, shopBuffs, tierBuffs }
+            /// 누군가의 배치나 버프 상황이 업데이트 되면 발생하는 이벤트
+            /// index에 해당하는 플레이어의 상황이 변동된 것이므로, 만약 내가 보고 있는 화면이 인덱스랑 일치하면 업데이트 시켜주기
         });
         
         this.Socket.on("dicePhase-begin", (msg) => {
@@ -400,14 +409,6 @@ var Game = {
         });
 
         this.Socket.on('placePhase-end', (msg) => {
-            this.Socket.emit('player-unitData', this.GameObject.scene.getScene("gameScene").m_player.map(unit => {
-                return {
-                    x: unit.x,
-                    y: unit.y,
-                    id: unit.id
-                };
-            }));
-
             this.GameObject.scene.getScene("gameScene").toBattlePhase();
         });
 
@@ -446,6 +447,8 @@ var Game = {
             document.getElementsByClassName("ui-itemOverallArea-overall-atk")[0].innerText = "ATK: " + (this.shopBuff.shopAtk >= 0 ? "+" + this.shopBuff.shopAtk : this.shopBuff.shopAtk) + "%";
             document.getElementsByClassName("ui-itemOverallArea-overall-aspd")[0].innerText = "SPD: " + (this.shopBuff.shopAspd >= 0 ? "+" + this.shopBuff.shopAspd : this.shopBuff.shopAspd) + "%";
             document.getElementsByClassName("ui-itemOverallArea-overall-pen")[0].innerText = "PEN: " + (this.shopBuff.shopPenetration >= 0 ? "+" + this.shopBuff.shopPenetration : this.shopBuff.shopPenetration) + "%p";
+
+            this.syncFieldStatus();
         });
 
         this.Socket.on('shop-itemFailure', (msg) => {
@@ -774,7 +777,21 @@ var Game = {
 
     hideUnitInfo() {
         this.hideUI("unitInfoArea");
-    }
+    },
+
+    syncFieldStatus() {
+        this.Socket.emit('player-syncFieldStatus', {
+            units: this.GameObject.scene.getScene("gameScene").m_player.map(unit => {
+                return {
+                    x: unit.x,
+                    y: unit.y,
+                    id: unit.id
+                };
+            }),
+            shopBuffs: this.shopBuff,
+            tierBuffs: this.GameObject.scene.getScene("gameScene").tierBonus
+        });
+    },
 };
 
 export default Game;    
