@@ -180,9 +180,9 @@ var Game = {
                     }
                 }
 
-                for (let i = msg.length; i < 4; i++) {
-                    document.getElementsByClassName("ui-hpArea-player")[i].style.visibility = "hidden";
-                } 
+                //for (let i = msg.length; i < 4; i++) {
+                //    document.getElementsByClassName("ui-hpArea-player")[i].style.visibility = "hidden";
+                //} 
             }
             for (let i = 0; i < msg.length; i++) {
                 document.getElementsByClassName("ui-hpArea-playerhp-bar")[i].style.width = Math.floor(msg[i].hp / msg[i].maxhp * 100) + "%";

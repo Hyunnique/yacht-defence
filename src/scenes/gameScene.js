@@ -460,10 +460,12 @@ export default class gameScene extends Phaser.Scene{
     }
 
     startRound() {
-        let initialDelay = 1200;
-        if (this.roundNum < 10) initialDelay = 1200;
-        else if (this.roundNum < 20) initialDelay = 800;
-        else initialDelay = 400;
+        let initialDelay = 1500;
+        if (this.roundNum <= 5) initialDelay = 1500;
+        else if (this.roundNum <= 10) initialDelay = 1200;
+        else if (this.roundNum <= 20) initialDelay = 900;
+        else if (this.roundNum <= 30) initialDelay = 600;
+        else initialDelay = 300;
         
         this.currentRoundData.forEach((element ,index) => {
             this.time.addEvent({
@@ -597,20 +599,20 @@ export default class gameScene extends Phaser.Scene{
 
         switch (tier) {
             case 1:
-                tierOnlyBonus = 100;
-                overallBonus = 10;
+                tierOnlyBonus = 200;
+                overallBonus = 15;
                 break;
             case 2:
-                tierOnlyBonus = 30;
-                overallBonus = 3;
+                tierOnlyBonus = 40;
+                overallBonus = 4;
                 break;
             case 3:
-                tierOnlyBonus = 10;
-                overallBonus = 1;
+                tierOnlyBonus = 20;
+                overallBonus = 2.5;
                 break;
             case 4:
-                tierOnlyBonus = 5;
-                overallBonus = 0.5;
+                tierOnlyBonus = 10;
+                overallBonus = 1.5;
                 break;
         }
 
