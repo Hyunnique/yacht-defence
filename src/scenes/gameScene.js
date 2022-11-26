@@ -179,11 +179,6 @@ export default class gameScene extends Phaser.Scene{
         });
         this.cameras.main.setBounds(0, 0, 2400, 1440);
 
-
-
-
-
-
 //BGM
         this.shopSound = this.sound.add("shop");
         this.shopBuySound = [];
