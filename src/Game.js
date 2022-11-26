@@ -432,6 +432,7 @@ var Game = {
             
             
 
+            this.hideUI("unitInfoArea");
             document.getElementsByClassName("ui-shop-item")[msg.uiIndex].style.display = "none";
 
             this.updateItemUI(msg);
@@ -696,7 +697,7 @@ var Game = {
         document.getElementsByClassName("ui-unitInfoArea-unitAtk-value")[0].innerText = Math.floor(unit.attack);
         document.getElementsByClassName("ui-unitInfoArea-unitAspd-value")[0].innerText = unit.aspd.toFixed(2);
         document.getElementsByClassName("ui-unitInfoArea-unitRange-value")[0].innerText = Math.floor(unit.range);
-        document.getElementsByClassName("ui-unitInfoArea-unitPenetration-value")[0].innerText = unit.penetration.toFixed(2);
+        document.getElementsByClassName("ui-unitInfoArea-unitPenetration-value")[0].innerText = Math.floor(unit.penetration * 100) + "%";
         document.getElementsByClassName("ui-unitInfoArea-unitAttackType")[0].innerText = unitType;
     },
 
