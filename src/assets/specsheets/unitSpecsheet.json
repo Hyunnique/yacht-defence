@@ -696,7 +696,7 @@
     },
     "unit25": {
         "name": "견습 성기사단원",
-        "unitType": 0,
+        "unitType": 4,
         "attack": 50,
         "aspd": 0.8,
         "range": 168,
