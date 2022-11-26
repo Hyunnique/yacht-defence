@@ -505,7 +505,6 @@ export default class gameScene extends Phaser.Scene{
                 }
             }
         }
-        this.time.delayedCall(19999, this.placeModeTimeOver, [], this);
     }
     toBattlePhase() {
         this.placeModeTimeOver();
