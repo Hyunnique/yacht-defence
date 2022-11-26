@@ -205,6 +205,18 @@ var Game = {
         
         this.Socket.on("dicePhase-begin", (msg) => {
             this.showScene("diceScene");
+            for (let i = 0; i < this.PlayerData.length; i++) {
+                document.getElementsByClassName("ui-hpArea-player")[i].classList.remove("text-outline-gold");
+            }
+            document.getElementsByClassName("ui-hpArea-player")[0].classList.add("text-outline-gold");
+
+            this.GameObject.scene.getScene("gameScene").cameras.main.scrollX = 0;
+            this.GameObject.scene.getScene("gameScene").cameras.main.scrollY = 0;
+            this.GameObject.scene.getScene("gameScene").cameras.main.setBounds(0, 0, 2400, 1440);
+
+            this.GameObject.scene.getScene("gameScene").mapOffsetX = 0;
+            this.GameObject.scene.getScene("gameScene").mapOffsetY = 0;
+            this.GameObject.scene.getScene("gameScene").currentView = 0;
 
             document.getElementsByClassName("ui-phase-value")[0].innerText = "Dice";
             document.getElementsByClassName("ui-phaseTimelimit-value")[0].innerText = this.currentTimeLimit;
