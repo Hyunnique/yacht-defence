@@ -145,7 +145,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
     syncGlobalBuff()
     {
         this.globalbuffAspd = Game.shopBuff.shopAspd;
-        this.globalbuffedPenetration = Game.shopBuff.shopPenetration;
+        this.globalbuffedPenetration = Game.shopBuff.shopPenetration / 100;
         this.globalbuffAtk = (1 + Game.shopBuff.shopAtk / 100)*(1 + this.scene.tierBonus[this.tier - 1] / 100);
     }
     
