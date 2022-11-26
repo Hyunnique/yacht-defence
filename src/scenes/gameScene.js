@@ -293,7 +293,16 @@ export default class gameScene extends Phaser.Scene{
     unitInfoHandler(pointer,bool)
     {
         if (!this.placemode) {
-            let t = this.getTileAtPointer(pointer, this.info[0]);
+            var index;
+            if (pointer.worldX < 2400 && pointer.worldY < 1440)
+                index = 0;
+            else if (pointer.worldX > 2400 && pointer.worldY < 1440)
+                index = 1;
+            else if (pointer.worldX < 2400 && pointer.worldY > 1440)
+                index = 2;
+            else if (pointer.worldX > 2400 && pointer.worldY > 1440)
+                index = 3;
+            let t = this.getTileAtPointer(pointer, this.info[index]);
             //console.log(t.placedUnit == undefined || t.placedUnit == null ? "empty!" : t.placedUnit);
 
             if (t.placedUnit != undefined) {
@@ -398,6 +407,11 @@ export default class gameScene extends Phaser.Scene{
         this.spectate_player.forEach(e => {
             var unit = new Unit(this, e.x + (2400 * (playerNum % 2)), e.y + (1440 * Math.floor(playerNum / 2)), this.unitDB["unit" + e.id], null, e.id, playerNum);
             this.spectate_player_units[playerNum].push(unit);
+            let t = info[playerNum].getTileAtWorldXY( e.x + (2400 * (playerNum % 2)), e.y + (1440 * Math.floor(playerNum / 2)), true);
+            t.index = "2898";
+            t.placedUnit = unit;
+            unit.setDepth(((unit.y / 48) * (unit.x / 48)));
+            // this.resetBuff();
         });
     }
 
@@ -413,8 +427,9 @@ export default class gameScene extends Phaser.Scene{
 
     removeOtherPlayerUnit(playerNum) {
         this.spectate_player_units[playerNum].forEach(e => {
-            console.log(e);
-            e.remove()
+            let t = info[playerNum].getTileAtWorldXY(e.x + (2400 * (playerNum % 2)), e.y + (1440 * Math.floor(playerNum / 2)), true);
+            t.placedUnit = undefined;
+            e.remove();
         });
         this.spectate_player_units[playerNum] = [];
     }
