@@ -297,7 +297,7 @@ export default class gameScene extends Phaser.Scene {
             else if (pointer.worldX > 2400 && pointer.worldY > 1440)
                 index = 3;
             let t = this.getTileAtPointer(pointer, this.info[index]);
-            console.log(t);
+            
 
             if (t.placedUnit != undefined) {
                 if (this.selectedUnit != undefined) {
@@ -401,7 +401,7 @@ export default class gameScene extends Phaser.Scene {
         this.spectate_player.forEach(e => {
             var unit = new Unit(this, e.x + (2400 * (playerNum % 2)), e.y + (1440 * Math.floor(playerNum / 2)), this.unitDB["unit" + e.id], null, e.id, playerNum);
             this.spectate_player_units[playerNum].push(unit);
-            let t = this.info[playerNum].getTileAtWorldXY(e.x + (2400 * (playerNum % 2)), e.y + (1440 * Math.floor(playerNum / 2)), true);
+            let t = this.info[playerNum].getTileAtWorldXY(unit.x,unit.y, true);
             t.placedUnit = unit;
             unit.setDepth(((unit.y / 48) * (unit.x / 48)));
             this.resetOtherBuff(playerNum,shopBuffs,tierBuffs)
@@ -438,7 +438,6 @@ export default class gameScene extends Phaser.Scene {
 
 
     resetBuff() {
-        console.log(this.m_player);
         this.m_player.forEach((e) => {
             e.removeBuff();
         });
@@ -449,7 +448,6 @@ export default class gameScene extends Phaser.Scene {
         this.m_player.forEach((e) => {
             e.updateBuff();
         });
-        console.log(this.m_player);
     }
 
     placeModeTimeOver() {
