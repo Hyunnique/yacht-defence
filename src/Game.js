@@ -31,12 +31,13 @@ var Game = {
     
     bgmSoundConfig: {
         mute: false,
-        volume: 1
+        volume: 0.2,
+        loop: true
     },
 
     effectSoundConfig: {
         mute: false,
-        volume: 0.3
+        volume: 0.5
     },
 
     shopBuff: {
