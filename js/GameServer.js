@@ -37,7 +37,7 @@ module.exports = {
             maxPlayers: (process.env.PLAYERS ? parseInt(process.env.PLAYERS) : 1), // Configurable for development or singleplayer
             timer: {},
             roundInfo: {
-                num: 5,
+                num: 1,
                 choice: -1
             },
             generatorInfo: {
