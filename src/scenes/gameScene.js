@@ -97,6 +97,7 @@ export default class gameScene extends Phaser.Scene{
         let tree2_back = [];
         let tree1_front = [];
         let tree2_front = [];
+        this.info = [];
 
         for (let i = 0; i < 4; i++) {
             map.push(this.make.tilemap({key: "map_forest"}));
@@ -114,10 +115,10 @@ export default class gameScene extends Phaser.Scene{
             tree2_back.push(map[i].createLayer("Tree2_B", outside_B, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
             tree1_front.push(map[i].createLayer("Tree1_F", outside_B, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
             tree2_front.push(map[i].createLayer("Tree2_F", outside_B, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
+            this.info.push(map[i].createLayer("info", possible, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
+            this.info[i].alpha = 0;
         }
 
-        this.info = map[0].createLayer("info", possible, 0, 0); 
-        this.info.alpha = 0;
         // info layer 기준 tileset index가
         // 배치 가능 2897
         // 배치 불가능 2898
@@ -178,6 +179,7 @@ export default class gameScene extends Phaser.Scene{
             // this.camera.pan(pointer.worldX, pointer.worldY, 2000, "Power2");
         });
         this.cameras.main.setBounds(0, 0, 2400, 1440);
+        this.currentView = 0;
 
 //BGM
         this.shopSound = this.sound.add("shop");
@@ -276,8 +278,7 @@ export default class gameScene extends Phaser.Scene{
     }
 
     clickHandler(pointer)
-    {   
-        console.log(this.getTileAtPointer(pointer, this.info));
+    {
         if (pointer.leftButtonDown())
         {
             this.unitInfoHandler(pointer, false);
@@ -292,7 +293,7 @@ export default class gameScene extends Phaser.Scene{
     unitInfoHandler(pointer,bool)
     {
         if (!this.placemode) {
-            let t = this.getTileAtPointer(pointer, this.info);
+            let t = this.getTileAtPointer(pointer, this.info[0]);
             //console.log(t.placedUnit == undefined || t.placedUnit == null ? "empty!" : t.placedUnit);
 
             if (t.placedUnit != undefined) {
@@ -320,7 +321,7 @@ export default class gameScene extends Phaser.Scene{
 
     initialPlace(unitData,unitID)
     {
-        this.info.alpha = 1;
+        this.info[0].alpha = 1;
         this.onPlaceQueue = new Unit(this, this.input.activePointer.x, this.input.activePointer.y, unitData, this.unitIndex++, unitID, 0);
         this.onPlaceQueue.rangeView.alpha = 0.4;
         this.onPlaceQueue.buffRangeView.alpha = 0.6;
@@ -330,7 +331,9 @@ export default class gameScene extends Phaser.Scene{
     moveUnit(pointer)
     {   
         if (pointer) {
-            this.preTile = this.getTileAtPointer(pointer, this.info);
+            if (pointer.worldX > 2400 || pointer.worldY > 1440)
+                return;
+            this.preTile = this.getTileAtPointer(pointer, this.info[0]);
             if (this.preTile == undefined || this.preTile.placedUnit == undefined)
                 return;
             this.preTile.index = "2897";
@@ -344,9 +347,9 @@ export default class gameScene extends Phaser.Scene{
             this.preTile = undefined;
         }
         this.placemode = true;
-        this.info.alpha = 1;
+        this.info[0].alpha = 1;
         this.input.on('pointermove', (pointer) => {
-            let t = this.getTileAtPointer(pointer, this.info);
+            let t = this.getTileAtPointer(pointer, this.info[0]);
             if (!t || t.index == "2898") {
                 this.onPlaceQueue.rangeView.alpha = 0;
                 this.onPlaceQueue.buffRangeView.alpha = 0;
@@ -366,10 +369,10 @@ export default class gameScene extends Phaser.Scene{
     }
 
     unitPlaceHandler(pointer) {
-        let t = this.getTileAtPointer(pointer, this.info);
+        let t = this.getTileAtPointer(pointer, this.info[0]);
         if (t.index == "2897") {
             this.unitPlacer(t);
-            this.info.alpha = 0;
+            this.info[0].alpha = 0;
             this.placemode = false;
             this.input.off("pointermove");
             this.input.off("pointerdown", this.unitPlaceHandler, this);
@@ -446,7 +449,7 @@ export default class gameScene extends Phaser.Scene{
     placeModeTimeOver() {
         this.input.off("pointerdown", this.unitPlaceHandler, this);
         this.input.off("pointermove");
-        this.info.alpha = 0;
+        this.info[0].alpha = 0;
         this.placemode = false;
         if (this.onPlaceQueue != undefined) {
             if (this.preTile == undefined) {
