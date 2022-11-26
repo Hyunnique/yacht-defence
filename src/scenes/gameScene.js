@@ -548,7 +548,6 @@ export default class gameScene extends Phaser.Scene{
             this.plugins.get('rexSoundFade').fadeOut(this.bossFightMusic, 2500, false);
             this.plugins.get('rexSoundFade').fadeIn(this.normalMusic, 2500, Game.bgmSoundConfig.volume, 0);
         }
-        console.log(this.normalMusic.config);
         this.PhaseText = "Dice Phase";        
         this.globalnum = 1;
         this.scene.pause().launch('diceScene');
