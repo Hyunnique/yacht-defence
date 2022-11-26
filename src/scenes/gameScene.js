@@ -291,7 +291,7 @@ export default class gameScene extends Phaser.Scene{
     {
         if (!this.placemode) {
             let t = this.getTileAtPointer(pointer, this.info);
-            console.log(t.placedUnit == undefined ? "empty!" : t.placedUnit);
+            console.log(t.placedUnit == undefined || t.placedUnit == null ? "empty!" : t.placedUnit);
             if (t.placedUnit != undefined) {
                 if (this.selectedUnit != undefined) {
                     this.selectedUnit.rangeView.alpha = 0;
@@ -421,6 +421,7 @@ export default class gameScene extends Phaser.Scene{
                 this.onPlaceQueue.alpha = 1;
                 this.onPlaceQueue.setX(this.preTile.getCenterX());
                 this.onPlaceQueue.setY(this.preTile.getCenterY());
+                this.m_player.push(this.onPlaceQueue);
                 this.preTile.placedUnit = this.onPlaceQueue;   
                 this.onPlaceQueue.rangeView.alpha = 0;
                 this.onPlaceQueue.buffRangeView.alpha = 0;
@@ -485,9 +486,7 @@ export default class gameScene extends Phaser.Scene{
     }
 
     toDicePhase() {
-        this.PhaseText = "Dice Phase";
-        this.input.setDraggable(this.m_player, false);
-        
+        this.PhaseText = "Dice Phase";        
         this.globalnum = 1;
         this.scene.pause().launch('diceScene');
     }
@@ -504,7 +503,7 @@ export default class gameScene extends Phaser.Scene{
                 }
             }
         }
-        //this.phaseTimer = this.time.delayedCall(20000, this.toBattlePhase, [], this);
+        this.time.delayedCall(19999, this.toBattlePhase, [], this);
     }
     toBattlePhase() {
         this.placeModeTimeOver();
