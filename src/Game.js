@@ -11,7 +11,7 @@ const notMuteURL = require("../src/assets/images/notMute.png");
 import unitSpecSheets from "./assets/specsheets/unitSpecsheet.json";
 import itemSpecSheets from "./assets/specsheets/shopItemSheet.json";
 
-const playerColors = ["lightgreen", "lightcoral", "lightskyblue", "lightgoldenrodyellow"];
+const playerColors = ["white", "lightcoral", "lightskyblue", "lightgreen"];
 
 // 전역변수로 유지해서 Scene에서도 접근할 수 있게 함
 var Game = {
