@@ -9,7 +9,7 @@ const Phaser = require("phaser");
 
 
 export default class Unit extends Phaser.Physics.Arcade.Sprite {
-    constructor(scene, x, y, db, index,id) {
+    constructor(scene, x, y, db, index,id,playerNum) {
         super(scene, x, y, db.idleSprite);
 
         this.setOrigin(0.5, 0.5);
@@ -31,6 +31,9 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.tier = db.tier;
         this.index = index;
         this.id = id;
+        this.playerNum = playerNum;
+        if (playerNum != 0)
+            this.setVisible(false);
         this.attackReady = true;
         this.play(this.idleAnim,true);
         this.rangeView = this.scene.add.circle(this.x, this.y, this.range, 0xFF0000);
