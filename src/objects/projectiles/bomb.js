@@ -22,8 +22,10 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
         this.explodeScale = shooter.explodeScale;
         this.hitSoundName = shooter.hitSoundName; 
 
+        this.skillInfo = skillInfo;
+        
         if (skillInfo != null && skillInfo.skillType == "DOT") {
-            this.skillInfo = skillInfo;
+
             this.skillInfo.callerID = shooter.index;
         }
         this.isTarget = false;
@@ -67,7 +69,6 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
             if (item.gameObject) return item.gameObject.isTarget;
             else return false;
         });
-        console.log(this.skillInfo["skillType"]);
         for (var i = 0; i < targets.length; i++)
         {
             try {
