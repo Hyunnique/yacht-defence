@@ -19,6 +19,8 @@
     height: 3rem;
 
     font-size: 1.3rem;
+
+    font-family: 'Silver';
     text-align: center;
 }
 
@@ -35,6 +37,9 @@
     height: 6%;
     opacity: 0.8;
     font-size: 1.6rem;
+
+    font-family: 'Silver';
+
 
     cursor: pointer;
 }
@@ -85,6 +90,10 @@
 
 .ui-rankings-rankingList table {
     width: 100%;
+}
+
+.ui-rankings-rankingList .td-big {
+    font-size: 1.2rem;
 }
 
 .ui-rankings .ui-rankings-title {
