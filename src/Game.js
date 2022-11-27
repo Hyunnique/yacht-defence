@@ -157,6 +157,10 @@ var Game = {
         };
 
         document.getElementsByClassName("play-singleplayer")[0].onclick = (e) => {
+            if (document.getElementsByClassName("multi-name")[0].value.trim() == "") {
+                document.getElementsByClassName("mainScene-message")[0].innerText = "Nickname cannot be empty!";
+                return;
+            }
             if (!this.MatchmakeJoined) {
                 this.MatchmakeJoined = true;
                 this.ClientID = this.Socket.id;
@@ -181,7 +185,11 @@ var Game = {
         };
 
         document.getElementsByClassName("play-multiplayer")[0].onclick = (e) => {
-            
+            if (document.getElementsByClassName("multi-name")[0].value.trim() == "") {
+                document.getElementsByClassName("mainScene-message")[0].innerText = "Nickname cannot be empty!";
+                return;
+            }
+
             if (!this.MatchmakeJoined) {
                 this.MatchmakeJoined = true;
                 this.ClientID = this.Socket.id;
@@ -219,20 +227,23 @@ var Game = {
                     document.getElementsByClassName("ui-rankings-rankingList")[0].getElementsByTagName("tr")[i + 1].getElementsByTagName("td")[2]
                     .innerText = response.data[i].rounds;
                     document.getElementsByClassName("ui-rankings-rankingList")[0].getElementsByTagName("tr")[i + 1].getElementsByTagName("td")[3]
-                    .innerText =
-                    "Tier 1 : " + response.data[i].unit1Tier + "\n" + 
-                    "Tier 2 : " + response.data[i].unit2Tier + "\n" + 
-                    "Tier 3 : " + response.data[i].unit3Tier + "\n" + 
-                    "Tier 4 : " + response.data[i].unit4Tier;
+                    .innerHTML =
+                    "<span style='color:" + this.tierColorsCss[0] + "'>T1 (" + response.data[i].unit1Tier + ")</span>\n" + 
+                    " <span style='color:" + this.tierColorsCss[1] + "'>T1 (" + response.data[i].unit2Tier + ")</span><br>\n" + 
+                    " <span style='color:" + this.tierColorsCss[2] + "'>T1 (" + response.data[i].unit3Tier + ")</span>\n" + 
+                    " <span style='color:" + this.tierColorsCss[3] + "'>T1 (" + response.data[i].unit4Tier + ")</span>\n";
+
                     document.getElementsByClassName("ui-rankings-rankingList")[0].getElementsByTagName("tr")[i + 1].getElementsByTagName("td")[4]
-                    .innerText = 
-                    "Yacht : " + response.data[i].handYacht + "\n" + 
-                    "Four Of A Kind : " + response.data[i].handFourKinds + "\n" + 
-                    "L. Straight : " + response.data[i].handLStraight + "\n" + 
-                    "Full House : " + response.data[i].handFullHouse + "\n" + 
-                    "S. Straight : " + response.data[i].handSStraight;
+                    .innerHTML = 
+                    "<span style='color:" + this.tierColorsCss[0] + "'>Y (" + response.data[i].handYacht + ")</span>\n" + 
+                    " <span style='color:" + this.tierColorsCss[1] + "'>F (" + response.data[i].handFourKinds + ")</span>\n" + 
+                    " <span style='color:" + this.tierColorsCss[1] + "'>L (" + response.data[i].handLStraight + ")</span><br>\n" + 
+                    " <span style='color:" + this.tierColorsCss[2] + "'>H (" + response.data[i].handFullHouse + ")</span>\n" + 
+                    " <span style='color:" + this.tierColorsCss[2] + "'>S (" + response.data[i].handSStraight + ")</span>\n";
+
+                    let _d = new Date(response.data[i].createdAt);
                     document.getElementsByClassName("ui-rankings-rankingList")[0].getElementsByTagName("tr")[i + 1].getElementsByTagName("td")[5]
-                    .innerText = new Date(response.data[i].createdAt).toLocaleString();
+                    .innerHTML = _d.toLocaleDateString() + "<br>" + _d.toLocaleTimeString();
                 }
             });
         };
