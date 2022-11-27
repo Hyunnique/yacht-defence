@@ -39,8 +39,7 @@ export default class Homing extends Phaser.Physics.Arcade.Sprite {
 
     
 
-    update() {
-        
+    update() {  
         this.flytoMob(this.shooter.target);
     }
 

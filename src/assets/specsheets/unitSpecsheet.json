@@ -23,8 +23,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit1": {
         "name": "성문 경비병",
@@ -50,8 +49,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit2": {
         "name": "성기사 단장 발키리",
@@ -103,8 +101,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit4": {
         "name": "견습 검사",
@@ -130,8 +127,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit5": {
         "name": "고블린 도적",
@@ -157,8 +153,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit6": {
         "name": "산적",
@@ -184,8 +179,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit7": {
         "name": "고블린 주술사",
@@ -211,8 +205,7 @@
         "explodeRange": 168,
         "projectileSpeed": 500,
         "tier": 4,
-        "activeSkill": "",
-        "passiveSkill": "",
+        "skill": "",
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0
@@ -241,8 +234,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit9": {
         "name": "불의 마도사",
@@ -268,8 +260,7 @@
         "explodeRange": 168,
         "projectileSpeed": 500,
         "tier": 3,
-        "activeSkill": "",
-        "passiveSkill": "",
+        "skill": "",
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0
@@ -298,8 +289,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit11": {
         "name": "숲 관찰대원",
@@ -325,8 +315,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit12": {
         "name": "용기병 전투원",
@@ -352,8 +341,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit13": {
         "name": "얼음 마도사",
@@ -381,8 +369,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit14": {
         "name": "마도 수련생",
@@ -408,8 +395,7 @@
         "explodeRange": 240,
         "projectileSpeed": 500,
         "tier": 4,
-        "activeSkill": "",
-        "passiveSkill": "",
+        "skill": "",
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0
@@ -438,8 +424,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit16": {
         "name": "바이킹",
@@ -465,8 +450,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit17": {
         "name": "스켈레톤 검사",
@@ -492,8 +476,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit18": {
         "name": "스켈레톤 주술사",
@@ -519,8 +502,7 @@
         "explodeRange": 168,
         "projectileSpeed": 500,
         "tier": 4,
-        "activeSkill": "",
-        "passiveSkill": "",
+        "skill": "",
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0
@@ -549,8 +531,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit20": {
         "name": "화염족 견습 주술사",
@@ -576,8 +557,7 @@
         "explodeRange": 168,
         "projectileSpeed": 500,
         "tier": 4,
-        "activeSkill": "",
-        "passiveSkill": "",
+        "skill": "",
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0
@@ -606,8 +586,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit22": {
         "name": "휘몰아치는 화염의 에단",
@@ -662,8 +641,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit24": {
         "name": "힘의 부족 대족장 후씽크",
@@ -689,8 +667,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "3타마다 현재 체력의 8% 추가 피해",
-        "passiveSkill": "방어력 무시"
+        "skill": "매 3타마다 적 현재 체력의 8% 추가 피해"
     },
     "unit25": {
         "name": "견습 성기사단원",
@@ -716,8 +693,7 @@
         "buffRange": 72,
         "buffAtk": 5,
         "buffAspd": 5,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit26": {
         "name": "되살아난 마검사 펠소닌",
@@ -745,8 +721,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "??? 하나 더 생각하기",
-        "passiveSkill": "관통 투사체의 범위가 매우 큼"
+        "skill": "??? 하나 더 생각하기"
     },
     "unit27": {
         "name": "버서커 카이토닐",
@@ -772,8 +747,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "10초마다 2초동안 최대 속도로 공격",
-        "passiveSkill": "라운드 시간이 경과할수록 공격속도가 증가"
+        "skill": "매 10초마다 2초간 공격속도 600%증가."
     },
     "unit28": {
         "name": "춘식",
@@ -799,8 +773,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit29": {
         "name": "강도",
@@ -826,8 +799,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit30": {
         "name": "창술사",
@@ -853,8 +825,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit31": {
         "name": "폭탄병",
@@ -880,8 +851,7 @@
         "explodeRange": 240,
         "projectileSpeed": 250,
         "tier": 3,
-        "activeSkill": "",
-        "passiveSkill": "",
+        "skill": "",
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0
@@ -910,8 +880,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit33": {
         "name": "기공사 달인 테스",
@@ -937,8 +906,7 @@
         "explodeRange": 240,
         "projectileSpeed": 250,
         "tier": 2,
-        "activeSkill": "",
-        "passiveSkill": "4초 간격으로 기본 스탯 대비 30퍼 강화, 20퍼 약화",
+        "skill": "4초마다 30% 강해졌다가, 20% 약해집니다.",
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0
@@ -964,8 +932,7 @@
         "hitSoundName": "hitFire",
         "projectileType": 0,
         "tier": 2,
-        "activeSkill": "",
-        "passiveSkill": "4초 간격으로 기본 스탯 대비 공격30퍼 강화 공속 20퍼 약화 / 공격 20퍼 약화 공속 30퍼 강화",
+        "skill": "매 4초 마다 공격 +30%, 공속 -20%를 서로 전환",
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0
@@ -994,8 +961,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "넓은 범위의 공격",
-        "passiveSkill": "방어력 무시"
+        "skill": "원펀"
     },
     "unit36": {
         "name": "창기병",
@@ -1021,8 +987,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit37": {
         "name": "견습 격투가",
@@ -1048,8 +1013,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit38": {
         "name": "화염족 대마도사 이프리트",
@@ -1075,8 +1039,7 @@
         "explodeRange": 312,
         "projectileSpeed": 250,
         "tier": 2,
-        "activeSkill": "",
-        "passiveSkill": "공격 받은 후 200퍼의 데미지를 5초에 걸쳐 받음 (단, 중첩X, 갱신만)",
+        "skill": "5초간 공격력의 40% 데미지를 추가로 줌",
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0
@@ -1105,8 +1068,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit40": {
         "name": "암흑 마도사",
@@ -1132,8 +1094,7 @@
         "explodeRange": 168,
         "projectileSpeed": 750,
         "tier": 3,
-        "activeSkill": "",
-        "passiveSkill": "",
+        "skill": "",
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0
@@ -1189,8 +1150,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit43": {
         "name": "숲 관찰대장 세트",
@@ -1216,8 +1176,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": "3타째 공격은 160% 데미지"
+        "skill": "매 3번째 공격이 160% 데미지"
     },
     "unit44": {
         "name": "유적 감시병",
@@ -1243,8 +1202,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit45": {
         "name": "고위 빙결 마도사 아케리스",
@@ -1272,8 +1230,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit46": {
         "name": "고블린 사냥꾼",
@@ -1299,8 +1256,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit47": {
         "name": "고블린 약탈대장",
@@ -1326,8 +1282,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit48": {
         "name": "스켈레톤 저격병",
@@ -1353,8 +1308,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit49": {
         "name": "농부",
@@ -1380,8 +1334,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit50": {
         "name": "암살대장 애퍼스",
@@ -1407,8 +1360,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": "보스 제외 3%확률로 즉사"
+        "skill": ""
     },
     "unit51": {
         "name": "미치광이 타이탄",
@@ -1461,8 +1413,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit53": {
         "name": "힘의 부족 창의 달인 데마린",
@@ -1488,8 +1439,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit54": {
         "name": "기사 분대원",
@@ -1515,8 +1465,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit55": {
         "name": "수호 마도사 아이더",
@@ -1539,8 +1488,7 @@
         "hitSoundName": "hitFire",
         "projectileType": 0,
         "tier": 2,
-        "activeSkill": "",
-        "passiveSkill": "",
+        "skill": "",
         "buffRange": 168,
         "buffAtk": 0,
         "buffAspd": 15
@@ -1569,8 +1517,7 @@
         "explodeRange": 168,
         "projectileSpeed": 500,
         "tier": 2,
-        "activeSkill": "",
-        "passiveSkill": "",
+        "skill": "",
         "buffRange": 168,
         "buffAtk": 15,
         "buffAspd": 0
@@ -1599,8 +1546,7 @@
         "explodeRange": 168,
         "projectileSpeed": 500,
         "tier": 3,
-        "activeSkill": "",
-        "passiveSkill": "",
+        "skill": "",
         "buffRange": 72,
         "buffAtk": 10,
         "buffAspd": 0
@@ -1629,8 +1575,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit59": {
         "name": "숲의 마도사",
@@ -1656,8 +1601,7 @@
         "buffRange": 72,
         "buffAtk": 0,
         "buffAspd": 10,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit60": {
         "name": "화염족 마도사",
@@ -1683,8 +1627,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit61": {
         "name": "선두 공격병",
@@ -1710,8 +1653,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit62": {
         "name": "타락한 무술가",
@@ -1737,8 +1679,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     },
     "unit63": {
         "name": "용기사 수호병",
@@ -1764,7 +1705,6 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": ""
+        "skill": ""
     }
 }
