@@ -612,7 +612,7 @@
         "explodeRange": 312,
         "projectileSpeed": 250,
         "tier": 1,
-        "skill": "공격시 5초동안 0.5초마다 지속 화상피해",
+        "skill": "공격시 5초동안 0.5초마다 80%의 화상 피해",
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0
@@ -693,7 +693,7 @@
         "buffRange": 72,
         "buffAtk": 8,
         "buffAspd": 8,
-        "skill": "주변 아군의 공격과 속도 8% 강화"
+        "skill": "주변 아군의 공격과 속도 8% 강화 (미구현)"
     },
     "unit26": {
         "name": "되살아난 마검사 펠소닌",
@@ -721,7 +721,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "skill": ""
+        "skill": "공격마다 공격력이 3%씩 증가, 매 라운드 초기화 (미구현)"
     },
     "unit27": {
         "name": "버서커 카이토닐",
@@ -961,7 +961,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "skill": "느리지만 매우 강력한 펀치 한방을 날립니다"
+        "skill": "공격 속도가 0.2로 고정되지만, 초과분의 1000배만큼 추가 피해를 입힙니다. (미구현)"
     },
     "unit36": {
         "name": "창기병",
@@ -1039,7 +1039,7 @@
         "explodeRange": 312,
         "projectileSpeed": 250,
         "tier": 2,
-        "skill": "5초간 공격력의 40% 데미지를 추가로 줌",
+        "skill": "공격시 5초동안 0.5초마다 40%의 화상 피해",
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0
@@ -1123,7 +1123,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "skill": "공격시 5초동안 0.5초마다 지속 중독피해"
+        "skill": "공격시 5초동안 0.5초마다 현재 남은 체력 비례 중독피해"
     },
     "unit42": {
         "name": "기사 분대장",
@@ -1229,7 +1229,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "skill": ""
+        "skill": "피해입은 적의 방어력을 5초간 20% 감소"
     },
     "unit46": {
         "name": "고블린 사냥꾼",
@@ -1342,7 +1342,7 @@
         "aspd": 1.1,
         "range": 480,
         "rangeType": 3,
-        "penetration": 0.1,
+        "penetration": 0,
         "attackType": 1,
         "idleSprite": "unit50idle",
         "idleAnim": "unit50idle",
@@ -1359,7 +1359,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "skill": ""
+        "skill": "방어 관통력이 0%로 고정되지만, 공격력이 적용 수치의 8배 만큼 증가 (미구현)    "
     },
     "unit51": {
         "name": "미치광이 타이탄",
