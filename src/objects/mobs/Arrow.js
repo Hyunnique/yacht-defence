@@ -14,7 +14,7 @@ export default class Arrow extends Phaser.Physics.Arcade.Sprite {
         super(scene, -5000, -5000, "arrow");
         scene.add.existing(this);
         this.scale = 1;
-        this.m_speed = 3;
+        this.m_speed = 5;
         this.moveType = mobRoute + 0;
 
         switch (this.moveType) {
