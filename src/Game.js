@@ -235,7 +235,7 @@ var Game = {
 
                     document.getElementsByClassName("ui-rankings-rankingList")[0].getElementsByTagName("tr")[i + 1].getElementsByTagName("td")[4]
                     .innerHTML = 
-                    "<span style='color:" + this.tierColorsCss[0] + "'>Y (" + response.data[i].handYacht + ")</span>\n" + 
+                    "<span style='color:" + this.tierColorsCss[0] + "'>Y (" + response.data[i].handYacht + ")</span><br>\n" + 
                     " <span style='color:" + this.tierColorsCss[1] + "'>F (" + response.data[i].handFourKinds + ")</span>\n" + 
                     " <span style='color:" + this.tierColorsCss[1] + "'>L (" + response.data[i].handLStraight + ")</span><br>\n" + 
                     " <span style='color:" + this.tierColorsCss[2] + "'>H (" + response.data[i].handFullHouse + ")</span>\n" + 

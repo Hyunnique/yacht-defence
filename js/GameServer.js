@@ -430,7 +430,7 @@ module.exports = {
             if (this.Rooms[roomId].players[this.getRoomIndex(socket.id)].gold >= shopItem.price && !(this.Rooms[roomId].players[this.getRoomIndex(socket.id)].dead)) {
                 this.Rooms[roomId].players[this.getRoomIndex(socket.id)].gold -= shopItem.price;
 
-                if (msg.itemIndex == 21) {
+                if (msg.itemIndex == 14) {
                     this.Rooms[roomId].players[this.getRoomIndex(socket.id)].hp = this.Rooms[roomId].players[this.getRoomIndex(socket.id)].hp + 20 > 100 ? 100 : this.Rooms[roomId].players[this.getRoomIndex(socket.id)].hp + 20;
                 }
                 else if (!this.Rooms[roomId].players[this.getRoomIndex(socket.id)].items[msg.itemIndex]) {
@@ -471,11 +471,11 @@ module.exports = {
 
     onDiceLastChance(socket, roomId) {
         socket.on('dicePhase-lastChance', (msg) => {
-            if (!this.Rooms[roomId].players[this.getRoomIndex(socket.id)].items[20] || this.Rooms[roomId].players[this.getRoomIndex(socket.id)].items[20] == 0) {
+            if (!this.Rooms[roomId].players[this.getRoomIndex(socket.id)].items[13] || this.Rooms[roomId].players[this.getRoomIndex(socket.id)].items[13] == 0) {
                 socket.emit('lastChance-Failure', true);
             }
             else {
-                this.Rooms[roomId].players[this.getRoomIndex(socket.id)].items[20]--;
+                this.Rooms[roomId].players[this.getRoomIndex(socket.id)].items[13]--;
                 socket.emit('lastChance-success', {
                     items: this.Rooms[roomId].players[this.getRoomIndex(socket.id)].items
                 })
