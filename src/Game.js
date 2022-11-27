@@ -145,6 +145,7 @@ var Game = {
         });
 
         this.Socket.on("matchmaking-done", (msg) => {
+            this.GameObject.scene.getScene("mainScene").lobbyMusic.stop();
             this.showScene("PreLoadScene");
             this.TimelimitTimer = setInterval(() => {
                 if (this.currentTimeLimit > 0) this.currentTimeLimit--;
