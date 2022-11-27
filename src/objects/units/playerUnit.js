@@ -100,7 +100,6 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
             this.skillReady = true;
         }
         
-        console.log(this.skillInfo);
         this.target = [];
         //this.setMotionSpeed();
 
