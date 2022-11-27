@@ -327,7 +327,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
                 delay: unit.skillInfo.delay * 1000,
                 repeat: unit.skillInfo.duration / unit.skillInfo.delay,
                 callback: () => {
-                    this.Health -= unit.shooter.calcDamage(damage, this.defence) * (1 + this.totalDebuffVal / 100);
+                    this.Health -= unit.calcDamage(damage, this.defence) * (1 + this.totalDebuffVal / 100);
                 },
                 startAt: 0
             });
