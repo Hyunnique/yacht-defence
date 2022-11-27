@@ -1,9 +1,8 @@
 const waveGenerator = require("./GenerateMobWave");
 
 const SpecsheetGen = require('../src/assets/specsheets/mobSpecSheetGen.json');
-const Specsheet = require('../src/assets/specsheets/mobSpecsheet.json');
 const ShopItemSheet = require('../src/assets/specsheets/shopItemSheet.json');
-const { Layer } = require("koa-router");
+const db = require('../schemas');
 
 module.exports = {
     Socket: null,
@@ -126,6 +125,16 @@ module.exports = {
                     gold: 0,
                     units: [],
                     items: {},
+                    unitTierCount: [0, 0, 0, 0],
+                    handCount: {
+                        "Yacht!": 0,
+                        "4 of A Kind": 0,
+                        "L. Straight": 0,
+                        "Full House": 0,
+                        "S. Straight": 0,
+                        "Bull's-Eye": 0,
+                        "-": 0
+                    },
                     shopBuffs: { 
                         shopAtk: 0,
                         shopPenetration: 0,
@@ -288,7 +297,7 @@ module.exports = {
                 let latestChoiceReward = -1;
                 for (let i = 0; i < resultArray.length; i++) {
                     // 동률일 경우 모두 높은 골드로 지급
-                    if (latestChoiceDiffResult != -1 && latestChoiceDiffResult == resultArray[i].choiceDiff) {
+                    if (latestChoiceDiffResult != -1 && latestChoiceDiffResult == Math.abs(resultArray[i].choiceDiff)) {
                         this.Rooms[roomId].players[resultArray[i].idx].gold += latestChoiceReward;
                         resultArray[i].rewardGold = latestChoiceReward;
                     } else {
@@ -296,7 +305,7 @@ module.exports = {
                         resultArray[i].rewardGold = choiceRewardByPlayers[resultArray.length - 1][i];
                     }
 
-                    latestChoiceDiffResult = resultArray[i].choiceDiff;
+                    latestChoiceDiffResult = Math.abs(resultArray[i].choiceDiff);
                     latestChoiceReward = resultArray[i].rewardGold;
                 }
 
@@ -350,7 +359,8 @@ module.exports = {
             this.Rooms[roomId].players[this.getRoomIndex(socket.id)].hp -= msg;
             if (this.Rooms[roomId].players[this.getRoomIndex(socket.id)].hp <= 0) {
                 this.Rooms[roomId].players[this.getRoomIndex(socket.id)].hp = 0;
-                this.Rooms[roomId].players[this.getRoomIndex(socket.id)].dead = true;
+                
+                if (!this.Rooms[roomId].players[this.getRoomIndex(socket.id)].dead) this.onPlayerDeath(socket, roomId);
             }
             this.syncPlayerInfo(roomId);
         });
@@ -420,6 +430,7 @@ module.exports = {
             this.Rooms[roomId].players[this.getRoomIndex(socket.id)].units = msg.units;
             this.Rooms[roomId].players[this.getRoomIndex(socket.id)].shopBuffs = msg.shopBuffs;
             this.Rooms[roomId].players[this.getRoomIndex(socket.id)].tierBuffs = msg.tierBuffs;
+            this.Rooms[roomId].players[this.getRoomIndex(socket.id)].unitTierCount = msg.tierCnt;
 
             for (let i = 0; i < this.Rooms[roomId].players.length; i++) {
                 if (i == this.getRoomIndex(socket.id)) continue;
@@ -430,10 +441,35 @@ module.exports = {
                     items: this.Rooms[roomId].players[this.getRoomIndex(socket.id)].items,
                     shopBuffs: msg.shopBuffs,
                     tierBuffs: msg.tierBuffs,
-                    tierCnt: tierCnt
+                    tierCnt: msg.tierCnt,
                 });
             }
         });
+    },
+
+    onPlayerDeath(socket, roomId) {
+        let s_player = this.Rooms[roomId].players[this.getRoomIndex(socket.id)];
+        s_player.dead = true;
+        
+
+        for (let i = 0; i < this.Rooms[roomId].players.length; i++) {
+            this.Rooms[roomId].players[i].socket.emit('player-death', this.zerofyNumber(socket.id, i));
+        }
+
+        new db.PlayData({
+            name: s_player.name,
+            rounds: this.Rooms[roomId].roundInfo.num - 1,
+            unit1Tier: s_player.unitTierCount[0],
+            unit2Tier: s_player.unitTierCount[1],
+            unit3Tier: s_player.unitTierCount[2],
+            unit4Tier: s_player.unitTierCount[3],
+            handYacht: s_player.handCount["Yacht!"],
+            handFourKinds: s_player.handCount["4 of A Kind"],
+            handLStraight: s_player.handCount["L. Straight"],
+            handFullHouse: s_player.handCount["Full House"],
+            handSStraight: s_player.handCount["S. Straight"],
+            choiceBullsEye: s_player.handCount["Bull's-Eye"]
+        }).save();
     }
 };
 
