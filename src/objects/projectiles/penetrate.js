@@ -4,7 +4,7 @@ const Phaser = require("phaser");
 
 export default class Penetrate extends Phaser.Physics.Arcade.Sprite {
 
-    constructor(scene, shooter) {
+    constructor(scene, shooter,skillInfo) {
         super(scene, shooter.x, shooter.y, shooter.projectileName);
         if (shooter.playerNum == 0)
             this.scene.m_projectiles.add(this);
@@ -23,7 +23,8 @@ export default class Penetrate extends Phaser.Physics.Arcade.Sprite {
 
         this.target = shooter.target;
         this.isTarget = false;
-
+        if (skillInfo != null)
+            this.skillInfo = skillInfo;
         this.play(shooter.projectileName);
 
         this.scene.add.existing(this);
@@ -39,19 +40,23 @@ export default class Penetrate extends Phaser.Physics.Arcade.Sprite {
         Phaser.Math.RotateTo(this.flyto, this.x, this.y, this.rotation, this.shooter.range);
         this.scene.physics.moveTo(this, this.flyto.x, this.flyto.y, this.speed);
         this.scene.events.on("update", this.update, this);
+        this.scene.events.on("spectateChange", this.setVisibility, this);
     }
 
     update()
     {   
-        if (this.scene) {
-            if (this.shooter.playerNum == this.scene.currentView)
-                this.setVisible(true);
-            else
-                this.setVisible(false);
-        }
-
-        if (Phaser.Math.Distance.Between(this.x, this.y, this.shooter.x, this.shooter.y) >= this.shooter.range)
+        if (Phaser.Math.Distance.Between(this.x, this.y, this.shooter.x, this.shooter.y) >= this.shooter.range) {
+            this.scene.events.off("update", this.update, this);
+            this.scene.events.off("spectateChange", this.setVisibility, this);
             this.destroy();
+        }
+    }
+
+    setVisibility() {
+        if (this.shooter.playerNum == this.scene.currentView)
+            this.setVisible(true);
+        else
+            this.setVisible(false);
     }
 
     setAngle(shooter,target) {

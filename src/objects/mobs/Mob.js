@@ -43,9 +43,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         this.isBoss = mobData.boss;
         this.dotDamageDict = {};
         this.playerNum = playerNum;
-        if (this.playerNum != 0) {
-            this.setVisible(false);
-        }
+        
 
         this.deathSound = this.scene.sound.add(mobData.deathSound);
         
@@ -56,6 +54,8 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         if (!this.isBoss) {
             this.healthBar = this.scene.add.image(this.x-48, this.y - 24, "healthBar").setOrigin(0,0.5);
             this.healthBarWidth = this.healthBar.displayWidth;
+            if (playerNum != 0)
+                this.healthBar.setVisible(false);
         }
         else if (this.isBoss && this.playerNum == 0) {
             Game.showUI("bossArea");
@@ -63,6 +63,9 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
             document.getElementsByClassName("ui-bossArea-bosshp-text")[0].innerText = this.Health.toLocaleString() + "/" + this.MaxHealth.toLocaleString();
         }
         
+        if (this.playerNum != 0) {
+            this.setVisible(false);      
+        }
 
         switch (this.moveType) {
             case "A0":
@@ -148,17 +151,12 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
             yoyo: false
         });
         this.scene.events.on("update", this.update, this);
-
+        this.scene.events.on("spectateChange", this.setVisibility, this);
     }
     update()
     {       
-        if (this.playerNum == this.scene.currentView)
-            this.setVisible(true);
-        else
-            this.setVisible(false);
-        
         if (!this.isBoss) {
-            this.healthBar.setVisible(this.visible);
+            
             this.healthBar.setPosition(this.getCenter().x-48, this.getCenter().y - 24);
             this.healthBar.displayWidth = this.healthBarWidth * (this.Health / this.MaxHealth);
         }
@@ -195,10 +193,25 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         }
     }
 
+    setVisibility()
+    {
+        if (this.playerNum == this.scene.currentView) {
+            this.setVisible(true);
+            if (this.healthBar)
+                this.healthBar.setVisible(true);
+        }
+        else {
+            this.setVisible(false);
+            if (this.healthBar)
+                this.healthBar.setVisible(false);
+        }
+    }
+
     death()
     {
         // this.deathSound.play(Game.effectSoundConfig);
         this.scene.events.off("update", this.update, this);
+        this.scene.events.off("spectateChange", this.setVisibility, this);
         if (this.playerNum == 0) {
             this.scene.mobCounter--;
             Game.updateMobCounter();
@@ -227,7 +240,10 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         if (projectile.shooter.projectileType == 1) {
             if (projectile.alreadyPenetrated.findIndex(e => e == this.mobNum) == -1) {
                 projectile.alreadyPenetrated.push(this.mobNum);
-                this.Health -= projectile.shooter.calcDamage(this.defence);
+                if (projectile.skillInfo != null)
+                    this.Health -= projectile.shooter.calcDamage(projectile.shooter.attack + (projectile.skillInfo.ofHealth == "cur" ? this.Health : this.MaxHealth) * (projectile.skillInfo.value / 100), this.defence);
+                else
+                    this.Health -= projectile.shooter.calcDamage(projectile.shooter.attack, this.defence);
                 projectile.hit();
             }
         }
@@ -235,24 +251,28 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
             projectile.explode();
         }
         else {
-            this.Health -= projectile.shooter.calcDamage(this.defence);
+            if (projectile.skillInfo != null)
+                this.Health -= projectile.shooter.calcDamage(projectile.shooter.attack + (projectile.skillInfo.ofHealth == "cur" ? this.Health : this.MaxHealth) * (projectile.skillInfo.value / 100), this.defence);
+            else
+                this.Health -= projectile.shooter.calcDamage(projectile.shooter.attack,this.defence);
             projectile.hit();
         }
     }
 
-    dotDamageFactory(dotDamageConfig) {
+    dotDamageFactory(projectile,dotDamageConfig) {
         if (this.dotDamageDict[dotDamageConfig.callerID] == undefined) {
+            var damage = dotDamageConfig.ofHealth == "cur" ? projectile.shooter.attack + (this.Health * dotDamageConfig.value) : dotDamageConfig.ofHealth == "max" ? projectile.shooter.attack + (this.MaxHealth * dotDamageConfig.value) : dotDamageConfig.damage;
             this.dotDamageDict[dotDamageConfig.callerID] = this.scene.time.addEvent({
-                delay: dotDamage.delay,
-                repeatCount: dotDamageConfig.duation * (1000 / dotDamage.delay),
-                callback: () => this.Health -= dotDamageConfig.damage,
+                delay: dotDamageConfig.delay * 1000,
+                repeat: dotDamageConfig.duration / dotDamageConfig.delay,
+                callback: () => {
+                    this.Health -= dotDamageConfig.ofHealth == "fix" ? damage : projectile.shooter.calcDamage(damage, this.defence);
+                },
                 startAt: 0
             });
         }
         else {
-            this.scene.time.delayedCall(dotDamage.getRemaining(), () => {
-                this.dotDamageDict[dotDamageConfig.callerID].reset(dotDamageConfig);
-            }, [], this);
+            this.dotDamageDict[dotDamageConfig.callerID].addEvent(this.dotDamageDict[dotDamageConfig.callerID]);
         }
     }
 }

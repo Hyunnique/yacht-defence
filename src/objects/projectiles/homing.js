@@ -4,7 +4,7 @@ const Phaser = require("phaser");
 
 export default class Homing extends Phaser.Physics.Arcade.Sprite {
 
-    constructor(scene, shooter) {
+    constructor(scene, shooter,skillInfo) {
         super(scene, shooter.x, shooter.y, shooter.projectileName);
         if (shooter.playerNum == 0)
             this.scene.m_projectiles.add(this);
@@ -23,6 +23,9 @@ export default class Homing extends Phaser.Physics.Arcade.Sprite {
 
         if (shooter.playerNum != 0)
             this.setVisible(false);
+        
+        if (skillInfo != null)
+            this.skillInfo = skillInfo;
 
         this.play(shooter.projectileName);
 
@@ -30,14 +33,21 @@ export default class Homing extends Phaser.Physics.Arcade.Sprite {
         this.scene.physics.add.existing(this);
 
         this.scene.events.on("update", this.update, this);
+        this.scene.events.on("spectateChange", this.setVisibility, this);
     }
 
+    
+
     update() {
+        
+        this.flytoMob(this.shooter.target);
+    }
+
+    setVisibility() {
         if (this.shooter.playerNum == this.scene.currentView)
             this.setVisible(true);
         else
             this.setVisible(false);
-        this.flytoMob(this.shooter.target);
     }
 
     flytoMob(target) {
@@ -67,6 +77,7 @@ export default class Homing extends Phaser.Physics.Arcade.Sprite {
     hit()
     {   
         this.scene.events.off('update', this.update, this);
+        this.scene.events.off("spectateChange", this.setVisibility, this);
         this.setDepth(2);
         this.rotation = 0;
         this.body.destroy();

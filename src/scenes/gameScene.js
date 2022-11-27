@@ -213,6 +213,7 @@ export default class gameScene extends Phaser.Scene {
         this.unitDB = this.cache.json.get("unitDB");
         this.mobDB = this.cache.json.get("mobDB");
         this.roundDB = this.cache.json.get("roundDB");
+        this.skillDB = this.cache.json.get("skillDB");
 
         this.m_player = [];
         this.spectate_player = [];
@@ -404,12 +405,9 @@ export default class gameScene extends Phaser.Scene {
             let t = this.info[playerNum].getTileAtWorldXY(unit.x,unit.y, true);
             t.placedUnit = unit;
             unit.setDepth(((unit.y / 48) * (unit.x / 48)));
-            this.resetOtherBuff(playerNum,shopBuffs,tierBuffs)
+            
         });
-    }
-
-    setVisibility(playerNum, bool) {
-        this.currentView;
+        this.resetOtherBuff(playerNum, shopBuffs, tierBuffs);
     }
 
     removeOtherPlayerUnit(playerNum) {
@@ -475,15 +473,17 @@ export default class gameScene extends Phaser.Scene {
         
         this.currentRoundData.forEach((element, index) => {
             this.mobCounter += element["mobCount"];
-            this.time.addEvent({
-                delay: initialDelay,
-                callback: () => {
-                    this.m_mobs.add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum, element["mobRoute"], element["hpFactor"], 0));
-                    this.globalnum++;
-                },
-                repeat: element["mobCount"] - 1,
-                startAt: index * 100
-            });
+            if (this.playerHealth > 0) {
+                this.time.addEvent({
+                    delay: initialDelay,
+                    callback: () => {
+                        this.m_mobs.add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum, element["mobRoute"], element["hpFactor"], 0));
+                        this.globalnum++;
+                    },
+                    repeat: element["mobCount"] - 1,
+                    startAt: index * 100
+                });
+            }
             if (Game.PlayerData.length > 1) {
                 this.time.addEvent({
                     delay: initialDelay,
@@ -598,11 +598,26 @@ export default class gameScene extends Phaser.Scene {
     // DicePhase를 마친 뒤 유닛을 선택하면 호출함
     // Unit ID를 파라미터로 가짐
     receiveUnit(unitID, tier) {
-        this.placemode = true;
-        this.handleTierBonus(tier, true);
-        this.initialPlace(this.unitDB["unit" + unitID],unitID);
+        if (this.playerHealth > 0) {
+            this.placemode = true;
+            this.handleTierBonus(tier, true);
+            this.initialPlace(this.unitDB["unit" + 24], 24);
+        }
     }
     
+    gameOverHandler(index)
+    {
+        if (index == 0) {
+            this.m_player.forEach((e) => {
+                let t = this.info[index].getTileAtWorldXY(e.x, e.y, true);
+                t.placedUnit = undefined;
+                e.remove();
+            });
+            this.tierCnt = [0, 0, 0, 0];
+            this.tierBonus = [0, 0, 0, 0];
+        }
+    }
+
 
     handleTierBonus(tier,bool)
     {

@@ -1,0 +1,24 @@
+{
+    "unit22": {
+        "skillType": "DOT",
+        "delay": 0.5,
+        "duration": 5,
+        "damage": 1000,
+        "coolDown": 5,
+        "range": 528,
+        "ofHealth": "fix",
+        "value": 0
+    },
+    "unit27": {
+        "skillType": "aspdBuff",
+        "duration": 2,
+        "coolDown": 10,
+        "buffAspd": 10
+    },
+    "unit24": {
+        "skillType": "attackCount",
+        "doEveryNth": 3,
+        "ofHealth": "cur",
+        "value": 50
+    }
+}

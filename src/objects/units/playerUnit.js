@@ -73,6 +73,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.isTarget = false;
         this.isBuffTarget = true;
 
+        this.skill;
 
         this.scale = 1;
         this.alpha = 1;
@@ -83,13 +84,17 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.effectIsFlip = effectOffset[this.effectName].isFlip == 1 ? true : false;
         // console.log(this.effectOffsetX + " " + this.effectOffsetY + " " + effectOffset[this.effectName].isFlip);
         this.effect = new UnitEffect(scene, this, this.effectIsFlip, db.name);
-
+        this.attackCount = 0;
         
         if (playerNum != 0) {
             this.setVisible(false);
             this.effect.setVisible(false);
         }
         
+        if (this.scene.skillDB["unit" + this.id] != null || this.scene.skillDB["unit" + this.id] != undefined) {
+            this.skillInfo = this.scene.skillDB["unit" + this.id];
+            this.skillReady = true;
+        }
         
         this.target = [];
         //this.setMotionSpeed();
@@ -108,9 +113,28 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.scene.add.existing(this);
         this.scene.events.on("update", this.update, this);
         this.on("animationcomplete", this.doIdle, this);
+        this.scene.events.on("spectateChange", this.setVisibility, this);
     }
 
     update() {
+        
+        
+        this.rangeView.setX(this.x);
+        this.rangeView.setY(this.y);
+        this.buffRangeView.setX(this.x);
+        this.buffRangeView.setY(this.y);
+        this.effect.x = this.x + this.effectOffsetX;
+        this.effect.y = this.y + this.effectOffsetY;
+
+        this.checkMob();
+        if (this.skillReady && this.target.length > 0)
+            this.doSkill();
+        if (this.attackReady && this.target.length > 0)
+            this.attackMob();
+        
+    }
+
+    setVisibility() {
         if (this.playerNum == this.scene.currentView) {
             this.setVisible(true);
             this.effect.setVisible(true);
@@ -119,16 +143,6 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
             this.setVisible(false);
             this.effect.setVisible(false);
         }
-        
-        this.rangeView.setX(this.x);
-        this.rangeView.setY(this.y);
-        this.buffRangeView.setX(this.x);
-        this.buffRangeView.setY(this.y);
-        this.effect.x = this.x + this.effectOffsetX;
-        this.effect.y = this.y + this.effectOffsetY;
-        this.checkMob();
-        if (this.attackReady && this.target.length > 0)
-            this.attackMob();     
     }
 
     doIdle()
@@ -136,6 +150,30 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.play(this.idleAnim, true);
     }
 
+    doSkill()
+    {   
+        if (this.skillInfo.skillType == "DOT")
+        {
+            this.skillReady = false;
+            new Bomb(this.scene, this, this.skillInfo);
+            this.scene.time.delayedCall(1000 * this.skillInfo.coolDown, () => {
+                this.skillReady = true;
+            }, [], this);
+        }
+        else if (this.skillInfo.skillType == "aspdBuff")
+        {
+            this.skillReady = false;
+            this.buffedAspd += this.skillInfo.buffAspd * 100;
+            this.updateBuff();
+            this.scene.time.delayedCall(1000 * this.skillInfo.duration, () => {                
+                this.buffedAspd -= this.skillInfo.buffAspd * 100;
+                this.updateBuff();
+            }, [], this);
+            this.scene.time.delayedCall(1000 * this.skillInfo.coolDown, () => {
+                this.skillReady = true;
+            }, [], this);
+        }
+    }
     
 
     checkMob() {
@@ -201,58 +239,63 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         else if (this.penetration < 0) this.penetration = 0;
     }
 
-    attackMob()
-    {   
+    attackMob() {
         this.attackReady = false;
-        if(this.playerNum == this.scene.currentView)
+        if (this.playerNum == this.scene.currentView)
             this.atkSoundName.play(Game.effectSoundConfig);
         this.play(this.attackAnim, false);
         this.effect.playEffect();
-
-
+     
         if (this.attackType == 0) {
-            this.target.forEach(e => {
-                if (e.gameObject.Health) e.gameObject.Health -= this.attack;
-                // if (e.gameObject.Health <= 0) {
-                //     this.kills++;
-                // }
-            })
+            if (this.skillInfo != null && this.skillInfo.skillType == "attackCount" && this.attackCount % this.skillInfo.doEveryNth == 0) {
+                this.target.forEach(e => {
+                    if (e.gameObject.Health)
+                        e.gameObject.Health -= this.calcDamage(this.attack + e.gameObject.Health * this.skillInfo.value, e.gameObject.defence);
+                });
+            }
+            else {
+                this.target.forEach(e => {
+                    if (e.gameObject.Health)
+                        e.gameObject.Health -= this.calcDamage(this.attack, e.gameObject.defence);
+                });
+            }
         }
         else if (this.attackType == 1) {
-            // this.shootSound.play({
-            // mute: false,
-            // volume: 0.7,
-            // rate: 1,
-            // loop: false
-            // });
-            this.shootProjectile();
+            if (this.skillInfo != null && this.skillInfo.skillType == "attackCount" && this.attackCount % this.skillInfo.doEveryNth == 0)
+                this.shootProjectile(true);
+            else
+                this.shootProjectile(false);
         }
+        this.attackCount++;
+        
         this.scene.time.delayedCall(1000 / this.aspd, () => {
             this.attackReady = true;
         }, [], this);
     }
 
-    shootProjectile()
+    shootProjectile(bool)
     {   
         if (this.projectileType == 0)
-            return new Homing(this.scene, this);
+            return new Homing(this.scene, this, bool ? this.skillInfo : null);
         else if (this.projectileType == 1)
-            return new Penetrate(this.scene, this);
+            return new Penetrate(this.scene, this, bool ? this.skillInfo : null);
         else if (this.projectileType == 2)
-            return new Bomb(this.scene, this);
+            return new Bomb(this.scene, this, bool ? this.skillInfo : null);
     }
 
     remove() {
         this.scene.events.off("update", this.update, this);
+        this.scene.events.off("spectateChange", this.setVisibility, this);
         this.rangeView.destroy();
         this.destroy();
     }
 
     
     
-    calcDamage(mobDefence)
+    calcDamage(damage,mobDefence)
     {
+        console.log(damage);
         var defencePenValue = 1 - (mobDefence / 100) * (1 - this.penetration);
-        return defencePenValue <= 0 ? 1 : this.attack * defencePenValue;
+        return defencePenValue <= 0 ? 1 : damage * defencePenValue;
     }
 }
