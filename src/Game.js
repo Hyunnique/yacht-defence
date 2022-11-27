@@ -483,7 +483,7 @@ var Game = {
             for (let j = 0; j < msg.length; j++) {
                 document.getElementsByClassName("ui-hpArea-player")[j].classList.remove("text-outline-gold");
             }
-            document.getElementsByClassName("ui-hpArea-player")[i].classList.add("text-outline-gold");
+            document.getElementsByClassName("ui-hpArea-player")[0].classList.add("text-outline-gold");
             this.GameObject.scene.getScene("gameScene").cameras.main.scrollX = 0;
             this.GameObject.scene.getScene("gameScene").cameras.main.scrollY = 0;
             this.GameObject.scene.getScene("gameScene").cameras.main.setBounds(0, 0, mapWidth, mapHeight);
