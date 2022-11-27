@@ -510,3 +510,51 @@
 .help{
     font-size: 1rem;
 }
+
+.ui-itemInfoArea { 
+    position: fixed;
+    display: none;
+    flex-direction: column;
+
+    width: 15%;
+    height: 30%;
+    pointer-events: none;
+
+    border: 1px solid black;
+    background-color: rgb(255, 255, 255, 0.6);
+    z-index: 10;
+
+    justify-content: center;
+    text-align: center;
+}
+
+.ui-itemInfoArea .ui-itemInfoArea-iconArea {
+    display: flex;
+    width: 100%;
+    height:50%;
+}
+.ui-itemInfoArea-iconArea  .ui-itemInfoArea-iconArea-icon {
+    width: 100%;
+    height: 100%;
+    
+    background-repeat: no-repeat;   
+    background-size: 50%;
+    background-position: center;
+}
+.ui-itemInfoArea .ui-itemInfoArea-name {
+    width:100%;
+    height:17%;
+    font-size: 1.5rem;
+}
+.ui-itemInfoArea .ui-itemInfoArea-atk {
+    width:100%;
+    height:11%;
+}
+.ui-itemInfoArea .ui-itemInfoArea-aspd {
+    width:100%;
+    height:11%;
+}
+.ui-itemInfoArea .ui-itemInfoArea-pen {
+    width:100%;
+    height:11%;
+}

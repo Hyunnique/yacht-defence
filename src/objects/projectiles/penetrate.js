@@ -25,11 +25,8 @@ export default class Penetrate extends Phaser.Physics.Arcade.Sprite {
         this.isTarget = false;
 
         if (skillInfo != null && skillInfo.skillType == "DOT") {
-            this.skillInfo = [];
-            this.skillInfo["callerID"] = this.shooter.index;
-            this.skillInfo["delay"] = skillInfo.delay;
-            this.skillInfo["duration"] = skillInfo.duration;
-            this.skillInfo["value"] = skillInfo.value;
+            this.skillInfo = skillInfo;
+            this.skillInfo.callerID = shooter.index;
         }
         else
             this.skillInfo = skillInfo;
