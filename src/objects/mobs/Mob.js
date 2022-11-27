@@ -212,8 +212,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         }
     }
 
-    death()
-    {
+    death() {
         // this.deathSound.play(Game.effectSoundConfig);
         this.scene.events.off("update", this.update, this);
         this.scene.events.off("spectateChange", this.setVisibility, this);
@@ -228,17 +227,13 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         this.tween.remove();
         this.body.destroy();
         this.play(this.deathAnimName);
-        if (this.playerNum == 0) {
-            var animConfig = this.scene.anims.get(this.deathAnimName);
-            var animtime = animConfig.frames.length * animConfig.msPerFrame;
-            this.scene.time.delayedCall(animtime, () => {
-                this.scene.events.emit("mobAnimDone");
-                this.destroy();
-            }, [], this.scene);
-        }
-        else {
+        
+        var animConfig = this.scene.anims.get(this.deathAnimName);
+        var animtime = animConfig.frames.length * animConfig.msPerFrame;
+        this.scene.time.delayedCall(animtime, () => {
+            if (this.playerNum == 0) this.scene.events.emit("mobAnimDone");
             this.destroy();
-        }
+        }, [], this.scene);
     }
     
     hit(projectile) {
