@@ -193,8 +193,30 @@ export default class gameScene extends Phaser.Scene {
         this.normalMusic = this.sound.add("normal");
 
         this.normalMusic.play(Game.bgmSoundConfig);
-        
 
+        this.sound.add("attackBigFire");
+        this.sound.add("attackFire");
+        this.sound.add("attackBow");
+        this.sound.add("attackIce");
+        this.sound.add("attackKnife");
+        this.sound.add("attackLightning");
+        this.sound.add("attackLongWeapon");
+        this.sound.add("attackMagic1");
+        this.sound.add("attackMagic2");
+        this.sound.add("attackSword");
+        this.sound.add("attackThrow");
+        this.sound.add("hitBoom1");
+        this.sound.add("hitBoom2");
+        this.sound.add("hitBoom3");
+        this.sound.add("hitBow");
+        this.sound.add("hitNormal");
+        this.sound.add("hitFire");
+        this.sound.add("rollDice");
+        this.sound.add("tier1");
+        this.sound.add("tier2");
+        this.sound.add("tier3");
+        this.sound.add("tier4");
+        
 
         //몹/유저유닛/투사체 관련
         this.m_mobs = this.physics.add.group();
@@ -333,6 +355,7 @@ export default class gameScene extends Phaser.Scene {
         this.onPlaceQueue = new Unit(this, this.input.activePointer.x, this.input.activePointer.y, unitData, this.unitIndex++, unitID, 0);
         this.onPlaceQueue.rangeView.alpha = 0.4;
         this.onPlaceQueue.buffRangeView.alpha = 0.6;
+        this.m_player.push(this.onPlaceQueue);
         this.moveUnit();
     }
 
@@ -348,7 +371,6 @@ export default class gameScene extends Phaser.Scene {
             this.preTile.placedUnit = undefined;
             this.onPlaceQueue.rangeView.alpha = 0.4;
             this.onPlaceQueue.buffRangeView.alpha = 0.6;
-            this.m_player.splice(this.m_player.findIndex(e => { e.index == this.onPlaceQueue.index }), 1);
         }
         else {
             this.preTile = undefined;
@@ -388,7 +410,6 @@ export default class gameScene extends Phaser.Scene {
 
     unitPlacer(t) {
         this.onPlaceQueue.alpha = 1;
-        this.m_player.push(this.onPlaceQueue);
         t.index = "2898";
         this.onPlaceQueue.rangeView.alpha = 0;
         this.onPlaceQueue.buffRangeView.alpha = 0;
