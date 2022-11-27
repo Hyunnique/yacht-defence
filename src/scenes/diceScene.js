@@ -38,12 +38,11 @@ export default class diceScene extends Phaser.Scene{
     
 
     create(){
-        this.rollDiceSound = this.sound.add("rollDice");
-        this.tier1Sound = this.sound.add("tier1");
-        this.tier2Sound = this.sound.add("tier2");
-        this.tier3Sound = this.sound.add("tier3");
-        this.tier4Sound = this.sound.add("tier4");
-
+        this.rollDiceSound = this.sound.get("rollDice");
+        this.tier1Sound = this.sound.get("tier1");
+        this.tier2Sound = this.sound.get("tier2");
+        this.tier3Sound = this.sound.get("tier3");
+        this.tier4Sound = this.sound.get("tier4");
         this.initThrow();
     }                                                                
 
