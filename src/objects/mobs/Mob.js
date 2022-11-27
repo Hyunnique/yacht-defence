@@ -313,6 +313,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         else {
             this.dotDamageDict[projectile.skillInfo.callerID].addEvent(this.dotDamageDict[projectile.skillInfo.callerID]);
         }
+        console.log(this.dotDamageDict);
     }
 
     dotDamageFactoryMili(unit) {
@@ -334,5 +335,6 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         else {
             this.dotDamageDict[unit.index].addEvent(this.dotDamageDict[unit.index]);
         }
+        
     }
 }

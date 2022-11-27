@@ -61,6 +61,10 @@ var Game = {
 
         this.Socket = io.connect("http://" + (process.env.HOST ? process.env.HOST : "localhost") + ":8080");
         
+        document.getElementsByClassName("ui-rankings-close")[0].onclick = (e) => {
+            this.hideUI("rankings");
+        };
+
         document.getElementsByClassName("play-singleplayer")[0].onclick = (e) => {
             if (!this.MatchmakeJoined) {
                 this.MatchmakeJoined = true;
