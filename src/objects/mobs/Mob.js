@@ -287,7 +287,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
 
     handleDebuff(id, value)
     {
-        if (this.debuffDict[id] == null || this.debuffDict[id] == undefined)
+        if (!this.debuffDict[id])
         {
             this.debuffDict[id] = value;
             this.totalDebuffVal += value;   
@@ -295,7 +295,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
     }
 
     dotDamageFactory(projectile) {
-        if (this.dotDamageDict[projectile.skillInfo.callerID] == undefined) {
+        if (!this.dotDamageDict[projectile.skillInfo.callerID]) {
 
             var damage = projectile.skillInfo.ofHealth == "cur" ?
                 projectile.shooter.attack + (this.Health * projectile.skillInfo.value) :
@@ -317,8 +317,8 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
     }
 
     dotDamageFactoryMili(unit) {
-        if (this.dotDamageDict[unit.index] == undefined) {
-
+        console.log(this.dotDamageDict);
+        if (!this.dotDamageDict[unit.index]) {
             var damage = unit.skillInfo.ofHealth == "cur" ?
                 unit.attack + (this.Health * unit.skillInfo.value) :
                 unit.attack * (1 + unit.skillInfo.value / 100);
@@ -335,6 +335,6 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         else {
             this.dotDamageDict[unit.index].addEvent(this.dotDamageDict[unit.index]);
         }
-        
+        console.log(this.dotDamageDict);
     }
 }
