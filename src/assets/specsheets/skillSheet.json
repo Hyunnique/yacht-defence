@@ -21,7 +21,7 @@
         "duration": 2,
         "coolDown": 10,
         "buffAtk": 0,
-        "buffAspd": 10,
+        "buffAspd": 600,
         "buffPenetration": 0,
         "debuffAtk": 0,
         "debuffAspd": 0,
