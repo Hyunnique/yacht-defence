@@ -258,7 +258,6 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
                     }
                 }
                 this.Health -= damage;
-                console.log(damage);
                 projectile.hit();
             }
         }
@@ -296,7 +295,6 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
     }
 
     dotDamageFactory(projectile) {
-        console.log(projectile.skillInfo);
         if (this.dotDamageDict[projectile.skillInfo.callerID] == undefined) {
 
             var damage = projectile.skillInfo.ofHealth == "cur" ?
@@ -308,7 +306,6 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
                 repeat: projectile.skillInfo.duration / projectile.skillInfo.delay,
                 callback: () => {
                     this.Health -= projectile.shooter.calcDamage(damage, this.defence) * (1 + this.totalDebuffVal / 100);
-                    console.log(this.Health);
                 },
                 startAt: 0
             });
