@@ -126,6 +126,9 @@ body
     text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
 }
 
+.text-outline-bold {
+    text-shadow: -3px 0 #000, 0 3px #000, 3px 0 #000, 0 -3px #000;
+}
 .text-outline-gold {
     color: black;
     text-shadow: -1px 0 gold, 0 1px gold, 1px 0 gold, 0 -1px gold;

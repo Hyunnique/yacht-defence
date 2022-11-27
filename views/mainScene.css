@@ -1,0 +1,87 @@
+.ui-mainScene-default {
+    text-align: center;
+}
+
+.ui-mainScene-default .logo {
+    margin: 7% auto 0 auto;
+    width: 30%;
+    height: 30%;
+
+    text-align: center;
+    font-size: 5rem;
+
+    color: white;
+}
+
+.ui-mainScene-default .multi-name {
+    width: 20%;
+    height: 3rem;
+
+    font-size: 2rem;
+    text-align: center;
+}
+
+.ui-mainScene-default .mainScene-message {
+    margin-top: 1%;
+    height: 1.2rem;
+    font-size: 1.1rem;
+
+    color: lightcoral;
+}
+
+.ui-mainScene-default .mainButtons {
+    width: 15%;
+    height: 6%;
+    opacity: 0.8;
+    font-size: 1.6rem;
+
+    cursor: pointer;
+}
+
+.ui-mainScene-default .mainButtons:hover {
+    opacity: 1;
+}
+
+.ui-mainScene-default .play-singleplayer {
+    margin-top: 5%;
+    background-color: lightcoral;
+}
+
+.ui-mainScene-default .play-multiplayer {
+    margin-top: 2%;
+    background-color: orange;
+}
+
+.ui-mainScene-default .show-rankings {
+    margin-top: 2%;
+    background-color: lightgreen;
+}
+
+.ui-rankings {
+    position: absolute;
+    top: 15%;
+    left: 15%;
+
+    width: 70%;
+    height: 70%;
+
+    border: 6px solid black;
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+}
+
+.ui-rankings-rankingList {
+    margin: 3% auto 0 auto;
+}
+
+.ui-rankings .ui-rankings-title {
+    margin-top: 3%;
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.ui-rankings-rankingList th, .ui-rankings-rankingList td {
+    width: 15%;
+    text-align: center;
+}

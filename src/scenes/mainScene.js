@@ -8,6 +8,7 @@ export default class MainScene extends Phaser.Scene{
     }
     
     preload() {
+        this.load.audio("lobbyMusic", require("../assets/sounds/lobby.mp3"));
         this.load.image("mainBackground", require("../assets/images/main_background.png"));
     }
 
@@ -15,6 +16,10 @@ export default class MainScene extends Phaser.Scene{
     create() {
         // var text = this.add.text(Config.width / 2, Config.height / 2, "Press W");
         this.background = this.add.tileSprite(960, 480, 1920, 960, "mainBackground");
+
+        this.sound.pauseOnBlur = false;
+        this.lobbyMusic = this.sound.add("lobbyMusic");
+        this.lobbyMusic.play(Game.bgmSoundConfig);
     }
 
     update() {

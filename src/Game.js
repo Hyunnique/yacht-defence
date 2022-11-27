@@ -4,6 +4,8 @@ function importAll(r) {
     return arr;
 }
 
+const axios = require('axios');
+
 const unitGIF = importAll(require.context("./assets/images/units", false, /\.gif$/));
 const icons = importAll(require.context("./assets/images/icons", false, /\.png$/));
 const muteURL = require("../src/assets/images/mute.png");
@@ -59,18 +61,14 @@ var Game = {
 
         this.Socket = io.connect("http://" + (process.env.HOST ? process.env.HOST : "localhost") + ":8080");
         
-        document.getElementsByClassName("multi-matchmaking")[0].onclick = (e) => {
-            
+        document.getElementsByClassName("play-singleplayer")[0].onclick = (e) => {
             if (!this.MatchmakeJoined) {
                 this.MatchmakeJoined = true;
                 this.ClientID = this.Socket.id;
                 this.Socket.emit("connect-matchmaking", {
+                    isSinglePlayer: true,
                     clientID: this.ClientID,
                     name: document.getElementsByClassName("multi-name")[0].value
-                });
-                
-                this.Socket.io.on('reconnecting', () => {
-
                 });
 
                 this.Socket.io.on('reconnect', () => {
@@ -86,6 +84,54 @@ var Game = {
                 this.serverEventHandler();
             }
         };
+
+        document.getElementsByClassName("play-multiplayer")[0].onclick = (e) => {
+            
+            if (!this.MatchmakeJoined) {
+                this.MatchmakeJoined = true;
+                this.ClientID = this.Socket.id;
+                this.Socket.emit("connect-matchmaking", {
+                    isSinglePlayer: false,
+                    clientID: this.ClientID,
+                    name: document.getElementsByClassName("multi-name")[0].value
+                });
+                
+                this.Socket.io.on('reconnect', () => {
+                    console.log("reconnected!");
+                    this.Socket.emit('connect-reconnect', {
+                        clientID: this.Socket.id,
+                        beforeID: this.ClientID
+                    });
+
+                    this.ClientID = this.Socket.id;
+                });
+
+                this.serverEventHandler();
+            }
+        };
+
+        document.getElementsByClassName("show-rankings")[0].onclick = (e) => {
+            axios.get("http://" + (process.env.HOST ? process.env.HOST : "localhost") + ":8080/ranking")
+            .then((response) => {
+                this.showUI("rankings");
+
+                for (let i = 0; i < response.data.length; i++) {
+                
+                    document.getElementsByClassName("ui-rankings-rankingList")[0].getElementsByTagName("tr")[i + 1].getElementsByTagName("td")[0]
+                    .innerText = (i + 1);
+                    document.getElementsByClassName("ui-rankings-rankingList")[0].getElementsByTagName("tr")[i + 1].getElementsByTagName("td")[1]
+                    .innerText = response.data[i].name;
+                    document.getElementsByClassName("ui-rankings-rankingList")[0].getElementsByTagName("tr")[i + 1].getElementsByTagName("td")[2]
+                    .innerText = response.data[i].rounds;
+                    document.getElementsByClassName("ui-rankings-rankingList")[0].getElementsByTagName("tr")[i + 1].getElementsByTagName("td")[3]
+                    .innerText = response.data[i].unit1Tier + ", " + response.data[i].unit2Tier + ", " + response.data[i].unit3Tier + ", " + response.data[i].unit4Tier;
+                    document.getElementsByClassName("ui-rankings-rankingList")[0].getElementsByTagName("tr")[i + 1].getElementsByTagName("td")[4]
+                    .innerText = "-";
+                    document.getElementsByClassName("ui-rankings-rankingList")[0].getElementsByTagName("tr")[i + 1].getElementsByTagName("td")[5]
+                    .innerText = response.data[i].createdAt;
+                }
+            });
+        };
     },
 
     serverEventHandler() {
@@ -94,11 +140,11 @@ var Game = {
         });
 
         this.Socket.on("matchmaking-wait", (msg) => {
-            console.log("Waiting for players : " + msg);
+            document.getElementsByClassName("mainScene-message")[0].innerText = 
+            "Waiting for players.. (" + msg + ")";
         });
 
         this.Socket.on("matchmaking-done", (msg) => {
-            console.log("matchmaking done!");
             this.showScene("PreLoadScene");
             this.TimelimitTimer = setInterval(() => {
                 if (this.currentTimeLimit > 0) this.currentTimeLimit--;
@@ -689,8 +735,12 @@ var Game = {
                     }
                 }
                 break;
-            default:
+            case "PreLoadScene":
+                this.hideUI("mainScene-default");
                 this.GameObject.scene.getScene("mainScene").scene.stop().start(sceneName);
+                break;
+            default:
+                this.GameObject.scene.start(sceneName);
                 //this.showUI(sceneName + "-default");
                 break;
         }
