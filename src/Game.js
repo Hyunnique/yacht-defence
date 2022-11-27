@@ -593,7 +593,7 @@ var Game = {
             }
             else {
                 setTimeout(() => {
-                    hideUI("diceScene-result");
+                    this.hideUI("diceScene-result");
                 }, 5000);
             }
         });
@@ -658,8 +658,8 @@ var Game = {
                             new Arrow(this.GameObject.scene.getScene("gameScene"), key);
                         });
                     },
-                    repeat: 30,
-                    startAt: 300
+                    repeat: 20,
+                    startAt: 500
                 });
         });
 

@@ -499,7 +499,7 @@ export default class gameScene extends Phaser.Scene {
         
         this.currentRoundData.forEach((element, index) => {
             this.mobCounter += element["mobCount"];
-            if (this.playerHealth > 0) {
+            if (Game.PlayerData[0].hp > 0) {
                 this.mobSpawner[0] = this.time.addEvent({
                     delay: initialDelay,
                     callback: () => {
@@ -510,7 +510,7 @@ export default class gameScene extends Phaser.Scene {
                     startAt: index * 100
                 });
             }
-            if (Game.PlayerData.length > 1 && this.alive[1]) {
+            if (Game.PlayerData.length > 1 && !Game.PlayerData[1].dead) {
                 this.mobSpawner[1] = this.time.addEvent({
                     delay: initialDelay,
                     callback: () => {
@@ -520,7 +520,7 @@ export default class gameScene extends Phaser.Scene {
                     repeat: element["mobCount"] - 1,    
                     startAt: index * 100
                 });
-                if (Game.PlayerData.length > 2 && this.alive[2]) {
+                if (Game.PlayerData.length > 2 && !Game.PlayerData[2].dead) {
                     this.mobSpawner[2] = this.time.addEvent({
                         delay: initialDelay,
                         callback: () => {
@@ -530,7 +530,7 @@ export default class gameScene extends Phaser.Scene {
                         repeat: element["mobCount"] - 1,
                         startAt: index * 100
                     });
-                    if (Game.PlayerData.length > 3 && this.alive[3]) {
+                    if (Game.PlayerData.length > 3 && !Game.PlayerData[3].dead) {
                         this.mobSpawner[3] = this.time.addEvent({
                             delay: initialDelay,
                             callback: () => {
@@ -628,7 +628,7 @@ export default class gameScene extends Phaser.Scene {
     // DicePhase를 마친 뒤 유닛을 선택하면 호출함
     // Unit ID를 파라미터로 가짐
     receiveUnit(unitID, tier) {
-        if (this.playerHealth > 0) {
+        if (Game.PlayerData[0].hp > 0) {
             this.placemode = true;
             this.handleTierBonus(tier, true);
             this.initialPlace(this.unitDB["unit" + unitID], unitID);
