@@ -32,5 +32,9 @@ const io = require('socket.io')(server, {
 	}
 });
 
-require('./js/GameServer').init(io);
+const mongoose = require('./schemas');
+mongoose.connect().then(() => {
+	require('./js/GameServer').init(io);
+});
+
 server.listen(8080);
