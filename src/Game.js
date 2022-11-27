@@ -658,7 +658,7 @@ var Game = {
                             new Arrow(this.GameObject.scene.getScene("gameScene"), key);
                         });
                     },
-                    repeat: 20,
+                    repeat: 26,
                     startAt: 500
                 });
         });
