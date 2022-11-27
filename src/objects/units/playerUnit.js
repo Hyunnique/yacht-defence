@@ -167,14 +167,14 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         else if (this.skillInfo.skillType == "statBuff")
         {
             this.skillReady = false;
-            this.selfBuffAspd += (((this.skillInfo.buffAspd - this.skillInfo.debuffAspd) / 2) + ((this.skillInfo.buffAspd + this.skillInfo.debuffAspd) / 2)) * 100;
-            this.selfBuffAtk +=  ((this.skillInfo.buffAtk - this.skillInfo.debuffAtk) / 2) + ((this.skillInfo.buffAtk + this.skillInfo.debuffAtk) / 2)
-            this.selfBuffPenetration += (((this.skillInfo.buffPenetration - this.skillInfo.debuffPenetration) / 2) + ((this.skillInfo.buffPenetration + this.skillInfo.debuffPenetration) / 2)) / 100;
+            this.selfBuffAspd += this.skillInfo.buffAspd * 100;
+            this.selfBuffAtk +=  this.skillInfo.buffAtk / 2
+            this.selfBuffPenetration += this.skillInfo.buffPenetration  / 100;
             this.updateBuff();
             this.scene.time.delayedCall(1000 * this.skillInfo.duration, () => {
-                this.selfBuffAspd += (((this.skillInfo.buffAspd - this.skillInfo.debuffAspd) / 2) - ((this.skillInfo.buffAspd + this.skillInfo.debuffAspd) / 2)) * 100;
-                this.selfBuffAtk +=  ((this.skillInfo.buffAtk - this.skillInfo.debuffAtk) / 2) - ((this.skillInfo.buffAtk + this.skillInfo.debuffAtk) / 2)
-                this.selfBuffPenetration += (((this.skillInfo.buffPenetration - this.skillInfo.debuffPenetration) / 2) - ((this.skillInfo.buffPenetration + this.skillInfo.debuffPenetration) / 2)) / 100;
+                this.selfBuffAspd = this.skillInfo.debuffAspd * 100;
+                this.selfBuffAtk = this.skillInfo.debuffAtk;
+                this.selfBuffPenetration += this.skillInfo.debuffPenetration / 100;
                 this.updateBuff();
             }, [], this);
             this.scene.time.delayedCall(1000 * this.skillInfo.coolDown, () => {
