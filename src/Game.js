@@ -136,6 +136,11 @@ var Game = {
             if (!this.PlayerDataInitiated) {
                 this.PlayerDataInitiated = true;
 
+                let mapWidth = this.GameObject.scene.getScene("gameScene").mapWidth;
+                let mapHeight = this.GameObject.scene.getScene("gameScene").mapHeight;
+                let mapOffsetX = this.GameObject.scene.getScene("gameScene").mapOffsetX;
+                let mapOffsetY = this.GameObject.scene.getScene("gameScene").mapOffsetY;
+
                 for (let i = 0; i < msg.length; i++) {
                     document.getElementsByClassName("ui-hpArea-playerText")[i].innerHTML = this.PlayerData[i].name;
 
@@ -150,10 +155,10 @@ var Game = {
 
                             this.GameObject.scene.getScene("gameScene").cameras.main.scrollX = 0;
                             this.GameObject.scene.getScene("gameScene").cameras.main.scrollY = 0;
-                            this.GameObject.scene.getScene("gameScene").cameras.main.setBounds(0, 0, 2400, 1440);
+                            this.GameObject.scene.getScene("gameScene").cameras.main.setBounds(0, 0, mapWidth, mapHeight);
 
-                            this.GameObject.scene.getScene("gameScene").mapOffsetX = 0;
-                            this.GameObject.scene.getScene("gameScene").mapOffsetY = 0;
+                            // this.GameObject.scene.getScene("gameScene").mapOffsetX = 0;
+                            // this.GameObject.scene.getScene("gameScene").mapOffsetY = 0;
 
                             this.GameObject.scene.getScene("gameScene").currentView = 0;
                             this.GameObject.scene.getScene("gameScene").events.emit("spectateChange");
@@ -170,12 +175,12 @@ var Game = {
 
                             this.Socket.emit("player-requestUnitData", { playerIndex: i });
 
-                            this.GameObject.scene.getScene("gameScene").cameras.main.scrollX = 2400 * (i % 2);
-                            this.GameObject.scene.getScene("gameScene").cameras.main.scrollY = 1440 * Math.floor(i / 2);
-                            this.GameObject.scene.getScene("gameScene").cameras.main.setBounds(2400 * (i % 2), 1440 * Math.floor(i / 2), 2400, 1440);
+                            this.GameObject.scene.getScene("gameScene").cameras.main.scrollX = mapOffsetX * (i % 2);
+                            this.GameObject.scene.getScene("gameScene").cameras.main.scrollY = mapOffsetY * Math.floor(i / 2);
+                            this.GameObject.scene.getScene("gameScene").cameras.main.setBounds(mapOffsetX * (i % 2), mapOffsetY * Math.floor(i / 2), mapWidth, mapHeight);
 
-                            this.GameObject.scene.getScene("gameScene").mapOffsetX = 2400 * (i % 2);
-                            this.GameObject.scene.getScene("gameScene").mapOffsetY = 1440 * Math.floor(i / 2);
+                            // this.GameObject.scene.getScene("gameScene").mapOffsetX = 2400 * (i % 2);
+                            // this.GameObject.scene.getScene("gameScene").mapOffsetY = 1440 * Math.floor(i / 2);
                             this.GameObject.scene.getScene("gameScene").currentView = i;
                             this.GameObject.scene.getScene("gameScene").events.emit("spectateChange");
                         }
@@ -220,10 +225,10 @@ var Game = {
 
             this.GameObject.scene.getScene("gameScene").cameras.main.scrollX = 0;
             this.GameObject.scene.getScene("gameScene").cameras.main.scrollY = 0;
-            this.GameObject.scene.getScene("gameScene").cameras.main.setBounds(0, 0, 2400, 1440);
+            this.GameObject.scene.getScene("gameScene").cameras.main.setBounds(0, 0, this.GameObject.scene.getScene("gameScene").mapWidth, this.GameObject.scene.getScene("gameScene").mapHeight);
 
-            this.GameObject.scene.getScene("gameScene").mapOffsetX = 0;
-            this.GameObject.scene.getScene("gameScene").mapOffsetY = 0;
+            // this.GameObject.scene.getScene("gameScene").mapOffsetX = 0;
+            // this.GameObject.scene.getScene("gameScene").mapOffsetY = 0;
             this.GameObject.scene.getScene("gameScene").currentView = 0;
 
             document.getElementsByClassName("ui-phase-value")[0].innerText = "Dice";
