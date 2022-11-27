@@ -156,90 +156,6 @@
         "icon": 14
     },
     "item13": {
-        "itemType": 1,
-        "name": "흉포한 곰 소환",
-        "buffAtk": 0,
-        "buffAspd": 0,
-        "buffPenetration": 0,
-        "additionalMob": "bear",
-        "mobCount": 1,
-        "price": 0,
-        "tier": 3,
-        "icon": 15
-    },
-    "item14": {
-        "itemType": 1,
-        "name": "거인 소환",
-        "buffAtk": 0,
-        "buffAspd": 0,
-        "buffPenetration": 0,
-        "additionalMob": "giant",
-        "mobCount": 1,
-        "price": 0,
-        "tier": 3,
-        "icon": 15
-    },
-    "item15": {
-        "itemType": 1,
-        "name": "고대 마도사 소환",
-        "buffAtk": 0,
-        "buffAspd": 0,
-        "buffPenetration": 0,
-        "additionalMob": "magician",
-        "mobCount": 1,
-        "price": 0,
-        "tier": 3,
-        "icon": 15
-    },
-    "item16": {
-        "itemType": 1,
-        "name": "슬라임 킹 소환",
-        "buffAtk": 0,
-        "buffAspd": 0,
-        "buffPenetration": 0,
-        "additionalMob": "slimeKing",
-        "mobCount": 1,
-        "price": 0,
-        "tier": 3,
-        "icon": 15
-    },
-    "item17": {
-        "itemType": 1,  
-        "name": "스톤 골렘 소환",
-        "buffAtk": 0,
-        "buffAspd": 0,
-        "buffPenetration": 0,
-        "additionalMob": "stoneGolem",
-        "mobCount": 1,
-        "price": 0,
-        "tier": 3,
-        "icon": 15
-    },
-    "item18": {
-        "itemType": 2,
-        "name": "박쥐 웨이브 소환",
-        "buffAtk": 0,
-        "buffAspd": 0,
-        "buffPenetration": 0,
-        "additionalMob": "batsmallA",
-        "mobCount": 15,
-        "price": 0,
-        "tier": 3,
-        "icon": 15
-    },
-    "item19": {
-        "itemType": 2,
-        "name": "아무튼 소환",
-        "buffAtk": 0,
-        "buffAspd": 0,
-        "buffPenetration": 0,
-        "additionalMob": "",
-        "mobCount": 0,
-        "price": 0,
-        "tier": 3,
-        "icon": 15
-    },
-    "item20": {
         "itemType": 6,
         "name": "마지막 찬스",
         "buffAtk": 0,
@@ -251,7 +167,7 @@
         "tier": 3,
         "icon": 4
     },
-    "item21": {
+    "item14": {
         "itemType": 7,
         "name": "기지 정비",
         "buffAtk": 0,
