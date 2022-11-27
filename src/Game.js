@@ -922,7 +922,7 @@ var Game = {
                 document.getElementsByClassName("ui-itemInfoArea-iconArea-icon")[0].style.backgroundImage = "url('" + icons["icon" + itemSpecSheets["item" + e.attributes["idx"].value].icon + ".png"] + "')";
                 document.getElementsByClassName("ui-itemInfoArea-name")[0].innerText = itemSpecSheets["item" + e.attributes["idx"].value].name;
 
-                if (e.attributes["idx"].value == 20) {
+                if (e.attributes["idx"].value == 13) {
                     document.getElementsByClassName("ui-itemInfoArea-atk")[0].innerText = ""
                     document.getElementsByClassName("ui-itemInfoArea-aspd")[0].innerText = "남은 기회가 0 일때"
                     document.getElementsByClassName("ui-itemInfoArea-pen")[0].innerText = "한번 더 굴립니다."
