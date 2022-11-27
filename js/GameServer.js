@@ -13,7 +13,7 @@ module.exports = {
 
     init(socket) {
         this.Socket = socket;
-        this.createRoom(this.latestRoomId, (process.env.PLAYERS ? process.env.PLAYERS : 4));
+        this.createRoom(this.latestRoomId, (process.env.PLAYERS ? process.env.PLAYERS : 2));
         this.connectionHandler();
 
         /*
@@ -230,6 +230,8 @@ module.exports = {
                 "gold": x.gold,
                 "items": x.items,
                 "units": x.units,
+                "shopBuffs": x.shopBuffs,
+                "tierBuffs": x.tierBuffs
             }
         }));
     },
