@@ -7,12 +7,13 @@ const db = require('../schemas');
 module.exports = {
     Socket: null,
     latestRoomId: 10000,
+    singlePlayerRoomId: 100000,
     Rooms: {},
     socketMap: {},
 
     init(socket) {
         this.Socket = socket;
-        this.createRoom();
+        this.createRoom(this.latestRoomId, (process.env.PLAYERS ? process.env.PLAYERS : 4));
         this.connectionHandler();
 
         /*
@@ -27,13 +28,11 @@ module.exports = {
         */
     },
 
-    createRoom() {
-        this.latestRoomId++;
-
-        this.Rooms[this.latestRoomId] = {
-            roomId: this.latestRoomId,
+    createRoom(roomId, maxPlayers) {
+        this.Rooms[roomId] = {
+            roomId: roomId,
             players: [],
-            maxPlayers: (process.env.PLAYERS ? parseInt(process.env.PLAYERS) : 1), // Configurable for development or singleplayer
+            maxPlayers: maxPlayers,
             timer: {},
             roundInfo: {
                 num: 1,
@@ -112,7 +111,15 @@ module.exports = {
 
                 let { clientID, name } = msg;
 
-                let currentRoomId = this.latestRoomId;
+                let currentRoomId;
+                
+                if (msg.isSinglePlayer) {
+                    currentRoomId = this.singlePlayerRoomId++;
+                    this.createRoom(currentRoomId, 1);
+                } else {
+                    currentRoomId = this.latestRoomId;
+                }
+
                 let socketRoomIndex = this.Rooms[currentRoomId].players.length;
 
                 this.Rooms[currentRoomId].players.push({ // Initialize Player Object
@@ -148,14 +155,20 @@ module.exports = {
 
                 this.socketMap[clientID] = {
                     roomId: currentRoomId,
-                    roomIndex: socketRoomIndex
+                    roomIndex: socketRoomIndex,
+                    matchmaked: (msg.isSinglePlayer ? true : false)
                 };
 
                 if (this.Rooms[currentRoomId].players.length == this.Rooms[currentRoomId].maxPlayers) {
+
+                    for (let i = 0; i < this.Rooms[currentRoomId].players.length; i++) {
+                        this.socketMap[this.Rooms[currentRoomId].players[i].socket.id].matchmaked = true;
+                    }
+
                     this.emitAll(currentRoomId, 'matchmaking-done', this.currentRoomId);
-                    this.createRoom(); // 다음 매칭을 위해 미리 방을 생성해둠
+                    if (!msg.isSinglePlayer) this.createRoom(++(this.latestRoomId), (process.env.PLAYERS ? process.env.PLAYERS : 4)); // 다음 매칭을 위해 미리 방을 생성해둠
                 } else {
-                    this.emitAll(currentRoomId, 'matchmaking-wait', this.Rooms[currentRoomId].players.length);
+                    this.emitAll(currentRoomId, 'matchmaking-wait', this.Rooms[currentRoomId].players.length + " / " + this.Rooms[currentRoomId].maxPlayers);
                 }
 
                 this.attachEventListeners(socket, currentRoomId);
@@ -181,6 +194,16 @@ module.exports = {
 
             socket.on('disconnect', () => {
                 // disconnected
+                if (!this.socketMap[socket.id]) return;
+                
+                if (!this.socketMap[socket.id].matchmaked) {
+                    // 만약 아직 매칭이 안된 상태에서 끊어지면
+                    // 큐에서 쫒아내고 삭제
+
+                    this.Rooms[this.getRoomId(socket.id)].players.splice(this.getRoomIndex(socket.id), 1);
+
+                    this.emitAll(this.getRoomId(socket.id), 'matchmaking-wait', this.Rooms[this.getRoomId(socket.id)].players.length + " / " + this.Rooms[this.getRoomId(socket.id)].maxPlayers);
+                }
             });
         });
     },
