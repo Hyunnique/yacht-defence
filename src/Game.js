@@ -789,6 +789,11 @@ var Game = {
 
         Array.from(document.getElementsByClassName("ui-itemArea-itemList-item")).forEach((e) => {
             e.style.backgroundImage = "url('" + icons["icon" + itemSpecSheets["item" + e.attributes["idx"].value].icon + ".png"] + "')";
+            
+            // 마우스 올리면 아이템 설명 보이기
+            // e.onMouseOver = (e) => {
+                
+            // } 
         })
     },
 
@@ -839,7 +844,8 @@ var Game = {
                     x: unit.x,
                     y: unit.y,
                     id: unit.id,
-                    tier: unit.tier
+                    tier: unit.tier,
+                    tierCnt: this.GameObject.scene.getScene("gameScene").tierCnt
                 };
             }),
             shopBuffs: this.shopBuff,
