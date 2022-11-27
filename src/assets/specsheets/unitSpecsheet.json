@@ -1386,8 +1386,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "activeSkill": "",
-        "passiveSkill": "매 공격 상대 잃은 체력 비례해서 최대 200% 추가 공격"
+        "skill": "매 공격 상대 잃은 체력 비례해서 최대 200% 추가 공격"
     },
     "unit52": {
         "name": "힘의 부족 도끼마스터 데럴드",
