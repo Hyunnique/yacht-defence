@@ -472,7 +472,7 @@ var Game = {
                             document.getElementsByClassName("ui-unitReward-unitSpec-range")[i].innerText = "RANGE : LONG";
                             break;
                     }
-                    document.getElementsByClassName("ui-unitReward-unitSkill")[i].innerText = "";
+                    document.getElementsByClassName("ui-unitReward-unitSkill")[i].innerText = unitSpecSheets["unit" + unitArray[i]].skill;
                     document.getElementsByClassName("ui-unitReward-unit")[i].attributes.idx.value = unitArray[i];
                     document.getElementsByClassName("ui-unitReward-unit")[i].attributes.tier.value = currentTier;
                 }
