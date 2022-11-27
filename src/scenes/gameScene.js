@@ -79,8 +79,8 @@ export default class gameScene extends Phaser.Scene {
         // 맵
         this.mapWidth = 2400;
         this.mapHeight = 1440;
-        this.mapOffsetX = 0;
-        this.mapOffsetY = 0;
+        this.mapOffsetX = 3000;
+        this.mapOffsetY = 1840;
 
         let map = [];
         let outside_ground = [];
@@ -107,15 +107,15 @@ export default class gameScene extends Phaser.Scene {
             outside_stair.push(map[i].addTilesetImage("outside_stair", "outside_stair"));
             outside_B.push(map[i].addTilesetImage("Outside_B", "outside_B"));
             possible.push(map[i].addTilesetImage("possible", "possible"));
-            tile.push(map[i].createLayer("tile", outside_ground, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
-            wall.push(map[i].createLayer("wall", outside_wall, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
-            bridge.push(map[i].createLayer("bridge", outside_B, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
-            grass.push(map[i].createLayer("grass", outside_B, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
-            tree1_back.push(map[i].createLayer("Tree1_B", outside_B, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
-            tree2_back.push(map[i].createLayer("Tree2_B", outside_B, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
-            tree1_front.push(map[i].createLayer("Tree1_F", outside_B, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
-            tree2_front.push(map[i].createLayer("Tree2_F", outside_B, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
-            this.info.push(map[i].createLayer("info", possible, this.mapWidth * (i % 2), this.mapHeight * Math.floor(i / 2)));
+            tile.push(map[i].createLayer("tile", outside_ground, this.mapOffsetX * (i % 2), this.mapOffsetY * Math.floor(i / 2)));
+            wall.push(map[i].createLayer("wall", outside_wall, this.mapOffsetX * (i % 2), this.mapOffsetY * Math.floor(i / 2)));
+            bridge.push(map[i].createLayer("bridge", outside_B, this.mapOffsetX * (i % 2), this.mapOffsetY * Math.floor(i / 2)));
+            grass.push(map[i].createLayer("grass", outside_B, this.mapOffsetX * (i % 2), this.mapOffsetY * Math.floor(i / 2)));
+            tree1_back.push(map[i].createLayer("Tree1_B", outside_B, this.mapOffsetX * (i % 2), this.mapOffsetY * Math.floor(i / 2)));
+            tree2_back.push(map[i].createLayer("Tree2_B", outside_B, this.mapOffsetX * (i % 2), this.mapOffsetY * Math.floor(i / 2)));
+            tree1_front.push(map[i].createLayer("Tree1_F", outside_B, this.mapOffsetX * (i % 2), this.mapOffsetY * Math.floor(i / 2)));
+            tree2_front.push(map[i].createLayer("Tree2_F", outside_B, this.mapOffsetX * (i % 2), this.mapOffsetY * Math.floor(i / 2)));
+            this.info.push(map[i].createLayer("info", possible, this.mapOffsetX * (i % 2), this.mapOffsetY * Math.floor(i / 2)));
             this.info[i].alpha = 0;
         }
 
@@ -178,7 +178,7 @@ export default class gameScene extends Phaser.Scene {
             // this.camera.centerOn(pointer.worldX, pointer.worldY);
             // this.camera.pan(pointer.worldX, pointer.worldY, 2000, "Power2");
         });
-        this.cameras.main.setBounds(0, 0, 2400, 1440);
+        this.cameras.main.setBounds(0, 0, this.mapWidth, this.mapHeight);
         this.currentView = 0;
 
         //BGM
@@ -289,13 +289,13 @@ export default class gameScene extends Phaser.Scene {
     unitInfoHandler(pointer, bool) {
         if (!this.placemode) {
             var index;
-            if (pointer.worldX < 2400 && pointer.worldY < 1440)
+            if (pointer.worldX < this.mapWidth && pointer.worldY < this.mapHeight)
                 index = 0;
-            else if (pointer.worldX > 2400 && pointer.worldY < 1440)
+            else if (pointer.worldX > this.mapOffsetX && pointer.worldY < this.mapHeight)
                 index = 1;
-            else if (pointer.worldX < 2400 && pointer.worldY > 1440)
+            else if (pointer.worldX < this.mapWidth && pointer.worldY > this.mapOffsetY)
                 index = 2;
-            else if (pointer.worldX > 2400 && pointer.worldY > 1440)
+            else if (pointer.worldX > this.mapOffsetX && pointer.worldY > this.mapOffsetY)
                 index = 3;
             let t = this.getTileAtPointer(pointer, this.info[index]);
             
@@ -333,7 +333,7 @@ export default class gameScene extends Phaser.Scene {
 
     moveUnit(pointer) {
         if (pointer) {
-            if (pointer.worldX > 2400 || pointer.worldY > 1440)
+            if (pointer.worldX > this.mapWidth || pointer.worldY > this.mapHeight)
                 return;
             this.preTile = this.getTileAtPointer(pointer, this.info[0]);
             if (this.preTile == undefined || this.preTile.placedUnit == undefined)
@@ -400,7 +400,7 @@ export default class gameScene extends Phaser.Scene {
     placeOtherPlayerUnit(playerNum, shopBuffs, tierBuffs) {
         var index = 0;
         this.spectate_player.forEach(e => {
-            var unit = new Unit(this, e.x + (2400 * (playerNum % 2)), e.y + (1440 * Math.floor(playerNum / 2)), this.unitDB["unit" + e.id], null, e.id, playerNum);
+            var unit = new Unit(this, e.x + (this.mapOffsetX * (playerNum % 2)), e.y + (this.mapOffsetY * Math.floor(playerNum / 2)), this.unitDB["unit" + e.id], null, e.id, playerNum);
             this.spectate_player_units[playerNum].push(unit);
             let t = this.info[playerNum].getTileAtWorldXY(unit.x,unit.y, true);
             t.placedUnit = unit;
