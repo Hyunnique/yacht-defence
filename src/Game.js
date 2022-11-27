@@ -132,7 +132,7 @@ var Game = {
                     document.getElementsByClassName("ui-rankings-rankingList")[0].getElementsByTagName("tr")[i + 1].getElementsByTagName("td")[4]
                     .innerText = "-";
                     document.getElementsByClassName("ui-rankings-rankingList")[0].getElementsByTagName("tr")[i + 1].getElementsByTagName("td")[5]
-                    .innerText = response.data[i].createdAt;
+                    .innerText = new Date(response.data[i].createdAt).toLocaleString();
                 }
             });
         };

@@ -313,11 +313,9 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         else {
             this.dotDamageDict[projectile.skillInfo.callerID].addEvent(this.dotDamageDict[projectile.skillInfo.callerID]);
         }
-        console.log(this.dotDamageDict);
     }
 
     dotDamageFactoryMili(unit) {
-        console.log(this.dotDamageDict);
         if (!this.dotDamageDict[unit.index]) {
             var damage = unit.skillInfo.ofHealth == "cur" ?
                 unit.attack + (this.Health * unit.skillInfo.value) :
@@ -335,6 +333,5 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         else {
             this.dotDamageDict[unit.index].addEvent(this.dotDamageDict[unit.index]);
         }
-        console.log(this.dotDamageDict);
     }
 }

@@ -622,7 +622,7 @@ export default class gameScene extends Phaser.Scene {
             this.tierBonus = [0, 0, 0, 0];
         }
         else {
-            removeOtherPlayerUnit(index);
+            this.removeOtherPlayerUnit(index);
             this.spectate_player_mobs[index].getChildren().forEach((e) => {
                 e.death(); 
             });
