@@ -17,7 +17,7 @@
     width: 20%;
     height: 3rem;
 
-    font-size: 2rem;
+    font-size: 1.3rem;
     text-align: center;
 }
 
@@ -72,6 +72,10 @@
 
 .ui-rankings-rankingList {
     margin: 3% auto 0 auto;
+
+    height: 75%;
+    width: 80%;
+    overflow-y: scroll;
 }
 
 .ui-rankings .ui-rankings-title {
@@ -93,4 +97,8 @@
 .ui-rankings-rankingList th, .ui-rankings-rankingList td {
     width: 15%;
     text-align: center;
+    
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 2%;
 }
