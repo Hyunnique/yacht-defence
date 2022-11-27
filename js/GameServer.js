@@ -249,7 +249,8 @@ module.exports = {
                 "items": x.items,
                 "units": x.units,
                 "shopBuffs": x.shopBuffs,
-                "tierBuffs": x.tierBuffs
+                "tierBuffs": x.tierBuffs,
+                "unitTierCount": x.unitTierCount
             }
         }));
     },
