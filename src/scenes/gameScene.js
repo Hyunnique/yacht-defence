@@ -584,13 +584,13 @@ export default class gameScene extends Phaser.Scene {
         if (this.roundNum % 5 == 0) {
             this.plugins.get('rexSoundFade').fadeOut(this.normalMusic, 2500, false);
             this.plugins.get('rexSoundFade').fadeIn(this.bossPrepareMusic, 2500, Game.bgmSoundConfig.volume, 0);
-            this.time.delayedCall(2500, this.normalMusic.pause, [], this);
+            this.time.delayedCall(2500, () => { this.normalMusic.pause() }, [], this);
         }
-        else if (this.normalMusic.isPaused) {
+        else if (!this.normalMusic.isPlaying) {
             this.plugins.get('rexSoundFade').fadeOut(this.bossFightMusic, 2500, false);
             this.normalMusic.resume();
             this.plugins.get('rexSoundFade').fadeIn(this.normalMusic, 2500, Game.bgmSoundConfig.volume, 0);
-            this.time.delayedCall(2500, this.bossFightMusic.stop, [], this);
+            this.time.delayedCall(2500, () => { this.bossFightMusic.stop() }, [], this);
         }
         this.PhaseText = "Dice Phase";        
         this.globalnum = 1;
@@ -617,7 +617,7 @@ export default class gameScene extends Phaser.Scene {
         if (this.roundNum % 5 == 0) {
             this.plugins.get('rexSoundFade').fadeOut(this.bossPrepareMusic, 2500, false);
             this.plugins.get('rexSoundFade').fadeIn(this.bossFightMusic, 2500, Game.bgmSoundConfig.volume, 0);
-            this.time.delayedCall(2500, this.bossPrepareMusic.stop, [], this);
+            this.time.delayedCall(2500, () => { this.bossPrepareMusic.stop() }, [], this);
         }
         this.startRound();
         //this.phaseTimer = this.time.delayedCall(6000, this.toDicePhase, [], this);

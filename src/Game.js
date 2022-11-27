@@ -398,7 +398,7 @@ var Game = {
         this.Socket.on('player-death', (msg) => {
             document.getElementsByClassName("ui-hpArea-playerhp-bar")[msg].style.width = "0%";
             document.getElementsByClassName("ui-hpArea-playerhp-bar")[msg].style.backgroundColor = "grey";
-            document.getElementsByClassName("ui-hpArea-playerhp-text")[msg].innerHTML = "DEAD";
+            document.getElementsByClassName("ui-hpArea-playerhp-text")[msg].innerHTML = "GAME OVER";
             document.getElementsByClassName("ui-hpArea-player")[msg].classList.remove("text-outline-gold");
             document.getElementsByClassName("ui-hpArea-playerhp")[msg].style.borderColor = "grey";
             document.getElementsByClassName("ui-hpArea-playerText")[msg].style.color = "grey";
@@ -592,33 +592,37 @@ var Game = {
                 }, 5000);
             }
             else {
-                this.hideUI("diceScene-result");
+                setTimeout(() => {
+                    hideUI("diceScene-result");
+                }, 5000);
             }
         });
 
         this.Socket.on('placePhase-begin', (msg) => {
-            for (let j = 0; j < msg.length; j++) {
-                document.getElementsByClassName("ui-hpArea-player")[j].classList.remove("text-outline-gold");
+            if (!this.PlayerData[0].dead) {
+                for (let j = 0; j < msg.length; j++) {
+                    document.getElementsByClassName("ui-hpArea-player")[j].classList.remove("text-outline-gold");
+                }
+                document.getElementsByClassName("ui-hpArea-player")[0].classList.add("text-outline-gold");
+                this.GameObject.scene.getScene("gameScene").cameras.main.scrollX = 0;
+                this.GameObject.scene.getScene("gameScene").cameras.main.scrollY = 0;
+                this.GameObject.scene.getScene("gameScene").cameras.main.setBounds(0, 0, 2400, 1440);
+                
+                this.GameObject.scene.getScene("gameScene").currentView = 0;
+                this.GameObject.scene.getScene("gameScene").events.emit("spectateChange");
+    
+                let tierCnt = this.GameObject.scene.getScene("gameScene").tierCnt;
+                let tierBonus = this.GameObject.scene.getScene("gameScene").tierBonus;
+                for (let j = 0; j < 4; j++) {
+                    document.getElementsByClassName("ui-unitArea-unitTierCount")[j].innerHTML = "";
+                    document.getElementsByClassName("ui-unitArea-unitTierCount")[j].innerHTML += tierCnt[j] + " <span class='ui-unitArea-unitTierBonus'>(+" + tierBonus[j] + "%)</span>";
+                } 
+                this.updateItemUI(this.PlayerData[0]);
+                document.getElementsByClassName("ui-itemOverallArea-overall-atk")[0].innerText = "ATK: " + (this.shopBuff.shopAtk >= 0 ? "+" + this.shopBuff.shopAtk : this.shopBuff.shopAtk) + "%";
+                document.getElementsByClassName("ui-itemOverallArea-overall-aspd")[0].innerText = "SPD: " + (this.shopBuff.shopAspd >= 0 ? "+" + this.shopBuff.shopAspd : this.shopBuff.shopAspd) + "%";
+                document.getElementsByClassName("ui-itemOverallArea-overall-pen")[0].innerText = "PEN: " + (this.shopBuff.shopPenetration >= 0 ? "+" + this.shopBuff.shopPenetration : this.shopBuff.shopPenetration) + "%p";
+                // => 배치 플레이스 시작시 내 영역으로 이동
             }
-            document.getElementsByClassName("ui-hpArea-player")[0].classList.add("text-outline-gold");
-            this.GameObject.scene.getScene("gameScene").cameras.main.scrollX = 0;
-            this.GameObject.scene.getScene("gameScene").cameras.main.scrollY = 0;
-            this.GameObject.scene.getScene("gameScene").cameras.main.setBounds(0, 0, 2400, 1440);
-            
-            this.GameObject.scene.getScene("gameScene").currentView = 0;
-            this.GameObject.scene.getScene("gameScene").events.emit("spectateChange");
-
-            let tierCnt = this.GameObject.scene.getScene("gameScene").tierCnt;
-            let tierBonus = this.GameObject.scene.getScene("gameScene").tierBonus;
-            for (let j = 0; j < 4; j++) {
-                document.getElementsByClassName("ui-unitArea-unitTierCount")[j].innerHTML = "";
-                document.getElementsByClassName("ui-unitArea-unitTierCount")[j].innerHTML += tierCnt[j] + " <span class='ui-unitArea-unitTierBonus'>(+" + tierBonus[j] + "%)</span>";
-            } 
-            this.updateItemUI(this.PlayerData[0]);
-            document.getElementsByClassName("ui-itemOverallArea-overall-atk")[0].innerText = "ATK: " + (this.shopBuff.shopAtk >= 0 ? "+" + this.shopBuff.shopAtk : this.shopBuff.shopAtk) + "%";
-            document.getElementsByClassName("ui-itemOverallArea-overall-aspd")[0].innerText = "SPD: " + (this.shopBuff.shopAspd >= 0 ? "+" + this.shopBuff.shopAspd : this.shopBuff.shopAspd) + "%";
-            document.getElementsByClassName("ui-itemOverallArea-overall-pen")[0].innerText = "PEN: " + (this.shopBuff.shopPenetration >= 0 ? "+" + this.shopBuff.shopPenetration : this.shopBuff.shopPenetration) + "%p";
-            // => 배치 플레이스 시작시 내 영역으로 이동
 
             document.getElementsByClassName("ui-goldArea")[0].onclick = (e) => {
                 if (!this.shopOpen && this.PlayerData[0].hp > 0) {
