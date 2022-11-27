@@ -15,6 +15,7 @@ import unitSpecsheet from '../assets/specsheets/unitSpecsheet.json';
 import mobSpecsheet from '../assets/specsheets/mobSpecsheet.json';
 import roundSheet from '../assets/specsheets/roundSheet.json';
 import effectSheet from '../assets/specsheets/effectOffsetSheet.json';
+import skillSheet from '../assets/specsheets/skillSheet.json';
 
 import healthBar from '../assets/images/healthBar.png';
 import Bullet from '../assets/projectiles/bullet.png';
@@ -212,6 +213,7 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.json("mobDB", mobSpecsheet);
         this.load.json("roundDB", roundSheet);
         this.load.json("effectDB", effectSheet);
+        this.load.json("skillDB", skillSheet);
     }
 
     create() {

@@ -156,7 +156,7 @@ var Game = {
                             this.GameObject.scene.getScene("gameScene").mapOffsetY = 0;
 
                             this.GameObject.scene.getScene("gameScene").currentView = 0;
-
+                            this.GameObject.scene.getScene("gameScene").events.emit("spectateChange");
                         }
                     }
                     else {
@@ -177,6 +177,7 @@ var Game = {
                             this.GameObject.scene.getScene("gameScene").mapOffsetX = 2400 * (i % 2);
                             this.GameObject.scene.getScene("gameScene").mapOffsetY = 1440 * Math.floor(i / 2);
                             this.GameObject.scene.getScene("gameScene").currentView = i;
+                            this.GameObject.scene.getScene("gameScene").events.emit("spectateChange");
                         }
                     }
                 }
@@ -205,8 +206,8 @@ var Game = {
         this.Socket.on("sync-playerFieldStatus", (msg) => {
             /// msg = { index, units, shopBuffs, tierBuffs }
             /// 누군가의 배치나 버프 상황이 업데이트 되면 발생하는 이벤트
-            this.GameObject.scene.getScene("gameScene").removeOtherPlayerUnit(msg.index);
             this.GameObject.scene.getScene("gameScene").spectate_player = msg.units;
+            this.GameObject.scene.getScene("gameScene").removeOtherPlayerUnit(msg.index);            
             this.GameObject.scene.getScene("gameScene").placeOtherPlayerUnit(msg.index,msg.shopBuffs,msg.tierBuffs);
         });
         

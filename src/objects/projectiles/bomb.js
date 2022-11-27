@@ -4,24 +4,33 @@ const Phaser = require("phaser");
 
 export default class Bomb extends Phaser.Physics.Arcade.Sprite {
 
-    constructor(scene, shooter) {
+    constructor(scene, shooter, skillInfo) {
         super(scene, shooter.x, shooter.y, shooter.projectileName);
+
         if (shooter.playerNum == 0)
             this.scene.m_projectiles.add(this);
         else
             this.scene.spectate_player_projectiles[shooter.playerNum].add(this);
+        
         this.shooter = shooter;
         this.speed = shooter.projectileSpeed;
         this.scale = 0.4;
-        this.alpha = 1;
-        this.targetidx = 0;
         this.setBodySize(this.width/2, this.height/2);
         this.setDepth(2);
         this.hitEffect = shooter.projectileHitEffect;
         this.explodeRange = shooter.explodeRange;
         this.explodeScale = shooter.explodeScale;
-        this.hitSoundName = shooter.hitSoundName;  
+        this.hitSoundName = shooter.hitSoundName; 
+        if (skillInfo != null) {
+            this.skillInfo = [];
+            this.skillInfo["callerID"] = this.shooter.index;
+            this.skillInfo["delay"] = skillInfo.delay;
+            this.skillInfo["duration"] = skillInfo.duration;
+            this.skillInfo["damage"] = skillInfo.damage;
+            this.explodeRange = skillInfo.range;
+        }
         this.isTarget = false;
+
         if (shooter.playerNum != 0)
             this.setVisible(false);
 
@@ -33,27 +42,27 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
         
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this, true);
-        this.scene.physics.world.enableBody(this);
 
         this.play(shooter.projectileName);
 
         this.setAngle(this, this.target);
         this.scene.physics.moveTo(this, this.target.x, this.target.y, this.speed);
         this.scene.events.on("update", this.update, this);
-        
-        
+        this.scene.events.on("spectateChange", this.setVisibility, this);
     }
 
     update()
+    {        
+        if (Phaser.Math.Distance.Between(this.x, this.y, this.target.x, this.target.y) < 20 || Phaser.Math.Distance.Between(this.x, this.y, this.shooter.x, this.shooter.y) > this.shooter.range)
+            this.explode();        
+    }
+
+    setVisibility()
     {
         if (this.shooter.playerNum == this.scene.currentView)
             this.setVisible(true);
         else
             this.setVisible(false);
-        
-        var distance = Phaser.Math.Distance.Between(this.x, this.y, this.target.x, this.target.y);
-        if (distance < 20 || distance > this.shooter.range)
-            this.explode();        
     }
 
     explode() {
@@ -61,18 +70,23 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
             if (item.gameObject) return item.gameObject.isTarget;
             else return false;
         });
+        
         for (var i = 0; i < targets.length; i++)
         {
             try {
-                targets[i].gameObject.Health -= this.shooter.calcDamage(targets[i].gameObject.defence);
-                // if (element.gameObject.Health <= 0)
-                //     this.shooter.kills++;
+                if (this.skillInfo == null)
+                    targets[i].gameObject.Health -= this.shooter.calcDamage(this.shooter.attack, targets[i].gameObject.defence);
+                else if (this.skillInfo.skillType == "DOT")
+                    targets[i].gameObject.dotDamageFactory(this,this.skillInfo);
+                else if (this.skillInfo.skillType == "attackCount")
+                    targets[i].gameObject.Health -= this.shooter.calcDamage(this.shooter.attack * (1 + this.skillInfo.value / 100), targets[i].gameObject.defence);
             }
             catch(e) {
                 continue;
             }
         }
         this.scene.events.off("update", this.update, this);
+        this.scene.events.off("spectateChange", this.setVisibility, this);
 
         this.body.reset(this.x, this.y);
         this.rotation = 0;
