@@ -845,9 +845,9 @@ var Game = {
                     y: unit.y,
                     id: unit.id,
                     tier: unit.tier,
-                    tierCnt: this.GameObject.scene.getScene("gameScene").tierCnt
                 };
             }),
+            tierCnt: this.GameObject.scene.getScene("gameScene").tierCnt,
             shopBuffs: this.shopBuff,
             tierBuffs: this.GameObject.scene.getScene("gameScene").tierBonus
         });
