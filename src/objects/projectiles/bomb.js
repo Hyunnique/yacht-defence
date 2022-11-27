@@ -21,13 +21,13 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
         this.explodeRange = shooter.explodeRange;
         this.explodeScale = shooter.explodeScale;
         this.hitSoundName = shooter.hitSoundName; 
-        if (skillInfo != null) {
+
+        if (skillInfo != null && skillInfo.skillType == "DOT") {
             this.skillInfo = [];
             this.skillInfo["callerID"] = this.shooter.index;
             this.skillInfo["delay"] = skillInfo.delay;
             this.skillInfo["duration"] = skillInfo.duration;
-            this.skillInfo["damage"] = skillInfo.damage;
-            this.explodeRange = skillInfo.range;
+            this.skillInfo["value"] = skillInfo.value;
         }
         this.isTarget = false;
 
@@ -77,9 +77,14 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
                 if (this.skillInfo == null)
                     targets[i].gameObject.Health -= this.shooter.calcDamage(this.shooter.attack, targets[i].gameObject.defence);
                 else if (this.skillInfo.skillType == "DOT")
-                    targets[i].gameObject.dotDamageFactory(this,this.skillInfo);
+                    targets[i].gameObject.dotDamageFactory(this);
                 else if (this.skillInfo.skillType == "attackCount")
                     targets[i].gameObject.Health -= this.shooter.calcDamage(this.shooter.attack * (1 + this.skillInfo.value / 100), targets[i].gameObject.defence);
+                else if (this.skillInfo.skillType == "debuff")
+                {
+                    targets[i].gameObject.handleDebuff(this.shooter.id, this.skillInfo.value);
+                    targets[i].gameObject.Health -= this.shooter.calcDamage(this.shooter.attack, targets[i].gameObject.defence) * (1 + targets[i].gameObject.totalDebuffVal / 100);
+                }
             }
             catch(e) {
                 continue;
