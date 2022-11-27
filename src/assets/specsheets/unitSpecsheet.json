@@ -77,8 +77,7 @@
         "buffRange": 240,
         "buffAtk": 15,
         "buffAspd": 15,
-        "activeSkill": "",
-        "passiveSkill": "때린 몹 받는 피해 20% 증가"
+        "skill": "받는 피해를 20% 증가 시키는 디버프를 부여"
     },
     "unit3": {
         "name": "다크엘프 궁수",
@@ -634,8 +633,7 @@
         "explodeRange": 312,
         "projectileSpeed": 250,
         "tier": 1,
-        "activeSkill": "5초마다 초 광범위 공격을 시전 (범위 528 / 데미지 1000 / 0.84)",
-        "passiveSkill": "화상 도트뎀",
+        "skill": "5초마다 초 광범위 공격을 시전 (범위 528 / 데미지 1000 / 0.84)",
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0
