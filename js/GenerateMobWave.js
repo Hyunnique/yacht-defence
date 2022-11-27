@@ -1,11 +1,16 @@
 module.exports = function generateRound(SpecsheetGen, round, roundCost, hpFactor) {
     let minWaveCount = 10;
-    let maxWaveCount = 20;
-    if (round <= 10) maxWaveCount = 20;
+    let maxWaveCount = 10;
+    if (round <= 5) maxWaveCount = 10;
+    else if (round <= 10) maxWaveCount = 15;
+    else if (round <= 15) maxWaveCount = 20;
     else if (round <= 20) maxWaveCount = 30;
-    else if (round <= 30) maxWaveCount = 40;
-    else if (round <= 40) maxWaveCount = 50;
-    else maxWaveCount = 60;
+    else if (round <= 25) maxWaveCount = 40;
+    else if (round <= 30) maxWaveCount = 50;
+    else if (round <= 35) maxWaveCount = 60;
+    else if (round <= 40) maxWaveCount = 70;
+    else if (round <= 45) maxWaveCount = 80;
+    else maxWaveCount = 100;
 
     // 최소 코스트를 설정해서,
     // 라운드에 비해서 너무 약한 몬스터는 사용하지 않도록 하고
@@ -39,7 +44,7 @@ module.exports = function generateRound(SpecsheetGen, round, roundCost, hpFactor
     // 한 웨이브에는 몬스터 종류당 10~20마리 소환
     // 물론 중복해서 뽑힐 경우는 중복 가능
 
-    const WaveMonsterCount = [10, 15, 20];
+    const WaveMonsterCount = [10, 15, 20, 25, 30];
 
     if (round % 5 == 0) {
         // 보스 라운드일 때
@@ -56,8 +61,8 @@ module.exports = function generateRound(SpecsheetGen, round, roundCost, hpFactor
 
         let currentWaveMonsterCount = 10;
         
-        if (maxWaveCount - currentWaveCount <= 20) currentWaveMonsterCount = maxWaveCount - currentWaveCount;
-        else currentWaveMonsterCount = WaveMonsterCount[Math.floor(Math.random() * 3)];
+        if (maxWaveCount - currentWaveCount <= 10) currentWaveMonsterCount = maxWaveCount - currentWaveCount;
+        else currentWaveMonsterCount = WaveMonsterCount[Math.floor(Math.random() * 5)];
 
         availableMonsters = Object.keys(SpecsheetGen).filter((x) => {
             if (SpecsheetGen[x].boss) return false;
