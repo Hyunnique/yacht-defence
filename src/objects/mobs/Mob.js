@@ -241,10 +241,24 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
     hit(projectile) {
         if (projectile.shooter.projectileType == 1) {
             if (projectile.alreadyPenetrated.findIndex(e => e == this.mobNum) == -1) {
+                var damage = projectile.shooter.calcDamage(projectile.shooter.attack, this.defence) * (1 + this.totalDebuffVal / 100);
                 projectile.alreadyPenetrated.push(this.mobNum);
-                if (projectile.skillInfo != null && projectile.skillInfo.skillType == "DOT")
-                    this.dotDamageFactory(projectile);
-                this.Health -= projectile.shooter.calcDamage(projectile.shooter.attack, this.defence) * (1 + this.totalDebuffVal / 100);
+                if (projectile.skillInfo != null) {
+                    if (projectile.skillInfo.skillType == "DOT")
+                        this.dotDamageFactory(projectile);
+                    if (projectile.skillInfo.skillType == "debuff")
+                        this.handleDebuff(projectile.shooter.id, projectile.skillInfo.value);
+                    if (projectile.skillInfo.skillType == "attackCount") {
+                        if (projectile.skillInfo.ofHealth == "cur")
+                            damage = projectile.shooter.calcDamage(projectile.shooter.attack + this.Health * (projectile.skillInfo.value / 100), this.defence) * (1 + this.totalDebuffVal / 100);
+                        if (projectile.skillInfo.ofHealth == "lost")
+                            damage = projectile.shooter.calcDamage(projectile.shooter.attack * projectile.skillInfo.value * (1 - this.Health / this.MaxHealth), this.defence) * (1 + this.totalDebuffVal / 100);
+                        if (projectile.skillInfo.ofHealth == "atk")
+                            damage = projectile.shooter.calcDamage(projectile.shooter.attack * (1 + projectile.skillInfo.value / 100), this.defence) * (1 + this.totalDebuffVal / 100);
+                    }
+                }
+                this.Health -= damage;
+                console.log(damage);
                 projectile.hit();
             }
         }
@@ -252,23 +266,37 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
             projectile.explode();
         }
         else {
-            if (projectile.skillInfo != null && projectile.skillInfo.skillType == "DOT") 
-                this.dotDamageFactory(projectile);
-            this.Health -= projectile.shooter.calcDamage(projectile.shooter.attack, this.defence) * (1 + this.totalDebuffVal / 100);
+            var damage = projectile.shooter.calcDamage(projectile.shooter.attack, this.defence) * (1 + this.totalDebuffVal / 100);
+            if (projectile.skillInfo != null) {
+                if (projectile.skillInfo.skillType == "DOT")
+                    this.dotDamageFactory(projectile);
+                if (projectile.skillInfo.skillType == "debuff")
+                    this.handleDebuff(projectile.shooter.id, projectile.skillInfo.value);
+                if (projectile.skillInfo.skillType == "attackCount") {
+                    if (projectile.skillInfo.ofHealth == "cur")
+                        damage = projectile.shooter.calcDamage(projectile.shooter.attack + this.Health * (projectile.skillInfo.value / 100), this.defence) * (1 + this.totalDebuffVal / 100);
+                    if (projectile.skillInfo.ofHealth == "lost")
+                        damage = projectile.shooter.calcDamage(projectile.shooter.attack * projectile.skillInfo.value * (1 - this.Health / this.MaxHealth), this.defence) * (1 + this.totalDebuffVal / 100);
+                    if (projectile.skillInfo.ofHealth == "atk")
+                        damage = projectile.shooter.calcDamage(projectile.shooter.attack * (1 + projectile.skillInfo.value / 100), this.defence) * (1 + this.totalDebuffVal / 100);
+                }
+            }
+            this.Health -= damage;
             projectile.hit();
         }
     }
 
     handleDebuff(id, value)
     {
-        if (this.debuffDict.id == null || this.debuffDict.id == undefined)
+        if (this.debuffDict[id] == null || this.debuffDict[id] == undefined)
         {
-            this.debuffDict.id = value;
-            this.totalDebuffVal += value;
+            this.debuffDict[id] = value;
+            this.totalDebuffVal += value;   
         }
     }
 
     dotDamageFactory(projectile) {
+        console.log(projectile.skillInfo);
         if (this.dotDamageDict[projectile.skillInfo.callerID] == undefined) {
 
             var damage = projectile.skillInfo.ofHealth == "cur" ?
@@ -279,7 +307,8 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
                 delay: projectile.skillInfo.delay * 1000,
                 repeat: projectile.skillInfo.duration / projectile.skillInfo.delay,
                 callback: () => {
-                    this.Health -= projectile.shooter.calcDamage(damage, this.defence);
+                    this.Health -= projectile.shooter.calcDamage(damage, this.defence) * (1 + this.totalDebuffVal / 100);
+                    console.log(this.Health);
                 },
                 startAt: 0
             });
@@ -300,7 +329,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
                 delay: unit.skillInfo.delay * 1000,
                 repeat: unit.skillInfo.duration / unit.skillInfo.delay,
                 callback: () => {
-                    this.Health -= unit.shooter.calcDamage(damage, this.defence);
+                    this.Health -= unit.shooter.calcDamage(damage, this.defence) * (1 + this.totalDebuffVal / 100);
                 },
                 startAt: 0
             });
