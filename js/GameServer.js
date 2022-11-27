@@ -217,6 +217,11 @@ module.exports = {
                         this.Rooms[this.getRoomId(socket.id)].players[this.getRoomIndex(socket.id)].timers["reconnectWait"] = setTimeout(() => {
                             this.Rooms[this.getRoomId(socket.id)].players[this.getRoomIndex(socket.id)].disconnected = true;
                             this.Rooms[this.getRoomId(socket.id)].players[this.getRoomIndex(socket.id)].dead = true;
+
+                            for (let i = 0; i < this.Rooms[this.getRoomId(socket.id)].players.length; i++) {
+                                if (this.Rooms[this.getRoomId(socket.id)].players[i].disconnected) continue;
+                                this.Rooms[this.getRoomId(socket.id)].players[i].socket.emit('player-death', this.zerofyNumber(socket.id, i));
+                            }
                             //delete this.socketMap[socket.id];
                             this.Rooms[this.getRoomId(socket.id)].players[this.getRoomIndex(socket.id)].timers["reconnectWait"] = null;
                         }, 10000);
@@ -506,6 +511,7 @@ module.exports = {
         s_player.hp = 0;
 
         for (let i = 0; i < this.Rooms[roomId].players.length; i++) {
+            if (this.Rooms[roomId].players[i].disconnected) continue;
             this.Rooms[roomId].players[i].socket.emit('player-death', this.zerofyNumber(socket.id, i));
         }
 
