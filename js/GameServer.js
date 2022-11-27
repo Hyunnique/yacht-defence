@@ -57,8 +57,8 @@ module.exports = {
     generateWaveInfo(roomId) {
         let waveResult = waveGenerator(this.Rooms[roomId].generatorInfo.sheet, this.Rooms[roomId].roundInfo.num, this.Rooms[roomId].generatorInfo.cost, this.Rooms[roomId].generatorInfo.hpFactor);
 
-        if (this.Rooms[roomId].roundInfo.num % 10 == 0) {
-            this.Rooms[roomId].generatorInfo.cost = Math.floor(this.Rooms[roomId].generatorInfo.cost * 1.4 + (15 * Math.pow(1.06, this.Rooms[roomId].roundInfo.num)));
+        if (this.Rooms[roomId].roundInfo.num % 5 == 0) {
+            this.Rooms[roomId].generatorInfo.cost = Math.floor(this.Rooms[roomId].generatorInfo.cost * 1.2 + (15 * Math.pow(1.06, this.Rooms[roomId].roundInfo.num)));
         } else {
             this.Rooms[roomId].generatorInfo.cost = Math.floor(this.Rooms[roomId].generatorInfo.cost * 1.08 + (15 * Math.pow(1.06, this.Rooms[roomId].roundInfo.num)));
         }
@@ -220,7 +220,7 @@ module.exports = {
 
                             for (let i = 0; i < this.Rooms[this.getRoomId(socket.id)].players.length; i++) {
                                 if (this.Rooms[this.getRoomId(socket.id)].players[i].disconnected) continue;
-                                this.Rooms[this.getRoomId(socket.id)].players[i].socket.emit('player-death', this.zerofyNumber(this.getRoomIndex(socket.id), i));
+                                this.Rooms[this.getRoomId(socket.id)].players[i].socket.emit('player-death', this.zerofyNumber(i, this.getRoomIndex(socket.id)));
                             }
                             //delete this.socketMap[socket.id];
                             this.Rooms[this.getRoomId(socket.id)].players[this.getRoomIndex(socket.id)].timers["reconnectWait"] = null;
@@ -396,7 +396,7 @@ module.exports = {
         });
 
         this.Rooms[roomId].timer["phaseWaitTimer"] = setInterval(() => {
-            if (this.Rooms[roomId].players.filter(x => x.flags.battlePhaseDone && !x.disconnected).length >= this.Rooms[roomId].players.filter(x => !x.disconnected).length) {
+            if (this.Rooms[roomId].players.filter(x => x.flags.battlePhaseDone && !x.disconnected && !x.dead).length >= this.Rooms[roomId].players.filter(x => !x.disconnected && !x.dead).length) {
                 this.emitAll(roomId, 'battlePhase-end', true);
                 this.Rooms[roomId].roundInfo.num++;
 
@@ -512,7 +512,7 @@ module.exports = {
 
         for (let i = 0; i < this.Rooms[roomId].players.length; i++) {
             if (this.Rooms[roomId].players[i].disconnected) continue;
-            this.Rooms[roomId].players[i].socket.emit('player-death', this.zerofyNumber(this.getRoomIndex(socket.id), i));
+            this.Rooms[roomId].players[i].socket.emit('player-death', this.zerofyNumber(i, this.getRoomIndex(socket.id)));
         }
 
         new db.PlayData({
