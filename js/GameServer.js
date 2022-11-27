@@ -58,9 +58,9 @@ module.exports = {
         let waveResult = waveGenerator(this.Rooms[roomId].generatorInfo.sheet, this.Rooms[roomId].roundInfo.num, this.Rooms[roomId].generatorInfo.cost, this.Rooms[roomId].generatorInfo.hpFactor);
 
         if (this.Rooms[roomId].roundInfo.num % 5 == 0) {
-            this.Rooms[roomId].generatorInfo.cost = Math.floor(this.Rooms[roomId].generatorInfo.cost * 1.2 + (15 * Math.pow(1.06, this.Rooms[roomId].roundInfo.num)));
+            this.Rooms[roomId].generatorInfo.cost = Math.floor(this.Rooms[roomId].generatorInfo.cost * 1.17 + (20 * Math.pow(1.06, this.Rooms[roomId].roundInfo.num)));
         } else {
-            this.Rooms[roomId].generatorInfo.cost = Math.floor(this.Rooms[roomId].generatorInfo.cost * 1.08 + (15 * Math.pow(1.06, this.Rooms[roomId].roundInfo.num)));
+            this.Rooms[roomId].generatorInfo.cost = Math.floor(this.Rooms[roomId].generatorInfo.cost * 1.08 + (20 * Math.pow(1.06, this.Rooms[roomId].roundInfo.num)));
         }
 
         this.Rooms[roomId].generatorInfo.hpFactor = (this.Rooms[roomId].generatorInfo.hpFactor * 1.055 + (0.05 * Math.pow(1.05, this.Rooms[roomId].roundInfo.num))).toFixed(2);
