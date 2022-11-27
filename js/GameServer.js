@@ -427,6 +427,7 @@ module.exports = {
                 this.Rooms[roomId].players[i].socket.emit('sync-playerFieldStatus', {
                     index: this.zerofyNumber(i, this.getRoomIndex(socket.id)),
                     units: msg.units,
+                    items: this.Rooms[roomId].players[this.getRoomIndex(socket.id)].items,
                     shopBuffs: msg.shopBuffs,
                     tierBuffs: msg.tierBuffs
                 });
