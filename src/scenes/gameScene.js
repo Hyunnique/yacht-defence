@@ -108,15 +108,15 @@ export default class gameScene extends Phaser.Scene {
             outside_stair.push(map[i].addTilesetImage("outside_stair", "outside_stair"));
             outside_B.push(map[i].addTilesetImage("Outside_B", "outside_B"));
             possible.push(map[i].addTilesetImage("possible", "possible"));
-            tile.push(map[i].createLayer("tile", outside_ground, this.mapOffsetX * (i % 2), this.mapOffsetY * Math.floor(i / 2)));
-            wall.push(map[i].createLayer("wall", outside_wall, this.mapOffsetX * (i % 2), this.mapOffsetY * Math.floor(i / 2)));
-            bridge.push(map[i].createLayer("bridge", outside_B, this.mapOffsetX * (i % 2), this.mapOffsetY * Math.floor(i / 2)));
-            grass.push(map[i].createLayer("grass", outside_B, this.mapOffsetX * (i % 2), this.mapOffsetY * Math.floor(i / 2)));
-            tree1_back.push(map[i].createLayer("Tree1_B", outside_B, this.mapOffsetX * (i % 2), this.mapOffsetY * Math.floor(i / 2)));
-            tree2_back.push(map[i].createLayer("Tree2_B", outside_B, this.mapOffsetX * (i % 2), this.mapOffsetY * Math.floor(i / 2)));
-            tree1_front.push(map[i].createLayer("Tree1_F", outside_B, this.mapOffsetX * (i % 2), this.mapOffsetY * Math.floor(i / 2)));
-            tree2_front.push(map[i].createLayer("Tree2_F", outside_B, this.mapOffsetX * (i % 2), this.mapOffsetY * Math.floor(i / 2)));
-            this.info.push(map[i].createLayer("info", possible, this.mapOffsetX * (i % 2), this.mapOffsetY * Math.floor(i / 2)));
+            tile.push(map[i].createLayer("tile", outside_ground, this.mapOffsetX * (i % 2), this.mapOffsetY * Math.floor(i / 2) - 96));
+            wall.push(map[i].createLayer("wall", outside_wall, this.mapOffsetX * (i % 2), this.mapOffsetY * Math.floor(i / 2) - 96));
+            bridge.push(map[i].createLayer("bridge", outside_B, this.mapOffsetX * (i % 2), this.mapOffsetY * Math.floor(i / 2) - 96));
+            grass.push(map[i].createLayer("grass", outside_B, this.mapOffsetX * (i % 2), this.mapOffsetY * Math.floor(i / 2) - 96));
+            tree1_back.push(map[i].createLayer("Tree1_B", outside_B, this.mapOffsetX * (i % 2), this.mapOffsetY * Math.floor(i / 2) - 96));
+            tree2_back.push(map[i].createLayer("Tree2_B", outside_B, this.mapOffsetX * (i % 2), this.mapOffsetY * Math.floor(i / 2) - 96));
+            tree1_front.push(map[i].createLayer("Tree1_F", outside_B, this.mapOffsetX * (i % 2), this.mapOffsetY * Math.floor(i / 2) - 96));
+            tree2_front.push(map[i].createLayer("Tree2_F", outside_B, this.mapOffsetX * (i % 2), this.mapOffsetY * Math.floor(i / 2) - 96));
+            this.info.push(map[i].createLayer("info", possible, this.mapOffsetX * (i % 2), this.mapOffsetY * Math.floor(i / 2) - 96));
             this.info[i].alpha = 0;
         }
 
@@ -179,7 +179,7 @@ export default class gameScene extends Phaser.Scene {
             // this.camera.centerOn(pointer.worldX, pointer.worldY);
             // this.camera.pan(pointer.worldX, pointer.worldY, 2000, "Power2");
         });
-        this.cameras.main.setBounds(0, 0, this.mapWidth, this.mapHeight);
+        this.cameras.main.setBounds(0, 0, this.mapWidth, this.mapHeight + 96);
         this.currentView = 0;
 
         //BGM

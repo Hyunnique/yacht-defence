@@ -73,9 +73,9 @@
         "projectileType": 0,
         "tier": 1,
         "buffRange": 240,
-        "buffAtk": 15,
-        "buffAspd": 15,
-        "skill": "받는 피해를 20% 증가 시키는 디버프를 부여, 아군 공격, 속도 15% 강화"
+        "buffAtk": 20,
+        "buffAspd": 20,
+        "skill": "받는 피해를 20% 증가 시키는 디버프를 부여, 아군의 공격과 속도 20% 강화"
     },
     "unit3": {
         "name": "다크엘프 궁수",
@@ -691,9 +691,9 @@
         "projectileType": 0,
         "tier": 3,
         "buffRange": 72,
-        "buffAtk": 5,
-        "buffAspd": 5,
-        "skill": "주변 아군 공격, 속도 5% 강화"
+        "buffAtk": 8,
+        "buffAspd": 8,
+        "skill": "주변 아군의 공격과 속도 8% 강화"
     },
     "unit26": {
         "name": "되살아난 마검사 펠소닌",
@@ -747,7 +747,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "skill": "매 10초마다 2초간 공격속도 600%증가."
+        "skill": "매 10초마다 2초간 공격속도 600% 증가."
     },
     "unit28": {
         "name": "춘식",
@@ -906,7 +906,7 @@
         "explodeRange": 240,
         "projectileSpeed": 250,
         "tier": 2,
-        "skill": "4초마다 30% 강해졌다가, 20% 약해집니다.",
+        "skill": "4초마다 공격 40% 였다가, 공격 -20% 전환",
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0
@@ -932,7 +932,7 @@
         "hitSoundName": "hitFire",
         "projectileType": 0,
         "tier": 2,
-        "skill": "매 4초 마다 공격 +30%, 공속 -20%를 서로 전환",
+        "skill": "4초마다 공격 40%, 속도 -20% 였다가, 공격 -20%, 속도 40% 전환",
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0
@@ -961,7 +961,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "skill": "원펀"
+        "skill": "느리지만 매우 강력한 펀치 한방을 날립니다"
     },
     "unit36": {
         "name": "창기병",
@@ -1411,7 +1411,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "skill": ""
+        "skill": "같은 티어 대비 강력한 스텟을 가졌습니다."
     },
     "unit53": {
         "name": "힘의 부족 창의 달인 데마린",
@@ -1437,7 +1437,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "skill": ""
+        "skill": "같은 티어 대비 강력한 스텟을 가졌습니다."
     },
     "unit54": {
         "name": "기사 분대원",
@@ -1486,10 +1486,10 @@
         "hitSoundName": "hitFire",
         "projectileType": 0,
         "tier": 2,
-        "skill": "주변 아군 속도 15% 강화",
+        "skill": "주변 아군의 속도 25% 강화",
         "buffRange": 168,
         "buffAtk": 0,
-        "buffAspd": 15
+        "buffAspd": 25
     },
     "unit56": {
         "name": "부활한 금단의 마도사 페네스",
@@ -1515,9 +1515,9 @@
         "explodeRange": 168,
         "projectileSpeed": 500,
         "tier": 2,
-        "skill": "주변 아군 공격 15% 강화",
+        "skill": "주변 아군의 공격 25% 강화",
         "buffRange": 168,
-        "buffAtk": 15,
+        "buffAtk": 25,
         "buffAspd": 0
     },
     "unit57": {
@@ -1544,9 +1544,9 @@
         "explodeRange": 168,
         "projectileSpeed": 500,
         "tier": 3,
-        "skill": "주변 아군 공격 10% 강화",
+        "skill": "주변 아군의 공격 16% 강화",
         "buffRange": 72,
-        "buffAtk": 10,
+        "buffAtk": 16,
         "buffAspd": 0
     },
     "unit58": {
@@ -1598,8 +1598,8 @@
         "tier": 3,
         "buffRange": 72,
         "buffAtk": 0,
-        "buffAspd": 10,
-        "skill": "주변 아군 속도 10% 강화"
+        "buffAspd": 16,
+        "skill": "주변 아군의 속도 16% 강화"
     },
     "unit60": {
         "name": "화염족 마도사",

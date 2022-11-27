@@ -316,7 +316,7 @@ var Game = {
 
                             this.GameObject.scene.getScene("gameScene").cameras.main.scrollX = 0;
                             this.GameObject.scene.getScene("gameScene").cameras.main.scrollY = 0;
-                            this.GameObject.scene.getScene("gameScene").cameras.main.setBounds(0, 0, mapWidth, mapHeight);
+                            this.GameObject.scene.getScene("gameScene").cameras.main.setBounds(0, 0, mapWidth, mapHeight + 96);
 
                             // this.GameObject.scene.getScene("gameScene").mapOffsetX = 0;
                             // this.GameObject.scene.getScene("gameScene").mapOffsetY = 0;
@@ -354,7 +354,7 @@ var Game = {
 
                             this.GameObject.scene.getScene("gameScene").cameras.main.scrollX = mapOffsetX * (i % 2);
                             this.GameObject.scene.getScene("gameScene").cameras.main.scrollY = mapOffsetY * Math.floor(i / 2);
-                            this.GameObject.scene.getScene("gameScene").cameras.main.setBounds(mapOffsetX * (i % 2), mapOffsetY * Math.floor(i / 2), mapWidth, mapHeight);
+                            this.GameObject.scene.getScene("gameScene").cameras.main.setBounds(mapOffsetX * (i % 2), mapOffsetY * Math.floor(i / 2), mapWidth, mapHeight + 96);
 
                             // this.GameObject.scene.getScene("gameScene").mapOffsetX = 2400 * (i % 2);
                             // this.GameObject.scene.getScene("gameScene").mapOffsetY = 1440 * Math.floor(i / 2);
@@ -606,7 +606,7 @@ var Game = {
                 document.getElementsByClassName("ui-hpArea-player")[0].classList.add("text-outline-gold");
                 this.GameObject.scene.getScene("gameScene").cameras.main.scrollX = 0;
                 this.GameObject.scene.getScene("gameScene").cameras.main.scrollY = 0;
-                this.GameObject.scene.getScene("gameScene").cameras.main.setBounds(0, 0, 2400, 1440);
+                this.GameObject.scene.getScene("gameScene").cameras.main.setBounds(0, 0, 2400, 1440 + 96);
                 
                 this.GameObject.scene.getScene("gameScene").currentView = 0;
                 this.GameObject.scene.getScene("gameScene").events.emit("spectateChange");
@@ -658,7 +658,7 @@ var Game = {
                             new Arrow(this.GameObject.scene.getScene("gameScene"), key);
                         });
                     },
-                    repeat: 20,
+                    repeat: 26,
                     startAt: 500
                 });
         });
