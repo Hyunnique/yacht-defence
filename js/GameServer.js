@@ -359,7 +359,8 @@ module.exports = {
             this.Rooms[roomId].players[this.getRoomIndex(socket.id)].hp -= msg;
             if (this.Rooms[roomId].players[this.getRoomIndex(socket.id)].hp <= 0) {
                 this.Rooms[roomId].players[this.getRoomIndex(socket.id)].hp = 0;
-                this.onPlayerDeath(socket, roomId);
+                
+                if (!this.Rooms[roomId].players[this.getRoomIndex(socket.id)].dead) this.onPlayerDeath(socket, roomId);
             }
             this.syncPlayerInfo(roomId);
         });
