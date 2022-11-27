@@ -229,9 +229,9 @@ var Game = {
                     document.getElementsByClassName("ui-rankings-rankingList")[0].getElementsByTagName("tr")[i + 1].getElementsByTagName("td")[3]
                     .innerHTML =
                     "<span style='color:" + this.tierColorsCss[0] + "'>T1 (" + response.data[i].unit1Tier + ")</span>\n" + 
-                    " <span style='color:" + this.tierColorsCss[1] + "'>T1 (" + response.data[i].unit2Tier + ")</span><br>\n" + 
-                    " <span style='color:" + this.tierColorsCss[2] + "'>T1 (" + response.data[i].unit3Tier + ")</span>\n" + 
-                    " <span style='color:" + this.tierColorsCss[3] + "'>T1 (" + response.data[i].unit4Tier + ")</span>\n";
+                    " <span style='color:" + this.tierColorsCss[1] + "'>T2 (" + response.data[i].unit2Tier + ")</span><br>\n" + 
+                    " <span style='color:" + this.tierColorsCss[2] + "'>T3 (" + response.data[i].unit3Tier + ")</span>\n" + 
+                    " <span style='color:" + this.tierColorsCss[3] + "'>T4 (" + response.data[i].unit4Tier + ")</span>\n";
 
                     document.getElementsByClassName("ui-rankings-rankingList")[0].getElementsByTagName("tr")[i + 1].getElementsByTagName("td")[4]
                     .innerHTML = 
