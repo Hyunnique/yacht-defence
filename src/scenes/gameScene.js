@@ -59,6 +59,7 @@ export default class gameScene extends Phaser.Scene {
 
     tierCnt = [0, 0, 0, 0];
     tierBonus = [0, 0, 0, 0];
+    alive = [true, true, true, true];
     gold = 0;
 
     currentRoundData;
@@ -484,7 +485,7 @@ export default class gameScene extends Phaser.Scene {
                     startAt: index * 100
                 });
             }
-            if (Game.PlayerData.length > 1) {
+            if (Game.PlayerData.length > 1 && this.alive[1]) {
                 this.time.addEvent({
                     delay: initialDelay,
                     callback: () => {
@@ -494,7 +495,7 @@ export default class gameScene extends Phaser.Scene {
                     repeat: element["mobCount"] - 1,
                     startAt: index * 100
                 });
-                if (Game.PlayerData.length > 2) {
+                if (Game.PlayerData.length > 2 && this.alive[2]) {
                     this.time.addEvent({
                         delay: initialDelay,
                         callback: () => {
@@ -504,7 +505,7 @@ export default class gameScene extends Phaser.Scene {
                         repeat: element["mobCount"] - 1,
                         startAt: index * 100
                     });
-                    if (Game.PlayerData.length > 3) {
+                    if (Game.PlayerData.length > 3 && this.alive[3]) {
                         this.time.addEvent({
                             delay: initialDelay,
                             callback: () => {
@@ -601,7 +602,7 @@ export default class gameScene extends Phaser.Scene {
         if (this.playerHealth > 0) {
             this.placemode = true;
             this.handleTierBonus(tier, true);
-            this.initialPlace(this.unitDB["unit" + unitID], unitID);
+            this.initialPlace(this.unitDB["unit" + 34], 34);
         }
     }
     
@@ -615,6 +616,10 @@ export default class gameScene extends Phaser.Scene {
             });
             this.tierCnt = [0, 0, 0, 0];
             this.tierBonus = [0, 0, 0, 0];
+        }
+        else {
+            removeOtherPlayerUnit(index);
+            this.alive[index] = false;
         }
     }
 

@@ -88,7 +88,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.effectIsFlip = effectOffset[this.effectName].isFlip == 1 ? true : false;
         // console.log(this.effectOffsetX + " " + this.effectOffsetY + " " + effectOffset[this.effectName].isFlip);
         this.effect = new UnitEffect(scene, this, this.effectIsFlip, db.name);
-        this.attackCount = 0;
+        this.attackCount = 1;
         
         if (this.playerNum != this.scene.currentView) {
             this.setVisible(false);
@@ -100,6 +100,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
             this.skillReady = true;
         }
         
+        console.log(this.skillInfo);
         this.target = [];
         //this.setMotionSpeed();
 
@@ -167,14 +168,14 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         else if (this.skillInfo.skillType == "statBuff")
         {
             this.skillReady = false;
-            this.selfBuffAspd += (((this.skillInfo.buffAspd - this.skillInfo.debuffAspd) / 2) + ((this.skillInfo.buffAspd + this.skillInfo.debuffAspd) / 2)) * 100;
-            this.selfBuffAtk +=  ((this.skillInfo.buffAtk - this.skillInfo.debuffAtk) / 2) + ((this.skillInfo.buffAtk + this.skillInfo.debuffAtk) / 2)
-            this.selfBuffPenetration += (((this.skillInfo.buffPenetration - this.skillInfo.debuffPenetration) / 2) + ((this.skillInfo.buffPenetration + this.skillInfo.debuffPenetration) / 2)) / 100;
+            this.selfBuffAspd = this.skillInfo.buffAspd;
+            this.selfBuffAtk =  this.skillInfo.buffAtk
+            this.selfBuffPenetration = this.skillInfo.buffPenetration  / 100;
             this.updateBuff();
             this.scene.time.delayedCall(1000 * this.skillInfo.duration, () => {
-                this.selfBuffAspd += (((this.skillInfo.buffAspd - this.skillInfo.debuffAspd) / 2) - ((this.skillInfo.buffAspd + this.skillInfo.debuffAspd) / 2)) * 100;
-                this.selfBuffAtk +=  ((this.skillInfo.buffAtk - this.skillInfo.debuffAtk) / 2) - ((this.skillInfo.buffAtk + this.skillInfo.debuffAtk) / 2)
-                this.selfBuffPenetration += (((this.skillInfo.buffPenetration - this.skillInfo.debuffPenetration) / 2) - ((this.skillInfo.buffPenetration + this.skillInfo.debuffPenetration) / 2)) / 100;
+                this.selfBuffAspd = this.skillInfo.debuffAspd;
+                this.selfBuffAtk = this.skillInfo.debuffAtk;
+                this.selfBuffPenetration = this.skillInfo.debuffPenetration / 100;
                 this.updateBuff();
             }, [], this);
             this.scene.time.delayedCall(1000 * this.skillInfo.coolDown, () => {
@@ -260,28 +261,33 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
                     if (e.gameObject.Health)
                         e.gameObject.Health -= this.calcDamage(this.attack + this.skillInfo.skillType == "cur" ?
                             (e.gameObject.Health * this.skillInfo.value) :
-                            this.skillInfo.skillType == "lost" ? 
-                            (this.attack * (1 - e.Health / e.MaxHealth) * this.skillInfo.value)  :  
-                            (this.attack * (this.skillInfo.value / 100)), e.gameObject.defence);
+                            this.skillInfo.skillType == "lost" ?
+                                (this.attack * (1 - e.Health / e.MaxHealth) * this.skillInfo.value) :
+                                (this.attack * (this.skillInfo.value / 100)), e.gameObject.defence);
                 });
             }
             else {
                 this.target.forEach(e => {
                     if (e.gameObject.Health)
                         e.gameObject.Health -= this.calcDamage(this.attack, e.gameObject.defence);
-                    if (this.skillInfo != null && this.skillInfo.skillType == "DOT")
-                        e.gameObject.dotDamageFactoryMili(this);
+                    if (this.skillInfo != null) {
+                        if(this.skillInfo.skillType == "DOT")
+                            e.gameObject.dotDamageFactoryMili(this);
+                        if (this.skillInfo.skillType == "debuff")
+                            e.gameObject.handleDebuff(this.id, this.skillInfo.value);
+                     }
                 });
             }
         }
         else if (this.attackType == 1) {
-            if (this.skillInfo != null && (this.skillInfo.skillType == "attackCount" || this.skillInfo.skillType == "DOT") && this.attackCount % this.skillInfo.doEveryNth == 0)
+            if (this.skillInfo != null && ((this.skillInfo.skillType == "attackCount" && this.attackCount % this.skillInfo.doEveryNth == 0) || this.skillInfo.skillType == "DOT"))
+            {
                 this.shootProjectile(true);
+            }
             else
                 this.shootProjectile(false);
         }
         this.attackCount++;
-        
         this.scene.time.delayedCall(1000 / this.aspd, () => {
             this.attackReady = true;
         }, [], this);
@@ -303,12 +309,9 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.rangeView.destroy();
         this.destroy();
     }
-
-    
-    
+ 
     calcDamage(damage,mobDefence)
     {
-        console.log(damage);
         var defencePenValue = 1 - (mobDefence / 100) * (1 - this.penetration);
         return defencePenValue <= 0 ? 1 : damage * defencePenValue;
     }
