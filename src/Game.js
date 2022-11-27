@@ -274,13 +274,7 @@ var Game = {
             }
             for (let i = 0; i < msg.length; i++) {
                 if (msg[i].dead) {
-                    document.getElementsByClassName("ui-hpArea-playerhp-bar")[i].style.width = "0%";
-                    document.getElementsByClassName("ui-hpArea-playerhp-bar")[i].style.backgroundColor = "grey";
-                    document.getElementsByClassName("ui-hpArea-playerhp-text")[i].innerHTML = "DEAD";
-                    document.getElementsByClassName("ui-hpArea-player")[i].classList.remove("text-outline-gold");
-                    document.getElementsByClassName("ui-hpArea-playerhp")[i].style.borderColor = "grey";
-                    document.getElementsByClassName("ui-hpArea-playerText")[i].style.color = "grey";
-                    this.GameObject.scene.getScene("gameScene").gameOverhandler(i);
+                    ;
                 }
                 else {
                     document.getElementsByClassName("ui-hpArea-playerhp-bar")[i].style.width = Math.floor(msg[i].hp / msg[i].maxhp * 100) + "%";
@@ -288,6 +282,16 @@ var Game = {
                 }
             }
             document.getElementsByClassName("ui-gold")[0].innerText = msg[0].gold;
+        });
+
+        this.Socket.on('player-death', (msg) => {
+            document.getElementsByClassName("ui-hpArea-playerhp-bar")[msg].style.width = "0%";
+            document.getElementsByClassName("ui-hpArea-playerhp-bar")[msg].style.backgroundColor = "grey";
+            document.getElementsByClassName("ui-hpArea-playerhp-text")[msg].innerHTML = "DEAD";
+            document.getElementsByClassName("ui-hpArea-player")[msg].classList.remove("text-outline-gold");
+            document.getElementsByClassName("ui-hpArea-playerhp")[msg].style.borderColor = "grey";
+            document.getElementsByClassName("ui-hpArea-playerText")[msg].style.color = "grey";
+            this.GameObject.scene.getScene("gameScene").gameOverHandler(msg);
         });
 
         this.Socket.on("sync-playerFieldStatus", (msg) => {
