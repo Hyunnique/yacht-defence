@@ -1,7 +1,5 @@
 import Phaser from "phaser";
 import Game from "../Game";
-import batDeath from "../assets/sounds/death.mp3";
-import bulletShoot from "../assets/sounds/shoot.mp3";
 
 import map_forest from '../assets/map/map_forest.json';
 import outside_ground from '../assets/map/tileset/outside/outside_ground.png';
@@ -165,8 +163,6 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.audio("bossPrepareMusic", require("../assets/sounds/bossPrepare.mp3"));
         this.load.audio("bossFight", require("../assets/sounds/bossFight.mp3"));
         this.load.audio("normal", require("../assets/sounds/normal.mp3"));
-        this.load.audio("death", batDeath);
-        this.load.audio("shoot", bulletShoot);
         this.load.audio("rollDice", require("../assets/sounds/roll_dice.wav"));
         this.load.audio("tier1", require("../assets/sounds/tier1.wav"));
         this.load.audio("tier2", require("../assets/sounds/tier2.wav"));
@@ -206,6 +202,8 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.image("possible", possible);
         this.load.tilemapTiledJSON("map_forest", map_forest);
 
+        // 기타 로딩
+        this.load.image("arrow", require("../assets/images/arrow.png"));
         this.load.image("healthBar", healthBar);
         
         // 게임 내 데이터 로드

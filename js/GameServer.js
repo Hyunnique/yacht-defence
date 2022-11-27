@@ -13,7 +13,7 @@ module.exports = {
 
     init(socket) {
         this.Socket = socket;
-        this.createRoom(this.latestRoomId, (process.env.PLAYERS ? process.env.PLAYERS : 2));
+        this.createRoom(this.latestRoomId, (process.env.PLAYERS ? process.env.PLAYERS : 4));
         this.connectionHandler();
 
         /*
@@ -374,11 +374,11 @@ module.exports = {
     },
 
     onPlacePhaseBegin(roomId) {
+        this.generateWaveInfo(roomId);
+
         this.emitAll(roomId, 'placePhase-begin', {
             timeLimit: 20,
         });
-
-        this.generateWaveInfo(roomId);
         
         this.createTimer(roomId, "placePhaseEnd", 20000, () => {
             this.emitAll(roomId, 'placePhase-end', true);

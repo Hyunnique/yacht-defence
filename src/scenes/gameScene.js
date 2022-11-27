@@ -193,8 +193,30 @@ export default class gameScene extends Phaser.Scene {
         this.normalMusic = this.sound.add("normal");
 
         this.normalMusic.play(Game.bgmSoundConfig);
-        
 
+        this.sound.add("attackBigFire");
+        this.sound.add("attackFire");
+        this.sound.add("attackBow");
+        this.sound.add("attackIce");
+        this.sound.add("attackKnife");
+        this.sound.add("attackLightning");
+        this.sound.add("attackLongWeapon");
+        this.sound.add("attackMagic1");
+        this.sound.add("attackMagic2");
+        this.sound.add("attackSword");
+        this.sound.add("attackThrow");
+        this.sound.add("hitBoom1");
+        this.sound.add("hitBoom2");
+        this.sound.add("hitBoom3");
+        this.sound.add("hitBow");
+        this.sound.add("hitNormal");
+        this.sound.add("hitFire");
+        this.sound.add("rollDice");
+        this.sound.add("tier1");
+        this.sound.add("tier2");
+        this.sound.add("tier3");
+        this.sound.add("tier4");
+        
 
         //몹/유저유닛/투사체 관련
         this.m_mobs = this.physics.add.group();
@@ -333,6 +355,7 @@ export default class gameScene extends Phaser.Scene {
         this.onPlaceQueue = new Unit(this, this.input.activePointer.x, this.input.activePointer.y, unitData, this.unitIndex++, unitID, 0);
         this.onPlaceQueue.rangeView.alpha = 0.4;
         this.onPlaceQueue.buffRangeView.alpha = 0.6;
+        this.m_player.push(this.onPlaceQueue);
         this.moveUnit();
     }
 
@@ -348,7 +371,6 @@ export default class gameScene extends Phaser.Scene {
             this.preTile.placedUnit = undefined;
             this.onPlaceQueue.rangeView.alpha = 0.4;
             this.onPlaceQueue.buffRangeView.alpha = 0.6;
-            this.m_player.splice(this.m_player.findIndex(e => { e.index == this.onPlaceQueue.index }), 1);
         }
         else {
             this.preTile = undefined;
@@ -388,7 +410,6 @@ export default class gameScene extends Phaser.Scene {
 
     unitPlacer(t) {
         this.onPlaceQueue.alpha = 1;
-        this.m_player.push(this.onPlaceQueue);
         t.index = "2898";
         this.onPlaceQueue.rangeView.alpha = 0;
         this.onPlaceQueue.buffRangeView.alpha = 0;
@@ -496,7 +517,7 @@ export default class gameScene extends Phaser.Scene {
                         this.spectate_player_mobs[1].add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum1, element["mobRoute"], element["hpFactor"], 1));
                         this.globalnum1++;
                     },
-                    repeat: element["mobCount"] - 1,
+                    repeat: element["mobCount"] - 1,    
                     startAt: index * 100
                 });
                 if (Game.PlayerData.length > 2 && this.alive[2]) {
@@ -563,10 +584,13 @@ export default class gameScene extends Phaser.Scene {
         if (this.roundNum % 5 == 0) {
             this.plugins.get('rexSoundFade').fadeOut(this.normalMusic, 2500, false);
             this.plugins.get('rexSoundFade').fadeIn(this.bossPrepareMusic, 2500, Game.bgmSoundConfig.volume, 0);
+            this.time.delayedCall(2500, this.normalMusic.pause, [], this);
         }
-        else if (this.normalMusic.config.volume == 0) {
+        else if (this.normalMusic.isPaused) {
             this.plugins.get('rexSoundFade').fadeOut(this.bossFightMusic, 2500, false);
+            this.normalMusic.resume();
             this.plugins.get('rexSoundFade').fadeIn(this.normalMusic, 2500, Game.bgmSoundConfig.volume, 0);
+            this.time.delayedCall(2500, this.bossFightMusic.stop, [], this);
         }
         this.PhaseText = "Dice Phase";        
         this.globalnum = 1;
@@ -593,6 +617,7 @@ export default class gameScene extends Phaser.Scene {
         if (this.roundNum % 5 == 0) {
             this.plugins.get('rexSoundFade').fadeOut(this.bossPrepareMusic, 2500, false);
             this.plugins.get('rexSoundFade').fadeIn(this.bossFightMusic, 2500, Game.bgmSoundConfig.volume, 0);
+            this.time.delayedCall(2500, this.bossPrepareMusic.stop, [], this);
         }
         this.startRound();
         //this.phaseTimer = this.time.delayedCall(6000, this.toDicePhase, [], this);
