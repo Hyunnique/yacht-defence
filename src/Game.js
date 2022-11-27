@@ -472,7 +472,7 @@ var Game = {
                             document.getElementsByClassName("ui-unitReward-unitSpec-range")[i].innerText = "RANGE : LONG";
                             break;
                     }
-                    document.getElementsByClassName("ui-unitReward-unitSkill")[i].innerText = "";
+                    document.getElementsByClassName("ui-unitReward-unitSkill")[i].innerText = unitSpecSheets["unit" + unitArray[i]].skill;
                     document.getElementsByClassName("ui-unitReward-unit")[i].attributes.idx.value = unitArray[i];
                     document.getElementsByClassName("ui-unitReward-unit")[i].attributes.tier.value = currentTier;
                 }
@@ -483,10 +483,10 @@ var Game = {
             for (let j = 0; j < msg.length; j++) {
                 document.getElementsByClassName("ui-hpArea-player")[j].classList.remove("text-outline-gold");
             }
-            document.getElementsByClassName("ui-hpArea-player")[i].classList.add("text-outline-gold");
+            document.getElementsByClassName("ui-hpArea-player")[0].classList.add("text-outline-gold");
             this.GameObject.scene.getScene("gameScene").cameras.main.scrollX = 0;
             this.GameObject.scene.getScene("gameScene").cameras.main.scrollY = 0;
-            this.GameObject.scene.getScene("gameScene").cameras.main.setBounds(0, 0, mapWidth, mapHeight);
+            this.GameObject.scene.getScene("gameScene").cameras.main.setBounds(0, 0, 2400, 1440);
             
             this.GameObject.scene.getScene("gameScene").currentView = 0;
             this.GameObject.scene.getScene("gameScene").events.emit("spectateChange");
