@@ -486,7 +486,7 @@ var Game = {
             document.getElementsByClassName("ui-hpArea-player")[0].classList.add("text-outline-gold");
             this.GameObject.scene.getScene("gameScene").cameras.main.scrollX = 0;
             this.GameObject.scene.getScene("gameScene").cameras.main.scrollY = 0;
-            this.GameObject.scene.getScene("gameScene").cameras.main.setBounds(0, 0, mapWidth, mapHeight);
+            this.GameObject.scene.getScene("gameScene").cameras.main.setBounds(0, 0, 2400, 1440);
             
             this.GameObject.scene.getScene("gameScene").currentView = 0;
             this.GameObject.scene.getScene("gameScene").events.emit("spectateChange");
