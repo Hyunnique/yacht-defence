@@ -36,13 +36,13 @@ var Game = {
     
     bgmSoundConfig: {
         mute: false,
-        volume: 0.3,
+        volume: 0.25,
         loop: true
     },
 
     effectSoundConfig: {
         mute: false,
-        volume: 0.3
+        volume: 0.25
     },
 
     shopBuff: {
@@ -58,9 +58,99 @@ var Game = {
         this.resizeHandler(null);
         window.onresize = this.resizeHandler;
         this.GameObject = new Phaser.Game(this.GameConfig);
+
         this.showUI("mainScene-default");
+        this.showUI("gameScene-topRightFloating");
 
         this.Socket = io.connect("http://" + (process.env.HOST ? process.env.HOST : "localhost") + ":8080");
+        
+        document.getElementsByClassName("ui-gameScene-settingsHolder")[0].addEventListener("mousedown", (e) => {
+            if (document.getElementsByClassName("ui-gameScene-settingsWrapper")[0].style.display == "none") {
+                document.getElementsByClassName("ui-gameScene-settingsWrapper")[0].style.display = "flex";
+                document.getElementsByClassName("ui-gameScene-topRightFloating")[0].style.width = "24rem";
+                document.getElementsByClassName("ui-gameScene-settingsHolder")[0].innerText = "▶";
+            } else {
+                document.getElementsByClassName("ui-gameScene-settingsWrapper")[0].style.display = "none";
+                document.getElementsByClassName("ui-gameScene-topRightFloating")[0].style.width = "3.5rem";
+                document.getElementsByClassName("ui-gameScene-settingsHolder")[0].innerText = "◀";
+            }
+        });
+
+        document.getElementsByClassName("ui-volume-mute")[0].onclick = (e) => {
+            if (this.bgmSoundConfig.volume != 0) {
+                if (this.bgmSoundConfig.mute) {
+                    this.bgmSoundConfig.mute = false;
+                    document.getElementsByClassName("ui-volume-slider")[0].value = this.bgmSoundConfig.volume * 100;
+                    this.GameObject.scene.getScene("gameScene").normalMusic.setMute(false);
+                    this.GameObject.scene.getScene("gameScene").bossPrepareMusic.setMute(false);
+                    this.GameObject.scene.getScene("gameScene").bossFightMusic.setMute(false);
+
+                    document.getElementsByClassName("ui-volume-mute")[0].style.backgroundImage = "url(" + notMuteURL + ")";
+                }
+                else {
+                    this.bgmSoundConfig.mute = true;
+                    document.getElementsByClassName("ui-volume-slider")[0].value = 0;
+                    this.GameObject.scene.getScene("gameScene").normalMusic.setMute(true);
+                    this.GameObject.scene.getScene("gameScene").bossPrepareMusic.setMute(true);
+                    this.GameObject.scene.getScene("gameScene").bossFightMusic.setMute(true);
+
+                    document.getElementsByClassName("ui-volume-mute")[0].style.backgroundImage = "url(" + muteURL + ")";
+                }
+            }
+        }
+
+        
+        document.getElementsByClassName("ui-volume-mute")[1].onclick = (e) => {
+            if (this.effectSoundConfig.volume != 0) {
+                if (this.effectSoundConfig.mute) {
+                    this.effectSoundConfig.mute = false;
+                    document.getElementsByClassName("ui-volume-slider")[1].value = this.effectSoundConfig.volume * 100;
+                    document.getElementsByClassName("ui-volume-mute")[1].style.backgroundImage = "url(" + notMuteURL + ")";
+                }
+                else {
+                    this.effectSoundConfig.mute = true;
+                    document.getElementsByClassName("ui-volume-slider")[1].value = 0;
+                    document.getElementsByClassName("ui-volume-mute")[1].style.backgroundImage = "url(" + muteURL + ")";
+                }
+            }
+        }
+
+        document.getElementsByClassName("ui-volume-slider")[0].onchange = (e) => {
+            this.bgmSoundConfig.volume = document.getElementsByClassName("ui-volume-slider")[0].value / 100;
+
+            if (this.bgmSoundConfig.volume != 0) {
+                document.getElementsByClassName("ui-volume-mute")[0].style.backgroundImage = "url(" + notMuteURL + ")";
+                this.bgmSoundConfig.mute = false;
+
+                this.GameObject.scene.getScene("gameScene").normalMusic.setMute(false);
+                this.GameObject.scene.getScene("gameScene").bossPrepareMusic.setMute(false);
+                this.GameObject.scene.getScene("gameScene").bossFightMusic.setMute(false);
+                this.GameObject.scene.getScene("gameScene").normalMusic.setVolume(this.bgmSoundConfig.volume);
+                this.GameObject.scene.getScene("gameScene").bossPrepareMusic.setVolume(this.bgmSoundConfig.volume);
+                this.GameObject.scene.getScene("gameScene").bossFightMusic.setVolume(this.bgmSoundConfig.volume);
+            }
+            else {
+                document.getElementsByClassName("ui-volume-mute")[0].style.backgroundImage = "url(" + muteURL + ")";
+                this.bgmSoundConfig.mute = true;
+
+                this.GameObject.scene.getScene("gameScene").normalMusic.setMute(true);
+                this.GameObject.scene.getScene("gameScene").bossPrepareMusic.setMute(true);
+                this.GameObject.scene.getScene("gameScene").bossFightMusic.setMute(true);
+            }
+        }
+
+        document.getElementsByClassName("ui-volume-slider")[1].onchange = (e) => {
+            this.effectSoundConfig.volume = document.getElementsByClassName("ui-volume-slider")[1].value / 100;
+
+            if (this.effectSoundConfig.volume != 0) {
+                document.getElementsByClassName("ui-volume-mute")[1].style.backgroundImage = "url(" + notMuteURL + ")";
+                this.effectSoundConfig.mute = false;
+            }
+            else {
+                document.getElementsByClassName("ui-volume-mute")[1].style.backgroundImage = "url(" + muteURL + ")";
+                this.effectSoundConfig.mute = true;
+            }
+        }
         
         document.getElementsByClassName("ui-rankings-close")[0].onclick = (e) => {
             this.hideUI("rankings");
@@ -384,109 +474,115 @@ var Game = {
             this.hideUI("diceScene-default");
             this.showUI("diceScene-result");
 
-            setTimeout(() => {
-                this.hideUI("diceScene-result");
-                this.showUI("common-unitReward");
+            
+            if (!this.PlayerData[0].dead) {
+                setTimeout(() => {
+                    this.hideUI("diceScene-result");
+                    this.showUI("common-unitReward");
 
-                let currentTier = this.GameObject.scene.getScene("diceScene").currentTier;
-                let tier = {
-                    "tier1": [2, 22, 24, 26, 27, 35],
-                    "tier2": [33, 34, 38, 41, 43, 45, 50, 51, 52, 53, 55, 56],
-                    "tier3": [3, 9, 10, 11, 12, 13, 19, 23, 25, 31, 32, 40, 42, 46, 47, 57, 59, 60, 62, 63],
-                    "tier4": [0, 1, 4, 5, 6, 7, 8, 14, 15, 16, 17, 18, 20, 21, 28, 29, 30, 36, 37, 39, 44, 48, 49, 54, 58, 61]
-                }
-                let unitCount = tier["tier" + currentTier].length;
-                let unitArray = []; //9
-
-                for (let i = 0; i < 3; i++) {
-                    switch (currentTier) {
-                        case 1:
-                            document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.color = "#ff1b1b";
-                            break;
-                        case 2:
-                            document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.color = "#ffd700";
-                            break;
-                        case 3:
-                            document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.color = "#d5d5d5";
-                            break;
-                        default:
-                            document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.color = "#954c4c";
-                            break;
+                    let currentTier = this.GameObject.scene.getScene("diceScene").currentTier;
+                    let tier = {
+                        "tier1": [2, 22, 24, 26, 27, 35],
+                        "tier2": [33, 34, 38, 41, 43, 45, 50, 51, 52, 53, 55, 56],
+                        "tier3": [3, 9, 10, 11, 12, 13, 19, 23, 25, 31, 32, 40, 42, 46, 47, 57, 59, 60, 62, 63],
+                        "tier4": [0, 1, 4, 5, 6, 7, 8, 14, 15, 16, 17, 18, 20, 21, 28, 29, 30, 36, 37, 39, 44, 48, 49, 54, 58, 61]
                     }
-                }
-                for (let i = 0; i < 3; i++) {
-                    while (true) {
-                        let _r = Math.floor(Math.random() * unitCount);
-                        let unitNo = tier["tier" + currentTier][_r];
-                        if (!unitArray.includes(unitNo)) {
-                            unitArray.push(unitNo);
-                            break;
+                    let unitCount = tier["tier" + currentTier].length;
+                    let unitArray = []; //9
+
+                    for (let i = 0; i < 3; i++) {
+                        switch (currentTier) {
+                            case 1:
+                                document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.color = "#ff1b1b";
+                                break;
+                            case 2:
+                                document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.color = "#ffd700";
+                                break;
+                            case 3:
+                                document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.color = "#d5d5d5";
+                                break;
+                            default:
+                                document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.color = "#954c4c";
+                                break;
                         }
                     }
-                }
-
-                for (let i = 0; i < 3; i++) {
-                    let unitType = ""
-                    switch (unitSpecSheets["unit" + unitArray[i]].unitType) {
-                        case 0:
-                            unitType = "근거리";
-                            break;
-                        case 1:
-                            unitType = "추적형";
-                            break;
-                        case 2:
-                            unitType = "관통형";
-                            break;
-                        case 3:
-                            unitType = "폭발형";
-                            break;
-                        case 4:
-                            unitType = "지원형";
-                            break;
+                    for (let i = 0; i < 3; i++) {
+                        while (true) {
+                            let _r = Math.floor(Math.random() * unitCount);
+                            let unitNo = tier["tier" + currentTier][_r];
+                            if (!unitArray.includes(unitNo)) {
+                                unitArray.push(unitNo);
+                                break;
+                            }
+                        }
                     }
 
-                    document.getElementsByClassName("ui-unitReward-unitDisplayImage")[i].style.backgroundImage = "url('" + unitGIF["unit_" + unitArray[i] + ".gif"] + "')";
-                    document.getElementsByClassName("ui-unitReward-unitTitle")[i].innerText = unitSpecSheets["unit" + unitArray[i]].name;
-                    if (unitSpecSheets["unit" + unitArray[i]].name.length >= 13) 
-                        document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.fontSize = (1.2 - 0.1*(unitSpecSheets["unit" + unitArray[i]].name.length - 12)) + "rem" 
-                    document.getElementsByClassName("ui-unitReward-unitType")[i].innerText = unitType;
-                    document.getElementsByClassName("ui-unitReward-unitSpec-atk")[i].innerText = "ATK : " + unitSpecSheets["unit" + unitArray[i]].attack;
+                    for (let i = 0; i < 3; i++) {
+                        let unitType = ""
+                        switch (unitSpecSheets["unit" + unitArray[i]].unitType) {
+                            case 0:
+                                unitType = "근거리";
+                                break;
+                            case 1:
+                                unitType = "추적형";
+                                break;
+                            case 2:
+                                unitType = "관통형";
+                                break;
+                            case 3:
+                                unitType = "폭발형";
+                                break;
+                            case 4:
+                                unitType = "지원형";
+                                break;
+                        }
 
-                    if (unitSpecSheets["unit" + unitArray[i]].aspd < 0.6) {
-                        document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : VERY SLOW";
-                    }
-                    else if (unitSpecSheets["unit" + unitArray[i]].aspd < 0.8) {
-                        document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : SLOW";
-                    }
-                    else if (unitSpecSheets["unit" + unitArray[i]].aspd < 1.3) {
-                        document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : NORMAL"
-                    }
-                    else if (unitSpecSheets["unit" + unitArray[i]].aspd < 1.6) {
-                        document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : FAST"
-                    }
-                    else {
-                        document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : VERY FAST"
-                    }
+                        document.getElementsByClassName("ui-unitReward-unitDisplayImage")[i].style.backgroundImage = "url('" + unitGIF["unit_" + unitArray[i] + ".gif"] + "')";
+                        document.getElementsByClassName("ui-unitReward-unitTitle")[i].innerText = unitSpecSheets["unit" + unitArray[i]].name;
+                        if (unitSpecSheets["unit" + unitArray[i]].name.length >= 13) 
+                            document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.fontSize = (1.2 - 0.1*(unitSpecSheets["unit" + unitArray[i]].name.length - 12)) + "rem" 
+                        document.getElementsByClassName("ui-unitReward-unitType")[i].innerText = unitType;
+                        document.getElementsByClassName("ui-unitReward-unitSpec-atk")[i].innerText = "ATK : " + unitSpecSheets["unit" + unitArray[i]].attack;
 
-                    switch (unitSpecSheets["unit" + unitArray[i]].rangeType) {
-                        case 0:
-                            document.getElementsByClassName("ui-unitReward-unitSpec-range")[i].innerText = "RANGE : VERY SHORT";
-                            break;
-                        case 1:
-                            document.getElementsByClassName("ui-unitReward-unitSpec-range")[i].innerText = "RANGE : SHORT";
-                            break;
-                        case 2:
-                            document.getElementsByClassName("ui-unitReward-unitSpec-range")[i].innerText = "RANGE : MEDIUM";
-                            break;
-                        case 3:
-                            document.getElementsByClassName("ui-unitReward-unitSpec-range")[i].innerText = "RANGE : LONG";
-                            break;
+                        if (unitSpecSheets["unit" + unitArray[i]].aspd < 0.6) {
+                            document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : VERY SLOW";
+                        }
+                        else if (unitSpecSheets["unit" + unitArray[i]].aspd < 0.8) {
+                            document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : SLOW";
+                        }
+                        else if (unitSpecSheets["unit" + unitArray[i]].aspd < 1.3) {
+                            document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : NORMAL"
+                        }
+                        else if (unitSpecSheets["unit" + unitArray[i]].aspd < 1.6) {
+                            document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : FAST"
+                        }
+                        else {
+                            document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : VERY FAST"
+                        }
+
+                        switch (unitSpecSheets["unit" + unitArray[i]].rangeType) {
+                            case 0:
+                                document.getElementsByClassName("ui-unitReward-unitSpec-range")[i].innerText = "RANGE : VERY SHORT";
+                                break;
+                            case 1:
+                                document.getElementsByClassName("ui-unitReward-unitSpec-range")[i].innerText = "RANGE : SHORT";
+                                break;
+                            case 2:
+                                document.getElementsByClassName("ui-unitReward-unitSpec-range")[i].innerText = "RANGE : MEDIUM";
+                                break;
+                            case 3:
+                                document.getElementsByClassName("ui-unitReward-unitSpec-range")[i].innerText = "RANGE : LONG";
+                                break;
+                        }
+                        document.getElementsByClassName("ui-unitReward-unitSkill")[i].innerText = unitSpecSheets["unit" + unitArray[i]].skill;
+                        document.getElementsByClassName("ui-unitReward-unit")[i].attributes.idx.value = unitArray[i];
+                        document.getElementsByClassName("ui-unitReward-unit")[i].attributes.tier.value = currentTier;
                     }
-                    document.getElementsByClassName("ui-unitReward-unitSkill")[i].innerText = unitSpecSheets["unit" + unitArray[i]].skill;
-                    document.getElementsByClassName("ui-unitReward-unit")[i].attributes.idx.value = unitArray[i];
-                    document.getElementsByClassName("ui-unitReward-unit")[i].attributes.tier.value = currentTier;
-                }
-            }, 5000);
+                }, 5000);
+            }
+            else {
+                this.hideUI("diceScene-result");
+            }
         });
 
         this.Socket.on('placePhase-begin', (msg) => {
@@ -541,13 +637,13 @@ var Game = {
                     currRoundRoutes[element["mobRoute"]] = 1;
             });
             this.GameObject.scene.getScene("gameScene").time.addEvent({
-                    delay: 300,
+                    delay: 500,
                     callback: () => {
                         Object.keys(currRoundRoutes).forEach((key) => {
                             new Arrow(this.GameObject.scene.getScene("gameScene"), key);
                         });
                     },
-                    repeat: 15,
+                    repeat: 30,
                     startAt: 300
                 });
         });
@@ -707,92 +803,6 @@ var Game = {
                         if (document.activeElement === document.getElementsByClassName("ui-chatInput")[0]) {
                             document.getElementsByClassName("ui-chatInput")[0].value += " ";
                         }
-                    }
-                }
-
-                let volumeUI = document.getElementsByClassName("ui-gameScene-topRightFloating-wrapper")[0];
-                volumeUI.addEventListener("mousedown", (e) => {
-                    if (e.button === 0) {
-                        volumeUI.style.transform = "translateX(0%)"
-                    }
-                    else if (e.button === 2) {
-                        volumeUI.style.transform = "translateX(85%)"
-                    }
-                });
-
-                document.getElementsByClassName("ui-mute")[0].onclick = (e) => {
-                    if (this.bgmSoundConfig.volume != 0) {
-                        if (this.bgmSoundConfig.mute) {
-                            this.bgmSoundConfig.mute = false;
-                            document.getElementsByClassName("ui-volume-volumeSlider")[0].value = this.bgmSoundConfig.volume * 100;
-                            this.GameObject.scene.getScene("gameScene").normalMusic.setMute(false);
-                            this.GameObject.scene.getScene("gameScene").bossPrepareMusic.setMute(false);
-                            this.GameObject.scene.getScene("gameScene").bossFightMusic.setMute(false);
-
-                            document.getElementsByClassName("ui-mute")[0].style.backgroundImage = "url(" + notMuteURL + ")";
-                        }
-                        else {
-                            this.bgmSoundConfig.mute = true;
-                            document.getElementsByClassName("ui-volume-volumeSlider")[0].value = 0;
-                            this.GameObject.scene.getScene("gameScene").normalMusic.setMute(true);
-                            this.GameObject.scene.getScene("gameScene").bossPrepareMusic.setMute(true);
-                            this.GameObject.scene.getScene("gameScene").bossFightMusic.setMute(true);
-
-                            document.getElementsByClassName("ui-mute")[0].style.backgroundImage = "url(" + muteURL + ")";
-                        }
-                    }
-                }
-
-                
-                document.getElementsByClassName("ui-mute")[1].onclick = (e) => {
-                    if (this.effectSoundConfig.volume != 0) {
-                        if (this.effectSoundConfig.mute) {
-                            this.effectSoundConfig.mute = false;
-                            document.getElementsByClassName("ui-volume-volumeSlider")[1].value = this.effectSoundConfig.volume * 100;
-                            document.getElementsByClassName("ui-mute")[1].style.backgroundImage = "url(" + notMuteURL + ")";
-                        }
-                        else {
-                            this.effectSoundConfig.mute = true;
-                            document.getElementsByClassName("ui-volume-volumeSlider")[1].value = 0;
-                            document.getElementsByClassName("ui-mute")[1].style.backgroundImage = "url(" + muteURL + ")";
-                        }
-                    }
-                }
-
-                document.getElementsByClassName("ui-volume-volumeSlider")[0].onchange = (e) => {
-                    this.bgmSoundConfig.volume = document.getElementsByClassName("ui-volume-volumeSlider")[0].value / 100;
-
-                    if (this.bgmSoundConfig.volume != 0) {
-                        document.getElementsByClassName("ui-mute")[0].style.backgroundImage = "url(" + notMuteURL + ")";
-                        this.bgmSoundConfig.mute = false;
-
-                        this.GameObject.scene.getScene("gameScene").normalMusic.setMute(false);
-                        this.GameObject.scene.getScene("gameScene").bossPrepareMusic.setMute(false);
-                        this.GameObject.scene.getScene("gameScene").bossFightMusic.setMute(false);
-                        this.GameObject.scene.getScene("gameScene").normalMusic.setVolume(this.bgmSoundConfig.volume);
-                        this.GameObject.scene.getScene("gameScene").bossPrepareMusic.setVolume(this.bgmSoundConfig.volume);
-                        this.GameObject.scene.getScene("gameScene").bossFightMusic.setVolume(this.bgmSoundConfig.volume);
-                    }
-                    else {
-                        document.getElementsByClassName("ui-mute")[0].style.backgroundImage = "url(" + muteURL + ")";
-                        this.bgmSoundConfig.mute = true;
-
-                        this.GameObject.scene.getScene("gameScene").normalMusic.setMute(true);
-                        this.GameObject.scene.getScene("gameScene").bossPrepareMusic.setMute(true);
-                        this.GameObject.scene.getScene("gameScene").bossFightMusic.setMute(true);
-                    }
-                }
-
-                document.getElementsByClassName("ui-volume-volumeSlider")[1].onchange = (e) => {
-                    this.effectSoundConfig.volume = document.getElementsByClassName("ui-volume-volumeSlider")[1].value / 100;
-
-                    if (this.effectSoundConfig.volume != 0) {
-                        document.getElementsByClassName("ui-mute")[1].style.backgroundImage = "url(" + notMuteURL + ")";
-                        this.effectSoundConfig.mute = false;
-                    }
-                    else {
-                        document.getElementsByClassName("ui-mute")[1].style.backgroundImage = "url(" + muteURL + ")";
-                        this.effectSoundConfig.mute = true;
                     }
                 }
                 break;
