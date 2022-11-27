@@ -125,7 +125,9 @@ module.exports = {
                 this.Rooms[currentRoomId].players.push({ // Initialize Player Object
                     name: name,
                     socket: socket,
+                    disconnected: false,
                     flags: {},
+                    timers: {},
                     hp: 100,
                     maxhp: 100,
                     dead: false,
@@ -189,6 +191,9 @@ module.exports = {
 
                 this.Rooms[this.getRoomId(clientID)].players[this.getRoomIndex(clientID)].socket = socket;
 
+                clearTimeout(this.Rooms[this.getRoomId(clientID)].players[this.getRoomIndex(clientID)].timers["reconnectWait"]);
+                this.Rooms[this.getRoomId(clientID)].players[this.getRoomIndex(clientID)].timers["reconnectWait"] = null;
+                
                 this.attachEventListeners(socket, this.getRoomId(clientID));
             });
 
@@ -201,8 +206,21 @@ module.exports = {
                     // 큐에서 쫒아내고 삭제
 
                     this.Rooms[this.getRoomId(socket.id)].players.splice(this.getRoomIndex(socket.id), 1);
+                    delete this.socketMap[socket.id];
 
                     this.emitAll(this.getRoomId(socket.id), 'matchmaking-wait', this.Rooms[this.getRoomId(socket.id)].players.length + " / " + this.Rooms[this.getRoomId(socket.id)].maxPlayers);
+                } else {
+                    // 매칭이 된 상태면
+                    // 10초간 기다려보고, reconnect 되지 않으면 disconnected 처리
+
+                    if (!this.Rooms[this.getRoomId(socket.id)].players[this.getRoomIndex(socket.id)].timers["reconnectWait"]) {
+                        this.Rooms[this.getRoomId(socket.id)].players[this.getRoomIndex(socket.id)].timers["reconnectWait"] = setTimeout(() => {
+                            this.Rooms[this.getRoomId(socket.id)].players[this.getRoomIndex(socket.id)].disconnected = true;
+                            this.Rooms[this.getRoomId(socket.id)].players[this.getRoomIndex(socket.id)].dead = true;
+                            //delete this.socketMap[socket.id];
+                            this.Rooms[this.getRoomId(socket.id)].players[this.getRoomIndex(socket.id)].timers["reconnectWait"] = null;
+                        }, 10000);
+                    }
                 }
             });
         });
@@ -231,7 +249,8 @@ module.exports = {
                 "items": x.items,
                 "units": x.units,
                 "shopBuffs": x.shopBuffs,
-                "tierBuffs": x.tierBuffs
+                "tierBuffs": x.tierBuffs,
+                "unitTierCount": x.unitTierCount
             }
         }));
     },
@@ -274,36 +293,29 @@ module.exports = {
         socket.on('dicePhase-handConfirm', (msg) => {
             this.Rooms[roomId].players[this.getRoomIndex(socket.id)].flags.handConfirm++;
 
-            if (this.Rooms[roomId].players.filter(x => x.flags.handConfirm).length >= this.Rooms[roomId].players.length) {
+            if (this.Rooms[roomId].players.filter(x => x.flags.handConfirm && !x.disconnected).length >= this.Rooms[roomId].players.filter(x => !x.disconnected).length) {
                 clearTimeout(this.Rooms[roomId].timer["dicePhaseEnd"]);
                 delete this.Rooms[roomId].timer["dicePhaseEnd"];
                 this.onDiceTimeEnd(roomId);
             }
             else {
-                this.emitAll(roomId, 'dicePhase-confirmWait', this.Rooms[roomId].players.filter(x => x.flags.handConfirm).length + " / " + this.Rooms[roomId].players.length);
+                this.emitAll(roomId, 'dicePhase-confirmWait', this.Rooms[roomId].players.filter(x => x.flags.handConfirm && !x.disconnected).length + " / " + this.Rooms[roomId].players.filter(x => !x.disconnected).length);
             }
         });
     },
 
     onDiceTimeEnd(roomId) {
         this.emitAll(roomId, 'dicePhase-forceConfirm', true);
-    },
 
-    onDiceResult(socket, roomId) {
-        socket.on('dicePhase-handInfo', (msg) => {
-            this.Rooms[roomId].players[this.getRoomIndex(socket.id)].currentHand = msg.hand;
-            this.Rooms[roomId].players[this.getRoomIndex(socket.id)].currentChoice = msg.choice;
-            this.Rooms[roomId].players[this.getRoomIndex(socket.id)].currentHandTier = msg.handTier;
-
-            this.Rooms[roomId].players[this.getRoomIndex(socket.id)].flags.handReceived = true;
-
-            if (this.Rooms[roomId].players.filter(x => x.flags.handReceived).length >= this.Rooms[roomId].players.length) {
+        this.Rooms[roomId].timer["phaseWaitTimer"] = setInterval(() => {
+            if (this.Rooms[roomId].players.filter(x => x.flags.handReceived && !x.disconnected).length >= this.Rooms[roomId].players.filter(x => !x.disconnected).length) {
 
                 // Choice 결과 계산
 
                 let resultArray = [];
 
                 for (let i = 0; i < this.Rooms[roomId].players.length; i++) {
+                    if (this.Rooms[roomId].players[i].disconnected) continue;
                     resultArray.push({ idx: i, name: this.Rooms[roomId].players[i].name, hand: this.Rooms[roomId].players[i].currentHand, choice: this.Rooms[roomId].players[i].currentChoice, handTier: this.Rooms[roomId].players[i].currentHandTier, choiceDiff: this.Rooms[roomId].players[i].currentChoice - this.Rooms[roomId].roundInfo.choice });
                 }
 
@@ -337,10 +349,22 @@ module.exports = {
                 this.syncPlayerInfo(roomId);
 
                 this.emitAll(roomId, 'dicePhase-result', resultArray);
+
+                clearInterval(this.Rooms[roomId].timer["phaseWaitTimer"]);
                 this.createTimer(roomId, "dicePhaseResultWait", 5000, () => {
                     this.onPlacePhaseBegin(roomId);
                 });
             }
+        }, 1000);
+    },
+
+    onDiceResult(socket, roomId) {
+        socket.on('dicePhase-handInfo', (msg) => {
+            this.Rooms[roomId].players[this.getRoomIndex(socket.id)].currentHand = msg.hand;
+            this.Rooms[roomId].players[this.getRoomIndex(socket.id)].handCount[msg.hand]++;
+            this.Rooms[roomId].players[this.getRoomIndex(socket.id)].currentChoice = msg.choice;
+            this.Rooms[roomId].players[this.getRoomIndex(socket.id)].currentHandTier = msg.handTier;
+            this.Rooms[roomId].players[this.getRoomIndex(socket.id)].flags.handReceived = true;
         });
     },
 
@@ -365,17 +389,21 @@ module.exports = {
         this.emitAll(roomId, 'battlePhase-begin', {
             timeLimit: 0,
         });
+
+        this.Rooms[roomId].timer["phaseWaitTimer"] = setInterval(() => {
+            if (this.Rooms[roomId].players.filter(x => x.flags.battlePhaseDone && !x.disconnected).length >= this.Rooms[roomId].players.filter(x => !x.disconnected).length) {
+                this.emitAll(roomId, 'battlePhase-end', true);
+                this.Rooms[roomId].roundInfo.num++;
+
+                clearInterval(this.Rooms[roomId].timer["phaseWaitTimer"]);
+                this.roundBegin(roomId);
+            }
+        }, 1000);
     },
 
     onBattlePhaseDone(socket, roomId) {
         socket.on('battlePhase-done', (msg) => {
             this.Rooms[roomId].players[this.getRoomIndex(socket.id)].flags.battlePhaseDone = true;
-
-            if (this.Rooms[roomId].players.filter(x => x.flags.battlePhaseDone).length >= this.Rooms[roomId].players.length) {
-                this.emitAll(roomId, 'battlePhase-end', true);
-                this.Rooms[roomId].roundInfo.num++;
-                this.roundBegin(roomId);
-            }
         });
     },
 
@@ -475,7 +503,7 @@ module.exports = {
     onPlayerDeath(socket, roomId) {
         let s_player = this.Rooms[roomId].players[this.getRoomIndex(socket.id)];
         s_player.dead = true;
-        
+        s_player.hp = 0;
 
         for (let i = 0; i < this.Rooms[roomId].players.length; i++) {
             this.Rooms[roomId].players[i].socket.emit('player-death', this.zerofyNumber(socket.id, i));

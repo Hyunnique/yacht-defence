@@ -218,8 +218,8 @@ var Game = {
                             let tierCnt = this.GameObject.scene.getScene("gameScene").tierCnt;
                             let tierBonus = this.GameObject.scene.getScene("gameScene").tierBonus;
                             for (let j = 0; j < 4; j++) {
-                                document.getElementsByClassName("ui-unitArea-unitTierCount")[i].innerHTML = "";
-                                document.getElementsByClassName("ui-unitArea-unitTierCount")[i].innerHTML += tierCnt[i] + " <span class='ui-unitArea-unitTierBonus'>(+" + tierBonus[i] + "%)</span>";
+                                document.getElementsByClassName("ui-unitArea-unitTierCount")[j].innerHTML = "";
+                                document.getElementsByClassName("ui-unitArea-unitTierCount")[j].innerHTML += tierCnt[j] + " <span class='ui-unitArea-unitTierBonus'>(+" + tierBonus[j] + "%)</span>";
                             } // 유닛계수, 유닛버프 내 수치로 변경
                             
                             this.updateItemUI(this.PlayerData[0]);  // 아이템 목록
@@ -252,11 +252,12 @@ var Game = {
 
                             // 해당 플레이어의 유닛개수/유닛버프/아이템목록/아이템버프로 갱신
 
-                            let tierCnt = this.PlayerData[i].tierCnt;
+                            let tierCnt = this.PlayerData[i].unitTierCount;
                             let tierBonus = this.PlayerData[i].tierBuffs;
-                            for (let j = 0; i < j; i++) {
+
+                            for (let j = 0; j < 4; j++) {
                                 document.getElementsByClassName("ui-unitArea-unitTierCount")[j].innerHTML = "";
-                                document.getElementsByClassName("ui-unitArea-unitTierCount")[j].innerHTML += tierCnt[i] + " <span class='ui-unitArea-unitTierBonus'>(+" + tierBonus[i] + "%)</span>";
+                                document.getElementsByClassName("ui-unitArea-unitTierCount")[j].innerHTML += tierCnt[j] + " <span class='ui-unitArea-unitTierBonus'>(+" + tierBonus[j] + "%)</span>";
                             }
                             
                             this.updateItemUI(this.PlayerData[i]);
@@ -562,12 +563,12 @@ var Game = {
             
         });
 
-        this.Socket.on('player-syncFieldStatus', (msg) => {
+        this.Socket.on('sync-playerFieldStatus', (msg) => {
             this.PlayerData[msg.index].units = msg.units;
             this.PlayerData[msg.index].items = msg.items;
             this.PlayerData[msg.index].shopBuffs = msg.shopBuffs;
             this.PlayerData[msg.index].tierBuffs = msg.tierBuffs;
-            this.PlayerData[msg.index].tierCnt = msg.tierCnt;
+            this.PlayerData[msg.index].unitTierCount = msg.tierCnt;
         })
     },
 
