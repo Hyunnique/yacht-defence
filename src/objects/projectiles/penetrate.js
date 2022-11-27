@@ -26,13 +26,13 @@ export default class Penetrate extends Phaser.Physics.Arcade.Sprite {
         if (skillInfo != null)
             this.skillInfo = skillInfo;
         this.play(shooter.projectileName);
-
+        
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);    
         
-        if (shooter.playerNum != 0)
+        if(shooter.playerNum != this.scene.currentView)
             this.setVisible(false);
-
+        
         this.flyto = new Phaser.Math.Vector2();
 
         this.setAngle(this, this.target[0].gameObject.getCenter());
