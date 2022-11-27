@@ -23,7 +23,7 @@
         "buffAtk": 0,
         "buffAspd": 10,
         "buffPenetration": 0,
-        "debuffATK": 0,
+        "debuffAtk": 0,
         "debuffAspd": 0,
         "debuffPenetration": 0
     },
@@ -34,7 +34,7 @@
         "buffAtk": 40,
         "buffAspd": 0,
         "buffPenetration": 0,
-        "debuffATK": 20,
+        "debuffAtk": 20,
         "debuffAspd": 0,
         "debuffPenetration": 0
     },
@@ -45,8 +45,8 @@
         "buffAtk": 40,
         "buffAspd": -20,
         "buffPenetration": 0,
-        "debuffATK": 20,
-        "debuffAspd": -40,
+        "debuffAtk": -20,
+        "debuffAspd": 40,
         "debuffPenetration": 0
     },
     "unit38": {

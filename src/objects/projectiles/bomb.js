@@ -23,11 +23,8 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
         this.hitSoundName = shooter.hitSoundName; 
 
         if (skillInfo != null && skillInfo.skillType == "DOT") {
-            this.skillInfo = [];
-            this.skillInfo["callerID"] = this.shooter.index;
-            this.skillInfo["delay"] = skillInfo.delay;
-            this.skillInfo["duration"] = skillInfo.duration;
-            this.skillInfo["value"] = skillInfo.value;
+            this.skillInfo = skillInfo;
+            this.skillInfo.callerID = shooter.index;
         }
         this.isTarget = false;
 
@@ -70,21 +67,22 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
             if (item.gameObject) return item.gameObject.isTarget;
             else return false;
         });
-        
+        console.log(this.skillInfo["skillType"]);
         for (var i = 0; i < targets.length; i++)
         {
             try {
-                if (this.skillInfo == null)
-                    targets[i].gameObject.Health -= this.shooter.calcDamage(this.shooter.attack, targets[i].gameObject.defence);
-                else if (this.skillInfo.skillType == "DOT")
-                    targets[i].gameObject.dotDamageFactory(this);
-                else if (this.skillInfo.skillType == "attackCount")
-                    targets[i].gameObject.Health -= this.shooter.calcDamage(this.shooter.attack * (1 + this.skillInfo.value / 100), targets[i].gameObject.defence);
-                else if (this.skillInfo.skillType == "debuff")
-                {
-                    targets[i].gameObject.handleDebuff(this.shooter.id, this.skillInfo.value);
-                    targets[i].gameObject.Health -= this.shooter.calcDamage(this.shooter.attack, targets[i].gameObject.defence) * (1 + targets[i].gameObject.totalDebuffVal / 100);
+                if (this.skillInfo != null) {
+                    if (this.skillInfo.skillType == "DOT") {
+                        targets[i].gameObject.dotDamageFactory(this);
+                    }
+                    else if (this.skillInfo.skillType == "attackCount")
+                        targets[i].gameObject.Health -= this.shooter.calcDamage(this.shooter.attack * (1 + this.skillInfo.value / 100), targets[i].gameObject.defence);
+                    else if (this.skillInfo.skillType == "debuff") {
+                        targets[i].gameObject.handleDebuff(this.shooter.id, this.skillInfo.value);
+                        
+                    }
                 }
+                targets[i].gameObject.Health -= this.shooter.calcDamage(this.shooter.attack, targets[i].gameObject.defence) * (1 + targets[i].gameObject.totalDebuffVal / 100);
             }
             catch(e) {
                 continue;
