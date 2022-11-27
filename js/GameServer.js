@@ -512,7 +512,7 @@ module.exports = {
 
         for (let i = 0; i < this.Rooms[roomId].players.length; i++) {
             if (this.Rooms[roomId].players[i].disconnected) continue;
-            this.Rooms[roomId].players[i].socket.emit('player-death', this.zerofyNumber(socket.id, i));
+            this.Rooms[roomId].players[i].socket.emit('player-death', this.zerofyNumber(this.getRoomIndex(socket.id), i));
         }
 
         new db.PlayData({
