@@ -441,7 +441,7 @@ module.exports = {
                     items: this.Rooms[roomId].players[this.getRoomIndex(socket.id)].items,
                     shopBuffs: msg.shopBuffs,
                     tierBuffs: msg.tierBuffs,
-                    tierCnt: msg.tierCnt
+                    tierCnt: msg.tierCnt,
                 });
             }
         });
