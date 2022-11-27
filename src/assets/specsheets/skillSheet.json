@@ -34,7 +34,7 @@
         "buffAtk": 40,
         "buffAspd": 0,
         "buffPenetration": 0,
-        "debuffAtk": 20,
+        "debuffAtk": -20,
         "debuffAspd": 0,
         "debuffPenetration": 0
     },
