@@ -12,6 +12,7 @@ const muteURL = require("../src/assets/images/mute.png");
 const notMuteURL = require("../src/assets/images/notMute.png");
 import unitSpecSheets from "./assets/specsheets/unitSpecsheet.json";
 import itemSpecSheets from "./assets/specsheets/shopItemSheet.json";
+import Arrow from "./objects/mobs/Arrow";
 
 const playerColors = ["white", "lightcoral", "lightskyblue", "lightgreen"];
 
@@ -523,6 +524,23 @@ var Game = {
 
             for (let i = 0; i < 3; i++)
                 document.getElementsByClassName("ui-shop-item")[i].style.display = "block";
+
+            let currRoundRoutes = {};
+            console.log(this.GameObject.scene.getScene("gameScene").currentRoundData)
+            this.GameObject.scene.getScene("gameScene").currentRoundData.forEach((element, index) => {
+                if (!currRoundRoutes[element["mobRoute"]]) 
+                    currRoundRoutes[element["mobRoute"]] = 1;
+            });
+            this.GameObject.scene.getScene("gameScene").time.addEvent({
+                    delay: 300,
+                    callback: () => {
+                        Object.keys(currRoundRoutes).forEach((key) => {
+                            new Arrow(this.GameObject.scene.getScene("gameScene"), key);
+                        });
+                    },
+                    repeat: 15,
+                    startAt: 300
+                });
         });
 
         this.Socket.on('placePhase-end', (msg) => {

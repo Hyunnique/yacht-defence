@@ -206,6 +206,8 @@ export default class PreLoadScene extends Phaser.Scene {
         this.load.image("possible", possible);
         this.load.tilemapTiledJSON("map_forest", map_forest);
 
+        // 기타 로딩
+        this.load.image("arrow", require("../assets/images/arrow.png"));
         this.load.image("healthBar", healthBar);
         
         // 게임 내 데이터 로드

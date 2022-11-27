@@ -496,7 +496,7 @@ export default class gameScene extends Phaser.Scene {
                         this.spectate_player_mobs[1].add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum1, element["mobRoute"], element["hpFactor"], 1));
                         this.globalnum1++;
                     },
-                    repeat: element["mobCount"] - 1,
+                    repeat: element["mobCount"] - 1,    
                     startAt: index * 100
                 });
                 if (Game.PlayerData.length > 2 && this.alive[2]) {
