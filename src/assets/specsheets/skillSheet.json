@@ -56,6 +56,13 @@
         "ofHealth": "atk",
         "value": 40
     },
+    "unit41": {
+        "skillType": "DOT",
+        "delay": 1.5,
+        "duration": 3,
+        "ofHealth": "cur",
+        "value": 4
+    },
     "unit43": {
         "skillType": "attackCount",
         "doEveryNth": 3,
