@@ -128,11 +128,20 @@ var Game = {
                     document.getElementsByClassName("ui-rankings-rankingList")[0].getElementsByTagName("tr")[i + 1].getElementsByTagName("td")[2]
                     .innerText = response.data[i].rounds;
                     document.getElementsByClassName("ui-rankings-rankingList")[0].getElementsByTagName("tr")[i + 1].getElementsByTagName("td")[3]
-                    .innerText = response.data[i].unit1Tier + ", " + response.data[i].unit2Tier + ", " + response.data[i].unit3Tier + ", " + response.data[i].unit4Tier;
+                    .innerText =
+                    "Tier 1 : " + response.data[i].unit1Tier + "\n" + 
+                    "Tier 2 : " + response.data[i].unit2Tier + "\n" + 
+                    "Tier 3 : " + response.data[i].unit3Tier + "\n" + 
+                    "Tier 4 : " + response.data[i].unit4Tier;
                     document.getElementsByClassName("ui-rankings-rankingList")[0].getElementsByTagName("tr")[i + 1].getElementsByTagName("td")[4]
-                    .innerText = "-";
+                    .innerText = 
+                    "Yacht : " + response.data[i].handYacht + "\n" + 
+                    "Four Of A Kind : " + response.data[i].handFourKinds + "\n" + 
+                    "L. Straight : " + response.data[i].handLStraight + "\n" + 
+                    "Full House : " + response.data[i].handFullHouse + "\n" + 
+                    "S. Straight : " + response.data[i].handSStraight;
                     document.getElementsByClassName("ui-rankings-rankingList")[0].getElementsByTagName("tr")[i + 1].getElementsByTagName("td")[5]
-                    .innerText = response.data[i].createdAt;
+                    .innerText = new Date(response.data[i].createdAt).toLocaleString();
                 }
             });
         };
