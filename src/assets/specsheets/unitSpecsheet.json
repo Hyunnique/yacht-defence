@@ -75,7 +75,7 @@
         "buffRange": 240,
         "buffAtk": 15,
         "buffAspd": 15,
-        "skill": "받는 피해를 20% 증가 시키는 디버프를 부여"
+        "skill": "받는 피해를 20% 증가 시키는 디버프를 부여, 아군 공격, 속도 15% 강화"
     },
     "unit3": {
         "name": "다크엘프 궁수",
@@ -612,7 +612,7 @@
         "explodeRange": 312,
         "projectileSpeed": 250,
         "tier": 1,
-        "skill": "5초마다 초 광범위 공격을 시전 (범위 528 / 데미지 1000 / 0.84)",
+        "skill": "공격시 5초동안 0.5초마다 지속 화상피해",
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0
@@ -693,7 +693,7 @@
         "buffRange": 72,
         "buffAtk": 5,
         "buffAspd": 5,
-        "skill": ""
+        "skill": "주변 아군 공격, 속도 5% 강화"
     },
     "unit26": {
         "name": "되살아난 마검사 펠소닌",
@@ -721,7 +721,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "skill": "??? 하나 더 생각하기"
+        "skill": ""
     },
     "unit27": {
         "name": "버서커 카이토닐",
@@ -1517,7 +1517,7 @@
         "explodeRange": 168,
         "projectileSpeed": 500,
         "tier": 2,
-        "skill": "",
+        "skill": "주변 아군 공격 15% 강화",
         "buffRange": 168,
         "buffAtk": 15,
         "buffAspd": 0
@@ -1546,7 +1546,7 @@
         "explodeRange": 168,
         "projectileSpeed": 500,
         "tier": 3,
-        "skill": "",
+        "skill": "주변 아군 공격 10% 강화",
         "buffRange": 72,
         "buffAtk": 10,
         "buffAspd": 0
@@ -1601,7 +1601,7 @@
         "buffRange": 72,
         "buffAtk": 0,
         "buffAspd": 10,
-        "skill": ""
+        "skill": "주변 아군 속도 10% 강화"
     },
     "unit60": {
         "name": "화염족 마도사",
