@@ -50,7 +50,6 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         this.play(mobData.mobAnim);
         this.flipX = !mobData.boss;
 
-        
         if (!this.isBoss) {
             this.healthBar = this.scene.add.image(this.x-48, this.y - 24, "healthBar").setOrigin(0,0.5);
             this.healthBarWidth = this.healthBar.displayWidth;
@@ -67,6 +66,12 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
             this.setVisible(false);      
         }
 
+        if (this.scene.currentView == this.playerNum)
+        {
+            this.setVisible(true);
+            if (this.healthBar)
+                this.healthBar.setVisible(true);
+        }
         switch (this.moveType) {
             case "A0":
                 this.path = pathA0;

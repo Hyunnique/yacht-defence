@@ -86,7 +86,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.effect = new UnitEffect(scene, this, this.effectIsFlip, db.name);
         this.attackCount = 0;
         
-        if (playerNum != 0) {
+        if (this.playerNum != this.scene.currentView) {
             this.setVisible(false);
             this.effect.setVisible(false);
         }
