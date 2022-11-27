@@ -220,7 +220,7 @@ module.exports = {
 
                             for (let i = 0; i < this.Rooms[this.getRoomId(socket.id)].players.length; i++) {
                                 if (this.Rooms[this.getRoomId(socket.id)].players[i].disconnected) continue;
-                                this.Rooms[this.getRoomId(socket.id)].players[i].socket.emit('player-death', this.zerofyNumber(socket.id, i));
+                                this.Rooms[this.getRoomId(socket.id)].players[i].socket.emit('player-death', this.zerofyNumber(this.getRoomIndex(socket.id), i));
                             }
                             //delete this.socketMap[socket.id];
                             this.Rooms[this.getRoomId(socket.id)].players[this.getRoomIndex(socket.id)].timers["reconnectWait"] = null;
