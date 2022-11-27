@@ -384,109 +384,115 @@ var Game = {
             this.hideUI("diceScene-default");
             this.showUI("diceScene-result");
 
-            setTimeout(() => {
-                this.hideUI("diceScene-result");
-                this.showUI("common-unitReward");
+            
+            if (!this.PlayerData[0].dead) {
+                setTimeout(() => {
+                    this.hideUI("diceScene-result");
+                    this.showUI("common-unitReward");
 
-                let currentTier = this.GameObject.scene.getScene("diceScene").currentTier;
-                let tier = {
-                    "tier1": [2, 22, 24, 26, 27, 35],
-                    "tier2": [33, 34, 38, 41, 43, 45, 50, 51, 52, 53, 55, 56],
-                    "tier3": [3, 9, 10, 11, 12, 13, 19, 23, 25, 31, 32, 40, 42, 46, 47, 57, 59, 60, 62, 63],
-                    "tier4": [0, 1, 4, 5, 6, 7, 8, 14, 15, 16, 17, 18, 20, 21, 28, 29, 30, 36, 37, 39, 44, 48, 49, 54, 58, 61]
-                }
-                let unitCount = tier["tier" + currentTier].length;
-                let unitArray = []; //9
-
-                for (let i = 0; i < 3; i++) {
-                    switch (currentTier) {
-                        case 1:
-                            document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.color = "#ff1b1b";
-                            break;
-                        case 2:
-                            document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.color = "#ffd700";
-                            break;
-                        case 3:
-                            document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.color = "#d5d5d5";
-                            break;
-                        default:
-                            document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.color = "#954c4c";
-                            break;
+                    let currentTier = this.GameObject.scene.getScene("diceScene").currentTier;
+                    let tier = {
+                        "tier1": [2, 22, 24, 26, 27, 35],
+                        "tier2": [33, 34, 38, 41, 43, 45, 50, 51, 52, 53, 55, 56],
+                        "tier3": [3, 9, 10, 11, 12, 13, 19, 23, 25, 31, 32, 40, 42, 46, 47, 57, 59, 60, 62, 63],
+                        "tier4": [0, 1, 4, 5, 6, 7, 8, 14, 15, 16, 17, 18, 20, 21, 28, 29, 30, 36, 37, 39, 44, 48, 49, 54, 58, 61]
                     }
-                }
-                for (let i = 0; i < 3; i++) {
-                    while (true) {
-                        let _r = Math.floor(Math.random() * unitCount);
-                        let unitNo = tier["tier" + currentTier][_r];
-                        if (!unitArray.includes(unitNo)) {
-                            unitArray.push(unitNo);
-                            break;
+                    let unitCount = tier["tier" + currentTier].length;
+                    let unitArray = []; //9
+
+                    for (let i = 0; i < 3; i++) {
+                        switch (currentTier) {
+                            case 1:
+                                document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.color = "#ff1b1b";
+                                break;
+                            case 2:
+                                document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.color = "#ffd700";
+                                break;
+                            case 3:
+                                document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.color = "#d5d5d5";
+                                break;
+                            default:
+                                document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.color = "#954c4c";
+                                break;
                         }
                     }
-                }
-
-                for (let i = 0; i < 3; i++) {
-                    let unitType = ""
-                    switch (unitSpecSheets["unit" + unitArray[i]].unitType) {
-                        case 0:
-                            unitType = "근거리";
-                            break;
-                        case 1:
-                            unitType = "추적형";
-                            break;
-                        case 2:
-                            unitType = "관통형";
-                            break;
-                        case 3:
-                            unitType = "폭발형";
-                            break;
-                        case 4:
-                            unitType = "지원형";
-                            break;
+                    for (let i = 0; i < 3; i++) {
+                        while (true) {
+                            let _r = Math.floor(Math.random() * unitCount);
+                            let unitNo = tier["tier" + currentTier][_r];
+                            if (!unitArray.includes(unitNo)) {
+                                unitArray.push(unitNo);
+                                break;
+                            }
+                        }
                     }
 
-                    document.getElementsByClassName("ui-unitReward-unitDisplayImage")[i].style.backgroundImage = "url('" + unitGIF["unit_" + unitArray[i] + ".gif"] + "')";
-                    document.getElementsByClassName("ui-unitReward-unitTitle")[i].innerText = unitSpecSheets["unit" + unitArray[i]].name;
-                    if (unitSpecSheets["unit" + unitArray[i]].name.length >= 13) 
-                        document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.fontSize = (1.2 - 0.1*(unitSpecSheets["unit" + unitArray[i]].name.length - 12)) + "rem" 
-                    document.getElementsByClassName("ui-unitReward-unitType")[i].innerText = unitType;
-                    document.getElementsByClassName("ui-unitReward-unitSpec-atk")[i].innerText = "ATK : " + unitSpecSheets["unit" + unitArray[i]].attack;
+                    for (let i = 0; i < 3; i++) {
+                        let unitType = ""
+                        switch (unitSpecSheets["unit" + unitArray[i]].unitType) {
+                            case 0:
+                                unitType = "근거리";
+                                break;
+                            case 1:
+                                unitType = "추적형";
+                                break;
+                            case 2:
+                                unitType = "관통형";
+                                break;
+                            case 3:
+                                unitType = "폭발형";
+                                break;
+                            case 4:
+                                unitType = "지원형";
+                                break;
+                        }
 
-                    if (unitSpecSheets["unit" + unitArray[i]].aspd < 0.6) {
-                        document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : VERY SLOW";
-                    }
-                    else if (unitSpecSheets["unit" + unitArray[i]].aspd < 0.8) {
-                        document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : SLOW";
-                    }
-                    else if (unitSpecSheets["unit" + unitArray[i]].aspd < 1.3) {
-                        document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : NORMAL"
-                    }
-                    else if (unitSpecSheets["unit" + unitArray[i]].aspd < 1.6) {
-                        document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : FAST"
-                    }
-                    else {
-                        document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : VERY FAST"
-                    }
+                        document.getElementsByClassName("ui-unitReward-unitDisplayImage")[i].style.backgroundImage = "url('" + unitGIF["unit_" + unitArray[i] + ".gif"] + "')";
+                        document.getElementsByClassName("ui-unitReward-unitTitle")[i].innerText = unitSpecSheets["unit" + unitArray[i]].name;
+                        if (unitSpecSheets["unit" + unitArray[i]].name.length >= 13) 
+                            document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.fontSize = (1.2 - 0.1*(unitSpecSheets["unit" + unitArray[i]].name.length - 12)) + "rem" 
+                        document.getElementsByClassName("ui-unitReward-unitType")[i].innerText = unitType;
+                        document.getElementsByClassName("ui-unitReward-unitSpec-atk")[i].innerText = "ATK : " + unitSpecSheets["unit" + unitArray[i]].attack;
 
-                    switch (unitSpecSheets["unit" + unitArray[i]].rangeType) {
-                        case 0:
-                            document.getElementsByClassName("ui-unitReward-unitSpec-range")[i].innerText = "RANGE : VERY SHORT";
-                            break;
-                        case 1:
-                            document.getElementsByClassName("ui-unitReward-unitSpec-range")[i].innerText = "RANGE : SHORT";
-                            break;
-                        case 2:
-                            document.getElementsByClassName("ui-unitReward-unitSpec-range")[i].innerText = "RANGE : MEDIUM";
-                            break;
-                        case 3:
-                            document.getElementsByClassName("ui-unitReward-unitSpec-range")[i].innerText = "RANGE : LONG";
-                            break;
+                        if (unitSpecSheets["unit" + unitArray[i]].aspd < 0.6) {
+                            document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : VERY SLOW";
+                        }
+                        else if (unitSpecSheets["unit" + unitArray[i]].aspd < 0.8) {
+                            document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : SLOW";
+                        }
+                        else if (unitSpecSheets["unit" + unitArray[i]].aspd < 1.3) {
+                            document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : NORMAL"
+                        }
+                        else if (unitSpecSheets["unit" + unitArray[i]].aspd < 1.6) {
+                            document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : FAST"
+                        }
+                        else {
+                            document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : VERY FAST"
+                        }
+
+                        switch (unitSpecSheets["unit" + unitArray[i]].rangeType) {
+                            case 0:
+                                document.getElementsByClassName("ui-unitReward-unitSpec-range")[i].innerText = "RANGE : VERY SHORT";
+                                break;
+                            case 1:
+                                document.getElementsByClassName("ui-unitReward-unitSpec-range")[i].innerText = "RANGE : SHORT";
+                                break;
+                            case 2:
+                                document.getElementsByClassName("ui-unitReward-unitSpec-range")[i].innerText = "RANGE : MEDIUM";
+                                break;
+                            case 3:
+                                document.getElementsByClassName("ui-unitReward-unitSpec-range")[i].innerText = "RANGE : LONG";
+                                break;
+                        }
+                        document.getElementsByClassName("ui-unitReward-unitSkill")[i].innerText = unitSpecSheets["unit" + unitArray[i]].skill;
+                        document.getElementsByClassName("ui-unitReward-unit")[i].attributes.idx.value = unitArray[i];
+                        document.getElementsByClassName("ui-unitReward-unit")[i].attributes.tier.value = currentTier;
                     }
-                    document.getElementsByClassName("ui-unitReward-unitSkill")[i].innerText = unitSpecSheets["unit" + unitArray[i]].skill;
-                    document.getElementsByClassName("ui-unitReward-unit")[i].attributes.idx.value = unitArray[i];
-                    document.getElementsByClassName("ui-unitReward-unit")[i].attributes.tier.value = currentTier;
-                }
-            }, 5000);
+                }, 5000);
+            }
+            else {
+                this.hideUI("diceScene-result");
+            }
         });
 
         this.Socket.on('placePhase-begin', (msg) => {
@@ -541,13 +547,13 @@ var Game = {
                     currRoundRoutes[element["mobRoute"]] = 1;
             });
             this.GameObject.scene.getScene("gameScene").time.addEvent({
-                    delay: 300,
+                    delay: 500,
                     callback: () => {
                         Object.keys(currRoundRoutes).forEach((key) => {
                             new Arrow(this.GameObject.scene.getScene("gameScene"), key);
                         });
                     },
-                    repeat: 15,
+                    repeat: 30,
                     startAt: 300
                 });
         });
