@@ -143,12 +143,11 @@ var Game = {
 
                 for (let i = 0; i < msg.length; i++) {
                     document.getElementsByClassName("ui-hpArea-playerText")[i].innerHTML = this.PlayerData[i].name;
-
                     if (i == 0) {
                         document.getElementsByClassName("ui-hpArea-player")[i].onclick = (e) => {
 
-                            for (let i = 0; i < msg.length; i++) {
-                                document.getElementsByClassName("ui-hpArea-player")[i].classList.remove("text-outline-gold");
+                            for (let j = 0; j < msg.length; j++) {
+                                document.getElementsByClassName("ui-hpArea-player")[j].classList.remove("text-outline-gold");
                             }
 
                             document.getElementsByClassName("ui-hpArea-player")[i].classList.add("text-outline-gold");
@@ -162,13 +161,29 @@ var Game = {
 
                             this.GameObject.scene.getScene("gameScene").currentView = 0;
                             this.GameObject.scene.getScene("gameScene").events.emit("spectateChange");
+
+                            // 내 유닛개수/유닛버프/아이템목록/아이템버프로 갱신
+
+                            let tierCnt = this.GameObject.scene.getScene("gameScene").tierCnt;
+                            let tierBonus = this.GameObject.scene.getScene("gameScene").tierBonus;
+                            for (let j = 0; j < 4; j++) {
+                                document.getElementsByClassName("ui-unitArea-unitTierCount")[i].innerHTML = "";
+                                document.getElementsByClassName("ui-unitArea-unitTierCount")[i].innerHTML += tierCnt[i] + " <span class='ui-unitArea-unitTierBonus'>(+" + tierBonus[i] + "%)</span>";
+                            } // 유닛계수, 유닛버프 내 수치로 변경
+                            
+                            this.updateItemUI(this.PlayerData[0]);  // 아이템 목록
+
+                            // 아이템 버프 수치
+                            document.getElementsByClassName("ui-itemOverallArea-overall-atk")[0].innerText = "ATK: " + (this.shopBuff.shopAtk >= 0 ? "+" + this.shopBuff.shopAtk : this.shopBuff.shopAtk) + "%";
+                            document.getElementsByClassName("ui-itemOverallArea-overall-aspd")[0].innerText = "SPD: " + (this.shopBuff.shopAspd >= 0 ? "+" + this.shopBuff.shopAspd : this.shopBuff.shopAspd) + "%";
+                            document.getElementsByClassName("ui-itemOverallArea-overall-pen")[0].innerText = "PEN: " + (this.shopBuff.shopPenetration >= 0 ? "+" + this.shopBuff.shopPenetration : this.shopBuff.shopPenetration) + "%p";
                         }
                     }
                     else {
                         document.getElementsByClassName("ui-hpArea-player")[i].onclick = (e) => {
                             
-                            for (let i = 0; i < msg.length; i++) {
-                                document.getElementsByClassName("ui-hpArea-player")[i].classList.remove("text-outline-gold");
+                            for (let j = 0; j < msg.length; j++) {
+                                document.getElementsByClassName("ui-hpArea-player")[j].classList.remove("text-outline-gold");
                             }
                             
                             document.getElementsByClassName("ui-hpArea-player")[i].classList.add("text-outline-gold");
@@ -183,6 +198,23 @@ var Game = {
                             // this.GameObject.scene.getScene("gameScene").mapOffsetY = 1440 * Math.floor(i / 2);
                             this.GameObject.scene.getScene("gameScene").currentView = i;
                             this.GameObject.scene.getScene("gameScene").events.emit("spectateChange");
+
+                            // 해당 플레이어의 유닛개수/유닛버프/아이템목록/아이템버프로 갱신
+
+                            let tierCnt = [0, 0, 0, 0];
+                            this.PlayerData[i].units.forEach((u) => {
+                                tierCnt[u.tier - 1]++;
+                            })
+                            let tierBonus = this.PlayerData[i].tierBuffs;
+                            for (let j = 0; i < j; i++) {
+                                document.getElementsByClassName("ui-unitArea-unitTierCount")[j].innerHTML = "";
+                                document.getElementsByClassName("ui-unitArea-unitTierCount")[j].innerHTML += tierCnt[i] + " <span class='ui-unitArea-unitTierBonus'>(+" + tierBonus[i] + "%)</span>";
+                            }
+                            
+                            this.updateItemUI(this.PlayerData[i]);
+                            document.getElementsByClassName("ui-itemOverallArea-overall-atk")[0].innerText = "ATK: " + (this.PlayerData[i].shopBuffs.shopAtk >= 0 ? "+" + this.PlayerData[i].shopBuffs.shopAtk : this.PlayerData[i].shopBuffs.shopAtk) + "%";
+                            document.getElementsByClassName("ui-itemOverallArea-overall-aspd")[0].innerText = "SPD: " + (this.PlayerData[i].shopBuffs.shopAspd >= 0 ? "+" + this.PlayerData[i].shopBuffs.shopAspd : this.PlayerData[i].shopBuffs.shopAspd) + "%";
+                            document.getElementsByClassName("ui-itemOverallArea-overall-pen")[0].innerText = "PEN: " + (this.PlayerData[i].shopBuffs.shopPenetration >= 0 ? "+" + this.PlayerData[i].shopBuffs.shopPenetration : this.PlayerData[i].shopBuffs.shopPenetration) + "%p";
                         }
                     }
                 }
@@ -446,8 +478,6 @@ var Game = {
             let soundidx = Math.floor(Math.random() * 3);
 
             this.GameObject.scene.getScene("gameScene").shopBuySound[soundidx].play(this.effectSoundConfig);
-            
-            
 
             this.hideUI("unitInfoArea");
             document.getElementsByClassName("ui-shop-item")[msg.uiIndex].style.display = "none";
@@ -468,7 +498,7 @@ var Game = {
         });
 
         this.Socket.on('shop-itemFailure', (msg) => {
-            this.GameObject.scene.getScene("gameScene").shopBuyFail.play(this.effectSoundConfig);
+            this.GameObject.scene.getScene("gameScene").shopBuyFailSound.play(this.effectSoundConfig);
         });
 
         this.Socket.on('lastChance-success', (msg) => {
@@ -477,10 +507,17 @@ var Game = {
             this.GameObject.scene.getScene("diceScene").itemUsed = true;
             this.GameObject.scene.getScene("diceScene").throwLeft++;
             this.GameObject.scene.getScene("diceScene").rollDice();
-        })
+        });
 
         this.Socket.on('lastChance-Failure', (msg) => {
             
+        });
+
+        this.Socket.on('player-syncFieldStatus', (msg) => {
+            this.PlayerData[msg.index].units = msg.units;
+            this.PlayerData[msg.index].items = msg.items;
+            this.PlayerData[msg.index].shopBuffs = msg.shopBuffs;
+            this.PlayerData[msg.index].tierBuffs = msg.tierBuffs;
         })
     },
 
@@ -801,7 +838,8 @@ var Game = {
                 return {
                     x: unit.x,
                     y: unit.y,
-                    id: unit.id
+                    id: unit.id,
+                    tier: unit.tier
                 };
             }),
             shopBuffs: this.shopBuff,
