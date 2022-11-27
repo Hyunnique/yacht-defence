@@ -119,7 +119,7 @@ module.exports = {
                     name: name,
                     socket: socket,
                     flags: {},
-                    hp: 1,
+                    hp: 100,
                     maxhp: 100,
                     dead: false,
                     gold: 0,
@@ -297,7 +297,7 @@ module.exports = {
                 let latestChoiceReward = -1;
                 for (let i = 0; i < resultArray.length; i++) {
                     // 동률일 경우 모두 높은 골드로 지급
-                    if (latestChoiceDiffResult != -1 && latestChoiceDiffResult == resultArray[i].choiceDiff) {
+                    if (latestChoiceDiffResult != -1 && latestChoiceDiffResult == Math.abs(resultArray[i].choiceDiff)) {
                         this.Rooms[roomId].players[resultArray[i].idx].gold += latestChoiceReward;
                         resultArray[i].rewardGold = latestChoiceReward;
                     } else {
@@ -305,7 +305,7 @@ module.exports = {
                         resultArray[i].rewardGold = choiceRewardByPlayers[resultArray.length - 1][i];
                     }
 
-                    latestChoiceDiffResult = resultArray[i].choiceDiff;
+                    latestChoiceDiffResult = Math.abs(resultArray[i].choiceDiff);
                     latestChoiceReward = resultArray[i].rewardGold;
                 }
 
