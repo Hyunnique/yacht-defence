@@ -1,5 +1,4 @@
 module.exports = function generateRound(SpecsheetGen, round, roundCost, hpFactor) {
-
     let minWaveCount = 10;
     let maxWaveCount = 20;
     if (round <= 10) maxWaveCount = 20;
@@ -12,8 +11,8 @@ module.exports = function generateRound(SpecsheetGen, round, roundCost, hpFactor
     // 라운드에 비해서 너무 약한 몬스터는 사용하지 않도록 하고
     // maxWaveCount 내에 무조건 완료되도록 한다
 
+    let currentCost = (round % 5 == 0 ? roundCost * 0.6 : roundCost);
     let minimumCost = Math.floor(roundCost / maxWaveCount);
-    let currentCost = roundCost;
     let currentWaveCount = 0;
     let currentWaveInfo = [];
 
@@ -42,15 +41,13 @@ module.exports = function generateRound(SpecsheetGen, round, roundCost, hpFactor
 
     const WaveMonsterCount = [10, 15, 20];
 
-    if (round % 5 != 0) {
-        // 보스 라운드가 아닐 때
-    } else {
+    if (round % 5 == 0) {
         // 보스 라운드일 때
         let waveBoss = Object.keys(SpecsheetGen).filter((x) => SpecsheetGen[x].boss)[Math.floor(((round - 5) % 25) / 5)];
         currentWaveInfo.push({
             "mobName": waveBoss,
             "mobCount": 1,
-            "hpFactor": (hpFactor * (roundCost / 35)).toFixed(2),
+            "hpFactor": (hpFactor * (roundCost / 40)).toFixed(2),
             "mobRoute": "X"
         });
     }

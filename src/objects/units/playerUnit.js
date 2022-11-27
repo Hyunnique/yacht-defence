@@ -25,8 +25,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.attackType = db.attackType;
         this.idleAnim = db.idleAnim;
         this.attackAnim = db.attackAnim;
-        this.atkSoundName = this.scene.sound.add(db.atkSoundName);
-        this.hitSoundName = this.scene.sound.add(db.hitSoundName);
+        this.atkSoundName = this.scene.sound.get(db.atkSoundName);
+        this.hitSoundName = this.scene.sound.get(db.hitSoundName);
         this.effectName = db.effectName;
         this.tier = db.tier;
         this.index = index;
@@ -81,7 +81,6 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
 
         this.scale = 1;
         this.alpha = 1;
-        this.shootSound = this.scene.sound.add("shoot");
 
         this.effectOffsetX = effectOffset[this.effectName].x;
         this.effectOffsetY = effectOffset[this.effectName].y;

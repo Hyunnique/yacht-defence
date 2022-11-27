@@ -46,9 +46,6 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         this.totalDebuffVal = 0;
         this.playerNum = playerNum;
         
-
-        this.deathSound = this.scene.sound.add(mobData.deathSound);
-        
         this.play(mobData.mobAnim);
         this.flipX = !mobData.boss;
 
@@ -215,7 +212,6 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
     }
 
     death() {
-        // this.deathSound.play(Game.effectSoundConfig);
         this.scene.events.off("update", this.update, this);
         this.scene.events.off("spectateChange", this.setVisibility, this);
         if (this.playerNum == 0) {
@@ -298,7 +294,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         if (!this.dotDamageDict[projectile.skillInfo.callerID]) {
 
             var damage = projectile.skillInfo.ofHealth == "cur" ?
-                projectile.shooter.attack + (this.Health * projectile.skillInfo.value) :
+                projectile.shooter.attack + (this.Health * projectile.skillInfo.value / 100) :
                 projectile.shooter.attack * (1 + projectile.skillInfo.value / 100);
             
             this.dotDamageDict[projectile.skillInfo.callerID] = this.scene.time.addEvent({
@@ -311,14 +307,14 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
             });
         }
         else {
-            this.dotDamageDict[projectile.skillInfo.callerID].addEvent(this.dotDamageDict[projectile.skillInfo.callerID]);
+            this.dotDamageDict[projectile.skillInfo.callerID] = this.scene.time.addEvent(this.dotDamageDict[projectile.skillInfo.callerID]);
         }
     }
 
     dotDamageFactoryMili(unit) {
         if (!this.dotDamageDict[unit.index]) {
             var damage = unit.skillInfo.ofHealth == "cur" ?
-                unit.attack + (this.Health * unit.skillInfo.value) :
+                unit.attack + (this.Health * unit.skillInfo.value / 100) :
                 unit.attack * (1 + unit.skillInfo.value / 100);
             
             this.dotDamageDict[unit.index] = this.scene.time.addEvent({
@@ -331,7 +327,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
             });
         }
         else {
-            this.dotDamageDict[unit.index].addEvent(this.dotDamageDict[unit.index]);
+            this.dotDamageDict[unit.index] = this.scene.time.addEvent(this.dotDamageDict[unit.index]);
         }
     }
 }
