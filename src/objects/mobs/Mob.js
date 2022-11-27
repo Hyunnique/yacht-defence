@@ -42,6 +42,8 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         this.deathCalled = false;
         this.isBoss = mobData.boss;
         this.dotDamageDict = {};
+        this.debuffDict = {};
+        this.totalDebuffVal = 0;
         this.playerNum = playerNum;
         
 
@@ -227,7 +229,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         this.tween.remove();
         this.body.destroy();
         this.play(this.deathAnimName);
-        
+
         var animConfig = this.scene.anims.get(this.deathAnimName);
         var animtime = animConfig.frames.length * animConfig.msPerFrame;
         this.scene.time.delayedCall(animtime, () => {
@@ -240,39 +242,71 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         if (projectile.shooter.projectileType == 1) {
             if (projectile.alreadyPenetrated.findIndex(e => e == this.mobNum) == -1) {
                 projectile.alreadyPenetrated.push(this.mobNum);
-                if (projectile.skillInfo != null)
-                    this.Health -= projectile.shooter.calcDamage(projectile.shooter.attack + (projectile.skillInfo.ofHealth == "cur" ? this.Health : this.MaxHealth) * (projectile.skillInfo.value / 100), this.defence);
-                else
-                    this.Health -= projectile.shooter.calcDamage(projectile.shooter.attack, this.defence);
+                if (projectile.skillInfo != null && projectile.skillInfo.skillType == "DOT")
+                    this.dotDamageFactory(projectile);
+                this.Health -= projectile.shooter.calcDamage(projectile.shooter.attack, this.defence) * (1 + this.totalDebuffVal / 100);
                 projectile.hit();
             }
         }
-        else if(projectile.shooter.projectileType == 2) {
+        else if (projectile.shooter.projectileType == 2) {
             projectile.explode();
         }
         else {
-            if (projectile.skillInfo != null)
-                this.Health -= projectile.shooter.calcDamage(projectile.shooter.attack + (projectile.skillInfo.ofHealth == "cur" ? this.Health : this.MaxHealth) * (projectile.skillInfo.value / 100), this.defence);
-            else
-                this.Health -= projectile.shooter.calcDamage(projectile.shooter.attack,this.defence);
+            if (projectile.skillInfo != null && projectile.skillInfo.skillType == "DOT") 
+                this.dotDamageFactory(projectile);
+            this.Health -= projectile.shooter.calcDamage(projectile.shooter.attack, this.defence) * (1 + this.totalDebuffVal / 100);
             projectile.hit();
         }
     }
 
-    dotDamageFactory(projectile,dotDamageConfig) {
-        if (this.dotDamageDict[dotDamageConfig.callerID] == undefined) {
-            var damage = dotDamageConfig.ofHealth == "cur" ? projectile.shooter.attack + (this.Health * dotDamageConfig.value) : dotDamageConfig.ofHealth == "max" ? projectile.shooter.attack + (this.MaxHealth * dotDamageConfig.value) : dotDamageConfig.damage;
-            this.dotDamageDict[dotDamageConfig.callerID] = this.scene.time.addEvent({
-                delay: dotDamageConfig.delay * 1000,
-                repeat: dotDamageConfig.duration / dotDamageConfig.delay,
+    handleDebuff(id, value)
+    {
+        if (this.debuffDict.id == null || this.debuffDict.id == undefined)
+        {
+            this.debuffDict.id = value;
+            this.totalDebuffVal += value;
+        }
+    }
+
+    dotDamageFactory(projectile) {
+        if (this.dotDamageDict[projectile.skillInfo.callerID] == undefined) {
+
+            var damage = projectile.skillInfo.ofHealth == "cur" ?
+                projectile.shooter.attack + (this.Health * projectile.skillInfo.value) :
+                projectile.shooter.attack * (1 + projectile.skillInfo.value / 100);
+            
+            this.dotDamageDict[projectile.skillInfo.callerID] = this.scene.time.addEvent({
+                delay: projectile.skillInfo.delay * 1000,
+                repeat: projectile.skillInfo.duration / projectile.skillInfo.delay,
                 callback: () => {
-                    this.Health -= dotDamageConfig.ofHealth == "fix" ? damage : projectile.shooter.calcDamage(damage, this.defence);
+                    this.Health -= projectile.shooter.calcDamage(damage, this.defence);
                 },
                 startAt: 0
             });
         }
         else {
-            this.dotDamageDict[dotDamageConfig.callerID].addEvent(this.dotDamageDict[dotDamageConfig.callerID]);
+            this.dotDamageDict[projectile.skillInfo.callerID].addEvent(this.dotDamageDict[projectile.skillInfo.callerID]);
+        }
+    }
+
+    dotDamageFactoryMili(unit) {
+        if (this.dotDamageDict[unit.index] == undefined) {
+
+            var damage = unit.skillInfo.ofHealth == "cur" ?
+                unit.attack + (this.Health * unit.skillInfo.value) :
+                unit.attack * (1 + unit.skillInfo.value / 100);
+            
+            this.dotDamageDict[unit.index] = this.scene.time.addEvent({
+                delay: unit.skillInfo.delay * 1000,
+                repeat: unit.skillInfo.duration / unit.skillInfo.delay,
+                callback: () => {
+                    this.Health -= unit.shooter.calcDamage(damage, this.defence);
+                },
+                startAt: 0
+            });
+        }
+        else {
+            this.dotDamageDict[unit.index].addEvent(this.dotDamageDict[unit.index]);
         }
     }
 }

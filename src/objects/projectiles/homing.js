@@ -24,7 +24,14 @@ export default class Homing extends Phaser.Physics.Arcade.Sprite {
         if(shooter.playerNum != this.scene.currentView)
             this.setVisible(false);
         
-        if (skillInfo != null)
+        if (skillInfo != null && skillInfo.skillType == "DOT") {
+            this.skillInfo = [];
+            this.skillInfo["callerID"] = this.shooter.index;
+            this.skillInfo["delay"] = skillInfo.delay;
+            this.skillInfo["duration"] = skillInfo.duration;
+            this.skillInfo["value"] = skillInfo.value;
+        }
+        else
             this.skillInfo = skillInfo;
 
         this.play(shooter.projectileName);

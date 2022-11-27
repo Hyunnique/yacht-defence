@@ -56,6 +56,10 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.buffedAtk = 0;
         this.buffedAspd = 0;
 
+        this.selfBuffAtk = 0;
+        this.selfBuffAspd = 0;
+        this.selfBuffPenetration = 0;
+
         this.projectileName = db.projectileName;
         this.projectileAnimName = db.projectileAnimName;
         this.projectileType = db.projectileType;
@@ -155,18 +159,22 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         if (this.skillInfo.skillType == "DOT")
         {
             this.skillReady = false;
-            new Bomb(this.scene, this, this.skillInfo);
+            
             this.scene.time.delayedCall(1000 * this.skillInfo.coolDown, () => {
                 this.skillReady = true;
             }, [], this);
         }
-        else if (this.skillInfo.skillType == "aspdBuff")
+        else if (this.skillInfo.skillType == "statBuff")
         {
             this.skillReady = false;
-            this.buffedAspd += this.skillInfo.buffAspd * 100;
+            this.selfBuffAspd += (((this.skillInfo.buffAspd - this.skillInfo.debuffAspd) / 2) + ((this.skillInfo.buffAspd + this.skillInfo.debuffAspd) / 2)) * 100;
+            this.selfBuffAtk +=  ((this.skillInfo.buffAtk - this.skillInfo.debuffAtk) / 2) + ((this.skillInfo.buffAtk + this.skillInfo.debuffAtk) / 2)
+            this.selfBuffPenetration += (((this.skillInfo.buffPenetration - this.skillInfo.debuffPenetration) / 2) + ((this.skillInfo.buffPenetration + this.skillInfo.debuffPenetration) / 2)) / 100;
             this.updateBuff();
-            this.scene.time.delayedCall(1000 * this.skillInfo.duration, () => {                
-                this.buffedAspd -= this.skillInfo.buffAspd * 100;
+            this.scene.time.delayedCall(1000 * this.skillInfo.duration, () => {
+                this.selfBuffAspd += (((this.skillInfo.buffAspd - this.skillInfo.debuffAspd) / 2) - ((this.skillInfo.buffAspd + this.skillInfo.debuffAspd) / 2)) * 100;
+                this.selfBuffAtk +=  ((this.skillInfo.buffAtk - this.skillInfo.debuffAtk) / 2) - ((this.skillInfo.buffAtk + this.skillInfo.debuffAtk) / 2)
+                this.selfBuffPenetration += (((this.skillInfo.buffPenetration - this.skillInfo.debuffPenetration) / 2) - ((this.skillInfo.buffPenetration + this.skillInfo.debuffPenetration) / 2)) / 100;
                 this.updateBuff();
             }, [], this);
             this.scene.time.delayedCall(1000 * this.skillInfo.coolDown, () => {
@@ -232,9 +240,9 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
 
     updateBuff()
     {
-        this.attack = (1 + this.buffedAtk / 100) * this.globalbuffAtk * this.originAttack;
-        this.aspd = (1 + this.buffedAspd / 100) * (1 + this.globalbuffAspd / 100) * this.originAspd;
-        this.penetration = this.originPenetration + this.globalbuffedPenetration;
+        this.attack = (1 + this.buffedAtk / 100) * this.globalbuffAtk * this.originAttack * (1 + this.selfBuffAtk / 100);
+        this.aspd = (1 + this.buffedAspd / 100) * (1 + this.globalbuffAspd / 100) * this.originAspd * (1 + this.selfBuffAspd/100);
+        this.penetration = this.originPenetration + this.globalbuffedPenetration + this.selfBuffPenetration;
         if (this.penetration > 1) this.penetration = 1;
         else if (this.penetration < 0) this.penetration = 0;
     }
@@ -250,18 +258,24 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
             if (this.skillInfo != null && this.skillInfo.skillType == "attackCount" && this.attackCount % this.skillInfo.doEveryNth == 0) {
                 this.target.forEach(e => {
                     if (e.gameObject.Health)
-                        e.gameObject.Health -= this.calcDamage(this.attack + e.gameObject.Health * this.skillInfo.value, e.gameObject.defence);
+                        e.gameObject.Health -= this.calcDamage(this.attack + this.skillInfo.skillType == "cur" ?
+                            (e.gameObject.Health * this.skillInfo.value) :
+                            this.skillInfo.skillType == "lost" ? 
+                            (this.attack * (1 - e.Health / e.MaxHealth) * this.skillInfo.value)  :  
+                            (this.attack * (this.skillInfo.value / 100)), e.gameObject.defence);
                 });
             }
             else {
                 this.target.forEach(e => {
                     if (e.gameObject.Health)
                         e.gameObject.Health -= this.calcDamage(this.attack, e.gameObject.defence);
+                    if (this.skillInfo != null && this.skillInfo.skillType == "DOT")
+                        e.gameObject.dotDamageFactoryMili(this);
                 });
             }
         }
         else if (this.attackType == 1) {
-            if (this.skillInfo != null && this.skillInfo.skillType == "attackCount" && this.attackCount % this.skillInfo.doEveryNth == 0)
+            if (this.skillInfo != null && (this.skillInfo.skillType == "attackCount" || this.skillInfo.skillType == "DOT") && this.attackCount % this.skillInfo.doEveryNth == 0)
                 this.shootProjectile(true);
             else
                 this.shootProjectile(false);
