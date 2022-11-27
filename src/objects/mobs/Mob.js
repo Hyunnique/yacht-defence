@@ -46,9 +46,6 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         this.totalDebuffVal = 0;
         this.playerNum = playerNum;
         
-
-        this.deathSound = this.scene.sound.add(mobData.deathSound);
-        
         this.play(mobData.mobAnim);
         this.flipX = !mobData.boss;
 
@@ -215,7 +212,6 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
     }
 
     death() {
-        // this.deathSound.play(Game.effectSoundConfig);
         this.scene.events.off("update", this.update, this);
         this.scene.events.off("spectateChange", this.setVisibility, this);
         if (this.playerNum == 0) {
