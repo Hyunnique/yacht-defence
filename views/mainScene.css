@@ -1,4 +1,5 @@
 .ui-mainScene-default {
+    --logo-color: white;
     text-align: center;
 }
 
@@ -76,6 +77,14 @@
     height: 75%;
     width: 80%;
     overflow-y: scroll;
+
+    font-size: 0.8rem;
+
+    background-color: white;
+}
+
+.ui-rankings-rankingList table {
+    width: 100%;
 }
 
 .ui-rankings .ui-rankings-title {
@@ -100,5 +109,5 @@
     
     border: 1px solid black;
     border-collapse: collapse;
-    padding: 2%;
+    padding: 1%;
 }
