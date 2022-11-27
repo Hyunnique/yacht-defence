@@ -201,10 +201,7 @@ var Game = {
 
                             // 해당 플레이어의 유닛개수/유닛버프/아이템목록/아이템버프로 갱신
 
-                            let tierCnt = [0, 0, 0, 0];
-                            this.PlayerData[i].units.forEach((u) => {
-                                tierCnt[u.tier - 1]++;
-                            })
+                            let tierCnt = this.PlayerData[i].tierCnt;
                             let tierBonus = this.PlayerData[i].tierBuffs;
                             for (let j = 0; i < j; i++) {
                                 document.getElementsByClassName("ui-unitArea-unitTierCount")[j].innerHTML = "";
@@ -518,6 +515,7 @@ var Game = {
             this.PlayerData[msg.index].items = msg.items;
             this.PlayerData[msg.index].shopBuffs = msg.shopBuffs;
             this.PlayerData[msg.index].tierBuffs = msg.tierBuffs;
+            this.PlayerData[msg.index].tierCnt = msg.tierCnt;
         })
     },
 
@@ -577,6 +575,17 @@ var Game = {
                 this.showUI("gameScene-topFloating");
                 this.showUI("gameScene-topRightFloating");
                 this.showUI("gameScene-bottomFloating");
+
+
+                window.addEventListener("mousemove", (e) => {
+                    
+                    let maxWidth = document.getElementById("ui-container").clientWidth;
+                    maxWidth = maxWidth + (window.innerWidth - maxWidth) / 2;
+                    let width = document.getElementsByClassName("ui-itemInfoArea")[0].clientWidth;
+                    let leftPx = (e.clientX + width > maxWidth ? maxWidth - width : e.clientX);
+                    document.getElementsByClassName("ui-itemInfoArea")[0].style.left = leftPx + "px";
+                    document.getElementsByClassName("ui-itemInfoArea")[0].style.bottom = window.innerHeight - e.clientY + "px";
+                });
 
                 document.onkeydown = (e) => {
                     // console.log(e);
@@ -791,9 +800,33 @@ var Game = {
             e.style.backgroundImage = "url('" + icons["icon" + itemSpecSheets["item" + e.attributes["idx"].value].icon + ".png"] + "')";
             
             // 마우스 올리면 아이템 설명 보이기
-            // e.onMouseOver = (e) => {
-                
-            // } 
+            e.onmouseover = (event) => {
+                document.getElementsByClassName("ui-itemInfoArea")[0].style.display = "block";
+                document.getElementsByClassName("ui-itemInfoArea-iconArea-icon")[0].style.backgroundImage = "url('" + icons["icon" + itemSpecSheets["item" + e.attributes["idx"].value].icon + ".png"] + "')";
+                document.getElementsByClassName("ui-itemInfoArea-name")[0].innerText = itemSpecSheets["item" + e.attributes["idx"].value].name;
+
+                if (e.attributes["idx"].value == 20) {
+                    document.getElementsByClassName("ui-itemInfoArea-atk")[0].innerText = ""
+                    document.getElementsByClassName("ui-itemInfoArea-aspd")[0].innerText = "남은 기회가 0 일때"
+                    document.getElementsByClassName("ui-itemInfoArea-pen")[0].innerText = "한번 더 굴립니다."
+                }
+                else {
+                    let atk = itemSpecSheets["item" + e.attributes["idx"].value].buffAtk;
+                    let spd = itemSpecSheets["item" + e.attributes["idx"].value].buffAspd;
+                    let pen = itemSpecSheets["item" + e.attributes["idx"].value].buffPenetration
+                    let num = parseInt(e.innerText);
+
+                    let atkText = (atk == 0 ? "ATK : 0" : "ATK : " + (atk * num) + "% " + "(" + atk + "*" + num + ")%");
+                    let spdText = (spd == 0 ? "SPD : 0" : "SPD : " + (spd * num) + "% " + "(" + spd + "*" + num + ")%");
+                    let penText = (pen == 0 ? "PEN : 0" : "PEN : " + (pen * num) + "% " + "(" + pen + "*" + num + ")%");
+                    document.getElementsByClassName("ui-itemInfoArea-atk")[0].innerText = atkText;
+                    document.getElementsByClassName("ui-itemInfoArea-aspd")[0].innerText = spdText;
+                    document.getElementsByClassName("ui-itemInfoArea-pen")[0].innerText = penText;
+                }
+            };
+            e.onmouseout = (event) => {
+                document.getElementsByClassName("ui-itemInfoArea")[0].style.display = "none";
+            };
         })
     },
 
