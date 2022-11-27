@@ -3,6 +3,7 @@ import Game from "./Game";
 
 import DefaultCss from "../views/default.css";
 import CommonCss from "../views/common.css";
+import MainSceneCss from "../views/mainScene.css";
 import DiceSceneCss from "../views/diceScene.css";
 import GameSceneCss from "../views/gameScene.css";
 import SilverFont_ttf from "./assets/font/Silver.ttf";
