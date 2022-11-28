@@ -773,6 +773,7 @@ var Game = {
             this.hideUI("diceScene-default");
             this.hideUI("diceScene-result");
             this.showUI("mainScene-default");
+            document.getElementsByClassName("mainScene-message")[0].innerText = "";
         })
     },
 
