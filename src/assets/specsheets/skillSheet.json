@@ -70,7 +70,7 @@
         "delay": 1,
         "duration": 5,
         "ofHealth": "cur",
-        "value": 2
+        "value": 1.5
     },
     "unit43": {
         "skillType": "attackCount",
