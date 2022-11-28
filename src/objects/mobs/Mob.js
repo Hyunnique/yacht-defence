@@ -30,6 +30,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         scene.add.existing(this);
         scene.physics.add.existing(this);
         this.isTarget = true;
+        this.isBuffTarget = false;
         this.Health = mobData.health * hpFactor;
         this.MaxHealth = mobData.health * hpFactor;
         this.scale = mobData.scale;

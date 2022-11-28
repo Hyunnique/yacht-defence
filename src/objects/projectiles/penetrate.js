@@ -23,6 +23,10 @@ export default class Penetrate extends Phaser.Physics.Arcade.Sprite {
 
         this.target = shooter.target;
         this.isTarget = false;
+        this.isBuffTarget = false;
+
+        this.offsetX = this.scene.mapOffsetX * (shooter.playerNum % 2);
+        this.offsetY = this.scene.mapOffsetY * Math.floor(shooter.playerNum / 2);
         
         this.skillInfo = skillInfo;
 
@@ -40,8 +44,13 @@ export default class Penetrate extends Phaser.Physics.Arcade.Sprite {
             this.setVisible(false);
         
         this.flyto = new Phaser.Math.Vector2();
-
-        this.setAngle(this, this.x, this.y);
+        
+        try {
+            this.setAngle(this, this.target[0].x, this.target[0].y);
+        }
+        catch(e) {
+            this.destroy();
+        }
 
         Phaser.Math.RotateTo(this.flyto, this.x, this.y, this.rotation, this.shooter.range);
         this.scene.physics.moveTo(this, this.flyto.x, this.flyto.y, this.speed);
@@ -51,7 +60,7 @@ export default class Penetrate extends Phaser.Physics.Arcade.Sprite {
 
     update()
     {   
-        if (this.x <= 0 || this.x >= 2400 || this.y >= 1536 || this.y <= 0) {
+        if (this.x >= (this.offsetX + 2400) || this.x <= this.offsetX || this.y >= (this.offsetY + 1536) || this.y <= this.offsetY) {
             this.scene.events.off("update", this.update, this);
             this.scene.events.off("spectateChange", this.setVisibility, this);
             this.destroy();
