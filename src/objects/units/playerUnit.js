@@ -245,7 +245,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.penetration = this.originPenetration + this.globalbuffedPenetration + this.selfBuffPenetration;
         if (this.penetration > 1) this.penetration = 1;
         else if (this.penetration < 0) this.penetration = 0;
-        if (this.skillInfo.skillType == "statFix")
+        if (this.skillInfo && this.skillInfo.skillType == "statFix")
             this.statFixer();
     }
 

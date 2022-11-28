@@ -2,8 +2,6 @@ import Mob from '../objects/mobs/Mob.js';
 import Game from "../Game.js";
 import Unit from '../objects/units/playerUnit.js';
 import Item from "../assets/specsheets/shopItemSheet.json"
-import profile from '../Profile.js';
-import { GameObjects } from 'phaser';
 const Phaser = require('phaser');
 const Config = require("../Config");
 
@@ -228,9 +226,6 @@ export default class gameScene extends Phaser.Scene {
         this.globalnum3 = 1;
         this.mobCounter = 0;
 
-        this.mobSpawner = Array(4);
-        
-
         this.unitIndex = 0;
         this.playerHealth = 1000000;
         this.placemode = false;
@@ -423,15 +418,30 @@ export default class gameScene extends Phaser.Scene {
         Game.syncFieldStatus();
     }
 
+    removeOtherPlayerUnit(index)
+    {
+        this.spectate_player_units[index].forEach(e => {
+                let t = this.info[index].getTileAtWorldXY(e.x, e.y, true);
+                t.placedUnit = undefined;
+                e.remove();
+            });
+        this.spectate_player_units[index] = [];
+    }
+
     placeOtherPlayerUnit(playerNum, shopBuffs, tierBuffs) {
+        if (playerNum == 0)
+            return;
         var savedLength = this.spectate_player_units[playerNum].length;
-        var test = 0;
+        var receivedLength = this.spectate_player.length;
+        if (receivedLength == 0)
+        {
+            this.removeOtherPlayerUnit(playerNum);
+        }
+
         this.spectate_player.forEach((e, i) => {
             var offsetX = e.x + (this.mapOffsetX * (playerNum % 2));
             var offsetY = e.y + (this.mapOffsetY * Math.floor(playerNum / 2));
             if (i < savedLength) {//기존에 있는 것중에
-                if (e.uindex == this.spectate_player_units[playerNum][i].index)
-                    test++;
                 var unit = this.spectate_player_units[playerNum][i];
                 if (unit.x != offsetX || unit.y != offsetY) { // 자리가 달라?
                     let t = this.info[playerNum].getTileAtWorldXY(unit.x, unit.y, true);
@@ -452,8 +462,6 @@ export default class gameScene extends Phaser.Scene {
             }
         });
         this.resetOtherBuff(playerNum, shopBuffs, tierBuffs);
-        if (test == savedLength - 1)
-            console.log("success!!");
     }
 
     resetOtherBuff(playerNum,shopBuff,tierBuffs) {
@@ -466,7 +474,6 @@ export default class gameScene extends Phaser.Scene {
             e.updateBuff();
         });
     }
-
 
     resetBuff() {
         this.m_player.forEach((e) => {
@@ -490,14 +497,17 @@ export default class gameScene extends Phaser.Scene {
             if (this.preTile == undefined) {
                 this.handleTierBonus(this.onPlaceQueue.tier, false);
                 this.onPlaceQueue.remove();
-                this.onPlaceQueue = undefined;
-                Game.syncFieldStatus();
+                this.m_player.splice(this.m_player.length - 1, 1);
             }
             else {
                 this.unitPlacer(this.preTile);
                 this.preTile = undefined;
-            }
+            }    
+            this.onPlaceQueue = undefined;
+            console.log(this.m_player);
+            Game.syncFieldStatus();
         }
+        
     }
 
     startRound() {
@@ -511,7 +521,7 @@ export default class gameScene extends Phaser.Scene {
         this.currentRoundData.forEach((element, index) => {
             this.mobCounter += element["mobCount"];
             if (Game.PlayerData[0].hp > 0) {
-                this.mobSpawner[0] = this.time.addEvent({
+                    this.time.addEvent({
                     delay: initialDelay,
                     callback: () => {
                         this.m_mobs.add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum, element["mobRoute"], element["hpFactor"], 0));
@@ -522,7 +532,7 @@ export default class gameScene extends Phaser.Scene {
                 });
             }
             if (Game.PlayerData.length > 1 && !Game.PlayerData[1].dead) {
-                this.mobSpawner[1] = this.time.addEvent({
+                this.time.addEvent({
                     delay: initialDelay,
                     callback: () => {
                         this.spectate_player_mobs[1].add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum1, element["mobRoute"], element["hpFactor"], 1));
@@ -532,7 +542,7 @@ export default class gameScene extends Phaser.Scene {
                     startAt: index * 100
                 });
                 if (Game.PlayerData.length > 2 && !Game.PlayerData[2].dead) {
-                    this.mobSpawner[2] = this.time.addEvent({
+                    this.time.addEvent({
                         delay: initialDelay,
                         callback: () => {
                             this.spectate_player_mobs[2].add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum2, element["mobRoute"], element["hpFactor"], 2));
@@ -542,7 +552,7 @@ export default class gameScene extends Phaser.Scene {
                         startAt: index * 100
                     });
                     if (Game.PlayerData.length > 3 && !Game.PlayerData[3].dead) {
-                        this.mobSpawner[3] = this.time.addEvent({
+                        this.time.addEvent({
                             delay: initialDelay,
                             callback: () => {
                                 this.spectate_player_mobs[3].add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum3, element["mobRoute"], element["hpFactor"], 3));
@@ -642,7 +652,8 @@ export default class gameScene extends Phaser.Scene {
         if (Game.PlayerData[0].hp > 0) {
             this.placemode = true;
             this.handleTierBonus(tier, true);
-            this.initialPlace(this.unitDB["unit" + 50], 50);
+            this.initialPlace(this.unitDB["unit" + unitID], unitID);
+            console.log(this.m_player);
         }
     }
     
@@ -656,6 +667,7 @@ export default class gameScene extends Phaser.Scene {
             });
             this.tierCnt = [0, 0, 0, 0];
             this.tierBonus = [0, 0, 0, 0];
+            Game.syncFieldStatus();
         }
         else {
             this.removeOtherPlayerUnit(index);
@@ -663,10 +675,7 @@ export default class gameScene extends Phaser.Scene {
                 e.death(); 
             });
             this.alive[index] = false;
-        }
-        if (!this.mobSpawner[index])
-            this.mobSpawner[index].remove();
-        
+        }        
     }
 
 
