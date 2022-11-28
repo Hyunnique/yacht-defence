@@ -684,20 +684,20 @@ export default class gameScene extends Phaser.Scene {
 
         switch (tier) {
             case 1:
-                tierOnlyBonus = 200;
-                overallBonus = 15;
+                tierOnlyBonus = 100;
+                overallBonus = 25;
                 break;
             case 2:
-                tierOnlyBonus = 40;
-                overallBonus = 4;
+                tierOnlyBonus = 20;
+                overallBonus = 10;
                 break;
             case 3:
-                tierOnlyBonus = 20;
-                overallBonus = 2.5;
+                tierOnlyBonus = 10;
+                overallBonus = 6;
                 break;
             case 4:
-                tierOnlyBonus = 10;
-                overallBonus = 1.5;
+                tierOnlyBonus = 5;
+                overallBonus = 2;
                 break;
         }
 

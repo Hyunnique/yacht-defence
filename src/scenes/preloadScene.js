@@ -215,8 +215,6 @@ export default class PreLoadScene extends Phaser.Scene {
     }
 
     create() {
-        this.add.text(20, 20, "Loading Game...");
-
         // 유닛 대기, 공격 애니메이션 생성
         var irregulars = [3, 8, 9, 21, 22, 39, 43, 46, 48];
         for (var i = 0; i < 64; i++)

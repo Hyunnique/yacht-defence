@@ -73,9 +73,9 @@
         "projectileType": 0,
         "tier": 1,
         "buffRange": 240,
-        "buffAtk": 20,
-        "buffAspd": 20,
-        "skill": "받는 피해를 20% 증가 시키는 디버프를 부여, 아군의 공격과 속도 20% 강화"
+        "buffAtk": 15,
+        "buffAspd": 15,
+        "skill": "받는 피해를 20% 증가 시키는 디버프를 부여, 아군의 공격과 속도 15% 강화"
     },
     "unit3": {
         "name": "다크엘프 궁수",
@@ -135,7 +135,7 @@
         "attack": 85,
         "aspd": 1.3,
         "range": 168,
-        "rangeType": 0,
+       "rangeType": 0,
         "penetration": 0.1,
         "attackType": 0,
         "idleSprite": "unit5idle",
@@ -612,7 +612,7 @@
         "explodeRange": 312,
         "projectileSpeed": 250,
         "tier": 1,
-        "skill": "공격시 5초동안 0.5초마다 공격력의 15%의 화상 피해",
+        "skill": "공격시 5초동안 0.5초마다 공격력의 30%의 화상 피해",
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0
@@ -691,9 +691,9 @@
         "projectileType": 0,
         "tier": 3,
         "buffRange": 72,
-        "buffAtk": 8,
-        "buffAspd": 8,
-        "skill": "주변 아군의 공격과 속도 8% 강화"
+        "buffAtk": 5,
+        "buffAspd": 5,
+        "skill": "주변 아군의 공격과 속도 5% 강화"
     },
     "unit26": {
         "name": "되살아난 마검사 펠소닌",
@@ -1039,7 +1039,7 @@
         "explodeRange": 312,
         "projectileSpeed": 250,
         "tier": 2,
-        "skill": "공격시 5초동안 0.5초마다 공격력의 35%의 화상 피해",
+        "skill": "공격시 5초동안 0.5초마다 공격력의 10%의 화상 피해",
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0
@@ -1486,10 +1486,10 @@
         "hitSoundName": "hitFire",
         "projectileType": 0,
         "tier": 2,
-        "skill": "주변 아군의 속도 25% 강화",
+        "skill": "주변 아군의 속도 20% 강화",
         "buffRange": 168,
         "buffAtk": 0,
-        "buffAspd": 25
+        "buffAspd": 20
     },
     "unit56": {
         "name": "부활한 금단의 마도사 페네스",
@@ -1515,9 +1515,9 @@
         "explodeRange": 168,
         "projectileSpeed": 500,
         "tier": 2,
-        "skill": "주변 아군의 공격 25% 강화",
+        "skill": "주변 아군의 공격 20% 강화",
         "buffRange": 168,
-        "buffAtk": 25,
+        "buffAtk": 20,
         "buffAspd": 0
     },
     "unit57": {
@@ -1544,9 +1544,9 @@
         "explodeRange": 168,
         "projectileSpeed": 500,
         "tier": 3,
-        "skill": "주변 아군의 공격 16% 강화",
+        "skill": "주변 아군의 공격 10% 강화",
         "buffRange": 72,
-        "buffAtk": 16,
+        "buffAtk": 10,
         "buffAspd": 0
     },
     "unit58": {
@@ -1598,8 +1598,8 @@
         "tier": 3,
         "buffRange": 72,
         "buffAtk": 0,
-        "buffAspd": 16,
-        "skill": "주변 아군의 속도 16% 강화"
+        "buffAspd": 10,
+        "skill": "주변 아군의 속도 10% 강화"
     },
     "unit60": {
         "name": "화염족 마도사",
