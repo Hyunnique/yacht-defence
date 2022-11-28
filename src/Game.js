@@ -414,8 +414,7 @@ var Game = {
         this.Socket.on("sync-playerFieldStatus", (msg) => {
             /// msg = { index, units, shopBuffs, tierBuffs }
             /// 누군가의 배치나 버프 상황이 업데이트 되면 발생하는 이벤트
-            this.GameObject.scene.getScene("gameScene").spectate_player = msg.units;
-            this.GameObject.scene.getScene("gameScene").removeOtherPlayerUnit(msg.index);            
+            this.GameObject.scene.getScene("gameScene").spectate_player = msg.units;            
             this.GameObject.scene.getScene("gameScene").placeOtherPlayerUnit(msg.index,msg.shopBuffs,msg.tierBuffs);
         });
         
@@ -1011,6 +1010,7 @@ var Game = {
                     x: unit.x,
                     y: unit.y,
                     id: unit.id,
+                    uindex: unit.index,
                     tier: unit.tier,
                 };
             }),

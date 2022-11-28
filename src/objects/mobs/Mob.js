@@ -233,35 +233,17 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
             this.destroy();
         }, [], this.scene);
     }
-    
+
     hit(projectile) {
-        if (projectile.shooter.projectileType == 1) {
-            if (projectile.alreadyPenetrated.findIndex(e => e == this.mobNum) == -1) {
-                var damage = projectile.shooter.calcDamage(projectile.shooter.attack, this.defence) * (1 + this.totalDebuffVal / 100);
-                projectile.alreadyPenetrated.push(this.mobNum);
-                if (projectile.skillInfo != null) {
-                    if (projectile.skillInfo.skillType == "DOT")
-                        this.dotDamageFactory(projectile);
-                    if (projectile.skillInfo.skillType == "debuff")
-                        this.handleDebuff(projectile.shooter.id, projectile.skillInfo.value);
-                    if (projectile.skillInfo.skillType == "attackCount") {
-                        if (projectile.skillInfo.ofHealth == "cur")
-                            damage = projectile.shooter.calcDamage(projectile.shooter.attack + this.Health * (projectile.skillInfo.value / 100), this.defence) * (1 + this.totalDebuffVal / 100);
-                        if (projectile.skillInfo.ofHealth == "lost")
-                            damage = projectile.shooter.calcDamage(projectile.shooter.attack * projectile.skillInfo.value * (1 - this.Health / this.MaxHealth), this.defence) * (1 + this.totalDebuffVal / 100);
-                        if (projectile.skillInfo.ofHealth == "atk")
-                            damage = projectile.shooter.calcDamage(projectile.shooter.attack * (1 + projectile.skillInfo.value / 100), this.defence) * (1 + this.totalDebuffVal / 100);
-                    }
-                }
-                this.Health -= damage;
-                projectile.hit();
-            }
-        }
-        else if (projectile.shooter.projectileType == 2) {
-            projectile.explode();
-        }
-        else {
+        if (projectile.shooter.projectileType < 2) {
+            if (projectile.shooter.projectileType == 1)
+                if(projectile.alreadyPenetrated.findIndex(e => e == this.mobNum) != -1)
+                    return;
+                else
+                    projectile.alreadyPenetrated.push(this.mobNum);
+            
             var damage = projectile.shooter.calcDamage(projectile.shooter.attack, this.defence) * (1 + this.totalDebuffVal / 100);
+            
             if (projectile.skillInfo != null) {
                 if (projectile.skillInfo.skillType == "DOT")
                     this.dotDamageFactory(projectile);
@@ -279,14 +261,31 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
             this.Health -= damage;
             projectile.hit();
         }
+        else if (projectile.shooter.projectileType == 2) {
+            projectile.explode();
+        }
     }
 
-    handleDebuff(id, value)
+    handleDebuff(skillInfo)
     {
-        if (!this.debuffDict[id])
-        {
-            this.debuffDict[id] = value;
-            this.totalDebuffVal += value;   
+        if (!this.debuffDict[skillInfo.callerType]){
+            this.debuffDict[skillInfo.callerType] = skillInfo;
+            if (skillInfo.of == "rdamage") {
+                this.totalDebuffVal += skillInfo.value;
+                if (skillInfo.duration != -1)
+                    this.scene.time.delayedCall(skillInfo.duration * 1000, () => {
+                        this.totalDebuffVal -= skillInfo.value;
+                        delete debuffDict[skillInfo.callerType];
+                    }, [], this);
+            }
+            else if (skillInfo.of == "pen") {
+                this.defence *= (1 - skillInfo / 100);
+                if (skillInfo.duration != -1)
+                    this.scene.time.delayedCall(skillInfo.duration * 1000, () => {
+                        this.defence /= (1 - skillInfo / 100);
+                        delete debuffDict[skillInfo.callerType];
+                    }, [], this);
+            }
         }
     }
 
