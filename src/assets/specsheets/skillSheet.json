@@ -56,7 +56,7 @@
         "from": "aspd",
         "fromVal": 0.2,
         "to": "atk",
-        "value": 1000
+        "value": 800
     },
     "unit38": {
         "skillType": "DOT",
@@ -70,7 +70,7 @@
         "delay": 1,
         "duration": 5,
         "ofHealth": "cur",
-        "value": 2
+        "value": 1.5
     },
     "unit43": {
         "skillType": "attackCount",
