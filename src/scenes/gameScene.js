@@ -374,9 +374,9 @@ export default class gameScene extends Phaser.Scene {
         this.input.on('pointermove', (pointer) => {
             let t = this.getTileAtPointer(pointer, this.info[0]);
             if (!t || t.index == "2898") {
-                this.onPlaceQueue.rangeView.alpha = 0;
-                this.onPlaceQueue.buffRangeView.alpha = 0;
-                this.onPlaceQueue.alpha = 0;
+                this.onPlaceQueue.rangeView.alpha = 0.16;
+                this.onPlaceQueue.buffRangeView.alpha = 0.24;
+                this.onPlaceQueue.alpha = 0.4;
             }
             else {
                 this.onPlaceQueue.rangeView.alpha = 0.4;
