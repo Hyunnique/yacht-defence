@@ -536,32 +536,31 @@ export default class gameScene extends Phaser.Scene {
                         this.spectate_player_mobs[1].add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum1, element["mobRoute"], element["hpFactor"], 1));
                         this.globalnum1++;
                     },
-                    repeat: element["mobCount"] - 1,    
+                    repeat: element["mobCount"] - 1,
                     startAt: index * 100
                 });
-                if (Game.PlayerData.length > 2 && !Game.PlayerData[2].dead) {
-                    this.time.addEvent({
-                        delay: initialDelay,
-                        callback: () => {
-                            this.spectate_player_mobs[2].add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum2, element["mobRoute"], element["hpFactor"], 2));
-                            this.globalnum2++;
-                        },
-                        repeat: element["mobCount"] - 1,
-                        startAt: index * 100
-                    });
-                    if (Game.PlayerData.length > 3 && !Game.PlayerData[3].dead) {
-                        this.time.addEvent({
-                            delay: initialDelay,
-                            callback: () => {
-                                this.spectate_player_mobs[3].add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum3, element["mobRoute"], element["hpFactor"], 3));
-                                this.globalnum3++;
-                            },
-                            repeat: element["mobCount"] - 1,
-                            startAt: index * 100
-                        });
-            
-                    }
-                }
+            }
+            if (Game.PlayerData.length > 2 && !Game.PlayerData[2].dead) {
+                this.time.addEvent({
+                    delay: initialDelay,
+                    callback: () => {
+                        this.spectate_player_mobs[2].add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum2, element["mobRoute"], element["hpFactor"], 2));
+                        this.globalnum2++;
+                    },
+                    repeat: element["mobCount"] - 1,
+                    startAt: index * 100
+                });
+            }
+            if (Game.PlayerData.length > 3 && !Game.PlayerData[3].dead) {
+                this.time.addEvent({
+                    delay: initialDelay,
+                    callback: () => {
+                        this.spectate_player_mobs[3].add(new Mob(this, this.mobDB[element["mobName"]], this.globalnum3, element["mobRoute"], element["hpFactor"], 3));
+                        this.globalnum3++;
+                    },
+                    repeat: element["mobCount"] - 1,
+                    startAt: index * 100
+                });
             }
         });
         this.checkLast = true;
