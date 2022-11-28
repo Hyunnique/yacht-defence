@@ -20,10 +20,10 @@
     },
     "unit27": {
         "skillType": "statBuff",
-        "duration": 2,
-        "coolDown": 10,
+        "duration": 4,
+        "coolDown": 8,
         "buffAtk": 0,
-        "buffAspd": 600,
+        "buffAspd": 400,
         "buffPenetration": 0,
         "debuffAtk": 0,
         "debuffAspd": 0,

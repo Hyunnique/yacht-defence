@@ -253,7 +253,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         var from = this.skillInfo.from;
         var fromVal = this.skillInfo.fromVal;
         var to = this.skillInfo.to;
-        console.log(this.skillInfo);
+
         var overflow = 0;
         if (from == "atk") {
             overflow = this.attack - fromVal;
@@ -272,13 +272,24 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
             overflow = 0;
         overflow *= this.skillInfo.value;
 
-        if (to == "atk") 
-            this.attack += overflow;
-        else if (to == "aspd") 
-            this.aspd += overflow;
-        else if (to == "pen")
-            this.penetration += overflow;
+        if (to == "atk") {
+            this.selfBuffAtk = overflow;
+        }
+        else if (to == "aspd") {
+            this.selfBuffAtk = overflow;
+        }
+            
+        else if (to == "pen") {
+            //자릿수 맞추기 필요
+            //this.penetration += overflow;
+        }
+         
+        if(from != "atk") this.attack = (1 + this.buffedAtk / 100) * this.globalbuffAtk * this.originAttack * (1 + this.selfBuffAtk / 100);
+        if(from != "aspd")this.aspd = (1 + this.buffedAspd / 100) * (1 + this.globalbuffAspd / 100) * this.originAspd * (1 + this.selfBuffAspd/100);
+        if(from != "pen") this.penetration = this.originPenetration + this.globalbuffedPenetration + this.selfBuffPenetration;
         
+        if (this.penetration > 1) this.penetration = 1;
+        else if (this.penetration < 0) this.penetration = 0;        
     }
 
     attackMob() {
