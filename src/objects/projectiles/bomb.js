@@ -29,6 +29,7 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
             this.skillInfo.callerID = shooter.index;
         }
         this.isTarget = false;
+        this.isBuffTarget = false;
 
         if(shooter.playerNum != this.scene.currentView)
             this.setVisible(false);
