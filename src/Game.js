@@ -402,7 +402,13 @@ var Game = {
             document.getElementsByClassName("ui-hpArea-player")[msg].classList.remove("text-outline-gold");
             document.getElementsByClassName("ui-hpArea-playerhp")[msg].style.borderColor = "grey";
             document.getElementsByClassName("ui-hpArea-playerText")[msg].style.color = "grey";
+            // 사망 상태로 UI 변경
+            
+            document.getElementsByClassName("ui-hpArea-player")[msg].onclick = (e) => {};
+            // 사망한 플레이어 필드 관전 못하게 막기
+
             this.GameObject.scene.getScene("gameScene").gameOverHandler(msg);
+            // 사망한 플레이어 관련 필드 전부 지우기
         });
 
         this.Socket.on("sync-playerFieldStatus", (msg) => {
