@@ -57,7 +57,6 @@ export default class gameScene extends Phaser.Scene {
 
     tierCnt = [0, 0, 0, 0];
     tierBonus = [0, 0, 0, 0];
-    alive = [true, true, true, true];
     gold = 0;
 
     currentRoundData;
@@ -504,7 +503,6 @@ export default class gameScene extends Phaser.Scene {
                 this.preTile = undefined;
             }    
             this.onPlaceQueue = undefined;
-            console.log(this.m_player);
             Game.syncFieldStatus();
         }
         
@@ -653,7 +651,6 @@ export default class gameScene extends Phaser.Scene {
             this.placemode = true;
             this.handleTierBonus(tier, true);
             this.initialPlace(this.unitDB["unit" + unitID], unitID);
-            console.log(this.m_player);
         }
     }
     
@@ -674,7 +671,6 @@ export default class gameScene extends Phaser.Scene {
             this.spectate_player_mobs[index].getChildren().forEach((e) => {
                 e.death(); 
             });
-            this.alive[index] = false;
         }        
     }
 
