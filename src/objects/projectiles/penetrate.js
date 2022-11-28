@@ -46,7 +46,7 @@ export default class Penetrate extends Phaser.Physics.Arcade.Sprite {
         this.flyto = new Phaser.Math.Vector2();
         
         try {
-            this.setAngle(this, this.target[0].x, this.target[0].y);
+            this.setAngle(this, this.target[0].centerX, this.target[0].centerY);
         }
         catch(e) {
             this.destroy();
