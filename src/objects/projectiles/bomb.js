@@ -43,9 +43,14 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
         this.scene.physics.add.existing(this, true);
 
         this.play(shooter.projectileName);
-
-        this.setAngle(this, this.target);
-        this.scene.physics.moveTo(this, this.target.x, this.target.y, this.speed);
+        try {
+            this.setAngle(this, this.target);
+            this.scene.physics.moveTo(this, this.target.x, this.target.y, this.speed);
+        }
+        catch {
+            this.explode();
+        }
+        
         this.scene.events.on("update", this.update, this);
         this.scene.events.on("spectateChange", this.setVisibility, this);
     }
