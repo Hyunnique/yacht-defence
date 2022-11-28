@@ -2,7 +2,7 @@
     "unit0": {
         "name": "고블린",
         "unitType": 0,
-        "attack": 90,
+        "attack": 100,
         "aspd": 0.7,
         "range": 240,
         "rangeType": 1,
@@ -28,7 +28,7 @@
     "unit1": {
         "name": "성문 경비병",
         "unitType": 0,
-        "attack": 115,
+        "attack": 130,
         "aspd": 0.6,
         "range": 240,
         "rangeType": 1,
@@ -54,8 +54,8 @@
     "unit2": {
         "name": "성기사 단장 발키리",
         "unitType": 4,
-        "attack": 140,
-        "aspd": 0.9,
+        "attack": 155,
+        "aspd": 1.0,
         "range": 168,
         "rangeType": 0,
         "penetration": 0.1,
@@ -106,8 +106,8 @@
     "unit4": {
         "name": "견습 검사",
         "unitType": 0,
-        "attack": 90,
-        "aspd": 1.0,
+        "attack": 100,
+        "aspd": 1.1,
         "range": 168,
         "rangeType": 0,
         "penetration": 0.1,
@@ -132,8 +132,8 @@
     "unit5": {
         "name": "고블린 도적",
         "unitType": 0,
-        "attack": 75,
-        "aspd": 1.2,
+        "attack": 85,
+        "aspd": 1.3,
         "range": 168,
         "rangeType": 0,
         "penetration": 0.1,
@@ -158,8 +158,8 @@
     "unit6": {
         "name": "산적",
         "unitType": 0,
-        "attack": 180,
-        "aspd": 0.5,
+        "attack": 200,
+        "aspd": 0.55,
         "range": 168,
         "rangeType": 0,
         "penetration": 0.1,
@@ -184,7 +184,7 @@
     "unit7": {
         "name": "고블린 주술사",
         "unitType": 3,
-        "attack": 100,
+        "attack": 110,
         "aspd": 0.8,
         "range": 336,
         "rangeType": 2,
@@ -239,7 +239,7 @@
     "unit9": {
         "name": "불의 마도사",
         "unitType": 3,
-        "attack": 130,
+        "attack": 145,
         "aspd": 0.8,
         "range": 336,
         "rangeType": 2,
@@ -268,8 +268,8 @@
     "unit10": {
         "name": "암살 닌자",
         "unitType": 0,
-        "attack": 80,
-        "aspd": 1.5,
+        "attack": 90,
+        "aspd": 1.7,
         "range": 168,
         "rangeType": 0,
         "penetration": 0.1,
@@ -320,8 +320,8 @@
     "unit12": {
         "name": "용기병 전투원",
         "unitType": 0,
-        "attack": 200,
-        "aspd": 0.6,
+        "attack": 220,
+        "aspd": 0.7,
         "range": 168,
         "rangeType": 0,
         "penetration": 0.1,
@@ -346,7 +346,7 @@
     "unit13": {
         "name": "얼음 마도사",
         "unitType": 2,
-        "attack": 100,
+        "attack": 110,
         "aspd": 1.0,
         "range": 432,
         "rangeType": 2,
@@ -374,7 +374,7 @@
     "unit14": {
         "name": "마도 수련생",
         "unitType": 3,
-        "attack": 100,
+        "attack": 110,
         "aspd": 0.6,
         "range": 336,
         "rangeType": 2,
@@ -403,8 +403,8 @@
     "unit15": {
         "name": "왕궁 수호병",
         "unitType": 0,
-        "attack": 100,
-        "aspd": 0.9,
+        "attack": 110,
+        "aspd": 1.0,
         "range": 168,
         "rangeType": 0,
         "penetration": 0.1,
@@ -429,8 +429,8 @@
     "unit16": {
         "name": "바이킹",
         "unitType": 0,
-        "attack": 160,
-        "aspd": 0.6,
+        "attack": 180,
+        "aspd": 0.7,
         "range": 168,
         "rangeType": 0,
         "penetration": 0.1,
@@ -455,8 +455,8 @@
     "unit17": {
         "name": "스켈레톤 검사",
         "unitType": 0,
-        "attack": 110,
-        "aspd": 0.8,
+        "attack": 125,
+        "aspd": 0.9,
         "range": 168,
         "rangeType": 0,
         "penetration": 0.1,
@@ -481,7 +481,7 @@
     "unit18": {
         "name": "스켈레톤 주술사",
         "unitType": 3,
-        "attack": 140,
+        "attack": 155,
         "aspd": 0.6,
         "range": 336,
         "rangeType": 2,
@@ -510,7 +510,7 @@
     "unit19": {
         "name": "용기병 전사",
         "unitType": 0,
-        "attack": 90,
+        "attack": 100,
         "aspd": 1.0,
         "range": 240,
         "rangeType": 1,
@@ -536,7 +536,7 @@
     "unit20": {
         "name": "화염족 견습 주술사",
         "unitType": 3,
-        "attack": 60,
+        "attack": 70,
         "aspd": 1.3,
         "range": 336,
         "rangeType": 2,
@@ -591,7 +591,7 @@
     "unit22": {
         "name": "휘몰아치는 화염의 에단",
         "unitType": 3,
-        "attack": 440,
+        "attack": 400,
         "aspd": 0.5,
         "range": 336,
         "rangeType": 2,
@@ -620,8 +620,8 @@
     "unit23": {
         "name": "암살대 대원",
         "unitType": 1,
-        "attack": 260,
-        "aspd": 1.0,
+        "attack": 320,
+        "aspd": 0.8,
         "range": 480,
         "rangeType": 3,
         "penetration": 0.1,
@@ -672,8 +672,8 @@
     "unit25": {
         "name": "견습 성기사단원",
         "unitType": 4,
-        "attack": 50,
-        "aspd": 0.8,
+        "attack": 55,
+        "aspd": 0.9,
         "range": 168,
         "rangeType": 0,
         "penetration": 0,
@@ -698,7 +698,7 @@
     "unit26": {
         "name": "되살아난 마검사 펠소닌",
         "unitType": 2,
-        "attack": 180,
+        "attack": 200,
         "aspd": 1.5,
         "range": 432,
         "rangeType": 2,
@@ -747,13 +747,13 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "skill": "매 10초마다 2초간 공격속도 600% 증가."
+        "skill": "매 8초마다 4초간 공격속도 600% 증가."
     },
     "unit28": {
         "name": "춘식",
         "unitType": 0,
-        "attack": 80,
-        "aspd": 0.8,
+        "attack": 90,
+        "aspd": 0.9,
         "range": 240,
         "rangeType": 1,
         "penetration": 0.1,
@@ -778,8 +778,8 @@
     "unit29": {
         "name": "강도",
         "unitType": 0,
-        "attack": 60,
-        "aspd": 1.5,
+        "attack": 65,
+        "aspd": 1.7,
         "range": 168,
         "rangeType": 0,
         "penetration": 0.1,
@@ -804,7 +804,7 @@
     "unit30": {
         "name": "창술사",
         "unitType": 0,
-        "attack": 60,
+        "attack": 65,
         "aspd": 1.0,
         "range": 240,
         "rangeType": 1,
@@ -830,7 +830,7 @@
     "unit31": {
         "name": "폭탄병",
         "unitType": 3,
-        "attack": 100,
+        "attack": 115,
         "aspd": 0.7,
         "range": 480,
         "rangeType": 3,
@@ -859,8 +859,8 @@
     "unit32": {
         "name": "스켈레톤 용기사",
         "unitType": 0,
-        "attack": 120,
-        "aspd": 1.0,
+        "attack": 135,
+        "aspd": 1.1,
         "range": 168,
         "rangeType": 0,
         "penetration": 0.1,
@@ -885,7 +885,7 @@
     "unit33": {
         "name": "기공사 달인 테스",
         "unitType": 3,
-        "attack": 220,
+        "attack": 240,
         "aspd": 0.7,
         "range": 336,
         "rangeType": 2,
@@ -944,7 +944,7 @@
         "aspd": 0.2,
         "range": 336,
         "rangeType": 2,
-        "penetration": 1,
+        "penetration": 0.1,
         "attackType": 0,
         "idleSprite": "unit35idle",
         "idleAnim": "unit35idle",
@@ -961,12 +961,12 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "skill": "공격 속도가 0.2로 고정되지만, 초과분의 1000배만큼 추가 피해를 입힙니다."
+        "skill": "공격 속도가 0.2로 고정되지만, 초과분의 800배만큼 추가 피해를 입힙니다."
     },
     "unit36": {
         "name": "창기병",
         "unitType": 0,
-        "attack": 70,
+        "attack": 80,
         "aspd": 0.9,
         "range": 240,
         "rangeType": 1,
@@ -992,8 +992,8 @@
     "unit37": {
         "name": "견습 격투가",
         "unitType": 0,
-        "attack": 50,
-        "aspd": 1.8,
+        "attack": 55,
+        "aspd": 2.0,
         "range": 168,
         "rangeType": 0,
         "penetration": 0.1,
@@ -1018,7 +1018,7 @@
     "unit38": {
         "name": "화염족 대마도사 이프리트",
         "unitType": 3,
-        "attack": 200,
+        "attack": 210,
         "aspd": 0.6,
         "range": 336,
         "rangeType": 2,
@@ -1073,7 +1073,7 @@
     "unit40": {
         "name": "암흑 마도사",
         "unitType": 3,
-        "attack": 80,
+        "attack": 90,
         "aspd": 1.3,
         "range": 336,
         "rangeType": 2,
@@ -1102,7 +1102,7 @@
     "unit41": {
         "name": "다크엘프 전투대장 히스",
         "unitType": 0,
-        "attack": 150,
+        "attack": 160,
         "aspd": 1.1,
         "range": 168,
         "rangeType": 0,
@@ -1128,8 +1128,8 @@
     "unit42": {
         "name": "기사 분대장",
         "unitType": 0,
-        "attack": 140,
-        "aspd": 0.9,
+        "attack": 150,
+        "aspd": 1.0,
         "range": 168,
         "rangeType": 0,
         "penetration": 0.1,
@@ -1180,7 +1180,7 @@
     "unit44": {
         "name": "유적 감시병",
         "unitType": 0,
-        "attack": 90,
+        "attack": 100,
         "aspd": 0.75,
         "range": 240,
         "rangeType": 1,
@@ -1206,7 +1206,7 @@
     "unit45": {
         "name": "고위 빙결 마도사 아케리스",
         "unitType": 2,
-        "attack": 190,
+        "attack": 200,
         "aspd": 0.7,
         "range": 432,
         "rangeType": 2,
@@ -1260,8 +1260,8 @@
     "unit47": {
         "name": "고블린 약탈대장",
         "unitType": 0,
-        "attack": 110,
-        "aspd": 1.1,
+        "attack": 120,
+        "aspd": 1.2,
         "range": 168,
         "rangeType": 0,
         "penetration": 0.1,
@@ -1312,7 +1312,7 @@
     "unit49": {
         "name": "농부",
         "unitType": 0,
-        "attack": 110,
+        "attack": 120,
         "aspd": 0.6,
         "range": 240,
         "rangeType": 1,
@@ -1338,8 +1338,8 @@
     "unit50": {
         "name": "암살대장 애퍼스",
         "unitType": 1,
-        "attack": 310,
-        "aspd": 1.1,
+        "attack": 460,
+        "aspd": 0.8,
         "range": 480,
         "rangeType": 3,
         "penetration": 0,
@@ -1364,8 +1364,8 @@
     "unit51": {
         "name": "미치광이 타이탄",
         "unitType": 0,
-        "attack": 210,
-        "aspd": 0.8,
+        "attack": 230,
+        "aspd": 0.9,
         "range": 168,
         "rangeType": 0,
         "penetration": 0.3,
@@ -1390,8 +1390,8 @@
     "unit52": {
         "name": "힘의 부족 도끼마스터 데럴드",
         "unitType": 0,
-        "attack": 430,
-        "aspd": 0.5,
+        "attack": 470,
+        "aspd": 0.6,
         "range": 168,
         "rangeType": 0,
         "penetration": 0.3,
@@ -1416,7 +1416,7 @@
     "unit53": {
         "name": "힘의 부족 창의 달인 데마린",
         "unitType": 0,
-        "attack": 205,
+        "attack": 230,
         "aspd": 0.8,
         "range": 240,
         "rangeType": 1,
@@ -1442,8 +1442,8 @@
     "unit54": {
         "name": "기사 분대원",
         "unitType": 0,
-        "attack": 85,
-        "aspd": 1.0,
+        "attack": 95,
+        "aspd": 1.1,
         "range": 168,
         "rangeType": 0,
         "penetration": 0.1,
@@ -1494,7 +1494,7 @@
     "unit56": {
         "name": "부활한 금단의 마도사 페네스",
         "unitType": 4,
-        "attack": 100,
+        "attack": 110,
         "aspd": 0.6,
         "range": 336,
         "rangeType": 2,
@@ -1523,7 +1523,7 @@
     "unit57": {
         "name": "스켈레톤 마도사",
         "unitType": 4,
-        "attack": 100,
+        "attack": 110,
         "aspd": 0.3,
         "range": 336,
         "rangeType": 2,
@@ -1552,7 +1552,7 @@
     "unit58": {
         "name": "선두 방어병",
         "unitType": 0,
-        "attack": 140,
+        "attack": 155,
         "aspd": 0.5,
         "range": 240,
         "rangeType": 1,
@@ -1630,8 +1630,8 @@
     "unit61": {
         "name": "선두 공격병",
         "unitType": 0,
-        "attack": 115,
-        "aspd": 0.8,
+        "attack": 125,
+        "aspd": 0.9,
         "range": 168,
         "rangeType": 0,
         "penetration": 0.1,
@@ -1656,8 +1656,8 @@
     "unit62": {
         "name": "타락한 무술가",
         "unitType": 0,
-        "attack": 65,
-        "aspd": 1.9,
+        "attack": 70,
+        "aspd": 2.1,
         "range": 168,
         "rangeType": 0,
         "penetration": 0.1,
@@ -1682,8 +1682,8 @@
     "unit63": {
         "name": "용기사 수호병",
         "unitType": 0,
-        "attack": 180,
-        "aspd": 0.7,
+        "attack": 195,
+        "aspd": 0.8,
         "range": 168,
         "rangeType": 0,
         "penetration": 0.1,
