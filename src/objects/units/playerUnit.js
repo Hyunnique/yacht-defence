@@ -97,6 +97,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         if (this.scene.skillDB["unit" + this.id] != null || this.scene.skillDB["unit" + this.id] != undefined) {
             this.skillInfo = this.scene.skillDB["unit" + this.id];
             this.skillReady = true;
+            this.skillInfo.callerID = this.index;
+            this.skillInfo.callerType = this.id;
         }
         
         this.target = [];
@@ -120,8 +122,6 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
     }
 
     update() {
-        
-        
         this.rangeView.setX(this.x);
         this.rangeView.setY(this.y);
         this.buffRangeView.setX(this.x);
@@ -133,8 +133,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         if (this.skillReady && this.target.length > 0)
             this.doSkill();
         if (this.attackReady && this.target.length > 0)
-            this.attackMob();
-        
+            this.attackMob(); 
     }
 
     setVisibility() {
@@ -202,6 +201,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         
     }
 
+    
+
     syncGlobalBuff()
     {
         this.globalbuffAspd = Game.shopBuff.shopAspd;
@@ -244,6 +245,40 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.penetration = this.originPenetration + this.globalbuffedPenetration + this.selfBuffPenetration;
         if (this.penetration > 1) this.penetration = 1;
         else if (this.penetration < 0) this.penetration = 0;
+        if (this.skillInfo.skillType == "statFix")
+            this.statFixer();
+    }
+
+    statFixer() {
+        var from = this.skillInfo.from;
+        var fromVal = this.skillInfo.fromVal;
+        var to = this.skillInfo.to;
+        console.log(this.skillInfo);
+        var overflow = 0;
+        if (from == "atk") {
+            overflow = this.attack - fromVal;
+            this.attack = fromVal;
+        }
+        else if (from == "aspd") {
+            overflow = this.aspd - fromVal;
+            this.aspd = fromVal;
+        }
+        else if (from == "pen") {
+            overflow = this.penetration - fromVal;
+            this.penetration = fromVal;
+        }
+
+        if (overflow < 0)
+            overflow = 0;
+        overflow *= this.skillInfo.value;
+
+        if (to == "atk") 
+            this.attack += overflow;
+        else if (to == "aspd") 
+            this.aspd += overflow;
+        else if (to == "pen")
+            this.penetration += overflow;
+        
     }
 
     attackMob() {
@@ -272,7 +307,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
                         if(this.skillInfo.skillType == "DOT")
                             e.gameObject.dotDamageFactoryMili(this);
                         if (this.skillInfo.skillType == "debuff")
-                            e.gameObject.handleDebuff(this.id, this.skillInfo.value);
+                            e.gameObject.handleDebuff(this.skillInfo);
                      }
                 });
             }
