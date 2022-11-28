@@ -13,7 +13,7 @@ export default class Penetrate extends Phaser.Physics.Arcade.Sprite {
 
         this.shooter = shooter;
         this.speed = 1200;
-        this.scale = 0.7;
+        this.scale = 0.55;
         this.alpha = 1;
         this.targetidx = 0;
         this.hitSoundName = shooter.hitSoundName;
