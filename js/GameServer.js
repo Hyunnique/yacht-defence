@@ -33,7 +33,8 @@ module.exports = {
             roomId: roomId,
             players: [],
             maxPlayers: maxPlayers,
-            timer: {},
+            intervals: {},
+            timeouts: {},
             roundInfo: {
                 num: 1,
                 choice: -1
@@ -70,10 +71,10 @@ module.exports = {
         return waveResult;
     },
 
-    createTimer(roomId, name, duration, callback) {
-        this.Rooms[roomId].timer[name] = setTimeout(() => {
+    createTimeout(roomId, name, duration, callback) {
+        this.Rooms[roomId].timeouts[name] = setTimeout(() => {
             callback();
-            delete this.Rooms[roomId].timer[name];
+            delete this.Rooms[roomId].timeouts[name];
         }, duration);
     },
 
@@ -127,7 +128,7 @@ module.exports = {
                     socket: socket,
                     disconnected: false,
                     flags: {},
-                    timers: {},
+                    timeouts: {},
                     hp: 100,
                     maxhp: 100,
                     dead: false,
@@ -191,8 +192,8 @@ module.exports = {
 
                 this.Rooms[this.getRoomId(clientID)].players[this.getRoomIndex(clientID)].socket = socket;
 
-                clearTimeout(this.Rooms[this.getRoomId(clientID)].players[this.getRoomIndex(clientID)].timers["reconnectWait"]);
-                this.Rooms[this.getRoomId(clientID)].players[this.getRoomIndex(clientID)].timers["reconnectWait"] = null;
+                clearTimeout(this.Rooms[this.getRoomId(clientID)].players[this.getRoomIndex(clientID)].timeouts["reconnectWait"]);
+                delete this.Rooms[this.getRoomId(clientID)].players[this.getRoomIndex(clientID)].timeouts["reconnectWait"];
                 
                 this.attachEventListeners(socket, this.getRoomId(clientID));
             });
@@ -218,8 +219,8 @@ module.exports = {
                     // 10초간 기다려보고, reconnect 되지 않으면 disconnected 처리
 
                     try {
-                        if (!this.Rooms[this.getRoomId(socket.id)].players[this.getRoomIndex(socket.id)].timers["reconnectWait"]) {
-                            this.Rooms[this.getRoomId(socket.id)].players[this.getRoomIndex(socket.id)].timers["reconnectWait"] = setTimeout(() => {
+                        if (!this.Rooms[this.getRoomId(socket.id)].players[this.getRoomIndex(socket.id)].timeouts["reconnectWait"]) {
+                            this.Rooms[this.getRoomId(socket.id)].players[this.getRoomIndex(socket.id)].timeouts["reconnectWait"] = setTimeout(() => {
                                 try {
                                     this.Rooms[this.getRoomId(socket.id)].players[this.getRoomIndex(socket.id)].disconnected = true;
                                     this.Rooms[this.getRoomId(socket.id)].players[this.getRoomIndex(socket.id)].dead = true;
@@ -229,7 +230,7 @@ module.exports = {
                                         this.Rooms[this.getRoomId(socket.id)].players[i].socket.emit('player-death', this.zerofyNumber(i, this.getRoomIndex(socket.id)));
                                     }
                                     //delete this.socketMap[socket.id];
-                                    this.Rooms[this.getRoomId(socket.id)].players[this.getRoomIndex(socket.id)].timers["reconnectWait"] = null;
+                                    delete this.Rooms[this.getRoomId(socket.id)].players[this.getRoomIndex(socket.id)].timeouts["reconnectWait"];
                                 } catch (e) { console.log(e.message); };
                             }, 10000);
                         }
@@ -279,6 +280,11 @@ module.exports = {
     },
 
     roundBegin(roomId) {
+        if (this.Rooms[roomId].players.filter(x => !x.dead && !x.disconnected).length == 0) {
+            this.GameEndHandler(roomId);
+            return;
+
+        }
         this.syncPlayerInfo(roomId);
 
         this.emitAll(roomId, 'round-begin', {
@@ -297,7 +303,7 @@ module.exports = {
             timeLimit: 30,
         });
 
-        this.createTimer(roomId, "dicePhaseEnd", 30000, () => {
+        this.createTimeout(roomId, "dicePhaseEnd", 30000, () => {
             this.onDiceTimeEnd(roomId);
         });
     },
@@ -307,8 +313,8 @@ module.exports = {
             this.Rooms[roomId].players[this.getRoomIndex(socket.id)].flags.handConfirm++;
 
             if (this.Rooms[roomId].players.filter(x => x.flags.handConfirm && !x.disconnected).length >= this.Rooms[roomId].players.filter(x => !x.disconnected).length) {
-                clearTimeout(this.Rooms[roomId].timer["dicePhaseEnd"]);
-                delete this.Rooms[roomId].timer["dicePhaseEnd"];
+                clearTimeout(this.Rooms[roomId].timeouts["dicePhaseEnd"]);
+                delete this.Rooms[roomId].timeouts["dicePhaseEnd"];
                 this.onDiceTimeEnd(roomId);
             }
             else {
@@ -320,7 +326,7 @@ module.exports = {
     onDiceTimeEnd(roomId) {
         this.emitAll(roomId, 'dicePhase-forceConfirm', true);
 
-        this.Rooms[roomId].timer["phaseWaitTimer"] = setInterval(() => {
+        this.Rooms[roomId].intervals["phaseWaitTimer"] = setInterval(() => {
             if (this.Rooms[roomId].players.filter(x => x.flags.handReceived && !x.disconnected).length >= this.Rooms[roomId].players.filter(x => !x.disconnected).length) {
 
                 // Choice 결과 계산
@@ -363,8 +369,8 @@ module.exports = {
 
                 this.emitAll(roomId, 'dicePhase-result', resultArray);
 
-                clearInterval(this.Rooms[roomId].timer["phaseWaitTimer"]);
-                this.createTimer(roomId, "dicePhaseResultWait", 5000, () => {
+                clearInterval(this.Rooms[roomId].intervals["phaseWaitTimer"]);
+                this.createTimeout(roomId, "dicePhaseResultWait", 5000, () => {
                     this.onPlacePhaseBegin(roomId);
                 });
             }
@@ -388,7 +394,7 @@ module.exports = {
             timeLimit: 20,
         });
         
-        this.createTimer(roomId, "placePhaseEnd", 20000, () => {
+        this.createTimeout(roomId, "placePhaseEnd", 20000, () => {
             this.emitAll(roomId, 'placePhase-end', true);
             this.onBattlePhaseBegin(roomId);
         });
@@ -403,12 +409,12 @@ module.exports = {
             timeLimit: 0,
         });
 
-        this.Rooms[roomId].timer["phaseWaitTimer"] = setInterval(() => {
+        this.Rooms[roomId].intervals["phaseWaitTimer"] = setInterval(() => {
             if (this.Rooms[roomId].players.filter(x => x.flags.battlePhaseDone && !x.disconnected && !x.dead).length >= this.Rooms[roomId].players.filter(x => !x.disconnected && !x.dead).length) {
                 this.emitAll(roomId, 'battlePhase-end', true);
                 this.Rooms[roomId].roundInfo.num++;
 
-                clearInterval(this.Rooms[roomId].timer["phaseWaitTimer"]);
+                clearInterval(this.Rooms[roomId].intervals["phaseWaitTimer"]);
                 this.roundBegin(roomId);
             }
         }, 1000);
@@ -537,6 +543,28 @@ module.exports = {
             handSStraight: s_player.handCount["S. Straight"],
             choiceBullsEye: s_player.handCount["Bull's-Eye"]
         }).save();
+    },
+
+    GameEndHandler(roomId) {
+        
+        this.emitAll(roomId, "game-end", true);
+
+        Object.keys(this.Rooms[roomId].intervals).forEach(x => {
+            clearInterval(x);
+            delete x;
+        });
+
+        Object.keys(this.Rooms[roomId].timeouts).forEach(x => {
+            clearTimeout(x);
+            delete x;
+        });
+
+        for (let i = 0; i < this.Rooms[roomId].players.length; i++) {
+            Object.keys(this.Rooms[roomId].players[i].timeouts).forEach(x => {
+                clearTimeout(x);
+                delete x;
+            });
+        }
     }
 };
 
