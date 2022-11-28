@@ -329,7 +329,7 @@ module.exports = {
                 });
 
                 const choiceRewardByPlayers = [
-                    [100000],
+                    [10],
                     [15, 5],
                     [15, 10, 5],
                     [20, 15, 5, 0]
