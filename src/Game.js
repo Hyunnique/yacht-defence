@@ -81,18 +81,31 @@ var Game = {
                 if (this.bgmSoundConfig.mute) {
                     this.bgmSoundConfig.mute = false;
                     document.getElementsByClassName("ui-volume-slider")[0].value = this.bgmSoundConfig.volume * 100;
-                    this.GameObject.scene.getScene("gameScene").normalMusic.setMute(false);
-                    this.GameObject.scene.getScene("gameScene").bossPrepareMusic.setMute(false);
-                    this.GameObject.scene.getScene("gameScene").bossFightMusic.setMute(false);
+
+                    try {
+                        this.GameObject.scene.getScene("gameScene").normalMusic.setMute(false);
+                        this.GameObject.scene.getScene("gameScene").bossPrepareMusic.setMute(false);
+                        this.GameObject.scene.getScene("gameScene").bossFightMusic.setMute(false);
+                    } catch (e) {};
+
+                    try {
+                        this.GameObject.scene.getScene("mainScene").lobbyMusic.setMute(false);
+                    } catch (e) {};
 
                     document.getElementsByClassName("ui-volume-mute")[0].style.backgroundImage = "url(" + notMuteURL + ")";
                 }
                 else {
                     this.bgmSoundConfig.mute = true;
                     document.getElementsByClassName("ui-volume-slider")[0].value = 0;
-                    this.GameObject.scene.getScene("gameScene").normalMusic.setMute(true);
-                    this.GameObject.scene.getScene("gameScene").bossPrepareMusic.setMute(true);
-                    this.GameObject.scene.getScene("gameScene").bossFightMusic.setMute(true);
+                    try {
+                        this.GameObject.scene.getScene("gameScene").normalMusic.setMute(true);
+                        this.GameObject.scene.getScene("gameScene").bossPrepareMusic.setMute(true);
+                        this.GameObject.scene.getScene("gameScene").bossFightMusic.setMute(true);
+                    } catch (e) {};
+
+                    try {
+                        this.GameObject.scene.getScene("mainScene").lobbyMusic.setMute(true);
+                    } catch (e) {};
 
                     document.getElementsByClassName("ui-volume-mute")[0].style.backgroundImage = "url(" + muteURL + ")";
                 }
@@ -122,20 +135,34 @@ var Game = {
                 document.getElementsByClassName("ui-volume-mute")[0].style.backgroundImage = "url(" + notMuteURL + ")";
                 this.bgmSoundConfig.mute = false;
 
-                this.GameObject.scene.getScene("gameScene").normalMusic.setMute(false);
-                this.GameObject.scene.getScene("gameScene").bossPrepareMusic.setMute(false);
-                this.GameObject.scene.getScene("gameScene").bossFightMusic.setMute(false);
-                this.GameObject.scene.getScene("gameScene").normalMusic.setVolume(this.bgmSoundConfig.volume);
-                this.GameObject.scene.getScene("gameScene").bossPrepareMusic.setVolume(this.bgmSoundConfig.volume);
-                this.GameObject.scene.getScene("gameScene").bossFightMusic.setVolume(this.bgmSoundConfig.volume);
+                try {
+                    this.GameObject.scene.getScene("gameScene").normalMusic.setMute(false);
+                    this.GameObject.scene.getScene("gameScene").bossPrepareMusic.setMute(false);
+                    this.GameObject.scene.getScene("gameScene").bossFightMusic.setMute(false);
+                    this.GameObject.scene.getScene("gameScene").normalMusic.setVolume(this.bgmSoundConfig.volume);
+                    this.GameObject.scene.getScene("gameScene").bossPrepareMusic.setVolume(this.bgmSoundConfig.volume);
+                    this.GameObject.scene.getScene("gameScene").bossFightMusic.setVolume(this.bgmSoundConfig.volume);
+                } catch (e) {};
+
+                try {
+                    this.GameObject.scene.getScene("mainScene").lobbyMusic.setMute(false);
+                    this.GameObject.scene.getScene("mainScene").lobbyMusic.setVolume(this.bgmSoundConfig.volume);
+                } catch (e) {};
             }
             else {
                 document.getElementsByClassName("ui-volume-mute")[0].style.backgroundImage = "url(" + muteURL + ")";
                 this.bgmSoundConfig.mute = true;
 
-                this.GameObject.scene.getScene("gameScene").normalMusic.setMute(true);
-                this.GameObject.scene.getScene("gameScene").bossPrepareMusic.setMute(true);
-                this.GameObject.scene.getScene("gameScene").bossFightMusic.setMute(true);
+                try {
+                    this.GameObject.scene.getScene("gameScene").normalMusic.setMute(true);
+                    this.GameObject.scene.getScene("gameScene").bossPrepareMusic.setMute(true);
+                    this.GameObject.scene.getScene("gameScene").bossFightMusic.setMute(true);
+                } catch (e) {};
+
+                
+                try {
+                    this.GameObject.scene.getScene("mainScene").lobbyMusic.setMute(true);
+                } catch (e) {};
             }
         }
 

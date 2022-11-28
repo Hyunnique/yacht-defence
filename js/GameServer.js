@@ -205,27 +205,35 @@ module.exports = {
                     // 만약 아직 매칭이 안된 상태에서 끊어지면
                     // 큐에서 쫒아내고 삭제
 
-                    this.Rooms[this.getRoomId(socket.id)].players.splice(this.getRoomIndex(socket.id), 1);
-                    delete this.socketMap[socket.id];
+                    try{
+                        this.Rooms[this.getRoomId(socket.id)].players.splice(this.getRoomIndex(socket.id), 1);
+                        delete this.socketMap[socket.id];
 
-                    this.emitAll(this.getRoomId(socket.id), 'matchmaking-wait', this.Rooms[this.getRoomId(socket.id)].players.length + " / " + this.Rooms[this.getRoomId(socket.id)].maxPlayers);
+                        this.emitAll(this.getRoomId(socket.id), 'matchmaking-wait', this.Rooms[this.getRoomId(socket.id)].players.length + " / " + this.Rooms[this.getRoomId(socket.id)].maxPlayers);
+                    } catch (e) {
+                        delete this.socketMap[socket.id];
+                    }
                 } else {
                     // 매칭이 된 상태면
                     // 10초간 기다려보고, reconnect 되지 않으면 disconnected 처리
 
-                    if (!this.Rooms[this.getRoomId(socket.id)].players[this.getRoomIndex(socket.id)].timers["reconnectWait"]) {
-                        this.Rooms[this.getRoomId(socket.id)].players[this.getRoomIndex(socket.id)].timers["reconnectWait"] = setTimeout(() => {
-                            this.Rooms[this.getRoomId(socket.id)].players[this.getRoomIndex(socket.id)].disconnected = true;
-                            this.Rooms[this.getRoomId(socket.id)].players[this.getRoomIndex(socket.id)].dead = true;
+                    try {
+                        if (!this.Rooms[this.getRoomId(socket.id)].players[this.getRoomIndex(socket.id)].timers["reconnectWait"]) {
+                            this.Rooms[this.getRoomId(socket.id)].players[this.getRoomIndex(socket.id)].timers["reconnectWait"] = setTimeout(() => {
+                                try {
+                                    this.Rooms[this.getRoomId(socket.id)].players[this.getRoomIndex(socket.id)].disconnected = true;
+                                    this.Rooms[this.getRoomId(socket.id)].players[this.getRoomIndex(socket.id)].dead = true;
 
-                            for (let i = 0; i < this.Rooms[this.getRoomId(socket.id)].players.length; i++) {
-                                if (this.Rooms[this.getRoomId(socket.id)].players[i].disconnected) continue;
-                                this.Rooms[this.getRoomId(socket.id)].players[i].socket.emit('player-death', this.zerofyNumber(i, this.getRoomIndex(socket.id)));
-                            }
-                            //delete this.socketMap[socket.id];
-                            this.Rooms[this.getRoomId(socket.id)].players[this.getRoomIndex(socket.id)].timers["reconnectWait"] = null;
-                        }, 10000);
-                    }
+                                    for (let i = 0; i < this.Rooms[this.getRoomId(socket.id)].players.length; i++) {
+                                        if (this.Rooms[this.getRoomId(socket.id)].players[i].disconnected) continue;
+                                        this.Rooms[this.getRoomId(socket.id)].players[i].socket.emit('player-death', this.zerofyNumber(i, this.getRoomIndex(socket.id)));
+                                    }
+                                    //delete this.socketMap[socket.id];
+                                    this.Rooms[this.getRoomId(socket.id)].players[this.getRoomIndex(socket.id)].timers["reconnectWait"] = null;
+                                } catch (e) { console.log(e.message); };
+                            }, 10000);
+                        }
+                    } catch (e) { console.log(e.message); }
                 }
             });
         });
