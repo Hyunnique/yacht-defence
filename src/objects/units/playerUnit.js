@@ -46,8 +46,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         if (this.range == this.buffRange)
             this.rangeView.setStrokeStyle(8, 0xFF0000);
         
-        this.buffAtk = 0;
-        this.buffAspd = 0;
+        this.buffAtk = db.buffAtk;
+        this.buffAspd = db.buffAspd;
     
         this.globalbuffAtk = Game.shopBuff.shopAtk;
         this.globalbuffAspd = Game.shopBuff.shopAspd;
@@ -213,8 +213,11 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
     //매 턴 시작시 전부 지우고 다시 전부 부여!!
     giveBuff() {
         var buffTargets = [];
+        console.log(this.buffAspd);
+        console.log(this.buffAtk);
         if (this.buffAspd != 0 || this.buffAtk != 0) {
             buffTargets = this.scene.physics.overlapCirc(this.x, this.y, this.buffRange).filter(item => item.gameObject.isBuffTarget == true);
+            console.log(buffTargets);
             if (buffTargets.length == 0)
                 return;
             buffTargets.forEach((e) => {
@@ -266,6 +269,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         else if (from == "pen") {
             overflow = this.penetration - fromVal;
             this.penetration = fromVal;
+            overflow *= 100;
         }
 
         if (overflow < 0)

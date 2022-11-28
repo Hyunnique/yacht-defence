@@ -761,7 +761,7 @@ var Game = {
         });
 
         this.Socket.on('game-end', (msg) => {
-            this.GameObject.scene.getScene("gameScene").stop().start("mainScene");
+            this.GameObject.scene.getScene("gameScene").scene.stop().start("mainScene");
         })
     },
 

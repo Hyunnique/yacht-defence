@@ -650,7 +650,7 @@ export default class gameScene extends Phaser.Scene {
         if (Game.PlayerData[0].hp > 0) {
             this.placemode = true;
             this.handleTierBonus(tier, true);
-            this.initialPlace(this.unitDB["unit" + unitID], unitID);
+            this.initialPlace(this.unitDB["unit" + 13], 13);
         }
     }
     
@@ -664,6 +664,7 @@ export default class gameScene extends Phaser.Scene {
             });
             this.tierCnt = [0, 0, 0, 0];
             this.tierBonus = [0, 0, 0, 0];
+            this.m_player = [];
             Game.syncFieldStatus();
         }
         else {
