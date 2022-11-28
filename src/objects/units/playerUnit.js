@@ -32,7 +32,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.index = index;
         this.id = id;
         this.playerNum = playerNum;
-
+        this.roundNum = 0;
         this.attackReady = true;
         this.play(this.idleAnim,true);
         this.rangeView = this.scene.add.circle(this.x, this.y, this.range, 0xFF0000);
@@ -82,6 +82,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.scale = 1;
         this.alpha = 1;
 
+        this.calcedAttack;
+
         this.effectOffsetX = effectOffset[this.effectName].x;
         this.effectOffsetY = effectOffset[this.effectName].y;
         this.effectIsFlip = effectOffset[this.effectName].isFlip == 1 ? true : false;
@@ -119,6 +121,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.scene.events.on("update", this.update, this);
         this.on("animationcomplete", this.doIdle, this);
         this.scene.events.on("spectateChange", this.setVisibility, this);
+        if (this.skillInfo != null && ((this.skillInfo.skillType == "attackCount" && this.attackCount % this.skillInfo.doEveryNth == 0) && this.skillInfo.ofHealth == "self"))
+            this.scene.events.on("nextRound",this.roundChecker, this);
     }
 
     update() {
@@ -134,6 +138,12 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
             this.doSkill();
         if (this.attackReady && this.target.length > 0)
             this.attackMob(); 
+    }
+
+    roundChecker() {
+        this.attack = this.calcedAttack;
+        this.roundNum = this.scene.roundNum;
+        this.attackCount = 1;
     }
 
     setVisibility() {
@@ -213,11 +223,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
     //매 턴 시작시 전부 지우고 다시 전부 부여!!
     giveBuff() {
         var buffTargets = [];
-        console.log(this.buffAspd);
-        console.log(this.buffAtk);
         if (this.buffAspd != 0 || this.buffAtk != 0) {
             buffTargets = this.scene.physics.overlapCirc(this.x, this.y, this.buffRange).filter(item => item.gameObject.isBuffTarget == true);
-            console.log(buffTargets);
             if (buffTargets.length == 0)
                 return;
             buffTargets.forEach((e) => {
@@ -244,6 +251,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
     updateBuff()
     {
         this.attack = (1 + this.buffedAtk / 100) * this.globalbuffAtk * this.originAttack * (1 + this.selfBuffAtk / 100);
+        this.calcedAttack = this.attack;
         this.aspd = (1 + this.buffedAspd / 100) * (1 + this.globalbuffAspd / 100) * this.originAspd * (1 + this.selfBuffAspd/100);
         this.penetration = this.originPenetration + this.globalbuffedPenetration + this.selfBuffPenetration;
         if (this.penetration > 1) this.penetration = 1;
@@ -336,6 +344,9 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
                 this.shootProjectile(false);
         }
         this.attackCount++;
+        if (this.skillInfo != null && ((this.skillInfo.skillType == "attackCount" && this.attackCount % this.skillInfo.doEveryNth == 0) && this.skillInfo.ofHealth == "self")) {
+            this.attack += Math.floor((this.calcedAttack) * (this.skillInfo.value / 100) * (this.attackCount -1));
+        }
         this.scene.time.delayedCall(1000 / this.aspd, () => {
             this.attackReady = true;
         }, [], this);

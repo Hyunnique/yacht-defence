@@ -50,6 +50,9 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         this.play(mobData.mobAnim);
         this.flipX = !mobData.boss;
 
+        if (this.isBoss)
+            this.setDepth(1000000);
+
         if (!this.isBoss) {
             this.healthBar = this.scene.add.image(this.x-48, this.y - 24, "healthBar").setOrigin(0,0.5);
             this.healthBarWidth = this.healthBar.displayWidth;
