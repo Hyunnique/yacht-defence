@@ -758,6 +758,10 @@ var Game = {
             this.PlayerData[msg.index].shopBuffs = msg.shopBuffs;
             this.PlayerData[msg.index].tierBuffs = msg.tierBuffs;
             this.PlayerData[msg.index].unitTierCount = msg.tierCnt;
+        });
+
+        this.Socket.on('game-end', (msg) => {
+            this.GameObject.scene.getScene("gameScene").stop().start("mainScene");
         })
     },
 
