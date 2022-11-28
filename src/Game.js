@@ -765,6 +765,14 @@ var Game = {
 
         this.Socket.on('game-end', (msg) => {
             this.GameObject.scene.getScene("gameScene").scene.stop().start("mainScene");
+            this.hideUI("gameScene-topFloating");
+            this.hideUI("gameScene-topRightFloating");
+            this.hideUI("gameScene-midFloating");
+            this.hideUI("gameScene-bottomFloating");
+            this.hideUI("common-shop");
+            this.hideUI("diceScene-default");
+            this.hideUI("diceScene-result");
+            this.showUI("mainScene-default");
         })
     },
 
