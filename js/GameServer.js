@@ -280,7 +280,7 @@ module.exports = {
     },
 
     roundBegin(roomId) {
-        if (this.Rooms[roomId].players.filter(x => x.dead || x.disconnected).length == 0) {
+        if (this.Rooms[roomId].players.filter(x => !x.dead && !x.disconnected).length == 0) {
             this.GameEndHandler(roomId);
             return;
 
