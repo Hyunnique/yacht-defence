@@ -13,13 +13,14 @@ export default class Penetrate extends Phaser.Physics.Arcade.Sprite {
 
         this.shooter = shooter;
         this.speed = 1200;
-        this.scale = 0.4;
+        this.scale = 0.7;
         this.alpha = 1;
         this.targetidx = 0;
         this.hitSoundName = shooter.hitSoundName;
-        this.setBodySize(shooter.projectileWidth, shooter.projectileHeight);
+        this.setBodySize(this.width, this.height);
         
         this.alreadyPenetrated = [];
+        this.setDepth(1000001);
 
         this.target = shooter.target;
         this.isTarget = false;
@@ -46,9 +47,10 @@ export default class Penetrate extends Phaser.Physics.Arcade.Sprite {
         this.flyto = new Phaser.Math.Vector2();
         
         try {
-            this.setAngle(this, this.target[0].centerX, this.target[0].centerY);
+            console.log(this.target[0].gameObject.getCenter());
+            this.setAngle(this, this.target[0].gameObject.getCenter().x, this.target[0].gameObject.getCenter().y);
         }
-        catch(e) {
+        catch (e) {
             this.destroy();
         }
 

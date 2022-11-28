@@ -17,6 +17,7 @@ export default class Homing extends Phaser.Physics.Arcade.Sprite {
         this.isHit = false;
         this.hitSoundName = shooter.hitSoundName;
         this.setBodySize(28, 28);
+        this.setDepth(1000001);
 
         this.target = [];
         this.isTarget = false;

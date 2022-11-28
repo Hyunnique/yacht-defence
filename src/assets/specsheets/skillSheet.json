@@ -18,6 +18,12 @@
         "ofHealth": "cur",
         "value": 8
     },
+    "unit26": {
+        "skillType": "attackCount",
+        "doEveryNth": 1,
+        "ofHealth": "self",
+        "value": 3
+    },
     "unit27": {
         "skillType": "statBuff",
         "duration": 4,

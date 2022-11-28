@@ -21,6 +21,7 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
         this.explodeRange = shooter.explodeRange;
         this.explodeScale = shooter.explodeScale;
         this.hitSoundName = shooter.hitSoundName; 
+        this.setDepth(1000001);
 
         this.skillInfo = skillInfo;
         

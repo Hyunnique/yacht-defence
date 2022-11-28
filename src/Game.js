@@ -304,6 +304,7 @@ var Game = {
 
         this.Socket.on("round-begin", (msg) => {
             this.GameObject.scene.getScene("gameScene").roundNum = msg.round;
+            this.GameObject.scene.getScene("gameScene").events.emit("nextRound");
             document.getElementsByClassName("ui-round-value")[0].innerText = (msg.round < 10 ? "0" + msg.round : msg.round);
         });
 
