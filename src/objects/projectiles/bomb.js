@@ -103,7 +103,6 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
         this.scene.events.off("update", this.update, this);
         this.scene.events.off("spectateChange", this.setVisibility, this);
 
-        this.body.reset(this.x, this.y);
         this.rotation = 0;
         this.body.destroy();
 
