@@ -314,7 +314,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
     dotDamageFactoryMili(unit) {
         if (!this.dotDamageDict[unit.index]) {
             var damage = unit.skillInfo.ofHealth == "cur" ?
-                unit.attack + (this.Health * unit.skillInfo.value / 100) :
+                (this.Health * unit.skillInfo.value / 100) :
                 unit.attack * (1 + unit.skillInfo.value / 100);
             
             this.dotDamageDict[unit.index] = this.scene.time.addEvent({
