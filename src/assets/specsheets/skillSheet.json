@@ -1,7 +1,9 @@
 {
     "unit2": {
         "skillType": "debuff",
-        "value": 20
+        "of": "rdamage",
+        "value": 20,
+        "duration": -1
     },
     "unit22": {
         "skillType": "DOT",
@@ -49,6 +51,13 @@
         "debuffAspd": 40,
         "debuffPenetration": 0
     },
+    "unit35": {
+        "skillType": "statFix",
+        "from": "aspd",
+        "fromVal": 0.2,
+        "to": "atk",
+        "value": 1000
+    },
     "unit38": {
         "skillType": "DOT",
         "delay": 0.5,
@@ -68,6 +77,19 @@
         "doEveryNth": 3,
         "ofHealth": "atk",
         "value": 100
+    },
+    "unit45": {
+        "skillType": "debuff",
+        "of": "pen",
+        "value": 20,
+        "duration": 5
+    },
+    "unit50": {
+        "skillType": "statFix",
+        "from": "pen",
+        "fromVal": 0,
+        "to": "atk",
+        "value": 8
     },
     "unit51": {
         "skillType": "attackCount",
