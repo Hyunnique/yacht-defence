@@ -25,9 +25,9 @@ export default class Penetrate extends Phaser.Physics.Arcade.Sprite {
         this.isTarget = false;
         this.isBuffTarget = false;
 
-        this.offsetX = this.scene.mapOffsetX * (shooter.playerNum % 2);
-        this.offsetY = this.scene.mapOffsetY * Math.floor(shooter.playerNum / 2);
-        
+        this.offsetX = 2400 * (shooter.playerNum % 2);
+        this.offsetY = 1536 * Math.floor(shooter.playerNum / 2);
+
         this.skillInfo = skillInfo;
 
         if (skillInfo != null && skillInfo.skillType == "DOT") {
