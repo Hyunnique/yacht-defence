@@ -232,7 +232,7 @@ export default class gameScene extends Phaser.Scene {
         
 
         this.unitIndex = 0;
-        this.playerHealth = 100;
+        this.playerHealth = 1000000;
         this.placemode = false;
         this.checkLast = false;
         this.eventChecked = false;
@@ -424,25 +424,36 @@ export default class gameScene extends Phaser.Scene {
     }
 
     placeOtherPlayerUnit(playerNum, shopBuffs, tierBuffs) {
-        var index = 0;
-        this.spectate_player.forEach(e => {
-            var unit = new Unit(this, e.x + (this.mapOffsetX * (playerNum % 2)), e.y + (this.mapOffsetY * Math.floor(playerNum / 2)), this.unitDB["unit" + e.id], null, e.id, playerNum);
-            this.spectate_player_units[playerNum].push(unit);
-            let t = this.info[playerNum].getTileAtWorldXY(unit.x,unit.y, true);
-            t.placedUnit = unit;
-            unit.setDepth(((unit.y / 48) * (unit.x / 48)));
-            
+        var savedLength = this.spectate_player_units[playerNum].length;
+        var test = 0;
+        this.spectate_player.forEach((e, i) => {
+            var offsetX = e.x + (this.mapOffsetX * (playerNum % 2));
+            var offsetY = e.y + (this.mapOffsetY * Math.floor(playerNum / 2));
+            if (i < savedLength) {//기존에 있는 것중에
+                if (e.uindex == this.spectate_player_units[playerNum][i].index)
+                    test++;
+                var unit = this.spectate_player_units[playerNum][i];
+                if (unit.x != offsetX || unit.y != offsetY) { // 자리가 달라?
+                    let t = this.info[playerNum].getTileAtWorldXY(unit.x, unit.y, true);
+                    t.placedUnit = undefined;
+                    unit.x = offsetX;
+                    unit.y = offsetY;
+                    t = this.info[playerNum].getTileAtWorldXY(unit.x, unit.y, true);
+                    unit.setDepth(((unit.y / 48) * (unit.x / 48)));
+                    t.placedUnit = unit;
+                }
+            }
+            else { //새것??
+                var unit = new Unit(this, offsetX, offsetY, this.unitDB["unit" + e.id], e.uid, e.id, playerNum);
+                this.spectate_player_units[playerNum].push(unit);
+                let t = this.info[playerNum].getTileAtWorldXY(unit.x, unit.y, true);
+                t.placedUnit = unit;
+                unit.setDepth(((unit.y / 48) * (unit.x / 48)));
+            }
         });
         this.resetOtherBuff(playerNum, shopBuffs, tierBuffs);
-    }
-
-    removeOtherPlayerUnit(playerNum) {
-        this.spectate_player_units[playerNum].forEach(e => {
-            let t = this.info[playerNum].getTileAtWorldXY(e.x, e.y, true);
-            t.placedUnit = undefined;
-            e.remove();
-        });
-        this.spectate_player_units[playerNum] = [];
+        if (test == savedLength - 1)
+            console.log("success!!");
     }
 
     resetOtherBuff(playerNum,shopBuff,tierBuffs) {
@@ -631,7 +642,7 @@ export default class gameScene extends Phaser.Scene {
         if (Game.PlayerData[0].hp > 0) {
             this.placemode = true;
             this.handleTierBonus(tier, true);
-            this.initialPlace(this.unitDB["unit" + unitID], unitID);
+            this.initialPlace(this.unitDB["unit" + 50], 50);
         }
     }
     
