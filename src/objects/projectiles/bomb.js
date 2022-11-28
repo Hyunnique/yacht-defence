@@ -58,8 +58,13 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
 
     update()
     {        
-        if (Phaser.Math.Distance.Between(this.x, this.y, this.target.x, this.target.y) < 20 || Phaser.Math.Distance.Between(this.x, this.y, this.shooter.x, this.shooter.y) > this.shooter.range)
-            this.explode();        
+        try {
+            if (Phaser.Math.Distance.Between(this.x, this.y, this.target.x, this.target.y) < 20 || Phaser.Math.Distance.Between(this.x, this.y, this.shooter.x, this.shooter.y) > this.shooter.range)
+                this.explode();
+        }
+        catch (e) {
+            this.explode();
+        }
     }
 
     setVisibility()
