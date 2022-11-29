@@ -307,23 +307,22 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
             callerID = object.index;
             attack = object.attack;
         }
-
-            if (!this.dotDamageDict[callerID]) {
-                var damage = object.skillInfo.ofHealth == "cur" ?
-                    (this.Health * object.skillInfo.value / 100) :
-                    attack * (1 + object.skillInfo.value / 100);
+        if (!this.dotDamageDict[callerID]) {
+            var damage = object.skillInfo.ofHealth == "cur" ?
+                (this.Health * object.skillInfo.value / 100) :
+                attack * (object.skillInfo.value / 100);
             
-                this.dotDamageDict[callerID] = this.scene.time.addEvent({
-                    delay: object.skillInfo.delay * 1000,
-                    repeat: object.skillInfo.duration / object.skillInfo.delay,
-                    callback: () => {
-                        this.Health -= Game.calcDamage(damage, this.defence) * (1 + this.totalDebuffVal / 100);
-                    },
-                    startAt: 0
-                });
-            }
-            else {
-                this.dotDamageDict[callerID] = this.scene.time.addEvent(this.dotDamageDict[callerID]);
-            }
+            this.dotDamageDict[callerID] = this.scene.time.addEvent({
+                delay: object.skillInfo.delay * 1000,
+                repeat: object.skillInfo.duration / object.skillInfo.delay,
+                callback: () => {
+                    this.Health -= Game.calcDamage(damage, this.defence) * (1 + this.totalDebuffVal / 100);
+                },
+                startAt: 0
+            });
+        }
+        else {
+            this.dotDamageDict[callerID] = this.scene.time.addEvent(this.dotDamageDict[callerID]);
+        }
     }
 }
