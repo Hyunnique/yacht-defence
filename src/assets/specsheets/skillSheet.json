@@ -10,7 +10,7 @@
         "delay": 0.5,
         "duration": 5,
         "ofHealth": "atk",
-        "value": 30
+        "value": 80
     },
     "unit24": {
         "skillType": "attackCount",
@@ -69,7 +69,7 @@
         "delay": 0.5,
         "duration": 5,
         "ofHealth": "atk",
-        "value": 10
+        "value": 40
     },
     "unit41": {
         "skillType": "DOT",
