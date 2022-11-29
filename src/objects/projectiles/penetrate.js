@@ -89,7 +89,7 @@ export default class Penetrate extends Phaser.Physics.Arcade.Sprite {
     hit()
     {
         if(this.shooter.playerNum == this.scene.currentView)
-            this.hitSoundName.play(Game.effectSoundConfig);
+            this.scene.sound.play(this.hitSoundName, Game.effectSoundConfig);
         this.attack *= 0.9;
     }
 }

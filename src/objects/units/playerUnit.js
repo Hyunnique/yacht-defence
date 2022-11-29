@@ -14,41 +14,60 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
 
         this.setOrigin(0.5, 0.5);
         this.setDepth(3);
+
+        //초기 능력치
         this.originAttack = db.attack;
         this.originAspd = db.aspd;
         this.originPenetration = db.penetration;
-        this.attack = db.attack;
-        this.aspd = db.aspd;
-        this.penetration = db.penetration;
         this.range = db.range;
         this.buffRange = db.buffRange;
         this.attackType = db.attackType;
+        
+        //연산 결과
+        this.attack = db.attack;
+        this.aspd = db.aspd;
+        this.penetration = db.penetration;
+
+        //애니메이션/이펙트/사운드 네임 저장
         this.idleAnim = db.idleAnim;
         this.attackAnim = db.attackAnim;
-        this.atkSoundName = this.scene.sound.get(db.atkSoundName);
-        this.hitSoundName = this.scene.sound.get(db.hitSoundName);
+        this.atkSoundName = db.atkSoundName;
+        this.hitSoundName = db.hitSoundName;
         this.effectName = db.effectName;
+
         this.tier = db.tier;
         this.index = index;
         this.id = id;
+
+
         this.playerNum = playerNum;
         this.roundNum = 0;
         this.attackReady = true;
-        this.play(this.idleAnim,true);
+        this.play(this.idleAnim, true);
+        
         this.rangeView = this.scene.add.circle(this.x, this.y, this.range, 0xFF0000);
-        this.rangeView.setDepth(1);
+        
         this.rangeView.setAlpha(0);
 
         this.buffRangeView = this.scene.add.circle(this.x, this.y, this.buffRange, 0x00FF00);
         this.buffRangeView.setAlpha(0);
-        this.buffRangeView.setDepth(2);
 
-        if (this.range == this.buffRange)
+        if (this.range > this.buffRange) {
+            this.rangeView.setDepth(1);
+            this.buffRangeView.setDepth(2);
+        }
+        else if (this.range < this.buffRange) {
+            this.rangeView.setDepth(2);
+            this.buffRangeView.setDepth(1);
+        }
+        else
             this.rangeView.setStrokeStyle(8, 0xFF0000);
         
+        //버프량(지원형)
         this.buffAtk = db.buffAtk;
         this.buffAspd = db.buffAspd;
-    
+        
+
         this.globalbuffAtk = Game.shopBuff.shopAtk;
         this.globalbuffAspd = Game.shopBuff.shopAspd;
         this.globalbuffedPenetration = Game.shopBuff.shopPenetration;
@@ -64,6 +83,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.projectileAnimName = db.projectileAnimName;
         this.projectileType = db.projectileType;
         this.projectileHitEffect = db.projecttileHitEffect;
+
         if (this.projectileType == 2) {
             this.explodeRange = db.explodeRange;
             this.projectileSpeed = db.projectileSpeed;
@@ -77,8 +97,6 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.isTarget = false;
         this.isBuffTarget = true;
 
-        this.skill;
-
         this.scale = 1;
         this.alpha = 1;
 
@@ -87,16 +105,17 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.effectOffsetX = effectOffset[this.effectName].x;
         this.effectOffsetY = effectOffset[this.effectName].y;
         this.effectIsFlip = effectOffset[this.effectName].isFlip == 1 ? true : false;
-        // console.log(this.effectOffsetX + " " + this.effectOffsetY + " " + effectOffset[this.effectName].isFlip);
         this.effect = new UnitEffect(scene, this, this.effectIsFlip, db.name);
         this.attackCount = 1;
         
+        //현재 보는 중이 아니라면 렌더링 하지 않기
         if (this.playerNum != this.scene.currentView) {
             this.setVisible(false);
             this.effect.setVisible(false);
         }
         
-        if (this.scene.skillDB["unit" + this.id] != null || this.scene.skillDB["unit" + this.id] != undefined) {
+        //스킬정보 받아오기
+        if (this.scene.skillDB["unit" + this.id]) {
             this.skillInfo = this.scene.skillDB["unit" + this.id];
             this.skillReady = true;
             this.skillInfo.callerID = this.index;
@@ -104,11 +123,10 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         }
         
         this.target = [];
-        //this.setMotionSpeed();
 
         this.kills = 0;
-        this.isTarget = false;
 
+        //티어 식별용 테두리
         this.pipelineInstance = scene.plugins.get('rexOutlinePipeline').add(this, {
             thickness: 4,
             outlineColor: Game.tierColors[this.tier - 1],
@@ -118,9 +136,11 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.scene.physics.add.existing(this);
         this.setBodySize(64, 64, true);
         this.scene.add.existing(this);
+
         this.scene.events.on("update", this.update, this);
-        this.on("animationcomplete", this.doIdle, this);
+        this.on("animationcomplete", () => this.play(this.idleAnim), this);
         this.scene.events.on("spectateChange", this.setVisibility, this);
+
         if (this.skillInfo != null && ((this.skillInfo.skillType == "attackCount" && this.attackCount % this.skillInfo.doEveryNth == 0) && this.skillInfo.ofHealth == "self"))
             this.scene.events.on("nextRound",this.roundChecker, this);
     }
@@ -157,34 +177,27 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         }
     }
 
-    doIdle()
-    {
-        this.play(this.idleAnim, true);
-    }
-
     doSkill()
     {   
-        if (this.skillInfo.skillType == "DOT")
+        if (this.skillInfo.skillType == "statBuff")
         {
             this.skillReady = false;
-            
-            this.scene.time.delayedCall(1000 * this.skillInfo.coolDown, () => {
-                this.skillReady = true;
-            }, [], this);
-        }
-        else if (this.skillInfo.skillType == "statBuff")
-        {
-            this.skillReady = false;
+
             this.selfBuffAspd = this.skillInfo.buffAspd;
-            this.selfBuffAtk =  this.skillInfo.buffAtk
-            this.selfBuffPenetration = this.skillInfo.buffPenetration  / 100;
+            this.selfBuffAtk = this.skillInfo.buffAtk;
+            this.selfBuffPenetration = this.skillInfo.buffPenetration / 100;
+            
             this.updateBuff();
+
+            //지속 시간 후 초기화(혹은 디버프)
             this.scene.time.delayedCall(1000 * this.skillInfo.duration, () => {
                 this.selfBuffAspd = this.skillInfo.debuffAspd;
                 this.selfBuffAtk = this.skillInfo.debuffAtk;
                 this.selfBuffPenetration = this.skillInfo.debuffPenetration / 100;
                 this.updateBuff();
             }, [], this);
+
+            //쿨타임 후 다시 준비
             this.scene.time.delayedCall(1000 * this.skillInfo.coolDown, () => {
                 this.skillReady = true;
             }, [], this);
@@ -195,8 +208,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
     checkMob() {
         while (true) {
             try {
-                this.target = this.scene.physics.overlapCirc(this.x, this.y, this.range).filter(item => item.gameObject.isTarget == true);
-                this.target.sort((a, b) => {
+                this.target = this.scene.physics.overlapCirc(this.x, this.y, this.range).filter(item => item.gameObject.isTarget == true).sort((a, b) => {
                     if (a.gameObject.Health == b.gameObject.Health)
                         return a.gameObject.mobNum - b.gameObject.mobNum;
                     else
@@ -211,16 +223,20 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         
     }
 
-    
-
-    syncGlobalBuff()
+    syncGlobalBuff(shopBuff,tierBuff)
     {
-        this.globalbuffAspd = Game.shopBuff.shopAspd;
-        this.globalbuffedPenetration = Game.shopBuff.shopPenetration / 100;
-        this.globalbuffAtk = (1 + Game.shopBuff.shopAtk / 100)*(1 + this.scene.tierBonus[this.tier - 1] / 100);
+        if (!shopBuff && !tierBuff) {
+            this.globalbuffAspd = Game.shopBuff.shopAspd;
+            this.globalbuffedPenetration = Game.shopBuff.shopPenetration / 100;
+            this.globalbuffAtk = (1 + Game.shopBuff.shopAtk / 100) * (1 + this.scene.tierBonus[this.tier - 1] / 100);
+        }
+        else {
+            this.globalbuffAspd = shopBuff.shopAspd;
+            this.globalbuffedPenetration = shopBuff.shopPenetration / 100;
+            this.globalbuffAtk = (1 + shopBuff.shopAtk / 100) * (1 + tierBuffs[this.tier - 1] / 100);
+        }
     }
     
-    //매 턴 시작시 전부 지우고 다시 전부 부여!!
     giveBuff() {
         var buffTargets = [];
         if (this.buffAspd != 0 || this.buffAtk != 0) {
@@ -241,21 +257,16 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.buffedAtk = 0;
     }
 
-    syncGivenGlobalBuff(shopBuff,tierBuffs)
-    {
-        this.globalbuffAspd = shopBuff.shopAspd;
-        this.globalbuffedPenetration = shopBuff.shopPenetration / 100;
-        this.globalbuffAtk = (1 + shopBuff.shopAtk / 100)*(1 + tierBuffs[this.tier - 1] / 100);
-    }
-
     updateBuff()
     {
         this.attack = (1 + this.buffedAtk / 100) * this.globalbuffAtk * this.originAttack * (1 + this.selfBuffAtk / 100);
         this.calcedAttack = this.attack;
         this.aspd = (1 + this.buffedAspd / 100) * (1 + this.globalbuffAspd / 100) * this.originAspd * (1 + this.selfBuffAspd/100);
         this.penetration = this.originPenetration + this.globalbuffedPenetration + this.selfBuffPenetration;
+
         if (this.penetration > 1) this.penetration = 1;
         else if (this.penetration < 0) this.penetration = 0;
+
         if (this.skillInfo && this.skillInfo.skillType == "statFix")
             this.statFixer();
     }
@@ -266,6 +277,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         var to = this.skillInfo.to;
 
         var overflow = 0;
+
+        //설정 스탯 초과분 확인
         if (from == "atk") {
             overflow = this.attack - fromVal;
             this.attack = fromVal;
@@ -282,8 +295,10 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
 
         if (overflow < 0)
             overflow = 0;
+        
         overflow *= this.skillInfo.value;
 
+        //전환 스탯 설정(자버프류)
         if (to == "atk") {
             this.selfBuffAtk = overflow;
         }
@@ -292,7 +307,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         }
             
         else if (to == "pen") {
-            //자릿수 맞추기 필요
+            //자릿수 맞추기 필요(아마 사용하지 않을듯.)
             //this.penetration += overflow;
         }
          
@@ -307,46 +322,46 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
     attackMob() {
         this.attackReady = false;
         if (this.playerNum == this.scene.currentView)
-            this.atkSoundName.play(Game.effectSoundConfig);
+            this.scene.sound.play(this.atkSoundName, Game.effectSoundConfig);
         this.play(this.attackAnim, false);
         this.effect.playEffect();
      
         if (this.attackType == 0) {
-            if (this.skillInfo != null && this.skillInfo.skillType == "attackCount" && this.attackCount % this.skillInfo.doEveryNth == 0) {
-                this.target.forEach(e => {
-                    if (e.gameObject.Health)
-                        e.gameObject.Health -= this.calcDamage(this.attack + this.skillInfo.skillType == "cur" ?
+
+            var damage = 0;
+            this.target.forEach(e => {
+                if (e.gameObject.Health) {
+                    if (this.skillInfo && this.skillInfo.skillType == "attackCount" && this.attackCount % this.skillInfo.doEveryNth == 0)
+                        damage = Game.calcDamage(this.attack + this.skillInfo.skillType == "cur" ?
                             (e.gameObject.Health * this.skillInfo.value) :
                             this.skillInfo.skillType == "lost" ?
                                 (this.attack * (1 - e.Health / e.MaxHealth) * this.skillInfo.value) :
                                 (this.attack * (this.skillInfo.value / 100)), e.gameObject.defence);
-                });
-            }
-            else {
-                this.target.forEach(e => {
-                    if (e.gameObject.Health)
-                        e.gameObject.Health -= this.calcDamage(this.attack, e.gameObject.defence);
-                    if (this.skillInfo != null) {
+                    else
+                        damage = Game.calcDamage(this.attack, e.gameObject.defence);
+                    
+                    e.gameObject.Health -= damage;
+
+                    if (this.skillInfo) {
                         if(this.skillInfo.skillType == "DOT")
                             e.gameObject.dotDamageFactoryMili(this);
                         if (this.skillInfo.skillType == "debuff")
                             e.gameObject.handleDebuff(this.skillInfo);
                      }
-                });
-            }
+                }
+            });
         }
-        else if (this.attackType == 1) {
-            if (this.skillInfo != null && ((this.skillInfo.skillType == "attackCount" && this.attackCount % this.skillInfo.doEveryNth == 0) || this.skillInfo.skillType == "DOT"))
-            {
-                this.shootProjectile(true);
-            }
-            else
-                this.shootProjectile(false);
-        }
+
+        //투사체 스킬의 경우 투사체에 스킬 정보를 전달해야 함.
+        else if (this.attackType == 1)
+            this.shootProjectile((this.skillInfo && ((this.skillInfo.skillType == "attackCount" && this.attackCount % this.skillInfo.doEveryNth == 0) || this.skillInfo.skillType == "DOT")));
+        
         this.attackCount++;
-        if (this.skillInfo != null && ((this.skillInfo.skillType == "attackCount" && this.attackCount % this.skillInfo.doEveryNth == 0) && this.skillInfo.ofHealth == "self")) {
+
+        if (this.skillInfo && ((this.skillInfo.skillType == "attackCount" && this.attackCount % this.skillInfo.doEveryNth == 0) && this.skillInfo.ofHealth == "self")) {
             this.attack += Math.floor((this.calcedAttack) * (this.skillInfo.value / 100) * (this.attackCount -1));
         }
+
         this.scene.time.delayedCall(1000 / this.aspd, () => {
             this.attackReady = true;
         }, [], this);
@@ -369,9 +384,4 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.destroy();
     }
  
-    calcDamage(damage,mobDefence)
-    {
-        var defencePenValue = 1 - (mobDefence / 100) * (1 - this.penetration);
-        return defencePenValue <= 0 ? 1 : damage * defencePenValue;
-    }
 }

@@ -111,7 +111,7 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
         this.play(this.hitEffect);
         
         if(this.shooter.playerNum == this.scene.currentView)
-            this.hitSoundName.play(Game.effectSoundConfig);
+            this.scene.sound.play(this.hitSoundName, Game.effectSoundConfig);
         
         var animConfig = this.scene.anims.get(this.hitEffect);
         var animtime = animConfig.frames.length * animConfig.msPerFrame;

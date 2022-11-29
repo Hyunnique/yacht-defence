@@ -726,7 +726,7 @@
     "unit27": {
         "name": "버서커 카이토닐",
         "unitType": 0,
-        "attack": 150,
+        "attack": 10,
         "aspd": 1.4,
         "range": 240,
         "rangeType": 1,

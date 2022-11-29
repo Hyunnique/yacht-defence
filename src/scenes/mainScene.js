@@ -16,7 +16,7 @@ export default class MainScene extends Phaser.Scene{
     create() {
         // var text = this.add.text(Config.width / 2, Config.height / 2, "Press W");
         this.background = this.add.tileSprite(960, 480, 1920, 960, "mainBackground");
-
+        this.sound.unlock();
         this.sound.pauseOnBlur = false;
         this.lobbyMusic = this.sound.add("lobbyMusic");
         this.lobbyMusic.play(Game.bgmSoundConfig);
