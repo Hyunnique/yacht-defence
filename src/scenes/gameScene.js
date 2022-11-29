@@ -3,7 +3,6 @@ import Game from "../Game.js";
 import Unit from '../objects/units/playerUnit.js';
 import Item from "../assets/specsheets/shopItemSheet.json"
 const Phaser = require('phaser');
-const Config = require("../Config");
 
 class AnimatedTile {
     tile;
@@ -29,23 +28,6 @@ class AnimatedTile {
         this.tile.index = this.tileAnimationData[animationFrameIndex].tileid + this.firstgid
     }
 }
-/*
-무작위 구현
-(mob)
-1.dictionary형이므로 key만 뽑아 배열로 만듬
-2.key배열의 length 미만에서 무작위 값을 뽑음
-3.key 배열의 무작위 값을 조회해 dictionary에서 조회!!
-
-(unit)
-1.티어별로 번호를 저장한 배열 생성
-2.배열 내에서 무작위 번호 선택
-3.dictionary에서 조회
-
-(item)
-1.WIP.
-*/
-
-
 
 export default class gameScene extends Phaser.Scene {
     constructor() {
@@ -145,7 +127,6 @@ export default class gameScene extends Phaser.Scene {
         }
 
         
-        let help = this.add.text(0, 0, '', { font: '48px monospace' });
         let cursors = this.input.keyboard.createCursorKeys();
 
         //카메라
@@ -191,29 +172,28 @@ export default class gameScene extends Phaser.Scene {
 
         this.normalMusic.play(Game.bgmSoundConfig);
 
-        this.sound.add("attackBigFire");
-        this.sound.add("attackFire");
-        this.sound.add("attackBow");
-        this.sound.add("attackIce");
-        this.sound.add("attackKnife");
-        this.sound.add("attackLightning");
-        this.sound.add("attackLongWeapon");
-        this.sound.add("attackMagic1");
-        this.sound.add("attackMagic2");
-        this.sound.add("attackSword");
-        this.sound.add("attackThrow");
-        this.sound.add("hitBoom1");
-        this.sound.add("hitBoom2");
-        this.sound.add("hitBoom3");
-        this.sound.add("hitBow");
-        this.sound.add("hitNormal");
-        this.sound.add("hitFire");
+        // this.sound.add("attackBigFire");
+        // this.sound.add("attackFire");
+        // this.sound.add("attackBow");
+        // this.sound.add("attackIce");
+        // this.sound.add("attackKnife");
+        // this.sound.add("attackLightning");
+        // this.sound.add("attackLongWeapon");
+        // this.sound.add("attackMagic1");
+        // this.sound.add("attackMagic2");
+        // this.sound.add("attackSword");
+        // this.sound.add("attackThrow");
+        // this.sound.add("hitBoom1");
+        // this.sound.add("hitBoom2");
+        // this.sound.add("hitBoom3");
+        // this.sound.add("hitBow");
+        // this.sound.add("hitNormal");
+        // this.sound.add("hitFire");
         this.sound.add("rollDice");
         this.sound.add("tier1");
         this.sound.add("tier2");
         this.sound.add("tier3");
         this.sound.add("tier4");
-        
 
         //몹/유저유닛/투사체 관련
         this.m_mobs = this.physics.add.group();
@@ -467,7 +447,7 @@ export default class gameScene extends Phaser.Scene {
         this.spectate_player_units[playerNum].forEach((e) => { e.removeBuff() });
         this.spectate_player_units[playerNum].forEach((e) => {
             e.giveBuff();
-            e.syncGivenGlobalBuff(shopBuff,tierBuffs);
+            e.syncGlobalBuff(shopBuff, tierBuffs);
         });
         this.spectate_player_units[playerNum].forEach((e) => {
             e.updateBuff();
@@ -649,7 +629,7 @@ export default class gameScene extends Phaser.Scene {
         if (Game.PlayerData[0].hp > 0) {
             this.placemode = true;
             this.handleTierBonus(tier, true);
-            this.initialPlace(this.unitDB["unit" + unitID], unitID);
+            this.initialPlace(this.unitDB["unit" + 27], 27);
         }
     }
     
