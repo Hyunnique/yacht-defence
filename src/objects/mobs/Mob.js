@@ -298,7 +298,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
 
             var damage = projectile.skillInfo.ofHealth == "cur" ?
                 (this.Health * projectile.skillInfo.value / 100) :
-                projectile.shooter.attack * (1 + projectile.skillInfo.value / 100);
+                projectile.shooter.attack * (projectile.skillInfo.value / 100);
             
             this.dotDamageDict[projectile.skillInfo.callerID] = this.scene.time.addEvent({
                 delay: projectile.skillInfo.delay * 1000,

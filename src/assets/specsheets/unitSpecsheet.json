@@ -612,7 +612,7 @@
         "explodeRange": 312,
         "projectileSpeed": 250,
         "tier": 1,
-        "skill": "공격시 5초동안 0.5초마다 공격력의 30%의 화상 피해",
+        "skill": "공격시 5초동안 0.5초마다 공격력의 80%의 화상 피해",
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0
@@ -1039,7 +1039,7 @@
         "explodeRange": 312,
         "projectileSpeed": 250,
         "tier": 2,
-        "skill": "공격시 5초동안 0.5초마다 공격력의 10%의 화상 피해",
+        "skill": "공격시 5초동안 0.5초마다 공격력의 40%의 화상 피해",
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0
