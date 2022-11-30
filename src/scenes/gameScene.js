@@ -172,6 +172,24 @@ export default class gameScene extends Phaser.Scene {
 
         this.normalMusic.play(Game.bgmSoundConfig);
 
+
+        this.sound.add("attackBigFire");
+        this.sound.add("attackFire");
+        this.sound.add("attackBow");
+        this.sound.add("attackIce");
+        this.sound.add("attackKnife");
+        this.sound.add("attackLightning");
+        this.sound.add("attackLongWeapon");
+        this.sound.add("attackMagic1");
+        this.sound.add("attackMagic2");
+        this.sound.add("attackSword");
+        this.sound.add("attackThrow");
+        this.sound.add("hitBoom1");
+        this.sound.add("hitBoom2");
+        this.sound.add("hitBoom3");
+        this.sound.add("hitBow");
+        this.sound.add("hitNormal");
+        this.sound.add("hitFire");
         this.sound.add("rollDice");
         this.sound.add("tier1");
         this.sound.add("tier2");
@@ -279,7 +297,7 @@ export default class gameScene extends Phaser.Scene {
                 index = 3;
             
             let t = this.getTileAtPointer(pointer, this.info[index]);
-
+            console.log(t);
             if (t.placedUnit != undefined) {
                 if (this.selectedUnit != undefined) {
                     this.selectedUnit.rangeView.alpha = 0;
@@ -309,6 +327,7 @@ export default class gameScene extends Phaser.Scene {
     /**
      * 초기 배치 receiveUnit -> moveunit -> unitplacer
      * 재배치 moveUnit -> unitplacer
+     * 
      * 
      */
     receiveUnit(unitID, tier) {
@@ -385,7 +404,6 @@ export default class gameScene extends Phaser.Scene {
     }
 
     unitPlacer(t, change) {
-        console.log(t);
         if (change) {
             var temp = t.placedUnit;
             this.preTile.placedUnit = temp;
@@ -431,13 +449,11 @@ export default class gameScene extends Phaser.Scene {
             var offsetY = e.y + (this.mapOffsetY * Math.floor(playerNum / 2));
             if (i < savedLength) {//기존에 있는 것중에
                 var unit = this.spectate_player_units[playerNum][i];
-                if (unit.x != offsetX || unit.y != offsetY) { // 자리가 달라?
-                    let t = this.info[playerNum].getTileAtWorldXY(unit.x, unit.y, true);
-                    t.placedUnit = undefined;
+                if (unit.x != offsetX || unit.y != offsetY) { // 자리가 달라? 
                     unit.x = offsetX;
                     unit.y = offsetY;
-                    t = this.info[playerNum].getTileAtWorldXY(unit.x, unit.y, true);
                     unit.setDepth(((unit.y / 48) * (unit.x / 48)));
+                    let t = this.info[playerNum].getTileAtWorldXY(offsetX, offsetY, true);
                     t.placedUnit = unit;
                 }
             }
@@ -450,6 +466,7 @@ export default class gameScene extends Phaser.Scene {
             }
         });
         this.resetOtherBuff(playerNum, shopBuffs, tierBuffs);
+        
     }
 
     resetOtherBuff(playerNum,shopBuff,tierBuffs) {
