@@ -310,6 +310,7 @@ export default class gameScene extends Phaser.Scene {
      * 초기 배치 receiveUnit -> moveunit -> unitplacer
      * 재배치 moveUnit -> unitplacer
      * 
+     * 
      */
     receiveUnit(unitID, tier) {
         if (Game.PlayerData[0].hp > 0) {
