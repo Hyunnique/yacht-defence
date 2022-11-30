@@ -172,6 +172,24 @@ export default class gameScene extends Phaser.Scene {
 
         this.normalMusic.play(Game.bgmSoundConfig);
 
+
+        this.sound.add("attackBigFire");
+        this.sound.add("attackFire");
+        this.sound.add("attackBow");
+        this.sound.add("attackIce");
+        this.sound.add("attackKnife");
+        this.sound.add("attackLightning");
+        this.sound.add("attackLongWeapon");
+        this.sound.add("attackMagic1");
+        this.sound.add("attackMagic2");
+        this.sound.add("attackSword");
+        this.sound.add("attackThrow");
+        this.sound.add("hitBoom1");
+        this.sound.add("hitBoom2");
+        this.sound.add("hitBoom3");
+        this.sound.add("hitBow");
+        this.sound.add("hitNormal");
+        this.sound.add("hitFire");
         this.sound.add("rollDice");
         this.sound.add("tier1");
         this.sound.add("tier2");
