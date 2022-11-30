@@ -190,10 +190,16 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
             if(this.playerNum == 0) {
                 let b_Damage = 2;
 
-                if (this.isBoss) b_Damage = 20;
-                else if (this.scene.roundNum <= 10) b_Damage = 2;
-                else if (this.scene.roundNum <= 25) b_Damage = 3;
-                else b_Damage = 4;
+                if (this.scene.roundNum <= 15) {
+                    if (this.isBoss) b_Damage = 20;
+                    else b_Damage = 2;
+                } else if (this.scene.roundNum <= 30) {
+                    if (this.isBoss) b_Damage = 30;
+                    else b_Damage = 2.5;
+                } else {
+                    if (this.isBoss) b_Damage = 40;
+                    else b_Damage = 3;
+                }
 
                 Game.hitPlayerBase(b_Damage);
             }

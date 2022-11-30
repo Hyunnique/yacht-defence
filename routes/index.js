@@ -11,6 +11,10 @@ router.get("/external/socket.io.min.js.map", async (ctx, next) => {
     ctx.body = await fs.readFile("./node_modules/socket.io/client-dist/socket.io.min.js.map", 'utf8');
 });
 
+router.get("/patchnote", async (ctx, next) => {
+    ctx.body = await fs.readFile("./notice.txt", 'utf8');
+});
+
 router.get("/ranking", async (ctx, next) => {
     let rankingResult = await db.PlayData.find().sort({ rounds: -1 }).limit(10);
 

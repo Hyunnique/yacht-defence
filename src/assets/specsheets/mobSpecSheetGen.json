@@ -26,9 +26,9 @@
 		"variations": 4,
 		"variationCost": [
 			5,
-			324.5,
-			3838.5,
-			-1433
+			486.5,
+			-1280,
+			-583
 		],
 		"boss": false
 	},
@@ -38,31 +38,31 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 200,
-		"m_speed": 10,
-		"defence": 0,
+		"m_speed": 12,
+		"defence": 15,
 		"currentVariation": 0,
 		"variations": 20,
 		"variationCost": [
 			2,
-			6.5,
-			10.5,
-			15,
-			19.5,
-			23.5,
-			28,
-			32.5,
-			36.5,
-			41,
-			45.5,
-			49.5,
-			54,
-			58.5,
+			7,
+			12,
+			17,
+			22,
+			27.5,
+			33,
+			38.5,
+			44,
+			50,
+			56,
 			62.5,
-			67,
-			71.5,
-			76,
-			80,
-			84.5
+			68.5,
+			75,
+			82,
+			89,
+			96,
+			103.5,
+			111,
+			118.5
 		],
 		"boss": false
 	},
@@ -72,16 +72,16 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 100,
-		"m_speed": 10,
-		"defence": 0,
+		"m_speed": 12,
+		"defence": 15,
 		"currentVariation": 0,
 		"variations": 5,
 		"variationCost": [
 			1,
-			35.5,
-			70.5,
-			105,
-			140
+			48,
+			125.5,
+			278.5,
+			721
 		],
 		"boss": false
 	},
@@ -97,7 +97,7 @@
 		"variations": 2,
 		"variationCost": [
 			4,
-			271
+			367
 		],
 		"boss": false
 	},
@@ -108,15 +108,15 @@
 		"scale": 3,
 		"health": 250,
 		"m_speed": 20,
-		"defence": 10,
+		"defence": 15,
 		"currentVariation": 0,
 		"variations": 5,
 		"variationCost": [
 			2,
-			83.5,
-			183,
-			306.5,
-			464
+			99.5,
+			260.5,
+			578,
+			1495
 		],
 		"boss": false
 	},
@@ -127,15 +127,15 @@
 		"scale": 3,
 		"health": 200,
 		"m_speed": 15,
-		"defence": 5,
+		"defence": 15,
 		"currentVariation": 0,
 		"variations": 5,
 		"variationCost": [
-			1.5,
-			66.5,
-			137.5,
-			215.5,
-			301
+			2,
+			88,
+			230.5,
+			511.5,
+			1323
 		],
 		"boss": false
 	},
@@ -146,12 +146,12 @@
 		"scale": 3,
 		"health": 100,
 		"m_speed": 15,
-		"defence": 5,
+		"defence": 15,
 		"currentVariation": 0,
 		"variations": 2,
 		"variationCost": [
-			0.5,
-			39.5
+			1,
+			54.5
 		],
 		"boss": false
 	},
@@ -167,11 +167,11 @@
 		"variations": 6,
 		"variationCost": [
 			1.5,
-			69.5,
-			161.5,
-			292,
-			504.5,
-			869
+			73.5,
+			188.5,
+			399.5,
+			917.5,
+			3600
 		],
 		"boss": false
 	},
@@ -197,13 +197,13 @@
 		"scale": 3,
 		"health": 200,
 		"m_speed": 20,
-		"defence": 10,
+		"defence": 15,
 		"currentVariation": 0,
 		"variations": 3,
 		"variationCost": [
 			1.5,
-			76,
-			169
+			92,
+			253.5
 		],
 		"boss": false
 	},
@@ -214,14 +214,14 @@
 		"scale": 3,
 		"health": 200,
 		"m_speed": 15,
-		"defence": 10,
+		"defence": 15,
 		"currentVariation": 0,
 		"variations": 4,
 		"variationCost": [
 			2,
-			78.5,
-			174.5,
-			292.5
+			95,
+			254.5,
+			594
 		],
 		"boss": false
 	},
@@ -237,9 +237,9 @@
 		"variations": 4,
 		"variationCost": [
 			3.5,
-			172.5,
-			466,
-			1103
+			190.5,
+			649.5,
+			3555
 		],
 		"boss": false
 	},
@@ -249,12 +249,12 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 1000,
-		"m_speed": 30,
+		"m_speed": 25,
 		"defence": 35,
 		"currentVariation": 0,
 		"variations": 1,
 		"variationCost": [
-			11
+			11.5
 		],
 		"boss": false
 	},
@@ -270,11 +270,11 @@
 		"variations": 6,
 		"variationCost": [
 			5,
-			321,
-			null,
-			-942.5,
-			-627,
-			-521.5
+			535,
+			-790,
+			-428.5,
+			-348.5,
+			-313
 		],
 		"boss": false
 	},
@@ -305,12 +305,12 @@
 		"variations": 7,
 		"variationCost": [
 			1.5,
-			64.5,
-			148.5,
-			262.5,
-			438.5,
-			713,
-			1282
+			68,
+			169.5,
+			346,
+			698.5,
+			1961,
+			-9402.5
 		],
 		"boss": false
 	},
@@ -321,13 +321,13 @@
 		"scale": 3,
 		"health": 200,
 		"m_speed": 20,
-		"defence": 10,
+		"defence": 15,
 		"currentVariation": 0,
 		"variations": 3,
 		"variationCost": [
 			1.5,
-			76,
-			169
+			92,
+			253.5
 		],
 		"boss": false
 	},
@@ -343,11 +343,11 @@
 		"variations": 6,
 		"variationCost": [
 			6,
-			253,
-			748,
-			2231.5,
-			null,
-			-3909.5
+			294.5,
+			1235.5,
+			-14135.5,
+			-1880,
+			-1257
 		],
 		"boss": false
 	},
@@ -357,15 +357,15 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 300,
-		"m_speed": 10,
+		"m_speed": 12,
 		"defence": 15,
 		"currentVariation": 0,
 		"variations": 4,
 		"variationCost": [
 			3.5,
-			156,
-			374.5,
-			713.5
+			155,
+			416.5,
+			971
 		],
 		"boss": false
 	},
@@ -375,14 +375,14 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 500,
-		"m_speed": 30,
-		"defence": 60,
+		"m_speed": 25,
+		"defence": 50,
 		"currentVariation": 0,
 		"variations": 3,
 		"variationCost": [
-			9,
-			-971.5,
-			-395
+			7.5,
+			-1105.5,
+			-373.5
 		],
 		"boss": false
 	},
@@ -392,14 +392,14 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 400,
-		"m_speed": 30,
-		"defence": 50,
+		"m_speed": 25,
+		"defence": 40,
 		"currentVariation": 0,
 		"variations": 3,
 		"variationCost": [
-			5.5,
-			2175.5,
-			-537
+			5,
+			1149,
+			-567
 		],
 		"boss": false
 	},
@@ -409,14 +409,14 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 300,
-		"m_speed": 30,
-		"defence": 40,
+		"m_speed": 25,
+		"defence": 30,
 		"currentVariation": 0,
 		"variations": 3,
 		"variationCost": [
-			3.5,
-			339.5,
-			-1341.5
+			3,
+			261,
+			-3402
 		],
 		"boss": false
 	},
@@ -426,15 +426,15 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 150,
-		"m_speed": 8,
+		"m_speed": 12,
 		"defence": 20,
 		"currentVariation": 0,
 		"variations": 4,
 		"variationCost": [
-			2,
-			100,
-			270.5,
-			640.5
+			1.5,
+			92.5,
+			315.5,
+			1727
 		],
 		"boss": false
 	},
@@ -450,7 +450,7 @@
 		"variations": 2,
 		"variationCost": [
 			6.5,
-			428.5
+			580.5
 		],
 		"boss": false
 	},
@@ -466,9 +466,9 @@
 		"variations": 4,
 		"variationCost": [
 			5.5,
-			269,
-			868.5,
-			3565.5
+			316,
+			1791.5,
+			-3056.5
 		],
 		"boss": false
 	},
@@ -478,14 +478,14 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 350,
-		"m_speed": 10,
+		"m_speed": 12,
 		"defence": 20,
 		"currentVariation": 0,
 		"variations": 3,
 		"variationCost": [
-			4.5,
-			226.5,
-			630
+			4,
+			236.5,
+			856.5
 		],
 		"boss": false
 	},
@@ -501,7 +501,7 @@
 		"variations": 2,
 		"variationCost": [
 			11.5,
-			774.5
+			1049.5
 		],
 		"boss": false
 	},
@@ -511,8 +511,8 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 200,
-		"m_speed": 10,
-		"defence": 0,
+		"m_speed": 12,
+		"defence": 15,
 		"currentVariation": 0,
 		"variations": 1,
 		"variationCost": [
@@ -527,13 +527,13 @@
 		"scale": 3,
 		"health": 400,
 		"m_speed": 12,
-		"defence": 0,
+		"defence": 15,
 		"currentVariation": 0,
 		"variations": 3,
 		"variationCost": [
-			4,
-			148.5,
-			293.5
+			4.5,
+			222,
+			612
 		],
 		"boss": false
 	},
@@ -549,8 +549,8 @@
 		"variations": 3,
 		"variationCost": [
 			7,
-			348.5,
-			969
+			392.5,
+			1421
 		],
 		"boss": false
 	},
@@ -561,14 +561,14 @@
 		"scale": 3,
 		"health": 500,
 		"m_speed": 15,
-		"defence": 5,
+		"defence": 15,
 		"currentVariation": 0,
 		"variations": 4,
 		"variationCost": [
-			4.5,
-			177.5,
-			366,
-			572.5
+			5,
+			237.5,
+			636.5,
+			1485.5
 		],
 		"boss": false
 	},
@@ -584,9 +584,9 @@
 		"variations": 4,
 		"variationCost": [
 			7.5,
-			422.5,
-			1974,
-			-9333
+			543.5,
+			-37513.5,
+			-1513.5
 		],
 		"boss": false
 	},
@@ -596,13 +596,13 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 900,
-		"m_speed": 30,
+		"m_speed": 25,
 		"defence": 30,
 		"currentVariation": 0,
 		"variations": 2,
 		"variationCost": [
-			9,
-			614
+			9.5,
+			879
 		],
 		"boss": false
 	},
@@ -618,11 +618,11 @@
 		"variations": 6,
 		"variationCost": [
 			12.5,
-			477.5,
-			1221.5,
-			2603.5,
-			6058.5,
-			30243
+			526,
+			1607.5,
+			5360.5,
+			-30293.5,
+			-6049
 		],
 		"boss": false
 	},
@@ -633,13 +633,13 @@
 		"scale": 3,
 		"health": 300,
 		"m_speed": 25,
-		"defence": 50,
+		"defence": 45,
 		"currentVariation": 0,
 		"variations": 3,
 		"variationCost": [
-			4.5,
-			1724,
-			-425.5
+			4,
+			-8621.5,
+			-293.5
 		],
 		"boss": false
 	},
@@ -670,9 +670,9 @@
 		"variations": 4,
 		"variationCost": [
 			7.5,
-			378.5,
-			1221,
-			5014
+			444,
+			2519,
+			-4298
 		],
 		"boss": false
 	},
@@ -688,17 +688,17 @@
 		"variations": 12,
 		"variationCost": [
 			5,
-			111.5,
-			249,
-			433,
-			692,
-			1084.5,
-			1749,
-			3117,
-			7562.5,
-			-68013.5,
-			-7552.5,
-			-4370.5
+			116.5,
+			280.5,
+			533.5,
+			1015,
+			2233.5,
+			9096,
+			-6624.5,
+			-3025.5,
+			-2061.5,
+			-1642,
+			-1432
 		],
 		"boss": false
 	},
@@ -714,10 +714,10 @@
 		"variations": 5,
 		"variationCost": [
 			3,
-			125,
-			295,
-			548,
-			965.5
+			132,
+			346,
+			767.5,
+			1984.5
 		],
 		"boss": false
 	},
@@ -733,8 +733,8 @@
 		"variations": 3,
 		"variationCost": [
 			4,
-			189.5,
-			464.5
+			203.5,
+			561.5
 		],
 		"boss": false
 	},
@@ -744,14 +744,14 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 650,
-		"m_speed": 30,
+		"m_speed": 25,
 		"defence": 25,
 		"currentVariation": 0,
 		"variations": 3,
 		"variationCost": [
-			6,
-			333.5,
-			1162.5
+			6.5,
+			424.5,
+			3071
 		],
 		"boss": false
 	},
@@ -767,7 +767,7 @@
 		"variations": 2,
 		"variationCost": [
 			1,
-			68.5
+			73.5
 		],
 		"boss": false
 	},
@@ -783,9 +783,9 @@
 		"variations": 4,
 		"variationCost": [
 			6,
-			497,
-			-3185,
-			-906
+			994,
+			-728,
+			-464
 		],
 		"boss": false
 	},
@@ -796,22 +796,22 @@
 		"scale": 3,
 		"health": 600,
 		"m_speed": 15,
-		"defence": 5,
+		"defence": 15,
 		"currentVariation": 0,
 		"variations": 12,
 		"variationCost": [
-			5.5,
-			113,
-			225,
-			342,
-			470,
-			600,
-			736,
-			879,
-			1043,
-			1203.5,
-			1373,
-			1552
+			6.5,
+			138,
+			305.5,
+			534,
+			842,
+			1326,
+			2081.5,
+			3702,
+			8031.5,
+			null,
+			-11140,
+			-6124
 		],
 		"boss": false
 	},
@@ -821,19 +821,19 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 500,
-		"m_speed": 10,
-		"defence": 15,
+		"m_speed": 12,
+		"defence": 20,
 		"currentVariation": 0,
 		"variations": 8,
 		"variationCost": [
 			6,
-			192.5,
-			435.5,
-			765.5,
-			1239,
-			1922,
-			3156.5,
-			5843.5
+			219,
+			605.5,
+			1528,
+			6602,
+			-5991,
+			-2723.5,
+			-1959
 		],
 		"boss": false
 	},
@@ -844,13 +844,13 @@
 		"scale": 3,
 		"health": 350,
 		"m_speed": 15,
-		"defence": 10,
+		"defence": 15,
 		"currentVariation": 0,
 		"variations": 3,
 		"variationCost": [
 			3.5,
-			147.5,
-			327.5
+			178,
+			491
 		],
 		"boss": false
 	},
@@ -866,7 +866,7 @@
 		"variations": 2,
 		"variationCost": [
 			5.5,
-			312.5
+			387
 		],
 		"boss": false
 	},
@@ -897,9 +897,9 @@
 		"variations": 4,
 		"variationCost": [
 			9.5,
-			519,
-			2424.5,
-			-11461
+			667.5,
+			-46066,
+			-1858.5
 		],
 		"boss": false
 	},
@@ -915,8 +915,8 @@
 		"variations": 3,
 		"variationCost": [
 			6.5,
-			284.5,
-			697
+			305.5,
+			842
 		],
 		"boss": false
 	},
@@ -932,8 +932,8 @@
 		"variations": 3,
 		"variationCost": [
 			3.5,
-			193,
-			673.5
+			232.5,
+			1684.5
 		],
 		"boss": false
 	},
@@ -943,14 +943,14 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 300,
-		"m_speed": 10,
+		"m_speed": 12,
 		"defence": 25,
 		"currentVariation": 0,
 		"variations": 3,
 		"variationCost": [
 			4,
-			227,
-			792.5
+			253.5,
+			1836
 		],
 		"boss": false
 	},
@@ -961,16 +961,16 @@
 		"scale": 3,
 		"health": 300,
 		"m_speed": 20,
-		"defence": 60,
+		"defence": 50,
 		"currentVariation": 0,
 		"variations": 6,
 		"variationCost": [
-			6,
-			-1552.5,
-			-305.5,
-			-240,
-			-216.5,
-			-204.5
+			5,
+			-3881,
+			-278,
+			-213,
+			-189.5,
+			-178.5
 		],
 		"boss": false
 	},
@@ -986,9 +986,9 @@
 		"variations": 4,
 		"variationCost": [
 			5,
-			231.5,
-			625.5,
-			1481.5
+			256,
+			872,
+			4775
 		],
 		"boss": false
 	},
@@ -1004,9 +1004,9 @@
 		"variations": 4,
 		"variationCost": [
 			4,
-			177,
-			424.5,
-			809
+			190,
+			509.5,
+			1188.5
 		],
 		"boss": false
 	},
@@ -1022,7 +1022,7 @@
 		"variations": 2,
 		"variationCost": [
 			4,
-			202.5
+			218
 		],
 		"boss": false
 	},
@@ -1033,26 +1033,26 @@
 		"scale": 3,
 		"health": 200,
 		"m_speed": 15,
-		"defence": 10,
+		"defence": 20,
 		"currentVariation": 0,
 		"variations": 16,
 		"variationCost": [
 			2,
-			23,
-			45.5,
-			68.5,
-			94.5,
-			120.5,
-			150,
-			179.5,
-			213.5,
-			247,
-			286.5,
-			325,
-			372,
-			417,
-			473,
-			526
+			27.5,
+			58.5,
+			97,
+			145.5,
+			209,
+			296,
+			422.5,
+			623,
+			988,
+			1864.5,
+			6831,
+			-5585.5,
+			-2199,
+			-1446.5,
+			-1115.5
 		],
 		"boss": false
 	},
@@ -1063,19 +1063,19 @@
 		"scale": 3,
 		"health": 100,
 		"m_speed": 15,
-		"defence": 10,
+		"defence": 15,
 		"currentVariation": 0,
 		"variations": 9,
 		"variationCost": [
 			1,
-			27,
-			57.5,
-			93.5,
-			135.5,
-			186,
-			247.5,
-			325,
-			424
+			31.5,
+			75,
+			140,
+			255.5,
+			507.5,
+			1338.5,
+			-5201,
+			-1188
 		],
 		"boss": false
 	},
@@ -1086,22 +1086,22 @@
 		"scale": 3,
 		"health": 250,
 		"m_speed": 15,
-		"defence": 15,
+		"defence": 20,
 		"currentVariation": 0,
 		"variations": 12,
 		"variationCost": [
 			2.5,
-			55.5,
-			118.5,
-			195,
-			290,
-			403.5,
-			559,
-			771,
-			1079.5,
-			1504.5,
-			2320.5,
-			4175
+			64,
+			155,
+			295,
+			561.5,
+			1235,
+			5031,
+			-3664,
+			-1673.5,
+			-1140,
+			-908.5,
+			-792
 		],
 		"boss": false
 	},
@@ -1117,13 +1117,13 @@
 		"variations": 8,
 		"variationCost": [
 			1.5,
-			49,
-			111,
-			195,
-			316,
-			490,
-			805,
-			1490.5
+			51.5,
+			126.5,
+			243,
+			469,
+			1067,
+			5435,
+			-2534.5
 		],
 		"boss": false
 	},
@@ -1139,17 +1139,17 @@
 		"variations": 12,
 		"variationCost": [
 			2,
-			49,
-			110,
-			191.5,
-			306,
-			480,
-			774,
-			1379,
-			3346.5,
-			-30095.5,
-			-3342,
-			-1934
+			51.5,
+			124,
+			236,
+			449,
+			988,
+			4025,
+			-2931.5,
+			-1339,
+			-912,
+			-726.5,
+			-633.5
 		],
 		"boss": false
 	},
@@ -1180,7 +1180,7 @@
 		"variations": 2,
 		"variationCost": [
 			13,
-			857
+			1161
 		],
 		"boss": false
 	},
@@ -1196,8 +1196,8 @@
 		"variations": 3,
 		"variationCost": [
 			6.5,
-			349.5,
-			1218
+			421,
+			3045.5
 		],
 		"boss": false
 	},
@@ -1213,11 +1213,11 @@
 		"variations": 6,
 		"variationCost": [
 			5,
-			238,
-			901,
-			11201,
-			-2234.5,
-			-1328
+			293.5,
+			3217.5,
+			-1400.5,
+			-798,
+			-641
 		],
 		"boss": false
 	},
@@ -1228,18 +1228,18 @@
 		"scale": 3,
 		"health": 100,
 		"m_speed": 20,
-		"defence": 5,
+		"defence": 15,
 		"currentVariation": 0,
 		"variations": 8,
 		"variationCost": [
 			0.5,
-			24,
-			49.5,
-			76.5,
-			106.5,
-			138,
-			172,
-			209
+			31,
+			76,
+			146.5,
+			282.5,
+			643,
+			3275,
+			-1527.5
 		],
 		"boss": false
 	},
@@ -1249,13 +1249,13 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 650,
-		"m_speed": 30,
+		"m_speed": 25,
 		"defence": 25,
 		"currentVariation": 0,
 		"variations": 2,
 		"variationCost": [
-			6,
-			358
+			6.5,
+			468.5
 		],
 		"boss": false
 	},
@@ -1266,7 +1266,7 @@
 		"scale": 1,
 		"health": 1000,
 		"m_speed": 30,
-		"defence": 60,
+		"defence": 70,
 		"currentVariation": 0,
 		"variations": 1,
 		"defaultCost": 0,
@@ -1279,7 +1279,7 @@
 		"scale": 1,
 		"health": 1000,
 		"m_speed": 30,
-		"defence": 60,
+		"defence": 70,
 		"currentVariation": 0,
 		"variations": 1,
 		"defaultCost": 0,
@@ -1292,7 +1292,7 @@
 		"scale": 1,
 		"health": 1000,
 		"m_speed": 30,
-		"defence": 60,
+		"defence": 70,
 		"currentVariation": 0,
 		"variations": 1,
 		"defaultCost": 0,
@@ -1305,7 +1305,7 @@
 		"scale": 1,
 		"health": 1000,
 		"m_speed": 30,
-		"defence": 60,
+		"defence": 70,
 		"currentVariation": 0,
 		"variations": 1,
 		"defaultCost": 0,
@@ -1318,7 +1318,7 @@
 		"scale": 1,
 		"health": 1000,
 		"m_speed": 30,
-		"defence": 60,
+		"defence": 70,
 		"currentVariation": 0,
 		"variations": 1,
 		"defaultCost": 0,
