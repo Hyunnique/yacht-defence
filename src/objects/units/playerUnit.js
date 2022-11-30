@@ -31,8 +31,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         //애니메이션/이펙트/사운드 네임 저장
         this.idleAnim = db.idleAnim;
         this.attackAnim = db.attackAnim;
-        this.atkSoundName = db.atkSoundName;
-        this.hitSoundName = db.hitSoundName;
+        this.atkSoundName = this.scene.sound.get(db.atkSoundName);
+        this.hitSoundName = this.scene.sound.get(db.hitSoundName);
         this.effectName = db.effectName;
 
         this.tier = db.tier;
@@ -322,7 +322,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
     attackMob() {
         this.attackReady = false;
         if (this.playerNum == this.scene.currentView)
-            this.scene.sound.play(this.atkSoundName, Game.effectSoundConfig);
+            this.atkSoundName.play(Game.effectSoundConfig);
         this.play(this.attackAnim, false);
         this.effect.playEffect();
      
