@@ -1085,6 +1085,12 @@ var Game = {
             tierBuffs: this.GameObject.scene.getScene("gameScene").tierBonus
         });
     },
+
+    calcDamage(damage,mobDefence,penetration)
+    {
+        var defencePenValue = 1 - (mobDefence / 100) * (1 - penetration);
+        return defencePenValue <= 0 ? 1 : damage * defencePenValue;
+    }
 };
 
 export default Game;    

@@ -31,7 +31,7 @@ export default class Penetrate extends Phaser.Physics.Arcade.Sprite {
 
         this.skillInfo = skillInfo;
 
-        if (skillInfo != null && skillInfo.skillType == "DOT") {
+        if (skillInfo && skillInfo.skillType == "DOT") {
             this.skillInfo.callerID = shooter.index;
         }
         else
@@ -47,7 +47,6 @@ export default class Penetrate extends Phaser.Physics.Arcade.Sprite {
         this.flyto = new Phaser.Math.Vector2();
         
         try {
-            console.log(this.target[0].gameObject.getCenter());
             this.setAngle(this, this.target[0].gameObject.getCenter().x, this.target[0].gameObject.getCenter().y);
         }
         catch (e) {
@@ -70,10 +69,7 @@ export default class Penetrate extends Phaser.Physics.Arcade.Sprite {
     }
 
     setVisibility() {
-        if (this.shooter.playerNum == this.scene.currentView)
-            this.setVisible(true);
-        else
-            this.setVisible(false);
+        this.setVisible(this.shooter.playerNum == this.scene.currentView);
     }
 
     setAngle(shooter,x,y) {
@@ -89,7 +85,7 @@ export default class Penetrate extends Phaser.Physics.Arcade.Sprite {
     hit()
     {
         if(this.shooter.playerNum == this.scene.currentView)
-            this.hitSoundName.play(Game.effectSoundConfig);
+            this.scene.sound.play(this.hitSoundName, Game.effectSoundConfig);
         this.attack *= 0.9;
     }
 }
