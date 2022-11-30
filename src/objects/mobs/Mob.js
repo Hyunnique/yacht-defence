@@ -298,6 +298,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         }
     }
 
+
     dotDamageFactory(object) {
         var callerID;
         var attack;
@@ -306,6 +307,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
             callerID = object.shooter.index;
             attack = object.shooter.attack;
             penetration = object.shooter.penetration;
+
         }
         else{
             callerID = object.index;
