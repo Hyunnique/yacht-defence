@@ -3,7 +3,13 @@
         "skillType": "debuff",
         "of": "rdamage",
         "value": 20,
-        "duration": -1
+        "duration": 5
+    },
+    "unit19": {
+        "skillType": "debuff",
+        "of": "pen",
+        "value": 15,
+        "duration": 3
     },
     "unit22": {
         "skillType": "DOT",
@@ -86,9 +92,9 @@
     },
     "unit45": {
         "skillType": "debuff",
-        "of": "pen",
-        "value": 20,
-        "duration": 1
+        "of": "slow",
+        "value": 8,
+        "duration": 3
     },
     "unit50": {
         "skillType": "statFix",
