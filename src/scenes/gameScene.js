@@ -168,7 +168,7 @@ export default class gameScene extends Phaser.Scene {
         this.sound.pauseOnBlur = false;
         this.bossPrepareMusic = this.sound.add("bossPrepareMusic");
         this.bossFightMusic = this.sound.add("bossFight");
-        this.normalMusic = this.sound.add("normal");
+        this.normalMusic = this.sound.add("normal_diff1");
 
         this.normalMusic.play(Game.bgmSoundConfig);
 
@@ -621,7 +621,6 @@ export default class gameScene extends Phaser.Scene {
         }        
     }
 
-
     handleTierBonus(tier,bool)
     {
         bool ? this.tierCnt[tier - 1]++ : this.tierCnt[tier - 1]--;
@@ -655,6 +654,10 @@ export default class gameScene extends Phaser.Scene {
             document.getElementsByClassName("ui-unitArea-unitTierCount")[i].innerHTML = "";
             document.getElementsByClassName("ui-unitArea-unitTierCount")[i].innerHTML += this.tierCnt[i] + " <span class='ui-unitArea-unitTierBonus'>(+" + this.tierBonus[i] + "%)</span>";
         }
+    }
+
+    musicChanger() {
+        this.normalMusic = this.sound.add("normal_diff" + (this.roundNum > 70 ? "8" : Math.ceil((this.roundNum - 1) / 10) + 1));
     }
 }
 
