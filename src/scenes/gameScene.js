@@ -449,11 +449,11 @@ export default class gameScene extends Phaser.Scene {
             var offsetY = e.y + (this.mapOffsetY * Math.floor(playerNum / 2));
             if (i < savedLength) {//기존에 있는 것중에
                 var unit = this.spectate_player_units[playerNum][i];
-                if (unit.x != offsetX || unit.y != offsetY) { // 자리가 달라?
-                    let t = this.info[playerNum].getTileAtWorldXY(unit.x, unit.y, true);
+                if (unit.x != offsetX || unit.y != offsetY) { // 자리가 달라? 
                     unit.x = offsetX;
                     unit.y = offsetY;
                     unit.setDepth(((unit.y / 48) * (unit.x / 48)));
+                    let t = this.info[playerNum].getTileAtWorldXY(offsetX, offsetY, true);
                     t.placedUnit = unit;
                 }
             }
