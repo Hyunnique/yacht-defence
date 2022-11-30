@@ -27,7 +27,7 @@ export default class Homing extends Phaser.Physics.Arcade.Sprite {
             this.setVisible(false);
         
         this.skillInfo = skillInfo;
-        if (skillInfo != null && skillInfo.skillType == "DOT")
+        if (skillInfo && skillInfo.skillType == "DOT")
             this.skillInfo.callerID = shooter.index;
 
         this.play(shooter.projectileName);
@@ -46,10 +46,7 @@ export default class Homing extends Phaser.Physics.Arcade.Sprite {
     }
 
     setVisibility() {
-        if (this.shooter.playerNum == this.scene.currentView)
-            this.setVisible(true);
-        else
-            this.setVisible(false);
+        this.setVisible(this.shooter.playerNum == this.scene.currentView);
     }
 
     flytoMob(target) {
@@ -80,14 +77,13 @@ export default class Homing extends Phaser.Physics.Arcade.Sprite {
     {   
         this.scene.events.off('update', this.update, this);
         this.scene.events.off("spectateChange", this.setVisibility, this);
-        this.setDepth(2);
         this.rotation = 0;
         this.body.destroy();
 
         this.play(this.hitEffect);
         
         if(this.shooter.playerNum == this.scene.currentView)
-            this.hitSoundName.play(Game.effectSoundConfig);
+            this.scene.sound.play(this.hitSoundName, Game.effectSoundConfig);
         
         var animConfig = this.scene.anims.get(this.hitEffect);
         var animtime = animConfig.frames.length * animConfig.msPerFrame;

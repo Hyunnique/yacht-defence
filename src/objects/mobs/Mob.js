@@ -25,19 +25,21 @@ import Game from "../../Game.js";
 
 export default class Mob extends Phaser.Physics.Arcade.Sprite {
 
-    constructor(scene, mobData,num,mobRoute,hpFactor,playerNum) {
+    constructor(scene, mobData, num, mobRoute, hpFactor, playerNum) {
+        
         super(scene, -5000, -5000, mobData.mobAnim);
         scene.add.existing(this);
         scene.physics.add.existing(this);
+
         this.isTarget = true;
         this.isBuffTarget = false;
+
         this.Health = mobData.health * hpFactor;
         this.MaxHealth = mobData.health * hpFactor;
         this.scale = mobData.scale;
         this.m_speed = mobData.m_speed;
         this.deathAnimName = mobData.deathAnimName;
         this.defence = mobData.defence;
-        //this.damage = mobData.damage;
         this.mobNum = num;
         this.moveType = mobRoute + playerNum;
         this.deathCalled = false;
@@ -163,8 +165,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
     }
     update()
     {       
-        if (!this.isBoss) {
-            
+        if (!this.isBoss) {       
             this.healthBar.setPosition(this.getCenter().x-48, this.getCenter().y - 24);
             this.healthBar.displayWidth = this.healthBarWidth * (this.Health / this.MaxHealth);
         }
@@ -226,6 +227,13 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
 
         if (!this.isBoss) this.healthBar.destroy();
 
+        var array = Object.values(this.dotDamageDict);
+        console.log(array);
+        for (var i = 0; i < array.length; i++)
+        {
+            array[i].remove();    
+        }
+        this.dotDamageDict = [];
         this.tween.remove();
         this.body.destroy();
         this.play(this.deathAnimName);
@@ -246,28 +254,25 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
                 else
                     projectile.alreadyPenetrated.push(this.mobNum);
             
-            var damage = projectile.shooter.calcDamage(projectile.shooter.attack, this.defence) * (1 + this.totalDebuffVal / 100);
+            var damage = Game.calcDamage(projectile.shooter.attack, this.defence, projectile.shooter.penetration) * (1 + this.totalDebuffVal / 100);
             
-            if (projectile.skillInfo != null) {
+            if (projectile.skillInfo) {
                 if (projectile.skillInfo.skillType == "DOT")
                     this.dotDamageFactory(projectile);
                 if (projectile.skillInfo.skillType == "debuff")
                     this.handleDebuff(projectile.shooter.id, projectile.skillInfo.value);
                 if (projectile.skillInfo.skillType == "attackCount") {
                     if (projectile.skillInfo.ofHealth == "cur")
-                        damage = projectile.shooter.calcDamage(projectile.shooter.attack + this.Health * (projectile.skillInfo.value / 100), this.defence) * (1 + this.totalDebuffVal / 100);
+                        damage = Game.calcDamage(projectile.shooter.attack + this.Health * (projectile.skillInfo.value / 100), this.defence, projectile.shooter.penetration) * (1 + this.totalDebuffVal / 100);
                     if (projectile.skillInfo.ofHealth == "lost")
-                        damage = projectile.shooter.calcDamage(projectile.shooter.attack * projectile.skillInfo.value * (1 - this.Health / this.MaxHealth), this.defence) * (1 + this.totalDebuffVal / 100);
+                        damage = Game.calcDamage(projectile.shooter.attack * projectile.skillInfo.value * (1 - this.Health / this.MaxHealth), this.defence, projectile.shooter.penetration) * (1 + this.totalDebuffVal / 100);
                     if (projectile.skillInfo.ofHealth == "atk")
-                        damage = projectile.shooter.calcDamage(projectile.shooter.attack * (1 + projectile.skillInfo.value / 100), this.defence) * (1 + this.totalDebuffVal / 100);
+                        damage = Game.calcDamage(projectile.shooter.attack * (1 + projectile.skillInfo.value / 100), this.defence, projectile.shooter.penetration) * (1 + this.totalDebuffVal / 100);
                 }
             }
-            this.Health -= damage;
-            projectile.hit();
+            this.Health -= damage;      
         }
-        else if (projectile.shooter.projectileType == 2) {
-            projectile.explode();
-        }
+        projectile.hit();
     }
 
     handleDebuff(skillInfo)
@@ -293,44 +298,39 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         }
     }
 
-    dotDamageFactory(projectile) {
-        if (!this.dotDamageDict[projectile.skillInfo.callerID]) {
 
-            var damage = projectile.skillInfo.ofHealth == "cur" ?
-                (this.Health * projectile.skillInfo.value / 100) :
-                projectile.shooter.attack * (projectile.skillInfo.value / 100);
+    dotDamageFactory(object) {
+        var callerID;
+        var attack;
+        var penetration;
+        if (object.shooter) {
+            callerID = object.shooter.index;
+            attack = object.shooter.attack;
+            penetration = object.shooter.penetration;
+
+        }
+        else{
+            callerID = object.index;
+            attack = object.attack;
+            penetration = object.penetration;
+        }
+        if (!this.dotDamageDict[callerID]) {
+            var damage = object.skillInfo.ofHealth == "cur" ?
+                (this.Health * object.skillInfo.value / 100) :
+                attack * (object.skillInfo.value / 100);
             
-            this.dotDamageDict[projectile.skillInfo.callerID] = this.scene.time.addEvent({
-                delay: projectile.skillInfo.delay * 1000,
-                repeat: projectile.skillInfo.duration / projectile.skillInfo.delay,
+            this.dotDamageDict[callerID] = this.scene.time.addEvent({
+                delay: object.skillInfo.delay * 1000,
+                repeat: object.skillInfo.duration / object.skillInfo.delay,
                 callback: () => {
-                    this.Health -= projectile.shooter.calcDamage(damage, this.defence) * (1 + this.totalDebuffVal / 100);
+                    this.Health -= Game.calcDamage(damage, this.defence, penetration) * (1 + this.totalDebuffVal / 100);
+                    console.log(this.Health);
                 },
                 startAt: 0
             });
         }
         else {
-            this.dotDamageDict[projectile.skillInfo.callerID] = this.scene.time.addEvent(this.dotDamageDict[projectile.skillInfo.callerID]);
-        }
-    }
-
-    dotDamageFactoryMili(unit) {
-        if (!this.dotDamageDict[unit.index]) {
-            var damage = unit.skillInfo.ofHealth == "cur" ?
-                (this.Health * unit.skillInfo.value / 100) :
-                unit.attack * (1 + unit.skillInfo.value / 100);
-            
-            this.dotDamageDict[unit.index] = this.scene.time.addEvent({
-                delay: unit.skillInfo.delay * 1000,
-                repeat: unit.skillInfo.duration / unit.skillInfo.delay,
-                callback: () => {
-                    this.Health -= unit.calcDamage(damage, this.defence) * (1 + this.totalDebuffVal / 100);
-                },
-                startAt: 0
-            });
-        }
-        else {
-            this.dotDamageDict[unit.index] = this.scene.time.addEvent(this.dotDamageDict[unit.index]);
+            this.dotDamageDict[callerID] = this.scene.time.addEvent(this.dotDamageDict[callerID]);
         }
     }
 }
