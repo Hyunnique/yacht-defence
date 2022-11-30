@@ -40,7 +40,6 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         this.m_speed = mobData.m_speed;
         this.deathAnimName = mobData.deathAnimName;
         this.defence = mobData.defence;
-        //this.damage = mobData.damage;
         this.mobNum = num;
         this.moveType = mobRoute + playerNum;
         this.deathCalled = false;
@@ -228,6 +227,13 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
 
         if (!this.isBoss) this.healthBar.destroy();
 
+        var array = Object.values(this.dotDamageDict);
+        console.log(array);
+        for (var i = 0; i < array.length; i++)
+        {
+            array[i].remove();    
+        }
+        this.dotDamageDict = [];
         this.tween.remove();
         this.body.destroy();
         this.play(this.deathAnimName);
@@ -248,7 +254,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
                 else
                     projectile.alreadyPenetrated.push(this.mobNum);
             
-            var damage = projectile.shooter.calcDamage(projectile.shooter.attack, this.defence) * (1 + this.totalDebuffVal / 100);
+            var damage = Game.calcDamage(projectile.shooter.attack, this.defence, projectile.shooter.penetration) * (1 + this.totalDebuffVal / 100);
             
             if (projectile.skillInfo) {
                 if (projectile.skillInfo.skillType == "DOT")
@@ -257,19 +263,16 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
                     this.handleDebuff(projectile.shooter.id, projectile.skillInfo.value);
                 if (projectile.skillInfo.skillType == "attackCount") {
                     if (projectile.skillInfo.ofHealth == "cur")
-                        damage = projectile.shooter.calcDamage(projectile.shooter.attack + this.Health * (projectile.skillInfo.value / 100), this.defence) * (1 + this.totalDebuffVal / 100);
+                        damage = Game.calcDamage(projectile.shooter.attack + this.Health * (projectile.skillInfo.value / 100), this.defence, projectile.shooter.penetration) * (1 + this.totalDebuffVal / 100);
                     if (projectile.skillInfo.ofHealth == "lost")
-                        damage = projectile.shooter.calcDamage(projectile.shooter.attack * projectile.skillInfo.value * (1 - this.Health / this.MaxHealth), this.defence) * (1 + this.totalDebuffVal / 100);
+                        damage = Game.calcDamage(projectile.shooter.attack * projectile.skillInfo.value * (1 - this.Health / this.MaxHealth), this.defence, projectile.shooter.penetration) * (1 + this.totalDebuffVal / 100);
                     if (projectile.skillInfo.ofHealth == "atk")
-                        damage = projectile.shooter.calcDamage(projectile.shooter.attack * (1 + projectile.skillInfo.value / 100), this.defence) * (1 + this.totalDebuffVal / 100);
+                        damage = Game.calcDamage(projectile.shooter.attack * (1 + projectile.skillInfo.value / 100), this.defence, projectile.shooter.penetration) * (1 + this.totalDebuffVal / 100);
                 }
             }
-            this.Health -= damage;
-            projectile.hit();
+            this.Health -= damage;      
         }
-        else if (projectile.shooter.projectileType == 2) {
-            projectile.explode();
-        }
+        projectile.hit();
     }
 
     handleDebuff(skillInfo)
@@ -298,14 +301,16 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
     dotDamageFactory(object) {
         var callerID;
         var attack;
-        
-        if (object.skillInfo.callerID) {
-            callerID = object.skillInfo.callerID;
+        var penetration;
+        if (object.shooter) {
+            callerID = object.shooter.index;
             attack = object.shooter.attack;
+            penetration = object.shooter.penetration;
         }
-        else if (object.index) {
+        else{
             callerID = object.index;
             attack = object.attack;
+            penetration = object.penetration;
         }
         if (!this.dotDamageDict[callerID]) {
             var damage = object.skillInfo.ofHealth == "cur" ?
@@ -316,7 +321,8 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
                 delay: object.skillInfo.delay * 1000,
                 repeat: object.skillInfo.duration / object.skillInfo.delay,
                 callback: () => {
-                    this.Health -= Game.calcDamage(damage, this.defence) * (1 + this.totalDebuffVal / 100);
+                    this.Health -= Game.calcDamage(damage, this.defence, penetration) * (1 + this.totalDebuffVal / 100);
+                    console.log(this.Health);
                 },
                 startAt: 0
             });

@@ -233,7 +233,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         else {
             this.globalbuffAspd = shopBuff.shopAspd;
             this.globalbuffedPenetration = shopBuff.shopPenetration / 100;
-            this.globalbuffAtk = (1 + shopBuff.shopAtk / 100) * (1 + tierBuffs[this.tier - 1] / 100);
+            this.globalbuffAtk = (1 + shopBuff.shopAtk / 100) * (1 + tierBuff[this.tier - 1] / 100);
         }
     }
     
@@ -336,15 +336,15 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
                             (e.gameObject.Health * this.skillInfo.value) :
                             this.skillInfo.skillType == "lost" ?
                                 (this.attack * (1 - e.Health / e.MaxHealth) * this.skillInfo.value) :
-                                (this.attack * (this.skillInfo.value / 100)), e.gameObject.defence);
+                                (this.attack * (this.skillInfo.value / 100)), e.gameObject.defence, this.penetration);
                     else
-                        damage = Game.calcDamage(this.attack, e.gameObject.defence);
+                        damage = Game.calcDamage(this.attack, e.gameObject.defence,this.penetration);
                     
                     e.gameObject.Health -= damage;
 
                     if (this.skillInfo) {
                         if(this.skillInfo.skillType == "DOT")
-                            e.gameObject.dotDamageFactoryMili(this);
+                            e.gameObject.dotDamageFactory(this);
                         if (this.skillInfo.skillType == "debuff")
                             e.gameObject.handleDebuff(this.skillInfo);
                      }
