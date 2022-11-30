@@ -314,7 +314,7 @@ export default class gameScene extends Phaser.Scene {
     receiveUnit(unitID, tier) {
         if (Game.PlayerData[0].hp > 0) {
             this.handleTierBonus(tier, true);
-            this.onPlaceQueue = new Unit(this, this.input.activePointer.x, this.input.activePointer.y, this.unitDB["unit" + 45], this.unitIndex++, 45, 0);
+            this.onPlaceQueue = new Unit(this, this.input.activePointer.x, this.input.activePointer.y, this.unitDB["unit" + unitID], this.unitIndex++, unitID, 0);
             this.onPlaceQueue.rangeView.alpha = 0.4;
             this.onPlaceQueue.buffRangeView.alpha = 0.6;
             this.m_player.push(this.onPlaceQueue);
@@ -356,9 +356,15 @@ export default class gameScene extends Phaser.Scene {
     unitPlaceHandler(pointer) {
         let t = this.getTileAtPointer(pointer, this.info[0]);
         if (t.index == "2897") {
-            this.unitPlacer(t);
+            this.unitPlacer(t,false);
             this.placeModeSwitch(false);
         }
+        else if (t.index == "2898" && t.placedUnit) {
+            this.unitPlacer(t,true);
+            this.placeModeSwitch(false);
+        }
+            
+            
     }
 
     pointerFollower(pointer) {
@@ -378,7 +384,17 @@ export default class gameScene extends Phaser.Scene {
         this.onPlaceQueue.setDepth(((this.onPlaceQueue.y / 48) * (this.onPlaceQueue.x / 48)));
     }
 
-    unitPlacer(t) {
+    unitPlacer(t, change) {
+        console.log(t);
+        if (change) {
+            var temp = t.placedUnit;
+            this.preTile.placedUnit = temp;
+            this.preTile.index = "2898";
+            temp.setX(this.preTile.getCenterX());
+            temp.setY(this.preTile.getCenterY());
+            temp.setDepth((temp.x / 48) * (temp.y / 48));
+            this.preTile = undefined;
+        }
         this.onPlaceQueue.alpha = 1;
         t.index = "2898";
         this.onPlaceQueue.rangeView.alpha = 0;
@@ -389,7 +405,6 @@ export default class gameScene extends Phaser.Scene {
         this.onPlaceQueue.setDepth(((this.onPlaceQueue.y / 48) * (this.onPlaceQueue.x / 48)));
         this.resetBuff();
         this.onPlaceQueue = undefined;
-
         Game.syncFieldStatus();
     }
 
