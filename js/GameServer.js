@@ -131,7 +131,7 @@ module.exports = {
                     timeouts: {},
                     hp: 100,
                     maxhp: 100,
-                    dead: true,
+                    dead: false,
                     deathRound: "-",
                     gold: 0,
                     units: [],
@@ -284,7 +284,6 @@ module.exports = {
         if (this.Rooms[roomId].players.filter(x => !x.dead && !x.disconnected).length == 0) {
             this.GameEndHandler(roomId);
             return;
-
         }
         this.syncPlayerInfo(roomId);
 
@@ -548,8 +547,7 @@ module.exports = {
         }).save();
     },
 
-    GameEndHandler(roomId) {
-        
+    GameEndHandler(roomId) {      
         this.emitAll(roomId, 'game-end', this.Rooms[roomId].players.map(x => {
             return {
                 "name": x.name,

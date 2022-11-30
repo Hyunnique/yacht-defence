@@ -84,13 +84,13 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
                         targets[i].gameObject.dotDamageFactory(this);
                     }
                     else if (this.skillInfo.skillType == "attackCount")
-                        targets[i].gameObject.Health -= Game.calcDamage(this.shooter.attack * (1 + this.skillInfo.value / 100), targets[i].gameObject.defence, this.shooter.penetration);
+                        targets[i].gameObject.Health -= Game.calcDamage(this.shooter.attack * (1 + this.skillInfo.value / 100), targets[i].gameObject.defence, this.shooter.penetration) * targets[i].gameObject.totalDebuffVal;
                     else if (this.skillInfo.skillType == "debuff") {
                         targets[i].gameObject.handleDebuff(this.shooter.id, this.skillInfo.value);
                         
                     }
                 }
-                targets[i].gameObject.Health -= Game.calcDamage(this.shooter.attack, targets[i].gameObject.defence, this.shooter.penetration) * (1 + targets[i].gameObject.totalDebuffVal / 100);
+                targets[i].gameObject.Health -= Game.calcDamage(this.shooter.attack, targets[i].gameObject.defence, this.shooter.penetration) * targets[i].gameObject.totalDebuffVal;
             }
             catch(e) {
                 continue;
