@@ -543,7 +543,7 @@ module.exports = {
             handFullHouse: s_player.handCount["Full House"],
             handSStraight: s_player.handCount["S. Straight"],
             choiceBullsEye: s_player.handCount["Bull's-Eye"],
-            version: "1.1"
+            version: (process.env.VERSION ? process.env.VERSION : "1.1")
         }).save();
     },
 

@@ -184,3 +184,11 @@
     justify-content: space-evenly;
     align-items: center;
 }
+
+.ui-mainScene-default .bottom-info {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+
+    color: white;
+}
