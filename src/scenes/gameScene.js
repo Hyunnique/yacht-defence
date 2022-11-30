@@ -297,7 +297,7 @@ export default class gameScene extends Phaser.Scene {
                 index = 3;
             
             let t = this.getTileAtPointer(pointer, this.info[index]);
-
+            console.log(t);
             if (t.placedUnit != undefined) {
                 if (this.selectedUnit != undefined) {
                     this.selectedUnit.rangeView.alpha = 0;
@@ -404,7 +404,6 @@ export default class gameScene extends Phaser.Scene {
     }
 
     unitPlacer(t, change) {
-        console.log(t);
         if (change) {
             var temp = t.placedUnit;
             this.preTile.placedUnit = temp;
@@ -452,10 +451,8 @@ export default class gameScene extends Phaser.Scene {
                 var unit = this.spectate_player_units[playerNum][i];
                 if (unit.x != offsetX || unit.y != offsetY) { // 자리가 달라?
                     let t = this.info[playerNum].getTileAtWorldXY(unit.x, unit.y, true);
-                    t.placedUnit = undefined;
                     unit.x = offsetX;
                     unit.y = offsetY;
-                    t = this.info[playerNum].getTileAtWorldXY(unit.x, unit.y, true);
                     unit.setDepth(((unit.y / 48) * (unit.x / 48)));
                     t.placedUnit = unit;
                 }
