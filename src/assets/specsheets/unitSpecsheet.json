@@ -508,9 +508,9 @@
         "buffAspd": 0
     },
     "unit19": {
-        "name": "용기병 전사",
+        "name": "마지막 후손 페르난도",
         "unitType": 0,
-        "attack": 100,
+        "attack": 180,
         "aspd": 1.0,
         "range": 240,
         "rangeType": 1,
@@ -527,11 +527,11 @@
         "atkSoundName": "attackLongWeapon",
         "hitSoundName": "hitNormal",
         "projectileType": 0,
-        "tier": 3,
+        "tier": 2,
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "skill": ""
+        "skill": "공격한 적에게 3초동안 방어율을 15% 감소시키는 디버프를 부여합니다"
     },
     "unit20": {
         "name": "화염족 견습 주술사",
@@ -1229,7 +1229,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "skill": "공격속도 증가량이 공격력 증가로 치환되며, 공격한 적에게 1초간 방어력을 20% 감소시키는 디버프를 부여합니다."
+        "skill": "공격한 적에게 5초동안 이동속도 -8% 디버프를 부여합니다."
     },
     "unit46": {
         "name": "고블린 사냥꾼",
