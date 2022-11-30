@@ -314,7 +314,7 @@ export default class gameScene extends Phaser.Scene {
     receiveUnit(unitID, tier) {
         if (Game.PlayerData[0].hp > 0) {
             this.handleTierBonus(tier, true);
-            this.onPlaceQueue = new Unit(this, this.input.activePointer.x, this.input.activePointer.y, this.unitDB["unit" + unitID], this.unitIndex++, unitID, 0);
+            this.onPlaceQueue = new Unit(this, this.input.activePointer.x, this.input.activePointer.y, this.unitDB["unit" + 45], this.unitIndex++, 45, 0);
             this.onPlaceQueue.rangeView.alpha = 0.4;
             this.onPlaceQueue.buffRangeView.alpha = 0.6;
             this.m_player.push(this.onPlaceQueue);
