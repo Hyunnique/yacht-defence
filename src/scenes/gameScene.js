@@ -466,6 +466,7 @@ export default class gameScene extends Phaser.Scene {
             }
         });
         this.resetOtherBuff(playerNum, shopBuffs, tierBuffs);
+        
     }
 
     resetOtherBuff(playerNum,shopBuff,tierBuffs) {
