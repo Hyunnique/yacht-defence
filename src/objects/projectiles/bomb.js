@@ -16,7 +16,6 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
         this.speed = shooter.projectileSpeed;
         this.scale = 0.4;
         this.setBodySize(this.width/2, this.height/2);
-        this.setDepth(2);
         this.hitEffect = shooter.projectileHitEffect;
         this.explodeRange = shooter.explodeRange;
         this.explodeScale = shooter.explodeScale;
@@ -25,8 +24,7 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
 
         this.skillInfo = skillInfo;
         
-        if (skillInfo != null && skillInfo.skillType == "DOT") {
-
+        if (skillInfo && skillInfo.skillType == "DOT") {
             this.skillInfo.callerID = shooter.index;
         }
         this.isTarget = false;
@@ -50,7 +48,7 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
             this.scene.physics.moveTo(this, this.target.x, this.target.y, this.speed);
         }
         catch {
-            this.explode();
+            this.hit();
         }
         
         this.scene.events.on("update", this.update, this);
@@ -61,22 +59,19 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
     {        
         try {
             if (Phaser.Math.Distance.Between(this.x, this.y, this.target.x, this.target.y) < 20 || Phaser.Math.Distance.Between(this.x, this.y, this.shooter.x, this.shooter.y) > this.shooter.range)
-                this.explode();
+                this.hit();
         }
         catch (e) {
-            this.explode();
+            this.hit();
         }
     }
 
     setVisibility()
     {
-        if (this.shooter.playerNum == this.scene.currentView)
-            this.setVisible(true);
-        else
-            this.setVisible(false);
+        this.setVisible(this.shooter.playerNum == this.scene.currentView);
     }
 
-    explode() {
+    hit() {
         var targets = this.scene.physics.overlapCirc(this.x, this.y, this.explodeRange).filter(item => {
             if (item.gameObject) return item.gameObject.isTarget;
             else return false;
@@ -89,13 +84,13 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
                         targets[i].gameObject.dotDamageFactory(this);
                     }
                     else if (this.skillInfo.skillType == "attackCount")
-                        targets[i].gameObject.Health -= this.shooter.calcDamage(this.shooter.attack * (1 + this.skillInfo.value / 100), targets[i].gameObject.defence);
+                        targets[i].gameObject.Health -= Game.calcDamage(this.shooter.attack * (1 + this.skillInfo.value / 100), targets[i].gameObject.defence, this.shooter.penetration);
                     else if (this.skillInfo.skillType == "debuff") {
                         targets[i].gameObject.handleDebuff(this.shooter.id, this.skillInfo.value);
                         
                     }
                 }
-                targets[i].gameObject.Health -= this.shooter.calcDamage(this.shooter.attack, targets[i].gameObject.defence) * (1 + targets[i].gameObject.totalDebuffVal / 100);
+                targets[i].gameObject.Health -= Game.calcDamage(this.shooter.attack, targets[i].gameObject.defence, this.shooter.penetration) * (1 + targets[i].gameObject.totalDebuffVal / 100);
             }
             catch(e) {
                 continue;
@@ -127,10 +122,4 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
         );
         this.body.setAngularVelocity(0);
     }
-
-    hit()
-    {   
-        this.destroy();
-    }
-    
 }

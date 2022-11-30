@@ -1064,9 +1064,9 @@ var Game = {
         });
     },
 
-    calcDamage(damage,mobDefence)
+    calcDamage(damage,mobDefence,penetration)
     {
-        var defencePenValue = 1 - (mobDefence / 100) * (1 - this.penetration);
+        var defencePenValue = 1 - (mobDefence / 100) * (1 - penetration);
         return defencePenValue <= 0 ? 1 : damage * defencePenValue;
     }
 };
