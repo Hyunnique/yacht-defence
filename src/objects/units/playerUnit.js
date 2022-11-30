@@ -340,13 +340,13 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
                     else
                         damage = Game.calcDamage(this.attack, e.gameObject.defence,this.penetration);
                     
-                    e.gameObject.Health -= damage;
+                    e.gameObject.Health -= damage * e.gameObject.totalDebuffVal;
 
                     if (this.skillInfo) {
                         if(this.skillInfo.skillType == "DOT")
                             e.gameObject.dotDamageFactory(this);
                         if (this.skillInfo.skillType == "debuff")
-                            e.gameObject.handleDebuff(this.skillInfo);
+                            e.gameObject.handleDebuff(this);
                      }
                 }
             });
@@ -354,7 +354,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
 
         //투사체 스킬의 경우 투사체에 스킬 정보를 전달해야 함.
         else if (this.attackType == 1)
-            this.shootProjectile((this.skillInfo && ((this.skillInfo.skillType == "attackCount" && this.attackCount % this.skillInfo.doEveryNth == 0) || this.skillInfo.skillType == "DOT")));
+            this.shootProjectile((this.skillInfo && ((this.skillInfo.skillType == "attackCount" && this.attackCount % this.skillInfo.doEveryNth == 0) || this.skillInfo.skillType == "DOT" || this.skillInfo.skillType == "debuff")));
         
         this.attackCount++;
 
