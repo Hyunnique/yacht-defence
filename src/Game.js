@@ -303,6 +303,8 @@ var Game = {
         });
 
         this.Socket.on("round-begin", (msg) => {
+            this.MatchmakeJoined = false;
+
             this.GameObject.scene.getScene("gameScene").roundNum = msg.round;
             this.GameObject.scene.getScene("gameScene").events.emit("nextRound");
             document.getElementsByClassName("ui-round-value")[0].innerText = (msg.round < 10 ? "0" + msg.round : msg.round);
@@ -773,7 +775,27 @@ var Game = {
             this.hideUI("diceScene-default");
             this.hideUI("diceScene-result");
             this.showUI("mainScene-default");
+
             document.getElementsByClassName("mainScene-message")[0].innerText = "";
+
+            for (let i = 0; i < msg.length; i++) {
+                document.getElementsByClassName("ui-gameover-result-name")[i].innerText = msg[i].name;
+                document.getElementsByClassName("ui-gameover-result-roundCleared")[i].innerText = (msg[i].roundCleared == "-" ? "-" : msg[i].roundCleared + " Rounds");
+                document.getElementsByClassName("ui-gameover-result-unitCount")[i].innerHTML =
+                "<span style='color:" + this.tierColorsCss[0] + "'>T1 (" + msg[i].unitTierCount[0] + ")</span>\n" + 
+                " <span style='color:" + this.tierColorsCss[1] + "'>T2 (" + msg[i].unitTierCount[1] + ")</span><br>\n" + 
+                " <span style='color:" + this.tierColorsCss[2] + "'>T3 (" + msg[i].unitTierCount[2] + ")</span>\n" + 
+                " <span style='color:" + this.tierColorsCss[3] + "'>T4 (" + msg[i].unitTierCount[3] + ")</span>\n";
+
+                document.getElementsByClassName("ui-gameover-result-handCount")[i].innerHTML = 
+                "<span style='color:" + this.tierColorsCss[0] + "'>Y (" + msg[i].handYacht + ")</span><br>\n" + 
+                " <span style='color:" + this.tierColorsCss[1] + "'>F (" + msg[i].handFourKinds + ")</span>\n" + 
+                " <span style='color:" + this.tierColorsCss[1] + "'>L (" + msg[i].handLStraight + ")</span><br>\n" + 
+                " <span style='color:" + this.tierColorsCss[2] + "'>H (" + msg[i].handFullHouse + ")</span>\n" + 
+                " <span style='color:" + this.tierColorsCss[2] + "'>S (" + msg[i].handSStraight + ")</span>\n";
+            }
+
+            this.showUI("gameover");
         })
     },
 
