@@ -131,7 +131,8 @@ module.exports = {
                     timeouts: {},
                     hp: 100,
                     maxhp: 100,
-                    dead: false,
+                    dead: true,
+                    deathRound: "-",
                     gold: 0,
                     units: [],
                     items: {},
@@ -523,6 +524,7 @@ module.exports = {
         let s_player = this.Rooms[roomId].players[this.getRoomIndex(socket.id)];
         s_player.dead = true;
         s_player.hp = 0;
+        s_player.deathRound = this.Rooms[roomId].roundInfo.num - 1;
 
         for (let i = 0; i < this.Rooms[roomId].players.length; i++) {
             if (this.Rooms[roomId].players[i].disconnected) continue;
@@ -541,13 +543,28 @@ module.exports = {
             handLStraight: s_player.handCount["L. Straight"],
             handFullHouse: s_player.handCount["Full House"],
             handSStraight: s_player.handCount["S. Straight"],
-            choiceBullsEye: s_player.handCount["Bull's-Eye"]
+            choiceBullsEye: s_player.handCount["Bull's-Eye"],
+            version: "1.1"
         }).save();
     },
 
     GameEndHandler(roomId) {
         
-        this.emitAll(roomId, "game-end", true);
+        this.emitAll(roomId, 'game-end', this.Rooms[roomId].players.map(x => {
+            return {
+                "name": x.name,
+                "roundCleared": x.deathRound,
+                "unitTierCount": x.unitTierCount,
+                "handYacht": x.handCount["Yacht!"],
+                "handFourKinds": x.handCount["4 of A Kind"],
+                "handLStraight": x.handCount["L. Straight"],
+                "handFullHouse": x.handCount["Full House"],
+                "handSStraight": x.handCount["S. Straight"],
+                "choiceBullsEye": x.handCount["Bull's-Eye"],
+            }
+        }).sort((a, b) => {
+            return b.deathRound - a.deathRound;
+        }));
 
         Object.keys(this.Rooms[roomId].intervals).forEach(x => {
             clearInterval(x);
@@ -564,6 +581,8 @@ module.exports = {
                 clearTimeout(x);
                 delete x;
             });
+
+            delete this.socketMap[this.Rooms[roomId].players[i].socket.id];
         }
     }
 };

@@ -75,7 +75,7 @@
         "buffRange": 240,
         "buffAtk": 15,
         "buffAspd": 15,
-        "skill": "받는 피해를 20% 증가 시키는 디버프를 부여, 아군의 공격과 속도 15% 강화"
+        "skill": "주변 아군의 공격력과 공격속도를 15% 증가시키고, 공격한 적에게 받는 피해를 20% 증가시키는 디버프를 부여합니다."
     },
     "unit3": {
         "name": "다크엘프 궁수",
@@ -612,7 +612,7 @@
         "explodeRange": 312,
         "projectileSpeed": 250,
         "tier": 1,
-        "skill": "공격시 5초동안 0.5초마다 공격력의 80%의 화상 피해",
+        "skill": "공격한 적에게 5초간 초당 공격력의 120%에 해당하는 피해를 입히는 화상 디버프를 부여합니다.",
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0
@@ -646,7 +646,7 @@
     "unit24": {
         "name": "힘의 부족 대족장 후씽크",
         "unitType": 1,
-        "attack": 500,
+        "attack": 650,
         "aspd": 1.2,
         "range": 480,
         "rangeType": 3,
@@ -667,7 +667,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "skill": "매 3타마다 적 현재 체력의 8% 추가 피해"
+        "skill": "3번째 공격할 때마다 적 현재 체력의 10%에 해당하는 추가 피해를 입힙니다."
     },
     "unit25": {
         "name": "견습 성기사단원",
@@ -693,12 +693,12 @@
         "buffRange": 72,
         "buffAtk": 5,
         "buffAspd": 5,
-        "skill": "주변 아군의 공격과 속도 5% 강화"
+        "skill": "주변 아군의 공격력과 공격속도를 5% 증가시킵니다."
     },
     "unit26": {
         "name": "되살아난 마검사 펠소닌",
         "unitType": 2,
-        "attack": 200,
+        "attack": 300,
         "aspd": 1.5,
         "range": 432,
         "rangeType": 2,
@@ -721,13 +721,13 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "skill": "공격마다 공격력이 3%씩 증가, 매 라운드 초기화"
+        "skill": "공격할 때마다 공격력이 3%씩 증가하고, 라운드가 끝나면 초기화됩니다."
     },
     "unit27": {
         "name": "버서커 카이토닐",
         "unitType": 0,
-        "attack": 150,
-        "aspd": 1.4,
+        "attack": 360,
+        "aspd": 1.2,
         "range": 240,
         "rangeType": 1,
         "penetration": 0.1,
@@ -747,7 +747,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "skill": "매 8초마다 4초간 공격속도 600% 증가."
+        "skill": "8초마다 3초간 공격속도가 600% 증가합니다."
     },
     "unit28": {
         "name": "춘식",
@@ -906,7 +906,7 @@
         "explodeRange": 240,
         "projectileSpeed": 250,
         "tier": 2,
-        "skill": "4초마다 공격 40% 였다가, 공격 -20% 전환",
+        "skill": "4초 간격으로 공격력이 40% 증가했다가, 20% 감소합니다.",
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0
@@ -932,7 +932,7 @@
         "hitSoundName": "hitFire",
         "projectileType": 0,
         "tier": 2,
-        "skill": "4초마다 공격 40%, 속도 -20% 였다가, 공격 -20%, 속도 40% 전환",
+        "skill": "4초 간격으로 공격력이 40% 증가, 공격속도가 20% 감소했다가 공격력이 20% 감소, 공격속도가 40% 증가합니다.",
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0
@@ -961,7 +961,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "skill": "공격 속도가 0.2로 고정되지만, 초과분의 800배만큼 추가 피해를 입힙니다."
+        "skill": "공격속도가 0.2로 고정되지만, 초과분의 700배만큼 공격력이 증가합니다."
     },
     "unit36": {
         "name": "창기병",
@@ -1039,7 +1039,7 @@
         "explodeRange": 312,
         "projectileSpeed": 250,
         "tier": 2,
-        "skill": "공격시 5초동안 0.5초마다 공격력의 40%의 화상 피해",
+        "skill": "공격한 적에게 5초간 초당 공격력의 40%에 해당하는 피해를 입히는 화상 디버프를 부여합니다.",
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0
@@ -1123,7 +1123,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "skill": "공격시 5초동안 0.5초마다 현재 남은 체력 비례 중독피해"
+        "skill": "공격한 적에게 5초간 초당 적의 현재 체력의 2.5%에 해당하는 피해를 입히는 중독 디버프를 부여합니다."
     },
     "unit42": {
         "name": "기사 분대장",
@@ -1175,7 +1175,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "skill": "매 3번째 공격이 160% 데미지"
+        "skill": "3번째 공격할 때마다 공격력의 100%에 해당하는 추가 피해를 입힙니다."
     },
     "unit44": {
         "name": "유적 감시병",
@@ -1206,8 +1206,8 @@
     "unit45": {
         "name": "고위 빙결 마도사 아케리스",
         "unitType": 2,
-        "attack": 200,
-        "aspd": 0.7,
+        "attack": 300,
+        "aspd": 0.6,
         "range": 432,
         "rangeType": 2,
         "penetration": 0.2,
@@ -1229,7 +1229,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "skill": "피해입은 적의 방어력을 5초간 20% 감소"
+        "skill": "공격속도 증가량이 공격력 증가로 치환되며, 공격한 적에게 1초간 방어력을 20% 감소시키는 디버프를 부여합니다."
     },
     "unit46": {
         "name": "고블린 사냥꾼",
@@ -1359,7 +1359,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "skill": "방어 관통력이 0%로 고정되지만, 공격력이 적용 수치의 8배 만큼 증가"
+        "skill": "방어 관통력이 0으로 고정되지만, 초과분의 10배만큼 공격력이 증가합니다."
     },
     "unit51": {
         "name": "미치광이 타이탄",
@@ -1385,7 +1385,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "skill": "매 공격 상대 잃은 체력 비례해서 최대 200% 추가 공격"
+        "skill": "공격시 적의 잃은 체력에 비례해서 최대 200%의 추가 피해를 입힙니다."
     },
     "unit52": {
         "name": "힘의 부족 도끼마스터 데럴드",
@@ -1411,7 +1411,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "skill": "같은 티어 대비 강력한 스텟을 가졌습니다."
+        "skill": "같은 티어 대비 강력한 능력치를 가졌습니다."
     },
     "unit53": {
         "name": "힘의 부족 창의 달인 데마린",
@@ -1437,7 +1437,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "skill": "같은 티어 대비 강력한 스텟을 가졌습니다."
+        "skill": "같은 티어 대비 강력한 능력치를 가졌습니다."
     },
     "unit54": {
         "name": "기사 분대원",
@@ -1486,7 +1486,7 @@
         "hitSoundName": "hitFire",
         "projectileType": 0,
         "tier": 2,
-        "skill": "주변 아군의 속도 20% 강화",
+        "skill": "주변 아군의 공격속도를 20% 증가시킵니다.",
         "buffRange": 168,
         "buffAtk": 0,
         "buffAspd": 20
@@ -1515,7 +1515,7 @@
         "explodeRange": 168,
         "projectileSpeed": 500,
         "tier": 2,
-        "skill": "주변 아군의 공격 20% 강화",
+        "skill": "주변 아군의 공격력을 20% 증가시킵니다.",
         "buffRange": 168,
         "buffAtk": 20,
         "buffAspd": 0
@@ -1544,7 +1544,7 @@
         "explodeRange": 168,
         "projectileSpeed": 500,
         "tier": 3,
-        "skill": "주변 아군의 공격 10% 강화",
+        "skill": "주변 아군의 공격력을 10% 증가시킵니다.",
         "buffRange": 72,
         "buffAtk": 10,
         "buffAspd": 0
@@ -1599,7 +1599,7 @@
         "buffRange": 72,
         "buffAtk": 0,
         "buffAspd": 10,
-        "skill": "주변 아군의 속도 10% 강화"
+        "skill": "주변 아군의 공격속도를 10% 증가시킵니다."
     },
     "unit60": {
         "name": "화염족 마도사",
