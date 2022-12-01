@@ -17,13 +17,14 @@ module.exports = {
         this.connectionHandler();
 
         /*
-        for (let i = 1; i <= 50; i++) {
+        for (let i = 1; i <= 150; i++) {
             console.log("Round " + i + "--");
-            console.log("Round Cost : " + this.Rooms[10001].generatorInfo.cost);
-            console.log("HPFactor : " + this.Rooms[10001].generatorInfo.hpFactor);
+            console.log("Round Cost : " + this.Rooms[10000].generatorInfo.cost);
+            console.log("HPFactor : " + this.Rooms[10000].generatorInfo.hpFactor);
 
-            let result = this.generateWaveInfo(10001);
-            this.Rooms[10001].roundInfo.num++;
+            let result = this.generateWaveInfo(10000);
+            console.log("Wave Exists : " + result.length);
+            this.Rooms[10000].roundInfo.num++;
         }
         */
     },
@@ -281,10 +282,16 @@ module.exports = {
     },
 
     roundBegin(roomId) {
+        if (this.Rooms[roomId].roundInfo.num >= 91) {
+            // 91라운드 이후에는 웨이브가 나오지 않음. Generator 수정 후 삭제하기
+            this.Rooms[roomId].players.forEach(x => x.dead = true);
+        }
+
         if (this.Rooms[roomId].players.filter(x => !x.dead && !x.disconnected).length == 0) {
             this.GameEndHandler(roomId);
             return;
         }
+
         this.syncPlayerInfo(roomId);
 
         this.emitAll(roomId, 'round-begin', {

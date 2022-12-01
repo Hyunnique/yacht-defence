@@ -646,8 +646,8 @@
     "unit24": {
         "name": "힘의 부족 대족장 후씽크",
         "unitType": 1,
-        "attack": 650,
-        "aspd": 1.2,
+        "attack": 800,
+        "aspd": 0.8,
         "range": 480,
         "rangeType": 3,
         "penetration": 1,
@@ -667,7 +667,7 @@
         "buffRange": 0,
         "buffAtk": 0,
         "buffAspd": 0,
-        "skill": "3번째 공격할 때마다 적 현재 체력의 10%에 해당하는 추가 피해를 입힙니다."
+        "skill": "3번째 공격할 때마다 적 현재 체력의 8%에 해당하는 추가 피해를 입힙니다."
     },
     "unit25": {
         "name": "견습 성기사단원",
