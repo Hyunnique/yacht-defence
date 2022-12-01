@@ -313,7 +313,7 @@ var Game = {
             this.MatchmakeJoined = false;
 
             this.GameObject.scene.getScene("gameScene").roundNum = msg.round;
-            if (msg.round % 10 == 0) this.GameObject.scene.getScene("gameScene").musicChanger();
+            if (msg.round % 10 == 1) this.GameObject.scene.getScene("gameScene").musicChanger();
             this.GameObject.scene.getScene("gameScene").events.emit("nextRound");
 
             document.getElementsByClassName("ui-round-value")[0].innerText = (msg.round < 10 ? "0" + msg.round : msg.round);
