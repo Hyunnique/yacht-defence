@@ -585,7 +585,6 @@ export default class gameScene extends Phaser.Scene {
         }
         else if (!this.normalMusic.isPlaying) {
             this.plugins.get('rexSoundFade').fadeOut(this.bossFightMusic, 2500, false);
-            this.musicChanger();
             this.normalMusic.resume();
             this.plugins.get('rexSoundFade').fadeIn(this.normalMusic, 2500, Game.bgmSoundConfig.volume, 0);
             this.time.delayedCall(2500, () => { this.bossFightMusic.stop() }, [], this);
