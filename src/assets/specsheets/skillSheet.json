@@ -22,7 +22,7 @@
         "skillType": "attackCount",
         "doEveryNth": 3,
         "ofHealth": "cur",
-        "value": 10
+        "value": 8
     },
     "unit26": {
         "skillType": "attackCount",
