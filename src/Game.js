@@ -1088,7 +1088,7 @@ var Game = {
 
     calcDamage(damage,mobDefence,penetration)
     {
-        var defencePenValue = 1 - (mobDefence / 100) * (1 - penetration);
+        var defencePenValue = 1 - (mobDefence / 100 - penetration);
         return defencePenValue <= 0 ? 1 : damage * defencePenValue;
     }
 };

@@ -313,8 +313,6 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
     }
 
 
-
-
     dotDamageFactory(object) {
         var callerID;
         var attack;
