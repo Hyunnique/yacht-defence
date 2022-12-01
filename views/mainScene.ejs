@@ -8,11 +8,15 @@
     <button class="mainButtons play-singleplayer">Singleplayer</button><br>
     <button class="mainButtons play-multiplayer">Multiplayer</button><br>
     <button class="mainButtons show-rankings">Rankings</button>
+    <div class="bottom-info">Version: 1.1<br>Team Roll & Dice</div>
 </div>
 
 <div class="ui-sheet ui-rankings">
     <img class="ui-rankings-close" src="../src/assets/images/close.png">
     <div class="ui-rankings-title">Rankings</div>
+    <div class="ui-rankings-radioSelection">
+        <input type="radio" id="radio-cur" name="version" class="ui-radio-currentVersion" checked><label for="radio-cur">현재 버전</label> <input type="radio" id="radio-all" name="version" class="ui-radio-allVersion"><label for="radio-all">전체 버전</label>
+    </div>
     <div class="ui-rankings-rankingList">
         <table class="ui-rankings-rankingList-table">
             <tr>

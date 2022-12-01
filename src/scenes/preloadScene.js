@@ -158,11 +158,14 @@ export default class PreLoadScene extends Phaser.Scene {
         Object.keys(this.importedMobs).forEach(key => {
             this.load.spritesheet(key.substring(0, key.length - 4), this.importedMobs[key], { frameWidth: 16, frameHeight: 16 });
         });
+
+        this.importedMusics = this.importAll(require.context("../assets/sounds", false, /\.mp3$/));
+        Object.keys(this.importedMusics).forEach(key => {
+            this.load.audio(key.substring(0, key.length - 4), this.importedMusics[key]);
+        });
         
         // 사운드 관련 로딩
-        this.load.audio("bossPrepareMusic", require("../assets/sounds/bossPrepare.mp3"));
-        this.load.audio("bossFight", require("../assets/sounds/bossFight.mp3"));
-        this.load.audio("normal", require("../assets/sounds/normal.mp3"));
+
         this.load.audio("rollDice", require("../assets/sounds/roll_dice.wav"));
         this.load.audio("tier1", require("../assets/sounds/tier1.wav"));
         this.load.audio("tier2", require("../assets/sounds/tier2.wav"));

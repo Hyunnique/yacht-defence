@@ -87,13 +87,37 @@
     display: flex;
     flex-direction: column;
 }
-.ui-common-unitReward .ui-unitReward-unitSkill {
+.ui-common-unitReward .ui-unitReward-unitSkillContainer {
+    display: flex;
     position: absolute;
     bottom: 5%;
     width: 100%;
-    font-size: 0.8rem;
+    height: 8%;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
 }
-
+.ui-unitReward-unitSkillContainer .ui-unitReward-unitSkill {
+    font-size: 0.7rem;
+    width: 90%;
+    animation: none;
+}
+@keyframes line2 {
+    from {
+        transform: translateY(25%);
+    }
+    to {
+    transform: translateY(-25%); 		
+    }
+}
+/* @keyframes line3 {
+    from {
+        transform: translateY(25%);
+    }
+    to {
+    transform: translateY(-50%); 		
+    }
+} */
 
 .ui-common-shop {
     position: absolute;
