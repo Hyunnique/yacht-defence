@@ -103,11 +103,18 @@
     animation: none;
 }
 @keyframes line2 {
-    from {
+    0% {
         transform: translateY(25%);
     }
-    to {
-    transform: translateY(-25%); 		
+    25% {
+        transform: translateY(25%);
+    }
+    75% {
+        transform: translateY(-25%); 		
+    }
+
+    100% {
+        transform: translateY(-25%); 		
     }
 }
 /* @keyframes line3 {
