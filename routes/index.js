@@ -16,7 +16,10 @@ router.get("/patchnote", async (ctx, next) => {
 });
 
 router.get("/ranking", async (ctx, next) => {
-    let rankingResult = await db.PlayData.find().sort({ rounds: -1 }).limit(10);
+
+    let { version } = ctx.query;
+
+    let rankingResult = await db.PlayData.find((version ? { version: version } : {})).sort({ rounds: -1 }).limit(10);
 
     ctx.body = rankingResult;
 });

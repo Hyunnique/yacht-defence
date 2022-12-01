@@ -168,7 +168,7 @@ export default class gameScene extends Phaser.Scene {
         this.sound.pauseOnBlur = false;
         this.bossPrepareMusic = this.sound.add("bossPrepareMusic");
         this.bossFightMusic = this.sound.add("bossFight");
-        this.normalMusic = this.sound.add("normal");
+        this.normalMusic = this.sound.add("normal_diff1");
 
         this.normalMusic.play(Game.bgmSoundConfig);
 
@@ -297,7 +297,7 @@ export default class gameScene extends Phaser.Scene {
                 index = 3;
             
             let t = this.getTileAtPointer(pointer, this.info[index]);
-
+            console.log(t);
             if (t.placedUnit != undefined) {
                 if (this.selectedUnit != undefined) {
                     this.selectedUnit.rangeView.alpha = 0;
@@ -404,7 +404,6 @@ export default class gameScene extends Phaser.Scene {
     }
 
     unitPlacer(t, change) {
-        console.log(t);
         if (change) {
             var temp = t.placedUnit;
             this.preTile.placedUnit = temp;
@@ -450,13 +449,11 @@ export default class gameScene extends Phaser.Scene {
             var offsetY = e.y + (this.mapOffsetY * Math.floor(playerNum / 2));
             if (i < savedLength) {//기존에 있는 것중에
                 var unit = this.spectate_player_units[playerNum][i];
-                if (unit.x != offsetX || unit.y != offsetY) { // 자리가 달라?
-                    let t = this.info[playerNum].getTileAtWorldXY(unit.x, unit.y, true);
-                    t.placedUnit = undefined;
+                if (unit.x != offsetX || unit.y != offsetY) { // 자리가 달라? 
                     unit.x = offsetX;
                     unit.y = offsetY;
-                    t = this.info[playerNum].getTileAtWorldXY(unit.x, unit.y, true);
                     unit.setDepth(((unit.y / 48) * (unit.x / 48)));
+                    let t = this.info[playerNum].getTileAtWorldXY(offsetX, offsetY, true);
                     t.placedUnit = unit;
                 }
             }
@@ -469,6 +466,7 @@ export default class gameScene extends Phaser.Scene {
             }
         });
         this.resetOtherBuff(playerNum, shopBuffs, tierBuffs);
+        
     }
 
     resetOtherBuff(playerNum,shopBuff,tierBuffs) {
@@ -640,7 +638,6 @@ export default class gameScene extends Phaser.Scene {
         }        
     }
 
-
     handleTierBonus(tier,bool)
     {
         bool ? this.tierCnt[tier - 1]++ : this.tierCnt[tier - 1]--;
@@ -674,6 +671,10 @@ export default class gameScene extends Phaser.Scene {
             document.getElementsByClassName("ui-unitArea-unitTierCount")[i].innerHTML = "";
             document.getElementsByClassName("ui-unitArea-unitTierCount")[i].innerHTML += this.tierCnt[i] + " <span class='ui-unitArea-unitTierBonus'>(+" + this.tierBonus[i] + "%)</span>";
         }
+    }
+
+    musicChanger() {
+        this.normalMusic = this.sound.add("normal_diff" + (this.roundNum > 70 ? "8" : Math.ceil((this.roundNum - 1) / 10) + 1));
     }
 }
 

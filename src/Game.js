@@ -240,40 +240,47 @@ var Game = {
             }
         };
 
-        document.getElementsByClassName("show-rankings")[0].onclick = (e) => {
-            axios.get("http://" + (process.env.HOST ? process.env.HOST : "localhost") + ":8080/ranking")
-            .then((response) => {
-                this.showUI("rankings");
+        document.getElementsByClassName("show-rankings")[0].onclick = () => { this.requestRankings(); };
+        document.getElementsByClassName("ui-radio-currentVersion")[0].onchange = () => { this.requestRankings(); };
+        document.getElementsByClassName("ui-radio-allVersion")[0].onchange = () => { this.requestRankings(); };
+    },
 
-                for (let i = 0; i < response.data.length; i++) {
-                
-                    document.getElementsByClassName("ui-rankings-rankingList")[0].getElementsByTagName("tr")[i + 1].getElementsByTagName("td")[0]
-                    .innerText = (i + 1);
-                    document.getElementsByClassName("ui-rankings-rankingList")[0].getElementsByTagName("tr")[i + 1].getElementsByTagName("td")[1]
-                    .innerText = response.data[i].name;
-                    document.getElementsByClassName("ui-rankings-rankingList")[0].getElementsByTagName("tr")[i + 1].getElementsByTagName("td")[2]
-                    .innerText = response.data[i].rounds;
-                    document.getElementsByClassName("ui-rankings-rankingList")[0].getElementsByTagName("tr")[i + 1].getElementsByTagName("td")[3]
-                    .innerHTML =
-                    "<span style='color:" + this.tierColorsCss[0] + "'>T1 (" + response.data[i].unit1Tier + ")</span>\n" + 
-                    " <span style='color:" + this.tierColorsCss[1] + "'>T2 (" + response.data[i].unit2Tier + ")</span><br>\n" + 
-                    " <span style='color:" + this.tierColorsCss[2] + "'>T3 (" + response.data[i].unit3Tier + ")</span>\n" + 
-                    " <span style='color:" + this.tierColorsCss[3] + "'>T4 (" + response.data[i].unit4Tier + ")</span>\n";
+    requestRankings() {
+        let query = "";
+        if (!document.getElementsByClassName("ui-radio-allVersion")[0].checked) query = "?version=" + process.env.VERSION;
 
-                    document.getElementsByClassName("ui-rankings-rankingList")[0].getElementsByTagName("tr")[i + 1].getElementsByTagName("td")[4]
-                    .innerHTML = 
-                    "<span style='color:" + this.tierColorsCss[0] + "'>Y (" + response.data[i].handYacht + ")</span><br>\n" + 
-                    " <span style='color:" + this.tierColorsCss[1] + "'>F (" + response.data[i].handFourKinds + ")</span>\n" + 
-                    " <span style='color:" + this.tierColorsCss[1] + "'>L (" + response.data[i].handLStraight + ")</span><br>\n" + 
-                    " <span style='color:" + this.tierColorsCss[2] + "'>H (" + response.data[i].handFullHouse + ")</span>\n" + 
-                    " <span style='color:" + this.tierColorsCss[2] + "'>S (" + response.data[i].handSStraight + ")</span>\n";
+        axios.get("http://" + (process.env.HOST ? process.env.HOST : "localhost") + ":8080/ranking" + query)
+        .then((response) => {
+            this.showUI("rankings");
 
-                    let _d = new Date(response.data[i].createdAt);
-                    document.getElementsByClassName("ui-rankings-rankingList")[0].getElementsByTagName("tr")[i + 1].getElementsByTagName("td")[5]
-                    .innerHTML = _d.toLocaleDateString() + "<br>" + _d.toLocaleTimeString();
-                }
-            });
-        };
+            for (let i = 0; i < response.data.length; i++) {
+            
+                document.getElementsByClassName("ui-rankings-rankingList")[0].getElementsByTagName("tr")[i + 1].getElementsByTagName("td")[0]
+                .innerText = (i + 1);
+                document.getElementsByClassName("ui-rankings-rankingList")[0].getElementsByTagName("tr")[i + 1].getElementsByTagName("td")[1]
+                .innerText = response.data[i].name;
+                document.getElementsByClassName("ui-rankings-rankingList")[0].getElementsByTagName("tr")[i + 1].getElementsByTagName("td")[2]
+                .innerText = response.data[i].rounds;
+                document.getElementsByClassName("ui-rankings-rankingList")[0].getElementsByTagName("tr")[i + 1].getElementsByTagName("td")[3]
+                .innerHTML =
+                "<span style='color:" + this.tierColorsCss[0] + "'>T1 (" + response.data[i].unit1Tier + ")</span>\n" + 
+                " <span style='color:" + this.tierColorsCss[1] + "'>T2 (" + response.data[i].unit2Tier + ")</span><br>\n" + 
+                " <span style='color:" + this.tierColorsCss[2] + "'>T3 (" + response.data[i].unit3Tier + ")</span>\n" + 
+                " <span style='color:" + this.tierColorsCss[3] + "'>T4 (" + response.data[i].unit4Tier + ")</span>\n";
+
+                document.getElementsByClassName("ui-rankings-rankingList")[0].getElementsByTagName("tr")[i + 1].getElementsByTagName("td")[4]
+                .innerHTML = 
+                "<span style='color:" + this.tierColorsCss[0] + "'>Y (" + response.data[i].handYacht + ")</span><br>\n" + 
+                " <span style='color:" + this.tierColorsCss[1] + "'>F (" + response.data[i].handFourKinds + ")</span>\n" + 
+                " <span style='color:" + this.tierColorsCss[1] + "'>L (" + response.data[i].handLStraight + ")</span><br>\n" + 
+                " <span style='color:" + this.tierColorsCss[2] + "'>H (" + response.data[i].handFullHouse + ")</span>\n" + 
+                " <span style='color:" + this.tierColorsCss[2] + "'>S (" + response.data[i].handSStraight + ")</span>\n";
+
+                let _d = new Date(response.data[i].createdAt);
+                document.getElementsByClassName("ui-rankings-rankingList")[0].getElementsByTagName("tr")[i + 1].getElementsByTagName("td")[5]
+                .innerHTML = _d.toLocaleDateString() + "<br>" + _d.toLocaleTimeString();
+            }
+        });
     },
 
     serverEventHandler() {
@@ -306,7 +313,9 @@ var Game = {
             this.MatchmakeJoined = false;
 
             this.GameObject.scene.getScene("gameScene").roundNum = msg.round;
+            if (msg.round % 10 == 0) this.GameObject.scene.getScene("gameScene").musicChanger();
             this.GameObject.scene.getScene("gameScene").events.emit("nextRound");
+
             document.getElementsByClassName("ui-round-value")[0].innerText = (msg.round < 10 ? "0" + msg.round : msg.round);
         });
 
