@@ -359,7 +359,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.attackCount++;
 
         if (this.skillInfo && ((this.skillInfo.skillType == "attackCount" && this.attackCount % this.skillInfo.doEveryNth == 0) && this.skillInfo.ofHealth == "self")) {
-            this.attack = Math.floor((this.calcedAttack) * (this.skillInfo.value / 100) * (this.attackCount -1));
+            this.attack = this.calcedAttack + Math.floor((this.calcedAttack) * (this.skillInfo.value / 100) * (this.attackCount - 1));
         }
 
         this.scene.time.delayedCall(1000 / this.aspd, () => {
