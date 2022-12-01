@@ -276,39 +276,19 @@ export default class diceScene extends Phaser.Scene{
         switch (this.currentTier) {
             case 1:
                 document.getElementsByClassName("ui-bestHand-value")[0].style.color = "#ff1b1b";
-                this.tier1Sound.play({
-                    mute: false,
-                    volume: 0.5 * Game.effectSoundConfig.volume,
-                    rate: 1,
-                    loop: false
-                })
+                this.tier1Sound.play(Game.effectSoundConfig)
                 break;
             case 2:
                 document.getElementsByClassName("ui-bestHand-value")[0].style.color = "#ffd700";
-                this.tier2Sound.play({
-                    mute: false,
-                    volume: 0.5 * Game.effectSoundConfig.volume,
-                    rate: 1,
-                    loop: false 
-                })
+                this.tier2Sound.play(Game.effectSoundConfig)
                 break;
             case 3:
                 document.getElementsByClassName("ui-bestHand-value")[0].style.color = "#d5d5d5";
-                this.tier3Sound.play({
-                    mute: false,
-                    volume: 0.5 * Game.effectSoundConfig.volume,
-                    rate: 1,
-                    loop: false
-                })
+                this.tier3Sound.play(Game.effectSoundConfig)
                 break;
             default:
                 document.getElementsByClassName("ui-bestHand-value")[0].style.color = "#954c4c";
-                this.tier4Sound.play({
-                    mute: false,
-                    volume: 0.5 * Game.effectSoundConfig.volume,
-                    rate: 1,
-                    loop: false
-                })
+                this.tier4Sound.play(Game.effectSoundConfig)
                 break;
         };
     }

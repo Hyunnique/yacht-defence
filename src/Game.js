@@ -537,7 +537,7 @@ var Game = {
                         "tier4": [0, 1, 4, 5, 6, 7, 8, 14, 15, 16, 17, 18, 20, 21, 28, 29, 30, 36, 37, 39, 44, 48, 49, 54, 58, 61]
                     }
                     let unitCount = tier["tier" + currentTier].length;
-                    let unitArray = []; //9
+                    let unitArray = [2, 34, 19]; 
 
                     for (let i = 0; i < 3; i++) {
                         switch (currentTier) {
@@ -555,16 +555,16 @@ var Game = {
                                 break;
                         }
                     }
-                    for (let i = 0; i < 3; i++) {
-                        while (true) {
-                            let _r = Math.floor(Math.random() * unitCount);
-                            let unitNo = tier["tier" + currentTier][_r];
-                            if (!unitArray.includes(unitNo)) {
-                                unitArray.push(unitNo);
-                                break;
-                            }
-                        }
-                    }
+                    // for (let i = 0; i < 3; i++) {
+                    //     while (true) {
+                    //         let _r = Math.floor(Math.random() * unitCount);
+                    //         let unitNo = tier["tier" + currentTier][_r];
+                    //         if (!unitArray.includes(unitNo)) {
+                    //             unitArray.push(unitNo);
+                    //             break;
+                    //         }
+                    //     }
+                    // }
 
                     for (let i = 0; i < 3; i++) {
                         let unitType = ""
@@ -624,6 +624,12 @@ var Game = {
                                 break;
                         }
                         document.getElementsByClassName("ui-unitReward-unitSkill")[i].innerText = unitSpecSheets["unit" + unitArray[i]].skill;
+                        if (unitSpecSheets["unit" + unitArray[i]].skill.length > 50) {
+                            document.getElementsByClassName("ui-unitReward-unitSkill")[i].style.animation = "line2 4s linear infinite"
+                        }
+                        // else if (unitSpecSheets["unit" + unitArray[i]].skill.length > 60) {
+                        //     document.getElementsByClassName("ui-unitReward-unitSkill")[i].style.animation = "line3 4s linear infinite"
+                        // }
                         document.getElementsByClassName("ui-unitReward-unit")[i].attributes.idx.value = unitArray[i];
                         document.getElementsByClassName("ui-unitReward-unit")[i].attributes.tier.value = currentTier;
                     }
