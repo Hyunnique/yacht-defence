@@ -173,6 +173,10 @@ export default class gameScene extends Phaser.Scene {
         this.normalMusic.play(Game.bgmSoundConfig);
 
 
+        for (var i = 2; i <= 8; i++)
+        {
+            this.sound.add("normal_diff" + i);
+        }
         this.sound.add("attackBigFire");
         this.sound.add("attackFire");
         this.sound.add("attackBow");
@@ -581,6 +585,7 @@ export default class gameScene extends Phaser.Scene {
         }
         else if (!this.normalMusic.isPlaying) {
             this.plugins.get('rexSoundFade').fadeOut(this.bossFightMusic, 2500, false);
+            this.musicChanger();
             this.normalMusic.resume();
             this.plugins.get('rexSoundFade').fadeIn(this.normalMusic, 2500, Game.bgmSoundConfig.volume, 0);
             this.time.delayedCall(2500, () => { this.bossFightMusic.stop() }, [], this);
@@ -674,7 +679,7 @@ export default class gameScene extends Phaser.Scene {
     }
 
     musicChanger() {
-        this.normalMusic = this.sound.add("normal_diff" + (this.roundNum > 70 ? "8" : Math.ceil((this.roundNum - 1) / 10) + 1));
+        this.normalMusic = this.sound.get("normal_diff" + (this.roundNum > 70 ? "8" : Math.ceil((this.roundNum - 1) / 10) + 1));
     }
 }
 
