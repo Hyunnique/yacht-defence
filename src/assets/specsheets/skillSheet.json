@@ -19,8 +19,8 @@
         "value": 60
     },
     "unit24": {
-        "skillType": "attackCount",
-        "doEveryNth": 3,
+        "skillType": "cooldown",
+        "coolDown": 5,
         "ofHealth": "cur",
         "value": 1
     },

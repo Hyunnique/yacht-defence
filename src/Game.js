@@ -12,6 +12,7 @@ const muteURL = require("../src/assets/images/mute.png");
 const notMuteURL = require("../src/assets/images/notMute.png");
 import unitSpecSheets from "./assets/specsheets/unitSpecsheet.json";
 import itemSpecSheets from "./assets/specsheets/shopItemSheet.json";
+import bossRewardSheets from "./assets/specsheets/bossRewardSheet.json";
 import Arrow from "./objects/mobs/Arrow";
 
 const playerColors = ["white", "lightcoral", "lightskyblue", "lightgreen"];
@@ -1005,23 +1006,39 @@ var Game = {
     updateItemUI(msg) {
         let myItemUI = document.getElementsByClassName("ui-itemArea-itemList")[0];
         myItemUI.innerHTML = "";
-
         // itemType 0, 6만 패시브 아이템임
+
+        // 0 ~ (itemSpecSheets 길이 - 1) : 상점 구매 아이템
+        // (itemSpecSheets 길이) ~ : 보스 보상으로 얻은 아이템
+        // 이렇게 구분하도록 했음
+
         Object.keys(msg.items)
-        .filter((key) => [0, 6].includes(itemSpecSheets["item" + key].itemType))
+        .filter((key) => [0, 6].includes(
+            parseInt(key) < Object.keys(itemSpecSheets).length ? 
+            itemSpecSheets["item" + key].itemType :
+            bossRewardSheets["bossReward" + (parseInt(key) - Object.keys(itemSpecSheets).length)].itemType
+            ))
         .forEach((key) => {
             if (msg.items[key] > 0)
                 myItemUI.innerHTML += "<li class='ui-itemArea-itemList-item' idx=" + key + ">" + msg.items[key] + "</li>"
         })
 
         Array.from(document.getElementsByClassName("ui-itemArea-itemList-item")).forEach((e) => {
-            e.style.backgroundImage = "url('" + icons["icon" + itemSpecSheets["item" + e.attributes["idx"].value].icon + ".png"] + "')";
+            let currItem;
+            if (parseInt(e.attributes["idx"].value) < Object.keys(itemSpecSheets).length) {
+                currItem = itemSpecSheets["item" + e.attributes["idx"].value];
+            }
+            else {
+                currItem = bossRewardSheets["bossReward" + (parseInt(e.attributes["idx"].value) - Object.keys(itemSpecSheets).length)];
+            }
+            
+            e.style.backgroundImage = "url('" + icons["icon" + currItem.icon + ".png"] + "')";
             
             // 마우스 올리면 아이템 설명 보이기
             e.onmouseover = (event) => {
                 document.getElementsByClassName("ui-itemInfoArea")[0].style.display = "block";
-                document.getElementsByClassName("ui-itemInfoArea-iconArea-icon")[0].style.backgroundImage = "url('" + icons["icon" + itemSpecSheets["item" + e.attributes["idx"].value].icon + ".png"] + "')";
-                document.getElementsByClassName("ui-itemInfoArea-name")[0].innerText = itemSpecSheets["item" + e.attributes["idx"].value].name;
+                document.getElementsByClassName("ui-itemInfoArea-iconArea-icon")[0].style.backgroundImage = "url('" + icons["icon" + currItem.icon + ".png"] + "')";
+                document.getElementsByClassName("ui-itemInfoArea-name")[0].innerText = currItem.name;
 
                 if (e.attributes["idx"].value == 13) {
                     document.getElementsByClassName("ui-itemInfoArea-atk")[0].innerText = ""
@@ -1029,9 +1046,9 @@ var Game = {
                     document.getElementsByClassName("ui-itemInfoArea-pen")[0].innerText = "한번 더 굴립니다."
                 }
                 else {
-                    let atk = itemSpecSheets["item" + e.attributes["idx"].value].buffAtk;
-                    let spd = itemSpecSheets["item" + e.attributes["idx"].value].buffAspd;
-                    let pen = itemSpecSheets["item" + e.attributes["idx"].value].buffPenetration
+                    let atk = currItem.buffAtk;
+                    let spd = currItem.buffAspd;
+                    let pen = currItem.buffPenetration
                     let num = parseInt(e.innerText);
 
                     let atkText = (atk == 0 ? "ATK : 0" : "ATK : " + (atk * num) + "% " + "(" + atk + "*" + num + ")%");
