@@ -432,10 +432,11 @@ export default class gameScene extends Phaser.Scene {
     removeOtherPlayerUnit(index)
     {
         this.spectate_player_units[index].forEach(e => {
-                let t = this.info[index].getTileAtWorldXY(e.x, e.y, true);
-                t.placedUnit = undefined;
-                e.remove();
-            });
+            let t = this.info[index].getTileAtWorldXY(e.x, e.y, true);
+            t.placedUnit = undefined; 
+            e.remove();
+            e = undefined;
+        });
         this.spectate_player_units[index] = [];
     }
 

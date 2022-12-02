@@ -405,6 +405,8 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
     remove() {
         this.scene.events.off("update", this.update, this);
         this.scene.events.off("spectateChange", this.setVisibility, this);
+        if (this.skillInfo && ((this.skillInfo.skillType == "attackCount" && this.attackCount % this.skillInfo.doEveryNth == 0) && this.skillInfo.ofHealth == "self"))
+            this.scene.events.off("nextRound",this.roundChecker, this);
         this.rangeView.destroy();
         this.destroy();
     }
