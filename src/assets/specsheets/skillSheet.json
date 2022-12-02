@@ -16,19 +16,19 @@
         "delay": 1,
         "duration": 5,
         "ofHealth": "atk",
-        "value": 120
+        "value": 60
     },
     "unit24": {
         "skillType": "attackCount",
         "doEveryNth": 3,
         "ofHealth": "cur",
-        "value": 8
+        "value": 1
     },
     "unit26": {
         "skillType": "attackCount",
         "doEveryNth": 1,
         "ofHealth": "self",
-        "value": 3
+        "value": 2
     },
     "unit27": {
         "skillType": "statBuff",
@@ -45,10 +45,10 @@
         "skillType": "statBuff",
         "duration": 4,
         "coolDown": 8,
-        "buffAtk": 40,
+        "buffAtk": 100,
         "buffAspd": 0,
         "buffPenetration": 0,
-        "debuffAtk": -20,
+        "debuffAtk": -40,
         "debuffAspd": 0,
         "debuffPenetration": 0
     },
@@ -56,11 +56,11 @@
         "skillType": "statBuff",
         "duration": 4,
         "coolDown": 8,
-        "buffAtk": 40,
-        "buffAspd": -20,
+        "buffAtk": 100,
+        "buffAspd": -40,
         "buffPenetration": 0,
-        "debuffAtk": -20,
-        "debuffAspd": 40,
+        "debuffAtk": -40,
+        "debuffAspd": 100,
         "debuffPenetration": 0
     },
     "unit35": {
@@ -75,38 +75,38 @@
         "delay": 1,
         "duration": 5,
         "ofHealth": "atk",
-        "value": 40
+        "value": 30
     },
     "unit41": {
         "skillType": "DOT",
         "delay": 1,
         "duration": 5,
         "ofHealth": "cur",
-        "value": 2.5
+        "value": 2
     },
     "unit43": {
         "skillType": "attackCount",
         "doEveryNth": 3,
         "ofHealth": "atk",
-        "value": 100
+        "value": 140
     },
     "unit45": {
         "skillType": "debuff",
         "of": "slow",
-        "value": 8,
-        "duration": 3
+        "value": 5,
+        "duration": 2
     },
     "unit50": {
         "skillType": "statFix",
         "from": "pen",
         "fromVal": 0,
         "to": "atk",
-        "value": 10
+        "value": 8
     },
     "unit51": {
         "skillType": "attackCount",
         "doEveryNth": 1,
         "ofHealth": "lost",
-        "value": 100
+        "value": 200
     }
 }
