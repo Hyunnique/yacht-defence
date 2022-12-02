@@ -861,7 +861,11 @@ var Game = {
                 document.getElementsByClassName("ui-diceConfirmButton")[0].onclick = (e) => {
                     if (!this.diceConfirmed) {
                         this.diceConfirmed = true;
-                        this.Socket.emit('dicePhase-handConfirm', true);
+                        this.Socket.emit('dicePhase-handInfo', {
+                            hand: this.GameObject.scene.getScene("diceScene").bestHand,
+                            handTier: this.GameObject.scene.getScene("diceScene").currentTier,
+                            choice: this.GameObject.scene.getScene("diceScene").choice
+                        });
                     }
                 }
                 break;
