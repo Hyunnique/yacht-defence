@@ -184,6 +184,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         }
 
         if (this.Health <= 0 && !this.deathCalled) {
+            this.deathCalled = true;
             this.death();
         }
         else if (this.tween.progress == 1 && !this.deathCalled) {
@@ -203,7 +204,6 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
 
                 Game.hitPlayerBase(b_Damage);
             }
-
             this.deathCalled = true;
             this.death();
         }
@@ -267,7 +267,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
                     this.dotDamageFactory(projectile);
                 if (projectile.skillInfo.skillType == "debuff")
                     this.handleDebuff(projectile);
-                if (projectile.skillInfo.skillType == "attackCount") {
+                if (projectile.skillInfo.skillType == "attackCount" || projectile.skillInfo.skillType == "cooldown") {
                     if (projectile.skillInfo.ofHealth == "cur")
                         damage = Game.calcDamage(projectile.shooter.attack + this.Health * (projectile.skillInfo.value / 100), this.defence, projectile.shooter.penetration) * this.totalDebuffVal;
                     if (projectile.skillInfo.ofHealth == "lost")

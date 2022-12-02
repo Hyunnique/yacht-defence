@@ -34,7 +34,6 @@ export default class gameScene extends Phaser.Scene {
         super("gameScene");
     }
     controls;
-    debugGraphics;
     animatedTiles = [];
 
     tierCnt = [0, 0, 0, 0];
@@ -138,7 +137,6 @@ export default class gameScene extends Phaser.Scene {
             down: cursors.down,
             speed: 0.75
         });
-        this.debugGraphics = this.add.graphics();
 
         this.input.on("wheel", (pointer, gameObjects, deltaX, deltaY, deltaZ) => {
 
@@ -301,7 +299,6 @@ export default class gameScene extends Phaser.Scene {
                 index = 3;
             
             let t = this.getTileAtPointer(pointer, this.info[index]);
-            console.log(t);
             if (t.placedUnit != undefined) {
                 if (this.selectedUnit != undefined) {
                     this.selectedUnit.rangeView.alpha = 0;
@@ -352,7 +349,7 @@ export default class gameScene extends Phaser.Scene {
             this.preTile = this.getTileAtPointer(pointer, this.info[0]);
             if (!this.preTile || !this.preTile.placedUnit)
                 return;
-            this.preTile.index = "2897";
+            this.preTile.index = 2897;
             this.onPlaceQueue = this.preTile.placedUnit;
             this.preTile.placedUnit = undefined;
             this.onPlaceQueue.rangeView.alpha = 0.4;
@@ -378,11 +375,11 @@ export default class gameScene extends Phaser.Scene {
 
     unitPlaceHandler(pointer) {
         let t = this.getTileAtPointer(pointer, this.info[0]);
-        if (t.index == "2897") {
+        if (t.index == 2897) {
             this.unitPlacer(t,false);
             this.placeModeSwitch(false);
         }
-        else if (t.index == "2898" && t.placedUnit) {
+        else if (t.index == 2898 && t.placedUnit) {
             this.unitPlacer(t,true);
             this.placeModeSwitch(false);
         }
@@ -392,7 +389,8 @@ export default class gameScene extends Phaser.Scene {
 
     pointerFollower(pointer) {
         let t = this.getTileAtPointer(pointer, this.info[0]);
-        if (!t || t.index == "2898") {
+        this.onPlaceQueue.moveMiscs();
+        if (!t || t.index == 2898) {
             this.onPlaceQueue.rangeView.alpha = 0.2;
             this.onPlaceQueue.buffRangeView.alpha = 0.3;
             this.onPlaceQueue.alpha = 0.5;
@@ -411,16 +409,18 @@ export default class gameScene extends Phaser.Scene {
         if (change) {
             var temp = t.placedUnit;
             this.preTile.placedUnit = temp;
-            this.preTile.index = "2898";
+            this.preTile.index = 2898;
             temp.setX(this.preTile.getCenterX());
             temp.setY(this.preTile.getCenterY());
             temp.setDepth((temp.x / 48) * (temp.y / 48));
+            temp.moveMiscs();
             this.preTile = undefined;
         }
         this.onPlaceQueue.alpha = 1;
-        t.index = "2898";
+        t.index = 2898;
         this.onPlaceQueue.rangeView.alpha = 0;
         this.onPlaceQueue.buffRangeView.alpha = 0;
+        this.onPlaceQueue.moveMiscs();
         t.placedUnit = this.onPlaceQueue;
         this.onPlaceQueue.setX(t.getCenterX());
         this.onPlaceQueue.setY(t.getCenterY());

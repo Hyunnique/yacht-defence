@@ -146,6 +146,17 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
     }
 
     update() {
+        if (this.scene.PhaseText == "Battle Phase") {
+            this.checkMob();
+            if (this.skillReady && this.target.length > 0)
+                this.doSkill();
+            if (this.attackReady && this.target.length > 0)
+                this.attackMob();
+        }
+    }
+
+    moveMiscs()
+    {
         this.rangeView.setX(this.x);
         this.rangeView.setY(this.y);
         this.buffRangeView.setX(this.x);
@@ -153,11 +164,6 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.effect.x = this.x + this.effectOffsetX;
         this.effect.y = this.y + this.effectOffsetY;
 
-        this.checkMob();
-        if (this.skillReady && this.target.length > 0)
-            this.doSkill();
-        if (this.attackReady && this.target.length > 0)
-            this.attackMob(); 
     }
 
     roundChecker() {
@@ -202,24 +208,43 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
                 this.skillReady = true;
             }, [], this);
         }
+        if (this.skillInfo.skillType == "cooldown") {
+            console.log("skill Fire!!");
+            this.skillReady = false;
+            if (this.attackType == 0) {
+                var damage = 0;
+                this.target.forEach(e => {
+                    if (e.gameObject.Health) {
+                        damage = Game.calcDamage(this.attack + this.skillInfo.ofHealth == "cur" ?
+                            (e.gameObject.Health * this.skillInfo.value) :
+                            this.skillInfo.ofHealth == "lost" ?
+                                (this.attack * (1 - e.Health / e.MaxHealth) * this.skillInfo.value) :
+                                (this.attack * (this.skillInfo.value / 100)), e.gameObject.defence, this.penetration);
+                        e.gameObject.Health -= damage * e.gameObject.totalDebuffVal;
+                    }
+                });
+            }
+            else if (this.attackType == 1)
+                this.shootProjectile(true);
+            
+            this.scene.time.delayedCall(1000 * this.skillInfo.coolDown, () => {
+                console.log("skill Ready!");
+                this.skillReady = true;
+            }, [], this);
+        }
     }
     
 
     checkMob() {
-        while (true) {
-            try {
-                this.target = this.scene.physics.overlapCirc(this.x, this.y, this.range).filter(item => item.gameObject.isTarget == true).sort((a, b) => {
-                    if (a.gameObject.Health == b.gameObject.Health)
-                        return a.gameObject.mobNum - b.gameObject.mobNum;
-                    else
-                        return a.gameObject.Health - b.gameObject.Health;
-                });
-            }
-            catch (e) {
-                continue;
-            }
-            finally { break; }
-        }
+        this.target = this.scene.physics.overlapCirc(this.x, this.y, this.range).filter(item => {
+            if (item.gameObject) return item.gameObject.isTarget;
+            else return false;
+        }).sort((a, b) => {
+            if (a.gameObject.Health == b.gameObject.Health)
+                return a.gameObject.mobNum - b.gameObject.mobNum;
+            else
+                return a.gameObject.Health - b.gameObject.Health;
+        });
         
     }
 
@@ -332,9 +357,9 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
             this.target.forEach(e => {
                 if (e.gameObject.Health) {
                     if (this.skillInfo && this.skillInfo.skillType == "attackCount" && this.attackCount % this.skillInfo.doEveryNth == 0)
-                        damage = Game.calcDamage(this.attack + this.skillInfo.skillType == "cur" ?
+                        damage = Game.calcDamage(this.attack + this.skillInfo.ofHealth == "cur" ?
                             (e.gameObject.Health * this.skillInfo.value) :
-                            this.skillInfo.skillType == "lost" ?
+                            this.skillInfo.ofHealth == "lost" ?
                                 (this.attack * (1 - e.Health / e.MaxHealth) * this.skillInfo.value) :
                                 (this.attack * (this.skillInfo.value / 100)), e.gameObject.defence, this.penetration);
                     else
