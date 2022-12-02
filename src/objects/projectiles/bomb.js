@@ -83,11 +83,19 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite {
                     if (this.skillInfo.skillType == "DOT") {
                         targets[i].gameObject.dotDamageFactory(this);
                     }
-                    else if (this.skillInfo.skillType == "attackCount")
-                        targets[i].gameObject.Health -= Game.calcDamage(this.shooter.attack * (1 + this.skillInfo.value / 100), targets[i].gameObject.defence, this.shooter.penetration) * targets[i].gameObject.totalDebuffVal;
-                    else if (this.skillInfo.skillType == "debuff") {
-                        targets[i].gameObject.handleDebuff(this.shooter.id, this.skillInfo.value);
+                    else if (this.skillInfo.skillType == "attackCount" || this.skillInfo.skillType == "cooldown") {
+                        var damage = 0;
+                        if (this.skillInfo.ofHealth == "cur")
+                            damage = Game.calcDamage(this.shooter.attack + this.Health * (this.skillInfo.value / 100), this.defence, this.shooter.penetration) * this.totalDebuffVal;
+                        if (this.skillInfo.ofHealth == "lost")
+                            damage = Game.calcDamage(this.shooter.attack * this.skillInfo.value * (1 - this.Health / this.MaxHealth), this.defence, this.shooter.penetration) * this.totalDebuffVal;
+                        if (this.skillInfo.ofHealth == "atk")
+                            damage = Game.calcDamage(this.shooter.attack * (1 + this.skillInfo.value / 100), this.defence, this.shooter.penetration) * this.totalDebuffVal;
+                        targets[i].gameObject.Health -= damage;
+                    }
                         
+                    else if (this.skillInfo.skillType == "debuff") {
+                        targets[i].gameObject.handleDebuff(this.shooter.id, this.skillInfo.value);         
                     }
                 }
                 targets[i].gameObject.Health -= Game.calcDamage(this.shooter.attack, targets[i].gameObject.defence, this.shooter.penetration) * targets[i].gameObject.totalDebuffVal;
