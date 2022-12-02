@@ -146,6 +146,17 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
     }
 
     update() {
+        if (this.scene.PhaseText == "Battle Phase") {
+            this.checkMob();
+            if (this.skillReady && this.target.length > 0)
+                this.doSkill();
+            if (this.attackReady && this.target.length > 0)
+                this.attackMob();
+        }
+    }
+
+    moveMiscs()
+    {
         this.rangeView.setX(this.x);
         this.rangeView.setY(this.y);
         this.buffRangeView.setX(this.x);
@@ -153,11 +164,6 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
         this.effect.x = this.x + this.effectOffsetX;
         this.effect.y = this.y + this.effectOffsetY;
 
-        this.checkMob();
-        if (this.skillReady && this.target.length > 0)
-            this.doSkill();
-        if (this.attackReady && this.target.length > 0)
-            this.attackMob(); 
     }
 
     roundChecker() {
@@ -206,20 +212,15 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
     
 
     checkMob() {
-        while (true) {
-            try {
-                this.target = this.scene.physics.overlapCirc(this.x, this.y, this.range).filter(item => item.gameObject.isTarget == true).sort((a, b) => {
-                    if (a.gameObject.Health == b.gameObject.Health)
-                        return a.gameObject.mobNum - b.gameObject.mobNum;
-                    else
-                        return a.gameObject.Health - b.gameObject.Health;
-                });
-            }
-            catch (e) {
-                continue;
-            }
-            finally { break; }
-        }
+        this.target = this.scene.physics.overlapCirc(this.x, this.y, this.range).filter(item => {
+            if (item.gameObject) return item.gameObject.isTarget;
+            else return false;
+        }).sort((a, b) => {
+            if (a.gameObject.Health == b.gameObject.Health)
+                return a.gameObject.mobNum - b.gameObject.mobNum;
+            else
+                return a.gameObject.Health - b.gameObject.Health;
+        });
         
     }
 

@@ -184,6 +184,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
         }
 
         if (this.Health <= 0 && !this.deathCalled) {
+            this.deathCalled = true;
             this.death();
         }
         else if (this.tween.progress == 1 && !this.deathCalled) {
@@ -203,7 +204,6 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
 
                 Game.hitPlayerBase(b_Damage);
             }
-
             this.deathCalled = true;
             this.death();
         }
