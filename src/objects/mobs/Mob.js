@@ -267,7 +267,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
                     this.dotDamageFactory(projectile);
                 if (projectile.skillInfo.skillType == "debuff")
                     this.handleDebuff(projectile);
-                if (projectile.skillInfo.skillType == "attackCount") {
+                if (projectile.skillInfo.skillType == "attackCount" || projectile.skillInfo.skillType == "cooldown") {
                     if (projectile.skillInfo.ofHealth == "cur")
                         damage = Game.calcDamage(projectile.shooter.attack + this.Health * (projectile.skillInfo.value / 100), this.defence, projectile.shooter.penetration) * this.totalDebuffVal;
                     if (projectile.skillInfo.ofHealth == "lost")
