@@ -562,7 +562,7 @@ module.exports = {
                 "choiceBullsEye": x.handCount["Bull's-Eye"],
             }
         }).sort((a, b) => {
-            return b.deathRound - a.deathRound;
+            return b.roundCleared - a.roundCleared;
         }));
 
         Object.keys(this.Rooms[roomId].intervals).forEach(x => {
