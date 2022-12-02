@@ -208,6 +208,30 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
                 this.skillReady = true;
             }, [], this);
         }
+        if (this.skillInfo.skillType == "cooldown") {
+            console.log("skill Fire!!");
+            this.skillReady = false;
+            if (this.attackType == 0) {
+                var damage = 0;
+                this.target.forEach(e => {
+                    if (e.gameObject.Health) {
+                        damage = Game.calcDamage(this.attack + this.skillInfo.ofHealth == "cur" ?
+                            (e.gameObject.Health * this.skillInfo.value) :
+                            this.skillInfo.ofHealth == "lost" ?
+                                (this.attack * (1 - e.Health / e.MaxHealth) * this.skillInfo.value) :
+                                (this.attack * (this.skillInfo.value / 100)), e.gameObject.defence, this.penetration);
+                        e.gameObject.Health -= damage * e.gameObject.totalDebuffVal;
+                    }
+                });
+            }
+            else if (this.attackType == 1)
+                this.shootProjectile(true);
+            
+            this.scene.time.delayedCall(1000 * this.skillInfo.coolDown, () => {
+                console.log("skill Ready!");
+                this.skillReady = true;
+            }, [], this);
+        }
     }
     
 
@@ -333,9 +357,9 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
             this.target.forEach(e => {
                 if (e.gameObject.Health) {
                     if (this.skillInfo && this.skillInfo.skillType == "attackCount" && this.attackCount % this.skillInfo.doEveryNth == 0)
-                        damage = Game.calcDamage(this.attack + this.skillInfo.skillType == "cur" ?
+                        damage = Game.calcDamage(this.attack + this.skillInfo.ofHealth == "cur" ?
                             (e.gameObject.Health * this.skillInfo.value) :
-                            this.skillInfo.skillType == "lost" ?
+                            this.skillInfo.ofHealth == "lost" ?
                                 (this.attack * (1 - e.Health / e.MaxHealth) * this.skillInfo.value) :
                                 (this.attack * (this.skillInfo.value / 100)), e.gameObject.defence, this.penetration);
                     else
