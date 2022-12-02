@@ -22,7 +22,7 @@
         "skillType": "cooldown",
         "coolDown": 5,
         "ofHealth": "cur",
-        "value": 1
+        "value": 8
     },
     "unit26": {
         "skillType": "attackCount",
