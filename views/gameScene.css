@@ -163,7 +163,7 @@
     right: 0;
     width: 30%;
     height: 60%;
-    pointer-events: none;
+    /* pointer-events: none; */
 
     border: 2px solid black;
     background-color: rgba(255, 255, 255, 0.6);
@@ -233,6 +233,22 @@
 
     font-size: 0.9rem;
     color: white;
+}
+
+.ui-gameScene-bottomFloating .ui-unitInfoArea-unitSell {
+    position: absolute;
+    right: 4%;
+    bottom: 10%;
+
+    font-size: 0.9rem;
+    color: white;
+
+    border: 1px solid black;
+    padding: 0.2rem;
+}
+
+.ui-gameScene-bottomFloating .ui-unitInfoArea-unitSell:hover {
+    background-color: rgba(100, 100, 100, 0.8);
 }
 
 .ui-gameScene-bottomFloating .ui-hpArea {
@@ -310,7 +326,7 @@
     bottom: 0.8rem;
 }   
 
-.ui-gameScene-bottomFloating .ui-goldArea {
+.ui-gameScene-bottomFloating .ui-shopArea {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -322,6 +338,18 @@
 
     border: 2px solid black;
     background-color: rgba(200, 200, 200, 0.8);
+}
+
+.ui-gameScene-bottomFloating .ui-goldArea {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    bottom: 100%;
+    left: -2px;
+    width: 50%;
+    height: 100%;
+
+    border-right: 1px solid black;
     cursor: pointer;
 }
 
@@ -334,6 +362,33 @@
 }
 
 .ui-gameScene-bottomFloating .ui-gold {
+    min-width: 50%;
+    text-align: center;
+
+    font-size: 1.5rem;
+}
+
+.ui-gameScene-bottomFloating .ui-unitPointArea {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    bottom: 100%;
+    left: -2px;
+    width: 50%;
+    height: 100%;
+
+    border-left: 1px solid black;    
+    cursor: pointer;
+}
+.ui-gameScene-bottomFloating .ui-unitPointArea:hover {
+    background-color: rgba(150, 150, 150, 0.8);
+}
+
+.ui-gameScene-bottomFloating .ui-unitPointicon {
+    height: 50%;
+}
+
+.ui-gameScene-bottomFloating .ui-unitPoint{
     min-width: 50%;
     text-align: center;
 

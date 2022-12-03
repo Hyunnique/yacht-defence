@@ -135,6 +135,7 @@ module.exports = {
                     dead: false,
                     deathRound: "-",
                     gold: 0,
+                    unitPoint: 0,
                     units: [],
                     items: {},
                     unitTierCount: [0, 0, 0, 0],
