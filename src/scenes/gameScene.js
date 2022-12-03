@@ -126,8 +126,7 @@ export default class gameScene extends Phaser.Scene {
         }
 
         
-        let cursors = this.input.keyboard.createCursorKeys();
-
+        let cursors = this.input.keyboard.addKeys({ up: 87, down: 83, left: 65, right: 68 });
         //카메라
         this.controls = new Phaser.Cameras.Controls.FixedKeyControl({
             camera: this.cameras.main,
@@ -433,10 +432,11 @@ export default class gameScene extends Phaser.Scene {
     removeOtherPlayerUnit(index)
     {
         this.spectate_player_units[index].forEach(e => {
-                let t = this.info[index].getTileAtWorldXY(e.x, e.y, true);
-                t.placedUnit = undefined;
-                e.remove();
-            });
+            let t = this.info[index].getTileAtWorldXY(e.x, e.y, true);
+            t.placedUnit = undefined; 
+            e.remove();
+            e = undefined;
+        });
         this.spectate_player_units[index] = [];
     }
 
@@ -650,20 +650,20 @@ export default class gameScene extends Phaser.Scene {
 
         switch (tier) {
             case 1:
-                tierOnlyBonus = 150;
-                overallBonus = 40;
+                tierOnlyBonus = 50;
+                overallBonus = 10;
                 break;
             case 2:
-                tierOnlyBonus = 40;
-                overallBonus = 20;
+                tierOnlyBonus = 20;
+                overallBonus = 5;
                 break;
             case 3:
-                tierOnlyBonus = 20;
-                overallBonus = 12;
+                tierOnlyBonus = 12;
+                overallBonus = 3;
                 break;
             case 4:
-                tierOnlyBonus = 8;
-                overallBonus = 3;
+                tierOnlyBonus = 5;
+                overallBonus = 1;
                 break;
         }
 
