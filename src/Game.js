@@ -688,6 +688,16 @@ var Game = {
                 this.closeShop();
                 this.shopOpen = false;
             }
+            document.getElementsByClassName("ui-unitPointArea")[0].onclick = (e) => {
+                if (!this.shopOpen && this.PlayerData[0].hp > 0) {
+                    this.openUnitPointShop();
+                    this.shopOpen = true;
+                }
+            }
+            document.getElementsByClassName("ui-unitPointShop-close")[0].onclick = (e) => {
+                this.closeUnitPointShop();
+                this.shopOpen = false;
+            }
 
             this.GameObject.scene.getScene("diceScene").scene.stop().resume("gameScene");
             this.GameObject.scene.getScene("gameScene").toPlacePhase();
@@ -723,6 +733,7 @@ var Game = {
 
         this.Socket.on('battlePhase-begin', (msg) => {
             document.getElementsByClassName("ui-goldArea")[0].onclick = (e) => {};
+            document.getElementsByClassName("ui-unitPointArea")[0].onclick = (e) => {};
             this.hideUI("common-unitReward");
             this.hideUI("common-shop");
             document.getElementsByClassName("ui-phase-value")[0].innerText = "Defense";
@@ -993,6 +1004,15 @@ var Game = {
 
     closeShop() {
         this.hideUI("common-shop");
+    },
+
+    openUnitPointShop() {
+        this.showUI("common-unitPointShop");
+        this.GameObject.scene.getScene("gameScene").shopSound.play(this.effectSoundConfig);
+    },
+
+    closeUnitPointShop() {
+        this.hideUI("common-unitPointShop");
     },
 
     hitPlayerBase(damage) {
