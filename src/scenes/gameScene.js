@@ -504,7 +504,7 @@ export default class gameScene extends Phaser.Scene {
                 var offsetY = e.y + (this.mapOffsetY * Math.floor(playerNum / 2));
             }
             if (i < savedLength) {//기존에 있는 것중에
-                if (e && e.index == this.spectate_player_units[i].index) {
+                if (e && e.index == this.spectate_player_units[playerNum][i].index) {
                     var unit = this.spectate_player_units[playerNum][i];
                     if (unit.x != offsetX || unit.y != offsetY) { // 자리가 달라? 
                         this.info[playerNum].getTileAtWorldXY(unit.x, unit.y, true).placedUnit = undefined;
@@ -514,17 +514,18 @@ export default class gameScene extends Phaser.Scene {
                         this.info[playerNum].getTileAtWorldXY(offsetX, offsetY, true).placedUnit = unit;
                     }
                 }
-                else if (!e && this.spectate_player_units[i]) {
-                    var toRemove = this.spectate_player_units[i];
+                else if (!e && this.spectate_player_units[playerNum][i]) {
+                    var toRemove = this.spectate_player_units[playerNum][i];
                     this.info[playerNum].getTileAtWorldXY(toRemove.x, toRemove.y, true).placedUnit = undefined;
                     toRemove.remove();
-                    this.spectate_player_units[i] = undefined;
+                    this.spectate_player_units[playerNum][i] = undefined;
                 }
             }
             else { //새것??
                 var unit = new Unit(this, offsetX, offsetY, this.unitDB["unit" + e.id], e.uid, e.id, playerNum);
                 this.spectate_player_units[playerNum].push(unit);
                 let t = this.info[playerNum].getTileAtWorldXY(unit.x, unit.y, true);
+                console.log(t);
                 t.placedUnit = unit;
                 unit.setDepth(((unit.y / 48) * (unit.x / 48)));
             }
