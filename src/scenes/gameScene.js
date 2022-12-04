@@ -339,7 +339,7 @@ export default class gameScene extends Phaser.Scene {
      */
     receiveUnit(unitID, tier) {
         if (Game.PlayerData[0].hp > 0) {
-            this.handleTierBonus(tier, true);
+            // this.handleTierBonus(tier, true);
             this.onPlaceQueue = new Unit(this, this.input.activePointer.x, this.input.activePointer.y, this.unitDB["unit" + unitID], this.unitIndex++, unitID, 0);
             this.onPlaceQueue.rangeView.alpha = 0.4;
             this.onPlaceQueue.buffRangeView.alpha = 0.6;
@@ -440,6 +440,8 @@ export default class gameScene extends Phaser.Scene {
     {
         if (!this.selectedUnit)
             return;
+
+        this.info[0].getTileAtWorldXY(this.selectedUnit.x, this.selectedUnit.y, true).index = 2897;
         this.info[0].getTileAtWorldXY(this.selectedUnit.x, this.selectedUnit.y, true).placedUnit = undefined;
         // this.handleTierBonus(this.selectedUnit.tier, false);
         switch (this.selectedUnit.tier) //give reward based on tier
