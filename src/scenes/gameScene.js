@@ -471,7 +471,7 @@ export default class gameScene extends Phaser.Scene {
         // m_player에 인덱스에 해당하는 유닛 undefined로 변경해서 syncFieldStatus에서 무시되도록
 
         this.selectedUnit.remove();
-        // this.resetBuff();
+        this.resetBuff();
 
         Game.syncFieldStatus();
     }
