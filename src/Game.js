@@ -1262,14 +1262,18 @@ var Game = {
 
     syncFieldStatus() {
         this.Socket.emit('player-syncFieldStatus', {
-            units: this.GameObject.scene.getScene("gameScene").m_player.filter(Boolean).map(unit => {
-                return {
-                    x: unit.x,
-                    y: unit.y,
-                    id: unit.id,
-                    uindex: unit.index,
-                    tier: unit.tier,
-                };
+            units: this.GameObject.scene.getScene("gameScene").m_player.map(unit => {
+                if (unit) {
+                    return {
+                        x: unit.x,
+                        y: unit.y,
+                        id: unit.id,
+                        uindex: unit.index,
+                        tier: unit.tier,
+                    };
+                }
+                else 
+                    return undefined;
             }),
             tierCnt: this.GameObject.scene.getScene("gameScene").tierCnt,
             shopBuffs: this.shopBuff,
