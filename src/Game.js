@@ -433,6 +433,7 @@ var Game = {
                 }
             }
             document.getElementsByClassName("ui-gold")[0].innerText = msg[0].gold;
+            document.getElementsByClassName("ui-unitPoint")[0].innerText = msg[0].unitPoint;
         });
 
         this.Socket.on('player-death', (msg) => {
@@ -698,6 +699,7 @@ var Game = {
                 this.closeUnitPointShop();
                 this.shopOpen = false;
             }
+            document.getElementsByClassName("ui-unitInfoArea-unitSell")[0].style.display = "block";
 
             this.GameObject.scene.getScene("diceScene").scene.stop().resume("gameScene");
             this.GameObject.scene.getScene("gameScene").toPlacePhase();
@@ -734,8 +736,10 @@ var Game = {
         this.Socket.on('battlePhase-begin', (msg) => {
             document.getElementsByClassName("ui-goldArea")[0].onclick = (e) => {};
             document.getElementsByClassName("ui-unitPointArea")[0].onclick = (e) => {};
+            document.getElementsByClassName("ui-unitInfoArea-unitSell")[0].style.display = "none";
             this.hideUI("common-unitReward");
             this.hideUI("common-shop");
+            this.hideUI("common-unitPointShop");
             document.getElementsByClassName("ui-phase-value")[0].innerText = "Defense";
             document.getElementsByClassName("ui-phaseTimelimit-value")[0].innerText = this.currentTimeLimit;
             this.currentTimeLimit = msg.timeLimit;
