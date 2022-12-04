@@ -471,7 +471,7 @@ export default class gameScene extends Phaser.Scene {
         // m_player에 인덱스에 해당하는 유닛 undefined로 변경해서 syncFieldStatus에서 무시되도록
 
         this.selectedUnit.remove();
-        // this.resetBuff();
+        this.resetBuff();
 
         Game.syncFieldStatus();
     }
@@ -501,17 +501,17 @@ export default class gameScene extends Phaser.Scene {
             var offsetX = e.x + (this.mapOffsetX * (playerNum % 2));
             var offsetY = e.y + (this.mapOffsetY * Math.floor(playerNum / 2));
             if (i < savedLength) {//기존에 있는 것중에
-                if (e.index == this.spectate_player_units[i].index) {
+                if (e && e.index == this.spectate_player_units[i].index) {
                     var unit = this.spectate_player_units[playerNum][i];
                     if (unit.x != offsetX || unit.y != offsetY) { // 자리가 달라? 
+                        this.info[playerNum].getTileAtWorldXY(unit.x, unit.y, true).placedUnit = undefined;
                         unit.x = offsetX;
                         unit.y = offsetY;
                         unit.setDepth(((unit.y / 48) * (unit.x / 48)));
-                        let t = this.info[playerNum].getTileAtWorldXY(offsetX, offsetY, true);
-                        t.placedUnit = unit;
+                        this.info[playerNum].getTileAtWorldXY(offsetX, offsetY, true).placedUnit = unit;
                     }
                 }
-                else if(this.spectate_player_units[i]){
+                else if (this.spectate_player_units[i]) {
                     var toRemove = this.spectate_player_units[i];
                     this.info[playerNum].getTileAtWorldXY(toRemove.x, toRemove.y, true).placedUnit = undefined;
                     toRemove.remove();
@@ -526,8 +526,7 @@ export default class gameScene extends Phaser.Scene {
                 unit.setDepth(((unit.y / 48) * (unit.x / 48)));
             }
         });
-        this.resetOtherBuff(playerNum, shopBuffs, tierBuffs);
-        
+        this.resetOtherBuff(playerNum, shopBuffs, tierBuffs);      
     }
 
     resetOtherBuff(playerNum,shopBuff,tierBuffs) {
