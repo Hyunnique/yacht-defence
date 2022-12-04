@@ -511,7 +511,7 @@ export default class gameScene extends Phaser.Scene {
                         this.info[playerNum].getTileAtWorldXY(offsetX, offsetY, true).placedUnit = unit;
                     }
                 }
-                else if (this.spectate_player_units[i]) {
+                else if (!e && this.spectate_player_units[i]) {
                     var toRemove = this.spectate_player_units[i];
                     this.info[playerNum].getTileAtWorldXY(toRemove.x, toRemove.y, true).placedUnit = undefined;
                     toRemove.remove();
