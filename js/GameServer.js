@@ -254,6 +254,7 @@ module.exports = {
         this.onChatMessage(socket, roomId);
         this.onDiceLastChance(socket, roomId);
         this.onReceiveUnitData(socket, roomId);
+        this.onUnitSell(socket, roomId);
     },
 
     syncPlayerInfo(roomId) {
@@ -264,6 +265,7 @@ module.exports = {
                 "maxhp": x.maxhp,
                 "dead": x.dead,
                 "gold": x.gold,
+                "unitPoint": x.unitPoint,
                 "items": x.items,
                 "units": x.units,
                 "shopBuffs": x.shopBuffs,
@@ -584,6 +586,27 @@ module.exports = {
 
             delete this.socketMap[this.Rooms[roomId].players[i].socket.id];
         }
+    },
+
+    onUnitSell(socket, roomId) {
+        socket.on('unit-sell', (msg) => {
+            switch (msg.tier) {
+                case 1:
+                    this.Rooms[roomId].players[this.getRoomIndex(socket.id)].unitPoint += 15;
+                    break;
+                case 2:
+                    this.Rooms[roomId].players[this.getRoomIndex(socket.id)].unitPoint += 8;
+                    break;
+                case 3:
+                    this.Rooms[roomId].players[this.getRoomIndex(socket.id)].unitPoint += 3;
+                    break;
+                case 4:
+                    this.Rooms[roomId].players[this.getRoomIndex(socket.id)].unitPoint += 1;
+                    break;
+            }
+
+            this.syncPlayerInfo(roomId);
+        });
     }
 };
 
