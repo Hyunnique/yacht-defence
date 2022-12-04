@@ -251,6 +251,7 @@ module.exports = {
         this.onBattlePhaseDone(socket, roomId);
         this.onPlayerBaseDamage(socket, roomId);
         this.onShopItemBuy(socket, roomId);
+        this.onUnitPointShopBuy(socket, roomId);
         this.onChatMessage(socket, roomId);
         this.onDiceLastChance(socket, roomId);
         this.onReceiveUnitData(socket, roomId);
@@ -607,7 +608,40 @@ module.exports = {
 
             this.syncPlayerInfo(roomId);
         });
-    }
+    },
+
+    onUnitPointShopBuy(socket, roomId) {
+        socket.on('unitPointShop-itemBuy', (msg) => {
+            let price;
+            switch (parseInt(msg.tier)) {
+                case 1:
+                    price = 30;
+                    break;
+                case 2:
+                    price = 15;
+                    break;
+                case 3:
+                    price = 5;
+                    break;
+                case 4:
+                    price = 2;
+                    break;
+            }
+
+            if (this.Rooms[roomId].players[this.getRoomIndex(socket.id)].unitPoint >= price && !(this.Rooms[roomId].players[this.getRoomIndex(socket.id)].dead)) {
+                this.Rooms[roomId].players[this.getRoomIndex(socket.id)].unitPoint -= price;
+                
+                socket.emit('unitPointShop-itemSuccess', {
+                    tier: msg.tier,
+                    uiIndex: msg.uiIndex
+                });
+
+                this.syncPlayerInfo(roomId);
+            } else {
+                socket.emit('unitPointShop-itemFailure', msg.uiIndex);
+            }
+        });
+    },
 };
 
     
