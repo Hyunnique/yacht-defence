@@ -450,6 +450,7 @@ export default class gameScene extends Phaser.Scene {
         }
         this.selectedUnit.remove();
         this.resetBuff();
+        Game.syncFieldStatus();
     }
 
     removeOtherPlayerUnit(index)
