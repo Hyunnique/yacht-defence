@@ -1127,7 +1127,7 @@ var Game = {
 
     syncFieldStatus() {
         this.Socket.emit('player-syncFieldStatus', {
-            units: this.GameObject.scene.getScene("gameScene").m_player.map(unit => {
+            units: this.GameObject.scene.getScene("gameScene").m_player.filter(Boolean).map(unit => {
                 return {
                     x: unit.x,
                     y: unit.y,
