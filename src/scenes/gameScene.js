@@ -309,6 +309,13 @@ export default class gameScene extends Phaser.Scene {
                     this.selectedUnit.buffRangeView.alpha = 0.6;
 
                     Game.showUnitInfo(t.placedUnit);
+
+                    // 판매 버튼에 해당 유닛 제거 및 유닛포인트 받는 이벤트 추가
+                    // m_player 배열에서 제거하기
+                    document.getElementsByClassName("ui-unitInfoArea-unitSell")[0].onclick = (e) => {
+                        this.sellUnit();
+                        Game.hideUnitInfo();
+                    }
                 }
             }
             else if (this.selectedUnit != undefined) {
@@ -433,23 +440,37 @@ export default class gameScene extends Phaser.Scene {
     {
         if (!this.selectedUnit)
             return;
-        this.info.getTileAtWorldXY(this.selectedUnit.x, this.selectedUnit.y, true).placedUnit = undefined;
-        this.handleTierBonus(this.selectedUnit.tier, false);
+        this.info[0].getTileAtWorldXY(this.selectedUnit.x, this.selectedUnit.y, true).placedUnit = undefined;
+        // this.handleTierBonus(this.selectedUnit.tier, false);
         switch (this.selectedUnit.tier) //give reward based on tier
         {
             case 1:
+                Game.Socket.emit("unit-sell", {
+                    tier: 1
+                });
                 break;
             case 2:
+                Game.Socket.emit("unit-sell", {
+                    tier: 2
+                });
                 break;
             case 3:
+                Game.Socket.emit("unit-sell", {
+                    tier: 3
+                });
                 break;
             case 4:
-                break;
-            default:
+                Game.Socket.emit("unit-sell", {
+                    tier: 4
+                });
                 break;
         }
+        this.m_player[this.selectedUnit.index] = undefined;
+        // m_player에 인덱스에 해당하는 유닛 undefined로 변경해서 syncFieldStatus에서 무시되도록
+
         this.selectedUnit.remove();
-        this.resetBuff();
+        // this.resetBuff();
+
         Game.syncFieldStatus();
     }
 
