@@ -429,6 +429,30 @@ export default class gameScene extends Phaser.Scene {
         Game.syncFieldStatus();
     }
 
+    sellUnit()
+    {
+        if (!this.selectedUnit)
+            return;
+        this.info.getTileAtWorldXY(this.selectedUnit.x, this.selectedUnit.y, true).placedUnit = undefined;
+        this.handleTierBonus(this.selectedUnit.tier, false);
+        switch (this.selectedUnit.tier) //give reward based on tier
+        {
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            default:
+                break;
+        }
+        this.selectedUnit.remove();
+        this.resetBuff();
+        Game.syncFieldStatus();
+    }
+
     removeOtherPlayerUnit(index)
     {
         this.spectate_player_units[index].forEach(e => {
@@ -445,20 +469,30 @@ export default class gameScene extends Phaser.Scene {
             return;
         var savedLength = this.spectate_player_units[playerNum].length;
         var receivedLength = this.spectate_player.length;
-        if (receivedLength == 0)
+        if (receivedLength == 0) {
             this.removeOtherPlayerUnit(playerNum);
+            return;
+        }
 
         this.spectate_player.forEach((e, i) => {
             var offsetX = e.x + (this.mapOffsetX * (playerNum % 2));
             var offsetY = e.y + (this.mapOffsetY * Math.floor(playerNum / 2));
             if (i < savedLength) {//기존에 있는 것중에
-                var unit = this.spectate_player_units[playerNum][i];
-                if (unit.x != offsetX || unit.y != offsetY) { // 자리가 달라? 
-                    unit.x = offsetX;
-                    unit.y = offsetY;
-                    unit.setDepth(((unit.y / 48) * (unit.x / 48)));
-                    let t = this.info[playerNum].getTileAtWorldXY(offsetX, offsetY, true);
-                    t.placedUnit = unit;
+                if (e.index == this.spectate_player_units[i].index) {
+                    var unit = this.spectate_player_units[playerNum][i];
+                    if (unit.x != offsetX || unit.y != offsetY) { // 자리가 달라? 
+                        unit.x = offsetX;
+                        unit.y = offsetY;
+                        unit.setDepth(((unit.y / 48) * (unit.x / 48)));
+                        let t = this.info[playerNum].getTileAtWorldXY(offsetX, offsetY, true);
+                        t.placedUnit = unit;
+                    }
+                }
+                else if(this.spectate_player_units[i]){
+                    var toRemove = this.spectate_player_units[i];
+                    this.info[playerNum].getTileAtWorldXY(toRemove.x, toRemove.y, true).placedUnit = undefined;
+                    toRemove.remove();
+                    this.spectate_player_units[i] = undefined;
                 }
             }
             else { //새것??
@@ -474,26 +508,37 @@ export default class gameScene extends Phaser.Scene {
     }
 
     resetOtherBuff(playerNum,shopBuff,tierBuffs) {
-        this.spectate_player_units[playerNum].forEach((e) => { e.removeBuff() });
         this.spectate_player_units[playerNum].forEach((e) => {
-            e.giveBuff();
-            e.syncGlobalBuff(shopBuff, tierBuffs);
+            if(e)
+                e.removeBuff()
         });
         this.spectate_player_units[playerNum].forEach((e) => {
-            e.updateBuff();
+            if (e) {
+                e.giveBuff();
+                e.syncGlobalBuff(shopBuff, tierBuffs);
+            }
+        });
+        this.spectate_player_units[playerNum].forEach((e) => {
+            if(e)
+                e.updateBuff();
         });
     }
 
     resetBuff() {
         this.m_player.forEach((e) => {
-            e.removeBuff();
+            if(e)
+                e.removeBuff();
         });
         this.m_player.forEach((e) => {
-            e.giveBuff();
-            e.syncGlobalBuff();
+            if (e) {
+                e.giveBuff();
+                e.syncGlobalBuff();
+            }
         });
         this.m_player.forEach((e) => {
-            e.updateBuff();
+            if (e) {
+                e.updateBuff();
+            }
         });
     }
 
@@ -625,9 +670,11 @@ export default class gameScene extends Phaser.Scene {
     {
         if (index == 0) {
             this.m_player.forEach((e) => {
-                let t = this.info[index].getTileAtWorldXY(e.x, e.y, true);
-                t.placedUnit = undefined;
-                e.remove();
+                if (e) {
+                    let t = this.info[index].getTileAtWorldXY(e.x, e.y, true);
+                    t.placedUnit = undefined;
+                    e.remove();
+                }
             });
             this.tierCnt = [0, 0, 0, 0];
             this.tierBonus = [0, 0, 0, 0];
