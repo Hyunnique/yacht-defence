@@ -209,7 +209,6 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
             }, [], this);
         }
         if (this.skillInfo.skillType == "cooldown") {
-            console.log("skill Fire!!");
             this.skillReady = false;
             if (this.attackType == 0) {
                 var damage = 0;
@@ -218,7 +217,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
                         damage = Game.calcDamage(this.attack + this.skillInfo.ofHealth == "cur" ?
                             (e.gameObject.Health * this.skillInfo.value) :
                             this.skillInfo.ofHealth == "lost" ?
-                                (this.attack * (1 - e.Health / e.MaxHealth) * this.skillInfo.value) :
+                                (this.attack * (1 - e.Health / e.MaxHealth) * (this.skillInfo.value / 100)) :
                                 (this.attack * (this.skillInfo.value / 100)), e.gameObject.defence, this.penetration);
                         e.gameObject.Health -= damage * e.gameObject.totalDebuffVal;
                     }

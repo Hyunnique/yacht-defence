@@ -271,9 +271,9 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
                     if (projectile.skillInfo.ofHealth == "cur")
                         damage = Game.calcDamage(projectile.shooter.attack + this.Health * (projectile.skillInfo.value / 100), this.defence, projectile.shooter.penetration) * this.totalDebuffVal;
                     if (projectile.skillInfo.ofHealth == "lost")
-                        damage = Game.calcDamage(projectile.shooter.attack * projectile.skillInfo.value * (1 - this.Health / this.MaxHealth), this.defence, projectile.shooter.penetration) * this.totalDebuffVal;
+                        damage = Game.calcDamage(projectile.shooter.attack + projectile.shooter.attack * (projectile.skillInfo.value / 100) * (1 - this.Health / this.MaxHealth), this.defence, projectile.shooter.penetration) * this.totalDebuffVal;
                     if (projectile.skillInfo.ofHealth == "atk")
-                        damage = Game.calcDamage(projectile.shooter.attack * (1 + projectile.skillInfo.value / 100), this.defence, projectile.shooter.penetration) * this.totalDebuffVal;
+                        damage = Game.calcDamage(projectile.shooter.attack + projectile.shooter.attack * (1 + projectile.skillInfo.value / 100), this.defence, projectile.shooter.penetration) * this.totalDebuffVal;
                 }
             }
             this.Health -= damage;      
