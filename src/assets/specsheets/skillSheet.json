@@ -107,6 +107,6 @@
         "skillType": "attackCount",
         "doEveryNth": 1,
         "ofHealth": "lost",
-        "value": 100
+        "value": 200
     }
 }
