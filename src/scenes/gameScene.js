@@ -440,6 +440,8 @@ export default class gameScene extends Phaser.Scene {
     {
         if (!this.selectedUnit)
             return;
+        if (this.selectedUnit.playerNum != 0)
+            return;
 
         this.info[0].getTileAtWorldXY(this.selectedUnit.x, this.selectedUnit.y, true).index = 2897;
         this.info[0].getTileAtWorldXY(this.selectedUnit.x, this.selectedUnit.y, true).placedUnit = undefined;
