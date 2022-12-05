@@ -353,6 +353,7 @@ var Game = {
                             }
 
                             document.getElementsByClassName("ui-hpArea-player")[i].classList.add("text-outline-gold");
+                            document.getElementsByClassName("ui-unitInfoArea-unitSell")[0].style.display = "block";
 
                             this.GameObject.scene.getScene("gameScene").cameras.main.scrollX = 0;
                             this.GameObject.scene.getScene("gameScene").cameras.main.scrollY = 0;
@@ -389,6 +390,7 @@ var Game = {
                             }
                             
                             document.getElementsByClassName("ui-hpArea-player")[i].classList.add("text-outline-gold");
+                            document.getElementsByClassName("ui-unitInfoArea-unitSell")[0].style.display = "none";
 
                             this.Socket.emit("player-requestUnitData", { playerIndex: i });
 
@@ -433,6 +435,7 @@ var Game = {
                 }
             }
             document.getElementsByClassName("ui-gold")[0].innerText = msg[0].gold;
+            document.getElementsByClassName("ui-unitPoint")[0].innerText = msg[0].unitPoint;
         });
 
         this.Socket.on('player-death', (msg) => {
@@ -537,9 +540,13 @@ var Game = {
             if (!this.PlayerData[0].dead) {
                 setTimeout(() => {
                     this.hideUI("diceScene-result");
-                    this.showUI("common-unitReward");
 
+                    // 유닛 랜덤으로 3개 선택해서 뽑게 만드는 곳
+                    // 유닛포인트 상점이랑 겹치는 부분이 많아서 나중에 따로 함수로 뺼것
+                    this.showUI("common-unitReward");
                     let currentTier = this.GameObject.scene.getScene("diceScene").currentTier;
+                    this.GameObject.scene.getScene("gameScene").handleTierBonus(currentTier, true);
+
                     let tier = {
                         "tier1": [2, 22, 24, 26, 27, 35],
                         "tier2": [19, 33, 34, 38, 41, 43, 45, 50, 51, 52, 53, 55, 56],
@@ -688,6 +695,17 @@ var Game = {
                 this.closeShop();
                 this.shopOpen = false;
             }
+            document.getElementsByClassName("ui-unitPointArea")[0].onclick = (e) => {
+                if (!this.shopOpen && this.PlayerData[0].hp > 0) {
+                    this.openUnitPointShop();
+                    this.shopOpen = true;
+                }
+            }
+            document.getElementsByClassName("ui-unitPointShop-close")[0].onclick = (e) => {
+                this.closeUnitPointShop();
+                this.shopOpen = false;
+            }
+            document.getElementsByClassName("ui-unitInfoArea-unitSell")[0].style.display = "block";
 
             this.GameObject.scene.getScene("diceScene").scene.stop().resume("gameScene");
             this.GameObject.scene.getScene("gameScene").toPlacePhase();
@@ -723,8 +741,11 @@ var Game = {
 
         this.Socket.on('battlePhase-begin', (msg) => {
             document.getElementsByClassName("ui-goldArea")[0].onclick = (e) => {};
+            document.getElementsByClassName("ui-unitPointArea")[0].onclick = (e) => {};
+            document.getElementsByClassName("ui-unitInfoArea-unitSell")[0].style.display = "none";
             this.hideUI("common-unitReward");
             this.hideUI("common-shop");
+            this.hideUI("common-unitPointShop");
             document.getElementsByClassName("ui-phase-value")[0].innerText = "Defense";
             document.getElementsByClassName("ui-phaseTimelimit-value")[0].innerText = this.currentTimeLimit;
             this.currentTimeLimit = msg.timeLimit;
@@ -759,6 +780,124 @@ var Game = {
         });
 
         this.Socket.on('shop-itemFailure', (msg) => {
+            this.GameObject.scene.getScene("gameScene").shopBuyFailSound.play(this.effectSoundConfig);
+        });
+
+        this.Socket.on('unitPointShop-itemSuccess', (msg) => {
+            let soundidx = Math.floor(Math.random() * 3);
+            this.GameObject.scene.getScene("gameScene").shopBuySound[soundidx].play(this.effectSoundConfig);
+
+            this.hideUI("common-unitPointShop");
+            this.shopOpen = false;
+
+            this.showUI("common-unitReward");
+            let currentTier = parseInt(msg.tier);
+            let tier = {
+                "tier1": [2, 22, 24, 26, 27, 35],
+                "tier2": [19, 33, 34, 38, 41, 43, 45, 50, 51, 52, 53, 55, 56],
+                "tier3": [3, 9, 10, 11, 12, 13, 23, 25, 31, 32, 40, 42, 46, 47, 57, 59, 60, 62, 63],
+                "tier4": [0, 1, 4, 5, 6, 7, 8, 14, 15, 16, 17, 18, 20, 21, 28, 29, 30, 36, 37, 39, 44, 48, 49, 54, 58, 61]
+            }
+            let unitCount = tier["tier" + currentTier].length;
+            let unitArray = []; 
+
+            for (let i = 0; i < 3; i++) {
+                switch (currentTier) {
+                    case 1:
+                        document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.color = "#ff1b1b";
+                        break;
+                    case 2:
+                        document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.color = "#ffd700";
+                        break;
+                    case 3:
+                        document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.color = "#d5d5d5";
+                        break;
+                    default:
+                        document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.color = "#954c4c";
+                        break;
+                }
+            }
+            for (let i = 0; i < 3; i++) {
+                while (true) {
+                    let _r = Math.floor(Math.random() * unitCount);
+                    let unitNo = tier["tier" + currentTier][_r];
+                    if (!unitArray.includes(unitNo)) {
+                        unitArray.push(unitNo);
+                        break;
+                    }
+                }
+            }
+
+            for (let i = 0; i < 3; i++) {
+                let unitType = ""
+                switch (unitSpecSheets["unit" + unitArray[i]].unitType) {
+                    case 0:
+                        unitType = "근거리";
+                        break;
+                    case 1:
+                        unitType = "추적형";
+                        break;
+                    case 2:
+                        unitType = "관통형";
+                        break;
+                    case 3:
+                        unitType = "폭발형";
+                        break;
+                    case 4:
+                        unitType = "지원형";
+                        break;
+                }
+
+                document.getElementsByClassName("ui-unitReward-unitDisplayImage")[i].style.backgroundImage = "url('" + unitGIF["unit_" + unitArray[i] + ".gif"] + "')";
+                document.getElementsByClassName("ui-unitReward-unitTitle")[i].innerText = unitSpecSheets["unit" + unitArray[i]].name;
+                if (unitSpecSheets["unit" + unitArray[i]].name.length >= 13) 
+                    document.getElementsByClassName("ui-unitReward-unitTitle")[i].style.fontSize = (1.2 - 0.1*(unitSpecSheets["unit" + unitArray[i]].name.length - 12)) + "rem" 
+                document.getElementsByClassName("ui-unitReward-unitType")[i].innerText = unitType;
+                document.getElementsByClassName("ui-unitReward-unitSpec-atk")[i].innerText = "ATK : " + unitSpecSheets["unit" + unitArray[i]].attack;
+
+                if (unitSpecSheets["unit" + unitArray[i]].aspd < 0.6) {
+                    document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : VERY SLOW";
+                }
+                else if (unitSpecSheets["unit" + unitArray[i]].aspd < 0.8) {
+                    document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : SLOW";
+                }
+                else if (unitSpecSheets["unit" + unitArray[i]].aspd < 1.3) {
+                    document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : NORMAL"
+                }
+                else if (unitSpecSheets["unit" + unitArray[i]].aspd < 1.6) {
+                    document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : FAST"
+                }
+                else {
+                    document.getElementsByClassName("ui-unitReward-unitSpec-aspd")[i].innerText = "SPD : VERY FAST"
+                }
+
+                switch (unitSpecSheets["unit" + unitArray[i]].rangeType) {
+                    case 0:
+                        document.getElementsByClassName("ui-unitReward-unitSpec-range")[i].innerText = "RANGE : VERY SHORT";
+                        break;
+                    case 1:
+                        document.getElementsByClassName("ui-unitReward-unitSpec-range")[i].innerText = "RANGE : SHORT";
+                        break;
+                    case 2:
+                        document.getElementsByClassName("ui-unitReward-unitSpec-range")[i].innerText = "RANGE : MEDIUM";
+                        break;
+                    case 3:
+                        document.getElementsByClassName("ui-unitReward-unitSpec-range")[i].innerText = "RANGE : LONG";
+                        break;
+                }
+                document.getElementsByClassName("ui-unitReward-unitSkill")[i].innerText = unitSpecSheets["unit" + unitArray[i]].skill;
+                if (unitSpecSheets["unit" + unitArray[i]].skill.length > 50) {
+                    document.getElementsByClassName("ui-unitReward-unitSkill")[i].style.animation = "line2 4s linear infinite"
+                }
+                // else if (unitSpecSheets["unit" + unitArray[i]].skill.length > 60) {
+                //     document.getElementsByClassName("ui-unitReward-unitSkill")[i].style.animation = "line3 4s linear infinite"
+                // }
+                document.getElementsByClassName("ui-unitReward-unit")[i].attributes.idx.value = unitArray[i];
+                document.getElementsByClassName("ui-unitReward-unit")[i].attributes.tier.value = currentTier;
+            }
+        });
+
+        this.Socket.on('unitPointShop-itemFailure', (msg) => {
             this.GameObject.scene.getScene("gameScene").shopBuyFailSound.play(this.effectSoundConfig);
         });
 
@@ -999,6 +1138,24 @@ var Game = {
         this.hideUI("common-shop");
     },
 
+    openUnitPointShop() {
+        this.showUI("common-unitPointShop");
+        this.GameObject.scene.getScene("gameScene").shopSound.play(this.effectSoundConfig);
+
+        for (let i = 0; i < 4; i++) {
+            document.getElementsByClassName("ui-unitPointShop-item")[i].onclick = (e) => {
+                this.Socket.emit("unitPointShop-itemBuy", {
+                    tier: document.getElementsByClassName("ui-unitPointShop-item")[i].attributes.idx.value,
+                    uiIndex: i
+                });
+            }
+        }
+    },
+
+    closeUnitPointShop() {
+        this.hideUI("common-unitPointShop");
+    },
+
     hitPlayerBase(damage) {
         this.Socket.emit("playerInfo-baseDamage", damage);
     },
@@ -1108,13 +1265,17 @@ var Game = {
     syncFieldStatus() {
         this.Socket.emit('player-syncFieldStatus', {
             units: this.GameObject.scene.getScene("gameScene").m_player.map(unit => {
-                return {
-                    x: unit.x,
-                    y: unit.y,
-                    id: unit.id,
-                    uindex: unit.index,
-                    tier: unit.tier,
-                };
+                if (unit) {
+                    return {
+                        x: unit.x,
+                        y: unit.y,
+                        id: unit.id,
+                        uindex: unit.index,
+                        tier: unit.tier,
+                    };
+                }
+                else 
+                    return undefined;
             }),
             tierCnt: this.GameObject.scene.getScene("gameScene").tierCnt,
             shopBuffs: this.shopBuff,
