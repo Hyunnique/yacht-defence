@@ -360,7 +360,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
                         damage = Game.calcDamage(this.attack + this.skillInfo.ofHealth == "cur" ?
                             (e.gameObject.Health * this.skillInfo.value) :
                             this.skillInfo.ofHealth == "lost" ?
-                                (this.attack * (1 - e.gameObject.Health / e.gameObject.MaxHealth) * this.skillInfo.value) :
+                                (this.attack * (1 - e.gameObject.Health / e.gameObject.MaxHealth) * (this.skillInfo.value / 100)) :
                                 (this.attack * (this.skillInfo.value / 100)), e.gameObject.defence, this.penetration);
                     else
                         damage = Game.calcDamage(this.attack, e.gameObject.defence,this.penetration);
