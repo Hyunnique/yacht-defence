@@ -353,6 +353,7 @@ var Game = {
                             }
 
                             document.getElementsByClassName("ui-hpArea-player")[i].classList.add("text-outline-gold");
+                            document.getElementsByClassName("ui-unitInfoArea-unitSell")[0].style.display = "block";
 
                             this.GameObject.scene.getScene("gameScene").cameras.main.scrollX = 0;
                             this.GameObject.scene.getScene("gameScene").cameras.main.scrollY = 0;
@@ -389,6 +390,7 @@ var Game = {
                             }
                             
                             document.getElementsByClassName("ui-hpArea-player")[i].classList.add("text-outline-gold");
+                            document.getElementsByClassName("ui-unitInfoArea-unitSell")[0].style.display = "none";
 
                             this.Socket.emit("player-requestUnitData", { playerIndex: i });
 
