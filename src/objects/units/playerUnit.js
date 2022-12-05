@@ -357,7 +357,7 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
                 if (e.gameObject.Health) {
                     if (this.skillInfo && this.skillInfo.skillType == "attackCount" && this.attackCount % this.skillInfo.doEveryNth == 0)
                         damage = Game.calcDamage(this.attack + this.skillInfo.ofHealth == "cur" ?
-                            (e.gameObject.Health * this.skillInfo.value) :
+                            (e.gameObject.Health * this.skillInfo.value / 100) :
                             this.skillInfo.ofHealth == "lost" ?
                                 (this.attack * (1 - e.gameObject.Health / e.gameObject.MaxHealth) * (this.skillInfo.value / 100)) :
                                 (this.attack * (this.skillInfo.value / 100)), e.gameObject.defence, this.penetration);
