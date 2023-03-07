@@ -7,7 +7,7 @@ function connect() {
 		}
 		mongoose.set('bufferCommands', true);
 
-		mongoose.connect('mongodb+srv://yachtDefense:FblN8p3793iipdvB@hyunnique-cluster.c531o.mongodb.net/yacht-defense?retryWrites=true&w=majority',
+		mongoose.connect(process.env.DB_URL,
 		{
 			useNewUrlParser: true,
 			useUnifiedTopology: true
