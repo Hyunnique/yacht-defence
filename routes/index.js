@@ -12,7 +12,7 @@ router.get("/external/socket.io.min.js.map", async (ctx, next) => {
 });
 
 router.get("/patchnote", async (ctx, next) => {
-    ctx.body = await fs.readFile("./notice.txt", 'utf8');
+    ctx.body = await fs.readFile("./notice.html", 'utf8');
 });
 
 router.get("/ranking", async (ctx, next) => {
