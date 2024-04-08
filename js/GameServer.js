@@ -593,13 +593,13 @@ module.exports = {
         socket.on('unit-sell', (msg) => {
             switch (msg.tier) {
                 case 1:
-                    this.Rooms[roomId].players[this.getRoomIndex(socket.id)].unitPoint += 30;
+                    this.Rooms[roomId].players[this.getRoomIndex(socket.id)].unitPoint += 20;
                     break;
                 case 2:
-                    this.Rooms[roomId].players[this.getRoomIndex(socket.id)].unitPoint += 15;
+                    this.Rooms[roomId].players[this.getRoomIndex(socket.id)].unitPoint += 10;
                     break;
                 case 3:
-                    this.Rooms[roomId].players[this.getRoomIndex(socket.id)].unitPoint += 5;
+                    this.Rooms[roomId].players[this.getRoomIndex(socket.id)].unitPoint += 3;
                     break;
                 case 4:
                     this.Rooms[roomId].players[this.getRoomIndex(socket.id)].unitPoint += 2;

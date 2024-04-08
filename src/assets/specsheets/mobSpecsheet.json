@@ -3394,7 +3394,7 @@
 		"scale": 1,
 		"health": 1000,
 		"m_speed": 30,
-		"defence": 70,
+		"defence": 55,
 		"defaultCost": 0,
 		"boss": true
 	},
@@ -3405,7 +3405,7 @@
 		"scale": 1,
 		"health": 1000,
 		"m_speed": 30,
-		"defence": 70,
+		"defence": 55,
 		"defaultCost": 0,
 		"boss": true
 	},
@@ -3416,7 +3416,7 @@
 		"scale": 1,
 		"health": 1000,
 		"m_speed": 30,
-		"defence": 70,
+		"defence": 55,
 		"defaultCost": 0,
 		"boss": true
 	},
@@ -3427,7 +3427,7 @@
 		"scale": 1,
 		"health": 1000,
 		"m_speed": 30,
-		"defence": 70,
+		"defence": 55,
 		"defaultCost": 0,
 		"boss": true
 	},
@@ -3438,7 +3438,7 @@
 		"scale": 1,
 		"health": 1000,
 		"m_speed": 30,
-		"defence": 70,
+		"defence": 55,
 		"defaultCost": 0,
 		"boss": true
 	}

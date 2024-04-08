@@ -212,13 +212,21 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
             this.skillReady = false;
             if (this.attackType == 0) {
                 var damage = 0;
+
                 this.target.forEach(e => {
                     if (e.gameObject.Health) {
-                        damage = Game.calcDamage(this.attack + this.skillInfo.ofHealth == "cur" ?
-                            (e.gameObject.Health * this.skillInfo.value) :
-                            this.skillInfo.ofHealth == "lost" ?
-                                (this.attack * (1 - e.Health / e.MaxHealth) * (this.skillInfo.value / 100)) :
-                                (this.attack * (this.skillInfo.value / 100)), e.gameObject.defence, this.penetration);
+                        let damageModifier = 0;
+                        if (this.skillInfo.ofHealth === "cur") {
+                            damageModifier = e.gameObject.Health * this.skillInfo.value;
+                        }
+                        else if (this.skillInfo.ofHealth === "lost") {
+                            damageModifier = this.attack * (1 - e.Health / e.MaxHealth) * (this.skillInfo.value / 100);
+                        }
+                        else {
+                            damageModifier = this.attack * (this.skillInfo.value / 100);
+                        }
+
+                        damage = Game.calcDamage(this.attack + damageModifier, e.gameObject.defence, this.penetration);
                         e.gameObject.Health -= damage * e.gameObject.totalDebuffVal;
                     }
                 });
@@ -355,12 +363,19 @@ export default class Unit extends Phaser.Physics.Arcade.Sprite {
             var damage = 0;
             this.target.forEach(e => {
                 if (e.gameObject.Health) {
-                    if (this.skillInfo && this.skillInfo.skillType == "attackCount" && this.attackCount % this.skillInfo.doEveryNth == 0)
-                        damage = Game.calcDamage(this.attack + this.skillInfo.ofHealth == "cur" ?
-                            (e.gameObject.Health * this.skillInfo.value / 100) :
-                            this.skillInfo.ofHealth == "lost" ?
-                                (this.attack * (1 - e.gameObject.Health / e.gameObject.MaxHealth) * (this.skillInfo.value / 100)) :
-                                (this.attack * (this.skillInfo.value / 100)), e.gameObject.defence, this.penetration);
+                    if (this.skillInfo && this.skillInfo.skillType == "attackCount" && this.attackCount % this.skillInfo.doEveryNth == 0) {
+                        let damageModifier = 0;
+
+                        if (this.skillInfo.ofHealth === "cur") {
+                            damageModifier = (e.gameObject.Health * this.skillInfo.value / 100);
+                        } else if (this.skillInfo.ofHealth === "lost") {
+                            damageModifier = this.attack * (1 - e.gameObject.Health / e.gameObject.MaxHealth) * (this.skillInfo.value / 100);
+                        } else {
+                            damageModifier = this.attack * (this.skillInfo.value / 100);
+                        }
+
+                        damage = Game.calcDamage(this.attack + damageModifier, e.gameObject.defence, this.penetration);
+                    }
                     else
                         damage = Game.calcDamage(this.attack, e.gameObject.defence,this.penetration);
                     

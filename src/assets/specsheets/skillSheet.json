@@ -8,7 +8,7 @@
     "unit19": {
         "skillType": "debuff",
         "of": "pen",
-        "value": 15,
+        "value": 13,
         "duration": 3
     },
     "unit22": {
@@ -16,19 +16,19 @@
         "delay": 1,
         "duration": 5,
         "ofHealth": "atk",
-        "value": 60
+        "value": 150
     },
     "unit24": {
         "skillType": "cooldown",
         "coolDown": 5,
         "ofHealth": "cur",
-        "value": 8
+        "value": 10
     },
     "unit26": {
         "skillType": "attackCount",
         "doEveryNth": 1,
         "ofHealth": "self",
-        "value": 2
+        "value": 1.8
     },
     "unit27": {
         "skillType": "statBuff",
@@ -75,7 +75,7 @@
         "delay": 1,
         "duration": 5,
         "ofHealth": "atk",
-        "value": 30
+        "value": 45
     },
     "unit41": {
         "skillType": "DOT",
@@ -88,20 +88,20 @@
         "skillType": "attackCount",
         "doEveryNth": 3,
         "ofHealth": "atk",
-        "value": 140
+        "value": 160
     },
     "unit45": {
         "skillType": "debuff",
         "of": "slow",
-        "value": 5,
-        "duration": 2
+        "value": 6,
+        "duration": 3
     },
     "unit50": {
         "skillType": "statFix",
         "from": "pen",
         "fromVal": 0,
         "to": "atk",
-        "value": 8
+        "value": 10
     },
     "unit51": {
         "skillType": "attackCount",

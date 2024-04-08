@@ -63,7 +63,7 @@ var Game = {
         this.showUI("mainScene-default");
         this.showUI("gameScene-topRightFloating");
 
-        this.Socket = io.connect("http://" + (process.env.HOST ? process.env.HOST : "localhost") + ":8080");
+        this.Socket = io.connect("http://" + (process.env.HOST ? process.env.HOST : "localhost"));
         
         document.getElementsByClassName("ui-gameScene-settingsHolder")[0].addEventListener("mousedown", (e) => {
             if (document.getElementsByClassName("ui-gameScene-settingsWrapper")[0].style.display == "none") {
@@ -250,7 +250,7 @@ var Game = {
         let query = "";
         if (!document.getElementsByClassName("ui-radio-allVersion")[0].checked) query = "?version=" + process.env.VERSION;
 
-        axios.get("http://" + (process.env.HOST ? process.env.HOST : "localhost") + ":8080/ranking" + query)
+        axios.get("http://" + (process.env.HOST ? process.env.HOST : "localhost:8080") + "/ranking" + query)
         .then((response) => {
             this.showUI("rankings");
 
