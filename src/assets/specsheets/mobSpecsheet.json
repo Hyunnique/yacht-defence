@@ -60,7 +60,7 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 200,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 15,
 		"boss": false,
 		"defaultCost": 2
@@ -71,10 +71,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 1000,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 16,
 		"boss": false,
-		"defaultCost": 11.5
+		"defaultCost": 10.5
 	},
 	"BatC": {
 		"mobAnim": "BatC",
@@ -82,10 +82,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 1800,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 17,
 		"boss": false,
-		"defaultCost": 21.5
+		"defaultCost": 20
 	},
 	"BatD": {
 		"mobAnim": "BatD",
@@ -93,10 +93,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 2600,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 18,
 		"boss": false,
-		"defaultCost": 31.5
+		"defaultCost": 29
 	},
 	"BatE": {
 		"mobAnim": "BatE",
@@ -104,10 +104,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 3400,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 19,
 		"boss": false,
-		"defaultCost": 42
+		"defaultCost": 38.5
 	},
 	"BatF": {
 		"mobAnim": "BatF",
@@ -115,10 +115,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 4200,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 21,
 		"boss": false,
-		"defaultCost": 53
+		"defaultCost": 49
 	},
 	"BatG": {
 		"mobAnim": "BatG",
@@ -126,10 +126,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 5000,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 22,
 		"boss": false,
-		"defaultCost": 64
+		"defaultCost": 59
 	},
 	"BatH": {
 		"mobAnim": "BatH",
@@ -137,10 +137,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 5800,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 23,
 		"boss": false,
-		"defaultCost": 75.5
+		"defaultCost": 69.5
 	},
 	"BatI": {
 		"mobAnim": "BatI",
@@ -148,10 +148,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 6600,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 24,
 		"boss": false,
-		"defaultCost": 87
+		"defaultCost": 80
 	},
 	"BatJ": {
 		"mobAnim": "BatJ",
@@ -159,10 +159,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 7400,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 25,
 		"boss": false,
-		"defaultCost": 99
+		"defaultCost": 91
 	},
 	"BatK": {
 		"mobAnim": "BatK",
@@ -170,10 +170,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 8200,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 27,
 		"boss": false,
-		"defaultCost": 113
+		"defaultCost": 103.5
 	},
 	"BatL": {
 		"mobAnim": "BatL",
@@ -181,10 +181,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 9000,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 28,
 		"boss": false,
-		"defaultCost": 125.5
+		"defaultCost": 115
 	},
 	"BatM": {
 		"mobAnim": "BatM",
@@ -192,10 +192,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 9800,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 29,
 		"boss": false,
-		"defaultCost": 138.5
+		"defaultCost": 127
 	},
 	"BatN": {
 		"mobAnim": "BatN",
@@ -203,10 +203,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 10600,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 30,
 		"boss": false,
-		"defaultCost": 152
+		"defaultCost": 139.5
 	},
 	"BatO": {
 		"mobAnim": "BatO",
@@ -214,10 +214,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 11400,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 31,
 		"boss": false,
-		"defaultCost": 166
+		"defaultCost": 152.5
 	},
 	"BatP": {
 		"mobAnim": "BatP",
@@ -225,10 +225,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 12200,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 33,
 		"boss": false,
-		"defaultCost": 183
+		"defaultCost": 168
 	},
 	"BatQ": {
 		"mobAnim": "BatQ",
@@ -236,10 +236,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 13000,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 34,
 		"boss": false,
-		"defaultCost": 198
+		"defaultCost": 181.5
 	},
 	"BatR": {
 		"mobAnim": "BatR",
@@ -247,10 +247,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 13800,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 35,
 		"boss": false,
-		"defaultCost": 213.5
+		"defaultCost": 195.5
 	},
 	"BatS": {
 		"mobAnim": "BatS",
@@ -258,10 +258,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 14600,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 36,
 		"boss": false,
-		"defaultCost": 229.5
+		"defaultCost": 210.5
 	},
 	"BatT": {
 		"mobAnim": "BatT",
@@ -269,10 +269,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 15400,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 37,
 		"boss": false,
-		"defaultCost": 245.5
+		"defaultCost": 225.5
 	},
 	"BatSmallA": {
 		"mobAnim": "BatSmallA",
@@ -280,7 +280,7 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 100,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 15,
 		"boss": false,
 		"defaultCost": 1
@@ -291,10 +291,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 6500,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 34,
 		"boss": false,
-		"defaultCost": 99
+		"defaultCost": 90.5
 	},
 	"BatSmallC": {
 		"mobAnim": "BatSmallC",
@@ -302,10 +302,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 12900,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 53,
 		"boss": false,
-		"defaultCost": 276
+		"defaultCost": 253
 	},
 	"BatSmallD": {
 		"mobAnim": "BatSmallD",
@@ -313,10 +313,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 19300,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 72,
 		"boss": false,
-		"defaultCost": 693
+		"defaultCost": 636
 	},
 	"BatSmallE": {
 		"mobAnim": "BatSmallE",
@@ -324,10 +324,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 25700,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 91,
 		"boss": false,
-		"defaultCost": 2872.5
+		"defaultCost": 2636
 	},
 	"BeardA": {
 		"mobAnim": "BeardA",
@@ -951,10 +951,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 300,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 15,
 		"boss": false,
-		"defaultCost": 3.5
+		"defaultCost": 3
 	},
 	"DyeB": {
 		"mobAnim": "DyeB",
@@ -962,10 +962,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 20700,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 35,
 		"boss": false,
-		"defaultCost": 320
+		"defaultCost": 293.5
 	},
 	"DyeC": {
 		"mobAnim": "DyeC",
@@ -973,10 +973,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 41100,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 55,
 		"boss": false,
-		"defaultCost": 918.5
+		"defaultCost": 843
 	},
 	"DyeD": {
 		"mobAnim": "DyeD",
@@ -984,10 +984,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 61500,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 76,
 		"boss": false,
-		"defaultCost": 2578
+		"defaultCost": 2365.5
 	},
 	"EarthA": {
 		"mobAnim": "EarthA",
@@ -1094,7 +1094,7 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 150,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 20,
 		"boss": false,
 		"defaultCost": 1.5
@@ -1105,10 +1105,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 10350,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 47,
 		"boss": false,
-		"defaultCost": 196
+		"defaultCost": 180
 	},
 	"EelC": {
 		"mobAnim": "EelC",
@@ -1116,10 +1116,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 20550,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 74,
 		"boss": false,
-		"defaultCost": 795
+		"defaultCost": 729.5
 	},
 	"EelD": {
 		"mobAnim": "EelD",
@@ -1127,10 +1127,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 30750,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 101,
 		"boss": false,
-		"defaultCost": -30937
+		"defaultCost": -28388
 	},
 	"ElementalOrbA": {
 		"mobAnim": "ElementalOrbA",
@@ -1204,7 +1204,7 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 350,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 20,
 		"boss": false,
 		"defaultCost": 4
@@ -1215,10 +1215,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 25550,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 48,
 		"boss": false,
-		"defaultCost": 494
+		"defaultCost": 453.5
 	},
 	"EyeBallC": {
 		"mobAnim": "EyeBallC",
@@ -1226,10 +1226,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 50750,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 77,
 		"boss": false,
-		"defaultCost": 2219.5
+		"defaultCost": 2037
 	},
 	"FactoryA": {
 		"mobAnim": "FactoryA",
@@ -1259,7 +1259,7 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 200,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 15,
 		"boss": false,
 		"defaultCost": 2
@@ -1270,10 +1270,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 400,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 15,
 		"boss": false,
-		"defaultCost": 4.5
+		"defaultCost": 4
 	},
 	"GhastB": {
 		"mobAnim": "GhastB",
@@ -1281,10 +1281,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 29200,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 36,
 		"boss": false,
-		"defaultCost": 459
+		"defaultCost": 421
 	},
 	"GhastC": {
 		"mobAnim": "GhastC",
@@ -1292,10 +1292,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 58000,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 58,
 		"boss": false,
-		"defaultCost": 1389
+		"defaultCost": 1274.5
 	},
 	"GnomeA": {
 		"mobAnim": "GnomeA",
@@ -2051,10 +2051,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 500,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 20,
 		"boss": false,
-		"defaultCost": 6
+		"defaultCost": 5.5
 	},
 	"PterodactylB": {
 		"mobAnim": "PterodactylB",
@@ -2062,10 +2062,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 26500,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 40,
 		"boss": false,
-		"defaultCost": 444
+		"defaultCost": 407.5
 	},
 	"PterodactylC": {
 		"mobAnim": "PterodactylC",
@@ -2073,10 +2073,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 52500,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 61,
 		"boss": false,
-		"defaultCost": 1354
+		"defaultCost": 1242.5
 	},
 	"PterodactylD": {
 		"mobAnim": "PterodactylD",
@@ -2084,10 +2084,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 78500,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 82,
 		"boss": false,
-		"defaultCost": 4387.5
+		"defaultCost": 4026
 	},
 	"PterodactylE": {
 		"mobAnim": "PterodactylE",
@@ -2095,10 +2095,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 104500,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 103,
 		"boss": false,
-		"defaultCost": -35045
+		"defaultCost": -32157.5
 	},
 	"PterodactylF": {
 		"mobAnim": "PterodactylF",
@@ -2106,10 +2106,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 130500,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 124,
 		"boss": false,
-		"defaultCost": -5471
+		"defaultCost": -5020
 	},
 	"PterodactylG": {
 		"mobAnim": "PterodactylG",
@@ -2117,10 +2117,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 156500,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 144,
 		"boss": false,
-		"defaultCost": -3578.5
+		"defaultCost": -3284
 	},
 	"PterodactylH": {
 		"mobAnim": "PterodactylH",
@@ -2128,10 +2128,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 182500,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 165,
 		"boss": false,
-		"defaultCost": -2825
+		"defaultCost": -2592
 	},
 	"PuddleA": {
 		"mobAnim": "PuddleA",
@@ -2315,10 +2315,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 300,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 25,
 		"boss": false,
-		"defaultCost": 4
+		"defaultCost": 3.5
 	},
 	"SentryCopterB": {
 		"mobAnim": "SentryCopterB",
@@ -2326,10 +2326,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 21900,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 61,
 		"boss": false,
-		"defaultCost": 564.5
+		"defaultCost": 518
 	},
 	"SentryCopterC": {
 		"mobAnim": "SentryCopterC",
@@ -2337,10 +2337,10 @@
 		"deathSound": "death",
 		"scale": 3,
 		"health": 43500,
-		"m_speed": 12,
+		"m_speed": 15,
 		"defence": 97,
 		"boss": false,
-		"defaultCost": 14588
+		"defaultCost": 13386
 	},
 	"ShieldA": {
 		"mobAnim": "ShieldA",

@@ -328,15 +328,15 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
             penetration = object.penetration;
         }
         if (!this.dotDamageDict[callerID]) {
-            var damage = object.skillInfo.ofHealth == "cur" ?
-                (this.Health * object.skillInfo.value / 100) :
-                attack * (object.skillInfo.value / 100);
-            
             this.dotDamageDict[callerID] = this.scene.time.addEvent({
-                delay: object.skillInfo.delay * 1000,
-                repeat: object.skillInfo.duration / object.skillInfo.delay,
+                delay: object.skillInfo.delay * 100,
+                repeat: object.skillInfo.duration / object.skillInfo.delay * 10,
                 callback: () => {
-                    this.Health -= Game.calcDamage(damage, this.defence, penetration) * (1 + this.totalDebuffVal / 100);
+                    var calculatedDamage = object.skillInfo.ofHealth === "cur" ?
+                        (this.Health * object.skillInfo.value / 100)
+                        : attack * (object.skillInfo.value / 100) / 10;
+
+                    this.Health -= Game.calcDamage(calculatedDamage, this.defence, penetration) * (1 + this.totalDebuffVal / 100);
                 },
                 startAt: 0
             });

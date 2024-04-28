@@ -1053,6 +1053,12 @@ var Game = {
                             document.getElementsByClassName("ui-chatInput")[0].value += " ";
                         }
                     }
+                    else if (e.key == "e") {
+                        if (this.GameObject.scene.getScene("gameScene").selectedUnit) {
+                            this.GameObject.scene.getScene("gameScene").sellUnit();
+                            this.hideUnitInfo();
+                        }
+                    }
                 }
                 break;
             case "PreLoadScene":
