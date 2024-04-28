@@ -52,6 +52,8 @@ var Game = {
         shopAspd: 0
     },
 
+    roundChoice: -1,
+
     Initialize(config) {
         this.GameConfig = config;
         
@@ -478,6 +480,8 @@ var Game = {
             
             document.getElementsByClassName("ui-choiceMessage-value")[0].innerText = msg.roundChoice;
             document.getElementsByClassName("ui-choiceMessage-value")[1].innerText = msg.roundChoice;
+
+            this.roundChoice = parseInt(msg.roundChoice);
             this.showUI("diceScene-default");
         });
 

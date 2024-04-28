@@ -2,13 +2,13 @@
     "unit2": {
         "skillType": "debuff",
         "of": "rdamage",
-        "value": 20,
+        "value": 15,
         "duration": 5
     },
     "unit19": {
         "skillType": "debuff",
         "of": "pen",
-        "value": 13,
+        "value": 12,
         "duration": 3
     },
     "unit22": {
@@ -16,7 +16,7 @@
         "delay": 1,
         "duration": 5,
         "ofHealth": "atk",
-        "value": 150
+        "value": 75
     },
     "unit24": {
         "skillType": "cooldown",

@@ -146,7 +146,7 @@ module.exports = {
                         "L. Straight": 0,
                         "Full House": 0,
                         "S. Straight": 0,
-                        "Bull's-Eye": 0,
+                        "Bull's Eye": 0,
                         "-": 0
                     },
                     shopBuffs: { 
@@ -332,10 +332,10 @@ module.exports = {
                 });
 
                 const choiceRewardByPlayers = [
-                    [8],
-                    [10, 6],
-                    [12, 8, 4],
-                    [14, 10, 6, 2]
+                    [10],
+                    [12, 8],
+                    [13, 10, 7],
+                    [13, 11, 9, 7]
                 ];
 
                 let latestChoiceDiffResult = -1;
@@ -563,7 +563,7 @@ module.exports = {
                 "handLStraight": x.handCount["L. Straight"],
                 "handFullHouse": x.handCount["Full House"],
                 "handSStraight": x.handCount["S. Straight"],
-                "choiceBullsEye": x.handCount["Bull's-Eye"],
+                "choiceBullsEye": x.handCount["Bull's Eye"],
             }
         }).sort((a, b) => {
             return b.roundCleared - a.roundCleared;

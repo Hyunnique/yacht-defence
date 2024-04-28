@@ -33,7 +33,8 @@ export default class diceScene extends Phaser.Scene{
     smallStraight = 0                   
     largeStraight = 0
     fullHouse = 0;                      // 특수 족보 유무
-    
+    bullsEye = 0;
+
     rollable = true;                    // 지금 굴릴 수 있는 상황인지 여부
     
 
@@ -134,7 +135,8 @@ export default class diceScene extends Phaser.Scene{
         this.quintuple = 0                       
         this.smallStraight = 0                   
         this.largeStraight = 0
-        this.fullHouse = 0;  
+        this.fullHouse = 0;
+        this.bullsEye = 0;
         
         this.rollable = true;
 
@@ -151,6 +153,9 @@ export default class diceScene extends Phaser.Scene{
                 let r = Math.random() * 6 + 1;
                 this.handDice.push(Math.floor(r));
             }
+
+            this.handDice.sort(); // 굴린 주사위를 정렬한다
+
             this.drawRolling();
             this.time.delayedCall(1000, () => {
                 this.predictChoice();
@@ -185,8 +190,8 @@ export default class diceScene extends Phaser.Scene{
         let temp = this.handDice[idx];
         let tempArr = this.handDice;
         tempArr.splice(idx, 1);
-        this.handDice = [...tempArr];
-        this.savedDice = [...this.savedDice, temp];
+        this.handDice = [...tempArr].sort();
+        this.savedDice = [...this.savedDice, temp].sort();
         this.predictChoice();
         this.drawResult();
     }
@@ -244,6 +249,7 @@ export default class diceScene extends Phaser.Scene{
         this.smallStraight = ((this.three >= 1 && this.four >= 1) && ((this.one >=1 && this.two >=1) || (this.two>=1 && this.five >= 1) || (this.five>=1 && this.six>=1)));
         this.largeStraight = ((this.two == 1 && this.three == 1 && this.four == 1) && ((this.one == 1 && this.five == 1) || (this.five == 1 && this.six == 1)));
         this.fullHouse = this.double && this.triple;
+        this.bullsEye = this.choice === Game.roundChoice;
 
         if (this.quintuple) {
             this.currentTier = 1;
@@ -256,6 +262,10 @@ export default class diceScene extends Phaser.Scene{
         else if (this.largeStraight) {
             this.currentTier = 2;
             this.bestHand = "L. Straight";
+        }
+        else if (this.bullsEye) {
+            this.currentTier = 2;
+            this.bestHand = "Bull's Eye";
         }
         else if (this.fullHouse) {
             this.currentTier = 3;
