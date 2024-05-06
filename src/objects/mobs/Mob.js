@@ -333,7 +333,7 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
                 repeat: object.skillInfo.duration / object.skillInfo.delay * 10,
                 callback: () => {
                     var calculatedDamage = object.skillInfo.ofHealth === "cur" ?
-                        (this.Health * object.skillInfo.value / 100)
+                        (this.Health * object.skillInfo.value / 100 / 10)
                         : attack * (object.skillInfo.value / 100) / 10;
 
                     this.Health -= Game.calcDamage(calculatedDamage, this.defence, penetration) * (1 + this.totalDebuffVal / 100);
