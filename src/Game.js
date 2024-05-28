@@ -65,7 +65,7 @@ var Game = {
         this.showUI("mainScene-default");
         this.showUI("gameScene-topRightFloating");
 
-        this.Socket = io.connect("http://" + (process.env.HOST ? process.env.HOST : "localhost"));
+        this.Socket = io.connect(process.env.HOST ? process.env.HOST : "http://localhost");
         
         document.getElementsByClassName("ui-gameScene-settingsHolder")[0].addEventListener("mousedown", (e) => {
             if (document.getElementsByClassName("ui-gameScene-settingsWrapper")[0].style.display == "none") {
@@ -252,7 +252,7 @@ var Game = {
         let query = "";
         if (!document.getElementsByClassName("ui-radio-allVersion")[0].checked) query = "?version=" + process.env.VERSION;
 
-        axios.get("http://" + (process.env.HOST ? process.env.HOST : "localhost:8080") + "/ranking" + query)
+        axios.get((process.env.HOST ? process.env.HOST : "http://localhost:8080") + "/ranking" + query)
         .then((response) => {
             this.showUI("rankings");
 
@@ -1295,8 +1295,11 @@ var Game = {
 
     calcDamage(damage,mobDefence,penetration)
     {
-        var defencePenValue = 1 - (mobDefence / 100 - penetration);
-        return defencePenValue <= 0 ? 1 : damage * defencePenValue;
+        let defencePenValue = 1 - (mobDefence / 100 - penetration);
+        let result = defencePenValue <= 0 ? 1 : damage * defencePenValue;
+        console.log(`calcDamage: damage=${damage}, defence=${mobDefence}, penetration=${penetration}, result=${result}`);
+
+        return result;
     }
 };
 

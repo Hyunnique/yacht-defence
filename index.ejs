@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<%= "<script src='http://" + (process.env.HOST ? process.env.HOST : "localhost:8080" )
+	<%= "<script src='" + (process.env.HOST ? process.env.HOST : "http://localhost:8080" )
 		+ "/external/socket.io.min.js'></script>" %>
 		<style>
 			.ui-sheet {
